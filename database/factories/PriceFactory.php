@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,10 @@ class PriceFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'product_id' => Product::factory()->create(),
+            'list_price' => $this->faker->buildingNumber(),
+            'cost' => $this->faker->buildingNumber(),
+            'sell_price' => $this->faker->buildingNumber(),
         ];
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +19,9 @@ class SubCategoryFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'product_id' => Product::factory()->create(),
+            'category_id' => Category::factory()->create(),
+            'title' => $this->faker->state(),
         ];
     }
 }
