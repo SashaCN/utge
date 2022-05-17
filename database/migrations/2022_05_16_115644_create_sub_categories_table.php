@@ -15,11 +15,9 @@ return new class extends Migration
     {
         Schema::create('sub_categories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id')->constrained('categories');
-            $table->foreignId('product_id')->constrained('products');
             $table->string('title');
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

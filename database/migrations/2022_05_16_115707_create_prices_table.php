@@ -19,8 +19,8 @@ return new class extends Migration
             $table->bigInteger('list_price');
             $table->bigInteger('cost');
             $table->bigInteger('sell_price');
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

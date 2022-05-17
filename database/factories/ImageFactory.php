@@ -18,7 +18,7 @@ class ImageFactory extends Factory
     public function definition()
     {
         return [
-            'product_id' => Product::factory()->create(),
+            // 'product_id' => Product::factory()->create(),
             'url' => $this->faker->imageUrl($width = 200, $height = 200, 'cats', true, 'Faker'),
         ];
     }
