@@ -28,6 +28,8 @@ class ProductController extends Controller
     {
         $products = Product::all();
 
+        // dd($categories);
+
         return view('admin.product.index', [
             'products' => $products
         ]);
@@ -55,10 +57,12 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
+        // dd($request->category);
         $product = new Product();
         $product->fill($request->except(['image', 'alt']));
         $product->save();
         
+        // add info to images table in bd
         $image = $this->imageSaver->upload($request->alt);
         $product->image()->save($image);
         
