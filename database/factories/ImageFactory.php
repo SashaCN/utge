@@ -19,6 +19,7 @@ class ImageFactory extends Factory
     {
         return [
             'url' => $this->faker->imageUrl($width = 200, $height = 200, 'cats', true, 'Faker'),
+            'alt' => $this->faker->text($maxNbChars = 50),
         ];
     }
 }
