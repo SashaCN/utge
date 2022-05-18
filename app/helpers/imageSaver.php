@@ -9,12 +9,12 @@
         public function upload():Image
         {
             $file = request()->file('image');
-            $uploadFolder = 'storage/folder';
+            $uploadFolder = 'public';
             $fileName = $file->getClientOriginalName();
 
             Storage::putFileAs($uploadFolder, $file, $fileName);
 
-            return new Image(['url' => $uploadFolder.'/'.$fileName]);
+            return new Image(['url' => '/storage/'.$fileName]);
         }
     }
 ?>
