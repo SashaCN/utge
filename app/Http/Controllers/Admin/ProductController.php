@@ -56,12 +56,12 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
         $product = new Product();
-        $product->fill($request->except('image'));
+        $product->fill($request->except(['image', 'alt']));
         $product->save();
-
-        $image = $this->imageSaver->upload();
+        
+        $image = $this->imageSaver->upload($request->alt);
         $product->image()->save($image);
-
+        
         return redirect()->route('admin.index');
     }
 

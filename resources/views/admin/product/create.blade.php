@@ -18,6 +18,7 @@
         <textarea name="description" cols="30" rows="10"></textarea>
 
         <label><input type="file" name="image"></label>
+        <label><input type="text" name="alt"></label>
         <input type="submit" value="Send">
     </form>
 @endsection
