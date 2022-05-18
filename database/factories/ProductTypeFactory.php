@@ -3,12 +3,11 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\ProductType;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ProductType>
  */
-class CategoryFactory extends Factory
+class ProductTypeFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,8 +17,7 @@ class CategoryFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->city(),
-            'product_type_id' => ProductType::factory()->create()
+            'title' => $this->faker->text($maxNbChars = 10)
         ];
     }
 }
