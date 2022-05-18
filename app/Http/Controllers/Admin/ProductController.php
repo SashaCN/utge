@@ -2,12 +2,23 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\ImageSaver;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductRequest;
+use App\Models\Category;
+use App\Models\Image;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+
+    private $imageSaver;
+
+    public function __construct(ImageSaver $imageSaver)
+    {
+        $this->imageSaver = $imageSaver;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -29,7 +40,11 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.product.create');
+        $categies = Category::all();
+
+        return view('admin.product.create', [
+            'categories' => $categies
+        ]);
     }
 
     /**
@@ -38,9 +53,16 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        
+        $product = new Product();
+        $product->fill($request->except('image'));
+        $product->save();
+
+        $image = $this->imageSaver->upload();
+        $product->image()->save($image);
+
+        return redirect()->route('admin.index');
     }
 
     /**
