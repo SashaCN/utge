@@ -6,7 +6,7 @@
 
     class ImageSaver
     {
-        public function upload():Image
+        public function upload($alt):Image
         {
             $file = request()->file('image');
             $uploadFolder = 'public';
@@ -14,7 +14,10 @@
 
             Storage::putFileAs($uploadFolder, $file, $fileName);
 
-            return new Image(['url' => '/storage/'.$fileName]);
+            return new Image([
+                'url' => '/storage/'.$fileName,
+                'alt' => $alt 
+            ]);
         }
     }
 ?>

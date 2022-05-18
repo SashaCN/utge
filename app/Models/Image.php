@@ -9,11 +9,6 @@ class Image extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['url'];
+    protected $fillable = ['url', 'alt'];
     public $timestamps = true;
-
-    public function imageable(){
-
-        return $this->morphTo();
-    }
 }
