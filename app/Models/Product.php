@@ -9,6 +9,9 @@ class Product extends Model
 {
     use HasFactory;
 
+    protected $dates = ['deleted_at'];
+    protected $fillable = ['title', 'description', 'article', 'shipable', 'available', 'max_order', 'list_position'];
+
     public function categories()
     {
         return $this->belongsToMany(Category::class, 'category_products', 'product_id', 'category_id');
