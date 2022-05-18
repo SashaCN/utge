@@ -11,11 +11,10 @@
             $file = request()->file('image');
             $uploadFolder = 'public';
             $fileName = $file->getClientOriginalName();
-            $dblink = 'storage';
 
             Storage::putFileAs($uploadFolder, $file, $fileName);
 
-            return new Image(['url' => $dblink.'/'.$fileName]);
+            return new Image(['url' => '/storage/'.$fileName]);
         }
     }
 ?>

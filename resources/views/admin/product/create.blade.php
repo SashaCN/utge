@@ -1,6 +1,6 @@
 @extends('admin.admin')
 @section('content')
-    <form action="{{ route('admin.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <label><input type="text" name="title">title</label>
         <label><input type="text" name="article">article</label>

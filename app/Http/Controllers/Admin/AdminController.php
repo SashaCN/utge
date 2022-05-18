@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +15,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
-
-        return view('category.index', ['categories' => $categories]);
+        $category = Category::all();
+        return view('admin.admin', [
+            'category' => $category
+        ]);
     }
 
     /**
@@ -28,7 +28,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('category.create');
+        //
     }
 
     /**
@@ -37,13 +37,9 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryRequest $request)
+    public function store(Request $request)
     {
-        $category = new Category();
-        $category->fill($request);
-        $category->save();
-
-        return redirect()->rout('category.index');
+        //
     }
 
     /**
@@ -52,9 +48,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show($id)
     {
-        return view('category.show', ['category' => $category]);
+        //
     }
 
     /**
@@ -63,9 +59,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
-        return view('category.update', ['category' => $category]);
+        //
     }
 
     /**
@@ -75,11 +71,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoryRequest $request, Category $category)
+    public function update(Request $request, $id)
     {
-        $category->update($request->validated());
-
-        return redirect()->route('category.show', $category);
+        //
     }
 
     /**
@@ -88,9 +82,8 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        $category->delete();
-        return redirect()->rout('category.index');
+        //
     }
 }
