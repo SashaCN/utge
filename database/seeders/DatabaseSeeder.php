@@ -8,11 +8,11 @@ use App\Models\Price;
 use App\Models\Product;
 use App\Models\SubCategory;
 use App\Models\CategoryProduct;
+use App\Models\ProductSubCategory;
+use App\Models\ProductType;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\CategorySubCategory;
-use App\Models\ProductSubCategory;
 // use Database\Factories\CategoryProductFactory;
 
 class DatabaseSeeder extends Seeder
@@ -24,11 +24,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        // ProductType::factory()->count(10)->create();
         Category::factory()->count(10)->create();
-        SubCategory::factory()->count(10)->create();
+        SubCategory::factory()->count(10)->for(Category::factory()->create())->create();
         Product::factory()->count(10)->has(Price::factory()->count(1))->has(Image::factory()->count(1))->create();
         CategoryProduct::factory()->count(10)->create();
-        CategorySubCategory::factory()->count(10)->create();
         ProductSubCategory::factory()->count(10)->create();
     }
 }
