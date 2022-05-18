@@ -8,6 +8,10 @@
         <label><input type="radio" checked value="1" name="shipable"><input type="radio" value="0" name="shipable">shipable</label>
         <label><input type="radio" checked value="1" name="available"><input type="radio" value="0" name="available">available</label>
 
+        @foreach ($categories as $category)
+            <label><input type="checkbox" name="catecory">{{ $category->title }}</label>
+        @endforeach
+
         <label><input type="number" name="max_order"></label>
         <label><input type="number" name="list_position"></label>
 

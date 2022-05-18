@@ -1,3 +1,11 @@
 body{
     background-color: rgb(224, 224, 224);
 }
+input{
+    display: block;
+}
+img{
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+}

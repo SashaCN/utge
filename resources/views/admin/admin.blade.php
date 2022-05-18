@@ -8,14 +8,16 @@
     <title>Utge admin</title>
 </head>
 <body>
-    <div>
-        <a href="{{route('admin.index')}}">product list</a>
-        <a href="{{route('admin.create')}}">create</a>
-    </div>
-    <div>
-        <section id="content">
+    <div class="admin-wrapp">
+        <div class="admin-wrapp-aside">
+            <ul>
+                <li><a href="{{ route('admin.index') }}">Товари</a></li>
+                <li><a href="{{ route('admin.create') }}">Додати товар</a></li>
+            </ul>
+        </div>
+        <div class="admin-wrapp-content">
             @yield('content')
-        </section>
+        </div>
     </div>
 </body>
 </html>
