@@ -1,5 +1,5 @@
 <?php
-    namespace App\Helpers\ImageSaver;
+    namespace App\Helpers;
 
     use App\Models\Image;
     use Illuminate\Support\Facades\Storage;

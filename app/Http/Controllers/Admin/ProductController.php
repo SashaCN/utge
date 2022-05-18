@@ -2,13 +2,22 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\ImageSaver;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
+use App\Models\Image;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+
+    private $imageSaver;
+
+    public function __construct(ImageSaver $imageSaver)
+    {
+        $this->imageSaver = $imageSaver;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -42,8 +51,12 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
         $product = new Product();
-        $request->$product;
+        $product->fill($request->except('image'));
         $product->save();
+
+        $image = $this->imageSaver->upload();
+        $product->image()->save($image);
+
         return redirect()->route('admin.index');
     }
 
