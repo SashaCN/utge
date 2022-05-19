@@ -28,8 +28,7 @@ class ProductController extends Controller
     {
         $products = Product::all();
 
-        // dd($categories);
-
+        
         return view('admin.product.index', [
             'products' => $products
         ]);
@@ -57,16 +56,19 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        // dd($request->category);
+        // dd($request);
         $product = new Product();
-        $product->fill($request->except(['image', 'alt']));
+        $product->fill($request->except(['categories', 'image', 'alt']));
         $product->save();
+
+        $product->categories()->sync($request->categories);
+        // dd($product->categories);
         
         // add info to images table in bd
         $image = $this->imageSaver->upload($request->alt);
         $product->image()->save($image);
         
-        return redirect()->route('admin.index');
+        return redirect()->route('product.index');
     }
 
     /**
@@ -76,7 +78,7 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Product $product)
-    {
+    {   
         return view('admin.product.show', [
             'product' => $product
         ]);
