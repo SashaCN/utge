@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Image;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -28,7 +29,7 @@ class ProductController extends Controller
     {
         $products = Product::all();
 
-        
+
         return view('admin.product.index', [
             'products' => $products
         ]);
@@ -54,20 +55,20 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    
     public function store(ProductRequest $request)
     {
         $product = new Product();
         $product->fill($request->except(['categories', 'image', 'alt']));
         $product->save();
 
-        dd(is_file($request->image));
         //conect product to category
         $product->categories()->sync($request->categories);
-        
+        // dd($request->image);
         // add info to images table in bd
         $image = $this->imageSaver->upload($request->alt);
         $product->image()->save($image);
-        
+
         return redirect()->route('product.index');
     }
 
@@ -78,9 +79,11 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Product $product)
-    {   
+    {
+        $categories = Category::all();
         return view('admin.product.show', [
-            'product' => $product
+            'product' => $product,
+            'categories' => $categories,
         ]);
     }
 
@@ -90,9 +93,15 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
-        //
+        $categories = Category::all();
+        // dd($product->categories);
+        return view('admin.product.update', [
+            'product' => $product,
+            'categories' => $categories,
+            'selected_categories' => $product->categories
+        ]);
     }
 
     /**
@@ -102,9 +111,20 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductRequest $request, Product $product)
     {
-        //
+        $product->fill($request->except(['categories', 'image', 'alt']));
+        $product->update($request->validated());
+
+        $product->categories()->sync($request->categories);
+
+        if (is_file($request->image)) {
+            $this->imageSaver->update($product->image->id, $request->image, $request->alt);
+        } else {
+            $product->image()->save($product->image);
+        }
+        
+        return redirect()->route('product.index');
     }
 
     /**
