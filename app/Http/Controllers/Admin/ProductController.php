@@ -56,13 +56,12 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        // dd($request);
         $product = new Product();
         $product->fill($request->except(['categories', 'image', 'alt']));
         $product->save();
 
+        //conect product to category
         $product->categories()->sync($request->categories);
-        // dd($product->categories);
         
         // add info to images table in bd
         $image = $this->imageSaver->upload($request->alt);
