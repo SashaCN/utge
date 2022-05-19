@@ -60,6 +60,7 @@ class ProductController extends Controller
         $product->fill($request->except(['categories', 'image', 'alt']));
         $product->save();
 
+        dd(is_file($request->image));
         //conect product to category
         $product->categories()->sync($request->categories);
         

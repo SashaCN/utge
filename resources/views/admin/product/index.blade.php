@@ -20,6 +20,7 @@
                     @endforeach
                 </ul>
             </td>
+            <td><a href="{{ route('product.update', $product->id) }}">update</a></td>
             <td><a href="{{ route('product.show', $product->id) }}">show</a></td>
             <td><img src="{{ asset($product->image->url) }}" alt="{{ $product->image->alt }}"></td>
         </tr>

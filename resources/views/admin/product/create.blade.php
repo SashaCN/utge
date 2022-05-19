@@ -8,6 +8,8 @@
         <label><input type="radio" checked value="1" name="shipable"><input type="radio" value="0" name="shipable">shipable</label>
         <label><input type="radio" checked value="1" name="available"><input type="radio" value="0" name="available">available</label>
 
+        <label><input type="number" name="price"></label>
+
         @foreach ($categories as $category)
             <label><input type="checkbox" name="categories[]" value="{{ $category->id }}">{{ $category->title }}</label>
         @endforeach

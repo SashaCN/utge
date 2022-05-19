@@ -10,7 +10,7 @@ class Product extends Model
     use HasFactory;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = ['title', 'description', 'article', 'shipable', 'available', 'max_order', 'list_position'];
+    protected $fillable = ['title', 'description', 'article', 'shipable', 'price', 'available', 'max_order', 'list_position'];
 
     public function categories()
     {
