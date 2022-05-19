@@ -64,7 +64,7 @@ class ProductController extends Controller
 
         //conect product to category
         $product->categories()->sync($request->categories);
-        // dd($request->image);
+
         // add info to images table in bd
         $image = $this->imageSaver->upload($request->alt);
         $product->image()->save($image);
@@ -116,8 +116,10 @@ class ProductController extends Controller
         $product->fill($request->except(['categories', 'image', 'alt']));
         $product->update($request->validated());
 
+        //conect product to category
         $product->categories()->sync($request->categories);
 
+        // update info to images table in bd
         if (is_file($request->image)) {
             $this->imageSaver->update($product->image->id, $request->image, $request->alt);
         } else {
