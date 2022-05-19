@@ -48,12 +48,13 @@
         @endforeach
 
         <label><input type="number" value="{{ $product->max_order }}" name="max_order"></label>
-        <label><input type="number" name="list_position"></label>
+        <label><input type="number" value="{{ $product->list_position }}" name="list_position"></label>
 
-        <textarea name="description" cols="30" rows="10"></textarea>
+        <textarea name="description" cols="30" rows="10">{{ $product->description }}</textarea>
 
+        <img src="{{ $product->image->url }}" alt="{{ $product->image->alt }}">
         <label><input type="file" name="image"></label>
-        <label><input type="text" name="alt"></label>
+        <label><input type="text" value="{{ $product->image->alt }}" name="alt"></label>
         <input type="submit" value="Send">
     </form>
 @endsection
