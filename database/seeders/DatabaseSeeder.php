@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         // ProductType::factory()->count(10)->create();
         Category::factory()->count(10)->create();
         SubCategory::factory()->count(10)->for(Category::factory()->create())->create();
-        Product::factory()->count(10)->has(Price::factory()->count(1))->has(Image::factory()->count(1))->create();
+        Product::factory()->count(10)->has(Image::factory()->count(1))->create();
         CategoryProduct::factory()->count(10)->create();
         ProductSubCategory::factory()->count(10)->create();
     }
