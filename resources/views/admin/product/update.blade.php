@@ -1,8 +1,10 @@
 @extends('admin.admin')
 @section('content')
-    <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('product.store', $product->id ) }}" method="POST" enctype="multipart/form-data">
+
         @csrf
-        @method('PUT')
+        @method('POST')
+
         <label><input type="text" value="{{ $product->title }}" name="title">title</label>
         <label><input type="text" value="{{ $product->article }}" name="article">article</label>
 
@@ -36,14 +38,17 @@
 
         @foreach ($categories as $category)
 
-                    @foreach ($selected_categories as $selected_category)
-                        <label><input type="checkbox" name="categories[]" value="{{ $category->id }}">{{ $category->title }}</label>
-                    @if ( $category->id == $selected_category->id)
-                        <label><input type="checkbox" checked name="categories[]" value="{{ $category->id }}">{{ $category->title }}</label>
-                    @else
-                    @endif
+            @foreach ($selected_categories as $selected_category)
 
-                @endforeach
+                @if ( $category->id != $selected_category->id)
+                    <label><input type="checkbox"  name="categories[]" value="{{ $category->id }}">{{ $category->title }}</label>
+
+                @else
+                    <label><input type="checkbox" checked name="categories[]" value="{{ $category->id }}">{{ $category->title }}</label>
+
+                @endif
+
+            @endforeach
 
         @endforeach
 

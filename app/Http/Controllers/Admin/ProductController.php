@@ -95,7 +95,7 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         // dd($product->categories);
-        return view('admin.product.edit', [
+        return view('admin.product.update', [
             'product' => $product,
             'categories' => $categories,
             'selected_categories' => $product->categories
@@ -109,9 +109,11 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductRequest $request, Product $product)
     {
-        //
+        $product->update($request->validate());
+        
+        return redirect()->view('admin.admin');
     }
 
     /**
