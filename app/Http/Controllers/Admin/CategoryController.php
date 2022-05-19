@@ -46,7 +46,7 @@ class CategoryController extends Controller
         $category->fill($request->except('subCategories'));
         $category->save();
 
-        $product->sub_categories()->sync($request->subCategories);
+        $category->sub_categories()->sync($request->subCategories);
 
         return redirect()->rout('category.index');
     }
@@ -59,10 +59,11 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
+        dd($category->subCategory);
         return view('admin.category.show', [
             'category' => $category,
             'products' => $category->products,
-            'subCategories' => SubCategory::all(),
+            'subCategories' => $category->sub_categories,
         ]);
     }
 

@@ -41,10 +41,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categies = Category::all();
+        $category = Category::all();
 
         return view('admin.product.create', [
-            'categories' => $categies
+            'categories' => $category
         ]);
     }
 
