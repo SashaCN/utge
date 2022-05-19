@@ -11,8 +11,16 @@
     <div class="admin-wrapp">
         <div class="admin-wrapp-aside">
             <ul>
-                <li><a href="{{ route('admin.index') }}">Товари</a></li>
-                <li><a href="{{ route('admin.create') }}">Додати товар</a></li>
+                <li><a href="{{ route('product.index') }}">Товари</a></li>
+                <li><a href="{{ route('product.create') }}">Додати товар</a></li>
+            </ul>
+            <ul>
+                <li><a href="{{ route('category.index') }}">Категорії</a></li>
+                <li><a href="{{ route('category.create') }}">Додати категорії</a></li>
+            </ul>
+            <ul>
+                {{-- <li><a href="{{ route('admin.index') }}">Доп категорії</a></li>
+                <li><a href="{{ route('admin.create') }}">Додати доп категорії</a></li> --}}
             </ul>
         </div>
         <div class="admin-wrapp-content">

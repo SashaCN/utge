@@ -21,6 +21,11 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::resource('admin', \App\Http\Controllers\Admin\ProductController::class);
+Route::prefix('admin')->group(function()
+    {
+        Route::resource('category', \App\Http\Controllers\Admin\CategoryController::class);
+        Route::resource('product', \App\Http\Controllers\Admin\ProductController::class);
+    }
+);
 
 require __DIR__.'/auth.php';

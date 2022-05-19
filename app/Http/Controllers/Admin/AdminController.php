@@ -2,23 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Helpers\ImageSaver;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ProductRequest;
 use App\Models\Category;
-use App\Models\Image;
-use App\Models\Product;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class AdminController extends Controller
 {
-
-    private $imageSaver;
-
-    public function __construct(ImageSaver $imageSaver)
-    {
-        $this->imageSaver = $imageSaver;
-    }
     /**
      * Display a listing of the resource.
      *
@@ -26,12 +15,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
-
-        // dd($categories);
-
-        return view('admin.product.index', [
-            'products' => $products
+        $category = Category::all();
+        return view('admin.admin', [
+            'category' => $category
         ]);
     }
 
@@ -42,11 +28,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categies = Category::all();
-
-        return view('admin.product.create', [
-            'categories' => $categies
-        ]);
+        //
     }
 
     /**
@@ -55,18 +37,9 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductRequest $request)
+    public function store(Request $request)
     {
-        // dd($request->category);
-        $product = new Product();
-        $product->fill($request->except(['image', 'alt']));
-        $product->save();
-        
-        // add info to images table in bd
-        $image = $this->imageSaver->upload($request->alt);
-        $product->image()->save($image);
-        
-        return redirect()->route('admin.index');
+        //
     }
 
     /**
@@ -75,11 +48,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($id)
     {
-        return view('admin.product.show', [
-            'product' => $product
-        ]);
+        //
     }
 
     /**
