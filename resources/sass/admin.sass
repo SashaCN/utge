@@ -4,6 +4,8 @@
 
 body 
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif
+  padding-left: 15vw
+  padding-top: 45px
 
 .flex 
   display: flex
@@ -19,35 +21,158 @@ ul
 // admin header
 
 header
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  box-sizing: border-box
+  padding: 0 5%
+  color: #fff
   background-color: #000467
-  padding: 10px 40px
+  a 
+    color: #fff
 
 .header-menu 
   a 
     position: relative
     font-size: 16px
     line-height: 19px
-    color: #fff
     text-decoration: none
-    transition: .5s
     &::before
       content: ''
       position: absolute
       top: 50%
+      transform: translateY(-50%)
+  li
+    display: inline-block
+    a
+      transition: .5s
+  .logo 
+    transition: .5s
+    margin-right: 30px
     &:hover 
-      transform: scale(1.1)
-      &::before
-        transform: scale(1.1)
-        
+      transform: scale(1.15)
+  .home, .add
+    display: inline-block
+    line-height: 45px
+  li:hover
+    span
+      transform: scaleX(1)
+
+.header-menu,
+.aside-menu 
+  li 
+    position: relative
+  span 
+    position: absolute
+    width: 100%
+    height: 25%
+    background-color: #070B75
+    z-index: -1
+    left: 0
+    top: 0
+    transform: scaleX(0)
+    transition: all 0.5s
+    transform-origin: left
+    &:nth-child(2)
+      top: 25%
+      transition-delay: 0.15s
+    &:nth-child(3)
+      top: 50%
+      transition-delay: 0.3s
+    &:nth-child(4)
+      top: 75%
+      transition-delay: 0.45s
+
+.li-home,
+.li-add 
+  padding: 0 20px 0 45px
 
 .home::before
   left: -32px
-  transform: translateY(-50%)
   width: 22px
   height: 20px
   background-image: url('../img/home.svg')
-  background-size: contain
-  transition: .5s
 
-li 
-  margin-left: 60px
+.add::before
+  left: -27px
+  width: 17px
+  height: 17px
+  background-image: url('../img/add.svg')
+
+.li-add 
+  position: relative
+
+.add-menu 
+  position: absolute
+  left: 0
+  top: 45px
+  background-color: #000467
+  li, a 
+    display: inline-block
+    width: 100%
+  a 
+    padding: 15px 27px
+    box-sizing: border-box
+    &:hover 
+      transform: scale(1)
+      background-color: #070B75
+
+.hidden 
+  display: none!important
+
+.lang span
+  margin: 0 5px
+
+.lang 
+  a
+    position: relative
+    z-index: 1
+    display: inline-block
+    width: 20px
+    text-align: center
+    text-decoration: none
+    &::before
+      content: ''
+      position: absolute
+      top: 50%
+      left: 50%
+      z-index: -1
+      transform: translate(-50%, -50%)
+      width: 24px
+      height: 19px
+      border-radius: 5px
+      background-color: #2B31CD
+      opacity: 0
+      transition: 0.5s
+    &:hover 
+      &::before 
+        opacity: 1
+
+// aside menu 
+
+aside 
+  position: fixed
+  top: 45px
+  left: 0
+  width: 15vw
+  height: 100vh
+  background-color: #000467
+  nav, ul, li, a
+    width: 100%
+  a
+    display: inline-block
+    font-size: 16px
+    color: #fff
+    text-decoration: none
+    padding: 15px 30px
+    box-sizing: border-box
+  li  
+    &:hover 
+      span 
+        transform: scale(1)
+
+// main 
+
+main 
+  display: inline-block 
