@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\SubCategory;
+use App\Models\ProductType;
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -29,9 +30,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $subCategories = SubCategory::all();
+        $productTypes = ProductType::all();
 
-        return view('admin.category.create', ['subCategories' => $subCategories]);
+        return view('admin.category.create', ['productTypes' => $productTypes]);
     }
 
     /**
@@ -43,12 +44,14 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request)
     {
         $category = new Category();
-        $category->fill($request->except('subCategories'));
+
+        $category->title = $request->title;
+        $category->product_type_id = $request->product_type_id;
+
         $category->save();
 
-        $category->sub_categories()->sync($request->subCategories);
 
-        return redirect()->rout('category.index');
+        return redirect()->route('category.index');
     }
 
     /**
@@ -59,11 +62,10 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        dd($category->subCategory);
         return view('admin.category.show', [
             'category' => $category,
             'products' => $category->products,
-            'subCategories' => $category->sub_categories,
+            'subCategories' => SubCategory::all()->where('category_id', $category->id),
         ]);
     }
 
@@ -101,6 +103,6 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect()->rout('admin.category.index');
+        return redirect()->route('category.index');
     }
 }

@@ -94,7 +94,7 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         $categories = Category::all();
-        // dd($product->categories);
+        dd($product->categories);
         return view('admin.product.update', [
             'product' => $product,
             'categories' => $categories,

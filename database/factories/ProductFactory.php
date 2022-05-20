@@ -20,6 +20,7 @@ class ProductFactory extends Factory
             'title' => $this->faker->state(),
             'description' => $this->faker->text($maxNbChars = 200),
             'article' => $this->faker->text($maxNbChars = 10),
+            'price' => $this->faker->buildingNumber(),
             'shipable' => $this->faker->boolean(),
             'available' => $this->faker->boolean(),
             'max_order' => $this->faker->randomDigit(),

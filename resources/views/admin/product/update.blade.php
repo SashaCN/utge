@@ -37,18 +37,20 @@
         @endif
 
         @foreach ($categories as $category)
-
+            <?php $isChecked = false ?> 
             @foreach ($selected_categories as $selected_category)
 
-                @if ( $category->id != $selected_category->id)
-                    <label><input type="checkbox"  name="categories[]" value="{{ $category->id }}">{{ $category->title }}</label>
-
-                @else
-                    <label><input type="checkbox" checked name="categories[]" value="{{ $category->id }}">{{ $category->title }}</label>
-
+                @if ( $category->id == $selected_category->id)
+                    <?php $isChecked = true ?>
                 @endif
-
             @endforeach
+                    
+            @if ($isChecked == true)
+                <label><input type="checkbox" checked name="categories[]" value="{{ $category->id }}">{{ $category->title }}</label>
+            @else
+                <label><input type="checkbox"  name="categories[]" value="{{ $category->id }}">{{ $category->title }}</label>
+            @endif
+
 
         @endforeach
 
