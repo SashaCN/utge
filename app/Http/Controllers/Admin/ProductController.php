@@ -29,7 +29,6 @@ class ProductController extends Controller
     {
         $products = Product::all();
 
-
         return view('admin.product.index', [
             'products' => $products
         ]);
@@ -135,6 +134,12 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    public function delete(Product $product)
+    {
+        return $product->delete();
+    }
+
     public function destroy($id)
     {
         //

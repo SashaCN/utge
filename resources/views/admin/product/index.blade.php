@@ -22,6 +22,7 @@
             </td>
             <td><a href="{{ route('product.show', $product->id) }}">show</a></td>
             <td><a href="{{ route('product.edit', $product->id) }}">edit</a></td>
+            <td><a href="{{ route('product.delete', $product->id) }}">delete</a></td>
             <td><img src="{{ asset($product->image->url) }}" alt="{{ $product->image->alt }}"></td>
         </tr>
         @endforeach

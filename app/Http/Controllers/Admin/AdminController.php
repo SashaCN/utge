@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Models\Product;
 
 class AdminController extends Controller
 {
@@ -15,10 +16,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $category = Category::all();
-        return view('admin.admin', [
-            'category' => $category
-        ]);
+        return view('admin.admin');
     }
 
     /**

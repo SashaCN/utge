@@ -23,8 +23,10 @@ Route::get('/dashboard', function () {
 
 Route::prefix('admin')->group(function()
     {
+        Route::get('/', [\App\Http\Controllers\Admin\AdminController::class, 'index']);
         Route::resource('category', \App\Http\Controllers\Admin\CategoryController::class);
         Route::resource('product', \App\Http\Controllers\Admin\ProductController::class);
+        Route::get('product/delete/{product}', [\App\Http\Controllers\Admin\ProductController::class, 'delete'])->name('product.delete');
     }
 );
 
