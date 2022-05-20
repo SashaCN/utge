@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\ProductType;
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
+use App\Models\SubCategory;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
