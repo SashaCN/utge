@@ -54,7 +54,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    
+
     public function store(ProductRequest $request)
     {
         $product = new Product();
@@ -124,7 +124,7 @@ class ProductController extends Controller
         } else {
             $product->image()->save($product->image);
         }
-        
+
         return redirect()->route('product.index');
     }
 
@@ -137,7 +137,9 @@ class ProductController extends Controller
 
     public function delete(Product $product)
     {
-        return $product->delete();
+        $product->delete();
+
+        return redirect()->route('product.index');
     }
 
     public function destroy($id)
