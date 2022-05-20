@@ -8,6 +8,25 @@
     <title>Utge admin</title>
 </head>
 <body>
+    <header>
+        <div class="header-line flex">
+            <ul class="header-menu flex">
+                <li>
+                    <a href="{{ route('admin') }}">
+                        <img src="{{ asset('img/logo.svg') }}" alt="Hashtag logo">
+                    </a>
+                </li>
+                <li><a href="#" class="home">UTGE</a></li>
+                <li><a href="#" class="add">Додати</a></li>
+            </ul>
+            <form action="lang.php" method="POST">
+                <label><input type="radio" name="lang" value="ru">ru</label>
+                <span>|</span>
+                <label><input type="radio" name="lang" value="ua">ua</label>
+                {{-- <input type="submit"> --}}
+            </form>
+        </div>
+    </header>
     <div class="admin-wrapp">
         <div class="admin-wrapp-aside">
             <ul>
