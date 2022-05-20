@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('description');
             $table->string('article');
             $table->bigInteger('price');
-            $table->boolean('shipable');
-            $table->boolean('available');
+            $table->string('shipable');
+            $table->string('available');
             $table->bigInteger('max_order');
             $table->bigInteger('list_position');
             $table->timestamps();
