@@ -204,4 +204,24 @@ aside li:hover span {
 
 main {
   display: inline-block;
+  padding: 20px;
+}
+
+.product-table {
+  border-collapse: collapse;
+}
+.product-table td, .product-table th {
+  border: 1px solid #000;
+  padding: 15px;
+}
+
+.product-image {
+  width: 75px;
+}
+.product-image img {
+  width: 100%;
+}
+
+.action {
+  text-align: center;
 }
