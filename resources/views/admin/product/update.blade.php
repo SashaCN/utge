@@ -1,9 +1,9 @@
 @extends('admin.admin')
 @section('content')
-    <form action="{{ route('product.store', $product->id ) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('product.update', $product->id ) }}" method="POST" enctype="multipart/form-data">
 
         @csrf
-        @method('POST')
+        @method('PUT')
 
         <label><input type="text" value="{{ $product->title }}" name="title">title</label>
         <label><input type="text" value="{{ $product->article }}" name="article">article</label>
@@ -35,6 +35,8 @@
                 available
             </label>
         @endif
+
+        <label><input type="number" name="price" value="{{ $product->price }}"></label>
 
         @foreach ($categories as $category)
             <?php $isChecked = false ?> 

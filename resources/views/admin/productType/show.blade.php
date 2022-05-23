@@ -1,10 +1,22 @@
 @extends('admin.admin')
 
 @section('content')
-    <h2>Category title</h2>
-    <p>{{ $subCategory->title}}</p>
-    <h2>Products which belongs to subCategory</h2>
     <table>
+        <tr>
+            <th>Category title</th>
+            <th>Sub Category belong to category</th>
+        </tr>
+        <tr>
+            <td>{{$productType->title}}</td>
+            <td>
+                {{-- @foreach ($categories as $category)
+                    <p>{{ $category->title }}</p>
+                @endforeach --}}
+            </td>
+        </tr>
+    </table>
+    <h2>Products which belongs to category</h2>
+    {{-- <table>
         <tr>
             <th>Title</th>
             <th>Description</th>
@@ -19,5 +31,5 @@
             <td><a href="{{ route('product.show', $product->id) }}">show</a></td>
         </tr>
         @endforeach
-    </table>
+    </table> --}}
 @endsection

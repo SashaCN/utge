@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\ProductType;
 use App\Http\Requests\CategoryRequest;
+use Illuminate\Http\Request;
+use App\Models\ProductType;
 use App\Models\Category;
 use App\Models\SubCategory;
 use App\Models\Product;
-use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -33,7 +33,7 @@ class CategoryController extends Controller
     {
         $productTypes = ProductType::all();
 
-        return view('admin.category.create', ['productTypes' => $productTypes]);
+        return view('admin.category.create', ['productTypes' => $categories]);
     }
 
     /**
@@ -46,9 +46,7 @@ class CategoryController extends Controller
     {
         $category = new Category();
 
-        $category->title = $request->title;
-        $category->product_type_id = $request->product_type_id;
-
+        $category->fill($request->validated());
         $category->save();
 
 
@@ -78,7 +76,12 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('admin.category.update', ['category' => $category]);
+        $productTypes = ProductType::all();
+
+        return view('admin.category.update', [
+            'category' => $category,
+            'productTypes' => $productTypes,
+        ]);
     }
 
     /**
@@ -92,7 +95,7 @@ class CategoryController extends Controller
     {
         $category->update($request->validated());
 
-        return redirect()->route('admin.category.show', $category);
+        return redirect()->route('category.show', $category);
     }
 
     /**

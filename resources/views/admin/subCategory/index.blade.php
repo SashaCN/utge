@@ -2,18 +2,18 @@
 
 @section('content')
     <table>
-        <a href="{{ route('category.create') }}"></a>
+        <a href="{{ route('subCategory.create') }}"></a>
         <tr>
             <th>Title</th>
             <th>action</th>
         </tr>
-        @foreach ($categories as $category)
+        @foreach ($subCategories as $subCategory)
         <tr>
-            <td>{{$category->title}}</td>
+            <td>{{$subCategory->title}}</td>
             <td>
-                <a href="{{ route('category.show', $category->id) }}">show</a>
-                <a href="{{ route('category.edit', $category->id) }}">update</a>
-                <form action="{{ route('category.destroy', $category->id) }}" method="post">
+                <a href="{{ route('subCategory.show', $subCategory->id) }}">show</a>
+                <a href="{{ route('subCategory.edit', $subCategory->id) }}">update</a>
+                <form action="{{ route('subCategory.destroy', $subCategory->id) }}" method="post">
                     @csrf   
                     @method('DELETE')
                     <input type="submit" value="delete">

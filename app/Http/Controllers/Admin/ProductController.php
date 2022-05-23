@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Image;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -27,7 +28,6 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
-
 
         return view('admin.product.index', [
             'products' => $products
@@ -54,6 +54,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(ProductRequest $request)
     {
         $product = new Product();
@@ -94,7 +95,6 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         $categories = Category::all();
-        dd($product->categories);
         return view('admin.product.update', [
             'product' => $product,
             'categories' => $categories,
@@ -111,9 +111,20 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, Product $product)
     {
-        $product->update($request->validate());
-        
-        return redirect()->view('admin.admin');
+        $product->fill($request->except(['categories', 'image', 'alt']));
+        $product->update($request->validated());
+
+        //conect product to category
+        $product->categories()->sync($request->categories);
+
+        // update info to images table in bd
+        if (is_file($request->image)) {
+            $this->imageSaver->update($product->image->id, $request->image, $request->alt);
+        } else {
+            $product->image()->save($product->image);
+        }
+
+        return redirect()->route('product.index');
     }
 
     /**
@@ -122,6 +133,14 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    public function delete(Product $product)
+    {
+        $product->delete();
+
+        return redirect()->route('product.index');
+    }
+
     public function destroy($id)
     {
         //

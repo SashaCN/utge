@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SubCategoryRequest;
 use Illuminate\Http\Request;
+use App\Models\Category;
+use App\Models\SubCategory;
+use App\Models\Product;
 
 class SubCategoryController extends Controller
 {
@@ -14,7 +18,9 @@ class SubCategoryController extends Controller
      */
     public function index()
     {
-        //
+        $subCategories = SubCategory::all();
+
+        return view('admin.subCategory.index', ['subCategories' => $subCategories]);
     }
 
     /**
@@ -24,7 +30,9 @@ class SubCategoryController extends Controller
      */
     public function create()
     {
-        //
+        $Categories = Category::all();
+
+        return view('admin.subCategory.create', ['Categories' => $Categories]);
     }
 
     /**
@@ -33,9 +41,15 @@ class SubCategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SubCategoryRequest $request)
     {
-        //
+        $subCategory = new SubCategory();
+
+        $subCategory->fill($request->validated());
+        $subCategory->save();
+
+
+        return redirect()->route('subCategory.index');
     }
 
     /**
@@ -44,9 +58,13 @@ class SubCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(SubCategory $subCategory)
     {
-        //
+        return view('admin.subCategory.show', [
+            'category' => $category,
+            'products' => $category->products,
+            'subCategories' => SubCategory::all()->where('category_id', $category->id),
+        ]);
     }
 
     /**
@@ -55,9 +73,14 @@ class SubCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(SubCategory $subCategory)
     {
-        //
+        $productTypes = ProductType::all();
+
+        return view('admin.category.update', [
+            'category' => $category,
+            'productTypes' => $productTypes,
+        ]);
     }
 
     /**
@@ -67,9 +90,11 @@ class SubCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SubCategoryRequest $request, SubCategory $subCategory)
     {
-        //
+        $subCategory->update($request->validated());
+
+        return redirect()->route('subCategory.show', $subCategory);
     }
 
     /**
@@ -78,8 +103,9 @@ class SubCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(SubCategory $subCategory)
     {
-        //
+        $subCategory->delete();
+        return redirect()->route('subCategory.index');
     }
 }
