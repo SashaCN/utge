@@ -13,11 +13,7 @@
             <td>
                 <a href="{{ route('category.show', $category->id) }}">show</a>
                 <a href="{{ route('category.edit', $category->id) }}">update</a>
-                <form action="{{ route('category.destroy', $category->id) }}" method="post">
-                    @csrf   
-                    @method('DELETE')
-                    <input type="submit" value="delete">
-                </form>
+                <a href="{{ route('category.delete', $category->id) }}">delete</a>
             </td>
         </tr>
         @endforeach

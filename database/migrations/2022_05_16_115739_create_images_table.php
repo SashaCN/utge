@@ -18,8 +18,8 @@ return new class extends Migration
             $table->foreignId('product_id')->constrained('products');
             $table->string('url');
             $table->string('alt');
-            $table->timestamps();
             $table->softDeletes();
+            $table->timestamps();
         });
     }
 
