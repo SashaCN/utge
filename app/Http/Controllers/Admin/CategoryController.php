@@ -106,6 +106,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        
     }
 
     public function delete(Category $category)
