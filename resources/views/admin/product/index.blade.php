@@ -1,5 +1,11 @@
 @extends('admin.admin')
     @section('content')
+    <div class="flex title-line">
+        <h2>Список товарів</h2>
+        <a href="{{ route('product.create') }}" class="add-button">
+            <img src="{{ asset('img/add.svg') }}" alt="Add">
+        </a>
+    </div>
     <table class="product-table">
         <thead>
             <tr>

@@ -203,8 +203,32 @@ aside li:hover span {
 }
 
 main {
-  display: inline-block;
   padding: 20px;
+}
+
+.title-line {
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #000;
+}
+
+.add-button {
+  display: inline-block;
+  position: relative;
+  width: 35px;
+  height: 35px;
+  border-radius: 3px;
+  background-color: #000467;
+}
+.add-button img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: 0.5s;
+}
+.add-button:hover img {
+  transform: translate(-50%, -50%) scale(1.1);
 }
 
 .product-table {

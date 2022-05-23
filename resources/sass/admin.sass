@@ -175,10 +175,31 @@ aside
 // main 
 
 main 
-  display: inline-block 
   padding: 20px
 
 // product page
+
+.title-line
+  padding-bottom: 10px
+  margin-bottom: 20px
+  border-bottom: 1px solid #000
+
+.add-button 
+  display: inline-block
+  position: relative
+  width: 35px
+  height: 35px
+  border-radius: 3px
+  background-color: #000467
+  img 
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    transition: .5s
+  &:hover 
+    img 
+      transform: translate(-50%, -50%) scale(1.1)
 
 .product-table
   border-collapse: collapse

@@ -1,4 +1,5 @@
 @extends('admin.admin')
     @section('content')
-        <p>{{$product->title}}</p>
+        <h2>{{$product->title}}</h2>
+        
     @endsection
