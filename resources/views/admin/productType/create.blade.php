@@ -6,4 +6,4 @@
         <label><input type="text" name="title" placeholder="productType title"></label>
         <input type="submit" value="Send">
     </form>
-@endsection
+@endsection 

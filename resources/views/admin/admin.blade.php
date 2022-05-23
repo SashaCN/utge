@@ -26,7 +26,9 @@
                     <div class="add-menu hidden">
                         <ul>
                             <li><a href="{{ route('product.create') }}">Товар</a></li>
+                            {{-- <li><a href="{{ route('productType.create') }}">тип продукта</a></li> --}}
                             <li><a href="{{ route('category.create') }}">Категорію</a></li>
+                            <li><a href="{{ route('subCategory.create') }}">доп категорії</a></li>
                         </ul>
                     </div>
                 </li>
@@ -42,9 +44,9 @@
         <nav>
             <ul class="aside-menu">
                 <li><a href="{{ route('product.index') }}">Товари</a><span></span><span></span><span></span><span></span></li>
+                {{-- <li><a href="{{ route('productType.index') }}">тип продукта</a><span></span><span></span><span></span><span></span></li> --}}
                 <li><a href="{{ route('category.index') }}">Категорії</a><span></span><span></span><span></span><span></span></li>
-                <li><a href="{{ route('category.index') }}">Категорії</a><span></span><span></span><span></span><span></span></li>
-                <li><a href="{{ route('category.index') }}">Категорії</a><span></span><span></span><span></span><span></span></li>
+                <li><a href="{{ route('subCategory.index') }}">доп категорії</a><span></span><span></span><span></span><span></span></li>
                 <li><a href="#">Замовлення</a><span></span><span></span><span></span><span></span></li>
                 <li><a href="#">Новини</a><span></span><span></span><span></span><span></span></li>
                 <li><a href="#">Модулі</a><span></span><span></span><span></span><span></span></li>
