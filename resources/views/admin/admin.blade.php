@@ -13,7 +13,7 @@
             <ul class="header-menu flex">
                 <li class="logo">
                     <a href="{{ route('admin') }}">
-                        <img src="{{ asset('img/logo.svg') }}" alt="Hashtag logo">
+                        <img src="{{ asset('img/logo.png') }}" alt="Hashtag logo">
                     </a>
                 </li>
                 <li class="li-home">
@@ -48,6 +48,9 @@
                 <li><a href="#">Модулі</a><span></span><span></span><span></span><span></span></li>
             </ul>
         </nav>
+        <p class="copy">
+            <img src="" alt="">
+        </p>
     </aside>
     <main>
         @yield('content')
