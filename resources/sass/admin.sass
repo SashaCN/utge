@@ -1,0 +1,235 @@
+*
+  margin: 0
+  padding: 0
+
+body 
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif
+  padding-left: 15vw
+  padding-top: 45px
+
+.flex 
+  display: flex
+  justify-content: space-between
+  align-items: center
+
+ul 
+  list-style: none
+
+.uppercase 
+  text-transform: uppercase
+
+// admin header
+
+header
+  position: fixed
+  top: 0
+  left: 0
+  z-index: 2
+  width: 100%
+  box-sizing: border-box
+  padding: 0 5%
+  color: #fff
+  background-color: #000467
+  a 
+    color: #fff
+
+.header-menu 
+  a 
+    position: relative
+    font-size: 16px
+    line-height: 19px
+    text-decoration: none
+    &::before
+      content: ''
+      position: absolute
+      top: 50%
+      transform: translateY(-50%)
+  li
+    display: inline-block
+    a
+      transition: .5s
+  .logo 
+    transition: .5s
+    margin-right: 30px
+    width: 50px
+    img 
+      width: 100%
+    &:hover 
+      transform: scale(1.15)
+  .home, .add
+    display: inline-block
+    line-height: 45px
+  li:hover
+    span
+      transform: scaleX(1)
+
+.header-menu,
+.aside-menu 
+  li 
+    position: relative
+  span 
+    position: absolute
+    width: 100%
+    height: 25%
+    background-color: #070B75
+    z-index: -1
+    left: 0
+    top: 0
+    transform: scaleX(0)
+    transition: all 0.5s
+    transform-origin: left
+    &:nth-child(2)
+      top: 25%
+      transition-delay: 0.15s
+    &:nth-child(3)
+      top: 50%
+      transition-delay: 0.3s
+    &:nth-child(4)
+      top: 75%
+      transition-delay: 0.45s
+
+.li-home,
+.li-add 
+  padding: 0 20px 0 45px
+
+.home::before
+  left: -32px
+  width: 22px
+  height: 20px
+  background-image: url('../img/home.svg')
+
+.add::before
+  left: -27px
+  width: 17px
+  height: 17px
+  background-image: url('../img/add.svg')
+
+.li-add 
+  position: relative
+
+.add-menu 
+  position: absolute
+  left: 0
+  top: 45px
+  background-color: #000467
+  li, a 
+    display: inline-block
+    width: 100%
+  a 
+    padding: 15px 27px
+    box-sizing: border-box
+    &:hover 
+      transform: scale(1)
+      background-color: #070B75
+
+.hidden 
+  display: none!important
+
+.lang span
+  margin: 0 5px
+
+.lang 
+  a
+    position: relative
+    z-index: 1
+    display: inline-block
+    width: 20px
+    text-align: center
+    text-decoration: none
+    &::before
+      content: ''
+      position: absolute
+      top: 50%
+      left: 50%
+      z-index: -1
+      transform: translate(-50%, -50%)
+      width: 24px
+      height: 19px
+      border-radius: 5px
+      background-color: #2B31CD
+      opacity: 0
+      transition: 0.5s
+    &:hover 
+      &::before 
+        opacity: 1
+
+// aside menu 
+
+aside 
+  position: fixed
+  top: 45px
+  left: 0
+  width: 15vw
+  height: 100vh
+  background-color: #000467
+  nav, ul, li, a
+    width: 100%
+  a
+    display: inline-block
+    font-size: 16px
+    color: #fff
+    text-decoration: none
+    padding: 15px 30px
+    box-sizing: border-box
+  li  
+    &:hover 
+      span 
+        transform: scale(1)
+
+.copy 
+  position: fixed
+  bottom: 0
+  left: 0
+  width: 15vw
+  border-top: 1px solid #999
+  img 
+    width: 30px
+  a
+    justify-content: start
+    // padding: 15px
+    color: #999
+    span
+      margin-left: 10px
+
+// main 
+
+main 
+  padding: 20px
+
+// product page
+
+.title-line
+  padding-bottom: 10px
+  margin-bottom: 20px
+  border-bottom: 1px solid #000
+
+.add-button 
+  display: inline-block
+  position: relative
+  width: 35px
+  height: 35px
+  border-radius: 3px
+  background-color: #000467
+  img 
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    transition: .5s
+  &:hover 
+    img 
+      transform: translate(-50%, -50%) scale(1.1       )
+
+.product-table
+  border-collapse: collapse
+  td, th 
+    border: 1px solid #000
+    padding: 15px
+
+.product-image 
+  width: 75px
+  img 
+    width: 100%
+
+.action 
+  text-align: center
