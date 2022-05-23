@@ -27,6 +27,7 @@ header {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 2;
   width: 100%;
   box-sizing: border-box;
   padding: 0 5%;
@@ -58,6 +59,10 @@ header a {
 .header-menu .logo {
   transition: 0.5s;
   margin-right: 30px;
+  width: 50px;
+}
+.header-menu .logo img {
+  width: 100%;
 }
 .header-menu .logo:hover {
   transform: scale(1.15);
@@ -200,6 +205,24 @@ aside a {
 }
 aside li:hover span {
   transform: scale(1);
+}
+
+.copy {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 15vw;
+  border-top: 1px solid #999;
+}
+.copy img {
+  width: 30px;
+}
+.copy a {
+  justify-content: start;
+  color: #999;
+}
+.copy a span {
+  margin-left: 10px;
 }
 
 main {

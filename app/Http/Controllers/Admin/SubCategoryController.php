@@ -61,9 +61,9 @@ class SubCategoryController extends Controller
     public function show(SubCategory $subCategory)
     {
         return view('admin.subCategory.show', [
-            'category' => $category,
-            'products' => $category->products,
-            'subCategories' => SubCategory::all()->where('category_id', $category->id),
+            // 'category' => $category,
+            // 'products' => $category->products,
+            'subCategory' => $subCategory,
         ]);
     }
 
@@ -75,11 +75,11 @@ class SubCategoryController extends Controller
      */
     public function edit(SubCategory $subCategory)
     {
-        $productTypes = ProductType::all();
+        $categories = Category::all();
 
-        return view('admin.category.update', [
-            'category' => $category,
-            'productTypes' => $productTypes,
+        return view('admin.subCategory.update', [
+            'categories' => $categories,
+            'subCategory' => $subCategory,
         ]);
     }
 
