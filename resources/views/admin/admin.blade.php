@@ -49,7 +49,10 @@
             </ul>
         </nav>
         <p class="copy">
-            <img src="" alt="">
+            <a href="https://hashtag.net.ua/" class="flex">
+                <img src="{{ asset('img/hashtag_logo.svg') }}" alt="Hashtag logo">
+                <span>&copy; Hashtag</span>
+            </a>
         </p>
     </aside>
     <main>
