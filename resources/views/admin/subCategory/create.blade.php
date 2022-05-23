@@ -3,7 +3,6 @@
 @section('content')
     <form action="{{ route('subCategory.store') }}" method="POST">
         @csrf
-        @method('PUT')
         <label><input type="text" name="title" placeholder="sub category title"></label>
         <p>sub category belong to category</p>
 
