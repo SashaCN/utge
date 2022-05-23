@@ -8,19 +8,27 @@
         <label><input type="text" value="{{ $product->title }}" name="title">title</label>
         <label><input type="text" value="{{ $product->article }}" name="article">article</label>
 
-        @if ( $product->shipable == 1 )
-            <label>
-                <input type="radio" checked value="1" name="shipable">
-                <input type="radio" value="0" name="shipable">
-                shipable
-            </label>
+        <p>Доступність товару</p>
+        @if ( $product->available == 3 )
+        <option value="1">В наявності</option>
+        <option value="2">Очікується</option>
+        <option selected value="3">Немає в наявності</option>
         @else
-            <label>
-                <input type="radio" value="1" name="shipable">
-                <input type="radio" checked value="0" name="shipable">
-                shipable
-            </label>
+
         @endif
+        <select name="available">
+
+            <option value="1">В наявності</option>
+            <option value="2">Очікується</option>
+            <option value="3">Немає в наявності</option>
+
+        </select>
+
+        <p>Доставка товару</p>
+        <select name="shipable">
+            <option value="1">Доступна доставка</option>
+            <option value="2">Немає доставки</option>
+        </select>
 
         @if ( $product->available == 1 )
             <label>
@@ -39,14 +47,14 @@
         <label><input type="number" name="price" value="{{ $product->price }}"></label>
 
         @foreach ($categories as $category)
-            <?php $isChecked = false ?> 
+            <?php $isChecked = false ?>
             @foreach ($selected_categories as $selected_category)
 
                 @if ( $category->id == $selected_category->id)
                     <?php $isChecked = true ?>
                 @endif
             @endforeach
-                    
+
             @if ($isChecked == true)
                 <label><input type="checkbox" checked name="categories[]" value="{{ $category->id }}">{{ $category->title }}</label>
             @else
