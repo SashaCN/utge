@@ -26,8 +26,7 @@ Route::get('/dashboard', function () {
 
 Route::prefix('admin')->group(function()
     {
-        Route::get('/', [\App\Http\Controllers\Admin\AdminController::class, 'index']);
-        Route::resource('productType', \App\Http\Controllers\Admin\ProductTypeController::class);
+        Route::get('/', [\App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin');
         Route::resource('category', \App\Http\Controllers\Admin\CategoryController::class);
         Route::resource('subCategory', \App\Http\Controllers\Admin\SubCategoryController::class);
         Route::resource('product', \App\Http\Controllers\Admin\ProductController::class);
