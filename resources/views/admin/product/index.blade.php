@@ -1,8 +1,8 @@
 @extends('admin.admin')
     @section('content')
     <div class="flex title-line">
-        <h2>Список товарів</h2>
-        <a href="{{ route('product.create') }}" class="add-button">
+        <h2>@lang('admin.product_list')</h2>
+        <a href="{{ route('product.create') }}" class="action-button">
             <img src="{{ asset('img/add.svg') }}" alt="Add">
         </a>
     </div>
@@ -32,9 +32,15 @@
                 </td>
                 <td>{{$product->price}}</td>
                 <td class="action">
-                    <p><a href="{{ route('product.show', $product->id) }}">Show</a></p>
-                    <p><a href="{{ route('product.edit', $product->id) }}">Edit</a></p>
-                    <p><a href="{{ route('product.delete', $product->id) }}">Delete</a></p>
+                    <a href="{{ route('product.show', $product->id) }}" class="action-button">
+                        <img src="{{ asset('img/show.svg') }}" alt="Show">
+                    </a>
+                    <a href="{{ route('product.edit', $product->id) }}" class="action-button">
+                        <img src="{{ asset('img/edit.svg') }}" alt="Edit">
+                    </a>
+                    <a href="{{ route('product.delete', $product->id) }}" class="action-button">
+                        <img src="{{ asset('img/delete.svg') }}" alt="Delete">
+                    </a>
                 </td>
             </tr>
             @endforeach
