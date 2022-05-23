@@ -13,11 +13,7 @@
             <td>
                 <a href="{{ route('productType.show', $productType->id) }}">show</a>
                 <a href="{{ route('productType.edit', $productType->id) }}">update</a>
-                <form action="{{ route('productType.destroy', $productType->id) }}" method="post">
-                    @csrf   
-                    @method('DELETE')
-                    <input type="submit" value="delete">
-                </form>
+                <a href="{{ route('productType.delete', $productType->id) }}">delete</a>
             </td>
         </tr>
         @endforeach
