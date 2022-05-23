@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Support\Facades\App;
 
 class AdminController extends Controller
 {
@@ -83,5 +84,13 @@ class AdminController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function changeLocale($locale){
+
+        session(['locale' => $locale]);
+        App::setLocale($locale);
+        return redirect()->back();
+
     }
 }

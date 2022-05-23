@@ -3,39 +3,65 @@
     <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
-        <label><input type="text" name="title">title</label>
+        <label>Назва<input type="text" name="title"></label>
 
         @error('title')
             <p>{{$message}}</p>
         @enderror
 
-        <label><input type="text" name="article">article</label>
+        <label>Артикул<input type="text" name="article"></label>
 
         @error('article')
             <p>{{$message}}</p>
         @enderror
 
+        <p>Доступність товару</p>
         <select name="available">
             <option value="1">В наявності</option>
             <option value="2">Очікується</option>
             <option value="3">Немає в наявності</option>
         </select>
         
+        <p>Доставка товару</p>
         <select name="shipable">
             <option value="1">Доступна доставка</option>
             <option value="2">Немає доставки</option>
         </select>
 
-        <label><input type="number" name="price"></label>
+        <label>Ціна<input type="number" name="price"></label>
 
-        @foreach ($categories as $category)
-            <label><input type="checkbox" name="categories[]" value="{{ $category->id }}">{{ $category->title }}</label>
-        @endforeach
+        @error('price')
+            <p>{{$message}}</p>
+        @enderror
 
-        <label><input type="number" name="max_order"></label>
-        <label><input type="number" name="list_position"></label>
+        <label>Виберіть категорію
+            @foreach ($categories as $category)
+                <input type="checkbox" name="categories[]" value="{{ $category->id }}">{{ $category->title }}
+            @endforeach
+        </label>
 
+        @error('category')
+            <p>{{$message}}</p>
+        @enderror
+
+        <label>Максимальна кількість замовлення<input type="number" name="max_order"></label>
+
+        @error('max_order')
+            <p>{{$message}}</p>
+        @enderror
+
+        <label>Позиція в списку<input type="number" name="list_position"></label>
+
+        @error('list_position')
+            <p>{{$message}}</p>
+        @enderror
+
+        <p>Опис товару</p>
         <textarea name="description" cols="30" rows="10"></textarea>
+
+        @error('description')
+            <p>{{$message}}</p>
+        @enderror
 
         <label><input type="file" name="image"></label>
 
