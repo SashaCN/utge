@@ -27,6 +27,7 @@ header {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 2;
   width: 100%;
   box-sizing: border-box;
   padding: 0 5%;
@@ -58,6 +59,10 @@ header a {
 .header-menu .logo {
   transition: 0.5s;
   margin-right: 30px;
+  width: 50px;
+}
+.header-menu .logo img {
+  width: 100%;
 }
 .header-menu .logo:hover {
   transform: scale(1.15);
@@ -202,9 +207,51 @@ aside li:hover span {
   transform: scale(1);
 }
 
+.copy {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 15vw;
+  border-top: 1px solid #999;
+}
+.copy img {
+  width: 30px;
+}
+.copy a {
+  justify-content: start;
+  color: #999;
+}
+.copy a span {
+  margin-left: 10px;
+}
+
 main {
-  display: inline-block;
   padding: 20px;
+}
+
+.title-line {
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #000;
+}
+
+.add-button {
+  display: inline-block;
+  position: relative;
+  width: 35px;
+  height: 35px;
+  border-radius: 3px;
+  background-color: #000467;
+}
+.add-button img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: 0.5s;
+}
+.add-button:hover img {
+  transform: translate(-50%, -50%) scale(1.1);
 }
 
 .product-table {

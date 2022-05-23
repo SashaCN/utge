@@ -13,7 +13,7 @@
             <ul class="header-menu flex">
                 <li class="logo">
                     <a href="{{ route('admin') }}">
-                        <img src="{{ asset('img/logo.svg') }}" alt="Hashtag logo">
+                        <img src="{{ asset('img/logo.png') }}" alt="Hashtag logo">
                     </a>
                 </li>
                 <li class="li-home">
@@ -48,6 +48,12 @@
                 <li><a href="#">@lang('admin.modules')</a><span></span><span></span><span></span><span></span></li>
             </ul>
         </nav>
+        <p class="copy">
+            <a href="https://hashtag.net.ua/" class="flex">
+                <img src="{{ asset('img/hashtag_logo.svg') }}" alt="Hashtag logo">
+                <span>&copy; Hashtag</span>
+            </a>
+        </p>
     </aside>
     <main>
         @yield('content')
