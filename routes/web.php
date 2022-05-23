@@ -35,6 +35,9 @@ Route::middleware('set_locale')->group(function(){
         Route::resource('subCategory', \App\Http\Controllers\Admin\SubCategoryController::class);
         Route::resource('product', \App\Http\Controllers\Admin\ProductController::class);
         Route::get('product/delete/{product}', [\App\Http\Controllers\Admin\ProductController::class, 'delete'])->name('product.delete');
+        Route::get('productType/delete/{product}', [\App\Http\Controllers\Admin\ProductTypeController::class, 'delete'])->name('productType.delete');
+        Route::get('category/delete/{product}', [\App\Http\Controllers\Admin\CategoryController::class, 'delete'])->name('category.delete');
+        Route::get('subCategory/delete/{product}', [\App\Http\Controllers\Admin\SubCategoryController::class, 'delete'])->name('subCategory.delete');
     });
 });
 

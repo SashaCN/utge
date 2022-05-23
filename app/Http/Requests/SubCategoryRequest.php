@@ -25,6 +25,7 @@ class SubCategoryRequest extends FormRequest
     {
         return [
             'title' => 'required|min:2|max:55',
+            'category_id' => 'required'
         ];
     }
 }

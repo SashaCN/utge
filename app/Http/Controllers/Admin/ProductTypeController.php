@@ -99,6 +99,11 @@ class ProductTypeController extends Controller
      */
     public function destroy(ProductType $productType)
     {
+        
+    }
+    
+    public function delete(ProductType $productType)
+    {
         $productType->delete();
         return redirect()->route('productType.index');
     }
