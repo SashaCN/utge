@@ -67,14 +67,9 @@ class ProductTypeController extends Controller
      */
     public function show(ProductType $productType)
     {
-        // $categories = Category::all()->where('product_type_id', $productType->id);
-        // $subCategories = SubCategory::all()->where('category_id', $categories->id);
 
         return view('admin.ProductType.show', [
             'productType' => $productType,
-            // 'categories' => $categories,
-            // 'subCategories' => $subCategories,
-            // 'products' => $categories->products,
         ]);
     }
 
