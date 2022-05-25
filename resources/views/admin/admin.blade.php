@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,7 +26,9 @@
                     <div class="add-menu hidden">
                         <ul>
                             <li><a href="{{ route('product.create') }}">@lang('admin.product')</a></li>
+                            <li><a href="{{ route('productType.create') }}">product type{{--@lang('admin.categories')--}}</a></li>
                             <li><a href="{{ route('category.create') }}">@lang('admin.category')</a></li>
+                            <li><a href="{{ route('subCategory.create') }}">sub category{{--@lang('admin.categories')--}}</a></li>
                         </ul>
                     </div>
                 </li>
@@ -42,7 +44,9 @@
         <nav>
             <ul class="aside-menu">
                 <li><a href="{{ route('product.index') }}">@lang('admin.products')</a><span></span><span></span><span></span><span></span></li>
+                <li><a href="{{ route('productType.index') }}">product type{{--@lang('admin.categories')--}}</a><span></span><span></span><span></span><span></span></li>
                 <li><a href="{{ route('category.index') }}">@lang('admin.categories')</a><span></span><span></span><span></span><span></span></li>
+                <li><a href="{{ route('subCategory.index') }}">sub category{{--@lang('admin.categories')--}}</a><span></span><span></span><span></span><span></span></li>
                 <li><a href="#">@lang('admin.orders')</a><span></span><span></span><span></span><span></span></li>
                 <li><a href="#">@lang('admin.news')</a><span></span><span></span><span></span><span></span></li>
                 <li><a href="#">@lang('admin.modules')</a><span></span><span></span><span></span><span></span></li>

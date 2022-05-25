@@ -15,16 +15,14 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('description');
             $table->string('article');
             $table->bigInteger('price');
             $table->string('shipable');
             $table->string('available');
             $table->bigInteger('max_order');
             $table->bigInteger('list_position');
-            $table->timestamps();
             $table->softDeletes();
+            $table->timestamps();
         });
     }
 

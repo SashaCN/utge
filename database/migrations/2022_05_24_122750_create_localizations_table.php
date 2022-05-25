@@ -13,12 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('images', function (Blueprint $table) {
+        Schema::create('localizations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->constrained('products');
-            $table->string('url');
-            $table->string('alt');
-            $table->softDeletes();
+            $table->string('title_uk');
+            $table->string('description_uk');
+            $table->string('title_ru');
+            $table->string('description_ru');
+            $table->integer('localizationable_id');
+            $table->string('localizationable_type');
             $table->timestamps();
         });
     }
@@ -30,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('images');
+        Schema::dropIfExists('localizations');
     }
 };

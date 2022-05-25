@@ -3,7 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SubCategoryRequest;
 use Illuminate\Http\Request;
+use App\Models\Category;
+use App\Models\SubCategory;
+use App\Models\Product;
+use App\Models\Localization;
 
 class SubCategoryController extends Controller
 {
@@ -14,7 +19,9 @@ class SubCategoryController extends Controller
      */
     public function index()
     {
-        //
+        $subCategories = SubCategory::all();
+
+        return view('admin.subCategory.index', ['subCategories' => $subCategories]);
     }
 
     /**
@@ -24,7 +31,9 @@ class SubCategoryController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+
+        return view('admin.subCategory.create', ['categories' => $categories]);
     }
 
     /**
@@ -33,9 +42,24 @@ class SubCategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SubCategoryRequest $request)
     {
-        //
+
+        $localization = new Localization();
+        $localization->fill($request->validated());
+        $localization->title_uk = $request->title_uk;
+        $localization->title_ru = $request->title_ru;
+        $localization->description_uk = $request->description_uk;
+        $localization->description_ru = $request->description_ru;
+
+        $subCategory = new SubCategory();
+
+        $subCategory->fill($request->validated());
+        $subCategory->localization()->save($localization);
+        $subCategory->save();
+
+
+        return redirect()->route('subCategory.index');
     }
 
     /**
@@ -44,9 +68,13 @@ class SubCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(SubCategory $subCategory)
     {
-        //
+        return view('admin.subCategory.show', [
+            // 'category' => $category,
+            // 'products' => $category->products,
+            'subCategory' => $subCategory,
+        ]);
     }
 
     /**
@@ -55,9 +83,14 @@ class SubCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(SubCategory $subCategory)
     {
-        //
+        $categories = Category::all();
+
+        return view('admin.subCategory.update', [
+            'categories' => $categories,
+            'subCategory' => $subCategory,
+        ]);
     }
 
     /**
@@ -67,9 +100,11 @@ class SubCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SubCategoryRequest $request, SubCategory $subCategory)
     {
-        //
+        $subCategory->update($request->validated());
+
+        return redirect()->route('subCategory.show', $subCategory);
     }
 
     /**
@@ -78,8 +113,13 @@ class SubCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(SubCategory $subCategory)
     {
-        //
+
+    }
+    public function delete(SubCategory $subCategory)
+    {
+        $subCategory->delete();
+        return redirect()->route('subCategory.index');
     }
 }

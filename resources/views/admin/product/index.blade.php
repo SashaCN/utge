@@ -1,5 +1,18 @@
 @extends('admin.admin')
     @section('content')
+
+    <?php 
+    
+        if (app()->getLocale() == 'uk') {
+            $title = 'title_uk';
+            $description = 'description_uk';
+        } elseif (app()->getLocale() == 'ru') {
+            $title = 'title_ru';
+            $description = 'description_ru';
+        }
+
+    ?>
+
     <div class="flex title-line">
         <h2>Список товарів</h2>
         <a href="{{ route('product.create') }}" class="add-button">
@@ -11,6 +24,7 @@
             <tr>
                 <th>Image</th>
                 <th>Title</th>
+                <th>Desc</th>
                 <th>Article</th>
                 <th>Category</th>
                 <th>Price</th>
@@ -21,8 +35,9 @@
             @foreach ($products as $product)
             <tr>
                 <td class="product-image"><img src="{{ asset($product->image->url) }}" alt="{{ $product->image->alt }}"></td>
-                <td>{{$product->title}}</td>
-                <td>{{$product->article}}</td>
+                <td>{{$product->localization[0]->$title}}</td>
+                <td>{{$product->localization[0]->$description}}</td>
+                <td>{{$product->price}}</td>
                 <td>
                     <ul>
                         @foreach ($product->categories as $category)
