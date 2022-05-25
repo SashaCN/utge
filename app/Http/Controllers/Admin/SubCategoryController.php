@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\SubCategory;
 use App\Models\Product;
+use App\Models\Localization;
 
 class SubCategoryController extends Controller
 {
@@ -43,9 +44,18 @@ class SubCategoryController extends Controller
      */
     public function store(SubCategoryRequest $request)
     {
+
+        $localization = new Localization();
+        $localization->fill($request->validated());
+        $localization->title_uk = $request->title_uk;
+        $localization->title_ru = $request->title_ru;
+        $localization->description_uk = $request->description_uk;
+        $localization->description_ru = $request->description_ru;
+
         $subCategory = new SubCategory();
 
         $subCategory->fill($request->validated());
+        $subCategory->localization()->save($localization);
         $subCategory->save();
 
 
@@ -105,7 +115,7 @@ class SubCategoryController extends Controller
      */
     public function destroy(SubCategory $subCategory)
     {
-       
+
     }
     public function delete(SubCategory $subCategory)
     {

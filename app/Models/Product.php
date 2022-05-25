@@ -12,7 +12,7 @@ class Product extends Model
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = ['title', 'description', 'article', 'shipable', 'price', 'available', 'max_order', 'list_position'];
+    protected $fillable = ['article', 'shipable', 'price', 'available', 'max_order', 'list_position'];
 
     public function categories()
     {
@@ -25,5 +25,10 @@ class Product extends Model
     public function image()
     {
         return $this->hasOne(Image::class);
+    }
+
+    public function localization()
+    {
+        return $this->morphMany(Localization::class, 'localizationable');
     }
 }

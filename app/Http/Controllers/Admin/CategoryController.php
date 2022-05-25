@@ -9,6 +9,7 @@ use App\Models\ProductType;
 use App\Models\Category;
 use App\Models\SubCategory;
 use App\Models\Product;
+use App\Models\Localization;
 
 class CategoryController extends Controller
 {
@@ -50,9 +51,18 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-        $category = new Category();
 
+        $localization = new Localization();
+        $localization->fill($request->validated());
+        $localization->title_uk = $request->title_uk;
+        $localization->title_ru = $request->title_ru;
+        $localization->description_uk = $request->description_uk;
+        $localization->description_ru = $request->description_ru;
+
+
+        $category = new Category();
         $category->fill($request->validated());
+        $category->localization()->save($localization);
         $category->save();
 
 
@@ -112,7 +122,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        
+
     }
 
     public function delete(Category $category)

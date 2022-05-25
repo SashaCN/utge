@@ -12,5 +12,9 @@ class ProductType extends Model
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = ['title'];
+
+    public function localization()
+    {
+        return $this->morphMany(Localization::class, 'localizationable');
+    }
 }

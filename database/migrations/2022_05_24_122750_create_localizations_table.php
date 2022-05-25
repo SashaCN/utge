@@ -13,10 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('sub_categories', function (Blueprint $table) {
+        Schema::create('localizations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id')->constrained('categories');
-            $table->softDeletes();
+            $table->string('title_uk');
+            $table->string('description_uk');
+            $table->string('title_ru');
+            $table->string('description_ru');
+            $table->integer('localizationable_id');
+            $table->string('localizationable_type');
             $table->timestamps();
         });
     }
@@ -28,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sub_categories');
+        Schema::dropIfExists('localizations');
     }
 };
