@@ -26,7 +26,9 @@
                     <div class="add-menu hidden">
                         <ul>
                             <li><a href="{{ route('product.create') }}">@lang('admin.product')</a></li>
+                            <li><a href="{{ route('productType.create') }}">product type{{--@lang('admin.categories')--}}</a></li>
                             <li><a href="{{ route('category.create') }}">@lang('admin.category')</a></li>
+                            <li><a href="{{ route('subCategory.create') }}">sub category{{--@lang('admin.categories')--}}</a></li>
                         </ul>
                     </div>
                 </li>

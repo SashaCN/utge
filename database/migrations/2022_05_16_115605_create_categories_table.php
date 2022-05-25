@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->foreignId('product_type_id')->constrained('product_types');
-            $table->timestamps();
             $table->softDeletes();
+            $table->timestamps();
         });
     }
 

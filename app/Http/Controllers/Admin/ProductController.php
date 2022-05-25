@@ -41,10 +41,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categies = Category::all();
+        $category = Category::all();
 
         return view('admin.product.create', [
-            'categories' => $categies
+            'categories' => $category
         ]);
     }
 
@@ -95,7 +95,6 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         $categories = Category::all();
-        // dd($product->categories);
         return view('admin.product.update', [
             'product' => $product,
             'categories' => $categories,

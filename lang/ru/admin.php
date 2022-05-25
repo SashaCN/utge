@@ -9,5 +9,7 @@ return [
     'modules' => 'Модули',
     'add' => 'Добавить',
     'product' => 'Товар',
+    'category' => 'Категория',
+    'product_list' => 'Список товаров',
 ];
 

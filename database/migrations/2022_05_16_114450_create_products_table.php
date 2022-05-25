@@ -23,8 +23,8 @@ return new class extends Migration
             $table->string('available');
             $table->bigInteger('max_order');
             $table->bigInteger('list_position');
-            $table->timestamps();
             $table->softDeletes();
+            $table->timestamps();
         });
     }
 
