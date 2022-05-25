@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductTypeRequest;
 use App\Models\ProductType;
 use App\Models\Category;
+use App\Models\SubCategory;
+use App\Models\Localization;
 
 class ProductTypeController extends Controller
 {
@@ -39,10 +41,20 @@ class ProductTypeController extends Controller
      */
     public function store(ProductTypeRequest $request)
     {
-        $productType = new ProductType();
 
+
+        $localization = new Localization();
+        $localization->fill($request->validated());
+
+        $localization->varible_name = $request->varible_name;
+        $localization->uk = $request->uk;
+        $localization->ru = $request->ru;
+
+        $productType = new ProductType();
         $productType->fill($request->validated());
+
         $productType->save();
+        $productType->localization()->save($localization);
 
         return redirect()->route('productType.index');
     }
@@ -99,9 +111,9 @@ class ProductTypeController extends Controller
      */
     public function destroy(ProductType $productType)
     {
-        
+
     }
-    
+
     public function delete(ProductType $productType)
     {
         $productType->delete();

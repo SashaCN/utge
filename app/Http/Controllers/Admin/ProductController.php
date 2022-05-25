@@ -6,10 +6,10 @@ use App\Helpers\ImageSaver;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
 use App\Models\Category;
-use App\Models\Image;
+use App\Models\Localization;
 use App\Models\Product;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+
+use Illuminate\Support\Traits\Localizable;
 
 class ProductController extends Controller
 {
@@ -57,10 +57,19 @@ class ProductController extends Controller
 
     public function store(ProductRequest $request)
     {
+
+        $localization = new Localization();
+        $localization->fill($request->validated());
+        $localization->title_uk = $request->title_uk;
+        $localization->title_ru = $request->title_ru;
+        $localization->description_uk = $request->description_uk;
+        $localization->description_ru = $request->description_ru;
+        // dd($localization);
+
         $product = new Product();
         $product->fill($request->except(['categories', 'image', 'alt']));
         $product->save();
-
+        $product->localization()->save($localization);
         //conect product to category
         $product->categories()->sync($request->categories);
 

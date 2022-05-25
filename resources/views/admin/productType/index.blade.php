@@ -9,7 +9,11 @@
         </tr>
         @foreach ($productTypes as $productType)
         <tr>
-            <td>{{$productType->title}}</td>
+            @if ( app()->getLocale() == 'uk')
+                <td>{{$productType->localization[0]->uk}}</td>
+            @elseif ( app()->getLocale() == 'ru')
+                <td>{{$productType->localization[0]->ru}}</td>
+            @endif
             <td>
                 <a href="{{ route('productType.show', $productType->id) }}">show</a>
                 <a href="{{ route('productType.edit', $productType->id) }}">update</a>

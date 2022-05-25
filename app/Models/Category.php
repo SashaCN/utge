@@ -12,7 +12,7 @@ class Category extends Model
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = ['title', 'product_type_id'];
+    protected $fillable = ['product_type_id'];
 
     public function productType ()
     {
@@ -21,5 +21,9 @@ class Category extends Model
     public function products()
     {
         return $this->belongsToMany(Product::class, 'category_products');
+    }
+    public function localization()
+    {
+        return $this->morphMany(Localization::class, 'localizationable');
     }
 }

@@ -11,6 +11,7 @@
             <tr>
                 <th>Image</th>
                 <th>Title</th>
+                <th>Desc</th>
                 <th>Article</th>
                 <th>Category</th>
                 <th>Price</th>
@@ -21,8 +22,18 @@
             @foreach ($products as $product)
             <tr>
                 <td class="product-image"><img src="{{ asset($product->image->url) }}" alt="{{ $product->image->alt }}"></td>
-                <td>{{$product->title}}</td>
-                <td>{{$product->article}}</td>
+                @if (app()->getLocale() == 'uk')
+                    <td>{{$product->localization[0]->title_uk}}</td>
+                @else
+                    <td>{{$product->localization[0]->title_ru}}</td>
+                @endif
+
+                @if (app()->getLocale() == 'uk')
+                    <td>{{$product->localization[0]->description_uk}}</td>
+                @else
+                    <td>{{$product->localization[0]->description_ru}}</td>
+                @endif
+                <td>{{$product->price}}</td>
                 <td>
                     <ul>
                         @foreach ($product->categories as $category)

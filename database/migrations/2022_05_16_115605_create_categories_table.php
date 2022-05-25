@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
             $table->foreignId('product_type_id')->constrained('product_types');
             $table->softDeletes();
             $table->timestamps();
