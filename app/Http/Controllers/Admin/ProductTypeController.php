@@ -45,10 +45,10 @@ class ProductTypeController extends Controller
 
         $localization = new Localization();
         $localization->fill($request->validated());
-
-        $localization->varible_name = $request->varible_name;
-        $localization->uk = $request->uk;
-        $localization->ru = $request->ru;
+        $localization->title_uk = $request->title_uk;
+        $localization->title_ru = $request->title_ru;
+        $localization->description_uk = $request->description_uk;
+        $localization->description_ru = $request->description_ru;
 
         $productType = new ProductType();
         $productType->fill($request->validated());
