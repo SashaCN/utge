@@ -42,7 +42,7 @@ header a {
   font-size: 16px;
   line-height: 24px;
   text-decoration: none;
-  padding: 13px 0;
+  padding: 13px 20px;
   transition: 0.5s;
 }
 
@@ -55,13 +55,9 @@ header a {
   background-color: #042c68;
 }
 
-.li-home {
-  padding: 0 20px;
-}
-
 .li-add a {
   display: inline-block;
-  padding: 13px 20px 13px 45px;
+  padding-left: 45px;
 }
 
 .add::before {
@@ -151,6 +147,9 @@ aside a {
   padding: 15px 30px;
   box-sizing: border-box;
 }
+aside li {
+  position: relative;
+}
 aside li:hover span {
   transform: scale(1);
 }
@@ -170,15 +169,29 @@ aside li:hover span {
   transform: scale(1.15);
 }
 
+.selected-item {
+  background-color: #042c68;
+}
+.selected-item::before {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  top: -5%;
+  left: 0;
+  width: 10px;
+  height: 110%;
+  background-color: #D9D9D9;
+}
+
 .copy {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 15vw;
-  border-top: 1px solid #999;
 }
 .copy img {
-  width: 30px;
+  height: 40px;
+  width: 100%;
 }
 .copy a {
   justify-content: start;
