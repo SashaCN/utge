@@ -5,8 +5,6 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductTypeRequest;
 use App\Models\ProductType;
-use App\Models\Category;
-use App\Models\SubCategory;
 use App\Models\Localization;
 
 class ProductTypeController extends Controller
