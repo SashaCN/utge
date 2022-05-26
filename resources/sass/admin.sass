@@ -1,3 +1,5 @@
+@import helpers/vars
+  
 *
   margin: 0
   padding: 0
@@ -23,83 +25,41 @@ ul
 header
   position: fixed
   top: 0
-  left: 0
+  right: 0
   z-index: 2
-  width: 100%
+  width: 85vw
   box-sizing: border-box
-  padding: 0 5%
+  padding-right: 5%
   color: #fff
-  background-color: #000467
+  background-color: $primary-color
   a 
     color: #fff
 
 .header-menu 
   a 
-    position: relative
     font-size: 16px
-    line-height: 19px
+    line-height: 24px
     text-decoration: none
-    &::before
-      content: ''
-      position: absolute
-      top: 50%
-      transform: translateY(-50%)
-  li
-    display: inline-block
-    a
-      transition: .5s
-  .logo 
+    padding: 13px 20px
     transition: .5s
-    margin-right: 30px
-    width: 50px
-    img 
-      width: 100%
-    &:hover 
-      transform: scale(1.15)
-  .home, .add
-    display: inline-block
-    line-height: 45px
-  li:hover
-    span
-      transform: scaleX(1)
 
-.header-menu,
-.aside-menu 
-  li 
-    position: relative
-  span 
-    position: absolute
-    width: 100%
-    height: 25%
-    background-color: #070B75
-    z-index: -1
-    left: 0
-    top: 0
-    transform: scaleX(0)
-    transition: all 0.5s
-    transform-origin: left
-    &:nth-child(2)
-      top: 25%
-      transition-delay: 0.15s
-    &:nth-child(3)
-      top: 50%
-      transition-delay: 0.3s
-    &:nth-child(4)
-      top: 75%
-      transition-delay: 0.45s
+.header-menu li,
+.aside-menu li:nth-child(1n+2)
+  transition: .5s
+  &:hover
+    background-color: $second-primary
 
-.li-home,
 .li-add 
-  padding: 0 20px 0 45px
-
-.home::before
-  left: -32px
-  width: 22px
-  height: 20px
-  background-image: url('../img/home.svg')
+  a 
+    display: inline-block
+    padding-left: 45px
 
 .add::before
-  left: -27px
+  content: ''
+  position: absolute
+  top: 50%
+  left: 20px
+  transform: translateY(-50%)
   width: 17px
   height: 17px
   background-image: url('../img/add.svg')
@@ -110,17 +70,17 @@ header
 .add-menu 
   position: absolute
   left: 0
-  top: 45px
-  background-color: #000467
+  top: 50px
+  background-color: $primary-color
   li, a 
     display: inline-block
     width: 100%
   a 
     padding: 15px 27px
     box-sizing: border-box
-    &:hover 
-      transform: scale(1)
-      background-color: #070B75
+
+.focus 
+  background-color: $second-primary
 
 .hidden 
   display: none!important
@@ -146,7 +106,7 @@ header
       width: 24px
       height: 19px
       border-radius: 5px
-      background-color: #2B31CD
+      background-color: $second-primary
       opacity: 0
       transition: 0.5s
     &:hover 
@@ -157,11 +117,11 @@ header
 
 aside 
   position: fixed
-  top: 45px
+  top: 0
   left: 0
   width: 15vw
   height: 100vh
-  background-color: #000467
+  background-color: $primary-color
   nav, ul, li, a
     width: 100%
   a
@@ -172,18 +132,42 @@ aside
     padding: 15px 30px
     box-sizing: border-box
   li  
+    position: relative
     &:hover 
       span 
         transform: scale(1)
+
+.logo 
+  transition: .5s
+  margin-right: 30px
+  a 
+    padding: 7.5px 0
+    justify-content: center
+  img 
+    height: 35px
+  &:hover 
+    transform: scale(1.15)
+
+.selected-item
+  background-color: $second-primary
+  &::before 
+    content: ''
+    position: absolute
+    z-index: 3
+    top: -5%
+    left: 0
+    width: 10px
+    height: 110%
+    background-color: #D9D9D9
 
 .copy 
   position: fixed
   bottom: 0
   left: 0
   width: 15vw
-  border-top: 1px solid #999
   img 
-    width: 30px
+    height: 40px
+    width: 100%
   a
     justify-content: start
     // padding: 15px
@@ -209,7 +193,7 @@ main
   width: 35px
   height: 35px
   border-radius: 3px
-  background-color: #000467
+  background-color: $primary-color
   img 
     position: absolute
     top: 50%
@@ -218,7 +202,7 @@ main
     transition: .5s
   &:hover 
     img 
-      transform: translate(-50%, -50%) scale(1.1       )
+      transform: translate(-50%, -50%) scale(1.1)
 
 .product-table
   border-collapse: collapse
