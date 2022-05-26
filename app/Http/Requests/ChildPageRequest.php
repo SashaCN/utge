@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ChilPageRequest extends FormRequest
+class ChildPageRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class ChilPageRequest extends FormRequest
     public function rules()
     {
         return [
-            'rout' => 'required',
+            'route' => 'required',
             'title' => 'required|min:2|max:30',
             'description' => 'required|min:10',
         ];

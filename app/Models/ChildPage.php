@@ -12,6 +12,6 @@ class ChildPage extends Model
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = ['rout', 'title', 'description'];
+    protected $fillable = ['route', 'title', 'description'];
 
 }

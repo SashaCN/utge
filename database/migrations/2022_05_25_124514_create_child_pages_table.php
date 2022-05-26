@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('child_pages', function (Blueprint $table) {
             $table->id();
-            $table->string('rout');
+            $table->string('route');
             $table->string('title');
-            $table->string('description');
+            $table->string('description', 2500);
             $table->softDeletes();
             $table->timestamps();
         });

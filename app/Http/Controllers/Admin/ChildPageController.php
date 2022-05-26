@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ChilPageRequest;
+use App\Http\Requests\ChildPageRequest;
 use Illuminate\Http\Request;
 use App\Models\ChildPage;
 use App\Models\Localization;
@@ -18,9 +18,9 @@ class ChildPageController extends Controller
      */
     public function index()
     {
-        $chilPages = ChildPage::all();
+        $childPages = ChildPage::all();
 
-        return view('admin.childPage.index', ['childPages' => $chilPages]);
+        return view('admin.childPage.index', ['childPages' => $childPages]);
     }
 
     /**
@@ -39,7 +39,7 @@ class ChildPageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ChilPageRequest $request)
+    public function store(ChildPageRequest $request)
     {
 
         // $localization = new Localization();
@@ -48,7 +48,7 @@ class ChildPageController extends Controller
         // $localization->title_ru = $request->title_ru;
         // $localization->description_uk = $request->description_uk;
         // $localization->description_ru = $request->description_ru;
-
+        // dd($request);
         $childPage = new ChildPage();
         $childPage->fill($request->validated());
         // $childPage->$product->localization()->save($localization);
@@ -86,7 +86,7 @@ class ChildPageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ChilPageRequest $request, ChildPage $childPage)
+    public function update(ChildPageRequest $request, ChildPage $childPage)
     {
         $childPage->update($request->validated());
 

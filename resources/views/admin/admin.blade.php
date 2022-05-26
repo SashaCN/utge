@@ -12,7 +12,7 @@
         <div class="header-line flex">
             <ul class="header-menu flex">
                 <li class="logo">
-                    <a href="{{ route('admin') }}">
+                    <a href="/">
                         <img src="{{ asset('img/logo.png') }}" alt="Hashtag logo">
                     </a>
                 </li>

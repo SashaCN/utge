@@ -7,6 +7,13 @@
     <title>ChildPage</title>
 </head>
 <body>
-    
+    <p>child page</p>
+    @foreach ($childPage as $item)
+        <div>
+            <h3>{{ $item->title }}</h2>
+            <p>{{ $item->description }}</p>
+        </div>
+        <hr>
+    @endforeach
 </body>
 </html>
