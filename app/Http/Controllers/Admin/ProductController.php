@@ -9,8 +9,6 @@ use App\Models\Category;
 use App\Models\Localization;
 use App\Models\Product;
 
-use Illuminate\Support\Traits\Localizable;
-
 class ProductController extends Controller
 {
 

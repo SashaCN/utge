@@ -7,10 +7,13 @@
 
     class ImageSaver
     {
+
+
         public function upload($alt):Image
         {
-            $uploadFolder = 'public';
+
             $file = request()->file('image');
+            $uploadFolder = 'public';
             if($file == null){
                 $fileName = 'default_image.jpg';
 
