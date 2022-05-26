@@ -1,10 +1,20 @@
 let add_button = document.querySelector(".add"),
     add_menu = document.querySelector(".add-menu");
 
-add_button.onclick = toggleAddMenu;
+document.onclick = (e) => {
+  console.log(e.target);
+  add_button = document.querySelector(".add"),
+  add_menu = document.querySelector(".add-menu");
+  if (e.target == add_button) {
+    console.log("+");
+    e.preventDefault();
+    
+    add_button.classList.toggle('focus');
+    add_menu.classList.toggle('hidden');
+  } else {
+    console.log("-");
+    add_button.classList.remove('focus');
+    add_menu.classList.add('hidden');
 
-function toggleAddMenu(e)
-{
-  e.preventDefault();
-  add_menu.classList.toggle('hidden');
+  }
 }
