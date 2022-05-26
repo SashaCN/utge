@@ -10,7 +10,8 @@
         "laravel/framework": "^9.11",
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
-        "spatie/image-optimizer": "^1.6"
+        "spatie/image-optimizer": "^1.6",
+        "spatie/laravel-medialibrary": "10.0.7"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
