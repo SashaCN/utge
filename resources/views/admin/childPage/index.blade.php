@@ -17,6 +17,13 @@
             <td>
                 <a href="{{ route('child', $childPage->route) }}">show</a>
                 <a href="{{ route('childPage.edit', $childPage->id) }}">update</a>
+                <form  action="{{ route('childPage.destroy', $childPage->id) }}" method="POST">
+                    <label>
+                        @csrf 
+                        @method('DELETE')
+                        <input type="submit" value="delete">
+                    </label>
+                </form>
             </td>
         </tr>
         @endforeach

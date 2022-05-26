@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ChildPage;
+use App\Models\News;
 
 class SiteController extends Controller
 {
@@ -20,5 +21,10 @@ class SiteController extends Controller
         $childPage = $childPages->where('route', $route['route']);
 
         return view('site.childPage', ['childPage' => $childPage]);
+    }
+
+    public function showNews(){
+        $news = News::all();
+        return view('site.news', ['news' => $news]);
     }
 }

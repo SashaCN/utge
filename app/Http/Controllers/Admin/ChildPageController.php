@@ -99,8 +99,9 @@ class ChildPageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(ChildPage $childPage)
     {
-        //
+        $childPage->delete();
+        return redirect()->route('childPage.index');
     }
 }

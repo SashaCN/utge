@@ -46,7 +46,7 @@
                 <li><a href="{{ route('product.index') }}">@lang('admin.products')</a><span></span><span></span><span></span><span></span></li>
                 <li><a href="{{ route('category.index') }}">@lang('admin.categories')</a><span></span><span></span><span></span><span></span></li>
                 <li><a href="#">@lang('admin.orders')</a><span></span><span></span><span></span><span></span></li>
-                <li><a href="#">@lang('admin.news')</a><span></span><span></span><span></span><span></span></li>
+                <li><a href="{{ route('news.index') }}">@lang('admin.news')</a><span></span><span></span><span></span><span></span></li>
                 <li><a href="{{ route('childPage.index') }}">@lang('admin.modules')</a><span></span><span></span><span></span><span></span></li>
             </ul>
         </nav>

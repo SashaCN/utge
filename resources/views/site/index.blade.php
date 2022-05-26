@@ -14,6 +14,9 @@
     <p>
         <a href="{{ route('child', 'phone') }}">phone</a>
     </p>
+    <p>
+        <a href="{{ route('news') }}">news</a>
+    </p>
     {{-- @endforeach --}}
     <p>index utge</p>
 </body>
