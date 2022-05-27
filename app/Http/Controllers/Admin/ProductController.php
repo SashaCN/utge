@@ -68,7 +68,7 @@ class ProductController extends Controller
         $product->fill($request->except(['categories', 'image', 'alt']));
         $product->save();
         $product->localization()->save($localization);
-        
+
         //conect product to category
         $product->categories()->sync($request->categories);
 
@@ -123,20 +123,28 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, Product $product)
     {
+        $localization = new Localization();
+        $localization->fill($request->validated());
+        $localization->title_uk = $request->title_uk;
+        $localization->title_ru = $request->title_ru;
+        $localization->description_uk = $request->description_uk;
+        $localization->description_ru = $request->description_ru;
+        // dd($localization);
+
+        $product = new Product();
         $product->fill($request->except(['categories', 'image', 'alt']));
-        $product->update($request->validated());
+        $product->save();
+        $product->localization()->save($localization);
 
         //conect product to category
         $product->categories()->sync($request->categories);
 
         // update info to images table in bd
-        if (is_file($request->image)) {
-            $this->imageSaver->update($product->image->id, $request->image, $request->alt);
-        } else {
-            $product->image()->save($product->image);
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $product->addMediaFromRequest('image')->toMediaCollection('images');
         }
 
-        return redirect()->route('product.index');
+        return redirect()->route('product.index');  
     }
 
     /**
