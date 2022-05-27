@@ -22,13 +22,12 @@
     <table class="product-table">
         <thead>
             <tr>
-                <th>Image</th>
-                <th>Title</th>
-                <th>Desc</th>
-                <th>Article</th>
-                <th>Category</th>
-                <th>Price</th>
-                <th>Action</th>
+                <th>@lang('admin.image')</th>
+                <th>@lang('admin.title')</th>
+                <th>@lang('admin.filters')</th>
+                <th>@lang('admin.price')</th>
+                <th>@lang('admin.article')</th>
+                <th>@lang('admin.action')</th>
             </tr>
         </thead>
         <tbody>
@@ -36,8 +35,6 @@
             <tr>
                 <td class="product-image"><img src="{{ $product->getFirstMediaUrl('images') }}" alt=""></td>
                 <td>{{$product->localization[0]->$title}}</td>
-                <td>{{$product->localization[0]->$description}}</td>
-                <td>{{$product->price}}</td>
                 <td>
                     <ul>
                         @foreach ($product->categories as $category)
@@ -46,16 +43,10 @@
                     </ul>
                 </td>
                 <td>{{$product->price}}</td>
+                <td>{{$product->article}}</td>
                 <td class="action">
-                    <a href="{{ route('product.show', $product->id) }}" class="action-button">
-                        <img src="{{ asset('img/show.svg') }}" alt="Show">
-                    </a>
-                    <a href="{{ route('product.edit', $product->id) }}" class="action-button">
-                        <img src="{{ asset('img/edit.svg') }}" alt="Edit">
-                    </a>
-                    <a href="{{ route('product.delete', $product->id) }}" class="action-button">
-                        <img src="{{ asset('img/delete.svg') }}" alt="Delete">
-                    </a>
+                    <a href="{{ route('product.edit', $product->id) }}"></a>
+                    <a href="{{ route('product.delete', $product->id) }}"></a>
                 </td>
             </tr>
             @endforeach
