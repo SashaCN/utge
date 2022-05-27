@@ -5,12 +5,11 @@ let add_button = document.querySelector(".add"),
     change_lang = document.querySelector(".lang-select");
 
 document.onclick = (e) => {
-  console.log(e.target);
-  // e.preventDefault();
   if (e.target == add_button) {
     e.preventDefault();
     add_button.classList.toggle('focus');
     add_menu.classList.toggle('hidden');
+    
     document.querySelector(".lang-select").classList.remove('active-select');
   } else if(e.target == change_lang || change_lang.contains(e.target)) {
     if (!document.querySelector(".lang-select").classList.contains('active-select')) {
@@ -25,17 +24,11 @@ document.onclick = (e) => {
     add_menu.classList.add('hidden');
   } else {
     document.querySelector(".lang-select").classList.remove('active-select');
+
     add_button.classList.remove('focus');
     add_menu.classList.add('hidden');
   }
 }
-
-// lang change 
-
-
-// change_lang.onclick = () => {
-//   e.preventDefault();
-// }
 
 // chosen list item 
 
