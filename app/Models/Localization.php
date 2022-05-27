@@ -16,4 +16,14 @@ class Localization extends Model
     {
         return $this->MorphTo();
     }
+
+    // public function product()
+    // {
+    //     return $this->morphedByMany(Product::class, 'localizationable');
+    // }
+
+    // public function productType()
+    // {
+    //     return $this->morphedByMany(ProductType::class, 'localizationable');
+    // }
 }

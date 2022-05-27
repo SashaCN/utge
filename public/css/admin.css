@@ -252,7 +252,7 @@ aside li:hover span {
 }
 
 main {
-  padding: 20px;
+  padding: 30px;
 }
 
 .title-line {
@@ -261,7 +261,7 @@ main {
   border-bottom: 1px solid #000;
 }
 
-.add-button {
+.action-button {
   display: inline-block;
   position: relative;
   width: 35px;
@@ -269,7 +269,7 @@ main {
   background-color: #003b95;
   transition: 0.5s;
 }
-.add-button img {
+.action-button img {
   position: absolute;
   top: 50%;
   left: 50%;

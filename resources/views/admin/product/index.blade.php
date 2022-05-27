@@ -14,8 +14,8 @@
     ?>
 
     <div class="flex title-line">
-        <h2>Список товарів</h2>
-        <a href="{{ route('product.create') }}" class="add-button">
+        <h2>@lang('admin.product_list')</h2>
+        <a href="{{ route('product.create') }}" class="action-button">
             <img src="{{ asset('img/add.svg') }}" alt="Add">
         </a>
     </div>
@@ -38,7 +38,7 @@
                 <td>
                     <ul>
                         @foreach ($product->categories as $category)
-                            <li><a href="{{ route('category.show', $category) }}">{{ $category->title }}</a></li>
+                            <li><a href="{{ route('category.show', $category) }}">{{ $category->localization[0]->$title }}</a></li>
                         @endforeach
                     </ul>
                 </td>

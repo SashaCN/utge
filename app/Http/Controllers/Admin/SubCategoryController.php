@@ -49,14 +49,15 @@ class SubCategoryController extends Controller
         $localization->fill($request->validated());
         $localization->title_uk = $request->title_uk;
         $localization->title_ru = $request->title_ru;
-        $localization->description_uk = $request->description_uk;
-        $localization->description_ru = $request->description_ru;
+        $localization->description_uk = $request->title_uk;
+        $localization->description_ru = $request->title_ru;
 
         $subCategory = new SubCategory();
 
         $subCategory->fill($request->validated());
-        $subCategory->localization()->save($localization);
+        $subCategory->category_id = $request->category_id;
         $subCategory->save();
+        $subCategory->localization()->save($localization);
 
 
         return redirect()->route('subCategory.index');
