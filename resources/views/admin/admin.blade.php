@@ -47,7 +47,7 @@
         <nav>
             <ul class="aside-menu">
                 <li class="logo">
-                    <a href="" class="flex">
+                    <a href="{{ route('index') }}" class="flex">
                         <img src="{{ asset('img/logo.png') }}" alt="Hashtag logo">
                     </a>
                 </li>

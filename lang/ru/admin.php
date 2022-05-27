@@ -9,6 +9,8 @@ return [
     'modules' => 'Модули',
     'add' => 'Добавить',
     'product' => 'Товар',
+    'product_list' => 'Список товаров',
+    'product_create' => 'Добавить товар',
     'category' => 'Категория',
     'image' => 'Картинка',
     'title' => 'Название',
@@ -17,4 +19,3 @@ return [
     'article' => 'Артикул',
     'action' => 'Действие',
 ];
-

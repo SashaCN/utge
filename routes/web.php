@@ -20,7 +20,6 @@ Route::middleware('set_locale')->group(function(){
     Route::get('/child/{route}', [\App\Http\Controllers\SiteController::class, 'childPageRedirect'])->name('child');
     Route::get('/news', [\App\Http\Controllers\SiteController::class, 'showNews'])->name('news');
 
-
     // Route::get('/child/{rout}', function () {
     //     return view('site.childPage');
     // });
