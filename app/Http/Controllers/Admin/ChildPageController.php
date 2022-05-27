@@ -41,7 +41,6 @@ class ChildPageController extends Controller
      */
     public function store(ChildPageRequest $request)
     {
-
         $localization = new Localization();
         $localization->fill($request->validated());
         $localization->title_uk = $request->title_uk;
@@ -51,8 +50,8 @@ class ChildPageController extends Controller
 
         $childPage = new ChildPage();
         $childPage->fill($request->validated());
-        $childPage->localization()->save($localization);
         $childPage->save();
+        $childPage->localization()->save($localization);
         
         return redirect()->route('childPage.index');
     }
@@ -86,9 +85,16 @@ class ChildPageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ChildPageRequest $request, ChildPage $childPage)
+    public function update(ChildPageRequest $request, ChildPage $childPage, Localization $localization)
     {
+        // dd($request);
+        $localization->title_uk = $request->title_uk;
+        $localization->title_ru = $request->title_ru;
+        $localization->description_uk = $request->description_uk;
+        $localization->description_ru = $request->description_ru;
+
         $childPage->update($request->validated());
+        $childPage->localization()->update($localization);
 
         return redirect()->route('childPage.index');
     }

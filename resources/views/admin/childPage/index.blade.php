@@ -1,6 +1,19 @@
 @extends('admin.admin')
 
 @section('content')
+
+<?php
+
+    if (app()->getLocale() == 'uk') {
+        $title = 'title_uk';
+        $description = 'description_uk';
+    } elseif (app()->getLocale() == 'ru') {
+        $title = 'title_ru';
+        $description = 'description_ru';
+    }
+
+?>
+
 <a href="{{ route('childPage.create') }}">create</a>
     <table>
         <tr>
@@ -11,7 +24,6 @@
         </tr>
         @foreach ($childPages as $childPage)
         <tr>
-            {{dd($childPage)}}
             <td>{{$childPage->route}}</td>
             <td>{{$childPage->localization[0]->$title}}</td>
             <td>{{$childPage->localization[0]->$description}}</td>
