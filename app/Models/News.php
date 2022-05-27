@@ -9,5 +9,8 @@ class News extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description'];
+    public function localization()
+    {
+        return $this->morphMany(Localization::class, 'localizationable');
+    }
 }

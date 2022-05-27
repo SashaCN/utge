@@ -44,6 +44,14 @@ class NewsController extends Controller
         $news->fill($request->validated());
         $news->save();
         
+        $localization = new Localization();
+        $localization->fill($request->validated());
+        $localization->title_uk = $request->title_uk;
+        $localization->title_ru = $request->title_ru;
+        $localization->description_uk = $request->description_uk;
+        $localization->description_ru = $request->description_ru;
+        $news->localization()->save($localization);
+        
         return redirect()->route('news.index');
     }
 
@@ -78,8 +86,16 @@ class NewsController extends Controller
      */
     public function update(NewsRequest $request, News $news)
     {
-        $news->update($request->validated());
+        $localization = [
+            'title_uk' => $request->title_uk,
+            'title_ru' => $request->title_ru,
+            'description_uk' => $request->description_uk,
+            'description_ru' => $request->description_ru
+        ];
 
+        $news->update($request->validated());
+        $news->localization()->update($localization);
+    
         return redirect()->route('news.index');
     }
 
