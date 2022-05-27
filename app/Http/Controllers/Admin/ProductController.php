@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Helpers\ImageSaver;
+// use App\Helpers\ImageSaver;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
 use App\Models\Category;
@@ -12,12 +12,12 @@ use App\Models\Product;
 class ProductController extends Controller
 {
 
-    private $imageSaver;
+    // private $imageSaver;
 
-    public function __construct(ImageSaver $imageSaver)
-    {
-        $this->imageSaver = $imageSaver;
-    }
+    // public function __construct(ImageSaver $imageSaver)
+    // {
+    //     $this->imageSaver = $imageSaver;
+    // }
     /**
      * Display a listing of the resource.
      *
@@ -72,8 +72,11 @@ class ProductController extends Controller
         $product->categories()->sync($request->categories);
 
         // add info to images table in bd
-        $image = $this->imageSaver->upload($request->alt);
-        $product->image()->save($image);
+        // $image = $this->imageSaver->upload($request->alt);
+        // $product->image()->save($image);
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $product->addMediaFromRequest('image')->toMediaCollection('images');
+        }
 
         return redirect()->route('product.index');
     }
