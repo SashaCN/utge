@@ -30,11 +30,16 @@
                     </div>
                 </li>
             </ul>
-            <ul class="lang flex">
-                <li><a href="{{ route('locale', 'ru') }}">ru</a></li>
-                <span class="vertical-line">|</span>
-                <li><a href="{{ route('locale', 'uk') }}">uk</a></li>
-            </ul>
+            <p class="lang-select">
+                {{-- <option value=""></option> --}}
+                @if (app()->getLocale() == 'uk')
+                    <a href="{{ route('locale', 'uk') }}" class="flex lang-uk selected-lang"><img src="{{ asset('img/uk_flag.svg') }}" alt=""><span>УКР</span></a>
+                    <a href="{{ route('locale', 'ru') }}" class="flex lang-ru"><img src="{{ asset('img/ru_flag.svg') }}" alt=""><span>РУС</span></a>
+                @elseif(app()->getLocale() == 'ru')
+                    <a href="{{ route('locale', 'uk') }}" class="flex lang-uk"><img src="{{ asset('img/uk_flag.svg') }}" alt=""><span>УКР</span></a>
+                    <a href="{{ route('locale', 'ru') }}" class="flex lang-ru selected-lang"><img src="{{ asset('img/ru_flag.svg') }}" alt=""><span>РУС</span></a>
+                @endif
+            </p>
         </div>
     </header>
     <aside>
