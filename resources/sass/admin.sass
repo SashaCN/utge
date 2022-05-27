@@ -20,7 +20,7 @@ ul
 .uppercase 
   text-transform: uppercase
 
-// admin header
+// header
 
 header
   position: fixed
@@ -90,7 +90,6 @@ header
   display: flex
   flex-direction: column
   height: 32px
-  // padding-right: 24px
   overflow: hidden
   transition: .5s
   a 
@@ -127,8 +126,7 @@ header
     &:first-child
       background-color: $second-primary
       
-
-// aside menu 
+// aside menu
 
 aside 
   position: fixed
@@ -220,17 +218,16 @@ aside
     width: 100%
   a
     justify-content: start
-    // padding: 15px
     color: #999
     span
       margin-left: 10px
 
-// main 
+//main
 
 main 
   padding: 20px
 
-// product page
+// product list (index)
 
 .title-line
   padding-bottom: 10px
@@ -256,9 +253,21 @@ main
       transform: translate(-50%, -50%) scale(1.1)
 
 .product-table
+  width: 75%
   border-collapse: collapse
+  thead tr 
+    background-color: #D9D9D9
+  tbody
+    tr
+      transition: .5s
+      &:nth-child(even)
+        background-color: #D9D9D9
+      &:nth-child(odd)
+        background-color: #BEBEBE
+      &:hover 
+        background-color: #acacac
+
   td, th 
-    border: 1px solid #000
     padding: 15px
 
 .product-image 
@@ -268,3 +277,28 @@ main
 
 .action 
   text-align: center
+  a 
+    position: relative
+    display: inline-block
+    width: 24px 
+    height: 24px
+    background-color: $primary-color
+    transition: .5s
+    &:hover 
+      background-color: $second-primary
+    &:last-child
+      background-color: #cb0000
+      &:hover 
+        background-color: #a00000
+      &::before 
+        background-image: url(../img/delete.svg)
+    &::before
+      content: ''
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      background-image: url(../img/edit.svg)
+      background-position: center
+      background-repeat: no-repeat
