@@ -9,6 +9,8 @@
         'modules' => 'Модулі',
         'add' => 'Додати',
         'product' => 'Товар',
+        'product_list' => 'Список товарів',
+        'product_create' => 'Додати товар',
         'category' => 'Категорія',
         'image' => 'Картинка',
         'title' => 'Назва',

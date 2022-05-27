@@ -13,6 +13,13 @@
 
     ?>
 
+    <div class="flex title-line">
+        <h2>@lang('admin.product_create')</h2>
+        <a href="{{ route('product.create') }}" class="action-button">
+            <img src="{{ asset('img/add.svg') }}" alt="Add">
+        </a>
+    </div>
+
     <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 

@@ -15,7 +15,7 @@
 
     <div class="flex title-line">
         <h2>@lang('admin.product_list')</h2>
-        <a href="{{ route('product.create') }}" class="action-button">
+        <a href="{{ route('product.create') }}" class="add-button action-button">
             <img src="{{ asset('img/add.svg') }}" alt="Add">
         </a>
     </div>
