@@ -45,16 +45,15 @@ class ProductTypeController extends Controller
         $localization->fill($request->validated());
         $localization->title_uk = $request->title_uk;
         $localization->title_ru = $request->title_ru;
-        $localization->description_uk = $request->description_uk;
-        $localization->description_ru = $request->description_ru;
+        $localization->description_uk = $request->title_uk;
+        $localization->description_ru = $request->title_ru;
 
         $productType = new ProductType();
         $productType->fill($request->validated());
-
         $productType->save();
         $productType->localization()->save($localization);
 
-        return redirect()->route('productType.index');
+        return redirect()->route('product.index');
     }
 
     /**

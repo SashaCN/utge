@@ -50,14 +50,15 @@ class CategoryController extends Controller
         $localization->fill($request->validated());
         $localization->title_uk = $request->title_uk;
         $localization->title_ru = $request->title_ru;
-        $localization->description_uk = $request->description_uk;
-        $localization->description_ru = $request->description_ru;
+        $localization->description_uk = $request->title_uk;
+        $localization->description_ru = $request->title_ru;
 
 
         $category = new Category();
         $category->fill($request->validated());
-        $category->localization()->save($localization);
+        $category->product_type_id = $request->product_type_id;
         $category->save();
+        $category->localization()->save($localization);
 
 
         return redirect()->route('category.index');

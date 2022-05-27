@@ -38,7 +38,7 @@
                 <td>
                     <ul>
                         @foreach ($product->categories as $category)
-                            <li><a href="{{ route('category.show', $category) }}">{{ $category->title }}</a></li>
+                            <li><a href="{{ route('category.show', $category) }}">{{ $category->localization[0]->$title }}</a></li>
                         @endforeach
                     </ul>
                 </td>
