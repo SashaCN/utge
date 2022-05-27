@@ -18,4 +18,8 @@ class SubCategory extends Model
     {
         return $this->belongsTo(Category::class);
     }
+    public function localization()
+    {
+        return $this->morphMany(Localization::class, 'localizationable');
+    }
 }
