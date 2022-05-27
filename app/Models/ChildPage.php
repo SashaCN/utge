@@ -12,6 +12,10 @@ class ChildPage extends Model
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = ['route', 'title', 'description'];
+    protected $fillable = ['route'];
 
+    public function localization()
+    {
+        return $this->morphMany(Localization::class, 'localizationable');
+    }
 }

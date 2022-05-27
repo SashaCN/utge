@@ -42,16 +42,16 @@ class ChildPageController extends Controller
     public function store(ChildPageRequest $request)
     {
 
-        // $localization = new Localization();
-        // $localization->fill($request->validated());
-        // $localization->title_uk = $request->title_uk;
-        // $localization->title_ru = $request->title_ru;
-        // $localization->description_uk = $request->description_uk;
-        // $localization->description_ru = $request->description_ru;
-        // dd($request);
+        $localization = new Localization();
+        $localization->fill($request->validated());
+        $localization->title_uk = $request->title_uk;
+        $localization->title_ru = $request->title_ru;
+        $localization->description_uk = $request->description_uk;
+        $localization->description_ru = $request->description_ru;
+
         $childPage = new ChildPage();
         $childPage->fill($request->validated());
-        // $childPage->$product->localization()->save($localization);
+        $childPage->localization()->save($localization);
         $childPage->save();
         
         return redirect()->route('childPage.index');

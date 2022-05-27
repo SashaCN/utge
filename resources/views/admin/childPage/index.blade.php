@@ -11,9 +11,10 @@
         </tr>
         @foreach ($childPages as $childPage)
         <tr>
+            {{dd($childPage)}}
             <td>{{$childPage->route}}</td>
-            <td>{{$childPage->title}}</td>
-            <td>{{$childPage->description}}</td>
+            <td>{{$childPage->localization[0]->$title}}</td>
+            <td>{{$childPage->localization[0]->$description}}</td>
             <td>
                 <a href="{{ route('child', $childPage->route) }}">show</a>
                 <a href="{{ route('childPage.edit', $childPage->id) }}">update</a>

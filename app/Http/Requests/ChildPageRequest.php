@@ -25,8 +25,6 @@ class ChildPageRequest extends FormRequest
     {
         return [
             'route' => 'required',
-            'title' => 'required|min:2|max:30',
-            'description' => 'required|min:10',
         ];
     }
 }

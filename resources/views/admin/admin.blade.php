@@ -11,15 +11,7 @@
     <header>
         <div class="header-line flex">
             <ul class="header-menu flex">
-<<<<<<< HEAD
-                <li class="logo">
-                    <a href="/">
-                        <img src="{{ asset('img/logo.png') }}" alt="Hashtag logo">
-                    </a>
-                </li>
-=======
                 
->>>>>>> 14d489f08f4d5e499c01eda934c6b347ab03dbfd
                 <li class="li-home">
                     <a href="{{ route('admin') }}" class="home flex">
                         <img src="{{ asset('img/home.svg') }}" alt="Home">
@@ -47,13 +39,6 @@
     <aside>
         <nav>
             <ul class="aside-menu">
-<<<<<<< HEAD
-                <li><a href="{{ route('product.index') }}">@lang('admin.products')</a><span></span><span></span><span></span><span></span></li>
-                <li><a href="{{ route('category.index') }}">@lang('admin.categories')</a><span></span><span></span><span></span><span></span></li>
-                <li><a href="#">@lang('admin.orders')</a><span></span><span></span><span></span><span></span></li>
-                <li><a href="{{ route('news.index') }}">@lang('admin.news')</a><span></span><span></span><span></span><span></span></li>
-                <li><a href="{{ route('childPage.index') }}">@lang('admin.modules')</a><span></span><span></span><span></span><span></span></li>
-=======
                 <li class="logo">
                     <a href="" class="flex">
                         <img src="{{ asset('img/logo.png') }}" alt="Hashtag logo">
@@ -62,9 +47,8 @@
                 <li><a href="{{ route('product.index') }}"><span class="link-text">@lang('admin.products')</span></a></li>
                 <li><a href="{{ route('category.index') }}"><span class="link-text">@lang('admin.categories')</span></a></li>
                 <li><a href="#"><span class="link-text">@lang('admin.orders')</span></a></li>
-                <li><a href="#"><span class="link-text">@lang('admin.news')</span></a></li>
-                <li><a href="#"><span class="link-text">@lang('admin.modules')</span></a></li>
->>>>>>> 14d489f08f4d5e499c01eda934c6b347ab03dbfd
+                <li><a href="{{ route('news.index') }}"><span class="link-text">@lang('admin.news')</span></a></li>
+                <li><a href="{{ route('childPage.index') }}"><span class="link-text">@lang('admin.modules')</span></a></li>
             </ul>
         </nav>
         <p class="copy">
