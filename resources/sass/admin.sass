@@ -29,11 +29,7 @@ header
   z-index: 2
   width: 85vw
   box-sizing: border-box
-<<<<<<< HEAD
-  padding: 0 30px
-=======
-  padding-right: 5%
->>>>>>> 14d489f08f4d5e499c01eda934c6b347ab03dbfd
+  padding-right: 20px
   color: #fff
   background-color: $primary-color
   a 
@@ -89,33 +85,48 @@ header
 .hidden 
   display: none!important
 
-.lang span
-  margin: 0 5px
-
-.lang 
-  a
-    position: relative
-    z-index: 1
-    display: inline-block
-    width: 20px
-    text-align: center
-    text-decoration: none
-    &::before
-      content: ''
-      position: absolute
-      top: 50%
-      left: 50%
-      z-index: -1
-      transform: translate(-50%, -50%)
-      width: 24px
-      height: 19px
-      border-radius: 5px
-      background-color: $second-primary
-      opacity: 0
-      transition: 0.5s
+.lang-select 
+  position: relative
+  display: flex
+  flex-direction: column
+  height: 32px
+  // padding-right: 24px
+  overflow: hidden
+  transition: .5s
+  a 
+    text-decoration: none  
+    line-height: 22px
+    padding: 5px 35px 5px 10px
+    transition: .5s
     &:hover 
-      &::before 
-        opacity: 1
+      background-color: $second-primary
+    span 
+      margin-left: 5px
+  &::before
+    content: ''
+    position: absolute
+    top: 50%
+    right: 10px
+    width: 10px
+    height: 10px
+    border: 2px solid #fff
+    border-top: none
+    border-left: none
+    transform: rotate(45deg) translate(-75%, -50%)
+  &:hover 
+    cursor: pointer
+
+.selected-lang 
+  order: -1
+
+.active-select 
+  overflow: visible 
+  background-color: $second-primary
+  a 
+    background-color: $primary-color
+    &:first-child
+      background-color: $second-primary
+      
 
 // aside menu 
 
@@ -152,6 +163,41 @@ aside
   &:hover 
     transform: scale(1.15)
 
+.aside-menu 
+  li
+    &:nth-child(1n+2)
+      a
+        position: relative
+        padding-left: 54px 
+        &::before
+          content: ''
+          position: absolute 
+          top: 50%
+          left: 30px 
+          width: 24px
+          height: 24px
+          transform: translate(-50%, -50%)
+    &:nth-child(2)
+      a
+        &::before 
+          background-image: url(../img/product.svg)
+    &:nth-child(3)
+      a
+        &::before 
+          background-image: url(../img/category.svg)
+    &:nth-child(4)
+      a
+        &::before 
+          background-image: url(../img/order.svg)
+    &:nth-child(5)
+      a
+        &::before 
+          background-image: url(../img/new.svg)
+    &:nth-child(6)
+      a
+        &::before 
+          background-image: url(../img/module.svg)
+
 .selected-item
   background-color: $second-primary
   &::before 
@@ -182,7 +228,7 @@ aside
 // main 
 
 main 
-  padding: 30px
+  padding: 20px
 
 // product page
 
@@ -191,20 +237,21 @@ main
   margin-bottom: 20px
   border-bottom: 1px solid #000
 
-.action-button 
+.add-button 
   display: inline-block
   position: relative
   width: 35px
   height: 35px
-  border-radius: 3px
   background-color: $primary-color
+  transition: .5s
   img 
     position: absolute
     top: 50%
     left: 50%
     transform: translate(-50%, -50%)
     transition: .5s
-  &:hover 
+  &:hover
+    background-color: $second-primary 
     img 
       transform: translate(-50%, -50%) scale(1.1)
 

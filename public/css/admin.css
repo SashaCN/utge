@@ -30,7 +30,7 @@ header {
   z-index: 2;
   width: 85vw;
   box-sizing: border-box;
-  padding-right: 5%;
+  padding-right: 20px;
   color: #fff;
   background-color: #003b95;
 }
@@ -98,34 +98,55 @@ header a {
   display: none !important;
 }
 
-.lang span {
-  margin: 0 5px;
-}
-
-.lang a {
+.lang-select {
   position: relative;
-  z-index: 1;
-  display: inline-block;
-  width: 20px;
-  text-align: center;
-  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  height: 32px;
+  overflow: hidden;
+  transition: 0.5s;
 }
-.lang a::before {
+.lang-select a {
+  text-decoration: none;
+  line-height: 22px;
+  padding: 5px 35px 5px 10px;
+  transition: 0.5s;
+}
+.lang-select a:hover {
+  background-color: #042c68;
+}
+.lang-select a span {
+  margin-left: 5px;
+}
+.lang-select::before {
   content: "";
   position: absolute;
   top: 50%;
-  left: 50%;
-  z-index: -1;
-  transform: translate(-50%, -50%);
-  width: 24px;
-  height: 19px;
-  border-radius: 5px;
-  background-color: #042c68;
-  opacity: 0;
-  transition: 0.5s;
+  right: 10px;
+  width: 10px;
+  height: 10px;
+  border: 2px solid #fff;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg) translate(-75%, -50%);
 }
-.lang a:hover::before {
-  opacity: 1;
+.lang-select:hover {
+  cursor: pointer;
+}
+
+.selected-lang {
+  order: -1;
+}
+
+.active-select {
+  overflow: visible;
+  background-color: #042c68;
+}
+.active-select a {
+  background-color: #003b95;
+}
+.active-select a:first-child {
+  background-color: #042c68;
 }
 
 aside {
@@ -167,6 +188,35 @@ aside li:hover span {
 }
 .logo:hover {
   transform: scale(1.15);
+}
+
+.aside-menu li:nth-child(1n+2) a {
+  position: relative;
+  padding-left: 54px;
+}
+.aside-menu li:nth-child(1n+2) a::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 30px;
+  width: 24px;
+  height: 24px;
+  transform: translate(-50%, -50%);
+}
+.aside-menu li:nth-child(2) a::before {
+  background-image: url(../img/product.svg);
+}
+.aside-menu li:nth-child(3) a::before {
+  background-image: url(../img/category.svg);
+}
+.aside-menu li:nth-child(4) a::before {
+  background-image: url(../img/order.svg);
+}
+.aside-menu li:nth-child(5) a::before {
+  background-image: url(../img/new.svg);
+}
+.aside-menu li:nth-child(6) a::before {
+  background-image: url(../img/module.svg);
 }
 
 .selected-item {
@@ -216,8 +266,8 @@ main {
   position: relative;
   width: 35px;
   height: 35px;
-  border-radius: 3px;
   background-color: #003b95;
+  transition: 0.5s;
 }
 .action-button img {
   position: absolute;
@@ -226,7 +276,10 @@ main {
   transform: translate(-50%, -50%);
   transition: 0.5s;
 }
-.action-button:hover img {
+.add-button:hover {
+  background-color: #042c68;
+}
+.add-button:hover img {
   transform: translate(-50%, -50%) scale(1.1);
 }
 
