@@ -15,7 +15,7 @@
     ?>
 
     <table>
-        <a href="{{ route('category.create') }}"></a>
+        <a href="{{ route('productType.create') }}">Create Product type</a>
         <tr>
             <th>Title</th>
             <th>Action</th>
@@ -24,7 +24,6 @@
         <tr>
             <td>{{$category->localization[0]->$title}}</td>
             <td>
-                <a href="{{ route('category.show', $category->id) }}">show</a>
                 <a href="{{ route('category.edit', $category->id) }}">update</a>
                 <a href="{{ route('category.delete', $category->id) }}">delete</a>
             </td>

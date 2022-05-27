@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ProductTypeRequest;
-use App\Models\ProductType;
+use App\Http\Requests\NewsRequest;
+use Illuminate\Http\Request;
+use App\Models\News;
 use App\Models\Localization;
 
-class ProductTypeController extends Controller
+class NewsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +17,9 @@ class ProductTypeController extends Controller
      */
     public function index()
     {
-        $productTypes = ProductType::all();
+        $news = News::all();
 
-        return view('admin.productType.index', ['productTypes' => $productTypes]);
+        return view('admin.news.index', ['news' => $news]);
     }
 
     /**
@@ -28,7 +29,7 @@ class ProductTypeController extends Controller
      */
     public function create()
     {
-        return view('admin.productType.create');
+        return view('admin.news.create');
     }
 
     /**
@@ -37,23 +38,21 @@ class ProductTypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductTypeRequest $request)
+    public function store(NewsRequest $request)
     {
-
-
+        $news = new News();
+        $news->fill($request->validated());
+        $news->save();
+        
         $localization = new Localization();
         $localization->fill($request->validated());
         $localization->title_uk = $request->title_uk;
         $localization->title_ru = $request->title_ru;
-        $localization->description_uk = $request->title_uk;
-        $localization->description_ru = $request->title_ru;
-
-        $productType = new ProductType();
-        $productType->fill($request->validated());
-        $productType->save();
-        $productType->localization()->save($localization);
-
-        return redirect()->route('product.index');
+        $localization->description_uk = $request->description_uk;
+        $localization->description_ru = $request->description_ru;
+        $news->localization()->save($localization);
+        
+        return redirect()->route('news.index');
     }
 
     /**
@@ -62,12 +61,9 @@ class ProductTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(ProductType $productType)
+    public function show($id)
     {
-
-        return view('admin.ProductType.show', [
-            'productType' => $productType,
-        ]);
+        //
     }
 
     /**
@@ -76,9 +72,9 @@ class ProductTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(ProductType $productType)
+    public function edit(News $news)
     {
-        return view('admin.productType.update', ['productType' => $productType]);
+        return view('admin.news.update', ['news' => $news]);
     }
 
     /**
@@ -88,11 +84,19 @@ class ProductTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductTypeRequest $request, ProductType $productType)
+    public function update(NewsRequest $request, News $news)
     {
-        $productType->update($request->validated());
+        $localization = [
+            'title_uk' => $request->title_uk,
+            'title_ru' => $request->title_ru,
+            'description_uk' => $request->description_uk,
+            'description_ru' => $request->description_ru
+        ];
 
-        return redirect()->route('productType.show', $productType);
+        $news->update($request->validated());
+        $news->localization()->update($localization);
+    
+        return redirect()->route('news.index');
     }
 
     /**
@@ -101,14 +105,10 @@ class ProductTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProductType $productType)
+    public function destroy(News $news)
     {
+        $news->delete();
 
-    }
-
-    public function delete(ProductType $productType)
-    {
-        $productType->delete();
-        return redirect()->route('productType.index');
+        return redirect()->route('news.index');
     }
 }
