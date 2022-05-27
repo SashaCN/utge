@@ -87,11 +87,12 @@ class ChildPageController extends Controller
      */
     public function update(ChildPageRequest $request, ChildPage $childPage, Localization $localization)
     {
-        // dd($request);
-        $localization->title_uk = $request->title_uk;
-        $localization->title_ru = $request->title_ru;
-        $localization->description_uk = $request->description_uk;
-        $localization->description_ru = $request->description_ru;
+        $localization = [
+            'title_uk' => $request->title_uk,
+            'title_ru' => $request->title_ru,
+            'description_uk' => $request->description_uk,
+            'description_ru' => $request->description_ru
+        ];
 
         $childPage->update($request->validated());
         $childPage->localization()->update($localization);

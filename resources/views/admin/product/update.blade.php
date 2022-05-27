@@ -1,11 +1,24 @@
 @extends('admin.admin')
 @section('content')
+
+    <?php
+
+    if (app()->getLocale() == 'uk') {
+        $title = 'title_uk';
+        $description = 'description_uk';
+    } elseif (app()->getLocale() == 'ru') {
+        $title = 'title_ru';
+        $description = 'description_ru';
+    }
+
+    ?>
+
     <form action="{{ route('product.update', $product->id ) }}" method="POST" enctype="multipart/form-data">
 
         @csrf
         @method('PUT')
 
-        <label><input type="text" value="{{ $product->title }}" name="title">title</label>
+        <label><input type="text" value="{{ $product->localization[0]->title_uk }}" name="title">title</label>
         <label><input type="text" value="{{ $product->article }}" name="article">article</label>
 
         <p>Доступність товару</p>
@@ -47,18 +60,21 @@
         <label><input type="number" name="price" value="{{ $product->price }}"></label>
 
         @foreach ($categories as $category)
+
             <?php $isChecked = false ?>
+
             @foreach ($selected_categories as $selected_category)
 
                 @if ( $category->id == $selected_category->id)
                     <?php $isChecked = true ?>
                 @endif
+                
             @endforeach
 
             @if ($isChecked == true)
-                <label><input type="checkbox" checked name="categories[]" value="{{ $category->id }}">{{ $category->title }}</label>
+                <label><input type="checkbox" checked name="categories[]" value="{{ $category->id }}">{{ $category->localization[0]->$title }}</label>
             @else
-                <label><input type="checkbox"  name="categories[]" value="{{ $category->id }}">{{ $category->title }}</label>
+                <label><input type="checkbox"  name="categories[]" value="{{ $category->id }}">{{ $category->localization[0]->$title }}</label>
             @endif
 
 
@@ -69,9 +85,9 @@
 
         <textarea name="description" cols="30" rows="10">{{ $product->description }}</textarea>
 
-        <img src="{{ $product->image->url }}" alt="{{ $product->image->alt }}">
+        {{-- <img src="{{ $product->image->url }}" alt="{{ $product->image->alt }}"> --}}
         <label><input type="file" name="image"></label>
-        <label><input type="text" value="{{ $product->image->alt }}" name="alt"></label>
+        {{-- <label><input type="text" value="{{ $product->image->alt }}" name="alt"></label> --}}
         <input type="submit" value="Send">
     </form>
 @endsection

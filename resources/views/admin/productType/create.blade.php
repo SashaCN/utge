@@ -1,10 +1,11 @@
 @extends('admin.admin')
 
 @section('content')
+    <a href="{{ route('productType.index') }}">index</a>
     <form action="{{ route('productType.store') }}" method="POST">
         @csrf
-        <label><input type="text" name="uk">uk</label>
-        <label><input type="text" name="ru">ru</label>
+        <label><input type="text" name="title_uk">uk</label>
+        <label><input type="text" name="title_ru">ru</label>
         <input type="submit" value="Send">
     </form>
 @endsection
