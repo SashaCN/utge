@@ -1,8 +1,8 @@
 @extends('admin.admin')
     @section('content')
 
-    <?php 
-    
+    <?php
+
         if (app()->getLocale() == 'uk') {
             $title = 'title_uk';
             $description = 'description_uk';
@@ -34,7 +34,7 @@
         <tbody>
             @foreach ($products as $product)
             <tr>
-                <td class="product-image"><img src="{{ asset($product->image->url) }}" alt="{{ $product->image->alt }}"></td>
+                <td class="product-image"><img src="{{ $product->getFirstMediaUrl('images') }}" alt=""></td>
                 <td>{{$product->localization[0]->$title}}</td>
                 <td>{{$product->localization[0]->$description}}</td>
                 <td>{{$product->price}}</td>
