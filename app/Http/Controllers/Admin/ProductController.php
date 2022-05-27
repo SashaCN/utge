@@ -68,12 +68,14 @@ class ProductController extends Controller
         $product->fill($request->except(['categories', 'image', 'alt']));
         $product->save();
         $product->localization()->save($localization);
+        
         //conect product to category
         $product->categories()->sync($request->categories);
 
         // add info to images table in bd
         // $image = $this->imageSaver->upload($request->alt);
         // $product->image()->save($image);
+
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $product->addMediaFromRequest('image')->toMediaCollection('images');
         }

@@ -66,6 +66,10 @@
             <p>{{$message}}</p>
         @enderror
 
+        @error('image')
+        <p>{{$message}}</p>
+        @enderror
+
         <label><input type="file" name="image"></label>
 
         <label><input type="text" name="alt"></label>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<html lang="{{ app()->getLocale() == 'uk' }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,20 +11,21 @@
     <header>
         <div class="header-line flex">
             <ul class="header-menu flex">
-                
+
                 <li class="li-home">
                     <a href="{{ route('admin') }}" class="home flex">
                         <img src="{{ asset('img/home.svg') }}" alt="Home">
                     </a>
-                    
+
                 </li>
                 <li class="li-add">
                     <a href="#" class="add">@lang('admin.add')</a>
-                    
+
                     <div class="add-menu hidden">
                         <ul>
                             <li><a href="{{ route('product.create') }}">@lang('admin.product')</a></li>
                             <li><a href="{{ route('category.create') }}">@lang('admin.category')</a></li>
+                            <li><a href="{{ route('productType.create') }}">product-type</a></li>
                         </ul>
                     </div>
                 </li>
