@@ -1,5 +1,18 @@
 @extends('admin.admin')
 @section('content')
+
+    <?php
+
+    if (app()->getLocale() == 'uk') {
+        $title = 'title_uk';
+        $description = 'description_uk';
+    } elseif (app()->getLocale() == 'ru') {
+        $title = 'title_ru';
+        $description = 'description_ru';
+    }
+
+    ?>
+
     <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
@@ -38,7 +51,7 @@
 
         <label>Виберіть категорію
             @foreach ($categories as $category)
-                <input type="checkbox" name="categories[]" value="{{ $category->id }}">{{ $category->title }}
+                <input type="checkbox" name="categories[]" value="{{ $category->id }}">{{ $category->localization[0]->$title }}
             @endforeach
         </label>
 

@@ -56,6 +56,7 @@ class CategoryController extends Controller
 
         $category = new Category();
         $category->fill($request->validated());
+        $category->product_type_id = $request->product_type_id;
         $category->save();
         $category->localization()->save($localization);
 
