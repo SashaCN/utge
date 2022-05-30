@@ -102,11 +102,20 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoryRequest $request, Category $category)
+    public function update(CategoryRequest $request, Category $category, Localization $localization)
     {
-        $category->update($request->validated());
+        $localization->title_uk = $request->title_uk;
+        $localization->title_ru = $request->title_ru;
+        $localization->description_uk = $request->title_uk;
+        $localization->description_ru = $request->title_ru;
+        $localization->update();
 
-        return redirect()->route('category.show', $category);
+        $category->fill($request->validated());
+        $category->product_type_id = $request->product_type_id;
+        $category->update();
+
+
+        return redirect()->back();
     }
 
     /**

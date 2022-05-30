@@ -133,8 +133,8 @@ class ProductController extends Controller
 
         $product = new Product();
         $product->fill($request->except(['categories', 'image', 'alt']));
-        $product->save();
-        $product->localization()->save($localization);
+        $product->update();
+        $product->localization()->update($localization);
 
         //conect product to category
         $product->categories()->sync($request->categories);
@@ -144,7 +144,7 @@ class ProductController extends Controller
             $product->addMediaFromRequest('image')->toMediaCollection('images');
         }
 
-        return redirect()->route('product.index');  
+        return redirect()->route('product.index');
     }
 
     /**

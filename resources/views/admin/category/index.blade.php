@@ -15,7 +15,7 @@
     ?>
 
     <table>
-        <a href="{{ route('category.create') }}"></a>
+        <a href="{{ route('category.create') }}">add</a>
         <tr>
             <th>Title</th>
             <th>Action</th>
