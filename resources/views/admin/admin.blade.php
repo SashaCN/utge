@@ -47,15 +47,15 @@
         <nav>
             <ul class="aside-menu">
                 <li class="logo">
-                    <a href="" class="flex">
+                    <a href="{{ route('index') }}" class="flex">
                         <img src="{{ asset('img/logo.png') }}" alt="Hashtag logo">
                     </a>
                 </li>
                 <li><a href="{{ route('product.index') }}"><span class="link-text">@lang('admin.products')</span></a></li>
                 <li><a href="{{ route('category.index') }}"><span class="link-text">@lang('admin.categories')</span></a></li>
                 <li><a href="#"><span class="link-text">@lang('admin.orders')</span></a></li>
-                <li><a href="#"><span class="link-text">@lang('admin.news')</span></a></li>
-                <li><a href="#"><span class="link-text">@lang('admin.modules')</span></a></li>
+                <li><a href="{{ route('news.index') }}"><span class="link-text">@lang('admin.news')</span></a></li>
+                <li><a href="{{ route('childPage.index') }}"><span class="link-text">@lang('admin.modules')</span></a></li>
             </ul>
         </nav>
         <p class="copy">

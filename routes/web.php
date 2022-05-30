@@ -15,21 +15,24 @@ $locale = App::currentLocale();
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::middleware('set_locale')->group(function(){
+    Route::get('/', [\App\Http\Controllers\SiteController::class, 'index'])->name('index');
+    Route::get('/child/{route}', [\App\Http\Controllers\SiteController::class, 'childPageRedirect'])->name('child');
+    Route::get('/news', [\App\Http\Controllers\SiteController::class, 'showNews'])->name('news');
 
-Route::get('/', function () {
-    return view('welcome');
+    // Route::get('/child/{rout}', function () {
+    //     return view('site.childPage');
+    // });
+    
 });
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
 
 Route::middleware('set_locale')->group(function(){
     Route::prefix('admin')->group(function()
     {
         Route::get('locale/{locale}', [\App\Http\Controllers\Admin\AdminController::class, 'changeLocale'])->name('locale');
         Route::get('/', [\App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin');
+        Route::resource('childPage', \App\Http\Controllers\Admin\ChildPageController::class);
+        Route::resource('news', \App\Http\Controllers\Admin\NewsController::class);
         Route::resource('productType', \App\Http\Controllers\Admin\ProductTypeController::class);
         Route::resource('category', \App\Http\Controllers\Admin\CategoryController::class);
         Route::resource('subCategory', \App\Http\Controllers\Admin\SubCategoryController::class);

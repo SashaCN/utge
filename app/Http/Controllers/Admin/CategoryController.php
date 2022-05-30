@@ -20,9 +20,15 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        $productTypes = ProductType::all();
         $categories = Category::all();
+        $subCategories = SubCategory::all();
 
-        return view('admin.category.index', ['categories' => $categories]);
+        return view('admin.category.index', [
+            'productTypes' => $productTypes,
+            'categories' => $categories,
+            'subCategories' => $subCategories,
+        ]);
     }
 
     /**
@@ -131,7 +137,6 @@ class CategoryController extends Controller
 
     public function delete(Category $category)
     {
-        // dd($category);
         $category->delete();
         return redirect()->route('category.index');
     }
