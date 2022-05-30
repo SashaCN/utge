@@ -138,8 +138,8 @@
 	 M8.79,12.01L7.73,6.74h18.78l-1.93,5.27H8.79z"></path>
   </symbol>
   <symbol version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 18" id="uk_flag">
-    <path d="m0 0h29v9h-29z"></path>
-    <path d="m0 9h29v9h-29z"></path>
+    <path fill="#0072bc" d="m0 0h29v9h-29z"></path>
+    <path fill="#e4d341" d="m0 9h29v9h-29z"></path>
   </symbol>
   <symbol version="1.1" id="email" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" xml:space="preserve" viewBox="0 0 40 28">
     <polygon points="12.56,14.04 0,26.46 0,1.61 "></polygon>

@@ -1,7 +1,10 @@
 /* -------------------------------------------------------------------------- */
-/*                                control line                                */
+/*                                info line                                */
 /* -------------------------------------------------------------------------- */
   
+.info-line > div 
+  width: 20%
+
 .info-line 
   padding: 20px 0
   
@@ -34,3 +37,15 @@
     font-weight: 500
     text-transform: uppercase
     color: $text-dark
+
+.control 
+  svg 
+    fill: $primary
+    width: 29px
+    height: 26px
+
+.basket, 
+.like 
+  transition: $trs
+  &:hover 
+    transform: scale(1.1)
