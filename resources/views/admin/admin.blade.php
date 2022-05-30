@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/simple-visual-editor.css') }}">
     <title>@lang('admin.utge_admin')</title>
 </head>
 <body>
@@ -68,5 +69,6 @@
         @yield('content')
     </main>
     <script src="{{ asset('js/admin.js') }}"></script>
+    <script src="{{ asset('js/simple-visual-editor.js') }}"></script>
 </body>
 </html>
