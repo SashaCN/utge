@@ -71,6 +71,18 @@
                 </div>
             </div>
         </div>
+        <nav class="menu">
+            <div class="wrapper">
+                <ul class="flex-sb">
+                    <li><a href="#">@lang('utge.main')</a></li>
+                    <li><a href="#">@lang('utge.goods')</a></li>
+                    <li><a href="#">@lang('utge.services')</a></li>
+                    <li><a href="#">@lang('utge.delivery')</a></li>
+                    <li><a href="#">@lang('utge.news')</a></li>
+                    <li><a href="#">@lang('utge.contacts')</a></li>
+                </ul>
+            </div>
+        </nav>
     </header>
 </body>
 
