@@ -18,9 +18,9 @@ class SetLocale
 
     public function handle(Request $request, Closure $next)
     {
-        if(empty(App::setLocale(session('locale')))){
+        if(empty(session('locale'))){
 
-            App::setLocale(session('locale')) == 'uk';
+            session('locale') == 'uk';
 
         } else {
 
