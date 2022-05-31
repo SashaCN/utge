@@ -205,6 +205,68 @@ a.selected-lang {
   text-shadow: 0 0 1px #fff;
 }
 
+footer {
+  padding: 37px 0;
+  background-color: #003b95;
+}
+footer .phone svg {
+  width: 28px;
+  height: 29px;
+  fill: #fff;
+}
+footer .phone li {
+  margin-bottom: 5px;
+}
+footer .info-line {
+  padding: 0;
+  margin-bottom: 25px;
+}
+footer .info-line a {
+  color: #fff;
+}
+footer .address {
+  width: 25%;
+}
+footer .address svg {
+  width: 22px;
+  height: 30px;
+  fill: #fff;
+}
+footer .address address {
+  font-size: 1.6rem;
+  font-style: normal;
+  max-width: calc(100% - 22px);
+  padding-left: 20px;
+  box-sizing: border-box;
+  color: #fff;
+}
+
+.mail {
+  justify-content: flex-end;
+}
+.mail svg {
+  width: 41px;
+  height: 29px;
+  fill: #fff;
+}
+.mail a {
+  display: inline-block;
+  font-size: 1.6rem;
+  padding-left: 20px;
+  transition: all 0.5s ease;
+}
+.mail a:hover {
+  transform: scale(1.1);
+}
+
+.copy {
+  font-size: 1.8rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: #fff;
+  text-align: center;
+}
+
 /* -------------------------------------------------------------------------- */
 /*                               general styles                               */
 /* -------------------------------------------------------------------------- */

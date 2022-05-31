@@ -13,7 +13,8 @@
     <header>
         <div class="wrapper">
             <div class="info-line flex-sb">
-                <div class="phone flex-aic"> <svg>
+                <div class="phone flex-aic"> 
+                    <svg>
                         <use xlink:href="{{ asset('img/sprite.svg#tel') }}"></use>
                     </svg>
                     <ul class="phone-list">
@@ -87,6 +88,36 @@
     <main>
         @yield('content')
     </main>
+    <footer>
+        <div class="wrapper">
+            <div class="info-line flex-sb">
+                <div class="phone flex-aic"> 
+                    <svg>
+                        <use xlink:href="{{ asset('img/sprite.svg#tel') }}"></use>
+                    </svg>
+                    <ul class="phone-list">
+                        <li><a href="tel:+380739175254">+38 (073) 917-52-54</a></li>
+                        <li><a href="tel:+380739175254">+38 (073) 917-52-54</a></li>
+                    </ul>
+                </div>
+                <div class="address flex-aic">
+                    <svg>
+                        <use xlink:href="{{ asset('img/sprite.svg#gps') }}"></use>
+                    </svg>
+                    <address>
+                        @lang('utge.address')
+                    </address>
+                </div>
+                <div class="mail flex-aic">
+                    <svg>
+                        <use xlink:href="{{ asset('img/sprite.svg#email') }}"></use>
+                    </svg>
+                    <a href="mailto:info@utge.net">info@utge.net</a>
+                </div>
+            </div>
+            <p class="copy">&copy; utge since 2016</p>
+        </div>
+    </footer>
 </body>
 
 </html>
