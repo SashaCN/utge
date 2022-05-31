@@ -10,8 +10,8 @@ class SiteController extends Controller
 {
     public function index()
     {
-        $childPages = ChildPage::all();
-        return view('site.index', ['childPages' => $childPages]);
+        // $childPages = ChildPage::all();
+        return view('site.firstPage');
     }
 
     public function childPageRedirect(Request $request)

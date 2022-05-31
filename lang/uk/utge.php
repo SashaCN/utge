@@ -9,4 +9,8 @@ return [
   'delivery' => 'Доставка и оплата',
   'news' => 'Новини',
   'contacts' => 'Контакти',
+  'slider-feed' => 'Комбікорм',
+  'slider-fish' => 'Осетрові',
+  'slider-product' => 'Товари',
+  'slider-service' => 'Послуги',
 ];

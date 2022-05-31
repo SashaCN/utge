@@ -24,7 +24,7 @@
                 <div class="logo">
                     <a class="flex-col" href="index">
                         <img src="{{ asset('img/logo.png') }}" alt="@lang('utge.logo')" />
-                        <b>@lang('utge.utge')</b>
+                        <h1>@lang('utge.utge')</h1>
                     </a>
                 </div>
                 <div class="control flex-sb">
@@ -84,6 +84,9 @@
             </div>
         </nav>
     </header>
+    <main>
+        @yield('content')
+    </main>
 </body>
 
 </html>
