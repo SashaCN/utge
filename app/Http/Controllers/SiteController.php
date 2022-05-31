@@ -20,6 +20,7 @@ class SiteController extends Controller
         $childPages = ChildPage::all();
         $childPage = $childPages->where('route', $route['route']);
 
+        dd($childPage);
         return view('site.childPage', ['childPage' => $childPage]);
     }
 
