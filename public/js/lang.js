@@ -1,6 +1,7 @@
 let change_lang = document.querySelector(".lang-select");
 
-document.onclick = (e) => {
+function changeLang (e)
+{
   if(e.target == change_lang || change_lang.contains(e.target)) {
     if (!document.querySelector(".lang-select").classList.contains('active-select')) {
       e.preventDefault();

@@ -118,6 +118,9 @@
             <p class="copy">&copy; utge since 2016</p>
         </div>
     </footer>
+
+<script src="{{ asset('js/public.js') }}"></script>
+
 </body>
 
 </html>

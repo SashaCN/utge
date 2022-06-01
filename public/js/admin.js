@@ -1,11 +1,12 @@
 // add menu toggle
 
+
 let add_button = document.querySelector(".add"),
-    add_menu = document.querySelector(".add-menu");
+add_menu = document.querySelector(".add-menu");
 
 document.onclick = (e) => {
+  changeLang(e);
   if (e.target == add_button) {
-    e.preventDefault();
     add_button.classList.toggle('focus');
     add_menu.classList.toggle('hidden');
   } else {

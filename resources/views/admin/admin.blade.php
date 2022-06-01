@@ -66,7 +66,7 @@
     <main>
         @yield('content')
     </main>
-    <script src="{{ asset('js/admin.js') }}"></script>
     <script src="{{ asset('js/lang.js') }}"></script>
+    <script src="{{ asset('js/admin.js') }}" type="module"></script>
 </body>
 </html>
