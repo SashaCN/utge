@@ -8,6 +8,8 @@ use App\Http\Requests\ProductRequest;
 use App\Models\Category;
 use App\Models\Localization;
 use App\Models\Product;
+use App\Models\ProductType;
+use App\Models\SubCategory;
 
 class ProductController extends Controller
 {
@@ -40,9 +42,13 @@ class ProductController extends Controller
     public function create()
     {
         $category = Category::all();
+        $productType = ProductType::all();
+        $subCategory = SubCategory::all();
 
         return view('admin.product.create', [
-            'categories' => $category
+            'categories' => $category,
+            'producttypes' => $productType,
+            'subcategories' => $subCategory
         ]);
     }
 
@@ -65,12 +71,13 @@ class ProductController extends Controller
         // dd($localization);
 
         $product = new Product();
-        $product->fill($request->except(['categories', 'image', 'alt']));
+        $product->fill($request->except(['categories', 'subcategories']));
         $product->save();
         $product->localization()->save($localization);
 
         //conect product to category
         $product->categories()->sync($request->categories);
+        $product->subcategories()->sync($request->subcategories);
 
         // add info to images table in bd
         // $image = $this->imageSaver->upload($request->alt);
@@ -123,24 +130,29 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, Product $product)
     {
-        $localization = new Localization();
-        $localization->fill($request->validated());
-        $localization->title_uk = $request->title_uk;
-        $localization->title_ru = $request->title_ru;
-        $localization->description_uk = $request->description_uk;
-        $localization->description_ru = $request->description_ru;
-        // dd($localization);
+        $localization = [
+            'title_uk' => $request->title_uk,
+            'title_ru' => $request->title_ru,
+            'description_uk' => $request->description_uk,
+            'description_ru' => $request->description_ru
+        ];
 
-        $product = new Product();
-        $product->fill($request->except(['categories', 'image', 'alt']));
+        $product->fill($request->except(['categories','subcategories', 'image', 'alt']));
         $product->update();
         $product->localization()->update($localization);
 
         //conect product to category
         $product->categories()->sync($request->categories);
+        $product->subcategories()->sync($request->subcategories);
 
         // update info to images table in bd
-        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+        if ($request->hasFile('image')) {
+
+            $product->clearMediaCollection('images');
+            $product->addMediaFromRequest('image')->toMediaCollection('images');
+
+        } else {
+            
             $product->addMediaFromRequest('image')->toMediaCollection('images');
         }
 

@@ -33,7 +33,7 @@
         <tbody>
             @foreach ($products as $product)
             <tr>
-                <td class="product-image"><img src="{{ $product->getFirstMediaUrl('images') }}" alt=""></td>
+                <td class="product-image"><img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $product->localization[0]->$title }}"></td>
                 <td>{{$product->localization[0]->$title}}</td>
                 <td>
                     <ul>
