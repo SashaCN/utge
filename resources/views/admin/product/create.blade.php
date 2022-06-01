@@ -66,9 +66,21 @@
             <p>{{$message}}</p>
         @enderror
 
+        <label>Виберіть тип товару
+            @foreach ($producttypes as $producttype)
+                <input type="radio" name="producttypes[]" value="{{ $producttype->id }}">{{ $producttype->localization[0]->$title }}
+            @endforeach
+        </label>
+
         <label>Виберіть категорію
             @foreach ($categories as $category)
-                <input type="checkbox" name="categories[]" value="{{ $category->id }}">{{ $category->localization[0]->$title }}
+                <input type="radio" name="categories[]" value="{{ $category->id }}">{{ $category->localization[0]->$title }}
+            @endforeach
+        </label>
+
+        <label>Виберіть під-категорію
+            @foreach ($subcategories as $subcategory)
+                <input type="checkbox" name="subcategories[]" value="{{ $subcategory->id }}">{{ $subcategory->localization[0]->$title }}
             @endforeach
         </label>
 
@@ -89,8 +101,14 @@
         @enderror
 
         <p>Опис товару</p>
+
+
+
+
+
         <textarea id="desc" name="description_uk" cols="30" rows="10"></textarea>
-        <textarea id="desc" name="description_ru" cols="30" rows="10"></textarea>
+        <textarea name="description_ru" cols="30" rows="10"></textarea>
+
 
         @error('description')
             <p>{{$message}}</p>
