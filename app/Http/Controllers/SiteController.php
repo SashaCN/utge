@@ -10,8 +10,8 @@ class SiteController extends Controller
 {
     public function index()
     {
-        $childPages = ChildPage::all();
-        return view('site.index', ['childPages' => $childPages]);
+        $about_us = ChildPage::all()->where('route', 'about');
+        return view('site.firstPage');
     }
 
     public function childPageRedirect(Request $request)
@@ -20,6 +20,7 @@ class SiteController extends Controller
         $childPages = ChildPage::all();
         $childPage = $childPages->where('route', $route['route']);
 
+        dd($childPage);
         return view('site.childPage', ['childPage' => $childPage]);
     }
 

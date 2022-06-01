@@ -11,7 +11,7 @@
         $description = 'description_ru';
     }
 
-    ?>
+    ?>  
 
     <div class="flex title-line">
         <h2>@lang('admin.product_create')</h2>
@@ -20,11 +20,21 @@
         </a>
     </div>
 
+    <ul class="create-list flex">
+        <li><a href="#">@lang('admin.title')</a></li>
+        <li><a href="#">@lang('admin.description')</a></li>
+        <li><a href="#">@lang('admin.article')</a></li>
+        <li><a href="#">Ціна</a></li>
+        <li><a href="#">Фото</a></li>
+    </ul>
+
     <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
-        <label>Назва<input type="text" name="title_uk"></label>
-        <label>Назва<input type="text" name="title_ru"></label>
+        <input type="text" id="title_uk" name="title_uk">
+        <label for="title_uk">@lang('admin.add_uk_title')</label>
+        <input type="text" id="title_ru" name="title_ru">
+        <label for="title_ru">@lang('admin.add_ru_title')</label>
 
 
         @error('title')
