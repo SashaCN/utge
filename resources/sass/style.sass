@@ -1,0 +1,216 @@
+@import helpers/fonts
+@import helpers/vars
+@import components/lang
+@import components/header
+@import components/footer
+@import components/media
+
+/* -------------------------------------------------------------------------- */
+/*                               general styles                               */
+/* -------------------------------------------------------------------------- */
+
+* 
+  margin: 0
+  padding: 0
+
+ul 
+  list-style: none
+
+a 
+  text-decoration: none
+
+html 
+  font-size: 10px
+
+body 
+  font-family: $rubik
+  background: #ebebeb url(../img/pattern.jpg) repeat
+
+.wrapper 
+  width: 80% 
+  margin: 0 auto
+
+.flex-sb
+  display: flex
+  align-items: center
+  justify-content: space-between
+
+.flex-aic
+  display: flex
+  align-items: center
+
+.flex-col
+  display: flex
+  flex-direction: column
+  align-items: center
+
+main 
+  padding: 50px 0
+
+h2 
+    font-size: 2.4rem
+    font-weight: 400
+    letter-spacing: 1px
+    padding: 18px 0
+    color: $second
+    text-align: center
+    text-transform: uppercase
+    background-color: $primary
+
+/* -------------------------------------------------------------------------- */
+/*                                 slider grid                                */
+/* -------------------------------------------------------------------------- */
+
+.grid
+  display: grid
+  grid-template: 1fr 48px 1fr/1fr 48px 1fr
+  section 
+    position: relative
+    border-radius: 10px
+    overflow: hidden
+  .slide 
+    display: flex
+    height: 302px
+
+.fish, 
+.service 
+  grid-column-start: 3
+
+.water,
+.service 
+  grid-row-start: 3
+
+.slide 
+  svg 
+    fill: $primary
+    transform: translateY(-20px)
+
+.feed 
+  svg 
+    width: 174px
+    height: 174px
+
+.fish 
+  svg 
+    width: 404px
+    height: 100px
+
+.water 
+  svg 
+    width: 168px
+    height: 174px
+
+.service 
+  svg 
+    width: 196px
+    height: 206px
+
+.slide-preview 
+  display: flex
+  justify-content: center
+  align-items: center
+  background-color: $second
+
+.slider-control 
+  position: absolute
+  bottom: 20px
+  left: 50%
+  transform: translateX(-50%)
+  display: flex
+  justify-content: space-between
+  width: 112px
+  span
+    width: 20px
+    height: 20px
+    border: 1px solid $primary
+    border-radius: 50%
+
+.current-slide 
+  background-color: $primary
+
+/* -------------------------------------------------------------------------- */
+/*                                products page                                */
+/* -------------------------------------------------------------------------- */
+
+.filter-box 
+  width: 20%
+
+.product-list 
+  width: 75%
+  & > a
+    width: 31.5%
+  .product 
+    padding: 30px 20px
+    box-sizing: border-box
+    background-color: $second
+    border-radius: 10px
+    img 
+      width: 100%
+      max-height: 261px
+      object-fit: cover
+      margin-bottom: 30px
+  figcaption 
+    width: 100%
+  .button-line 
+    border-top: 2px solid $primary
+    padding-top: 20px
+
+.shadow-box 
+  box-shadow: 0px 10px 5px rgba(24,20,25,0.1)
+
+h3 
+  font-size: 1.8rem
+  font-weight: normal
+  color: $primary
+  text-transform: uppercase
+  margin-bottom: 10px
+
+.description,
+.size 
+  display: inline-block
+  font-family: $roboto
+  font-size: 1.6rem
+  color: $text-dark
+  font-style: italic
+  text-transform: lowercase
+
+.description 
+  width: 100%
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+  margin-bottom: 7px
+
+.add-to-basket 
+  padding: 8px 35px
+  width: 67%
+  box-sizing: border-box
+  font-family: $roboto
+  letter-spacing: 1px
+  font-size: 2rem
+  color: $second
+  background-color: $primary
+  border-radius: 5px
+  transition: $trs
+  svg 
+    width: 29px
+    height: 26px
+    fill: $second
+    margin-right: 17px
+  &:hover 
+    background-color: $primary-hover
+
+.price
+  font-family: $roboto
+  font-size: 1.6rem
+  color: $text-dark
+  font-weight: 500
+  padding: 9.5px 12px
+  width: 31%
+  box-sizing: border-box
+  text-align: center
+  font-family: $roboto
+  border: 2px solid $primary
+  border-radius: 5px
+  transition: $trs
+  

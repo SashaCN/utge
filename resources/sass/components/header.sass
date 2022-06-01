@@ -1,0 +1,69 @@
+/* -------------------------------------------------------------------------- */
+/*                                info line                                */
+/* -------------------------------------------------------------------------- */
+  
+.info-line > div 
+  width: 20%
+
+.info-line 
+  padding: 20px 0
+  
+.phone 
+  svg 
+    width: 42px
+    height: 43px
+    fill: $primary
+
+.phone-list 
+  margin-left: 19px
+  font-size: 1.8rem
+  li 
+    margin-bottom: 8px
+    &:last-child
+      margin: 0
+  a 
+    display: inline-block
+    color: $text-dark
+    transition: $trs
+    &:hover 
+      transform: scale(1.1)
+  
+.logo 
+  img 
+    width: 146px
+    margin-bottom: 9px
+  h1 
+    font-size: 1.6rem
+    font-weight: 500
+    text-transform: uppercase
+    color: $text-dark
+
+.control 
+  svg 
+    fill: $primary
+    width: 29px
+    height: 26px
+
+.basket, 
+.like 
+  transition: $trs
+  &:hover 
+    transform: scale(1.1)
+
+/* -------------------------------------------------------------------------- */
+/*                                   nav bar                                  */
+/* -------------------------------------------------------------------------- */
+
+.menu 
+  background-color: $primary
+  a 
+    display: inline-block
+    font-size: 1.8rem
+    letter-spacing: 1px
+    color: $second
+    text-transform: uppercase
+    padding: 30px 0
+    transition: $trs
+    &:hover 
+      background-color: $primary-hover
+      text-shadow: 0 0 1px $second

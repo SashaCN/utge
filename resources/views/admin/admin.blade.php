@@ -32,7 +32,6 @@
                 </li>
             </ul>
             <p class="lang-select">
-                {{-- <option value=""></option> --}}
                 @if (app()->getLocale() == 'uk')
                     <a href="{{ route('locale', 'uk') }}" class="flex lang-uk selected-lang"><img src="{{ asset('img/uk_flag.svg') }}" alt=""><span>УКР</span></a>
                     <a href="{{ route('locale', 'ru') }}" class="flex lang-ru"><img src="{{ asset('img/ru_flag.svg') }}" alt=""><span>РУС</span></a>
@@ -67,7 +66,7 @@
     <main>
         @yield('content')
     </main>
-    <script src="{{ asset('js/admin.js') }}"></script>
-    <script src="{{ asset('js/simple-visual-editor.js') }}"></script>
+    <script src="{{ asset('js/lang.js') }}"></script>
+    <script src="{{ asset('js/admin.js') }}" type="module"></script>
 </body>
 </html>
