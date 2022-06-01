@@ -13,14 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('localizations', function (Blueprint $table) {
-            $table->id();
-            $table->string('var');
-            $table->string('uk');
-            $table->string('ru');
-            $table->integer('localizationable_id');
-            $table->string('localizationable_type');
-            $table->timestamps();
+        Schema::table('products', function (Blueprint $table) {
+            $table->boolean('home_view');
         });
     }
 
@@ -31,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('localizations');
+        Schema::table('products', function (Blueprint $table) {
+            $table->dropColumn('home_view');
+        });
     }
 };

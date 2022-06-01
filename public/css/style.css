@@ -446,6 +446,13 @@ h2 {
 }
 
 /* -------------------------------------------------------------------------- */
+/*                                 best goods                                 */
+/* -------------------------------------------------------------------------- */
+.goods-list > a {
+  width: 23%;
+}
+
+/* -------------------------------------------------------------------------- */
 /*                                products page                                */
 /* -------------------------------------------------------------------------- */
 .filter-box {
@@ -458,23 +465,24 @@ h2 {
 .product-list > a {
   width: 31.5%;
 }
-.product-list .product {
+
+.product {
   padding: 30px 20px;
   box-sizing: border-box;
   background-color: #fff;
   border-radius: 10px;
 }
-.product-list .product img {
+.product img {
   width: 100%;
   max-height: 261px;
   -o-object-fit: cover;
      object-fit: cover;
   margin-bottom: 30px;
 }
-.product-list figcaption {
+.product figcaption {
   width: 100%;
 }
-.product-list .button-line {
+.product .button-line {
   border-top: 2px solid #003b95;
   padding-top: 20px;
 }

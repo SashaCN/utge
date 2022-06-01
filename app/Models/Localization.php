@@ -9,7 +9,7 @@ class Localization extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title_uk', 'description_uk', 'title_ru', 'description_uk'];
+    protected $fillable = ['var', 'uk', 'ru'];
     public $timestamps = true;
 
     public function localizationable()
