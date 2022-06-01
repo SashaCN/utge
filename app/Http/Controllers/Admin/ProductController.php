@@ -11,6 +11,7 @@ use App\Models\Product;
 use App\Models\ProductType;
 use App\Models\SubCategory;
 use App\Filters\ProductFilter;
+use App\Http\Requests\ImageRequest;
 use App\Models\CategoryProduct;
 use Illuminate\Http\Request;
 
@@ -96,7 +97,8 @@ class ProductController extends Controller
         // $product->image()->save($image);
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $product->addMediaFromRequest('image')->toMediaCollection('images');
+            $product->addMediaFromRequest('image')
+            ->toMediaCollection('images');
         }
 
         return redirect()->route('product.index');
@@ -158,18 +160,21 @@ class ProductController extends Controller
         $product->categories()->sync($request->categories);
         $product->subcategories()->sync($request->subcategories);
 
-        // update info to images table in bd
-
-        if (($request->hasFile('image')) == false) {
-            $product->getMedia();
-        } else {
-            $product->clearMediaCollection('images');
-            $product->addMediaFromRequest('image')
-            ->usingFileName('product_photo.jpg')
-            ->toMediaCollection('images');
-        }
 
         return redirect()->route('product.index');
+    }
+
+    public function mediaUpdate(ImageRequest $request, Product $product)
+    {
+        if ($request->hasFile('image')) {
+
+            $product->clearMediaCollection('images');
+            $product->addMediaFromRequest('image')
+            ->toMediaCollection('images');
+
+        }
+
+        return redirect()->route('product.edit', $product->id);
     }
 
     /**

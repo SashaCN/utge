@@ -39,6 +39,7 @@ Route::middleware('auth')->group(function(){
             Route::resource('category', \App\Http\Controllers\Admin\CategoryController::class);
             Route::resource('subCategory', \App\Http\Controllers\Admin\SubCategoryController::class);
             Route::resource('product', \App\Http\Controllers\Admin\ProductController:: class);
+            Route::post('product/mediaUpdate/{product}', [\App\Http\Controllers\Admin\ProductController::class, 'mediaUpdate'])->name('product.mediaUpdate');
             Route::get('product/delete/{product}', [\App\Http\Controllers\Admin\ProductController::class, 'delete'])->name('product.delete');
             Route::get('productType/delete/{productType}', [\App\Http\Controllers\Admin\ProductTypeController::class, 'delete'])->name('productType.delete');
             Route::get('category/delete/{category}', [\App\Http\Controllers\Admin\CategoryController::class, 'delete'])->name('category.delete');

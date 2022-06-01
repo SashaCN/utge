@@ -127,7 +127,4 @@
 
 
     </form>
-    @livewireStyles
-        <livewire:counter />
-    @livewireScripts
 @endsection

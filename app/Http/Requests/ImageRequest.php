@@ -24,7 +24,7 @@ class ImageRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'url' => 'mimetypes:image/jpg'
+            'image' => 'required|mimes:jpeg,png'
         ];
     }
 }

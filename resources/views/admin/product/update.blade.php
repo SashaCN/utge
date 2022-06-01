@@ -12,7 +12,7 @@
     }
 
     ?>
-    
+
     <form action="{{ route('product.update', $product->id ) }}" method="POST" enctype="multipart/form-data">
 
         @csrf
@@ -86,11 +86,19 @@
 
         <textarea name="description_uk" cols="30" rows="10">{{$product->localization[0]->description_uk}}</textarea>
         <textarea name="description_ru" cols="30" rows="10">{{$product->localization[0]->description_ru}}</textarea>
-        <img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $product->localization[0]->$title }}">
-        {{-- <img src="{{ $product->image->url }}" alt="{{ $product->image->alt }}"> --}}
-        <label><input type="file" name="image"></label>
-        {{-- <label><input type="text" value="{{ $product->image->alt }}" name="alt"></label> --}}
+
         <input type="submit" value="Send">
     </form>
+
+    <img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $product->localization[0]->$title }}">
+
+    <form action="{{ route('product.mediaUpdate', $product->id ) }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        @method('POST')
+
+        <label><input type="file" name="image"></label>
+        <input type="submit" value="img">
+    </form>
+    
 @endsection
 
