@@ -31,9 +31,7 @@ class ProductController extends Controller
     public function index()
     {
 
-        $products = Product::paginate(2);
-
-
+        $products = Product::paginate(10);
 
         $productTypes = ProductType::all();
         $categories = Category::all();
@@ -166,7 +164,9 @@ class ProductController extends Controller
             $product->getMedia();
         } else {
             $product->clearMediaCollection('images');
-            $product->addMediaFromRequest('image')->toMediaCollection('images');
+            $product->addMediaFromRequest('image')
+            ->usingFileName('product_photo.jpg')
+            ->toMediaCollection('images');
         }
 
         return redirect()->route('product.index');

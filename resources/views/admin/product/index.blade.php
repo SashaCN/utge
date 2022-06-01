@@ -54,6 +54,8 @@
             </tbody>
         </table>
 
-        {{ $products->links('vendor.pagination.simple-bootstrap-5') }}
+
+
     </div>
+    {{ $products->withQueryString()->links('vendor.pagination.bootstrap-5') }}
     @endsection
