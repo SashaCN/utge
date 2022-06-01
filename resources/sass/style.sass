@@ -3,6 +3,7 @@
 @import components/lang
 @import components/header
 @import components/footer
+@import components/media
 
 /* -------------------------------------------------------------------------- */
 /*                               general styles                               */
@@ -43,6 +44,9 @@ body
   flex-direction: column
   align-items: center
 
+main 
+  padding: 50px 0
+
 h2 
     font-size: 2.4rem
     font-weight: 400
@@ -60,7 +64,6 @@ h2
 .grid
   display: grid
   grid-template: 1fr 48px 1fr/1fr 48px 1fr
-  margin: 50px 0
   section 
     position: relative
     border-radius: 10px
@@ -124,3 +127,90 @@ h2
 
 .current-slide 
   background-color: $primary
+
+/* -------------------------------------------------------------------------- */
+/*                                products page                                */
+/* -------------------------------------------------------------------------- */
+
+.filter-box 
+  width: 20%
+
+.product-list 
+  width: 75%
+  & > a
+    width: 31.5%
+  .product 
+    padding: 30px 20px
+    box-sizing: border-box
+    background-color: $second
+    border-radius: 10px
+    img 
+      width: 100%
+      max-height: 261px
+      object-fit: cover
+      margin-bottom: 30px
+  figcaption 
+    width: 100%
+  .button-line 
+    border-top: 2px solid $primary
+    padding-top: 20px
+
+.shadow-box 
+  box-shadow: 0px 10px 5px rgba(24,20,25,0.1)
+
+h3 
+  font-size: 1.8rem
+  font-weight: normal
+  color: $primary
+  text-transform: uppercase
+  margin-bottom: 10px
+
+.description,
+.size 
+  display: inline-block
+  font-family: $roboto
+  font-size: 1.6rem
+  color: $text-dark
+  font-style: italic
+  text-transform: lowercase
+
+.description 
+  width: 100%
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+  margin-bottom: 7px
+
+.add-to-basket 
+  padding: 8px 35px
+  width: 67%
+  box-sizing: border-box
+  font-family: $roboto
+  letter-spacing: 1px
+  font-size: 2rem
+  color: $second
+  background-color: $primary
+  border-radius: 5px
+  transition: $trs
+  svg 
+    width: 29px
+    height: 26px
+    fill: $second
+    margin-right: 17px
+  &:hover 
+    background-color: $primary-hover
+
+.price
+  font-family: $roboto
+  font-size: 1.6rem
+  color: $text-dark
+  font-weight: 500
+  padding: 9.5px 12px
+  width: 31%
+  box-sizing: border-box
+  text-align: center
+  font-family: $roboto
+  border: 2px solid $primary
+  border-radius: 5px
+  transition: $trs
+  

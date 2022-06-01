@@ -10,7 +10,7 @@ class SiteController extends Controller
 {
     public function index()
     {
-        // $childPages = ChildPage::all();
+        $about_us = ChildPage::all()->where('route', 'about');
         return view('site.firstPage');
     }
 

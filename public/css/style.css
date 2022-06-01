@@ -152,7 +152,7 @@ a.selected-lang {
 }
 .phone-list a {
   display: inline-block;
-  color: #1a1a1a;
+  color: #191919;
   transition: all 0.5s ease;
 }
 .phone-list a:hover {
@@ -267,6 +267,16 @@ footer .address address {
   text-align: center;
 }
 
+@media screen and (max-width: 1500px) {
+  .info-line > div {
+    width: 25%;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .info-line > div {
+    width: 30%;
+  }
+}
 /* -------------------------------------------------------------------------- */
 /*                               general styles                               */
 /* -------------------------------------------------------------------------- */
@@ -314,6 +324,10 @@ body {
   align-items: center;
 }
 
+main {
+  padding: 50px 0;
+}
+
 h2 {
   font-size: 2.4rem;
   font-weight: 400;
@@ -331,7 +345,6 @@ h2 {
 .grid {
   display: grid;
   grid-template: 1fr 48px 1fr/1fr 48px 1fr;
-  margin: 50px 0;
 }
 .grid section {
   position: relative;
@@ -403,4 +416,105 @@ h2 {
 
 .current-slide {
   background-color: #003b95;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                products page                                */
+/* -------------------------------------------------------------------------- */
+.filter-box {
+  width: 20%;
+}
+
+.product-list {
+  width: 75%;
+}
+.product-list > a {
+  width: 31.5%;
+}
+.product-list .product {
+  padding: 30px 20px;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 10px;
+}
+.product-list .product img {
+  width: 100%;
+  max-height: 261px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-bottom: 30px;
+}
+.product-list figcaption {
+  width: 100%;
+}
+.product-list .button-line {
+  border-top: 2px solid #003b95;
+  padding-top: 20px;
+}
+
+.shadow-box {
+  box-shadow: 0px 10px 5px rgba(24, 20, 25, 0.1);
+}
+
+h3 {
+  font-size: 1.8rem;
+  font-weight: normal;
+  color: #003b95;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.description,
+.size {
+  display: inline-block;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.6rem;
+  color: #191919;
+  font-style: italic;
+  text-transform: lowercase;
+}
+
+.description {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 7px;
+}
+
+.add-to-basket {
+  padding: 8px 35px;
+  width: 67%;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  letter-spacing: 1px;
+  font-size: 2rem;
+  color: #fff;
+  background-color: #003b95;
+  border-radius: 5px;
+  transition: all 0.5s ease;
+}
+.add-to-basket svg {
+  width: 29px;
+  height: 26px;
+  fill: #fff;
+  margin-right: 17px;
+}
+.add-to-basket:hover {
+  background-color: #042c68;
+}
+
+.price {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.6rem;
+  color: #191919;
+  font-weight: 500;
+  padding: 9.5px 12px;
+  width: 31%;
+  box-sizing: border-box;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  border: 2px solid #003b95;
+  border-radius: 5px;
+  transition: all 0.5s ease;
 }
