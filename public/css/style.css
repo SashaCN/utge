@@ -47,6 +47,9 @@
 /* -------------------------------------------------------------------------- */
 /*                                  animation                                 */
 /* -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
+/*                                   shadow                                   */
+/* -------------------------------------------------------------------------- */
 .lang-select {
   position: relative;
   display: flex;
@@ -345,6 +348,7 @@ h2 {
 .grid {
   display: grid;
   grid-template: 1fr 48px 1fr/1fr 48px 1fr;
+  margin-bottom: 50px;
 }
 .grid section {
   position: relative;
@@ -416,6 +420,29 @@ h2 {
 
 .current-slide {
   background-color: #003b95;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                  about us                                  */
+/* -------------------------------------------------------------------------- */
+.mb30 {
+  margin-bottom: 30px;
+}
+
+.text-wrap {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.8rem;
+  line-height: 27px;
+  padding: 45px 20px;
+  color: #191919;
+  background-color: #fff;
+  margin-bottom: 50px;
+}
+.text-wrap p {
+  margin-bottom: 30px;
+}
+.text-wrap p:last-child {
+  margin: 0;
 }
 
 /* -------------------------------------------------------------------------- */
