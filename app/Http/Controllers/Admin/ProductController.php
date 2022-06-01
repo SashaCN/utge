@@ -10,6 +10,9 @@ use App\Models\Localization;
 use App\Models\Product;
 use App\Models\ProductType;
 use App\Models\SubCategory;
+use App\Filters\ProductFilter;
+use App\Models\CategoryProduct;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -27,10 +30,21 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+
+        $products = Product::paginate(2);
+
+
+
+        $productTypes = ProductType::all();
+        $categories = Category::all();
+        $subCategories = SubCategory::all();
+
 
         return view('admin.product.index', [
-            'products' => $products
+            'products' => $products,
+            'producttypes' => $productTypes,
+            'categories' => $categories,
+            'subcategories' => $subCategories,
         ]);
     }
 
@@ -130,6 +144,7 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, Product $product)
     {
+
         $localization = [
             'title_uk' => $request->title_uk,
             'title_ru' => $request->title_ru,
@@ -146,13 +161,11 @@ class ProductController extends Controller
         $product->subcategories()->sync($request->subcategories);
 
         // update info to images table in bd
-        if ($request->hasFile('image')) {
 
-            $product->clearMediaCollection('images');
-            $product->addMediaFromRequest('image')->toMediaCollection('images');
-
+        if (($request->hasFile('image')) == false) {
+            $product->getMedia();
         } else {
-            
+            $product->clearMediaCollection('images');
             $product->addMediaFromRequest('image')->toMediaCollection('images');
         }
 

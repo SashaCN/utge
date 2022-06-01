@@ -24,7 +24,7 @@
         </tr>
         @foreach ($products as $product)
         <tr>
-            <td>{{$product->title}}</td>
+            <td>{{$product->localization[0]->title_ru}}</td>
             <td>{{$product->description}}</td>
             <td>{{$product->article}}</td>
             {{-- <td><img src="{{ asset($product->image->url) }}" alt="{{ $product->image->alt }}"></td> --}}

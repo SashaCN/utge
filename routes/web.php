@@ -23,7 +23,7 @@ Route::middleware('set_locale')->group(function(){
     // Route::get('/child/{rout}', function () {
     //     return view('site.childPage');
     // });
-    
+
 });
 
 Route::middleware('set_locale')->group(function(){
@@ -36,7 +36,7 @@ Route::middleware('set_locale')->group(function(){
         Route::resource('productType', \App\Http\Controllers\Admin\ProductTypeController::class);
         Route::resource('category', \App\Http\Controllers\Admin\CategoryController::class);
         Route::resource('subCategory', \App\Http\Controllers\Admin\SubCategoryController::class);
-        Route::resource('product', \App\Http\Controllers\Admin\ProductController::class);
+        Route::resource('product', \App\Http\Controllers\Admin\ProductController:: class);
         Route::get('product/delete/{product}', [\App\Http\Controllers\Admin\ProductController::class, 'delete'])->name('product.delete');
         Route::get('productType/delete/{productType}', [\App\Http\Controllers\Admin\ProductTypeController::class, 'delete'])->name('productType.delete');
         Route::get('category/delete/{category}', [\App\Http\Controllers\Admin\CategoryController::class, 'delete'])->name('category.delete');
