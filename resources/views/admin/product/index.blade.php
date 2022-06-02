@@ -2,14 +2,7 @@
     @section('content')
 
     <?php
-
-        if (app()->getLocale() == 'uk') {
-            $title = 'title_uk';
-            $description = 'description_uk';
-        } elseif (app()->getLocale() == 'ru') {
-            $title = 'title_ru';
-            $description = 'description_ru';
-        }
+        $locale = app()->getLocale();
 
     ?>
 
@@ -19,43 +12,39 @@
             <img src="{{ asset('img/add.svg') }}" alt="Add">
         </a>
     </div>
-    <div class="flex">
-        <table class="product-table">
-            <thead>
-                <tr>
-                    <th>@lang('admin.image')</th>
-                    <th>@lang('admin.title')</th>
-                    <th>@lang('admin.filters')</th>
-                    <th>@lang('admin.price')</th>
-                    <th>@lang('admin.article')</th>
-                    <th>@lang('admin.action')</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($products as $product)
-                <tr>
-                    <td class="product-image"><img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $product->localization[0]->$title }}"></td>
-                    <td>{{$product->localization[0]->$title}}</td>
-                    <td>
-                        <ul>
-                            @foreach ($product->categories as $category)
-                                <li><a href="{{ route('category.show', $category) }}">{{ $category->localization[0]->$title }}</a></li>
-                            @endforeach
-                        </ul>
-                    </td>
-                    <td>{{$product->price}}</td>
-                    <td>{{$product->article}}</td>
-                    <td class="action">
-                        <a href="{{ route('product.edit', $product->id) }}"></a>
-                        <a href="{{ route('product.delete', $product->id) }}"></a>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-
-
-
-    </div>
-    {{ $products->withQueryString()->links('vendor.pagination.bootstrap-5') }}
+    <table class="product-table">
+        <thead>
+            <tr>
+                <th>@lang('admin.image')</th>
+                <th>@lang('admin.title')</th>
+                <th>@lang('admin.filters')</th>
+                <th>@lang('admin.price')</th>
+                <th>@lang('admin.action')</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($products as $product)
+            @php
+                $title = $product->localization[0];
+                $description = $product->localization[1];
+            @endphp
+            <tr>
+                <td class="product-image"><img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}"></td>
+                <td>{{$title->$locale}}</td>
+                <td>
+                    <ul>
+                        @foreach ($product->categories as $category)
+                            <li><a href="{{ route('category.show', $category) }}">{{ $category->localization[0]->$title }}</a></li>
+                        @endforeach
+                    </ul>
+                </td>
+                <td>{{$product->price}}</td>
+                <td class="action">
+                    <a href="{{ route('product.edit', $product->id) }}"></a>
+                    <a href="{{ route('product.delete', $product->id) }}"></a>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
     @endsection

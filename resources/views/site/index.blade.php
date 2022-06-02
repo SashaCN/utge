@@ -23,7 +23,7 @@
                     </ul>
                 </div>
                 <div class="logo">
-                    <a class="flex-col" href="index">
+                    <a class="flex-col" href="{{ route('index') }}">
                         <img src="{{ asset('img/logo.png') }}" alt="@lang('utge.logo')" />
                         <h1>@lang('utge.utge')</h1>
                     </a>

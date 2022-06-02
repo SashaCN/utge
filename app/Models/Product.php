@@ -19,7 +19,7 @@ class Product extends Model implements HasMedia
 
 
     protected $dates = ['deleted_at'];
-    protected $fillable = ['article', 'shipable', 'price', 'available', 'max_order', 'list_position'];
+    protected $fillable = ['price', 'available', 'list_position', 'home_view'];
 
     public function categories()
     {

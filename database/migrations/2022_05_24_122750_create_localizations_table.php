@@ -15,10 +15,9 @@ return new class extends Migration
     {
         Schema::create('localizations', function (Blueprint $table) {
             $table->id();
-            $table->string('title_uk');
-            $table->string('description_uk');
-            $table->string('title_ru');
-            $table->string('description_ru');
+            $table->string('var');
+            $table->string('uk');
+            $table->string('ru');
             $table->integer('localizationable_id');
             $table->string('localizationable_type');
             $table->timestamps();

@@ -23,40 +23,22 @@
         <label><input type="text" value="{{ $product->article }}" name="article">article</label>
 
         <p>Доступність товару</p>
-        @if ( $product->available == 3 )
-        <option value="1">В наявності</option>
-        <option value="2">Очікується</option>
-        <option selected value="3">Немає в наявності</option>
-        @else
-
-        @endif
+        
         <select name="available">
-
-            <option value="1">В наявності</option>
-            <option value="2">Очікується</option>
-            <option value="3">Немає в наявності</option>
-
+            @if ( $product->available == 1 )
+                <option value="1" selected>В наявності</option>
+                <option value="2">Очікується</option>
+                <option value="3">Немає в наявності</option>
+            @elseif ( $product->available == 2 )
+                <option value="1">В наявності</option>
+                <option value="2" selected>Очікується</option>
+                <option value="3">Немає в наявності</option>
+            @else 
+                <option value="1">В наявності</option>
+                <option value="2">Очікується</option>
+                <option value="3" selected>Немає в наявності</option>
+            @endif
         </select>
-
-        <p>Доставка товару</p>
-        <select name="shipable">
-            <option value="1">Доступна доставка</option>
-            <option value="2">Немає доставки</option>
-        </select>
-
-        @if ( $product->available == 1 )
-            <label>
-                <input type="radio" checked value="1" name="available">
-                <input type="radio" value="0" name="available">
-                available
-            </label>
-        @else
-            <label>
-                <input type="radio" value="1" name="available">
-                <input type="radio" checked value="0" name="available">
-                available
-            </label>
-        @endif
 
         <label><input type="number" name="price" value="{{ $product->price }}"></label>
 

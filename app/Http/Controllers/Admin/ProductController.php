@@ -75,18 +75,28 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
 
-        $localization = new Localization();
-        $localization->fill($request->validated());
-        $localization->title_uk = $request->title_uk;
-        $localization->title_ru = $request->title_ru;
-        $localization->description_uk = $request->description_uk;
-        $localization->description_ru = $request->description_ru;
+        $localization_title = new Localization();
+        $localization_title->fill($request->validated());
+        $localization_title->var = 'title';
+        $localization_title->uk = $request->title_uk;
+        $localization_title->ru = $request->title_ru;
+
+        $localization_desc = new Localization();
+        $localization_desc->fill($request->validated());
+        $localization_desc->var = 'description';
+        $localization_desc->uk = $request->description_uk;
+        $localization_desc->ru = $request->description_ru;
+
+        // $localization->title_ru = $request->title_ru;
+        // $localization->description_uk = $request->description_uk;
+        // $localization->description_ru = $request->description_ru;
         // dd($localization);
 
         $product = new Product();
         $product->fill($request->except(['categories', 'subcategories']));
         $product->save();
-        $product->localization()->save($localization);
+        $product->localization()->save($localization_title);
+        $product->localization()->save($localization_desc);
 
         //conect product to category
         $product->categories()->sync($request->categories);

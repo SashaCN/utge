@@ -31,19 +31,17 @@
     <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
-        <input type="text" id="title_uk" name="title_uk">
-        <label for="title_uk">@lang('admin.add_uk_title')</label>
-        <input type="text" id="title_ru" name="title_ru">
-        <label for="title_ru">@lang('admin.add_ru_title')</label>
+        <p>
+            <input type="text" id="title_uk" name="title_uk">
+            <label for="title_uk">@lang('admin.add_uk_title')</label>
+        </p>
+        <p>
+            <input type="text" id="title_ru" name="title_ru">
+            <label for="title_ru">@lang('admin.add_ru_title')</label>
+        </p>
 
 
         @error('title')
-            <p>{{$message}}</p>
-        @enderror
-
-        <label>Артикул<input type="text" name="article"></label>
-
-        @error('article')
             <p>{{$message}}</p>
         @enderror
 
@@ -54,13 +52,15 @@
             <option value="3">Немає в наявності</option>
         </select>
 
-        <p>Доставка товару</p>
-        <select name="shipable">
-            <option value="1">Доступна доставка</option>
-            <option value="2">Немає доставки</option>
+        <p>Показ на головній сторінці</p>
+        <select name="home_view">
+            <option value="0">Не показувати на головній</option>
+            <option value="1">Показувати на головній</option>
         </select>
 
-        <label>Ціна<input type="number" name="price"></label>
+        <p>
+            <label>Ціна<input type="number" name="price"></label>
+        </p>
 
         @error('price')
             <p>{{$message}}</p>
@@ -88,13 +88,13 @@
             <p>{{$message}}</p>
         @enderror
 
-        <label>Максимальна кількість замовлення<input type="number" name="max_order"></label>
-
         @error('max_order')
             <p>{{$message}}</p>
         @enderror
 
-        <label>Позиція в списку<input type="number" name="list_position"></label>
+        <p>
+            <label>Позиція в списку<input type="number" name="list_position"></label>
+        </p>
 
         @error('list_position')
             <p>{{$message}}</p>
@@ -102,12 +102,8 @@
 
         <p>Опис товару</p>
 
-
-
-
-
-        <textarea id="desc" name="description_uk" cols="30" rows="10"></textarea>
-        <textarea name="description_ru" cols="30" rows="10"></textarea>
+        <textarea name="description_uk" cols="30" rows="10" placeholder="Опис на укр"></textarea>
+        <textarea name="description_ru" cols="30" rows="10" placeholder="Опис на рос"></textarea>
 
 
         @error('description')
