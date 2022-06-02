@@ -52,19 +52,19 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request)
     {
 
-        $localization = new Localization();
-        $localization->fill($request->validated());
-        $localization->title_uk = $request->title_uk;
-        $localization->title_ru = $request->title_ru;
-        $localization->description_uk = $request->title_uk;
-        $localization->description_ru = $request->title_ru;
+        $localization_title = new Localization();
+        $localization_title->fill($request->validated());
+        $localization_title->var = 'title';
+        $localization_title->uk = $request->title_uk;
+        $localization_title->ru = $request->title_ru;
 
 
         $category = new Category();
         $category->fill($request->validated());
         $category->product_type_id = $request->product_type_id;
         $category->save();
-        $category->localization()->save($localization);
+
+        $category->localization()->save($localization_title);
 
 
         return redirect()->route('category.index');

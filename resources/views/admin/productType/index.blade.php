@@ -2,37 +2,42 @@
 
 @section('content')
 
-    <?php
+    @php
+        $locale = app()->getLocale();
+    @endphp
 
-    if (app()->getLocale() == 'uk') {
-        $title = 'title_uk';
-        $description = 'description_uk';
-    } elseif (app()->getLocale() == 'ru') {
-        $title = 'title_ru';
-        $description = 'description_ru';
-    }
-
-    ?>
-
-    {{-- {{ dd($localizations) }} --}}
+    <div class="flex title-line">
+        <h2>@lang('admin.product_type_list')</h2>
+        <a href="{{ route('productType.create') }}" class="add-button action-button">
+            <img src="{{ asset('img/add.svg') }}" alt="Add">
+        </a>
+    </div>
 
     <table>
-        <a href="{{ route('productType.create') }}"></a>
+
         <tr>
-            <th>Title</th>
-            <th>Action</th>
+            <th>@lang('admin.title')</th>
+            <th>@lang('admin.action')</th>
         </tr>
+
         @foreach ($productTypes as $productType)
+
+        @php
+            $title = $productType->localization[0];
+        @endphp
+
         <tr>
             <td>
-                {{ $productType->localization[0]->$description }}
+                {{ $title->$locale }}
             </td>
             <td>
-                <a href="{{ route('productType.show', $productType->id) }}">show</a>
-                <a href="{{ route('productType.edit', $productType->id) }}">update</a>
-                <a href="{{ route('productType.delete', $productType->id) }}">delete</a>
+                <a href="{{ route('productType.show', $productType->id) }}"> show </a>
+                <a href="{{ route('productType.delete', $productType->id) }}"> delete</a>
             </td>
         </tr>
+
         @endforeach
+
     </table>
+
 @endsection
