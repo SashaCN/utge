@@ -14,15 +14,20 @@
     </div>
 
     <form action="{{ route('category.update', $category->id) }}" method="POST">
+
         @csrf
         @method('PUT')
 
+        @php
+            $title = $category->localization[0];
+        @endphp
+
         <label>
-            <input type="text" name="title_uk" value="{{ $category->localization[0]->title_uk }}" placeholder="category title">
+            <input type="text" name="title_uk" value="{{ $title->uk }}">
         </label>
 
         <label>
-            <input type="text" name="title_ru" value="{{ $category->localization[0]->title_ru }}" placeholder="category title">
+            <input type="text" name="title_ru" value="{{ $title->ru }}">
         </label>
 
         <p>category belong to product type</p>
@@ -30,7 +35,7 @@
         @foreach ($productTypes as $productType)
 
             @php
-                $title = $category->localization[0];
+                $title = $productType->localization[0];
             @endphp
 
             @if ($productType->id == $category->product_type_id)
