@@ -18,10 +18,6 @@ class Category extends Model
     {
         return $this->belongsTo(ProductType::class);
     }
-    public function products()
-    {
-        return $this->belongsToMany(Product::class, 'category_products');
-    }
     public function localization()
     {
         return $this->morphMany(Localization::class, 'localizationable');

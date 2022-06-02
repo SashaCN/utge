@@ -19,7 +19,7 @@ class Product extends Model implements HasMedia
 
 
     protected $dates = ['deleted_at'];
-    protected $fillable = ['available', 'list_position', 'home_view'];
+    protected $fillable = ['sub_category_id', 'available', 'list_position', 'home_view'];
 
     // public function categories()
     // {

@@ -3,13 +3,7 @@
 
     <?php
 
-    if (app()->getLocale() == 'uk') {
-        $title = 'title_uk';
-        $description = 'description_uk';
-    } elseif (app()->getLocale() == 'ru') {
-        $title = 'title_ru';
-        $description = 'description_ru';
-    }
+    $locale = app()->getLocale();
 
     ?>
 
@@ -44,6 +38,12 @@
         @error('title')
             <p>{{$message}}</p>
         @enderror
+        
+        <p>Розмір товару</p>
+        <input type="text" name="size">
+
+        <p>Ціна товару</p>
+        <input type="text" name="price">
 
         <p>Доступність товару</p>
         <select name="available">
@@ -58,31 +58,36 @@
             <option value="1">Показувати на головній</option>
         </select>
 
-        <p>
-            <label>Ціна<input type="number" name="price"></label>
-        </p>
-
-        @error('price')
+        {{-- @error('price')
             <p>{{$message}}</p>
-        @enderror
+        @enderror --}}
 
-        <label>Виберіть тип товару
+        {{-- <label>Виберіть тип товару
             @foreach ($producttypes as $producttype)
-                <input type="radio" name="producttypes[]" value="{{ $producttype->id }}">{{ $producttype->localization[0]->$title }}
+                @php
+                    $title = $producttype->localization[0];
+                @endphp
+                <input type="radio" name="producttypes[]" value="{{ $producttype->id }}">{{ $title->$locale }}
             @endforeach
-        </label>
+        </label> --}}
 
-        <label>Виберіть категорію
+        {{-- <p>Виберіть категорію
             @foreach ($categories as $category)
-                <input type="radio" name="categories[]" value="{{ $category->id }}">{{ $category->localization[0]->$title }}
+                @php
+                    $title = $category->localization[0];
+                @endphp
+                <input type="radio" name="category" value="{{ $category->id }}">{{ $title->$locale }}
             @endforeach
-        </label>
+        </p> --}}
 
-        <label>Виберіть під-категорію
+        <p>Виберіть під-категорію
             @foreach ($subcategories as $subcategory)
-                <input type="checkbox" name="subcategories[]" value="{{ $subcategory->id }}">{{ $subcategory->localization[0]->$title }}
+                @php
+                    $title = $subcategory->localization[0];
+                @endphp
+                <input type="radio" name="sub_category_id" value="{{ $subcategory->id }}">{{ $title->$locale }}
             @endforeach
-        </label>
+        </p>
 
         @error('category')
             <p>{{$message}}</p>
@@ -116,7 +121,6 @@
 
         <label><input type="file" name="image"></label>
 
-        <label><input type="text" name="alt"></label>
 
         <input type="submit" value="Send">
 

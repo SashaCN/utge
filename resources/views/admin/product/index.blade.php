@@ -31,11 +31,12 @@
                 <td class="product-image"><img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}"></td>
                 <td>{{$title->$locale}}</td>
                 <td>
-                    <ul>
-                        @foreach ($product->categories as $category)
+                    {{$product->subcategory->category->producttype->localization[0]->$locale}}
+                    {{-- <ul>
+                        @foreach ($product->sub as $category)
                             <li><a href="{{ route('category.show', $category) }}">{{ $category->localization[0]->$title }}</a></li>
                         @endforeach
-                    </ul>
+                    </ul> --}}
                 </td>
                 <td>{{$product->price}}</td>
                 <td class="action">
