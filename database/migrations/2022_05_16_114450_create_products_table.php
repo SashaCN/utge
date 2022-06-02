@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('price');
+            $table->foreignId('sub_category_id')->constrained('sub_categories');
             $table->string('available');
             $table->bigInteger('list_position');
+            $table->boolean('home_view');
             $table->softDeletes();
             $table->timestamps();
         });
