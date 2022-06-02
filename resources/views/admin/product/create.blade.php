@@ -57,14 +57,17 @@
             <option value="0">Не показувати на головній</option>
             <option value="1">Показувати на головній</option>
         </select>
-        
         <p>Виберіть під-категорію
-            @foreach ($subcategories as $subcategory)
-                @php
-                    $title = $subcategory->localization[0];
-                @endphp
-                <input type="radio" name="sub_category_id" value="{{ $subcategory->id }}">{{ $title->$locale }}
-            @endforeach
+            <ul>
+                @foreach ($subcategories as $subcategory)
+                    @php
+                        $title = $subcategory->localization[0];
+                    @endphp
+                    <li>
+                        <input type="radio" name="sub_category_id" value="{{ $subcategory->id }}">{{ $title->$locale }}
+                    </li>
+                @endforeach
+            </ul>
         </p>
 
         @error('category')

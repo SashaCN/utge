@@ -35,6 +35,7 @@ class ProductController extends Controller
 
         $products = Product::paginate(10);
 
+        $sizeprices = SizePrice::all();
         $productTypes = ProductType::all();
         $categories = Category::all();
         $subCategories = SubCategory::all();
@@ -45,6 +46,7 @@ class ProductController extends Controller
             'producttypes' => $productTypes,
             'categories' => $categories,
             'subcategories' => $subCategories,
+            'sizeprices' => $sizeprices,
         ]);
     }
 
@@ -133,12 +135,11 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         $categories = Category::all();
-        $sizeprices = SizePrice::all();
 
         return view('admin.product.update', [
             'product' => $product,
             'categories' => $categories,
-            'sizeprices' => $sizeprices,
+            'sizeprices' => SizePrice::getSizePrice(),
             'selected_categories' => $product->categories
         ]);
     }

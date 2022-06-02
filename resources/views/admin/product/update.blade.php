@@ -7,8 +7,8 @@
     @endphp
 
     <div class="flex title-line">
-    <h2>@lang('admin.category_change')</h2>
-        <a href="{{ route('category.create') }}" class="add-button action-button">
+    <h2>@lang('admin.product_change')</h2>
+        <a href="{{ route('product.create') }}" class="add-button action-button">
             <img src="{{ asset('img/add.svg') }}" alt="Add">
         </a>
     </div>
@@ -27,7 +27,7 @@
 
         <p>Доступність товару</p>
 
-        <select name="available">
+        {{-- <select name="available">
             @if ( $product->available == 1 )
                 <option value="1" selected>В наявності</option>
                 <option value="2">Очікується</option>
@@ -41,40 +41,36 @@
                 <option value="2">Очікується</option>
                 <option value="3" selected>Немає в наявності</option>
             @endif
-        </select>
+        </select> --}}
 
-        @foreach ($sizeprices as $siza_price)
+        @foreach ($product->sizeprices as $sizeprice)
 
-            <label>
-                <input type="number" name="price" value="{{ $sizeprices->price }}">
-            </label>
+            <input type="text" name="price" value="{{ $sizeprice->price }}">
 
-            <label>
-                <input type="number" name="price" value="{{ $sizeprices->size }}">
-            </label>
+            <input type="text" name="size" value="{{ $sizeprice->size }}">
 
         @endforeach
 
-        @foreach ($categories as $category)
+        {{-- @foreach ($categories as $category) --}}
 
             <?php $isChecked = false ?>
 
-            @foreach ($selected_categories as $selected_category)
+            {{-- @foreach ($selected_categories as $selected_category) --}}
 
-                @if ( $category->id == $selected_category->id)
+                {{-- @if ( $category->id == $selected_category->id) --}}
                     <?php $isChecked = true ?>
-                @endif
+                {{-- @endif --}}
 
-            @endforeach
+            {{-- @endforeach --}}
 
-            @if ($isChecked == true)
-                <label><input type="checkbox" checked name="categories[]" value="{{ $category->id }}">{{ $category->localization[0]->$title }}</label>
-            @else
-                <label><input type="checkbox"  name="categories[]" value="{{ $category->id }}">{{ $category->localization[0]->$title }}</label>
-            @endif
+            {{-- @if ($isChecked == true) --}}
+                {{-- <label><input type="checkbox" checked name="categories[]" value="{{ $category->id }}">{{ $category->localization[0]->$title }}</label> --}}
+            {{-- @else --}}
+                {{-- <label><input type="checkbox"  name="categories[]" value="{{ $category->id }}">{{ $category->localization[0]->$title }}</label> --}}
+            {{-- @endif --}}
 
 
-        @endforeach
+        {{-- @endforeach --}}
 
         <label><input type="number" value="{{ $product->max_order }}" name="max_order"></label>
         <label><input type="number" value="{{ $product->list_position }}" name="list_position"></label>

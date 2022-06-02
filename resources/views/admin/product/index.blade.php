@@ -17,7 +17,7 @@
                 <th>@lang('admin.image')</th>
                 <th>@lang('admin.title')</th>
                 <th>@lang('admin.filters')</th>
-                <th>@lang('admin.price')</th>
+                <th>@lang('admin.sizeprice')</th>
                 <th>@lang('admin.action')</th>
             </tr>
         </thead>
@@ -30,15 +30,19 @@
             <tr>
                 <td class="product-image"><img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}"></td>
                 <td>{{$title->$locale}}</td>
+                <td>{{$product->subcategory->localization[0]->$locale}}</td>
                 <td>
-                    {{$product->subcategory->category->producttype->localization[0]->$locale}}
-                    {{-- <ul>
-                        @foreach ($product->sub as $category)
-                            <li><a href="{{ route('category.show', $category) }}">{{ $category->localization[0]->$title }}</a></li>
-                        @endforeach
-                    </ul> --}}
+                    @foreach ($sizeprices as $sizeprice)
+                        @if ($sizeprice->product_id == $product->id)
+                            <p>
+                                {{ $sizeprice->size }}
+                                /
+                                {{ $sizeprice->price }}
+                            </p>
+                        @endif
+                    @endforeach
+                    {{-- {{dd($product->sizeprice)}} --}}
                 </td>
-                <td>{{$product->price}}</td>
                 <td class="action">
                     <a href="{{ route('product.edit', $product->id) }}"></a>
                     <a href="{{ route('product.delete', $product->id) }}"></a>
