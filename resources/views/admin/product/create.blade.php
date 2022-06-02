@@ -11,7 +11,7 @@
         $description = 'description_ru';
     }
 
-    ?>  
+    ?>
 
     <div class="flex title-line">
         <h2>@lang('admin.product_create')</h2>
@@ -117,6 +117,10 @@
         <label><input type="file" name="image"></label>
 
         <label><input type="text" name="alt"></label>
+
         <input type="submit" value="Send">
+
+
+
     </form>
 @endsection

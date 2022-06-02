@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/simple-visual-editor.css') }}">
     <title>@lang('admin.utge_admin')</title>
 </head>
 <body>
@@ -69,5 +68,6 @@
     </main>
     <script src="{{ asset('js/lang.js') }}"></script>
     <script src="{{ asset('js/admin.js') }}" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.6.0/dist/alpine.min.js" defer></script>
 </body>
 </html>

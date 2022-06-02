@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Filters\QueryFilter;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -19,19 +21,14 @@ class Product extends Model implements HasMedia
     protected $dates = ['deleted_at'];
     protected $fillable = ['price', 'available', 'list_position', 'home_view'];
 
-    public function categories()
+    // public function categories()
+    // {
+    //     return $this->belongsToMany(Category::class, 'category_products');
+    // }
+    public function subCategory()
     {
-        return $this->belongsToMany(Category::class, 'category_products');
+        return $this->belongsTo(SubCategory::class);
     }
-    public function subCategories()
-    {
-        return $this->belongsToMany(SubCategory::class, 'product_sub_categories', 'product_id', 'sub_category_id');
-    }
-    public function image()
-    {
-        return $this->hasOne(Image::class);
-    }
-
     public function localization()
     {
         return $this->morphMany(Localization::class, 'localizationable');
