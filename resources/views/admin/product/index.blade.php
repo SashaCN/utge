@@ -3,7 +3,6 @@
 
     <?php
         $locale = app()->getLocale();
-
     ?>
 
     <div class="flex title-line">

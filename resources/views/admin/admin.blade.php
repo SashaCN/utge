@@ -25,8 +25,8 @@
                         <ul>
                             <li><a href="{{ route('product.create') }}">@lang('admin.product')</a></li>
                             <li><a href="{{ route('category.create') }}">@lang('admin.category')</a></li>
-                            <li><a href="{{ route('productType.create') }}">product-type</a></li>
-                            <li><a href="{{ route('subCategory.create') }}">subCategory</a></li>
+                            <li><a href="{{ route('productType.index') }}">@lang('admin.product_type')</a></li>
+                            <li><a href="{{ route('subCategory.create') }}">@lang('admin.sub_category_add')</a></li>
                         </ul>
                     </div>
                 </li>
