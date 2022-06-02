@@ -1,29 +1,32 @@
 @extends('admin.admin')
+
 @section('content')
 
-    <?php
+    @php
+        $locale = app()->getLocale();
+    @endphp
 
-    if (app()->getLocale() == 'uk') {
-        $title = 'title_uk';
-        $description = 'description_uk';
-    } elseif (app()->getLocale() == 'ru') {
-        $title = 'title_ru';
-        $description = 'description_ru';
-    }
-
-    ?>
+    <div class="flex title-line">
+    <h2>@lang('admin.category_change')</h2>
+        <a href="{{ route('category.create') }}" class="add-button action-button">
+            <img src="{{ asset('img/add.svg') }}" alt="Add">
+        </a>
+    </div>
 
     <form action="{{ route('product.update', $product->id ) }}" method="POST" enctype="multipart/form-data">
 
         @csrf
         @method('PUT')
 
-        <label><input type="text" value="{{ $product->localization[0]->title_uk }}" name="title_uk">title</label>
-        <label><input type="text" value="{{ $product->localization[0]->title_ru }}" name="title_ru">title</label>
-        <label><input type="text" value="{{ $product->article }}" name="article">article</label>
+        @php
+            $title = $product->localization[0];
+        @endphp
+
+        <label><input type="text" value="{{ $title->uk }}" name="title_uk">title</label>
+        <label><input type="text" value="{{ $title->ru }}" name="title_ru">title</label>
 
         <p>Доступність товару</p>
-        
+
         <select name="available">
             @if ( $product->available == 1 )
                 <option value="1" selected>В наявності</option>
@@ -33,14 +36,24 @@
                 <option value="1">В наявності</option>
                 <option value="2" selected>Очікується</option>
                 <option value="3">Немає в наявності</option>
-            @else 
+            @else
                 <option value="1">В наявності</option>
                 <option value="2">Очікується</option>
                 <option value="3" selected>Немає в наявності</option>
             @endif
         </select>
 
-        <label><input type="number" name="price" value="{{ $product->price }}"></label>
+        @foreach ($sizeprices as $siza_price)
+
+            <label>
+                <input type="number" name="price" value="{{ $sizeprices->price }}">
+            </label>
+
+            <label>
+                <input type="number" name="price" value="{{ $sizeprices->size }}">
+            </label>
+
+        @endforeach
 
         @foreach ($categories as $category)
 
@@ -81,6 +94,6 @@
         <label><input type="file" name="image"></label>
         <input type="submit" value="img">
     </form>
-    
+
 @endsection
 

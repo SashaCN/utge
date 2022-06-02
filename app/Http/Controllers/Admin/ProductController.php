@@ -100,12 +100,12 @@ class ProductController extends Controller
         $product->localization()->save($localization_title);
         $product->localization()->save($localization_desc);
         $product->sizePrices()->save($size_price);
-        
+
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $product->addMediaFromRequest('image')
             ->toMediaCollection('images');
         }
-        
+
         return redirect()->route('product.index');
     }
 
@@ -133,9 +133,12 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         $categories = Category::all();
+        $sizeprices = SizePrice::all();
+
         return view('admin.product.update', [
             'product' => $product,
             'categories' => $categories,
+            'sizeprices' => $sizeprices,
             'selected_categories' => $product->categories
         ]);
     }

@@ -38,7 +38,7 @@
         @error('title')
             <p>{{$message}}</p>
         @enderror
-        
+
         <p>Розмір товару</p>
         <input type="text" name="size">
 
@@ -57,29 +57,7 @@
             <option value="0">Не показувати на головній</option>
             <option value="1">Показувати на головній</option>
         </select>
-
-        {{-- @error('price')
-            <p>{{$message}}</p>
-        @enderror --}}
-
-        {{-- <label>Виберіть тип товару
-            @foreach ($producttypes as $producttype)
-                @php
-                    $title = $producttype->localization[0];
-                @endphp
-                <input type="radio" name="producttypes[]" value="{{ $producttype->id }}">{{ $title->$locale }}
-            @endforeach
-        </label> --}}
-
-        {{-- <p>Виберіть категорію
-            @foreach ($categories as $category)
-                @php
-                    $title = $category->localization[0];
-                @endphp
-                <input type="radio" name="category" value="{{ $category->id }}">{{ $title->$locale }}
-            @endforeach
-        </p> --}}
-
+        
         <p>Виберіть під-категорію
             @foreach ($subcategories as $subcategory)
                 @php
