@@ -33,4 +33,8 @@ class Product extends Model implements HasMedia
     {
         return $this->morphMany(Localization::class, 'localizationable');
     }
+    public function sizePrices()
+    {
+        return $this->hasMany(SizePrice::class);
+    }
 }
