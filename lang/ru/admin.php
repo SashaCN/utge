@@ -15,6 +15,7 @@ return [
     'description' => 'Описание',
     'filters' => 'Фильтры',
     'price' => 'Цена',
+    'sizeprice' => 'Вес/Цена',
     'article' => 'Артикул',
     'action' => 'Действие',
     'add_category' => 'Добавить категорию',

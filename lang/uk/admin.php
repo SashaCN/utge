@@ -15,6 +15,7 @@
         'description' => 'Опис',
         'filters' => 'Фільтри',
         'price' => 'Ціна',
+        'sizeprice' => 'Вага/Ціна',
         'article' => 'Артикул',
         'action' => 'Дія',
         'sub_category_add' => 'Під-категорію',
