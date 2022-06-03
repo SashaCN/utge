@@ -177,8 +177,7 @@ class ProductController extends Controller
 
         $product->sizePrices()->update($size_price);
 
-        $product->localization()->update($localization_description);
-        $product->localization()->update($localization_title);
+        $product->localization()->update($localization_description, $localization_title);
         // dd($localization_description , $localization_title);
 
         return redirect()->route('product.index');
