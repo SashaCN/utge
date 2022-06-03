@@ -101,12 +101,12 @@ class ProductController extends Controller
         $product->localization()->save($localization_title);
         $product->localization()->save($localization_desc);
         $product->sizePrices()->save($size_price);
-        
+
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $product->addMediaFromRequest('image')
             ->toMediaCollection('images');
         }
-        
+
         return redirect()->route('product.index');
     }
 
@@ -133,11 +133,13 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        $categories = Category::all();
+        $subCategories = SubCategory::all();
+
         return view('admin.product.update', [
             'product' => $product,
-            'categories' => $categories,
-            'selected_categories' => $product->categories
+            'subCategories' => $subCategories,
+            'sizeprices' => SizePrice::getSizePrice(),
+            'selected_subCategories' => $product->$subCategories
         ]);
     }
 
@@ -166,12 +168,13 @@ class ProductController extends Controller
             'price' => $request->price
         ];
         
-
         $product->fill($request->except(['size', 'price']));
         $product->update();
-        $product->localization()->update($localization_title);
-        $product->localization()->update($localization_description);
+
         $product->sizePrices()->update($size_price);
+
+        $product->localization()->where('var', 'title')->update($localization_title);
+        $product->localization()->where('var', 'description')->update($localization_description);
 
         return redirect()->route('product.index');
     }

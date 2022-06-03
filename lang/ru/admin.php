@@ -22,6 +22,7 @@ return [
     'add_category' => 'Добавить категорию',
     'category_change' => 'Редактировать категорию',
     'product_list' => 'Список товаров',
+    'product_change' => 'Редактировать товар',
     'product_create' => 'Добавить товар',
     'sub_category_add' => 'Под-категорию',
     'product_type' => 'Тип товара',

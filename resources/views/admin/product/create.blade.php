@@ -50,7 +50,7 @@
                 <input type="text" name="size" id="size">
                 <label class="label" for="size">@lang('admin.add_size')</label>
             </div>
-    
+
             <div class="input-wrap">
                 <input type="text" name="price" id="price">
                 <label class="label" for="price">@lang('admin.add_price')</label>

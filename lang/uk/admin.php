@@ -21,6 +21,7 @@
         'action' => 'Дія',
         'sub_category_add' => 'Під-категорію',
         'product_type' => 'Тип товару',
+        'product_change' => 'Редагуват товар',
         'product_type_list' => 'Список типів товару',
         'category_list' => 'Список категорій',
         'add_category' => 'Додати категорію',
