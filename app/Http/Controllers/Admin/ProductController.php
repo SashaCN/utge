@@ -77,7 +77,6 @@ class ProductController extends Controller
 
     public function store(ProductRequest $request)
     {
-
         $localization_title = new Localization();
         $localization_title->fill($request->validated());
         $localization_title->var = 'title';
@@ -152,21 +151,27 @@ class ProductController extends Controller
     public function update(ProductRequest $request, Product $product)
     {
 
-        $localization = [
-            'title_uk' => $request->title_uk,
-            'title_ru' => $request->title_ru,
-            'description_uk' => $request->description_uk,
-            'description_ru' => $request->description_ru
+        $localization_title = [
+            'var' => 'title',
+            'uk' => $request->title_uk,
+            'ru' => $request->title_ru
         ];
+        $localization_description = [
+            'var' => 'description',
+            'uk' => $request->description_uk,
+            'ru' => $request->description_ru
+        ];
+        $size_price =[
+            'size' => $request->size,
+            'price' => $request->price
+        ];
+        
 
-        $product->fill($request->except(['categories','subcategories', 'image', 'alt']));
+        $product->fill($request->except(['size', 'price']));
         $product->update();
-        $product->localization()->update($localization);
-
-        //conect product to category
-        $product->categories()->sync($request->categories);
-        $product->subcategories()->sync($request->subcategories);
-
+        $product->localization()->update($localization_title);
+        $product->localization()->update($localization_description);
+        $product->sizePrices()->update($size_price);
 
         return redirect()->route('product.index');
     }

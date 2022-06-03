@@ -3,13 +3,7 @@
 
     <?php
 
-    if (app()->getLocale() == 'uk') {
-        $title = 'title_uk';
-        $description = 'description_uk';
-    } elseif (app()->getLocale() == 'ru') {
-        $title = 'title_ru';
-        $description = 'description_ru';
-    }
+        $locale = app()->getLocale();
 
     ?>
 
@@ -42,24 +36,11 @@
 
         <label><input type="number" name="price" value="{{ $product->price }}"></label>
 
-        @foreach ($categories as $category)
-
-            <?php $isChecked = false ?>
-
-            @foreach ($selected_categories as $selected_category)
-
-                @if ( $category->id == $selected_category->id)
-                    <?php $isChecked = true ?>
-                @endif
-
-            @endforeach
-
             @if ($isChecked == true)
                 <label><input type="checkbox" checked name="categories[]" value="{{ $category->id }}">{{ $category->localization[0]->$title }}</label>
             @else
                 <label><input type="checkbox"  name="categories[]" value="{{ $category->id }}">{{ $category->localization[0]->$title }}</label>
             @endif
-
 
         @endforeach
 

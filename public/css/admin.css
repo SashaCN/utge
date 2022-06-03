@@ -46,7 +46,7 @@ ul {
 header {
   position: fixed;
   top: 0;
-  right: 0;
+  left: 15vw;
   z-index: 2;
   width: 85vw;
   box-sizing: border-box;
