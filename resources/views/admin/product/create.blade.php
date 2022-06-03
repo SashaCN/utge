@@ -90,7 +90,7 @@
                 </select>
             </div>
             <div class="input-wrap">
-                <input type="number" name="list_position" id="list_pos">
+                <input type="number" name="list_position" value="0" id="list_pos">
                 <label for="list_pos" class="label">@lang('admin.add_list_position')</label>
             </div>
             {{-- <input type="submit" value="Send" class="save"> --}}
