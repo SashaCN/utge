@@ -108,7 +108,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoryRequest $request, Category $category, Localization $localization_title)
+    public function update(CategoryRequest $request, Category $category)
     {
 
         $localization_title = [

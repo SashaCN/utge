@@ -134,13 +134,13 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        $categories = Category::all();
+        $subCategories = SubCategory::all();
 
         return view('admin.product.update', [
             'product' => $product,
-            'categories' => $categories,
+            'subCategories' => $subCategories,
             'sizeprices' => SizePrice::getSizePrice(),
-            'selected_categories' => $product->categories
+            'selected_subCategories' => $product->$subCategories
         ]);
     }
 
@@ -154,20 +154,29 @@ class ProductController extends Controller
     public function update(ProductRequest $request, Product $product)
     {
 
-        $localization = [
-            'title_uk' => $request->title_uk,
-            'title_ru' => $request->title_ru,
-            'description_uk' => $request->description_uk,
-            'description_ru' => $request->description_ru
+
+        $size_price = [
+            'price' => $request->price,
+            'size' => $request->size
         ];
 
-        $product->fill($request->except(['categories','subcategories', 'image', 'alt']));
+        $product->fill($request->except(['size', 'price']));
         $product->update();
-        $product->localization()->update($localization);
 
-        //conect product to category
-        $product->categories()->sync($request->categories);
-        $product->subcategories()->sync($request->subcategories);
+        $localization_title->fill($request->validated());
+        $localization_title->var = 'title';
+        $localization_title->uk = $request->title_uk;
+        $localization_title->ru = $request->title_ru;
+
+
+        $localization_desc->fill($request->validated());
+        $localization_desc->var = 'description';
+        $localization_desc->uk = $request->description_uk;
+        $localization_desc->ru = $request->description_ru;
+
+        $product->localization()->update($localization_title);
+        // $product->localization()->update($localization_description);
+        $product->sizePrices()->update($size_price);
 
 
         return redirect()->route('product.index');
