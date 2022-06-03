@@ -21,7 +21,7 @@
         </tr>
 
         @foreach ($categories as $category)
-
+        
         @php
             $title = $category->localization[0];
         @endphp

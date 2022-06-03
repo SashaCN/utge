@@ -1,17 +1,43 @@
 @extends('admin.admin')
 
 @section('content')
+
+    @php
+        $locale = app()->getLocale();
+    @endphp
+
+    <div class="flex title-line">
+        <h2>@lang('admin.subcategory_change')</h2>
+    </div>
+
+
     <form action="{{ route('subCategory.update', $subCategory->id) }}" method="POST">
         @csrf
         @method('PUT')
-        <label><input type="text" name="title" value="{{ $subCategory->title }}" placeholder="subCategory title"></label>
+
+        @php
+            $title = $subCategory->localization[0];
+        @endphp
+
+        <label>
+            <input type="text" name="title_uk" value="{{ $title->uk }}">
+        </label>
+
+        <label>
+            <input type="text" name="title_ru" value="{{ $title->ru }}">
+        </label>
+
         <p>subCategory belong to category</p>
 
         @foreach ($categories as $category)
+        @php
+            $title = $category->localization[0];
+        @endphp
+
             @if ($category->id == $subCategory->category_id)
-                <label><input type="radio" name="category_id" value="{{ $category->id }}" checked>{{ $category->title }}</label>
+                <label><input type="radio" name="category_id" value="{{ $category->id }}" checked>{{ $title->$locale }}</label>
             @else
-                <label><input type="radio" name="category_id" value="{{ $category->id }}">{{ $category->title }}</label>
+                <label><input type="radio" name="category_id" value="{{ $category->id }}">{{ $title->$locale }}</label>
             @endif
         @endforeach
 

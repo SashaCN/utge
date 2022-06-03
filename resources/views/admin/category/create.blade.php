@@ -16,7 +16,7 @@
         <label><input type="text" name="title_uk"></label>
         <label><input type="text" name="title_ru"></label>
 
-        <p>Оберіть до якого типу продукту буде відноситись категорія</p>
+        <p>@lang('admin.choose_category')</p>
 
         @foreach ($productTypes as $productType)
 
