@@ -37,7 +37,7 @@
                             <p>
                                 {{ $sizeprice->size }}
                                 /
-                                {{ $sizeprice->price }}
+                                {{ $sizeprice->price }}грн
                             </p>
                         @endif
                     @endforeach

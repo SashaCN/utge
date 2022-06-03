@@ -154,6 +154,18 @@ class ProductController extends Controller
     public function update(ProductRequest $request, Product $product)
     {
 
+        $localization_title = [
+            'var' => 'title',
+            'uk' => $request->title_uk,
+            'ru' => $request->title_ru
+        ];
+
+        $localization_description = [
+            'var' => 'description',
+            'uk' => $request->description_uk,
+            'ru' => $request->description_ru
+        ];
+
 
         $size_price = [
             'price' => $request->price,
@@ -163,21 +175,11 @@ class ProductController extends Controller
         $product->fill($request->except(['size', 'price']));
         $product->update();
 
-        $localization_title->fill($request->validated());
-        $localization_title->var = 'title';
-        $localization_title->uk = $request->title_uk;
-        $localization_title->ru = $request->title_ru;
-
-
-        $localization_desc->fill($request->validated());
-        $localization_desc->var = 'description';
-        $localization_desc->uk = $request->description_uk;
-        $localization_desc->ru = $request->description_ru;
-
-        $product->localization()->update($localization_title);
-        // $product->localization()->update($localization_description);
         $product->sizePrices()->update($size_price);
 
+        $product->localization()->update($localization_description);
+        $product->localization()->update($localization_title);
+        // dd($localization_description , $localization_title);
 
         return redirect()->route('product.index');
     }

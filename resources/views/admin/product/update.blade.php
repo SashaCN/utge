@@ -55,7 +55,7 @@
             @php
                 $title = $subCategory->localization[0];
             @endphp
-            
+
             @if ($subCategory->id == $product->sub_category_id)
                 <label><input type="radio" value="{{$subCategory->id}}" name="sub_category_id" checked>{{ $title->$locale }}</label>
             @else
