@@ -25,24 +25,26 @@ Route::middleware('set_locale')->group(function(){
     // Route::get('/child/{rout}', function () {
     //     return view('site.childPage');
     // });
-    
-});
 
-Route::middleware('set_locale')->group(function(){
-    Route::prefix('admin')->group(function()
-    {
-        Route::get('locale/{locale}', [\App\Http\Controllers\Admin\AdminController::class, 'changeLocale'])->name('locale');
-        Route::get('/', [\App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin');
-        Route::resource('childPage', \App\Http\Controllers\Admin\ChildPageController::class);
-        Route::resource('news', \App\Http\Controllers\Admin\NewsController::class);
-        Route::resource('productType', \App\Http\Controllers\Admin\ProductTypeController::class);
-        Route::resource('category', \App\Http\Controllers\Admin\CategoryController::class);
-        Route::resource('subCategory', \App\Http\Controllers\Admin\SubCategoryController::class);
-        Route::resource('product', \App\Http\Controllers\Admin\ProductController::class);
-        Route::get('product/delete/{product}', [\App\Http\Controllers\Admin\ProductController::class, 'delete'])->name('product.delete');
-        Route::get('productType/delete/{productType}', [\App\Http\Controllers\Admin\ProductTypeController::class, 'delete'])->name('productType.delete');
-        Route::get('category/delete/{category}', [\App\Http\Controllers\Admin\CategoryController::class, 'delete'])->name('category.delete');
-        Route::get('subCategory/delete/{subCategory}', [\App\Http\Controllers\Admin\SubCategoryController::class, 'delete'])->name('subCategory.delete');
+});
+Route::middleware('auth')->group(function(){
+    Route::middleware('set_locale')->group(function(){
+        Route::prefix('admin')->group(function()
+        {
+            Route::get('locale/{locale}', [\App\Http\Controllers\Admin\AdminController::class, 'changeLocale'])->name('locale');
+            Route::get('/', [\App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin');
+            Route::resource('childPage', \App\Http\Controllers\Admin\ChildPageController::class);
+            Route::resource('news', \App\Http\Controllers\Admin\NewsController::class);
+            Route::resource('productType', \App\Http\Controllers\Admin\ProductTypeController::class);
+            Route::resource('category', \App\Http\Controllers\Admin\CategoryController::class);
+            Route::resource('subCategory', \App\Http\Controllers\Admin\SubCategoryController::class);
+            Route::resource('product', \App\Http\Controllers\Admin\ProductController:: class);
+            Route::post('product/mediaUpdate/{product}', [\App\Http\Controllers\Admin\ProductController::class, 'mediaUpdate'])->name('product.mediaUpdate');
+            Route::get('product/delete/{product}', [\App\Http\Controllers\Admin\ProductController::class, 'delete'])->name('product.delete');
+            Route::get('productType/delete/{productType}', [\App\Http\Controllers\Admin\ProductTypeController::class, 'delete'])->name('productType.delete');
+            Route::get('category/delete/{category}', [\App\Http\Controllers\Admin\CategoryController::class, 'delete'])->name('category.delete');
+            Route::get('subCategory/delete/{subCategory}', [\App\Http\Controllers\Admin\SubCategoryController::class, 'delete'])->name('subCategory.delete');
+        });
     });
 });
 

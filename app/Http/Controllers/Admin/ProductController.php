@@ -10,6 +10,11 @@ use App\Models\Localization;
 use App\Models\Product;
 use App\Models\ProductType;
 use App\Models\SubCategory;
+use App\Filters\ProductFilter;
+use App\Http\Requests\ImageRequest;
+use App\Models\CategoryProduct;
+use App\Models\SizePrice;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -27,10 +32,21 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+
+        $products = Product::paginate(10);
+
+        $sizeprices = SizePrice::all();
+        $productTypes = ProductType::all();
+        $categories = Category::all();
+        $subCategories = SubCategory::all();
+
 
         return view('admin.product.index', [
-            'products' => $products
+            'products' => $products,
+            'producttypes' => $productTypes,
+            'categories' => $categories,
+            'subcategories' => $subCategories,
+            'sizeprices' => $sizeprices,
         ]);
     }
 
@@ -62,31 +78,36 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
 
-        $localization = new Localization();
-        $localization->fill($request->validated());
-        $localization->title_uk = $request->title_uk;
-        $localization->title_ru = $request->title_ru;
-        $localization->description_uk = $request->description_uk;
-        $localization->description_ru = $request->description_ru;
-        // dd($localization);
+        $localization_title = new Localization();
+        $localization_title->fill($request->validated());
+        $localization_title->var = 'title';
+        $localization_title->uk = $request->title_uk;
+        $localization_title->ru = $request->title_ru;
+
+        $localization_desc = new Localization();
+        $localization_desc->fill($request->validated());
+        $localization_desc->var = 'description';
+        $localization_desc->uk = $request->description_uk;
+        $localization_desc->ru = $request->description_ru;
+
+        $size_price = new SizePrice();
+        $size_price->fill($request->validated());
+        $size_price->size = $request->size;
+        $size_price->price = $request->price;
 
         $product = new Product();
-        $product->fill($request->except(['categories', 'subcategories']));
+        $product->fill($request->except(['size', 'price']));
         $product->save();
-        $product->localization()->save($localization);
 
-        //conect product to category
-        $product->categories()->sync($request->categories);
-        $product->subcategories()->sync($request->subcategories);
-
-        // add info to images table in bd
-        // $image = $this->imageSaver->upload($request->alt);
-        // $product->image()->save($image);
-
+        $product->localization()->save($localization_title);
+        $product->localization()->save($localization_desc);
+        $product->sizePrices()->save($size_price);
+        
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $product->addMediaFromRequest('image')->toMediaCollection('images');
+            $product->addMediaFromRequest('image')
+            ->toMediaCollection('images');
         }
-
+        
         return redirect()->route('product.index');
     }
 
@@ -130,6 +151,7 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, Product $product)
     {
+
         $localization = [
             'title_uk' => $request->title_uk,
             'title_ru' => $request->title_ru,
@@ -145,18 +167,21 @@ class ProductController extends Controller
         $product->categories()->sync($request->categories);
         $product->subcategories()->sync($request->subcategories);
 
-        // update info to images table in bd
+
+        return redirect()->route('product.index');
+    }
+
+    public function mediaUpdate(ImageRequest $request, Product $product)
+    {
         if ($request->hasFile('image')) {
 
             $product->clearMediaCollection('images');
-            $product->addMediaFromRequest('image')->toMediaCollection('images');
+            $product->addMediaFromRequest('image')
+            ->toMediaCollection('images');
 
-        } else {
-            
-            $product->addMediaFromRequest('image')->toMediaCollection('images');
         }
 
-        return redirect()->route('product.index');
+        return redirect()->route('product.edit', $product->id);
     }
 
     /**

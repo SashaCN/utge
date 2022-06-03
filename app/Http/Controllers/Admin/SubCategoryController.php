@@ -45,19 +45,18 @@ class SubCategoryController extends Controller
     public function store(SubCategoryRequest $request)
     {
 
-        $localization = new Localization();
-        $localization->fill($request->validated());
-        $localization->title_uk = $request->title_uk;
-        $localization->title_ru = $request->title_ru;
-        $localization->description_uk = $request->title_uk;
-        $localization->description_ru = $request->title_ru;
+        $localization_title = new Localization();
+        $localization_title->fill($request->validated());
+        $localization_title->var = 'title';
+        $localization_title->uk = $request->title_uk;
+        $localization_title->ru = $request->title_ru;
 
         $subCategory = new SubCategory();
 
         $subCategory->fill($request->validated());
         $subCategory->category_id = $request->category_id;
         $subCategory->save();
-        $subCategory->localization()->save($localization);
+        $subCategory->localization()->save($localization_title);
 
 
         return redirect()->route('subCategory.index');

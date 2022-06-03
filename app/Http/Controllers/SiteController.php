@@ -5,13 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ChildPage;
 use App\Models\News;
+use App\Models\Product;
 
 class SiteController extends Controller
 {
     public function index()
     {
-        $about_us = ChildPage::all()->where('route', 'about');
-        return view('site.firstPage');
+        $products  = Product::all()->where('home_view', '1');
+
+        return view('site.firstPage', [
+            'products' => $products
+        ]);
     }
 
     public function childPageRedirect(Request $request)

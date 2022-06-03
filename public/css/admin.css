@@ -7,6 +7,9 @@
 /* -------------------------------------------------------------------------- */
 /*                                  animation                                 */
 /* -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
+/*                                   shadow                                   */
+/* -------------------------------------------------------------------------- */
 * {
   margin: 0;
   padding: 0;
@@ -22,6 +25,11 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
 }
 
 ul {
@@ -288,6 +296,7 @@ main {
   width: 35px;
   height: 35px;
   background-color: #003b95;
+  border: none;
   transition: 0.5s;
 }
 .add-button img {
@@ -388,4 +397,50 @@ main {
 }
 .create-list a:hover {
   background-color: #B4B4B4;
+}
+
+.current-btn {
+  background-color: #B4B4B4;
+}
+
+.current-slide-wrap {
+  display: inline-block;
+  background-color: #B4B4B4;
+  padding: 40px 30px 50px;
+  box-sizing: border-box;
+}
+.current-slide-wrap > div {
+  display: none;
+}
+.current-slide-wrap .current-slide {
+  display: flex;
+}
+
+.input-wrap {
+  position: relative;
+  padding: 30px 0 20px;
+}
+.input-wrap:last-child {
+  padding-bottom: 0;
+}
+.input-wrap input:not([type=radio]),
+.input-wrap textarea,
+.input-wrap select {
+  width: 400px;
+  font-size: 16px;
+  padding: 10px 15px;
+  border: none;
+  background-color: #D9D9D9;
+  box-sizing: border-box;
+}
+.input-wrap textarea {
+  width: 800px;
+}
+.input-wrap .label {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.input-wrap > p {
+  margin-bottom: 10px;
 }

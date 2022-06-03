@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Filters\QueryFilter;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -9,7 +11,7 @@ class Localization extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title_uk', 'description_uk', 'title_ru', 'description_uk'];
+    protected $fillable = ['var', 'uk', 'ru'];
     public $timestamps = true;
 
     public function localizationable()
@@ -17,13 +19,4 @@ class Localization extends Model
         return $this->MorphTo();
     }
 
-    // public function product()
-    // {
-    //     return $this->morphedByMany(Product::class, 'localizationable');
-    // }
-
-    // public function productType()
-    // {
-    //     return $this->morphedByMany(ProductType::class, 'localizationable');
-    // }
 }
