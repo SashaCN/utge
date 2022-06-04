@@ -32,11 +32,15 @@
                 <td>{{$title->$locale}}</td>
                 <td>{{$product->subcategory->localization[0]->$locale}}</td>
                 <td>
-                    @foreach ($sizeprices as $sizeprice)
-                        @if ($sizeprice->product_id == $product->id)
+                    @foreach ($product->sizeprices as $sizeprice)
+                        @if ($sizeprice->size != null)
                             <p>
                                 {{ $sizeprice->size }}
                                 /
+                                {{ $sizeprice->price }}грн
+                            </p>
+                        @else
+                            <p>
                                 {{ $sizeprice->price }}грн
                             </p>
                         @endif

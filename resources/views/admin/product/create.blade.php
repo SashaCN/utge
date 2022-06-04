@@ -46,6 +46,7 @@
             </div>
         </div>
         <div class="size-price-slide flex-col">
+            <script src="js/sizeprice.js"></script>
             <div class="input-wrap">
                 <input type="text" name="size" id="size">
                 <label class="label" for="size">@lang('admin.add_size')</label>
@@ -85,8 +86,8 @@
             <div class="input-wrap">
                 <p>@lang('admin.add_home_view')</p>
                 <select name="home_view">
-                    <option value="0">@lang('admin.home_view')</option>
-                    <option value="1">@lang('admin.not_home_view')</option>
+                    <option value="0">@lang('admin.not_home_view')</option>
+                    <option value="1">@lang('admin.home_view')</option>
                 </select>
             </div>
             <div class="input-wrap">

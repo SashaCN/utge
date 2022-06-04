@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\SizePrice;
 
 class ProductController extends Controller
 {
@@ -19,7 +20,8 @@ class ProductController extends Controller
         $products = Product::all();
 
         return view('site.product.index', [
-            'products' => $products
+            'products' => $products,
+            'sizeprices' => SizePrice::getSizePrice(),
         ]);
     }
 

@@ -35,7 +35,6 @@ class ProductController extends Controller
 
         $products = Product::paginate(10);
 
-        $sizeprices = SizePrice::all();
         $productTypes = ProductType::all();
         $categories = Category::all();
         $subCategories = SubCategory::all();
@@ -46,7 +45,7 @@ class ProductController extends Controller
             'producttypes' => $productTypes,
             'categories' => $categories,
             'subcategories' => $subCategories,
-            'sizeprices' => $sizeprices,
+            'sizeprices' => SizePrice::getSizePrice(),
         ]);
     }
 
@@ -167,7 +166,7 @@ class ProductController extends Controller
             'size' => $request->size,
             'price' => $request->price
         ];
-        
+
         $product->fill($request->except(['size', 'price']));
         $product->update();
 
