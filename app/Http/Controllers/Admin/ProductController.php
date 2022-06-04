@@ -12,6 +12,7 @@ use App\Models\ProductType;
 use App\Models\SubCategory;
 use App\Filters\ProductFilter;
 use App\Http\Requests\ImageRequest;
+use App\Http\Requests\LocalizationRequest;
 use App\Models\CategoryProduct;
 use App\Models\SizePrice;
 use Illuminate\Http\Request;
@@ -33,7 +34,7 @@ class ProductController extends Controller
     public function index()
     {
 
-        $products = Product::paginate(10);
+        $products = Product::paginate(20);
 
         $sizeprices = SizePrice::all();
         $productTypes = ProductType::all();
@@ -75,9 +76,8 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function store(ProductRequest $request)
+    public function store(ProductRequest $request, LocalizationRequest $localizationRequest, ImageRequest $imageRequest)
     {
-
         $localization_title = new Localization();
         $localization_title->fill($request->validated());
         $localization_title->var = 'title';
@@ -151,7 +151,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductRequest $request, Product $product)
+    public function update(ProductRequest $request, Product $product, LocalizationRequest $localizationRequest)
     {
 
         $localization_title = [
@@ -159,24 +159,26 @@ class ProductController extends Controller
             'uk' => $request->title_uk,
             'ru' => $request->title_ru
         ];
-
         $localization_description = [
             'var' => 'description',
             'uk' => $request->description_uk,
             'ru' => $request->description_ru
         ];
-
-
-        $size_price = [
-            'price' => $request->price,
-            'size' => $request->size
+        $size_price =[
+            'size' => $request->size,
+            'price' => $request->price
         ];
 
         $product->fill($request->except(['size', 'price']));
         $product->update();
 
         $product->sizePrices()->update($size_price);
-        $product->localization()->update()->where($localization_titl
+
+
+        $product->localization()->where('var', 'title')->update($localization_title);
+        $product->localization()->where('var', 'description')->update($localization_description);
+
+
         return redirect()->route('product.index');
     }
 

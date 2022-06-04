@@ -1,27 +1,53 @@
 @extends('admin.admin')
 
 @section('content')
-    <?php
-        if (app()->getLocale() == 'uk') {
-            $title = 'title_uk';
-            $description = 'description_uk';
-        } elseif (app()->getLocale() == 'ru') {
-            $title = 'title_ru';
-            $description = 'description_ru';
-        }
-    ?>
 
-    <form action="{{ route('subCategory.store') }}" method="POST">
+    @php
+        $locale = app()->getLocale();
+    @endphp
+
+    <div class="flex title-line">
+        <h2>@lang('admin.admin.add_sub_category')</h2>
+        <button type="submit" form="form" class="add-button">
+            <img src="{{ asset('img/save.svg') }}" alt="Add">
+        </button>
+    </div>
+
+    <ul class="create-list flex">
+        <li><a href="#" class="name-btn current-btn">@lang('admin.title')</a></li>
+        <li><a href="#" class="name-btn">@lang('admin.another')</a></li>
+    </ul>
+
+    <form id="form" action="{{ route('subCategory.store')}}" method="POST" class="current-slide-wrap">
+
         @csrf
-        <label><input type="text" name="title_uk" placeholder="category title"></label>
-        <label><input type="text" name="title_ru" placeholder="category title"></label>
 
-        <p>Оберіть до якої категорії буде відноситись під-категорія</p>
+        <div class="name-slide flex-col current-slide">
+            <div class="input-wrap">
+                <input type="text" id="title_uk" name="title_uk">
+                <label class="label" for="title_uk">@lang('admin.add_uk_title')</label>
+            </div>
+            <div class="input-wrap">
+                <input type="text" id="title_ru" name="title_ru">
+                <label class="label" for="title_ru">@lang('admin.add_ru_title')</label>
+            </div>
+        </div>
+        <div class="desc-slide flex-col">
+            <div class="another-slide flex-col">
+                <div class="input-wrap sub-category-wrap">
+                    <p class="label">Виберіть категорію</p>
+                    <ul class="flex-space sub-category-wrap">
+                        @foreach ($categories as $category)
+                        @php
+                            $title = $category->localization[0];
+                        @endphp
+                            <input class="radio-change" id="subCategory{{$category->id}}" type="radio" value="{{$category->id}}" name="product_type_id">
+                            <label class="radio-label" for="subCategory{{$category->id}}"><span class="label-circle"></span><span class="label-desc">{{ $title->$locale }}</span></label>
+                        @endforeach
+                    </ul>
+                </div>
+        </div>
 
-        @foreach ($categories as $category)
-            <label><input type="radio" name="category_id" value="{{ $category->id }}">{{ $category->localization[0]->$title}}</label>
-        @endforeach
-
-        <input type="submit" value="Send">
     </form>
+    <script src="{{ asset('js/create.js') }}"></script>
 @endsection

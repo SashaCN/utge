@@ -49,7 +49,11 @@
                 </td>
             </tr>
             @endforeach
-            {{ $products->withQueryString()->links('vendor.pagination.bootstrap-5') }}
         </tbody>
     </table>
+
+    <div class="pagination">
+        {{ $products->withQueryString()->links('vendor.pagination.utge-pagination') }}
+    </div>
+
     @endsection

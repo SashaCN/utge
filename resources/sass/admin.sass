@@ -1,27 +1,27 @@
 @import helpers/vars
-  
+
 *
   margin: 0
   padding: 0
 
-body 
+body
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif
   padding-left: 15vw
   padding-top: 45px
 
-.flex 
+.flex
   display: flex
   justify-content: space-between
   align-items: center
 
 .flex-col
   display: flex
-  flex-direction: column 
+  flex-direction: column
 
-ul 
+ul
   list-style: none
 
-.uppercase 
+.uppercase
   text-transform: uppercase
 
 /* -------------------------------------------------------------------------- */
@@ -31,18 +31,18 @@ ul
 header
   position: fixed
   top: 0
-  right: 0
+  left: 15vw
   z-index: 2
   width: 85vw
   box-sizing: border-box
   padding-right: 20px
   color: #fff
   background-color: $primary
-  a 
+  a
     color: #fff
 
-.header-menu 
-  a 
+.header-menu
+  a
     font-size: 16px
     line-height: 24px
     text-decoration: none
@@ -55,8 +55,8 @@ header
   &:hover
     background-color: $primary-hover
 
-.li-add 
-  a 
+.li-add
+  a
     display: inline-block
     padding-left: 45px
 
@@ -70,42 +70,42 @@ header
   height: 17px
   background-image: url('../img/add.svg')
 
-.li-add 
+.li-add
   position: relative
 
-.add-menu 
+.add-menu
   position: absolute
   left: 0
   top: 50px
   background-color: $primary
-  li, a 
+  li, a
     display: inline-block
     width: 100%
-  a 
+  a
     padding: 15px 27px
     box-sizing: border-box
 
-.focus 
+.focus
   background-color: $primary-hover
 
-.hidden 
+.hidden
   display: none!important
 
-.lang-select 
+.lang-select
   position: relative
   display: flex
   flex-direction: column
   height: 32px
   overflow: hidden
   transition: .5s
-  a 
-    text-decoration: none  
+  a
+    text-decoration: none
     line-height: 22px
     padding: 5px 35px 5px 10px
     transition: .5s
-    &:hover 
+    &:hover
       background-color: $primary-hover
-    span 
+    span
       margin-left: 5px
   &::before
     content: ''
@@ -118,25 +118,25 @@ header
     border-top: none
     border-left: none
     transform: rotate(45deg) translate(-75%, -50%)
-  &:hover 
+  &:hover
     cursor: pointer
 
-.selected-lang 
+.selected-lang
   order: -1
 
-.active-select 
-  overflow: visible 
+.active-select
+  overflow: visible
   background-color: $primary-hover
-  a 
+  a
     background-color: $primary
     &:first-child
       background-color: $primary-hover
-      
+
 /* -------------------------------------------------------------------------- */
 /*                                 aside menu                                 */
 /* -------------------------------------------------------------------------- */
 
-aside 
+aside
   position: fixed
   top: 0
   left: 0
@@ -152,61 +152,61 @@ aside
     text-decoration: none
     padding: 15px 30px
     box-sizing: border-box
-  li  
+  li
     position: relative
-    &:hover 
-      span 
+    &:hover
+      span
         transform: scale(1)
 
-.logo 
+.logo
   transition: .5s
   margin-right: 30px
-  a 
+  a
     padding: 7.5px 0
     justify-content: center
-  img 
+  img
     height: 35px
-  &:hover 
+  &:hover
     transform: scale(1.15)
 
-.aside-menu 
+.aside-menu
   li
     &:nth-child(1n+2)
       a
         position: relative
-        padding-left: 54px 
+        padding-left: 54px
         &::before
           content: ''
-          position: absolute 
+          position: absolute
           top: 50%
-          left: 30px 
+          left: 30px
           width: 24px
           height: 24px
           transform: translate(-50%, -50%)
     &:nth-child(2)
       a
-        &::before 
+        &::before
           background-image: url(../img/product.svg)
     &:nth-child(3)
       a
-        &::before 
+        &::before
           background-image: url(../img/category.svg)
     &:nth-child(4)
       a
-        &::before 
+        &::before
           background-image: url(../img/order.svg)
     &:nth-child(5)
       a
-        &::before 
+        &::before
           background-image: url(../img/new.svg)
     &:nth-child(6)
       a
-        &::before 
+        &::before
           background-image: url(../img/module.svg)
 
 .selected-item
   background-color: $primary-hover
-  &::before 
+  &::before
     content: ''
     position: absolute
     z-index: 3
@@ -216,12 +216,12 @@ aside
     height: 110%
     background-color: #D9D9D9
 
-.copy 
+.copy
   position: fixed
   bottom: 0
   left: 0
   width: 15vw
-  img 
+  img
     height: 40px
     width: 100%
   a
@@ -234,7 +234,7 @@ aside
 /*                                    main                                    */
 /* -------------------------------------------------------------------------- */
 
-main 
+main
   padding: 20px
 
 /* -------------------------------------------------------------------------- */
@@ -246,7 +246,7 @@ main
   margin-bottom: 20px
   border-bottom: 1px solid #000
 
-.add-button 
+.add-button
   display: inline-block
   position: relative
   width: 35px
@@ -254,21 +254,21 @@ main
   background-color: $primary
   border: none
   transition: .5s
-  img 
+  img
     position: absolute
     top: 50%
     left: 50%
     transform: translate(-50%, -50%)
     transition: .5s
   &:hover
-    background-color: $primary-hover 
-    img 
+    background-color: $primary-hover
+    img
       transform: translate(-50%, -50%) scale(1.1)
 
 .product-table
   width: 75%
   border-collapse: collapse
-  thead tr 
+  thead tr
     background-color: #D9D9D9
   tbody
     tr
@@ -277,33 +277,34 @@ main
         background-color: #D9D9D9
       &:nth-child(odd)
         background-color: #BEBEBE
-      &:hover 
+      &:hover
         background-color: #acacac
 
-  td, th 
+  td, th
     padding: 15px
 
-.product-image 
+.product-image
   width: 75px
-  img 
+  img
     width: 100%
 
-.action 
+
+.action
   text-align: center
-  a 
+  a
     position: relative
     display: inline-block
-    width: 24px 
+    width: 24px
     height: 24px
     background-color: $primary
     transition: .5s
-    &:hover 
+    &:hover
       background-color: $primary-hover
     &:last-child
       background-color: #cb0000
-      &:hover 
+      &:hover
         background-color: #a00000
-      &::before 
+      &::before
         background-image: url(../img/delete.svg)
     &::before
       content: ''
@@ -320,11 +321,11 @@ main
 /*                               product create                               */
 /* -------------------------------------------------------------------------- */
 
-.create-list 
+.create-list
   justify-content: flex-start
   width: 100%
   background-color: #D9D9D9
-  a 
+  a
     display: inline-block
     font-size: 16px
     line-height: 20px
@@ -335,34 +336,34 @@ main
     &:hover
       background-color: #B4B4B4
 
-.current-btn 
+.current-btn
   background-color: #B4B4B4
 
-.current-slide-wrap 
+.current-slide-wrap
   display: inline-block
   background-color: #B4B4B4
   padding: 40px 30px 50px
   box-sizing: border-box
-  & > div 
+  & > div
     display: none
-  .current-slide 
+  .current-slide
     display: flex
 
-.input-wrap 
+.input-wrap
   position: relative
   padding: 30px 0 20px
   &:last-child
     padding-bottom: 0
   input:not([type=radio]),
   textarea,
-  select 
+  select
     width: 400px
     font-size: 16px
     padding: 10px 15px
     border: none
     background-color: #D9D9D9
     box-sizing: border-box
-  textarea 
+  textarea
     width: 800px
   .label
     position: absolute
@@ -370,3 +371,82 @@ main
     left: 0
   & > p
     margin-bottom: 10px
+
+/* -------------------------------------------------------------------------- */
+/*                               product update                               */
+/* -------------------------------------------------------------------------- */
+
+.image-changes
+    text-align: center
+    display: inline-block
+    cursor: pointer
+    margin-bottom: 15px
+
+.old-image
+    width: 500px
+    transition: 0.5s
+
+.image-changes-desc
+    text-align: center
+    margin-bottom: 15px
+
+.image-changes-bt
+    padding: 15px
+    cursor: pointer
+
+.image-changes-form
+    display: none
+
+.radio-change
+    display: none
+
+.radio-label
+    cursor: pointer
+    margin-left: 10px
+    display: flex
+    flex-direction: row
+    align-items: center
+    padding: 5px
+    background-color: #F2F2F2
+    border-radius: 50px
+    margin-bottom: 15px
+    transition: 0.5s
+    &:hover
+        box-shadow: 0px 0px 10px #3D43FF
+
+.radio-change:checked + .radio-label
+    padding: 5px
+    background-color: #D9D9D9
+    box-shadow: 0px 0px 10px #3D43FF
+    transition: 0.5s
+    .label-circle
+        background-color: #3D43FF
+        border: 1px solid rgba(0, 0, 0, 0.0)
+
+.label-circle
+    display: block
+    width: 8px
+    height: 8px
+    border-radius: 50px
+    border: 1px solid #cccccc
+    margin-left: 10px
+
+.label-desc
+    display: block
+    font-size: 13px
+    margin-left: 10px
+    margin-right: 10px
+
+.flex-space
+    display: flex
+
+.sub-category-wrap
+    flex-wrap: wrap
+    width: 400px
+
+/* -------------------------------------------------------------------------- */
+/*                                   pagination                                 */
+/* -------------------------------------------------------------------------- */
+
+.pagination
+    padding: 25px

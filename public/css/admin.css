@@ -46,7 +46,7 @@ ul {
 header {
   position: fixed;
   top: 0;
-  right: 0;
+  left: 15vw;
   z-index: 2;
   width: 85vw;
   box-sizing: border-box;
@@ -443,4 +443,96 @@ main {
 }
 .input-wrap > p {
   margin-bottom: 10px;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                               product update                               */
+/* -------------------------------------------------------------------------- */
+.image-changes {
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.old-image {
+  width: 500px;
+  transition: 0.5s;
+}
+
+.image-changes-desc {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.image-changes-bt {
+  padding: 15px;
+  cursor: pointer;
+}
+
+.image-changes-form {
+  display: none;
+}
+
+.radio-change {
+  display: none;
+}
+
+.radio-label {
+  cursor: pointer;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 5px;
+  background-color: #F2F2F2;
+  border-radius: 50px;
+  margin-bottom: 15px;
+  transition: 0.5s;
+}
+.radio-label:hover {
+  box-shadow: 0px 0px 10px #3D43FF;
+}
+
+.radio-change:checked + .radio-label {
+  padding: 5px;
+  background-color: #D9D9D9;
+  box-shadow: 0px 0px 10px #3D43FF;
+  transition: 0.5s;
+}
+.radio-change:checked + .radio-label .label-circle {
+  background-color: #3D43FF;
+  border: 1px solid rgba(0, 0, 0, 0);
+}
+
+.label-circle {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50px;
+  border: 1px solid #cccccc;
+  margin-left: 10px;
+}
+
+.label-desc {
+  display: block;
+  font-size: 13px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.flex-space {
+  display: flex;
+}
+
+.sub-category-wrap {
+  flex-wrap: wrap;
+  width: 400px;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                   pagination                                 */
+/* -------------------------------------------------------------------------- */
+.pagination {
+  padding: 25px;
 }

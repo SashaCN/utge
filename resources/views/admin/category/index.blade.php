@@ -13,26 +13,28 @@
         </a>
     </div>
 
-    <table>
+    <table class="product-table">
+        <thead>
+            <tr>
+                <th>@lang('admin.title')</th>
+                <th>@lang('admin.action')</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($categories as $category)
 
-        <tr>
-            <th>@lang('admin.title')</th>
-            <th>@lang('admin.action')</th>
-        </tr>
+            @php
+                $title = $category->localization[0];
+            @endphp
 
-        @foreach ($categories as $category)
-
-        @php
-            $title = $category->localization[0];
-        @endphp
-
-        <tr>
-            <td>{{ $title->$locale }}</td>
-            <td>
-                <a href="{{ route('category.edit', $category->id) }}">update</a>
-                <a href="{{ route('category.delete', $category->id) }}">delete</a>
-            </td>
-        </tr>
-        @endforeach
+            <tr>
+                <td>{{ $title->$locale }}</td>
+                <td class="action">
+                    <a href="{{ route('category.edit', $category->id) }}"></a>
+                    <a href="{{ route('category.delete', $category->id) }}"></a>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
     </table>
 @endsection
