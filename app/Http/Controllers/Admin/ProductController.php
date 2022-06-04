@@ -12,6 +12,7 @@ use App\Models\ProductType;
 use App\Models\SubCategory;
 use App\Filters\ProductFilter;
 use App\Http\Requests\ImageRequest;
+use App\Http\Requests\LocalizationRequest;
 use App\Models\CategoryProduct;
 use App\Models\SizePrice;
 use Illuminate\Http\Request;
@@ -33,7 +34,7 @@ class ProductController extends Controller
     public function index()
     {
 
-        $products = Product::paginate(10);
+        $products = Product::paginate(20);
 
         $productTypes = ProductType::all();
         $categories = Category::all();
@@ -74,7 +75,7 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function store(ProductRequest $request)
+    public function store(ProductRequest $request, LocalizationRequest $localizationRequest, ImageRequest $imageRequest)
     {
         $localization_title = new Localization();
         $localization_title->fill($request->validated());
@@ -149,7 +150,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductRequest $request, Product $product)
+    public function update(ProductRequest $request, Product $product, LocalizationRequest $localizationRequest)
     {
 
         $localization_title = [
@@ -172,8 +173,10 @@ class ProductController extends Controller
 
         $product->sizePrices()->update($size_price);
 
+
         $product->localization()->where('var', 'title')->update($localization_title);
         $product->localization()->where('var', 'description')->update($localization_description);
+
 
         return redirect()->route('product.index');
     }

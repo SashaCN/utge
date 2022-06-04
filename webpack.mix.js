@@ -16,12 +16,14 @@ mix.webpackConfig({
     },
 });
 
-mix.js('resources/js/app.js', 'public/js').js('resources/js/sizeprice.js', 'public/js').postCss('resources/css/app.css', 'public/css', [
+mix.browserSync('utge');
+
+mix.js('resources/js/app.js', 'public/js').postCss('resources/css/app.css', 'public/css', [
     require('postcss-import'),
     require('tailwindcss'),
     require('autoprefixer'),
 ]);
 
-mix.sass('resources/sass/admin.sass', 'public/css').sass('resources/sass/style.sass', 'public/css').options({
+mix.sass('resources/sass/admin.sass', 'public/css').sass('resources/sass/style.sass', 'public/css').sass('resources/sass/pagination.sass', 'public/css').options({
     processCssUrls: false
 });
