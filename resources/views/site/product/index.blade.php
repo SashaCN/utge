@@ -2,17 +2,10 @@
 
 @section('content')
 
-<?php
+@php
+    $locale = app()->getLocale();
+@endphp
 
-  if (app()->getLocale() == 'uk') {
-      $title = 'title_uk';
-      $description = 'description_uk';
-  } elseif (app()->getLocale() == 'ru') {
-      $title = 'title_ru';
-      $description = 'description_ru';
-  }
-
-?>
 
 <div class="wrapper flex-sb">
   <div class="filter-box">
@@ -20,12 +13,20 @@
   </div>
   <div class="product-list flex-sb shadow-box">
     @foreach ($products as $product)
+        @php
+            $title = $product->localization[0];
+            $description = $product->localization[1];
+
+            // foreach ($product->sizeprices as $sizeprice) {
+            //     # code...
+            // }
+        @endphp
       <a href="#">
         <figure class="product shadow-box">
-          <img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $product->localization[0]->$title }}">
+          <img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
           <figcaption>
-            <h3>{{ $product->localization[0]->$title }}</h3>
-            <p class="description">{{ $product->localization[0]->$description }}ууа ргы рващр щйшуащшц уащшц цущшащшц</p>
+            <h3>{{ $title->$locale }}</h3>
+            <p class="description">{{ $description->$locale }} ууа ргы рващр щйшуащшц уащшц цущшащшц</p>
             <div class="button-line flex-sb">
               <p class="add-to-basket flex-aic">
                 <svg>

@@ -36,7 +36,6 @@ class ProductController extends Controller
 
         $products = Product::paginate(20);
 
-        $sizeprices = SizePrice::all();
         $productTypes = ProductType::all();
         $categories = Category::all();
         $subCategories = SubCategory::all();
@@ -47,7 +46,7 @@ class ProductController extends Controller
             'producttypes' => $productTypes,
             'categories' => $categories,
             'subcategories' => $subCategories,
-            'sizeprices' => $sizeprices,
+            'sizeprices' => SizePrice::getSizePrice(),
         ]);
     }
 
@@ -78,6 +77,8 @@ class ProductController extends Controller
 
     public function store(ProductRequest $request, LocalizationRequest $localizationRequest, ImageRequest $imageRequest)
     {
+        $product = new Product();
+
         $localization_title = new Localization();
         $localization_title->fill($request->validated());
         $localization_title->var = 'title';
@@ -90,18 +91,22 @@ class ProductController extends Controller
         $localization_desc->uk = $request->description_uk;
         $localization_desc->ru = $request->description_ru;
 
-        $size_price = new SizePrice();
-        $size_price->fill($request->validated());
-        $size_price->size = $request->size;
-        $size_price->price = $request->price;
-
-        $product = new Product();
         $product->fill($request->except(['size', 'price']));
         $product->save();
 
+        for($i = 1; $i <= $request->sizecount; $i++){
+            $size_price = new SizePrice();
+            $size_price->fill($request->validated());
+            $size = 'size'.$i;
+            $price = 'price'.$i;
+            $size_price->size = $request->$size;
+            $size_price->price = $request->$price;
+
+            $product->sizePrices()->save($size_price);
+        }
+
         $product->localization()->save($localization_title);
         $product->localization()->save($localization_desc);
-        $product->sizePrices()->save($size_price);
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $product->addMediaFromRequest('image')
