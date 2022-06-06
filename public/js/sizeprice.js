@@ -44,11 +44,12 @@ function countSizePrices (counter)
     sizeprice.innerHTML = text;
     new_auto_value_inuts = document.querySelectorAll('.auto-value');
 
-    if (auto_value_inuts != []) {
-        for (let i = 0; i < auto_value_inuts.length; i++) {
-            if (auto_value_inuts[i].value != "") {
-                new_auto_value_inuts[i].value = auto_value_inuts[i].value;
+    for (let i = 0; i < auto_value_inuts.length; i++) {
+        if (auto_value_inuts[i].value != "") {
+            if (i > new_auto_value_inuts.length-1) {
+                break;
             }
+            new_auto_value_inuts[i].value = auto_value_inuts[i].value;
         }
     }
 }

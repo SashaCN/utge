@@ -134,8 +134,7 @@
             }
 
         </script>
-        <script src="{{ asset('js/sizeprice.js') }}">                            //add size adn price script
-        </script>
+        <script src="{{ asset('js/sizeprice.js') }}"></script>
     </form>
     <script src="{{ asset('js/create.js') }}"></script>
 @endsection
