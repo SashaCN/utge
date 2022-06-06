@@ -46,15 +46,11 @@
             </div>
         </div>
         <div class="size-price-slide flex-col">
-            <div class="input-wrap">
-                <input type="text" name="size" id="size">
-                <label class="label" for="size">@lang('admin.add_size')</label>
-            </div>
+            <div class="size-price">
 
-            <div class="input-wrap">
-                <input type="text" name="price" id="price">
-                <label class="label" for="price">@lang('admin.add_price')</label>
             </div>
+            <button id="add-size-price" class="image-changes-bt">@lang('admin.add_size_price')</button>
+            <button id="delete-size-price" class="image-changes-bt">@lang('admin.delete_size_price')</button>
         </div>
         <div class="image-slide flex-col">
             <label><input type="file" name="image"></label>
@@ -85,8 +81,8 @@
             <div class="input-wrap">
                 <p>@lang('admin.add_home_view')</p>
                 <select name="home_view">
-                    <option value="0">@lang('admin.home_view')</option>
-                    <option value="1">@lang('admin.not_home_view')</option>
+                    <option value="0">@lang('admin.not_home_view')</option>
+                    <option value="1">@lang('admin.home_view')</option>
                 </select>
             </div>
             <div class="input-wrap">
@@ -120,9 +116,26 @@
         @error('image')
         <p>{{$message}}</p>
         @enderror
+        <script>
+            function getStructure(counter) {
+                return structure = `
+                    <div class="input-wrap">
+                        <input type="text" name="size${counter}" id="size${counter}">
+                        <label class="label" for="size${counter}">@lang('admin.add_size')</label>
+                    </div>
 
+                    <div class="input-wrap">
+                        <input type="text" name="price${counter}" id="price${counter}">
+                        <label class="label" for="price${counter}">@lang('admin.add_price')</label>
+                    </div>
+                    <input type="hidden" name="sizecount" value="${counter}">
+                    <hr>
+                `;
+            }
 
-
+        </script>
+        <script src="{{ asset('js/sizeprice.js') }}">                            //add size adn price script
+        </script>
     </form>
     <script src="{{ asset('js/create.js') }}"></script>
 @endsection
