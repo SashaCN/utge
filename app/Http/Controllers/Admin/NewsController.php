@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\NewsRequest;
 use Illuminate\Http\Request;
-use App\Models\News;
+use App\Http\Requests\NewsRequest;
+use App\Http\Requests\ImageRequest;
 use App\Models\Localization;
+use App\Models\News;
 
 class NewsController extends Controller
 {
@@ -43,16 +44,41 @@ class NewsController extends Controller
         $news = new News();
         $news->fill($request->validated());
         $news->save();
+
+        $localization_title = new Localization();
+        $localization_title->fill($request->validated());
+        $localization_title->var = 'title';
+        $localization_title->uk = $request->title_uk;
+        $localization_title->ru = $request->title_ru;
         
-        $localization = new Localization();
-        $localization->fill($request->validated());
-        $localization->title_uk = $request->title_uk;
-        $localization->title_ru = $request->title_ru;
-        $localization->description_uk = $request->description_uk;
-        $localization->description_ru = $request->description_ru;
-        $news->localization()->save($localization);
-        
+        $localization_desc = new Localization();
+        $localization_desc->fill($request->validated());
+        $localization_desc->var = 'description';
+        $localization_desc->uk = $request->description_uk;
+        $localization_desc->ru = $request->description_ru;
+
+        $news->localization()->save($localization_title);
+        $news->localization()->save($localization_desc);
+
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $news->addMediaFromRequest('image')
+            ->toMediaCollection('images');
+        }
+
         return redirect()->route('news.index');
+    }
+
+    public function mediaUpdate(ImageRequest $request, News $news)
+    {
+         if ($request->hasFile('image')) {
+
+            $news->clearMediaCollection('images');
+            $news->addMediaFromRequest('image')
+            ->toMediaCollection('images');
+
+        }
+
+        return redirect()->route('news.edit', $news->id);
     }
 
     /**
@@ -86,15 +112,22 @@ class NewsController extends Controller
      */
     public function update(NewsRequest $request, News $news)
     {
-        $localization = [
-            'title_uk' => $request->title_uk,
-            'title_ru' => $request->title_ru,
-            'description_uk' => $request->description_uk,
-            'description_ru' => $request->description_ru
+        $localization_title = [
+            'var' => "title",
+            'uk' => $request->title_uk,
+            'ru' => $request->title_ru,
+        ];
+
+        $localization_desc = [
+            'var' => "description",
+            'uk' => $request->description_uk,
+            'ru' => $request->description_ru
         ];
 
         $news->update($request->validated());
-        $news->localization()->update($localization);
+
+        $news->localization()->where('var', 'title')->update($localization_title);
+        $news->localization()->where('var', 'description')->update($localization_desc);
     
         return redirect()->route('news.index');
     }

@@ -1,19 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ChildPage</title>
-</head>
-<body>
-    <p>child page</p>
+@extends('site.index')
+
+@section('content')
+
+    @php
+        $locale = app()->getLocale();
+    @endphp
+
     @foreach ($childPage as $item)
+        @php
+            $title = $item->localization[0];
+            $description = $item->localization[1];
+        @endphp
+
         <div>
-            <h3>{{ $item->title }}</h2>
-            <p>{{ $item->description }}</p>
+            <img src="{{ $item->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
+            <h3>{{ $title->$locale }}</h2>
+            <p>{{ $description->$locale }}</p>
         </div>
-        <hr>
+
     @endforeach
-</body>
-</html>
+
+@endsection
