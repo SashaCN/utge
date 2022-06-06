@@ -50,7 +50,7 @@
                 <input type="text" name="size" id="size">
                 <label class="label" for="size">@lang('admin.add_size')</label>
             </div>
-    
+
             <div class="input-wrap">
                 <input type="text" name="price" id="price">
                 <label class="label" for="price">@lang('admin.add_price')</label>
@@ -60,16 +60,16 @@
             <label><input type="file" name="image"></label>
         </div>
         <div class="another-slide flex-col">
-            <div class="input-wrap">
+            <div class="input-wrap sub-category-wrap">
                 <p class="label">Виберіть під-категорію</p>
-                <ul class="flex-col">
+                <ul class="flex-space sub-category-wrap">
                     @foreach ($subcategories as $subcategory)
                         @php
                             $title = $subcategory->localization[0];
                         @endphp
                         <li>
-                            <input type="radio" id="{{ $subcategory->id }}" name="sub_category_id" value="{{ $subcategory->id }}">
-                            <label for="{{ $subcategory->id }}">{{ $title->$locale }}</label>
+                            <input class="radio-change" type="radio" id="{{ $subcategory->id }}" name="sub_category_id" value="{{ $subcategory->id }}">
+                            <label class="radio-label" for="{{ $subcategory->id }}"><span class="label-circle"></span><span class="label-desc">{{ $title->$locale }}</span></label>
                         </li>
                     @endforeach
                 </ul>
@@ -120,8 +120,6 @@
         @error('image')
         <p>{{$message}}</p>
         @enderror
-
-
 
 
 

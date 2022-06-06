@@ -22,6 +22,7 @@ return [
     'add_category' => 'Добавить категорию',
     'category_change' => 'Редактировать категорию',
     'product_list' => 'Список товаров',
+    'product_change' => 'Редактировать товар',
     'product_create' => 'Добавить товар',
     'sub_category_add' => 'Под-категорию',
     'product_type' => 'Тип товара',
@@ -41,4 +42,8 @@ return [
     'home_view' => 'Отображать',
     'not_home_view' => 'Не отображать',
     'add_list_position' => 'Позиция в списке',
+    'update-image' => 'Для того чтобы, выбрать новое фото - нажмите на картинку',
+    'save-new-phot' => 'Сохранить новое фото',
+    'admin.add_sub_category' => 'Добавить под-категорию',
+    'add_product_type' => 'Добавить тип товара'
 ];

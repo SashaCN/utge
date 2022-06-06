@@ -21,6 +21,7 @@
         'action' => 'Дія',
         'sub_category_add' => 'Під-категорію',
         'product_type' => 'Тип товару',
+        'product_change' => 'Редагуват товар',
         'product_type_list' => 'Список типів товару',
         'category_list' => 'Список категорій',
         'add_category' => 'Додати категорію',
@@ -41,4 +42,8 @@
         'home_view' => 'Відображати',
         'not_home_view' => 'Не віддображати',
         'add_list_position' => 'Позиція в списку',
+        'update-image' => 'Для того щоб, вибрати нове фото - натисніть на картинку',
+        'save-new-phot' => 'Зберегти нове фото',
+        'admin.add_sub_category' => 'Добавити під категорію',
+        'add_product_type' => 'Добавити тип товару'
     ];

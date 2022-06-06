@@ -12,6 +12,7 @@ use App\Models\ProductType;
 use App\Models\SubCategory;
 use App\Filters\ProductFilter;
 use App\Http\Requests\ImageRequest;
+use App\Http\Requests\LocalizationRequest;
 use App\Models\CategoryProduct;
 use App\Models\SizePrice;
 use Illuminate\Http\Request;
@@ -33,7 +34,7 @@ class ProductController extends Controller
     public function index()
     {
 
-        $products = Product::paginate(10);
+        $products = Product::paginate(1);
 
         $sizeprices = SizePrice::all();
         $productTypes = ProductType::all();
@@ -75,9 +76,8 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function store(ProductRequest $request)
+    public function store(ProductRequest $request, LocalizationRequest $localizationRequest, ImageRequest $imageRequest)
     {
-
         $localization_title = new Localization();
         $localization_title->fill($request->validated());
         $localization_title->var = 'title';
@@ -102,12 +102,12 @@ class ProductController extends Controller
         $product->localization()->save($localization_title);
         $product->localization()->save($localization_desc);
         $product->sizePrices()->save($size_price);
-        
+
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $product->addMediaFromRequest('image')
             ->toMediaCollection('images');
         }
-        
+
         return redirect()->route('product.index');
     }
 
@@ -134,11 +134,13 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        $categories = Category::all();
+        $subCategories = SubCategory::all();
+
         return view('admin.product.update', [
             'product' => $product,
-            'categories' => $categories,
-            'selected_categories' => $product->categories
+            'subCategories' => $subCategories,
+            'sizeprices' => SizePrice::getSizePrice(),
+            'selected_subCategories' => $product->$subCategories
         ]);
     }
 
@@ -149,23 +151,32 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductRequest $request, Product $product)
+    public function update(ProductRequest $request, Product $product, LocalizationRequest $localizationRequest)
     {
 
-        $localization = [
-            'title_uk' => $request->title_uk,
-            'title_ru' => $request->title_ru,
-            'description_uk' => $request->description_uk,
-            'description_ru' => $request->description_ru
+        $localization_title = [
+            'var' => 'title',
+            'uk' => $request->title_uk,
+            'ru' => $request->title_ru
+        ];
+        $localization_description = [
+            'var' => 'description',
+            'uk' => $request->description_uk,
+            'ru' => $request->description_ru
+        ];
+        $size_price =[
+            'size' => $request->size,
+            'price' => $request->price
         ];
 
-        $product->fill($request->except(['categories','subcategories', 'image', 'alt']));
+        $product->fill($request->except(['size', 'price']));
         $product->update();
-        $product->localization()->update($localization);
 
-        //conect product to category
-        $product->categories()->sync($request->categories);
-        $product->subcategories()->sync($request->subcategories);
+        $product->sizePrices()->update($size_price);
+
+
+        $product->localization()->where('var', 'title')->update($localization_title);
+        $product->localization()->where('var', 'description')->update($localization_description);
 
 
         return redirect()->route('product.index');

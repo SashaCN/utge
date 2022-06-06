@@ -102,7 +102,16 @@ class SubCategoryController extends Controller
      */
     public function update(SubCategoryRequest $request, SubCategory $subCategory)
     {
+
+        $localization_title = [
+            'var' => 'title',
+            'uk' => $request->title_uk,
+            'ru' => $request->title_ru
+        ];
+
         $subCategory->update($request->validated());
+
+        $subCategory->localization()->update($localization_title);
 
         return redirect()->route('subCategory.show', $subCategory);
     }
@@ -117,7 +126,7 @@ class SubCategoryController extends Controller
     {
 
     }
-    public function delete(SubCategory $subCategory)
+    public function delete(SubCategory $subCategory, Product $product)
     {
         $subCategory->delete();
         return redirect()->route('subCategory.index');

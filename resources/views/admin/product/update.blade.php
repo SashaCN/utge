@@ -1,86 +1,161 @@
 @extends('admin.admin')
+
 @section('content')
 
-    <?php
+    @php
+        $locale = app()->getLocale();
+    @endphp
 
-    if (app()->getLocale() == 'uk') {
-        $title = 'title_uk';
-        $description = 'description_uk';
-    } elseif (app()->getLocale() == 'ru') {
-        $title = 'title_ru';
-        $description = 'description_ru';
-    }
 
-    ?>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
-    <form action="{{ route('product.update', $product->id ) }}" method="POST" enctype="multipart/form-data">
+    <div class="flex title-line">
+    <h2>@lang('admin.product_change')</h2>
+        <button type="submit" form="form" class="add-button">
+            <img src="{{ asset('img/save.svg') }}" alt="Add">
+        </button>
+    </div>
+
+    <ul class="create-list flex">
+        <li><a href="#" class="name-btn current-btn">@lang('admin.title')</a></li>
+        <li><a href="#" class="desc-btn">@lang('admin.description')</a></li>
+        <li><a href="#" class="sp-btn">@lang('admin.sizeprice')</a></li>
+        <li><a href="#" class="photo-btn">@lang('admin.photo')</a></li>
+        <li><a href="#" class="another-btn">@lang('admin.another')</a></li>
+    </ul>
+
+    <form id="form" action="{{ route('product.update', $product->id ) }}" method="POST" enctype="multipart/form-data" class="current-slide-wrap">
 
         @csrf
         @method('PUT')
 
-        <label><input type="text" value="{{ $product->localization[0]->title_uk }}" name="title_uk">title</label>
-        <label><input type="text" value="{{ $product->localization[0]->title_ru }}" name="title_ru">title</label>
-        <label><input type="text" value="{{ $product->article }}" name="article">article</label>
+        @php
+            $title = $product->localization[0];
+            $description = $product->localization[1];
+        @endphp
 
-        <p>Доступність товару</p>
-        
-        <select name="available">
-            @if ( $product->available == 1 )
-                <option value="1" selected>В наявності</option>
-                <option value="2">Очікується</option>
-                <option value="3">Немає в наявності</option>
-            @elseif ( $product->available == 2 )
-                <option value="1">В наявності</option>
-                <option value="2" selected>Очікується</option>
-                <option value="3">Немає в наявності</option>
-            @else 
-                <option value="1">В наявності</option>
-                <option value="2">Очікується</option>
-                <option value="3" selected>Немає в наявності</option>
-            @endif
-        </select>
+        <div class="name-slide flex-col current-slide">
+            <div class="input-wrap">
+                <input type="text" value="{{ $title->uk }}" id="title_uk" name="title_uk">
+                <label class="label" for="title_uk">@lang('admin.add_uk_title')</label>
+            </div>
+            <div class="input-wrap">
+                <input type="text" value="{{ $title->ru}}" id="title_ru" name="title_ru">
+                <label class="label" for="title_ru">@lang('admin.add_ru_title')</label>
+            </div>
+        </div>
 
-        <label><input type="number" name="price" value="{{ $product->price }}"></label>
+        <div class="desc-slide flex-col">
+            <div class="input-wrap">
+                <textarea name="description_uk" id="desc_uk" cols="30" rows="10">{{ $description->uk }}</textarea>
+                <label class="label" for="desc_uk">@lang('admin.add_uk_desc')</label>
+            </div>
+            <div class="input-wrap">
+                <textarea name="description_ru" id="desc_ru" cols="30" rows="10">{{ $description->ru }}</textarea>
+                <label class="label" for="desc_ru">@lang('admin.add_ru_desc')</label>
+            </div>
+        </div>
 
-        @foreach ($categories as $category)
+        <div class="size-price-slide flex-col">
+            @foreach ($product->sizeprices as $sizeprice)
+            <div class="input-wrap">
+                <input type="text" value="{{ $sizeprice->size }}" name="size" id="size">
+                <label class="label" for="size">@lang('admin.add_size')</label>
+            </div>
 
-            <?php $isChecked = false ?>
-
-            @foreach ($selected_categories as $selected_category)
-
-                @if ( $category->id == $selected_category->id)
-                    <?php $isChecked = true ?>
-                @endif
-
+            <div class="input-wrap">
+                <input type="text" value="{{ $sizeprice->price }}" name="price" id="price">
+                <label class="label" for="price">@lang('admin.add_price')</label>
+            </div>
             @endforeach
+        </div>
 
-            @if ($isChecked == true)
-                <label><input type="checkbox" checked name="categories[]" value="{{ $category->id }}">{{ $category->localization[0]->$title }}</label>
-            @else
-                <label><input type="checkbox"  name="categories[]" value="{{ $category->id }}">{{ $category->localization[0]->$title }}</label>
-            @endif
+        <div class="image-slide flex-col">
 
 
-        @endforeach
+            <label class="image-changes" for="image-changes"><img class="old-image" src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}"></label>
+            <p class="image-changes-desc">@lang('admin.update-image')</p>
 
-        <label><input type="number" value="{{ $product->max_order }}" name="max_order"></label>
-        <label><input type="number" value="{{ $product->list_position }}" name="list_position"></label>
+            <button class="image-changes-bt" type="submit" form="image-change" class="add-button">@lang('admin.save-new-phot')</button>
 
-        <textarea name="description_uk" cols="30" rows="10">{{$product->localization[0]->description_uk}}</textarea>
-        <textarea name="description_ru" cols="30" rows="10">{{$product->localization[0]->description_ru}}</textarea>
+        </div>
 
-        <input type="submit" value="Send">
+        <div class="another-slide flex-col">
+            <div class="input-wrap sub-category-wrap">
+                <p class="label">Виберіть під-категорію</p>
+                <ul class="flex-space sub-category-wrap">
+                    @foreach ($subCategories as $subCategory)
+                    @php
+                        $title = $subCategory->localization[0];
+                    @endphp
+
+                    @if ($subCategory->id == $product->sub_category_id)
+                        <input class="radio-change" id="subCategory{{$subCategory->id}}" type="radio" value="{{$subCategory->id}}" name="sub_category_id" checked>
+                        <label class="radio-label" for="subCategory{{$subCategory->id}}"><span class="label-circle"></span><span class="label-desc">{{ $title->$locale }}</span></label>
+                    @else
+                        <input class="radio-change" id="subCategoryNon{{$subCategory->id}}" type="radio" value="{{$subCategory->id}}" name="sub_category_id">
+                        <label class="radio-label" for="subCategoryNon{{$subCategory->id}}"><span class="label-circle"></span><span class="label-desc">{{ $title->$locale }}</span></label>
+                    @endif
+                    @endforeach
+                </ul>
+            </div>
+
+            <div class="input-wrap">
+                <p>@lang('admin.add_available')</p>
+                <select name="available">
+                    @if ($product->available == 1)
+                        <option selected value="1">@lang('admin.available')</option>
+                        <option value="2">@lang('admin.not_available')</option>
+                        <option value="3">@lang('admin.waiting_available')</option>
+                    @elseif ($product->available == 2)
+                        <option value="1">@lang('admin.available')</option>
+                        <option selected  value="2">@lang('admin.not_available')</option>
+                        <option value="3">@lang('admin.waiting_available')</option>
+                    @elseif ($product->available == 3)
+                        <option value="1">@lang('admin.available')</option>
+                        <option value="2">@lang('admin.not_available')</option>
+                        <option selected value="3">@lang('admin.waiting_available')</option>
+                    @endif
+                </select>
+            </div>
+
+            <div class="input-wrap">
+                <p>@lang('admin.add_home_view')</p>
+                <select name="home_view">
+                    @if ($product->home_view == 0)
+                        <option value="1">@lang('admin.home_view')</option>
+                        <option selected value="0">@lang('admin.not_home_view')</option>
+                    @elseif ($product->home_view == 1)
+                        <option selected value="1">@lang('admin.home_view')</option>
+                        <option value="0">@lang('admin.not_home_view')</option>
+                    @endif
+                </select>
+            </div>
+            <div class="input-wrap">
+                <input type="number" name="list_position" value="{{ $product->list_position }}" id="list_pos">
+                <label for="list_pos" class="label">@lang('admin.add_list_position')</label>
+            </div>
+        </div>
     </form>
 
-    <img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $product->localization[0]->$title }}">
 
-    <form action="{{ route('product.mediaUpdate', $product->id ) }}" method="POST" enctype="multipart/form-data">
+    <form id="image-change" class="image-changes-form"  action="{{ route('product.mediaUpdate', $product->id ) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('POST')
 
-        <label><input type="file" name="image"></label>
+        <input id="image-changes" type="file" name="image">
         <input type="submit" value="img">
     </form>
-    
+
+    <script src="{{ asset('js/create.js') }}"></script>
 @endsection
 
+`

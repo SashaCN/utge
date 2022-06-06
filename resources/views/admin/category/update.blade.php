@@ -8,12 +8,17 @@
 
     <div class="flex title-line">
         <h2>@lang('admin.category_change')</h2>
-        <a href="{{ route('category.create') }}" class="add-button action-button">
-            <img src="{{ asset('img/add.svg') }}" alt="Add">
-        </a>
+        <button type="submit" form="form" class="add-button">
+            <img src="{{ asset('img/save.svg') }}" alt="Add">
+        </button>
     </div>
 
-    <form action="{{ route('category.update', $category->id) }}" method="POST">
+    <ul class="create-list flex">
+        <li><a href="#" class="name-btn current-btn">@lang('admin.title')</a></li>
+        <li><a href="#" class="name-btn">@lang('admin.another')</a></li>
+    </ul>
+
+    <form id="form" action="{{ route('category.update', $category->id) }}" method="POST" class="current-slide-wrap">
 
         @csrf
         @method('PUT')
@@ -22,37 +27,39 @@
             $title = $category->localization[0];
         @endphp
 
-        <label>
-            <input type="text" name="title_uk" value="{{ $title->uk }}">
-        </label>
+        <div class="name-slide flex-col current-slide">
+            <div class="input-wrap">
+                <input type="text" id="title_uk" name="title_uk" value="{{ $title->uk }}">
+                <label class="label" for="title_uk">@lang('admin.add_uk_title')</label>
+            </div>
+            <div class="input-wrap">
+                <input type="text" id="title_ru" name="title_ru" value="{{ $title->ru }}">
+                <label class="label" for="title_ru">@lang('admin.add_ru_title')</label>
+            </div>
+        </div>
+        <div class="desc-slide flex-col">
+            <div class="another-slide flex-col">
+                <div class="input-wrap sub-category-wrap">
+                    <p class="label">Виберіть під-категорію</p>
+                    <ul class="flex-space sub-category-wrap">
+                        @foreach ($productTypes as $productType)
+                        @php
+                            $title = $productType->localization[0];
+                        @endphp
 
-        <label>
-            <input type="text" name="title_ru" value="{{ $title->ru }}">
-        </label>
+                        @if ($productType->id == $category->product_type_id)
 
-        <p>category belong to product type</p>
+                            <input class="radio-change" id="subCategory{{$productType->id}}" type="radio" value="{{$productType->id}}" name="product_type_id" checked>
+                            <label class="radio-label" for="subCategory{{$productType->id}}"><span class="label-circle"></span><span class="label-desc">{{ $title->$locale }}</span></label>
+                        @else
+                            <input class="radio-change" id="subCategoryNon{{$productType->id}}" type="radio" value="{{$productType->id}}" name="product_type_id">
+                            <label class="radio-label" for="subCategoryNon{{$productType->id}}"><span class="label-circle"></span><span class="label-desc">{{ $title->$locale }}</span></label>
+                        @endif
+                        @endforeach
+                    </ul>
+                </div>
+        </div>
 
-        @foreach ($productTypes as $productType)
-
-            @php
-                $title = $productType->localization[0];
-            @endphp
-
-            @if ($productType->id == $category->product_type_id)
-
-                <label>
-                    <input type="radio" name="product_type_id" value="{{ $productType->id }}" checked>{{ $title->$locale }}
-                </label>
-
-            @else
-
-                <label>
-                    <input type="radio" name="product_type_id" value="{{ $productType->id }}">{{ $title->$locale }}
-                </label>
-
-            @endif
-        @endforeach
-
-        <input type="submit" value="Send">
     </form>
+    <script src="{{ asset('js/create.js') }}"></script>
 @endsection
