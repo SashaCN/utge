@@ -46,16 +46,10 @@
             </div>
         </div>
         <div class="size-price-slide flex-col">
-            <script src="{{ asset('js/sizeprice.js') }}"></script>
-            <div class="input-wrap">
-                <input type="text" name="size" id="size">
-                <label class="label" for="size">@lang('admin.add_size')</label>
-            </div>
+            <div class="size-price">
 
-            <div class="input-wrap">
-                <input type="text" name="price" id="price">
-                <label class="label" for="price">@lang('admin.add_price')</label>
             </div>
+            <button id="add-size-price" class="image-changes-bt">@lang('admin.add_size_price')</button>
         </div>
         <div class="image-slide flex-col">
             <label><input type="file" name="image"></label>
@@ -122,8 +116,42 @@
         <p>{{$message}}</p>
         @enderror
 
+        <script>
+            let sizeprice = document.querySelector('.size-price'),
+                size_price_btn = document.querySelector('#add-size-price'),
+                counter = 1;
 
+            addSizeprice();
+            size_price_btn.onclick = addSizeprice;
 
+            function addSizeprice (e)
+            {
+                if (e != null){
+                    e.preventDefault();
+                }
+
+                sizeprice.innerHTML =  sizeprice.innerHTML+getStructure(counter);
+                counter++;
+            }
+
+            function getStructure (counter)
+            {
+                return structure = `
+                <div class="input-wrap">
+                    <input type="text" name="size${counter}" id="size${counter}">
+                    <label class="label" for="size${counter}">@lang('admin.add_size')</label>
+                </div>
+
+                <div class="input-wrap">
+                    <input type="text" name="price${counter}" id="price${counter}">
+                    <label class="label" for="price${counter}">@lang('admin.add_price')</label>
+                </div>
+                <input type="hidden" name="sizecount" value="${counter}">
+                <hr>
+                `;
+            }
+
+        </script>
     </form>
     <script src="{{ asset('js/create.js') }}"></script>
 @endsection
