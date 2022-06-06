@@ -120,12 +120,12 @@
             function getStructure(counter) {
                 return structure = `
                     <div class="input-wrap">
-                        <input type="text" name="size${counter}" id="size${counter}">
+                        <input type="text" name="size${counter}" id="size${counter}" class="auto-value">
                         <label class="label" for="size${counter}">@lang('admin.add_size')</label>
                     </div>
 
                     <div class="input-wrap">
-                        <input type="text" name="price${counter}" id="price${counter}">
+                        <input type="text" name="price${counter}" id="price${counter}" class="auto-value">
                         <label class="label" for="price${counter}">@lang('admin.add_price')</label>
                     </div>
                     <input type="hidden" name="sizecount" value="${counter}">
