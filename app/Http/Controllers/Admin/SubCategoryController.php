@@ -126,7 +126,7 @@ class SubCategoryController extends Controller
     {
 
     }
-    public function delete(SubCategory $subCategory)
+    public function delete(SubCategory $subCategory, Product $product)
     {
         $subCategory->delete();
         return redirect()->route('subCategory.index');
