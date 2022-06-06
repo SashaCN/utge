@@ -41,7 +41,7 @@
                         @php
                             $title = $category->localization[0];
                         @endphp
-                            <input class="radio-change" id="subCategory{{$category->id}}" type="radio" value="{{$category->id}}" name="product_type_id">
+                            <input class="radio-change" id="subCategory{{$category->id}}" type="radio" value="{{$category->id}}" name="category_id">
                             <label class="radio-label" for="subCategory{{$category->id}}"><span class="label-circle"></span><span class="label-desc">{{ $title->$locale }}</span></label>
                         @endforeach
                     </ul>
