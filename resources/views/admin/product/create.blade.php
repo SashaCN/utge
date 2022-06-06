@@ -50,6 +50,7 @@
 
             </div>
             <button id="add-size-price" class="image-changes-bt">@lang('admin.add_size_price')</button>
+            <button id="delete-size-price" class="image-changes-bt">@lang('admin.delete_size_price')</button>
         </div>
         <div class="image-slide flex-col">
             <label><input type="file" name="image"></label>
@@ -115,42 +116,25 @@
         @error('image')
         <p>{{$message}}</p>
         @enderror
-
         <script>
-            let sizeprice = document.querySelector('.size-price'),
-                size_price_btn = document.querySelector('#add-size-price'),
-                counter = 1;
-
-            addSizeprice();
-            size_price_btn.onclick = addSizeprice;
-
-            function addSizeprice (e)
-            {
-                if (e != null){
-                    e.preventDefault();
-                }
-
-                sizeprice.innerHTML =  sizeprice.innerHTML+getStructure(counter);
-                counter++;
-            }
-
-            function getStructure (counter)
-            {
+            function getStructure(counter) {
                 return structure = `
-                <div class="input-wrap">
-                    <input type="text" name="size${counter}" id="size${counter}">
-                    <label class="label" for="size${counter}">@lang('admin.add_size')</label>
-                </div>
+                    <div class="input-wrap">
+                        <input type="text" name="size${counter}" id="size${counter}">
+                        <label class="label" for="size${counter}">@lang('admin.add_size')</label>
+                    </div>
 
-                <div class="input-wrap">
-                    <input type="text" name="price${counter}" id="price${counter}">
-                    <label class="label" for="price${counter}">@lang('admin.add_price')</label>
-                </div>
-                <input type="hidden" name="sizecount" value="${counter}">
-                <hr>
+                    <div class="input-wrap">
+                        <input type="text" name="price${counter}" id="price${counter}">
+                        <label class="label" for="price${counter}">@lang('admin.add_price')</label>
+                    </div>
+                    <input type="hidden" name="sizecount" value="${counter}">
+                    <hr>
                 `;
             }
 
+        </script>
+        <script src="{{ asset('js/sizeprice.js') }}">                            //add size adn price script
         </script>
     </form>
     <script src="{{ asset('js/create.js') }}"></script>

@@ -51,4 +51,5 @@
         'admin.add_sub_category' => 'Добавити під категорію',
         'add_product_type' => 'Добавити тип товару',
         'add_size_price' => 'Додати вагу/ціну',
+        'delete_size_price' => 'Забрати вагу/ціну',
     ];
