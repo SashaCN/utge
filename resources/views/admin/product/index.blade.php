@@ -56,6 +56,46 @@
         </tbody>
     </table>
 
+    <form action="{{ route('product.index') }}" method="GET">
+        <p>Filter</p>
+        <select name="product_type_id">
+            <option selected disabled value="">Пошук по типу товара</option>p
+        @foreach ($producttypes as $producttype)
+        @php
+            $title = $producttype->localization[0];
+        @endphp
+            <option value="{{$producttype->id}}" @if (isset($_GET['producttype_id'])) @if ($_GET['producttype_id'] == $producttype->id) selected @endif @endif>{{ $title->$locale }}</option>
+        @endforeach
+        </select>
+
+        <select name="category_id">
+            <option selected disabled value="">Пошук по категорії</option>p
+        @foreach ($categories as $category)
+        @php
+            $title = $category->localization[0];
+        @endphp
+            <option value="{{$category->id}}" @if (isset($_GET['category_id'])) @if ($_GET['category_id'] == $category->id) selected @endif @endif>{{ $title->$locale }}</option>
+        @endforeach
+        </select>
+
+        <select name="sub_category_id">
+            <option selected disabled value="">Пошук по суб-категорії</option>p
+        @foreach ($subcategories as $subcategory)
+        @php
+            $title = $subcategory->localization[0];
+        @endphp
+            <option value="{{$subcategory->id}}" @if (isset($_GET['sub_category_id'])) @if ($_GET['sub_category_id'] == $subcategory->id) selected @endif @endif>{{ $title->$locale }}</option>
+        @endforeach
+        </select>
+
+
+
+        {{-- <input type="text" name="search_field" @if (isset($_GET['search_field'])) value="{{($_GET['search_field'])}}" @endif> --}}
+
+        <input type="submit" value="filter">
+
+    </form>
+
     <div class="pagination">
         {{ $products->withQueryString()->links('vendor.pagination.utge-pagination') }}
     </div>

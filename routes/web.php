@@ -1,7 +1,9 @@
 <?php
 
+use App\Models\Product;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
+use Spatie\QueryBuilder\QueryBuilder;
 
 $locale = App::currentLocale();
 

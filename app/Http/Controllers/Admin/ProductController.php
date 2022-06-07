@@ -14,8 +14,10 @@ use App\Filters\ProductFilter;
 use App\Http\Requests\ImageRequest;
 use App\Http\Requests\LocalizationRequest;
 use App\Models\CategoryProduct;
+use App\Models\Filter;
 use App\Models\SizePrice;
 use Illuminate\Http\Request;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class ProductController extends Controller
 {
@@ -31,15 +33,14 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(ProductFilter $request)
     {
 
-        $products = Product::paginate(20);
+        $products = Product::filter($request)->paginate(20);
 
         $productTypes = ProductType::all();
         $categories = Category::all();
         $subCategories = SubCategory::all();
-
 
         return view('admin.product.index', [
             'products' => $products,
@@ -48,6 +49,7 @@ class ProductController extends Controller
             'subcategories' => $subCategories,
             'sizeprices' => SizePrice::getSizePrice(),
         ]);
+
     }
 
     /**
