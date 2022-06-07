@@ -169,15 +169,23 @@ class ProductController extends Controller
             'uk' => $request->description_uk,
             'ru' => $request->description_ru
         ];
-        $size_price =[
-            'size' => $request->size,
-            'price' => $request->price
-        ];
+
 
         $product->fill($request->except(['size', 'price']));
         $product->update();
+        
+        for($i = 1; $i <= $request->counter; $i++){
+            $size = 'size'.$i;
+            $price = 'price'.$i;
+            $size_price =[
+                'size' => $request->$size,
+                'price' => $request->$price
+            ];
 
-        $product->sizePrices()->update($size_price);
+            $product->sizePrices[$i-1]->update($size_price);
+        }
+
+        // $product->sizePrices()->update($size_price);
 
 
         $product->localization()->where('var', 'title')->update($localization_title);

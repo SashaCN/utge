@@ -65,17 +65,24 @@
         </div>
 
         <div class="size-price-slide flex-col">
+            @php
+                $counter = 0;
+            @endphp
             @foreach ($product->sizeprices as $sizeprice)
+            @php
+                $counter++;
+            @endphp
             <div class="input-wrap">
-                <input type="text" value="{{ $sizeprice->size }}" name="size" id="size">
-                <label class="label" for="size">@lang('admin.add_size')</label>
+                <input type="text" value="{{ $sizeprice->size }}" name="size{{$counter}}" id="size{{$counter}}">
+                <label class="label" for="size{{$counter}}">@lang('admin.add_size')</label>
             </div>
 
             <div class="input-wrap">
-                <input type="text" value="{{ $sizeprice->price }}" name="price" id="price">
+                <input type="text" value="{{ $sizeprice->price }}" name="price{{$counter}}" id="price{{$counter}}">
                 <label class="label" for="price">@lang('admin.add_price')</label>
             </div>
             @endforeach
+            <input type="hidden" name="counter" value="{{ $counter }}">
         </div>
 
         <div class="image-slide flex-col">
