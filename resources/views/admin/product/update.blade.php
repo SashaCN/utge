@@ -87,7 +87,7 @@ $locale = app()->getLocale();
                     <input type="text" value="{{ $sizeprice->price }}" name="price{{$counter}}" id="price{{$counter}}">
                     <label class="label" for="price">@lang('admin.add_price')</label>
                 </div>
-                <div class="input-wrap">
+                <div class="input-wrap pt0">
                     <p>@lang('admin.add_available')</p>
                     <select name="available{{$counter}}">
                         @if ($sizeprice->available == 1)

@@ -46,7 +46,6 @@ class ProductController extends Controller
             'producttypes' => $productTypes,
             'categories' => $categories,
             'subcategories' => $subCategories,
-            'sizeprices' => SizePrice::getSizePrice(),
         ]);
     }
 
@@ -146,7 +145,6 @@ class ProductController extends Controller
         return view('admin.product.update', [
             'product' => $product,
             'subCategories' => $subCategories,
-            'sizeprices' => SizePrice::getSizePrice(),
             'selected_subCategories' => $product->$subCategories
         ]);
     }
@@ -185,8 +183,6 @@ class ProductController extends Controller
                 'price' => $request->$price,
                 'available' => $request->$available
             ];
-            // dd($size_price['available']);
-            // dd($product->sizePrices[$i-1]);
 
             $product->sizePrices[$i-1]->update($size_price);
         }
