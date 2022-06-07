@@ -29,5 +29,4 @@ class SubCategory extends Model
     {
         return $this->morphMany(Localization::class, 'localizationable');
     }
-
 }
