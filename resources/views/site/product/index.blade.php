@@ -17,9 +17,9 @@
             $title = $product->localization[0];
             $description = $product->localization[1];
 
-            // foreach ($product->sizeprices as $sizeprice) {
-            //     # code...
-            // }
+            foreach ($product->sizeprices as $sizeprice) {
+                
+            }
         @endphp
       <a href="#">
         <figure class="product shadow-box">

@@ -47,7 +47,28 @@
         </div>
         <div class="size-price-slide flex-col">
             <div class="size-price">
+                <div class="input-wrap">
+                    <input type="text" name="size1" id="size1" class="auto-value">
+                    <label class="label" for="size1">@lang('admin.add_size')</label>
+                </div>
 
+                <div class="input-wrap">
+                    <input type="text" name="price1" id="price1" class="auto-value">
+                    <label class="label" for="price1">@lang('admin.add_price')</label>
+                </div>
+
+                <div class="input-wrap pt0">
+                    <p>@lang('admin.add_available')</p>
+                    <select name="available1" class="auto-value">
+                        <option value="1">@lang('admin.available')</option>
+                        <option value="2">@lang('admin.not_available')</option>
+                        <option value="3">@lang('admin.waiting_available')</option>
+                        <option value="4">@lang('admin.available_for_order')</option>
+                    </select>
+                </div>
+
+                <input type="hidden" name="sizecount" value="1">
+                <hr>
             </div>
             <button id="add-size-price" class="image-changes-bt">@lang('admin.add_size_price')</button>
             <button id="delete-size-price" class="image-changes-bt">@lang('admin.delete_size_price')</button>
@@ -69,14 +90,6 @@
                         </li>
                     @endforeach
                 </ul>
-            </div>
-            <div class="input-wrap">
-                <p>@lang('admin.add_available')</p>
-                <select name="available">
-                    <option value="1">@lang('admin.available')</option>
-                    <option value="2">@lang('admin.not_available')</option>
-                    <option value="3">@lang('admin.waiting_available')</option>
-                </select>
             </div>
             <div class="input-wrap">
                 <p>@lang('admin.add_home_view')</p>
@@ -127,6 +140,16 @@
                     <div class="input-wrap">
                         <input type="text" name="price${counter}" id="price${counter}" class="auto-value">
                         <label class="label" for="price${counter}">@lang('admin.add_price')</label>
+                    </div>
+
+                    <div class="input-wrap pt0">
+                        <p>@lang('admin.add_available')</p>
+                        <select name="available${counter}" class="auto-value">
+                            <option value="1">@lang('admin.available')</option>
+                            <option value="2">@lang('admin.not_available')</option>
+                            <option value="3">@lang('admin.waiting_available')</option>
+                            <option value="4">@lang('admin.available_for_order')</option>
+                        </select>
                     </div>
                     <input type="hidden" name="sizecount" value="${counter}">
                     <hr>

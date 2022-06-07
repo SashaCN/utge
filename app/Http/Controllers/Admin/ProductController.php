@@ -91,7 +91,7 @@ class ProductController extends Controller
         $localization_desc->uk = $request->description_uk;
         $localization_desc->ru = $request->description_ru;
 
-        $product->fill($request->except(['size', 'price']));
+        $product->fill($request->except(['size', 'price', 'available']));
         $product->save();
 
         for($i = 1; $i <= $request->sizecount; $i++){
@@ -99,8 +99,10 @@ class ProductController extends Controller
             $size_price->fill($request->validated());
             $size = 'size'.$i;
             $price = 'price'.$i;
+            $available = 'available'.$i;
             $size_price->size = $request->$size;
             $size_price->price = $request->$price;
+            $size_price->available = $request->$available;
 
             $product->sizePrices()->save($size_price);
         }
@@ -169,16 +171,25 @@ class ProductController extends Controller
             'uk' => $request->description_uk,
             'ru' => $request->description_ru
         ];
-        $size_price =[
-            'size' => $request->size,
-            'price' => $request->price
-        ];
 
-        $product->fill($request->except(['size', 'price']));
+
+        $product->fill($request->except(['size', 'price', 'available']));
         $product->update();
 
-        $product->sizePrices()->update($size_price);
+        for($i = 1; $i <= $request->counter; $i++){
+            $size = 'size'.$i;
+            $price = 'price'.$i;
+            $available = 'available'.$i;
+            $size_price =[
+                'size' => $request->$size,
+                'price' => $request->$price,
+                'available' => $request->$available
+            ];
+            // dd($size_price['available']);
+            // dd($product->sizePrices[$i-1]);
 
+            $product->sizePrices[$i-1]->update($size_price);
+        }
 
         $product->localization()->where('var', 'title')->update($localization_title);
         $product->localization()->where('var', 'description')->update($localization_description);

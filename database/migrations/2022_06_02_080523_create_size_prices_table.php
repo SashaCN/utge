@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('product_id')->constrained('products');
             $table->string('size')->nullable();
             $table->bigInteger('price');
+            $table->integer('available');
             $table->softDeletes();
             $table->timestamps();
         });
