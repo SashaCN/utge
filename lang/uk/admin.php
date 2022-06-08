@@ -54,4 +54,5 @@
         'add_product_type' => 'Добавити тип товару',
         'add_size_price' => 'Додати вагу/ціну',
         'delete_size_price' => 'Забрати вагу/ціну',
+        'child_page_father' => 'обрати сторінку',
     ];

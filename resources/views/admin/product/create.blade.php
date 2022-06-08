@@ -7,6 +7,14 @@
 
     ?>
 
+    @if ($errors->any())
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    @endif
+
     <div class="flex title-line">
         <h2>@lang('admin.product_create')</h2>
         <button type="submit" form="form" class="add-button">
@@ -79,27 +87,29 @@
             <button id="delete-size-price" class="image-changes-bt">@lang('admin.delete_size_price')</button>
         </div>
         <div class="image-slide flex-col">
+            <label><input type="hidden" name="image" value=""></label>
             <label><input type="file" name="image"></label>
         </div>
         <div class="another-slide flex-col">
             <div class="input-wrap sub-category-wrap">
                 <p class="label">Виберіть під-категорію</p>
-                <ul class="flex-space sub-category-wrap">
+                <div class="flex-space sub-category-wrap">
+                    <label><input type="hidden" name="sub_category_id"></label>
+
                     @foreach ($subcategories as $subcategory)
                         @php
                             $title = $subcategory->localization[0];
                         @endphp
-                        <li>
-                            <input class="radio-change" type="radio" id="{{ $subcategory->id }}" name="sub_category_id" value="{{ $subcategory->id }}">
-                            <label class="radio-label" for="{{ $subcategory->id }}"><span class="label-circle"></span><span class="label-desc">{{ $title->$locale }}</span></label>
-                        </li>
+
+                        <input class="radio-change" type="radio" id="{{ $subcategory->id }}" name="sub_category_id" value="{{ $subcategory->id }}">
+                        <label class="radio-label" for="{{ $subcategory->id }}"><span class="label-circle"></span><span class="label-desc">{{ $title->$locale }}</span></label>
                     @endforeach
-                </ul>
+                </div>
             </div>
             <div class="input-wrap">
                 <p>@lang('admin.add_home_view')</p>
                 <select name="home_view">
-                    <option value="0">@lang('admin.not_home_view')</option>
+                    <option value="0" selected>@lang('admin.not_home_view')</option>
                     <option value="1">@lang('admin.home_view')</option>
                 </select>
             </div>
@@ -110,30 +120,6 @@
             {{-- <input type="submit" value="Send" class="save"> --}}
         </div>
 
-        @error('title')
-            <p>{{$message}}</p>
-        @enderror
-
-        @error('category')
-            <p>{{$message}}</p>
-        @enderror
-
-        @error('max_order')
-            <p>{{$message}}</p>
-        @enderror
-
-
-        @error('list_position')
-            <p>{{$message}}</p>
-        @enderror
-
-        @error('description')
-            <p>{{$message}}</p>
-        @enderror
-
-        @error('image')
-        <p>{{$message}}</p>
-        @enderror
         <script>
             function getStructure(counter) {
                 return structure = `

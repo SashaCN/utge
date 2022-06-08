@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CategoryRequest;
-use Illuminate\Http\Request;
+use App\Http\Requests\MultiRequest;
 use App\Models\ProductType;
 use App\Models\Category;
 use App\Models\SubCategory;
@@ -49,7 +48,7 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryRequest $request)
+    public function store(MultiRequest $request)
     {
 
         $localization_title = new Localization();
@@ -108,7 +107,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoryRequest $request, Category $category)
+    public function update(MultiRequest $request, Category $category)
     {
 
         $localization_title = [

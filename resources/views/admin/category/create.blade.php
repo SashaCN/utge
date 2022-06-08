@@ -6,6 +6,14 @@
         $locale = app()->getLocale();
     @endphp
 
+    @if ($errors->any())
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    @endif
+
     <div class="flex title-line">
         <h2>@lang('admin.add_category')</h2>
         <button type="submit" form="form" class="add-button">
@@ -36,15 +44,18 @@
             <div class="another-slide flex-col">
                 <div class="input-wrap sub-category-wrap">
                     <p class="label">Виберіть тип товару</p>
-                    <ul class="flex-space sub-category-wrap">
+                    <div class="flex-space sub-category-wrap">
+                        <label><input type="hidden" value="" name="product_type_id"></label>
+
                         @foreach ($productTypes as $productType)
-                        @php
-                            $title = $productType->localization[0];
-                        @endphp
+                            @php
+                                $title = $productType->localization[0];
+                            @endphp
+
                             <input class="radio-change" id="subCategory{{$productType->id}}" type="radio" value="{{$productType->id}}" name="product_type_id">
                             <label class="radio-label" for="subCategory{{$productType->id}}"><span class="label-circle"></span><span class="label-desc">{{ $title->$locale }}</span></label>
                         @endforeach
-                    </ul>
+                    </div>
                 </div>
         </div>
 
