@@ -92,18 +92,20 @@
             <div class="input-wrap sub-category-wrap">
                 <p class="label">Виберіть під-категорію</p>
                 <ul class="flex-space sub-category-wrap">
+                    <label><input type="hidden" name="sub_category_id"></label>
+                    
                     @foreach ($subCategories as $subCategory)
-                    @php
-                        $title = $subCategory->localization[0];
-                    @endphp
+                        @php
+                            $title = $subCategory->localization[0];
+                        @endphp
 
-                    @if ($subCategory->id == $product->sub_category_id)
-                        <input class="radio-change" id="subCategory{{$subCategory->id}}" type="radio" value="{{$subCategory->id}}" name="sub_category_id" checked>
-                        <label class="radio-label" for="subCategory{{$subCategory->id}}"><span class="label-circle"></span><span class="label-desc">{{ $title->$locale }}</span></label>
-                    @else
-                        <input class="radio-change" id="subCategoryNon{{$subCategory->id}}" type="radio" value="{{$subCategory->id}}" name="sub_category_id">
-                        <label class="radio-label" for="subCategoryNon{{$subCategory->id}}"><span class="label-circle"></span><span class="label-desc">{{ $title->$locale }}</span></label>
-                    @endif
+                        @if ($subCategory->id == $product->sub_category_id)
+                            <input class="radio-change" id="subCategory{{$subCategory->id}}" type="radio" value="{{$subCategory->id}}" name="sub_category_id" checked>
+                            <label class="radio-label" for="subCategory{{$subCategory->id}}"><span class="label-circle"></span><span class="label-desc">{{ $title->$locale }}</span></label>
+                        @else
+                            <input class="radio-change" id="subCategoryNon{{$subCategory->id}}" type="radio" value="{{$subCategory->id}}" name="sub_category_id">
+                            <label class="radio-label" for="subCategoryNon{{$subCategory->id}}"><span class="label-circle"></span><span class="label-desc">{{ $title->$locale }}</span></label>
+                        @endif
                     @endforeach
                 </ul>
             </div>

@@ -8,13 +8,15 @@
         @endforeach
     </ul>
     @endif
+
     <form action="{{ route('childPage.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         
         <label>
-            <select name="route">
-                <option value="delivery">delivery</option>
-                <option value="contacts">contacts</option>
+            <select name="route" id="child-page-select">
+                <option value="" id="child-page-first-option" selected>@lang('admin.child_page_father')</option>
+                <option value="delivery">@lang('utge.delivery')</option>
+                <option value="contacts">@lang('utge.contacts')</option>
             </select>
         </label>
 
@@ -29,4 +31,6 @@
         <label><input type="file" name="image"></label>
         <label><input type="submit" value="Send"></label>
     </form>
+
+    <script src="{{ asset('js/childPage.js') }}"></script>
 @endsection

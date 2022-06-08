@@ -3,9 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Http\Requests\NewsRequest;
-use App\Http\Requests\ImageRequest;
+use App\Http\Requests\MultiRequest;
 use App\Models\Localization;
 use App\Models\News;
 
@@ -39,10 +37,9 @@ class NewsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(NewsRequest $request)
+    public function store(MultiRequest $request)
     {
         $news = new News();
-        $news->fill($request->validated());
         $news->save();
 
         $localization_title = new Localization();
@@ -110,7 +107,7 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(NewsRequest $request, News $news)
+    public function update(MultiRequest $request, News $news)
     {
         $localization_title = [
             'var' => "title",
@@ -124,7 +121,7 @@ class NewsController extends Controller
             'ru' => $request->description_ru
         ];
 
-        $news->update($request->validated());
+        $news->update();
 
         $news->localization()->where('var', 'title')->update($localization_title);
         $news->localization()->where('var', 'description')->update($localization_desc);

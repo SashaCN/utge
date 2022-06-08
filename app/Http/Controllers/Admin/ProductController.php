@@ -4,18 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 // use App\Helpers\ImageSaver;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ProductRequest;
-use App\Models\Category;
-use App\Models\Localization;
-use App\Models\Product;
 use App\Models\ProductType;
+use App\Models\Category;
 use App\Models\SubCategory;
-use App\Filters\ProductFilter;
-use App\Http\Requests\ImageRequest;
-use App\Http\Requests\LocalizationRequest;
-use App\Models\CategoryProduct;
+use App\Models\Product;
+use App\Models\Localization;
 use App\Models\SizePrice;
-use Illuminate\Http\Request;
+use App\Filters\ProductFilter;
+use App\Http\Requests\MultiRequest;
 
 class ProductController extends Controller
 {
@@ -75,7 +71,7 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function store(ProductRequest $request, LocalizationRequest $localizationRequest, ImageRequest $imageRequest)
+    public function store(MultiRequest $request)
     {
         $product = new Product();
 
@@ -156,7 +152,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductRequest $request, Product $product, LocalizationRequest $localizationRequest)
+    public function update(Product $product, MultiRequest $request)
     {
 
         $localization_title = [
@@ -194,7 +190,6 @@ class ProductController extends Controller
             $product->clearMediaCollection('images');
             $product->addMediaFromRequest('image')
             ->toMediaCollection('images');
-
         }
 
         return redirect()->route('product.edit', $product->id);
