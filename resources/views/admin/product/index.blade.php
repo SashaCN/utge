@@ -21,7 +21,7 @@
                 <th>@lang('admin.action')</th>
             </tr>
         </thead>
-        
+
         <tbody>
             @foreach ($products as $product)
             @php
@@ -65,7 +65,6 @@
                             </p>
                         @endif
                     @endforeach
-                    {{-- {{dd($product->sizeprice)}} --}}
                 </td>
                 <td class="action">
                     <a href="{{ route('product.edit', $product->id) }}"></a>

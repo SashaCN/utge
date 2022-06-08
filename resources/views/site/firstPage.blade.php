@@ -135,6 +135,9 @@
                 </a>
             @endforeach
         </div>
+        <div class="pagination">
+            {{ $products->withQueryString()->links('vendor.pagination.utge-pagination') }}
+        </div>
     </div>
 </div>
 

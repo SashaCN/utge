@@ -53,8 +53,8 @@
 .page-link-previous::before,
 .page-link-a-next::before,
 .page-link-next::before {
-  position: absolute;
   content: "";
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -66,9 +66,10 @@
 .page-link-a-next::before,
 .page-link-next::before {
   background-image: url(../img/navigate_l.svg);
+  transform: rotate(180deg);
 }
 
 .page-link-a-previous::before,
 .page-link-previous::before {
-  background-image: url(../img/navigate_r.svg);
+  background-image: url(../img/navigate_l.svg);
 }
