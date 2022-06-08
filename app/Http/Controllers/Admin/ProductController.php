@@ -16,13 +16,6 @@ use App\Http\Requests\ImageRequest;
 
 class ProductController extends Controller
 {
-
-    // private $imageSaver;
-
-    // public function __construct(ImageSaver $imageSaver)
-    // {
-    //     $this->imageSaver = $imageSaver;
-    // }
     /**
      * Display a listing of the resource.
      *
@@ -43,7 +36,6 @@ class ProductController extends Controller
             'producttypes' => $productTypes,
             'categories' => $categories,
             'subcategories' => $subCategories,
-            'sizeprices' => SizePrice::getSizePrice(),
         ]);
     }
 
@@ -88,7 +80,7 @@ class ProductController extends Controller
         $localization_desc->uk = $request->description_uk;
         $localization_desc->ru = $request->description_ru;
 
-        $product->fill($request->except(['size', 'price']));
+        $product->fill($request->except(['size', 'price', 'available']));
         $product->save();
 
         for($i = 1; $i <= $request->sizecount; $i++){
@@ -96,8 +88,12 @@ class ProductController extends Controller
             $size_price->fill($request->validated());
             $size = 'size'.$i;
             $price = 'price'.$i;
+            $available = 'available'.$i;
+            $price_units = 'price_units'.$i;
             $size_price->size = $request->$size;
             $size_price->price = $request->$price;
+            $size_price->available = $request->$available;
+            $size_price->price_units = $request->$price_units;
 
             $product->sizePrices()->save($size_price);
         }
@@ -141,7 +137,6 @@ class ProductController extends Controller
         return view('admin.product.update', [
             'product' => $product,
             'subCategories' => $subCategories,
-            'sizeprices' => SizePrice::getSizePrice(),
             'selected_subCategories' => $product->$subCategories
         ]);
     }

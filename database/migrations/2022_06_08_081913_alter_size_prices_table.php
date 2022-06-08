@@ -13,14 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('localizations', function (Blueprint $table) {
-            $table->id();
-            $table->string('var');
-            $table->text('uk', 2500);
-            $table->text('ru', 2500);
-            $table->integer('localizationable_id');
-            $table->string('localizationable_type');
-            $table->timestamps();
+        Schema::table('size_prices', function (Blueprint $table) {
+            $table->string('price_units', 55);
         });
     }
 
@@ -31,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('localizations');
+        Schema::table('size_prices', function (Blueprint $table) {
+            $table->dropColumn('price_units');
+        });
     }
 };
