@@ -16,6 +16,7 @@
             <select name="route" id="child-page-select">
                 <option value="" id="child-page-first-option" selected>@lang('admin.child_page_father')</option>
                 <option value="delivery">@lang('utge.delivery')</option>
+                <option value="payment">@lang('utge.payment')</option>
                 <option value="contacts">@lang('utge.contacts')</option>
             </select>
         </label>

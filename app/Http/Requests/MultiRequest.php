@@ -73,6 +73,6 @@ class MultiRequest extends FormRequest
             $request['image'] = 'required|mimes:jpeg,png,jpg,svg';
         }
 
-        return $request;
+        return $request;    
     }
 }

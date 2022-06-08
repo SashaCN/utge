@@ -22,9 +22,19 @@ class SiteController extends Controller
     {
         $route = $request->route()->parameters('route');
         $childPages = ChildPage::all();
-        $childPage = $childPages->where('route', $route['route']);
 
-        return view('site.childPage', ['childPage' => $childPage]);
+        if ($route['route'] == "delivery") {
+            $childPageDelivery = $childPages->where('route', 'delivery');
+            $childPagePayment = $childPages->where('route', 'payment');
+
+            return view('site.childPage', ['deliveries' => $childPageDelivery, 'payments' => $childPagePayment, 'rout' => $route['route']]);
+        }
+
+        if ($route['route'] == "contacts") {
+            $childPage = $childPages->where('route', $route['route']);
+            return view('site.childPage', ['contacts' => $childPage, 'rout' => $route['route']]);
+        }
+
     }
 
     public function showNews(){
