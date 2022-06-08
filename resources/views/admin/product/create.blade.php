@@ -57,6 +57,11 @@
                     <label class="label" for="price1">@lang('admin.add_price')</label>
                 </div>
 
+                <div class="input-wrap">
+                    <input type="text" name="price_units1" id="price_units1" class="auto-value">
+                    <label class="label" for="price_units1">@lang('admin.add_price_units')</label>
+                </div>
+
                 <div class="input-wrap pt0">
                     <p>@lang('admin.add_available')</p>
                     <select name="available1" class="auto-value">
@@ -138,8 +143,13 @@
                     </div>
 
                     <div class="input-wrap">
-                        <input type="text" name="price${counter}" id="price${counter}" class="auto-value">
+                        <input type="number" name="price${counter}" id="price${counter}" class="auto-value">
                         <label class="label" for="price${counter}">@lang('admin.add_price')</label>
+                    </div>
+
+                    <div class="input-wrap">
+                        <input type="text" name="price_units${counter}" id="price_units${counter}" class="auto-value">
+                        <label class="label" for="price_units${counter}">@lang('admin.add_price_units')</label>
                     </div>
 
                     <div class="input-wrap pt0">
