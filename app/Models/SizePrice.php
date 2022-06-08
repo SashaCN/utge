@@ -13,7 +13,7 @@ class SizePrice extends Model
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = ['product_id', 'size', 'price', 'available'];
+    protected $fillable = ['product_id', 'size', 'price', 'available', 'price_units'];
 
     static function getSizePrice()
     {

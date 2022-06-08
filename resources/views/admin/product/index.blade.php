@@ -21,6 +21,7 @@
                 <th>@lang('admin.action')</th>
             </tr>
         </thead>
+        
         <tbody>
             @foreach ($products as $product)
             @php
@@ -37,7 +38,7 @@
                             <p>
                                 {{ $sizeprice->size }}
                                 /
-                                {{ $sizeprice->price }}грн
+                                {{ $sizeprice->price }}{{ $sizeprice->price_units }}
                                 |
                                 @if ($sizeprice->available == 1)
                                     @lang('admin.available')
