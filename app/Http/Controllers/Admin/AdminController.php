@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
-use Illuminate\Http\Request;
-use App\Models\Product;
 use Illuminate\Support\Facades\App;
+use Illuminate\Http\Request;
+use App\Models\Category;
+use App\Models\Product;
 
 class AdminController extends Controller
 {

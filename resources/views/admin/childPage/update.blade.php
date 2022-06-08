@@ -21,8 +21,6 @@
             $title = $childPage->localization[0];
             $description = $childPage->localization[1];
         @endphp
-
-        <label><input type="text" name="route" placeholder="route" value="{{ $childPage->route }}"></label>
        
         <p>uk</p>
         <label><input type="text" name="title_uk" placeholder="title_uk" value="{{ $title->uk }}"></label>

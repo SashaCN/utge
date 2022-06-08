@@ -19,6 +19,7 @@
         <label><input type="text" name="title_ru" placeholder="title_ru"></label>
         <label><input type="text" name="description_ru" placeholder="description_ru"></label>
 
+        <label><input type="hidden" name="image" value=""></label>
         <label><input type="file" name="image"></label>
         <label><input type="submit" value="Send"></label>
     </form>

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ProductTypeRequest;
+use App\Http\Requests\MultiRequest;
 use App\Models\ProductType;
 use App\Models\Localization;
 
@@ -37,7 +37,7 @@ class ProductTypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductTypeRequest $request)
+    public function store(MultiRequest $request)
     {
 
 
@@ -48,7 +48,6 @@ class ProductTypeController extends Controller
         $localization_title->ru = $request->title_ru;
 
         $productType = new ProductType();
-        $productType->fill($request->validated());
         $productType->save();
 
         $productType->localization()->save($localization_title);
@@ -88,7 +87,7 @@ class ProductTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductTypeRequest $request, ProductType $productType)
+    public function update(MultiRequest $request, ProductType $productType)
     {
         $productType->update($request->validated());
 
