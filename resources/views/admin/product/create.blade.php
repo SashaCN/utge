@@ -61,6 +61,7 @@
             <button id="delete-size-price" class="image-changes-bt">@lang('admin.delete_size_price')</button>
         </div>
         <div class="image-slide flex-col">
+            <label><input type="hidden" name="image" value=""></label>
             <label><input type="file" name="image"></label>
         </div>
         <div class="another-slide flex-col">

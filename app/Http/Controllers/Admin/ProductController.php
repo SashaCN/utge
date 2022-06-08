@@ -12,6 +12,7 @@ use App\Models\Localization;
 use App\Models\SizePrice;
 use App\Filters\ProductFilter;
 use App\Http\Requests\MultiRequest;
+use App\Http\Requests\ImageRequest;
 
 class ProductController extends Controller
 {
@@ -30,7 +31,7 @@ class ProductController extends Controller
     public function index()
     {
 
-        $products = Product::paginate(1);
+        $products = Product::paginate(10);
 
         $productTypes = ProductType::all();
         $categories = Category::all();
@@ -152,7 +153,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Product $product, MultiRequest $request)
+    public function update(MultiRequest $request, Product $product)
     {
 
         $localization_title = [
@@ -165,16 +166,25 @@ class ProductController extends Controller
             'uk' => $request->description_uk,
             'ru' => $request->description_ru
         ];
-        $size_price =[
-            'size' => $request->size,
-            'price' => $request->price
-        ];
 
-        $product->fill($request->except(['size', 'price']));
+
+        $product->fill($request->except(['size', 'price', 'available', 'price_units']));
         $product->update();
 
-        $product->sizePrices()->update($size_price);
+        for($i = 1; $i <= $request->counter; $i++){
+            $size = 'size'.$i;
+            $price = 'price'.$i;
+            $available = 'available'.$i;
+            $price_units = 'price_units'.$i;
+            $size_price =[
+                'size' => $request->$size,
+                'price' => $request->$price,
+                'available' => $request->$available,
+                'price_units' => $request->$price_units
+            ];
 
+            $product->sizePrices[$i-1]->update($size_price);
+        }
 
         $product->localization()->where('var', 'title')->update($localization_title);
         $product->localization()->where('var', 'description')->update($localization_description);
@@ -190,6 +200,7 @@ class ProductController extends Controller
             $product->clearMediaCollection('images');
             $product->addMediaFromRequest('image')
             ->toMediaCollection('images');
+
         }
 
         return redirect()->route('product.edit', $product->id);

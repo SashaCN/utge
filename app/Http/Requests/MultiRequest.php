@@ -30,12 +30,12 @@ class MultiRequest extends FormRequest
 
         if (isset($_REQUEST['description_uk']))
         {
-            $request['description_uk'] = 'required|min:2|max:55';
+            $request['description_uk'] = 'required|min:2';
         }
         
         if (isset($_REQUEST['description_ru']))
         {
-            $request['description_ru'] = 'required|min:2|max:55';
+            $request['description_ru'] = 'required|min:2';
         }
 
         if (isset($_REQUEST['product_type_id']))
@@ -68,7 +68,7 @@ class MultiRequest extends FormRequest
             $request['route'] = 'required';
         }
 
-        if (isset($_REQUEST['available']))
+        if (isset($_REQUEST['image']))
         {
             $request['image'] = 'required|mimes:jpeg,png,jpg,svg';
         }
