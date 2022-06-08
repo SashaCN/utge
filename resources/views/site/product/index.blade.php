@@ -11,15 +11,11 @@
   <div class="filter-box">
 
   </div>
-  <div class="product-list flex-sb shadow-box">
+  <div class="product-list flex-sb">
     @foreach ($products as $product)
         @php
             $title = $product->localization[0];
             $description = $product->localization[1];
-
-            foreach ($product->sizeprices as $sizeprice) {
-
-            }
         @endphp
       <a href="#">
         @if ($product->sizeprices->whereIn('available', [1,4])->min('price'))
