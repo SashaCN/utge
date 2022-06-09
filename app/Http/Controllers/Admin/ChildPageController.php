@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MultiRequest;
+use App\Http\Requests\ImageRequest;
 use App\Models\Localization;
 use App\Models\ChildPage;
 
@@ -67,7 +68,7 @@ class ChildPageController extends Controller
         return redirect()->route('childPage.index');
     }
 
-    public function mediaUpdate(MultiRequest $request, ChildPage $childPage)
+    public function mediaUpdate(ImageRequest $request, ChildPage $childPage)
     {
         if ($request->hasFile('image')) {
 
