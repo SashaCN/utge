@@ -58,8 +58,15 @@ return [
     'childPage_create' => 'Добавить блок',
     'route' => 'блок',
     'news_create' => 'Добавить новости',
+<<<<<<< HEAD
     'to_sub_category' => 'По под-категориях',
     'to_category' => 'По категориях',
     'to_product_type' => 'По типах товара',
     'search' => 'Поиск',
+=======
+    'error-size' => 'Вес',
+    'error-price' => 'Цена',
+    'error-price_units' => 'Единицы измерения цены',
+    'error-available' => 'Наличие товара',
+>>>>>>> 7331977c1147a482793fa8f036f814397f60c63d
 ];

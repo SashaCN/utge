@@ -11,7 +11,34 @@ $locale = app()->getLocale();
 <div class="alert alert-danger">
     <ul>
         @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
+            @if (strripos($error, '/') == true)
+                <li>
+                    @switch(explode('/', $error)[0])
+                        @case('size')
+                            @lang('admin.error-size')
+                            @break
+
+                        @case('price')
+                            @lang('admin.error-price')
+                            @break
+
+                        @case('price units')
+                            @lang('admin.error-price_units')
+                            @break
+                            
+                        @case('available')
+                            @lang('admin.error-available')
+                            @break
+                            
+                        @default
+                            
+                    @endswitch
+                    
+                    <?= ' '.explode('/', $error)[1];?>
+                </li> 
+            @else
+                <li>{{ $error }}</li>
+            @endif
         @endforeach
     </ul>
 </div>
@@ -79,23 +106,23 @@ $locale = app()->getLocale();
                 @endphp
 
                 <div class="input-wrap">
-                    <input type="text" value="{{ $sizeprice->size }}" name="size{{$counter}}" id="size{{$counter}}">
+                    <input type="text" value="{{ $sizeprice->size }}" name="size/{{$counter}}" id="size{{$counter}}">
                     <label class="label" for="size{{$counter}}">@lang('admin.add_size')</label>
                 </div>
 
                 <div class="input-wrap">
-                    <input type="text" value="{{ $sizeprice->price }}" name="price{{$counter}}" id="price{{$counter}}">
+                    <input type="text" value="{{ $sizeprice->price }}" name="price/{{$counter}}" id="price{{$counter}}">
                     <label class="label" for="price">@lang('admin.add_price')</label>
                 </div>
 
                 <div class="input-wrap">
-                    <input type="text" name="price_units{{$counter}}" id="price_units{{$counter}}" class="auto-value">
+                    <input type="text" name="price_units/{{$counter}}" id="price_units{{$counter}}" class="auto-value">
                     <label class="label" for="price_units{{$counter}}">@lang('admin.add_price_units')</label>
                 </div>
 
                 <div class="input-wrap pt0">
                     <p>@lang('admin.add_available')</p>
-                    <select name="available{{$counter}}">
+                    <select name="available/{{$counter}}">
                         @if ($sizeprice->available == 1)
                             <option value="1" selected>@lang('admin.available')</option>
                         @else

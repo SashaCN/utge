@@ -58,9 +58,16 @@
         'childPage_create' => 'Додати блок',
         'route' => 'блок',
         'news_create' => 'Додати новини',
+<<<<<<< HEAD
         'to_sub_category' => 'По під-категоріях',
         'to_category' => 'По категоріях',
         'to_product_type' => 'По типах товару',
         'search' => 'Пошук',
 
+=======
+        'error-size' => 'Вага',
+        'error-price' => 'Ціна',
+        'error-price_units' => 'Одиниці вимрювання ціни',
+        'error-available' => 'Наявність товару',
+>>>>>>> 7331977c1147a482793fa8f036f814397f60c63d
     ];
