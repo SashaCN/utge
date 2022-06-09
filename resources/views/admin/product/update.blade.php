@@ -11,8 +11,35 @@ $locale = app()->getLocale();
 <div class="alert alert-danger">
     <ul>
         @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
+        @if (strripos($error, '.') == true)
+            <li>
+                @switch(explode('.', $error)[0])
+                    @case('size')
+                        @lang('admin.error-size')
+                        @break
+
+                    @case('price')
+                        @lang('admin.error-price')
+                        @break
+
+                    @case('price units')
+                        @lang('admin.error-price_units')
+                        @break
+                        
+                    @case('available')
+                        @lang('admin.error-available')
+                        @break
+                        
+                    @default
+                        
+                @endswitch
+                
+                <?= ' '.explode('.', $error)[1];?>
+            </li> 
+        @else
+            <li>{{ $error }}</li>
+        @endif
+    @endforeach
     </ul>
 </div>
 @endif

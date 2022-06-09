@@ -9,7 +9,6 @@
 
     @if ($errors->any())
         <ul>
-            {{-- {{dd($errors->default)}} --}}
             @foreach ($errors->all() as $error)
                 @if (strripos($error, '.') == true)
                     <li>
