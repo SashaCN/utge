@@ -9,40 +9,42 @@ $locale = app()->getLocale();
 
 <div class="wrapper flex-sb product-page">
     <div class="filter-menu">
-        @foreach ($producttypes as $type)
-        {{-- {{dd($type)}} --}}
-        @php
-        $title = $type->localization[0];
-        @endphp
-        <div class="filter-box">
-            <h4>{{ $title->$locale }}</h4>
-            <ul class="filter-list">
-                @foreach ($categories->where('product_type_id', $type->id) as $category)
-                @php
-                $title = $category->localization[0];
-                @endphp
-                <li>
-                    <p class="category-item">{{ $title->$locale }}</p>
-                    <ul class="sub-list hidden">
-                        <form action="">
-                            @foreach ($subcategories->where('category_id', $category->id) as $sub)
+        <form id="filter" action="{{ route('products') }}">
+            @foreach ($producttypes as $type)
+            {{-- {{dd($type)}} --}}
+            @php
+            $title = $type->localization[0];
+            @endphp
+            <div class="filter-box">
+                <h4>{{ $title->$locale }}</h4>
+                <ul class="filter-list">
+                    @foreach ($categories->where('product_type_id', $type->id) as $category)
+                    @php
+                    $title = $category->localization[0];
+                    @endphp
+                    <li class="category-li">
+                        <p class="category-item">
+                            {{ $title->$locale }}
+                        </p>
+                        <ul class="sub-list hidden">
+                            @foreach ($category->subcategories as $sub)
                             @php
                             $title = $sub->localization[0];
                             @endphp
                             <li>
-                                <input type="checkbox" name="sub{{$sub->id}}" id="sub{{$sub->id}}">
+                                <input type="checkbox" name="subcategoryid_{{$sub->id}}" id="sub{{$sub->id}}" value="{{$sub->id}}" @if ((isset($_GET['subcategoryid_'.$sub->id])) && ($_GET['subcategoryid_'.$sub->id] == $sub->id)) checked @endif>
                                 <label for="sub{{$sub->id}}">
                                     <p class="sub-item">{{ $title->$locale }}</p>
                                 </label>
                             </li>
                             @endforeach
-                        </form>
-                    </ul>
-                </li>
-                @endforeach
-            </ul>
-        </div>
-        @endforeach
+                        </ul>
+                    </li>
+                    @endforeach
+                </ul>
+            </div>
+            @endforeach
+        </form>
         <script src="{{ asset('js/filter.js') }}"></script>
     </div>
     <div class="product-list flex-sb">

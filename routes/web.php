@@ -1,7 +1,9 @@
 <?php
 
+use App\Models\Product;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
+use Spatie\QueryBuilder\QueryBuilder;
 
 $locale = App::currentLocale();
 
@@ -22,6 +24,7 @@ Route::middleware('set_locale')->group(function(){
     Route::get('/news', [\App\Http\Controllers\SiteController::class, 'showNews'])->name('news');
     Route::get('/products', [\App\Http\Controllers\ProductController::class, 'index'])->name('products');
     Route::get('/product/{id}', [\App\Http\Controllers\ProductController::class, 'show'])->name('product');
+        
 
     // Route::get('/child/{rout}', function () {
     //     return view('site.childPage');

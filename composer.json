@@ -15,7 +15,8 @@
         "livewire/livewire": "^2.10",
         "spatie/image": "^2.2",
         "spatie/image-optimizer": "^1.6",
-        "spatie/laravel-medialibrary": "10.0.7"
+        "spatie/laravel-medialibrary": "10.0.7",
+        "spatie/laravel-query-builder": "^5.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
