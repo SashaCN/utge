@@ -15,7 +15,7 @@
         'description' => 'Опис',
         'filters' => 'Фільтри',
         'price' => 'Ціна',
-        'sizeprice' => 'Вага/Ціна',
+        'sizeprice' => 'Вага/Ціна | Наявність',
         'another' => 'Інше',
         'photo' => 'Фотография',
         'action' => 'Дія',
@@ -42,6 +42,7 @@
         'available' => 'Є в наявності',
         'not_available' => 'Нема в наявності',
         'waiting_available' => 'Очікується',
+        'available_for_order' => 'Під замовлення',
         'add_home_view' => 'Відображати на головній сторінці',
         'home_view' => 'Відображати',
         'not_home_view' => 'Не віддображати',
@@ -51,4 +52,10 @@
         'admin.add_sub_category' => 'Добавити під категорію',
         'add_product_type' => 'Добавити тип товару',
         'add_size_price' => 'Додати вагу/ціну',
+        'delete_size_price' => 'Забрати вагу/ціну',
+        'to_sub_category' => 'По під-категоріях',
+        'to_category' => 'По категоріях',
+        'to_product_type' => 'По типах товару',
+        'search' => 'Пошук',
+
     ];

@@ -17,16 +17,16 @@
             $title = $product->localization[0];
             $description = $product->localization[1];
 
-            // foreach ($product->sizeprices as $sizeprice) {
-            //     # code...
-            // }
+            foreach ($product->sizeprices as $sizeprice) {
+                
+            }
         @endphp
       <a href="#">
         <figure class="product shadow-box">
           <img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
           <figcaption>
             <h3>{{ $title->$locale }}</h3>
-            <p class="description">{{ $description->$locale }} ууа ргы рващр щйшуащшц уащшц цущшащшц</p>
+            <p class="description">{{ $description->$locale }}</p>
             <div class="button-line flex-sb">
               <p class="add-to-basket flex-aic">
                 <svg>

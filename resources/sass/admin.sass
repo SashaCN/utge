@@ -240,6 +240,10 @@ main
 /* -------------------------------------------------------------------------- */
 /*                            product list (index)                            */
 /* -------------------------------------------------------------------------- */
+.list-filter-wrapp
+    display: flex
+    align-items: start
+    justify-content: space-between
 
 .title-line
   padding-bottom: 10px
@@ -265,8 +269,13 @@ main
     img
       transform: translate(-50%, -50%) scale(1.1)
 
+.y
+    max-height: 100vh
+    width: 75%
+    overflow-y: auto
+
 .product-table
-  width: 75%
+  width: 100%
   border-collapse: collapse
   thead tr
     background-color: #D9D9D9
@@ -390,8 +399,19 @@ main
     margin-bottom: 15px
 
 .image-changes-bt
-    padding: 15px
+    width: 100%
+    text-align: center
+    padding: 10px
     cursor: pointer
+    font-size: 16px
+    background-color: #003b95
+    border: none
+    color: #fff
+    transition: 0.5s
+    &:hover
+        background-color: #1255bc
+
+
 
 .image-changes-form
     display: none
@@ -411,15 +431,15 @@ main
     margin-bottom: 15px
     transition: 0.5s
     &:hover
-        box-shadow: 0px 0px 10px #3D43FF
+        box-shadow: 0px 0px 10px #003b95
 
 .radio-change:checked + .radio-label
     padding: 5px
     background-color: #D9D9D9
-    box-shadow: 0px 0px 10px #3D43FF
+    box-shadow: 0px 0px 10px #003b95
     transition: 0.5s
     .label-circle
-        background-color: #3D43FF
+        background-color: #003b95
         border: 1px solid rgba(0, 0, 0, 0.0)
 
 .label-circle
@@ -443,9 +463,94 @@ main
     flex-wrap: wrap
     width: 400px
 
+.pt0
+    padding-top: 0
+
 /* -------------------------------------------------------------------------- */
 /*                                   pagination                               */
 /* -------------------------------------------------------------------------- */
 
 .pagination
     padding: 25px
+
+/* -------------------------------------------------------------------------- */
+/*                                   filter                                   */
+/* -------------------------------------------------------------------------- */
+
+.filter-form
+    width: 20%
+    background-color: #D9D9D9
+    padding: 15px
+
+.filter-item-checkbox
+    display: none
+
+.filter-item
+    margin-bottom: 20px
+
+.filter-item-title
+    text-align: center
+    font-weight: bold
+
+.filter-item-desc,
+.filter-item-title
+    margin-bottom: 15px
+
+.filter-item-desc
+    display: block
+    padding: 5px 0
+    border-bottom: 1px solid #676767
+
+.filter-item-label
+    cursor: pointer
+    margin-left: 10px
+    display: inline-flex
+    flex-direction: row
+    align-items: center
+    padding: 5px
+    background-color: #F2F2F2
+    border-radius: 50px
+    margin-bottom: 15px
+    transition: 0.5s
+    &:hover
+        box-shadow: 0px 0px 10px #003b95
+
+.filter-item-checkbox:checked + .filter-item-label
+    padding: 5px
+    background-color: #D9D9D9
+    box-shadow: 0px 0px 10px #003b95
+    transition: 0.5s
+    .label-circle
+        background-color: #003b95
+        border: 1px solid rgba(0, 0, 0, 0.0)
+
+.filter-setting-button
+    text-align: center
+
+.filter-item-button-button
+    display: none
+
+.filter-item-button-label
+    width: 100%
+    text-align: center
+    padding: 10px
+    cursor: pointer
+    font-size: 16px
+    background-color: #003b95
+    border: none
+    color: #fff
+    &:hover
+        background-color: #1255bc
+
+::-webkit-scrollbar
+    width: 10px
+
+::-webkit-scrollbar-track
+    background: #f1f1f1
+
+::-webkit-scrollbar-thumb
+    background: #003b95
+
+::-webkit-scrollbar-thumb:hover
+    background: #555
+
