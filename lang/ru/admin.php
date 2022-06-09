@@ -58,4 +58,8 @@ return [
     'childPage_create' => 'Добавить блок',
     'route' => 'блок',
     'news_create' => 'Добавить новости',
+    'error-size' => 'Вес',
+    'error-price' => 'Цена',
+    'error-price_units' => 'Единицы измерения цены',
+    'error-available' => 'Наличие товара',
 ];
