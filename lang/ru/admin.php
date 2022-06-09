@@ -58,4 +58,8 @@ return [
     'childPage_create' => 'Добавить блок',
     'route' => 'блок',
     'news_create' => 'Добавить новости',
+    'to_sub_category' => 'По под-категориях',
+    'to_category' => 'По категориях',
+    'to_product_type' => 'По типах товара',
+    'search' => 'Поиск',
 ];
