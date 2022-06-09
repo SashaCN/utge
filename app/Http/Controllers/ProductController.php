@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\SizePrice;
+use App\Models\ProductType;
+use App\Models\SubCategory;
 
 class ProductController extends Controller
 {
@@ -17,11 +19,18 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        $products = Product::paginate(12);
 
+        $productTypes = ProductType::all();
+        $categories = Category::all();
+        $subCategories = SubCategory::all();
+        
         return view('site.product.index', [
             'products' => $products,
             'sizeprices' => SizePrice::getSizePrice(),
+            'producttypes' => $productTypes,
+            'categories' => $categories,
+            'subcategories' => $subCategories,
         ]);
     }
 

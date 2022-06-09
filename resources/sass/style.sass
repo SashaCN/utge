@@ -154,6 +154,7 @@ h2
 /* -------------------------------------------------------------------------- */
 
 .goods-list
+  margin-bottom: 25px
   & > a
     width: 23%
 
@@ -161,13 +162,96 @@ h2
 /*                                products page                                */
 /* -------------------------------------------------------------------------- */
 
-.filter-box
+.product-page
+    align-items: flex-start
+
+.filter-menu
   width: 20%
 
+h4
+    font-family: $rubik
+    font-size: 1.6rem
+    font-weight: normal
+    color: $second
+    letter-spacing: 1px
+    padding: 14px 20px
+    background: $primary
+    text-transform: uppercase
+
+.filter-list
+    padding: 25px 0
+    margin-bottom: 30px
+    background-color: $second
+    p
+        font-family: $rubik
+        font-size: 1.8rem
+        line-height: 1.8rem
+        color: $text-dark
+        text-transform: lowercase
+        padding: 5px 21px
+        transition: $trs
+        &:hover
+            cursor: pointer
+            background-color: #003c955d
+
+.category-item
+    position: relative
+    &::before
+        content: ''
+        position: absolute
+        top: 50%
+        right: 21px
+        width: 7px
+        height: 7px
+        border: 2px solid $primary
+        border-top: none
+        border-left: none
+        transform: rotate(45deg) translate(-75%, -25%)
+
+.checked-category
+    &::before
+        transform: rotate(-135deg) translate(50%, 0%)
+    & + .sub-list
+        display: block
+
+.sub-list
+    display: none
+    padding-left: 20px
+    p
+        padding: 5px 40px
+        margin-left: -21px
+    label
+        position: relative
+        display: block
+        &::before
+            content: ''
+            position: absolute
+            top: 50%
+            left: 0
+            width: 7px
+            height: 5px
+            border: 2px solid $primary
+            border-top: none
+            border-left: none
+            transform: rotate(45deg) translate(-25%, -75%)
+            visibility: hidden
+    input
+        display: none
+        &:checked + label:before
+            visibility: visible
+
 .product-list
-  width: 75%
-  & > a
-    width: 31.5%
+    width: 75%
+    flex-wrap: wrap
+    & > a
+        width: 31.5%
+        margin-bottom: 30px
+    div.pagination
+        padding-top: 20px
+        margin-bottom: 50px
+    .text-wrap
+        margin: 0
+
 
 .product
   padding: 30px 20px

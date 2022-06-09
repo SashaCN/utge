@@ -448,6 +448,9 @@ h2 {
 /* -------------------------------------------------------------------------- */
 /*                                 best goods                                 */
 /* -------------------------------------------------------------------------- */
+.goods-list {
+  margin-bottom: 25px;
+}
 .goods-list > a {
   width: 23%;
 }
@@ -455,15 +458,113 @@ h2 {
 /* -------------------------------------------------------------------------- */
 /*                                products page                                */
 /* -------------------------------------------------------------------------- */
-.filter-box {
+.product-page {
+  align-items: flex-start;
+}
+
+.filter-menu {
   width: 20%;
+}
+
+h4 {
+  font-family: "Rubik", sans-serif;
+  font-size: 1.6rem;
+  font-weight: normal;
+  color: #fff;
+  letter-spacing: 1px;
+  padding: 14px 20px;
+  background: #003b95;
+  text-transform: uppercase;
+}
+
+.filter-list {
+  padding: 25px 0;
+  margin-bottom: 30px;
+  background-color: #fff;
+}
+.filter-list p {
+  font-family: "Rubik", sans-serif;
+  font-size: 1.8rem;
+  line-height: 1.8rem;
+  color: #191919;
+  text-transform: lowercase;
+  padding: 5px 21px;
+  transition: all 0.5s ease;
+}
+.filter-list p:hover {
+  cursor: pointer;
+  background-color: rgba(0, 60, 149, 0.3647058824);
+}
+
+.category-item {
+  position: relative;
+}
+.category-item::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 21px;
+  width: 7px;
+  height: 7px;
+  border: 2px solid #003b95;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg) translate(-75%, -25%);
+}
+
+.checked-category::before {
+  transform: rotate(-135deg) translate(50%, 0%);
+}
+.checked-category + .sub-list {
+  display: block;
+}
+
+.sub-list {
+  display: none;
+  padding-left: 20px;
+}
+.sub-list p {
+  padding: 5px 40px;
+  margin-left: -21px;
+}
+.sub-list label {
+  position: relative;
+  display: block;
+}
+.sub-list label::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 7px;
+  height: 5px;
+  border: 2px solid #003b95;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg) translate(-25%, -75%);
+  visibility: hidden;
+}
+.sub-list input {
+  display: none;
+}
+.sub-list input:checked + label:before {
+  visibility: visible;
 }
 
 .product-list {
   width: 75%;
+  flex-wrap: wrap;
 }
 .product-list > a {
   width: 31.5%;
+  margin-bottom: 30px;
+}
+.product-list div.pagination {
+  padding-top: 20px;
+  margin-bottom: 50px;
+}
+.product-list .text-wrap {
+  margin: 0;
 }
 
 .product {

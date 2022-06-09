@@ -7,13 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@lang('utge.utge')</title>
     <link rel="stylesheet" href="{{ asset('css/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/pagination.css') }}">
 </head>
 
 <body>
     <header>
         <div class="wrapper">
             <div class="info-line flex-sb">
-                <div class="phone flex-aic"> 
+                <div class="phone flex-aic">
                     <svg>
                         <use xlink:href="{{ asset('img/sprite.svg#tel') }}"></use>
                     </svg>
@@ -91,7 +92,7 @@
     <footer>
         <div class="wrapper">
             <div class="info-line flex-sb">
-                <div class="phone flex-aic"> 
+                <div class="phone flex-aic">
                     <svg>
                         <use xlink:href="{{ asset('img/sprite.svg#tel') }}"></use>
                     </svg>

@@ -3,26 +3,56 @@
 @section('content')
 
 @php
-    $locale = app()->getLocale();
+$locale = app()->getLocale();
 @endphp
 
 
-<div class="wrapper flex-sb">
-  <div class="filter-box">
-
-  </div>
-  <div class="product-list flex-sb shadow-box">
-    @foreach ($products as $product)
+<div class="wrapper flex-sb product-page">
+    <div class="filter-menu">
+        @foreach ($producttypes as $type)
+        {{-- {{dd($type)}} --}}
         @php
-            $title = $product->localization[0];
-            $description = $product->localization[1];
-
-            foreach ($product->sizeprices as $sizeprice) {
-
-            }
+        $title = $type->localization[0];
         @endphp
-      <a href="#">
-        @if ($product->sizeprices->whereIn('available', [1,4])->min('price'))
+        <div class="filter-box">
+            <h4>{{ $title->$locale }}</h4>
+            <ul class="filter-list">
+                @foreach ($categories->where('product_type_id', $type->id) as $category)
+                @php
+                $title = $category->localization[0];
+                @endphp
+                <li>
+                    <p class="category-item">{{ $title->$locale }}</p>
+                    <ul class="sub-list hidden">
+                        <form action="">
+                            @foreach ($subcategories->where('category_id', $category->id) as $sub)
+                            @php
+                            $title = $sub->localization[0];
+                            @endphp
+                            <li>
+                                <input type="checkbox" name="sub{{$sub->id}}" id="sub{{$sub->id}}">
+                                <label for="sub{{$sub->id}}">
+                                    <p class="sub-item">{{ $title->$locale }}</p>
+                                </label>
+                            </li>
+                            @endforeach
+                        </form>
+                    </ul>
+                </li>
+                @endforeach
+            </ul>
+        </div>
+        @endforeach
+        <script src="{{ asset('js/filter.js') }}"></script>
+    </div>
+    <div class="product-list flex-sb">
+        @foreach ($products as $product)
+        @php
+        $title = $product->localization[0];
+        $description = $product->localization[1];
+        @endphp
+        <a href="#">
+            @if ($product->sizeprices->whereIn('available', [1,4])->min('price'))
             <figure class="product shadow-box">
                 <img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
                 <figcaption>
@@ -42,7 +72,7 @@
                     </div>
                 </figcaption>
             </figure>
-        @else
+            @else
             <figure class="product shadow-box out-of-store">
                 <img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
                 <figcaption>
@@ -62,10 +92,28 @@
                     </div>
                 </figcaption>
             </figure>
-        @endif
-      </a>
-    @endforeach
-  </div>
+            @endif
+        </a>
+        @endforeach
+        <div class="pagination">
+            {{ $products->withQueryString()->links('vendor.pagination.utge-pagination') }}
+        </div>
+        <div class="text-wrap shadow-box">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus est eaque dolore fugit nobis minima
+                excepturi ut, dolor nemo odit nam, harum libero minus earum vel? Tempore possimus iusto accusantium! Cum
+                ipsa ad veniam, excepturi ab expedita tenetur? Doloribus quos expedita harum eveniet ex quasi at
+                praesentium et libero atque facilis esse, quisquam tempora provident placeat voluptates iusto veritatis
+                eaque! Consectetur, repudiandae. Dolor molestiae numquam quod ipsam alias, corporis nihil et ipsa ea
+                mollitia repellat voluptas assumenda veniam molestias modi!</p>
+            <p>Magnam, sequi aliquid? Neque ullam iste odit culpa reiciendis saepe mollitia nostrum asperiores esse
+                vitae explicabo eveniet error rem dolorem, animi dolores delectus aliquid non. Labore, quas at sint
+                laborum cum ab qui exercitationem neque in assumenda voluptatibus cupiditate possimus laudantium
+                provident ullam quaerat. Provident repellat officia libero neque velit impedit aspernatur beatae
+                repellendus nemo. Dolores, dicta itaque qui cupiditate dolore eveniet quibusdam deleniti porro facilis
+                incidunt vero eius ipsa minima reiciendis laudantium nam quas ratione aut exercitationem molestiae
+                aperiam.</p>
+        </div>
+    </div>
 </div>
 
 @endsection
