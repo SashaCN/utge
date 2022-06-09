@@ -23,11 +23,13 @@ class MultiRequest extends FormRequest
      */
     public function rules()
     {
+        // dd($_REQUEST);
+
         $request = [
             'title_uk' => 'required|min:2|max:55',
             'title_ru' => 'required|min:2|max:55',
         ];
-
+        
         if (isset($_REQUEST['description_uk']))
         {
             $request['description_uk'] = 'required|min:2';
@@ -53,11 +55,6 @@ class MultiRequest extends FormRequest
             $request['sub_category_id'] = 'required';
         }
 
-        if (isset($_REQUEST['available']))
-        {
-            $request['available'] = 'required';
-        }
-
         if (isset($_REQUEST['home_view']))
         {
             $request['home_view'] = 'required';
@@ -73,6 +70,15 @@ class MultiRequest extends FormRequest
             $request['image'] = 'required|mimes:jpeg,png,jpg,svg';
         }
 
+        if(isset($_REQUEST['sizecount']))
+        {
+            for ($i = 1; $i <= $_REQUEST['sizecount']; $i++) { 
+                $request['size.'.$i] = 'required';
+                $request['price.'.$i] = 'required';
+                $request['price_units.'.$i] = 'required';
+                $request['available.'.$i] = 'required';
+            }
+        }
         return $request;    
     }
 }
