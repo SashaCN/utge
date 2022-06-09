@@ -70,15 +70,44 @@ class MultiRequest extends FormRequest
             $request['image'] = 'required|mimes:jpeg,png,jpg,svg';
         }
 
-        if(isset($_REQUEST['sizecount']))
+        if (isset($_REQUEST['sizecount']))
         {
-            for ($i = 1; $i <= $_REQUEST['sizecount']; $i++) { 
-                $request['size.'.$i] = 'required';
-                $request['price.'.$i] = 'required';
-                $request['price_units.'.$i] = 'required';
-                $request['available.'.$i] = 'required';
+            $count = $_REQUEST['sizecount'];
+        }
+
+        if (isset($_REQUEST['counter']))
+        {
+            $count = $_REQUEST['counter'];
+        }
+
+        if (isset($_REQUEST['size/1']))
+        {
+            for ($i = 1; $i <= $count; $i++) { 
+                $request['size/'.$i] = 'required';
             }
         }
+         
+        if (isset($_REQUEST['price/1']))
+        {
+            for ($i = 1; $i <= $count; $i++) { 
+                $request['price/'.$i] = 'required';
+            }
+        }
+
+        if (isset($_REQUEST['price_units/1']))
+        {
+            for ($i = 1; $i <= $count; $i++) { 
+                $request['price_units/'.$i] = 'required';
+            }
+        }
+
+        if (isset($_REQUEST['available/1']))
+        {
+            for ($i = 1; $i <= $count; $i++) { 
+                $request['available/'.$i] = 'required';
+            }
+        }
+    dd($_REQUEST);
         return $request;    
     }
 }

@@ -80,16 +80,16 @@ class ProductController extends Controller
         $localization_desc->uk = $request->description_uk;
         $localization_desc->ru = $request->description_ru;
 
-        $product->fill($request->except(['size', 'price', 'available']));
+        $product->fill($request->except(['size/', 'price/', 'available/']));
         $product->save();
 
         for($i = 1; $i <= $request->sizecount; $i++){
             $size_price = new SizePrice();
             $size_price->fill($request->validated());
-            $size = 'size.'.$i;
-            $price = 'price.'.$i;
-            $available = 'available.'.$i;
-            $price_units = 'price_units.'.$i;
+            $size = 'size/'.$i;
+            $price = 'price/'.$i;
+            $available = 'available/'.$i;
+            $price_units = 'price_units/'.$i;
             $size_price->size = $request->$size;
             $size_price->price = $request->$price;
             $size_price->available = $request->$available;
@@ -163,14 +163,14 @@ class ProductController extends Controller
         ];
 
 
-        $product->fill($request->except(['size', 'price', 'available', 'price_units']));
+        $product->fill($request->except(['size.', 'price.', 'available.', 'price_units.']));
         $product->update();
 
         for($i = 1; $i <= $request->counter; $i++){
-            $size = 'size'.$i;
-            $price = 'price'.$i;
-            $available = 'available'.$i;
-            $price_units = 'price_units'.$i;
+            $size = 'size/'.$i;
+            $price = 'price/'.$i;
+            $available = 'available/'.$i;
+            $price_units = 'price_units/'.$i;
             $size_price =[
                 'size' => $request->$size,
                 'price' => $request->$price,

@@ -10,9 +10,9 @@
     @if ($errors->any())
         <ul>
             @foreach ($errors->all() as $error)
-                @if (strripos($error, '.') == true)
+                @if (strripos($error, '/') == true)
                     <li>
-                        @switch(explode('.', $error)[0])
+                        @switch(explode('/', $error)[0])
                             @case('size')
                                 @lang('admin.error-size')
                                 @break
@@ -33,7 +33,7 @@
                                 
                         @endswitch
                         
-                        <?= ' '.explode('.', $error)[1];?>
+                        <?= ' '.explode('/', $error)[1];?>
                     </li> 
                 @else
                     <li>{{ $error }}</li>
@@ -83,23 +83,23 @@
         <div class="size-price-slide flex-col">
             <div class="size-price">
                 <div class="input-wrap">
-                    <input type="text" name="size1" id="size1" class="auto-value">
+                    <input type="text" name="size/1" id="size1" class="auto-value">
                     <label class="label" for="size1">@lang('admin.add_size')</label>
                 </div>
 
                 <div class="input-wrap">
-                    <input type="text" name="price1" id="price1" class="auto-value">
+                    <input type="text" name="price/1" id="price1" class="auto-value">
                     <label class="label" for="price1">@lang('admin.add_price')</label>
                 </div>
 
                 <div class="input-wrap">
-                    <input type="text" name="price_units1" id="price_units1" class="auto-value">
+                    <input type="text" name="price_units/1" id="price_units1" class="auto-value">
                     <label class="label" for="price_units1">@lang('admin.add_price_units')</label>
                 </div>
 
                 <div class="input-wrap pt0">
                     <p>@lang('admin.add_available')</p>
-                    <select name="available1" class="auto-value">
+                    <select name="available/1" class="auto-value">
                         <option value="1">@lang('admin.available')</option>
                         <option value="2">@lang('admin.not_available')</option>
                         <option value="3">@lang('admin.waiting_available')</option>
@@ -151,23 +151,23 @@
             function getStructure(counter) {
                 return structure = `
                     <div class="input-wrap">
-                        <input type="number" name="size.${counter}" id="size${counter}" class="auto-value">
+                        <input type="number" name="size/${counter}" id="size${counter}" class="auto-value">
                         <label class="label" for="size${counter}">@lang('admin.add_size')</label>
                     </div>
 
                     <div class="input-wrap">
-                        <input type="number" name="price.${counter}" id="price${counter}" class="auto-value">
+                        <input type="number" name="price/${counter}" id="price${counter}" class="auto-value">
                         <label class="label" for="price${counter}">@lang('admin.add_price')</label>
                     </div>
 
                     <div class="input-wrap">
-                        <input type="text" name="price_units.${counter}" id="price_units${counter}" class="auto-value">
+                        <input type="text" name="price_units/${counter}" id="price_units${counter}" class="auto-value">
                         <label class="label" for="price_units${counter}">@lang('admin.add_price_units')</label>
                     </div>
 
                     <div class="input-wrap pt0">
                         <p>@lang('admin.add_available')</p>
-                        <select name="available.${counter}" class="auto-value">
+                        <select name="available/${counter}" class="auto-value">
                             <option value="1">@lang('admin.available')</option>
                             <option value="2">@lang('admin.not_available')</option>
                             <option value="3">@lang('admin.waiting_available')</option>
