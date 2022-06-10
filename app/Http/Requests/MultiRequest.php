@@ -23,18 +23,17 @@ class MultiRequest extends FormRequest
      */
     public function rules()
     {
-        // dd($_REQUEST);
 
         $request = [
             'title_uk' => 'required|min:2|max:55',
             'title_ru' => 'required|min:2|max:55',
         ];
-        
+
         if (isset($_REQUEST['description_uk']))
         {
             $request['description_uk'] = 'required|min:2';
         }
-        
+
         if (isset($_REQUEST['description_ru']))
         {
             $request['description_ru'] = 'required|min:2';
@@ -49,7 +48,7 @@ class MultiRequest extends FormRequest
         {
             $request['category_id'] = 'required';
         }
-        
+
         if (isset($_REQUEST['sub_category_id']))
         {
             $request['sub_category_id'] = 'required';
@@ -82,32 +81,31 @@ class MultiRequest extends FormRequest
 
         if (isset($_REQUEST['size/1']))
         {
-            for ($i = 1; $i <= $count; $i++) { 
+            for ($i = 1; $i <= $count; $i++) {
                 $request['size/'.$i] = 'required';
             }
         }
-         
+
         if (isset($_REQUEST['price/1']))
         {
-            for ($i = 1; $i <= $count; $i++) { 
+            for ($i = 1; $i <= $count; $i++) {
                 $request['price/'.$i] = 'required';
             }
         }
 
         if (isset($_REQUEST['price_units/1']))
         {
-            for ($i = 1; $i <= $count; $i++) { 
+            for ($i = 1; $i <= $count; $i++) {
                 $request['price_units/'.$i] = 'required';
             }
         }
 
         if (isset($_REQUEST['available/1']))
         {
-            for ($i = 1; $i <= $count; $i++) { 
+            for ($i = 1; $i <= $count; $i++) {
                 $request['available/'.$i] = 'required';
             }
         }
-    dd($_REQUEST);
-        return $request;    
+        return $request;
     }
 }

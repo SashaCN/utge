@@ -30,7 +30,7 @@ class ProductController extends Controller
     {
 
         $products = Product::filter($request)->paginate(12);
-
+ 
 
         $productTypes = ProductType::all();
         $categories = Category::all();
