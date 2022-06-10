@@ -25,17 +25,17 @@ $locale = app()->getLocale();
                         @case('price units')
                             @lang('admin.error-price_units')
                             @break
-                            
+
                         @case('available')
                             @lang('admin.error-available')
                             @break
-                            
+
                         @default
-                            
+
                     @endswitch
-                    
+
                     <?= ' '.explode('/', $error)[1];?>
-                </li> 
+                </li>
             @else
                 <li>{{ $error }}</li>
             @endif
@@ -116,7 +116,7 @@ $locale = app()->getLocale();
                 </div>
 
                 <div class="input-wrap">
-                    <input type="text" name="price_units/{{$counter}}" id="price_units{{$counter}}" class="auto-value">
+                    <input type="text" value="{{ $sizeprice->price_units }}" name="price_units/{{$counter}}" id="price_units{{$counter}}" class="auto-value">
                     <label class="label" for="price_units{{$counter}}">@lang('admin.add_price_units')</label>
                 </div>
 
