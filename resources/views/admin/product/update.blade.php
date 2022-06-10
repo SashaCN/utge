@@ -151,8 +151,10 @@ $locale = app()->getLocale();
         </div>
 
         <input type="hidden" name="counter" value="{{ $counter }}">
-        <button id="add-size-price" class="image-changes-bt">@lang('admin.add_size_price')</button>
-        <button id="delete-size-price" class="image-changes-bt">@lang('admin.delete_size_price')</button>
+        <div class="size-price-bt-wrapp">
+            <button id="delete-size-price" class="size-price-bt-min"><span class="btn-w-sp"><img src="{{ asset('img/minus-label.svg') }}" ><span>@lang('admin.delete_size_price')</span></span></button>
+            <button id="add-size-price" class="size-price-bt-pl"><span class="btn-w-sp"><span>@lang('admin.add_size_price')</span><img src="{{ asset('img/plus-label.svg') }}" ></span></button>
+        </div>
     </div>
 
     <div class="image-slide flex-col">
