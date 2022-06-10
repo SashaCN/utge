@@ -16,6 +16,10 @@ class SizePrice extends Model
     protected $dates = ['deleted_at'];
     protected $fillable = ['product_id', 'size', 'price', 'available', 'price_units'];
 
+    public function products()
+    {
+        return $this->belongsTo(Product::class);
+    }
     static function getSizePrice()
     {
         DB::table('products')

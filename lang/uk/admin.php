@@ -54,6 +54,10 @@
         'add_product_type' => 'Добавити тип товару',
         'add_size_price' => 'Додати вагу/ціну',
         'delete_size_price' => 'Забрати вагу/ціну',
+        'child_page_father' => 'обрати блок',
+        'childPage_create' => 'Додати блок',
+        'route' => 'блок',
+        'news_create' => 'Додати новини',
         'to_sub_category' => 'По під-категоріях',
         'to_category' => 'По категоріях',
         'to_product_type' => 'По типах товару',
@@ -62,5 +66,9 @@
         'childPage_create' => 'Додати блок',
         'route' => 'блок',
         'news_create' => 'Додати новини',
+        'error-size' => 'Вага',
+        'error-price' => 'Ціна',
+        'error-price_units' => 'Одиниці вимрювання ціни',
+        'error-available' => 'Наявність товару',
 
     ];

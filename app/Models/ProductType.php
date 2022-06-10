@@ -6,17 +6,29 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Dyrynda\Database\Support\CascadeSoftDeletes;
+use Illuminate\Support\Facades\DB;
 
 class ProductType extends Model
 {
     use HasFactory;
     use SoftDeletes, CascadeSoftDeletes;
 
-    protected $dates = ['deleted_at'];
     protected $cascadeDeletes = ['categories'];
+    protected $dates = ['deleted_at'];
 
     public function localization()
     {
         return $this->morphMany(Localization::class, 'localizationable');
+    }
+
+    public function categories()
+    {
+
+        return $this->hasMany(Category::class);
+    }
+
+    public function sub_categories()
+    {
+        return $this->hasManyThrough(Category::class, SubCategory::class);
     }
 }

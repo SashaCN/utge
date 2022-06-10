@@ -12,13 +12,17 @@ class Category extends Model
     use HasFactory;
     use SoftDeletes, CascadeSoftDeletes;
 
-    protected $dates = ['deleted_at'];
     protected $cascadeDeletes = ['sub_categories'];
+    protected $dates = ['deleted_at'];
     protected $fillable = ['product_type_id'];
 
-    public function productType ()
+    public function product_types()
     {
         return $this->belongsTo(ProductType::class);
+    }
+    public function sub_categories()
+    {
+        return $this->hasMany(SubCategory::class);
     }
     public function localization()
     {

@@ -7,18 +7,17 @@ use App\Http\Controllers\Controller;
 use App\Models\ProductType;
 use App\Models\Category;
 use App\Models\SubCategory;
+use App\Models\Product;
+use App\Models\Localization;
+use App\Models\SizePrice;
 use App\Filters\ProductFilter;
+use App\Http\Requests\MultiRequest;
+use App\Http\Requests\ImageRequest;
 use App\Http\Requests\LocalizationRequest;
 use App\Models\CategoryProduct;
 use App\Models\Filter;
-use App\Models\SizePrice;
-use Illuminate\Http\Request;
 use Spatie\QueryBuilder\QueryBuilder;
-use App\Models\Product;
-use App\Models\Localization;
-use App\Http\Requests\MultiRequest;
-use App\Http\Requests\ImageRequest;
-
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -29,8 +28,8 @@ class ProductController extends Controller
      */
     public function index(ProductFilter $request)
     {
-        $products = Product::filter($request)->paginate(20);
 
+        $products = Product::filter($request)->paginate(12);
 
 
         $productTypes = ProductType::all();
@@ -87,16 +86,16 @@ class ProductController extends Controller
         $localization_desc->uk = $request->description_uk;
         $localization_desc->ru = $request->description_ru;
 
-        $product->fill($request->except(['size', 'price', 'available']));
+        $product->fill($request->except(['size/', 'price/', 'available/']));
         $product->save();
 
         for($i = 1; $i <= $request->sizecount; $i++){
             $size_price = new SizePrice();
             $size_price->fill($request->validated());
-            $size = 'size'.$i;
-            $price = 'price'.$i;
-            $available = 'available'.$i;
-            $price_units = 'price_units'.$i;
+            $size = 'size/'.$i;
+            $price = 'price/'.$i;
+            $available = 'available/'.$i;
+            $price_units = 'price_units/'.$i;
             $size_price->size = $request->$size;
             $size_price->price = $request->$price;
             $size_price->available = $request->$available;
@@ -170,14 +169,14 @@ class ProductController extends Controller
         ];
 
 
-        $product->fill($request->except(['size', 'price', 'available', 'price_units']));
+        $product->fill($request->except(['size.', 'price.', 'available.', 'price_units.']));
         $product->update();
 
         for($i = 1; $i <= $request->counter; $i++){
-            $size = 'size'.$i;
-            $price = 'price'.$i;
-            $available = 'available'.$i;
-            $price_units = 'price_units'.$i;
+            $size = 'size/'.$i;
+            $price = 'price/'.$i;
+            $available = 'available/'.$i;
+            $price_units = 'price_units/'.$i;
             $size_price =[
                 'size' => $request->$size,
                 'price' => $request->$price,

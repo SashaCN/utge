@@ -17,16 +17,16 @@ class SubCategory extends Model
     protected $dates = ['deleted_at'];
     protected $fillable = ['category_id'];
 
+    public function localization()
+    {
+        return $this->morphMany(Localization::class, 'localizationable');
+    }
     public function products()
     {
         return $this->hasMany(Product::class);
     }
-    public function category()
+    public function categories()
     {
         return $this->belongsTo(Category::class);
-    }
-    public function localization()
-    {
-        return $this->morphMany(Localization::class, 'localizationable');
     }
 }
