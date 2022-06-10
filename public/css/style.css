@@ -449,10 +449,13 @@ h2 {
 /*                                 best goods                                 */
 /* -------------------------------------------------------------------------- */
 .goods-list {
-  margin-bottom: 25px;
+  justify-content: flex-start;
+  margin: 0 -16.6px 25px;
 }
 .goods-list > a {
-  width: 23%;
+  width: 25%;
+  padding: 0 16.5px;
+  box-sizing: border-box;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -554,9 +557,13 @@ h4 {
 .product-list {
   width: 75%;
   flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: 0 16px;
 }
 .product-list > a {
-  width: 31.5%;
+  width: 33.3%;
+  padding: 0 16px;
+  box-sizing: border-box;
   margin-bottom: 30px;
 }
 .product-list div.pagination {
@@ -568,6 +575,7 @@ h4 {
 }
 
 .product {
+  position: relative;
   padding: 30px 20px;
   box-sizing: border-box;
   background-color: #fff;
@@ -586,6 +594,16 @@ h4 {
 .product .button-line {
   border-top: 2px solid #003b95;
   padding-top: 20px;
+}
+.product .like {
+  position: absolute;
+  top: 40px;
+  right: 20px;
+}
+.product .like svg {
+  width: 29px;
+  height: 26px;
+  fill: #003b95;
 }
 
 .out-of-store .add-to-basket {

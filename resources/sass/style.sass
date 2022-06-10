@@ -154,9 +154,12 @@ h2
 /* -------------------------------------------------------------------------- */
 
 .goods-list
-  margin-bottom: 25px
-  & > a
-    width: 23%
+    justify-content: flex-start
+    margin: 0 -16.6px 25px
+    & > a
+        width: 25%
+        padding: 0 16.5px
+        box-sizing: border-box
 
 /* -------------------------------------------------------------------------- */
 /*                                products page                                */
@@ -243,8 +246,12 @@ h4
 .product-list
     width: 75%
     flex-wrap: wrap
+    justify-content: flex-start
+    margin: 0 16px
     & > a
-        width: 31.5%
+        width: 33.3%
+        padding: 0 16px
+        box-sizing: border-box
         margin-bottom: 30px
     div.pagination
         padding-top: 20px
@@ -254,20 +261,29 @@ h4
 
 
 .product
-  padding: 30px 20px
-  box-sizing: border-box
-  background-color: $second
-  border-radius: 10px
-  img
-    width: 100%
-    max-height: 261px
-    object-fit: cover
-    margin-bottom: 30px
-  figcaption
-    width: 100%
-  .button-line
-    border-top: 2px solid $primary
-    padding-top: 20px
+    position: relative
+    padding: 30px 20px
+    box-sizing: border-box
+    background-color: $second
+    border-radius: 10px
+    img
+        width: 100%
+        max-height: 261px
+        object-fit: cover
+        margin-bottom: 30px
+    figcaption
+        width: 100%
+    .button-line
+        border-top: 2px solid $primary
+        padding-top: 20px
+    .like
+        position: absolute
+        top: 40px
+        right: 20px
+        svg
+            width: 29px
+            height: 26px
+            fill: $primary
 
 .out-of-store
     .add-to-basket
