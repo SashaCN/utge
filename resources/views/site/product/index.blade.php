@@ -71,6 +71,11 @@ $locale = app()->getLocale();
                             </span>
                         </p>
                         <p class="price">{{ $product->sizeprices->whereIn('available', [1,4])->min('price') }}</p>
+                        <span class="like">
+                            <svg>
+                                <use xlink:href="{{ asset('img/sprite.svg#like') }}"></use>
+                            </svg>
+                        </span>
                     </div>
                 </figcaption>
             </figure>
@@ -91,6 +96,11 @@ $locale = app()->getLocale();
                             </span>
                         </p>
                         <p class="price">{{ $product->sizeprices->min('price') }}</p>
+                        <span class="like">
+                            <svg>
+                                <use xlink:href="{{ asset('img/sprite.svg#like') }}"></use>
+                            </svg>
+                        </span>
                     </div>
                 </figcaption>
             </figure>

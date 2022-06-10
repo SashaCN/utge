@@ -19,7 +19,7 @@ class Product extends Model implements HasMedia
     use InteractsWithMedia;
 
 
-    protected $cascadeDeletes = ['size_prices'];
+    protected $cascadeDeletes = ['sizePrices'];
     protected $dates = ['deleted_at'];
     protected $fillable = ['sub_category_id', 'available', 'list_position', 'home_view'];
 
@@ -31,7 +31,7 @@ class Product extends Model implements HasMedia
     {
         return $this->morphMany(Localization::class, 'localizationable');
     }
-    public function size_prices()
+    public function sizePrices()
     {
         return $this->hasMany(SizePrice::class);
     }

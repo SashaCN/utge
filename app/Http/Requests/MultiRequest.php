@@ -23,7 +23,6 @@ class MultiRequest extends FormRequest
      */
     public function rules()
     {
-        // dd($_REQUEST);
 
         $request = [
             'title_uk' => 'required|min:2|max:55',
@@ -107,7 +106,6 @@ class MultiRequest extends FormRequest
                 $request['available/'.$i] = 'required';
             }
         }
-    // dd($_REQUEST);
         return $request;
     }
 }
