@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Filters\QueryFilter;
-use Illuminate\Contracts\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -22,10 +22,6 @@ class Product extends Model implements HasMedia
     protected $cascadeDeletes = ['sub_categories'];
     protected $fillable = ['sub_category_id', 'available', 'list_position', 'home_view'];
 
-    // public function categories()
-    // {
-    //     return $this->belongsToMany(Category::class, 'category_products');
-    // }
     public function subCategory()
     {
         return $this->belongsTo(SubCategory::class);
@@ -37,5 +33,10 @@ class Product extends Model implements HasMedia
     public function sizePrices()
     {
         return $this->hasMany(SizePrice::class);
+    }
+
+    public function scopeFilter(Builder $builder, QueryFilter $filter)
+    {
+        return $filter->apply($builder);
     }
 }

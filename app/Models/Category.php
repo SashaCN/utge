@@ -18,6 +18,10 @@ class Category extends Model
     {
         return $this->belongsTo(ProductType::class);
     }
+    public function subcategories()
+    {
+        return $this->hasMany(Subcategory::class);
+    }
     public function localization()
     {
         return $this->morphMany(Localization::class, 'localizationable');
