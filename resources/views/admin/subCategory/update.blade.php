@@ -6,6 +6,14 @@
         $locale = app()->getLocale();
     @endphp
 
+    @if ($errors->any())
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    @endif
+
     <div class="flex title-line">
         <h2>@lang('admin.subcategory_change')</h2>
     </div>
@@ -30,9 +38,11 @@
         <p>subCategory belong to category</p>
 
         @foreach ($categories as $category)
-        @php
-            $title = $category->localization[0];
-        @endphp
+            <label><input type="hidden" value="" name="category_id"></label>
+            
+            @php
+                $title = $category->localization[0];
+            @endphp
 
             @if ($category->id == $subCategory->category_id)
                 <label><input type="radio" name="category_id" value="{{ $category->id }}" checked>{{ $title->$locale }}</label>

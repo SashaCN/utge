@@ -457,6 +457,11 @@ main {
   margin-bottom: 10px;
 }
 
+.size-price-slide .input-wrap input,
+.size-price-slide .input-wrap select {
+  width: 450px;
+}
+
 /* -------------------------------------------------------------------------- */
 /*                               product update                               */
 /* -------------------------------------------------------------------------- */

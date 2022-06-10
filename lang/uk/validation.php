@@ -86,15 +86,15 @@ return [
         'array' => 'The :attribute must not have more than :max items.',
         'file' => 'The :attribute must not be greater than :max kilobytes.',
         'numeric' => 'The :attribute must not be greater than :max.',
-        'string' => 'The :attribute must not be greater than :max characters.',
+        'string' => ':attribute не повинний мати більше ніж :max символів.',
     ],
     'mimes' => 'The :attribute must be a file of type: :values.',
     'mimetypes' => 'The :attribute must be a file of type: :values.',
     'min' => [
         'array' => 'The :attribute must have at least :min items.',
-        'file' => 'The :attribute must be at least :min kilobytes.',
+        'file' => 'The :attribute must have at least :min kilobytes.',
         'numeric' => 'The :attribute must be at least :min.',
-        'string' => 'The :attribute must be at least :min characters.',
+        'string' => ':attribute має містити щонайменше :min символа',
     ],
     'multiple_of' => 'The :attribute must be a multiple of :value.',
     'not_in' => 'The selected :attribute is invalid.',
@@ -113,7 +113,7 @@ return [
     'prohibited_unless' => 'The :attribute field is prohibited unless :other is in :values.',
     'prohibits' => 'The :attribute field prohibits :other from being present.',
     'regex' => 'The :attribute format is invalid.',
-    'required' => ':attribute Обов`язкове поле',
+    'required' => ':attribute - обов`язкове поле',
     'required_array_keys' => 'The :attribute field must contain entries for: :values.',
     'required_if' => 'The :attribute field is required when :other is :value.',
     'required_unless' => 'The :attribute field is required unless :other is in :values.',
@@ -165,6 +165,18 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'title_uk' => 'Назва на українській мові',
+        'title_ru' => 'Назва на російській мові',
+        'description_uk' => 'Опис на українській мові',
+        'description_ru' => 'Опис на російській мові',
+        'route' => 'Блок',
+        'product_type_id' => 'Тип продукту',
+        'category_id' => 'Категорія продукту',
+        'sub_category_id' => 'Під категорія продукту',
+        'available' => 'Наявність товару',
+        'home_view' => 'Відображати на головній сторінці',
+        'image' => 'Зображення',
+    ],
 
 ];

@@ -86,7 +86,7 @@ return [
         'array' => 'The :attribute must not have more than :max items.',
         'file' => 'The :attribute must not be greater than :max kilobytes.',
         'numeric' => 'The :attribute must not be greater than :max.',
-        'string' => 'The :attribute must not be greater than :max characters.',
+        'string' => ':attribute не должен иметь больше :max символов.',
     ],
     'mimes' => 'The :attribute must be a file of type: :values.',
     'mimetypes' => 'The :attribute must be a file of type: :values.',
@@ -94,7 +94,7 @@ return [
         'array' => 'The :attribute must have at least :min items.',
         'file' => 'The :attribute must be at least :min kilobytes.',
         'numeric' => 'The :attribute must be at least :min.',
-        'string' => 'The :attribute must be at least :min characters.',
+        'string' => ':attribute должно содержать по меньшей мере :min символа.',
     ],
     'multiple_of' => 'The :attribute must be a multiple of :value.',
     'not_in' => 'The selected :attribute is invalid.',
@@ -113,7 +113,7 @@ return [
     'prohibited_unless' => 'The :attribute field is prohibited unless :other is in :values.',
     'prohibits' => 'The :attribute field prohibits :other from being present.',
     'regex' => 'The :attribute format is invalid.',
-    'required' => 'Обизатильное поле',
+    'required' => ':attribute - обизатильное поле',
     'required_array_keys' => 'The :attribute field must contain entries for: :values.',
     'required_if' => 'The :attribute field is required when :other is :value.',
     'required_unless' => 'The :attribute field is required unless :other is in :values.',
@@ -166,8 +166,17 @@ return [
     */
 
     'attributes' => [
-        'ru' => 'Название/описание',
-        'uk' => 'Назва/опис'
+        'title_uk' => 'Название на украинском языке',
+        'title_ru' => 'Название на русском языке',
+        'description_uk' => 'Описание на украинском языке',
+        'description_ru' => 'Описание на русском языке',
+        'route' => 'Блок',
+        'product_type_id' => 'Тип продукта',
+        'category_id' => 'Категория продукта',
+        'sub_category_id' => 'Под категорию продукта',
+        'available' => 'Наличие товара',
+        'home_view' => 'Отображать на главной странице',
+        'image' => 'Изображение',
     ],
 
 ];

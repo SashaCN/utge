@@ -5,13 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Dyrynda\Database\Support\CascadeSoftDeletes;
 
 class Category extends Model
 {
     use HasFactory;
-    use SoftDeletes;
+    use SoftDeletes, CascadeSoftDeletes;
 
     protected $dates = ['deleted_at'];
+    protected $cascadeDeletes = ['sub_categories'];
     protected $fillable = ['product_type_id'];
 
     public function productType ()

@@ -7,13 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@lang('utge.utge')</title>
     <link rel="stylesheet" href="{{ asset('css/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/pagination.css') }}">
 </head>
 
 <body>
     <header>
         <div class="wrapper">
             <div class="info-line flex-sb">
-                <div class="phone flex-aic"> 
+                <div class="phone flex-aic">
                     <svg>
                         <use xlink:href="{{ asset('img/sprite.svg#tel') }}"></use>
                     </svg>
@@ -78,7 +79,7 @@
                     <li><a href="{{ route('index') }}">@lang('utge.main')</a></li>
                     <li><a href="{{ route('products') }}">@lang('utge.goods')</a></li>
                     <li><a href="#">@lang('utge.services')</a></li>
-                    <li><a href="{{ route('child', 'delivery') }}">@lang('utge.delivery')</a></li>
+                    <li><a href="{{ route('child', 'delivery') }}">@lang('utge.delivery-payment')</a></li>
                     <li><a href="{{ route('news') }}">@lang('utge.news')</a></li>
                      <li><a href="{{ route('child', 'contacts') }}">@lang('utge.contacts')</a></li>
                 </ul>
@@ -91,7 +92,7 @@
     <footer>
         <div class="wrapper">
             <div class="info-line flex-sb">
-                <div class="phone flex-aic"> 
+                <div class="phone flex-aic">
                     <svg>
                         <use xlink:href="{{ asset('img/sprite.svg#tel') }}"></use>
                     </svg>

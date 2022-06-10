@@ -5,6 +5,14 @@
     $locale = app()->getLocale();
     @endphp
 
+    @if ($errors->any())
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>  
+    @endif
+
     <div class="flex title-line">
         <h2>@lang('admin.add_product_type')</h2>
         <button type="submit" form="form" class="add-button">

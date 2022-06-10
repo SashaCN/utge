@@ -4,30 +4,24 @@ namespace App\Http\Controllers\Admin;
 
 // use App\Helpers\ImageSaver;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ProductRequest;
-use App\Models\Category;
-use App\Models\Localization;
-use App\Models\Product;
 use App\Models\ProductType;
+use App\Models\Category;
 use App\Models\SubCategory;
 use App\Filters\ProductFilter;
-use App\Http\Requests\ImageRequest;
 use App\Http\Requests\LocalizationRequest;
 use App\Models\CategoryProduct;
 use App\Models\Filter;
 use App\Models\SizePrice;
 use Illuminate\Http\Request;
 use Spatie\QueryBuilder\QueryBuilder;
+use App\Models\Product;
+use App\Models\Localization;
+use App\Http\Requests\MultiRequest;
+use App\Http\Requests\ImageRequest;
+
 
 class ProductController extends Controller
 {
-
-    // private $imageSaver;
-
-    // public function __construct(ImageSaver $imageSaver)
-    // {
-    //     $this->imageSaver = $imageSaver;
-    // }
     /**
      * Display a listing of the resource.
      *
@@ -35,8 +29,8 @@ class ProductController extends Controller
      */
     public function index(ProductFilter $request)
     {
-
         $products = Product::filter($request)->paginate(20);
+
 
 
         $productTypes = ProductType::all();
@@ -48,7 +42,6 @@ class ProductController extends Controller
             'producttypes' => $productTypes,
             'categories' => $categories,
             'subcategories' => $subCategories,
-            'sizeprices' => SizePrice::getSizePrice(),
         ]);
 
     }
@@ -78,7 +71,7 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function store(ProductRequest $request, LocalizationRequest $localizationRequest, ImageRequest $imageRequest)
+    public function store(MultiRequest $request)
     {
         $product = new Product();
 
@@ -103,9 +96,11 @@ class ProductController extends Controller
             $size = 'size'.$i;
             $price = 'price'.$i;
             $available = 'available'.$i;
+            $price_units = 'price_units'.$i;
             $size_price->size = $request->$size;
             $size_price->price = $request->$price;
             $size_price->available = $request->$available;
+            $size_price->price_units = $request->$price_units;
 
             $product->sizePrices()->save($size_price);
         }
@@ -149,7 +144,6 @@ class ProductController extends Controller
         return view('admin.product.update', [
             'product' => $product,
             'subCategories' => $subCategories,
-            'sizeprices' => SizePrice::getSizePrice(),
             'selected_subCategories' => $product->$subCategories
         ]);
     }
@@ -161,7 +155,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductRequest $request, Product $product, LocalizationRequest $localizationRequest)
+    public function update(MultiRequest $request, Product $product)
     {
 
         $localization_title = [
@@ -176,20 +170,20 @@ class ProductController extends Controller
         ];
 
 
-        $product->fill($request->except(['size', 'price', 'available']));
+        $product->fill($request->except(['size', 'price', 'available', 'price_units']));
         $product->update();
 
         for($i = 1; $i <= $request->counter; $i++){
             $size = 'size'.$i;
             $price = 'price'.$i;
             $available = 'available'.$i;
+            $price_units = 'price_units'.$i;
             $size_price =[
                 'size' => $request->$size,
                 'price' => $request->$price,
-                'available' => $request->$available
+                'available' => $request->$available,
+                'price_units' => $request->$price_units
             ];
-            // dd($size_price['available']);
-            // dd($product->sizePrices[$i-1]);
 
             $product->sizePrices[$i-1]->update($size_price);
         }

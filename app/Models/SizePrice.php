@@ -6,14 +6,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Dyrynda\Database\Support\CascadeSoftDeletes;
 
 class SizePrice extends Model
 {
     use HasFactory;
-    use SoftDeletes;
+    use SoftDeletes, CascadeSoftDeletes;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = ['product_id', 'size', 'price', 'available'];
+    protected $fillable = ['product_id', 'size', 'price', 'available', 'price_units'];
 
     static function getSizePrice()
     {

@@ -3,12 +3,10 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ChildPageRequest;
+use App\Http\Requests\MultiRequest;
 use App\Http\Requests\ImageRequest;
-use Illuminate\Http\Request;
-use App\Models\ChildPage;
 use App\Models\Localization;
-
+use App\Models\ChildPage;
 
 class ChildPageController extends Controller
 {
@@ -40,7 +38,7 @@ class ChildPageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ChildPageRequest $request)
+    public function store(MultiRequest $request)
     {
         $childPage = new ChildPage();
         $childPage->fill($request->validated());
@@ -112,7 +110,7 @@ class ChildPageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ChildPageRequest $request, ChildPage $childPage, Localization $localization)
+    public function update(MultiRequest $request, ChildPage $childPage)
     {
         $localization_title = [
             'var' => "title",
@@ -126,7 +124,7 @@ class ChildPageController extends Controller
             'ru' => $request->description_ru
         ];
 
-        $childPage->update($request->validated());
+        $childPage->update($requestChild->validated());
         $childPage->localization()->where('var', 'title')->update($localization_title);
         $childPage->localization()->where('var', 'description')->update($localization_desc);
 

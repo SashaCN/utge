@@ -6,6 +6,14 @@
         $locale = app()->getLocale();
     @endphp
 
+    @if ($errors->any())
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    @endif
+
     <div class="flex title-line">
         <h2>@lang('admin.admin.add_sub_category')</h2>
         <button type="submit" form="form" class="add-button">
@@ -36,15 +44,18 @@
             <div class="another-slide flex-col">
                 <div class="input-wrap sub-category-wrap">
                     <p class="label">Виберіть категорію</p>
-                    <ul class="flex-space sub-category-wrap">
+                    <div class="flex-space sub-category-wrap">
+                        <label><input type="hidden" value="" name="category_id"></label>
+                       
                         @foreach ($categories as $category)
-                        @php
-                            $title = $category->localization[0];
-                        @endphp
+                            @php
+                                $title = $category->localization[0];
+                            @endphp
+
                             <input class="radio-change" id="subCategory{{$category->id}}" type="radio" value="{{$category->id}}" name="category_id">
                             <label class="radio-label" for="subCategory{{$category->id}}"><span class="label-circle"></span><span class="label-desc">{{ $title->$locale }}</span></label>
                         @endforeach
-                    </ul>
+                    </div>
                 </div>
         </div>
 
