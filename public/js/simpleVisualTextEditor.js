@@ -1,55 +1,112 @@
 window.onload = function (){
-    let buttons = document.querySelectorAll("#editControls a"),
-        editor = document.querySelector("#editor"),
-        code = document.querySelector("#code")
-    
-    buttons.forEach(item => {
-      item.onclick = function(e) {
-        switch(this.getAttribute("data-role")) {
-          case "h1":
-          case "h2":
-          case "h3":
-          case "p":
-            document.execCommand("formatBlock", false, this.getAttribute("data-role"))
-            break
-          case "switchEditor":
-            if(getComputedStyle(code).display == "none"){
-              code.style.display = "block"
-              editor.style.display = "none"
-              code.value = editor.innerHTML.trim()
-            } else {
-              code.style.display = "none"
-              editor.style.display = "block"
-              editor.innerHTML = code.value
+  let buttons_uk = document.querySelectorAll("#editControls1 a"),
+      editor_uk = document.querySelector("#editor1"),
+      code_uk = document.querySelector("#desc_uk"),
+      buttons_ru = document.querySelectorAll("#editControls2 a"),
+      editor_ru = document.querySelector("#editor2"),
+      code_ru = document.querySelector("#desc_ru")
+  
+  buttons_uk.forEach(item => {
+    item.onclick = function(e) {
+      e.preventDefault()
+
+      switch(this.getAttribute("data-role")) {
+        case "h1":
+        case "h2":
+        case "h3":
+        case "p":
+          document.execCommand("formatBlock", false, this.getAttribute("data-role"))
+          break
+        case "switchEditor":
+          if(getComputedStyle(code_uk).display == "none"){
+            code_uk.style.display = "block"
+            editor_uk.style.display = "none"
+            code_uk.value = editor_uk.innerHTML.trim()
+          } else {
+            code_uk.style.display = "none"
+            editor_uk.style.display = "block"
+            editor_uk.innerHTML = code_uk.value
+          }
+          break
+        case "insertTable":
+          let rows = prompt("How many rows?"),
+              cells = prompt("How many cells?"),
+              table = "<div class='adaptive-table'><table>",
+              cellsCount
+          while (rows != 0) {
+            cellsCount = cells
+            table += "<tr>"
+            while (cellsCount != 0) {
+              table += "<td>&nbsp;</td>"
+              cellsCount--
             }
-            break
-          case "insertTable":
-            let rows = prompt("How many rows?"),
-                cells = prompt("How many cells?"),
-                table = "<div class='adaptive-table'><table>",
-                cellsCount
-            while (rows != 0) {
-              cellsCount = cells
-              table += "<tr>"
-              while (cellsCount != 0) {
-                table += "<td>&nbsp;</td>"
-                cellsCount--
-              }
-              table += "</tr>"
-              rows--
-            }
-            table += "</table></div>"
-            document.execCommand("insertHTML", false, table);
-            break
-          case "createlink":
-          case "insertimage":
-            let url = prompt('Enter the link here: ', 'http:\/\/');
-            document.execCommand(this.getAttribute("data-role"), false, url);
-            break
-          default:
-            document.execCommand(this.getAttribute("data-role"), false, null)
-            break
-        }
+            table += "</tr>"
+            rows--
+          }
+          table += "</table></div>"
+          document.execCommand("insertHTML", false, table);
+          break
+        case "createlink":
+        case "insertimage":
+          let url = prompt('Enter the link here: ', 'http:\/\/');
+          document.execCommand(this.getAttribute("data-role"), false, url);
+          break
+        default:
+          document.execCommand(this.getAttribute("data-role"), false, null)
+          break
       }
-    })
-  }
+    }
+  })
+
+  buttons_ru.forEach(item => {
+    item.onclick = function(e) {
+      e.preventDefault()
+
+      switch(this.getAttribute("data-role")) {
+        case "h1":
+        case "h2":
+        case "h3":
+        case "p":
+          document.execCommand("formatBlock", false, this.getAttribute("data-role"))
+          break
+        case "switchEditor":
+          if(getComputedStyle(code_ru).display == "none"){
+            code_ru.style.display = "block"
+            editor_ru.style.display = "none"
+            code_ru.value = editor_ru.innerHTML.trim()
+          } else {
+            code_ru.style.display = "none"
+            editor_ru.style.display = "block"
+            editor_ru.innerHTML = code_ru.value
+          }
+          break
+        case "insertTable":
+          let rows = prompt("How many rows?"),
+              cells = prompt("How many cells?"),
+              table = "<div class='adaptive-table'><table>",
+              cellsCount
+          while (rows != 0) {
+            cellsCount = cells
+            table += "<tr>"
+            while (cellsCount != 0) {
+              table += "<td>&nbsp;</td>"
+              cellsCount--
+            }
+            table += "</tr>"
+            rows--
+          }
+          table += "</table></div>"
+          document.execCommand("insertHTML", false, table);
+          break
+        case "createlink":
+        case "insertimage":
+          let url = prompt('Enter the link here: ', 'http:\/\/');
+          document.execCommand(this.getAttribute("data-role"), false, url);
+          break
+        default:
+          document.execCommand(this.getAttribute("data-role"), false, null)
+          break
+      }
+    }
+  })
+}
