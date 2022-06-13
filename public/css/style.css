@@ -539,8 +539,8 @@ h4 {
   position: absolute;
   top: 50%;
   left: 0;
-  width: 7px;
-  height: 5px;
+  width: 3px;
+  height: 7px;
   border: 2px solid #003b95;
   border-top: none;
   border-left: none;
@@ -678,4 +678,44 @@ h3 {
   border: 2px solid #003b95;
   border-radius: 5px;
   transition: all 0.5s ease;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                  delivery                                  */
+/* -------------------------------------------------------------------------- */
+.delivery-list {
+  padding: 50px 0;
+}
+
+.delivery-card {
+  padding: 25px 45px 25px 0;
+  background-color: #fff;
+  margin-bottom: 50px;
+  box-sizing: border-box;
+}
+.delivery-card:last-child {
+  margin: 0;
+}
+.delivery-card .img-wrap {
+  width: 17%;
+  text-align: center;
+}
+.delivery-card figcaption {
+  width: 80%;
+}
+.delivery-card img {
+  width: 70%;
+}
+.delivery-card h3 {
+  font-size: 2.4rem;
+  letter-spacing: 1px;
+}
+.delivery-card p {
+  font-size: 1.8rem;
+  line-height: 27px;
+  color: #191919;
+}
+
+.payment-list {
+  padding-bottom: 0;
 }
