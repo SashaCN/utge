@@ -70,4 +70,5 @@ return [
     'error-price' => 'Цена',
     'error-price_units' => 'Единицы измерения цены',
     'error-available' => 'Наличие товара',
+    'trash_box' => 'Корзина',
 ];

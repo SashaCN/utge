@@ -56,6 +56,7 @@
                 <li><a href="#"><span class="link-text">@lang('admin.orders')</span></a></li>
                 <li><a href="{{ route('news.index') }}"><span class="link-text">@lang('admin.news')</span></a></li>
                 <li><a href="{{ route('childPage.index') }}"><span class="link-text">@lang('admin.modules')</span></a></li>
+                <li><a href="{{ route('trashBox.index') }}"><span class="link-text">@lang('admin.trash_box')</span></a></li>
             </ul>
         </nav>
         <p class="copy">

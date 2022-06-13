@@ -23,7 +23,7 @@ $locale = App::currentLocale();
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::middleware('set_locale')->prefix(app()->getLocale())->group(function(){
+Route::middleware('set_locale')->group(function(){
     Route::get('/', [\App\Http\Controllers\SiteController::class, 'index'])->name('index');
     Route::get('locale/{locale}', [\App\Http\Controllers\Admin\AdminController::class, 'changeLocale'])->name('locale');
     Route::get('/child/{route}', [\App\Http\Controllers\SiteController::class, 'childPageRedirect'])->name('child');
@@ -34,7 +34,7 @@ Route::middleware('set_locale')->prefix(app()->getLocale())->group(function(){
 
 
 Route::middleware('auth')->group(function(){
-    Route::middleware('set_locale')->prefix(app()->getLocale())->group(function(){
+    Route::middleware('set_locale')->group(function(){
         Route::prefix('admin')->group(function()
         {
 
@@ -45,7 +45,9 @@ Route::middleware('auth')->group(function(){
             Route::resource('productType', \App\Http\Controllers\Admin\ProductTypeController::class);
             Route::resource('category', \App\Http\Controllers\Admin\CategoryController::class);
             Route::resource('subCategory', \App\Http\Controllers\Admin\SubCategoryController::class);
-            Route::resource('product', \App\Http\Controllers\Admin\ProductController:: class);
+            Route::resource('product', \App\Http\Controllers\Admin\ProductController::class);
+            Route::resource('trashBox', \App\Http\Controllers\Admin\TrashBoxController::class);
+            Route::get('trashBox/{prouct}/restore/', [\App\Http\Controllers\Admin\TrashBoxController::class, 'restore'])->name('trashBox.restore');
             Route::post('news/mediaUpdate/{news}', [\App\Http\Controllers\Admin\NewsController::class, 'mediaUpdate'])->name('news.mediaUpdate');
             Route::post('childPage/mediaUpdate/{childPage}', [\App\Http\Controllers\Admin\ChildPageController::class, 'mediaUpdate'])->name('childPage.mediaUpdate');
             Route::post('product/mediaUpdate/{product}', [\App\Http\Controllers\Admin\ProductController::class, 'mediaUpdate'])->name('product.mediaUpdate');
