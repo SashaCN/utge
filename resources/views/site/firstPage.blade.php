@@ -7,47 +7,60 @@
         <section class="feed">
             <h2>@lang('utge.slider-feed')</h2>
             <div class="slider-line">
-                <div class="slide slide-preview">
+                <div class="slide slide-preview current-slide">
                     <svg>
                         <use xlink:href="{{ asset('img/sprite.svg#cow') }}"></use>
                     </svg>
                 </div>
+                <div class="slide"><img src="{{ asset('img/sl_birds.jpg') }}" alt="@lang('utge.sl_birds')"></div>
+                <div class="slide"><img src="{{ asset('img/sl_fish.jpg') }}" alt="@lang('utge.sl_fish')"></div>
+                <div class="slide"><img src="{{ asset('img/sl_animals.jpg') }}" alt="@lang('utge.sl_animals')"></div>
             </div>
-            <div class="slider-control"><span class="current-slide"></span><span></span><span></span><span></span></div>
+            <div class="slider-control"><span class="current-slide-btn"></span><span></span><span></span><span></span></div>
         </section>
         <section class="fish">
             <h2>@lang('utge.slider-fish')</h2>
             <div class="slider-line">
-                <div class="slide slide-preview">
+                <div class="slide slide-preview current-slide">
                     <svg>
                         <use xlink:href="{{ asset('img/sprite.svg#fish') }}"></use>
                     </svg>
                 </div>
+                <div class="slide"><img src="{{ asset('img/sl_birds.jpg') }}" alt="@lang('utge.sl_birds')"></div>
+                <div class="slide"><img src="{{ asset('img/sl_fish.jpg') }}" alt="@lang('utge.sl_fish')"></div>
+                <div class="slide"><img src="{{ asset('img/sl_animals.jpg') }}" alt="@lang('utge.sl_animals')"></div>
             </div>
-            <div class="slider-control"><span class="current-slide"></span><span></span><span></span><span></span></div>
+            <div class="slider-control"><span class="current-slide-btn"></span><span></span><span></span><span></span></div>
         </section>
         <section class="water">
             <h2>@lang('utge.slider-product')</h2>
             <div class="slider-line">
-                <div class="slide slide-preview">
+                <div class="slide slide-preview current-slide">
                     <svg>
                         <use xlink:href="{{ asset('img/sprite.svg#goods') }}"></use>
                     </svg>
                 </div>
+                <div class="slide"><img src="{{ asset('img/sl_birds.jpg') }}" alt="@lang('utge.sl_birds')"></div>
+                <div class="slide"><img src="{{ asset('img/sl_fish.jpg') }}" alt="@lang('utge.sl_fish')"></div>
+                <div class="slide"><img src="{{ asset('img/sl_animals.jpg') }}" alt="@lang('utge.sl_animals')"></div>
             </div>
-            <div class="slider-control"><span class="current-slide"></span><span></span><span></span><span></span></div>
+            <div class="slider-control"><span class="current-slide-btn"></span><span></span><span></span><span></span></div>
         </section>
         <section class="service">
             <h2>@lang('utge.slider-service')</h2>
             <div class="slider-line">
-                <div class="slide slide-preview">
+                <div class="slide slide-preview current-slide">
                     <svg>
                         <use xlink:href="{{ asset('img/sprite.svg#man') }}"></use>
                     </svg>
                 </div>
+                <div class="slide"><img src="{{ asset('img/sl_birds.jpg') }}" alt="@lang('utge.sl_birds')"></div>
+                <div class="slide"><img src="{{ asset('img/sl_fish.jpg') }}" alt="@lang('utge.sl_fish')"></div>
+                <div class="slide"><img src="{{ asset('img/sl_animals.jpg') }}" alt="@lang('utge.sl_animals')"></div>
             </div>
-            <div class="slider-control"><span class="current-slide"></span><span></span><span></span><span></span></div>
+            <div class="slider-control"><span class="current-slide-btn"></span><span></span><span></span><span></span></div>
         </section>
+        <script src="{{ asset('js/slider.js') }}"></script>
     </div>
 </div>
 <div class="about-us">
