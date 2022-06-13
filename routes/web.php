@@ -1,11 +1,17 @@
 <?php
 
+use App\Http\Middleware\SetLocale;
 use App\Models\Product;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
+use phpDocumentor\Reflection\Types\Null_;
 use Spatie\QueryBuilder\QueryBuilder;
 
+
 $locale = App::currentLocale();
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,24 +23,22 @@ $locale = App::currentLocale();
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::middleware('set_locale')->group(function(){
+Route::middleware('set_locale')->prefix(app()->getLocale())->group(function(){
     Route::get('/', [\App\Http\Controllers\SiteController::class, 'index'])->name('index');
     Route::get('locale/{locale}', [\App\Http\Controllers\Admin\AdminController::class, 'changeLocale'])->name('locale');
     Route::get('/child/{route}', [\App\Http\Controllers\SiteController::class, 'childPageRedirect'])->name('child');
     Route::get('/news', [\App\Http\Controllers\SiteController::class, 'showNews'])->name('news');
     Route::get('/products', [\App\Http\Controllers\ProductController::class, 'index'])->name('products');
     Route::get('/product/{id}', [\App\Http\Controllers\ProductController::class, 'show'])->name('product');
-        
-
-    // Route::get('/child/{rout}', function () {
-    //     return view('site.childPage');
-    // });
-
 });
+
+
 Route::middleware('auth')->group(function(){
-    Route::middleware('set_locale')->group(function(){
+    Route::middleware('set_locale')->prefix(app()->getLocale())->group(function(){
         Route::prefix('admin')->group(function()
         {
+
+            Route::get('locale/{locale}', [\App\Http\Controllers\Admin\AdminController::class, 'changeLocale'])->name('locale');
             Route::get('/', [\App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin');
             Route::resource('childPage', \App\Http\Controllers\Admin\ChildPageController::class);
             Route::resource('news', \App\Http\Controllers\Admin\NewsController::class);
@@ -49,6 +53,7 @@ Route::middleware('auth')->group(function(){
             Route::get('productType/delete/{productType}', [\App\Http\Controllers\Admin\ProductTypeController::class, 'delete'])->name('productType.delete');
             Route::get('category/delete/{category}', [\App\Http\Controllers\Admin\CategoryController::class, 'delete'])->name('category.delete');
             Route::get('subCategory/delete/{subCategory}', [\App\Http\Controllers\Admin\SubCategoryController::class, 'delete'])->name('subCategory.delete');
+
         });
     });
 });
