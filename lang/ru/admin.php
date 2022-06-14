@@ -62,9 +62,14 @@ return [
     'to_category' => 'По категориях',
     'to_product_type' => 'По типах товара',
     'search' => 'Поиск',
+    'child_page_father' => 'выбрать блок',
+    'childPage_create' => 'Добавить блок',
+    'route' => 'блок',
+    'news_create' => 'Добавить новости',
     'error-size' => 'Вес',
     'error-price' => 'Цена',
     'error-price_units' => 'Единицы измерения цены',
     'error-available' => 'Наличие товара',
     'first_create_image' => 'Выберите сначала блок во вкладке Другое',
-];
+    'trash_box' => 'Корзина',
+  ];

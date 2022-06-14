@@ -5,49 +5,102 @@
 <div class="wrapper">
     <div class="grid">
         <section class="feed">
-            <h2>@lang('utge.slider-feed')</h2>
             <div class="slider-line">
-                <div class="slide slide-preview">
+                <div class="slide slide-preview current-slide">
+                    <h2>@lang('utge.slider-feed')</h2>
                     <svg>
                         <use xlink:href="{{ asset('img/sprite.svg#cow') }}"></use>
                     </svg>
                 </div>
+                <div class="slide">
+                    <h2>@lang('utge.slider-feed-birds')</h2><img src="{{ asset('img/sl_birds.jpg') }}"
+                        alt="@lang('utge.sl_birds')">
+                </div>
+                <div class="slide">
+                    <h2>@lang('utge.slider-feed-fish')</h2><img src="{{ asset('img/sl_fish.jpg') }}"
+                        alt="@lang('utge.sl_fish')">
+                </div>
+                <div class="slide">
+                    <h2>@lang('utge.slider-feed-animals')</h2><img src="{{ asset('img/sl_animals.jpg') }}"
+                        alt="@lang('utge.sl_animals')">
+                </div>
             </div>
-            <div class="slider-control"><span class="current-slide"></span><span></span><span></span><span></span></div>
+            <div class="slider-control"><span class="current-slide-btn"></span><span></span><span></span><span></span>
+            </div>
         </section>
         <section class="fish">
-            <h2>@lang('utge.slider-fish')</h2>
             <div class="slider-line">
-                <div class="slide slide-preview">
+                <div class="slide slide-preview current-slide">
+                    <h2>@lang('utge.slider-staves')</h2>
                     <svg>
                         <use xlink:href="{{ asset('img/sprite.svg#fish') }}"></use>
                     </svg>
                 </div>
+                <div class="slide">
+                    <h2>@lang('utge.slider-staves-caviar')</h2>
+                    <img src="{{ asset('img/sl_birds.jpg') }}" alt="@lang('utge.sl_birds')">
+                </div>
+                <div class="slide">
+                    <h2>@lang('utge.slider-staves-fish')</h2>
+                    <img src="{{ asset('img/sl_fish.jpg') }}" alt="@lang('utge.sl_fish')">
+                </div>
+                <div class="slide">
+                    <h2>@lang('utge.slider-staves-canned')</h2>
+                    <img src="{{ asset('img/sl_animals.jpg') }}" alt="@lang('utge.sl_animals')">
+                </div>
             </div>
-            <div class="slider-control"><span class="current-slide"></span><span></span><span></span><span></span></div>
+            <div class="slider-control"><span class="current-slide-btn"></span><span></span><span></span><span></span>
+            </div>
         </section>
         <section class="water">
-            <h2>@lang('utge.slider-product')</h2>
             <div class="slider-line">
-                <div class="slide slide-preview">
+                <div class="slide slide-preview current-slide">
+                    <h2>@lang('utge.slider-product')</h2>
                     <svg>
                         <use xlink:href="{{ asset('img/sprite.svg#goods') }}"></use>
                     </svg>
                 </div>
+                <div class="slide">
+                    <h2>@lang('utge.slider-product-electric')</h2>
+                    <img src="{{ asset('img/sl_birds.jpg') }}" alt="@lang('utge.sl_birds')">
+                </div>
+                <div class="slide">
+                    <h2>@lang('utge.slider-product-plumbing')</h2>
+                    <img src="{{ asset('img/sl_fish.jpg') }}" alt="@lang('utge.sl_fish')">
+                </div>
+                <div class="slide">
+                    <h2>@lang('utge.slider-product-heating')</h2>
+                    <img src="{{ asset('img/sl_animals.jpg') }}" alt="@lang('utge.sl_animals')">
+                </div>
             </div>
-            <div class="slider-control"><span class="current-slide"></span><span></span><span></span><span></span></div>
+            <div class="slider-control"><span class="current-slide-btn"></span><span></span><span></span><span></span>
+            </div>
         </section>
         <section class="service">
-            <h2>@lang('utge.slider-service')</h2>
             <div class="slider-line">
-                <div class="slide slide-preview">
+                <div class="slide slide-preview current-slide">
+                    <h2>@lang('utge.slider-service')</h2>
                     <svg>
                         <use xlink:href="{{ asset('img/sprite.svg#man') }}"></use>
                     </svg>
                 </div>
+                <div class="slide">
+                    <h2>@lang('utge.slider-service')</h2>
+                    <img src="{{ asset('img/sl_birds.jpg') }}" alt="@lang('utge.sl_birds')">
+                </div>
+                <div class="slide">
+                    <h2>@lang('utge.slider-service')</h2>
+                    <img src="{{ asset('img/sl_fish.jpg') }}" alt="@lang('utge.sl_fish')">
+                </div>
+                <div class="slide">
+                    <h2>@lang('utge.slider-service')</h2>
+                    <img src="{{ asset('img/sl_animals.jpg') }}" alt="@lang('utge.sl_animals')">
+                </div>
             </div>
-            <div class="slider-control"><span class="current-slide"></span><span></span><span></span><span></span></div>
+            <div class="slider-control"><span class="current-slide-btn"></span><span></span><span></span><span></span>
+            </div>
         </section>
+        <script src="{{ asset('js/slider.js') }}"></script>
     </div>
 </div>
 <div class="about-us">
@@ -81,68 +134,68 @@
     <div class="wrapper">
         <div class="goods-list flex-sb">
             @php
-                $locale = app()->getLocale();
+            $locale = app()->getLocale();
             @endphp
 
             @foreach ($products as $product)
             @php
-                $title = $product->localization[0];
-                $description = $product->localization[1];
+            $title = $product->localization[0];
+            $description = $product->localization[1];
             @endphp
 
             <a href="#">
                 @if ($product->sizeprices->whereIn('available', [1,4])->min('price'))
-                    <figure class="product shadow-box">
-                        <img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
-                        <figcaption>
-                            <h3>{{ $title->$locale }}</h3>
-                            <p class="description">{!! $description->$locale !!}</p>
-                            <p class="description">{{ $product->sizeprices->whereIn('available', [1,4])->min('size') }}</p>
-                            <div class="button-line flex-sb">
-                                <p class="add-to-basket flex-aic">
-                                    <svg>
-                                        <use xlink:href="{{ asset('img/sprite.svg#basket') }}"></use>
-                                    </svg>
-                                    <span>
-                                        @lang('utge.add-to-basket')
-                                    </span>
-                                </p>
-                                <p class="price">{{ $product->sizeprices->whereIn('available', [1,4])->min('price') }}</p>
-                                <span class="like">
-                                    <svg>
-                                        <use xlink:href="{{ asset('img/sprite.svg#like') }}"></use>
-                                    </svg>
+                <figure class="product shadow-box">
+                    <img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
+                    <figcaption>
+                        <h3>{{ $title->$locale }}</h3>
+                        <p class="description">{!! $description->$locale !!}</p>
+                        <p class="description">{{ $product->sizeprices->whereIn('available', [1,4])->min('size') }}</p>
+                        <div class="button-line flex-sb">
+                            <p class="add-to-basket flex-aic">
+                                <svg>
+                                    <use xlink:href="{{ asset('img/sprite.svg#basket') }}"></use>
+                                </svg>
+                                <span>
+                                    @lang('utge.add-to-basket')
                                 </span>
-                            </div>
-                        </figcaption>
-                    </figure>
+                            </p>
+                            <p class="price">{{ $product->sizeprices->whereIn('available', [1,4])->min('price') }}</p>
+                            <span class="like">
+                                <svg>
+                                    <use xlink:href="{{ asset('img/sprite.svg#like') }}"></use>
+                                </svg>
+                            </span>
+                        </div>
+                    </figcaption>
+                </figure>
                 @else
-                    <figure class="product shadow-box out-of-store">
-                        <img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
-                        <figcaption>
-                            <h3>{{ $title->$locale }}</h3>
-                            <p class="description">{!! $description->$locale !!}</p>
-                            <p class="description">{{ $product->sizeprices->min('size') }}</p>
-                            <div class="button-line flex-sb">
-                                <p class="add-to-basket flex-aic">
-                                    <svg>
-                                        <use xlink:href="{{ asset('img/sprite.svg#basket') }}"></use>
-                                    </svg>
-                                    <span>
-                                        @lang('utge.add-to-basket')
-                                    </span>
-                                </p>
-                                <p class="price">{{ $product->sizeprices->min('price') }}</p>
-                                <span class="like">
-                                    <svg>
-                                        <use xlink:href="{{ asset('img/sprite.svg#like') }}"></use>
-                                    </svg>
+                <figure class="product shadow-box out-of-store">
+                    <img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
+                    <figcaption>
+                        <h3>{{ $title->$locale }}</h3>
+                        <p class="description">{!! $description->$locale !!}</p>
+                        <p class="description">{{ $product->sizeprices->min('size') }}</p>
+                        <div class="button-line flex-sb">
+                            <p class="add-to-basket flex-aic">
+                                <svg>
+                                    <use xlink:href="{{ asset('img/sprite.svg#basket') }}"></use>
+                                </svg>
+                                <span>
+                                    @lang('utge.add-to-basket')
                                 </span>
-                            </div>
-                        </figcaption>
-                    </figure>
+                            </p>
+                            <p class="price">{{ $product->sizeprices->min('price') }}</p>
+                            <span class="like">
+                                <svg>
+                                    <use xlink:href="{{ asset('img/sprite.svg#like') }}"></use>
+                                </svg>
+                            </span>
+                        </div>
+                    </figcaption>
+                </figure>
                 @endif
-                </a>
+            </a>
             @endforeach
         </div>
         <div class="pagination">

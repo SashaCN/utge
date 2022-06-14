@@ -19,7 +19,7 @@ class SubCategoryFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->state(),
+            'sub_category_id' => CategoryFactory::factory()->create(),
         ];
     }
 }
