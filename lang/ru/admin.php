@@ -54,7 +54,7 @@ return [
     'add_product_type' => 'Добавить тип товара',
     'add_size_price' => 'Добавить вес/цену',
     'delete_size_price' => 'Убрать вес/цену',
-    'child_page_father' => 'выбрать блок',
+    'child_page_father' => 'Выбрать блок',
     'childPage_create' => 'Добавить блок',
     'route' => 'блок',
     'news_create' => 'Добавить новости',
@@ -66,4 +66,5 @@ return [
     'error-price' => 'Цена',
     'error-price_units' => 'Единицы измерения цены',
     'error-available' => 'Наличие товара',
+    'first_create_image' => 'Выберите сначала блок во вкладке Другое',
 ];

@@ -26,7 +26,7 @@
         <li><a href="#" class="photo-btn">@lang('admin.photo')</a></li>
     </ul>
 
-    <form id="form" action="{{ route('childPage.store') }}" method="POST" enctype="multipart/form-data" class="current-slide-wrap">
+    <form id="form" action="{{ route('childPage.update', $childPage->id) }}" method="POST" enctype="multipart/form-data" class="current-slide-wrap">
         @csrf
         @method('PUT')
 
@@ -86,7 +86,7 @@
                       <a class='btn' id="converToCode1" data-role='switchEditor' href='#' title='Перейти в редактор коду'>&lt;code&gt;</a>
                     </div>
                   </div>
-                  <div id='editor1' style='' contenteditable>{{ $description->uk }}</div>
+                  <div id='editor1' style='' contenteditable>{!! $description->uk !!}</div>
                   <textarea id="desc_uk" name="description_uk"></textarea>
                   <label class="label" for="desc_uk">@lang('admin.add_uk_desc')</label>
                 </div>
@@ -131,32 +131,37 @@
                       <a class='btn' id="converToCode2" data-role='switchEditor' href='#' title='Перейти в редактор коду'>&lt;code&gt;</a>
                     </div>
                   </div>
-                  <div id='editor2' style='' contenteditable>{{ $description->ru }}</div>
+                  <div id='editor2' style='' contenteditable>{!! $description->ru !!}</div>
                   <textarea id="desc_ru" name="description_ru"></textarea>
                   <label class="label" for="desc_ru">@lang('admin.add_ru_desc')</label>
                 </div>
               </div>
             </div>
-          </div>
+        </div>
 
         <div class="image-slide flex-col">
-
-            <label class="image-changes" for="image-changes"><img class="old-image" src="{{ $childPage->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}"></label>
-            <p class="image-changes-desc">@lang('admin.update-image')</p>
+            @if ($childPage->route != 'about_us')
+                <label class="image-changes" for="image-changes"><img class="old-image" src="{{ $childPage->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}"></label>
+                <p class="image-changes-desc">@lang('admin.update-image')</p>
     
-            <button class="image-changes-bt" type="submit" form="image-change" class="add-button">@lang('admin.save-new-phot')</button>
-    
+                <button class="image-changes-bt" type="submit" form="image-change" class="add-button">@lang('admin.save-new-phot')</button>
+                
+            @else
+                <p>@lang('admin.none-image')</p>
+            @endif
         </div>           
     </form>
-
+    @if ($childPage->route != 'about_us')
+        <form id="image-change" class="image-changes-form" action="{{ route('childPage.mediaUpdate', $childPage->id ) }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
+            
+            <input id="image-changes" type="file" name="image">
+            <input type="submit" value="img">
+        </form>
+    @endif
     
-    <form id="image-change" class="image-changes-form" action="{{ route('childPage.mediaUpdate', $childPage->id ) }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        @method('POST')
-        
-        <input id="image-changes" type="file" name="image">
-        <input type="submit" value="img">
-    </form>
+    
     
     <script src="{{ asset('js/create.js') }}"></script>
     <script src="{{ asset('js/childPage.js') }}"></script>
