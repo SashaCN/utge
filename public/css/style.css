@@ -336,6 +336,8 @@ h2 {
   font-weight: 400;
   letter-spacing: 1px;
   padding: 18px 0;
+  width: 100%;
+  box-sizing: border-box;
   color: #fff;
   text-align: center;
   text-transform: uppercase;
@@ -354,9 +356,10 @@ h2 {
   position: relative;
   border-radius: 10px;
   overflow: hidden;
+  height: 366px;
 }
 .grid .slide {
-  height: 302px;
+  height: 366px;
 }
 .grid .slide img {
   width: 100%;
@@ -401,7 +404,7 @@ h2 {
 
 .slider-line {
   position: relative;
-  height: 302px;
+  height: 366px;
   overflow: hidden;
 }
 .slider-line .current-slide {
@@ -427,9 +430,13 @@ h2 {
 
 .slide-preview {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
   background-color: #fff;
+}
+.slide-preview svg {
+  margin: auto;
 }
 
 .slider-control {
@@ -447,8 +454,15 @@ h2 {
   height: 20px;
   border: 1px solid #003b95;
   border-radius: 50%;
+  transition: all 0.5s ease;
+}
+.slider-control span:hover {
+  background-color: rgba(4, 44, 104, 0.2980392157);
 }
 .slider-control .current-slide-btn {
+  background-color: #003b95;
+}
+.slider-control .current-slide-btn:hover {
   background-color: #003b95;
 }
 

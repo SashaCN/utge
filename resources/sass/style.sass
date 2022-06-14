@@ -52,6 +52,8 @@ h2
     font-weight: 400
     letter-spacing: 1px
     padding: 18px 0
+    width: 100%
+    box-sizing: border-box
     color: $second
     text-align: center
     text-transform: uppercase
@@ -69,8 +71,9 @@ h2
     position: relative
     border-radius: 10px
     overflow: hidden
+    height: 366px
   .slide
-    height: 302px
+    height: 366px
     img
         width: 100%
         object-fit: cover
@@ -110,7 +113,7 @@ h2
 
 .slider-line
     position: relative
-    height: 302px
+    height: 366px
     overflow: hidden
     .current-slide
         visibility: visible
@@ -132,9 +135,12 @@ h2
 
 .slide-preview
   display: flex
-  justify-content: center
+  flex-direction: column
+  justify-content: flex-start
   align-items: center
   background-color: $second
+  svg
+    margin: auto
 
 .slider-control
     position: absolute
@@ -150,8 +156,13 @@ h2
         height: 20px
         border: 1px solid $primary
         border-radius: 50%
+        transition: $trs
+        &:hover
+            background-color: #042c684c
     .current-slide-btn
         background-color: $primary
+        &:hover
+            background-color: $primary
 
 
 /* -------------------------------------------------------------------------- */
