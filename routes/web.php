@@ -8,6 +8,7 @@ use phpDocumentor\Reflection\Types\Null_;
 use Spatie\QueryBuilder\QueryBuilder;
 
 
+
 $locale = App::currentLocale();
 
 
@@ -23,9 +24,13 @@ $locale = App::currentLocale();
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+
+
 Route::middleware('set_locale')->group(function(){
-    Route::get('/', [\App\Http\Controllers\SiteController::class, 'index'])->name('index');
     Route::get('locale/{locale}', [\App\Http\Controllers\Admin\AdminController::class, 'changeLocale'])->name('locale');
+    Route::get('/', [\App\Http\Controllers\SiteController::class, 'index'])->name('index');
     Route::get('/child/{route}', [\App\Http\Controllers\SiteController::class, 'childPageRedirect'])->name('child');
     Route::get('/news', [\App\Http\Controllers\SiteController::class, 'showNews'])->name('news');
     Route::get('/products', [\App\Http\Controllers\ProductController::class, 'index'])->name('products');
@@ -34,7 +39,7 @@ Route::middleware('set_locale')->group(function(){
 
 
 Route::middleware('auth')->group(function(){
-    Route::middleware('set_locale')->group(function(){
+    Route::middleware('set_locale')->group(function () {
         Route::prefix('admin')->group(function()
         {
 
