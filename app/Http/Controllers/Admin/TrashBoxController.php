@@ -100,13 +100,16 @@ class TrashBoxController extends Controller
         //
     }
 
-    public function restore(Product $product, $id)
+    public function restore(Product $product, SizePrice $sizePrice, $id)
     {
-        $product  = Product::onlyTrashed()->findOrFail($id);
-        $size_prices = SizePrice::onlyTrashed()->find($id);
-        $size_prices->restore();
+
+        $product = Product::onlyTrashed()->findOrFail($id);
+        $sizePrice = SizePrice::onlyTrashed()->where('product_id', $id);
+
+        $sizePrice->restore();
         $product->restore();
 
         return back();
+        
     }
 }
