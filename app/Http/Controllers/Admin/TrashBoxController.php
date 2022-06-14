@@ -3,21 +3,35 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\App;
-use Illuminate\Http\Request;
-use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Http\Request;
+use App\Models\ProductType;
+use App\Models\Category;
+use App\Models\SizePrice;
+use App\Models\SubCategory;
 
-class AdminController extends Controller
+class TrashBoxController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Product $products)
     {
-        return view('admin.admin');
+        $products = Product::onlyTrashed()->paginate(12);
+
+
+        $productTypes = ProductType::onlyTrashed();
+        $categories = Category::all();
+        $subCategories = SubCategory::all();
+
+        return view('admin.trashBox.index', [
+            'products' => $products,
+            'producttypes' => $productTypes,
+            'categories' => $categories,
+            'subcategories' => $subCategories,
+        ]);
     }
 
     /**
@@ -86,12 +100,16 @@ class AdminController extends Controller
         //
     }
 
-    public function changeLocale($locale){
+    public function restore(Product $product, SizePrice $sizePrice, $id)
+    {
 
-        session(['locale' => $locale]);
-        App::setLocale($locale);
+        $product = Product::onlyTrashed()->findOrFail($id);
+        $sizePrice = SizePrice::onlyTrashed()->where('product_id', $id);
 
-        return redirect()->back();
+        $sizePrice->restore();
+        $product->restore();
 
+        return back();
+        
     }
 }

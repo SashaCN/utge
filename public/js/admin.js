@@ -15,7 +15,7 @@ document.onclick = (e) => {
   }
 }
 
-// chosen list item 
+// chosen list item
 
 let list = document.querySelectorAll(".aside-menu li:nth-child(1n+2)"),
     selectedItem;
@@ -26,3 +26,5 @@ list.forEach((elem) => {
     elem.classList.add('selected-item');
   }
 });
+
+

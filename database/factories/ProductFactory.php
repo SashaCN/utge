@@ -17,14 +17,9 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->state(),
-            'description' => $this->faker->text($maxNbChars = 200),
-            'article' => $this->faker->text($maxNbChars = 10),
-            'price' => $this->faker->buildingNumber(),
-            'shipable' => $this->faker->boolean(),
-            'available' => $this->faker->boolean(),
-            'max_order' => $this->faker->randomDigit(),
+            'sub_category_id' => SubCategoryFactory::factory()->create(),
             'list_position' => $this->faker->randomDigit(),
+            'home_view' => $this->faker->randomDigit(),
         ];
     }
 }

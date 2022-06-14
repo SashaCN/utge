@@ -13,6 +13,8 @@ use App\Models\ProductType;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
+
 // use Database\Factories\CategoryProductFactory;
 
 class DatabaseSeeder extends Seeder
@@ -24,11 +26,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // ProductType::factory()->count(10)->create();
-        Category::factory()->count(10)->create();
+        ProductType::factory()->count(10)->create();
+        Category::factory()->count(10)->for(ProductType::factory()->create())->create();
         SubCategory::factory()->count(10)->for(Category::factory()->create())->create();
-        Product::factory()->count(10)->has(Image::factory()->count(1))->create();
-        CategoryProduct::factory()->count(10)->create();
-        ProductSubCategory::factory()->count(10)->create();
+        Product::factory()->count(10)->has(Media::factory()->count(1))->create();
+
     }
 }

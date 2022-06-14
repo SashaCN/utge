@@ -62,8 +62,14 @@
         'to_category' => 'По категоріях',
         'to_product_type' => 'По типах товару',
         'search' => 'Пошук',
+        'child_page_father' => 'обрати блок',
+        'childPage_create' => 'Додати блок',
+        'route' => 'блок',
+        'news_create' => 'Додати новини',
         'error-size' => 'Вага',
         'error-price' => 'Ціна',
         'error-price_units' => 'Одиниці вимрювання ціни',
         'error-available' => 'Наявність товару',
+        'trash_box' => 'Корзина',
+
     ];

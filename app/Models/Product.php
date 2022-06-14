@@ -10,19 +10,20 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Dyrynda\Database\Support\CascadeSoftDeletes;
 
 class Product extends Model implements HasMedia
 {
     use HasFactory;
-    use SoftDeletes;
+    use SoftDeletes, CascadeSoftDeletes;
     use InteractsWithMedia;
 
 
+    protected $cascadeDeletes = ['sizePrices'];
     protected $dates = ['deleted_at'];
-    protected $cascadeDeletes = ['sub_categories'];
     protected $fillable = ['sub_category_id', 'available', 'list_position', 'home_view'];
 
-    public function subCategory()
+    public function sub_categories()
     {
         return $this->belongsTo(SubCategory::class);
     }

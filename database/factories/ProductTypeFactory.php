@@ -17,7 +17,7 @@ class ProductTypeFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->text($maxNbChars = 10)
+            
         ];
     }
 }
