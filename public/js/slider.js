@@ -1,4 +1,4 @@
-function changeSlide (section)
+function changeSlide (section, time)
 {
     let current_slide = section.querySelector('.current-slide'),
         current_slide_btn = section.querySelector('.current-slide-btn'),
@@ -31,9 +31,33 @@ function changeSlide (section)
         }
     });
 
+    setTimeout(() => {
+        let interval = setInterval(()=>{
+            current_slide_btn.classList.remove('current-slide-btn');
+            current_slide.classList.add('prev-slide');
+
+            if (parseInt(current_slide.getAttribute('data-number'))+1 < slides.length) {
+                slides[parseInt(current_slide.getAttribute('data-number'))+1].classList.add('current-slide');
+                controll_btns[parseInt(current_slide.getAttribute('data-number'))+1].classList.add('current-slide-btn');
+                current_slide_btn = section.querySelector('.current-slide-btn');
+            } else {
+                slides[0].classList.add('current-slide');
+                controll_btns[0].classList.add('current-slide-btn');
+                current_slide_btn = section.querySelector('.current-slide-btn');
+            }
+            window.setTimeout(()=>{
+                current_slide.classList.remove('current-slide');
+                current_slide.classList.remove('prev-slide');
+                current_slide = section.querySelector('.current-slide');
+            }, 500);
+        }, 5000);
+    }, time);
 }
 
-changeSlide(document.querySelector('.feed'));
-changeSlide(document.querySelector('.fish'));
-changeSlide(document.querySelector('.water'));
-changeSlide(document.querySelector('.service'));
+
+window.onload = () => {
+    changeSlide(document.querySelector('.feed'), 0);
+    changeSlide(document.querySelector('.fish'), 500);
+    changeSlide(document.querySelector('.water'), 1000);
+    changeSlide(document.querySelector('.service'), 1500);
+}
