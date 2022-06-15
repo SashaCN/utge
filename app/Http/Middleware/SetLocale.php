@@ -24,8 +24,7 @@ class SetLocale
         if(empty(session('locale'))){
 
             session('locale') == 'uk';
-            dump(session('locale'));
-
+            
         } else {
 
             App::setLocale(session('locale'));
