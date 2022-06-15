@@ -270,16 +270,6 @@ footer .address address {
   text-align: center;
 }
 
-@media screen and (max-width: 1500px) {
-  .info-line > div {
-    width: 25%;
-  }
-}
-@media screen and (max-width: 1200px) {
-  .info-line > div {
-    width: 30%;
-  }
-}
 /* -------------------------------------------------------------------------- */
 /*                               general styles                               */
 /* -------------------------------------------------------------------------- */
@@ -494,12 +484,20 @@ h2 {
 /* -------------------------------------------------------------------------- */
 .goods-list {
   justify-content: flex-start;
-  margin: 0 -16.6px 25px;
+  align-items: stretch;
+  overflow: hidden;
+  margin: 0 -16.5px 25px;
 }
 .goods-list > a {
+  flex: 0 0 25%;
+  display: inline-block;
   width: 25%;
   padding: 0 16.5px;
   box-sizing: border-box;
+}
+.goods-list figure {
+  justify-content: space-between;
+  height: 100%;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -627,7 +625,7 @@ h4 {
 }
 .product img {
   width: 100%;
-  max-height: 261px;
+  height: 261px;
   -o-object-fit: cover;
      object-fit: cover;
   margin-bottom: 30px;
@@ -688,6 +686,7 @@ h3 {
 }
 
 .add-to-basket {
+  justify-content: center;
   padding: 8px 35px;
   width: 67%;
   box-sizing: border-box;
@@ -762,4 +761,57 @@ h3 {
 
 .payment-list {
   padding-bottom: 0;
+}
+
+@media screen and (max-width: 1900px) {
+  .product img {
+    -o-object-fit: contain;
+       object-fit: contain;
+  }
+
+  .add-to-basket {
+    padding: 8px 25px;
+  }
+
+  .price {
+    padding: 9.5px 10px;
+  }
+}
+@media screen and (max-width: 1800px) {
+  .goods-list {
+    margin: 0 -10px 25px;
+  }
+  .goods-list > a {
+    padding: 0 10px;
+  }
+  .goods-list figure {
+    padding: 30px 15px;
+  }
+  .goods-list figure img {
+    margin-bottom: 10px;
+  }
+
+  .add-to-basket {
+    font-size: 1.8rem;
+  }
+}
+@media screen and (max-width: 1700px) {
+  .add-to-basket {
+    padding: 8px 15px;
+  }
+}
+@media screen and (max-width: 1600px) {
+  .wrapper {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 1500px) {
+  .info-line > div {
+    width: 25%;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .info-line > div {
+    width: 30%;
+  }
 }
