@@ -31,7 +31,11 @@
                 @endphp
                 
                 <tr>
-                    <td class="product-image"><img src="{{ $childPage->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}"></td>
+                    <td class="product-image">
+                        @if ($childPage->route != 'about_us')
+                            <img src="{{ $childPage->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
+                        @endif
+                    </td>
                     <td>
                         @if ($childPage->route == 'delivery')
                             <p>@lang('utge.delivery')</p>
@@ -44,9 +48,13 @@
                         @if ($childPage->route == 'contacts')
                             <p>@lang('utge.contacts')</p>
                         @endif
+
+                        @if ($childPage->route == 'about_us')
+                            <p>@lang('utge.about-us')</p>
+                        @endif
                     </td>
                     <td>{{ $title->$locale }}</td>
-                    <td>{{ $description->$locale }}</td>
+                    <td>{!! $description->$locale !!}</td>
                     <td>
                         <a href="{{ route('child', $childPage->route) }}">show</a>
                         <a href="{{ route('childPage.edit', $childPage->id) }}">update</a>

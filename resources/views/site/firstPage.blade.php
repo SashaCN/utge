@@ -141,54 +141,46 @@
                     $title = $product->localization[0];
                     $description = $product->localization[1];
                 @endphp
-
-                <a href="#">
-                    @if ($product->sizeprices->whereIn('available', [1,4])->min('price'))
-                    <figure class="product shadow-box flex-col">
-                        <img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
-                        <figcaption>
-                            <h3>{{ $title->$locale }}</h3>
-                            <p class="description">{{ $description->$locale }}</p>
-                            <p class="description">{{ $product->sizeprices->whereIn('available', [1,4])->min('size') }}</p>
-                            <div class="button-line flex-sb">
-                                <p class="add-to-basket flex-aic">
-                                    <svg>
-                                        <use xlink:href="{{ asset('img/sprite.svg#basket') }}"></use>
-                                    </svg>
-                                    <span>
-                                        @lang('utge.add-to-basket')
-                                    </span>
-                                </p>
-                                <p class="price">{{ $product->sizeprices->whereIn('available', [1,4])->min('price') }}</p>
-                                <span class="like">
-                                    <svg>
-                                        <use xlink:href="{{ asset('img/sprite.svg#like') }}"></use>
-                                    </svg>
+            <a href="#">
+                @if ($product->sizeprices->whereIn('available', [1,4])->min('price'))
+                <figure class="product shadow-box">
+                    <img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
+                    <figcaption>
+                        <h3>{{ $title->$locale }}</h3>
+                        <p class="description">{!! $description->$locale !!}</p>
+                        <p class="description">{{ $product->sizeprices->whereIn('available', [1,4])->min('size') }}</p>
+                        <div class="button-line flex-sb">
+                            <p class="add-to-basket flex-aic">
+                                <svg>
+                                    <use xlink:href="{{ asset('img/sprite.svg#basket') }}"></use>
+                                </svg>
+                                <span>
+                                    @lang('utge.add-to-basket')
                                 </span>
-                            </div>
-                        </figcaption>
-                    </figure>
-                    @else
-                    <figure class="product shadow-box out-of-store flex-col">
-                        <img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
-                        <figcaption>
-                            <h3>{{ $title->$locale }}</h3>
-                            <p class="description">{{ $description->$locale }}</p>
-                            <p class="description">{{ $product->sizeprices->min('size') }}</p>
-                            <div class="button-line flex-sb">
-                                <p class="add-to-basket flex-aic">
-                                    <svg>
-                                        <use xlink:href="{{ asset('img/sprite.svg#basket') }}"></use>
-                                    </svg>
-                                    <span>
-                                        @lang('utge.add-to-basket')
-                                    </span>
-                                </p>
-                                <p class="price">{{ $product->sizeprices->min('price') }}</p>
-                                <span class="like">
-                                    <svg>
-                                        <use xlink:href="{{ asset('img/sprite.svg#like') }}"></use>
-                                    </svg>
+                            </p>
+                            <p class="price">{{ $product->sizeprices->whereIn('available', [1,4])->min('price') }}</p>
+                            <span class="like">
+                                <svg>
+                                    <use xlink:href="{{ asset('img/sprite.svg#like') }}"></use>
+                                </svg>
+                            </span>
+                        </div>
+                    </figcaption>
+                </figure>
+                @else
+                <figure class="product shadow-box out-of-store">
+                    <img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
+                    <figcaption>
+                        <h3>{{ $title->$locale }}</h3>
+                        <p class="description">{!! $description->$locale !!}</p>
+                        <p class="description">{{ $product->sizeprices->min('size') }}</p>
+                        <div class="button-line flex-sb">
+                            <p class="add-to-basket flex-aic">
+                                <svg>
+                                    <use xlink:href="{{ asset('img/sprite.svg#basket') }}"></use>
+                                </svg>
+                                <span>
+                                    @lang('utge.add-to-basket')
                                 </span>
                             </div>
                         </figcaption>
