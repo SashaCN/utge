@@ -3,7 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\News;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use App\Models\Seo;
+use Illuminate\Routing\RouteUri;
+
 
 class SeoController extends Controller
 {
@@ -14,7 +20,10 @@ class SeoController extends Controller
      */
     public function index()
     {
-        return view('admin.seo.index');
+        // $seo = Seo::all();
+        return view('admin.seo.index', [
+            // 'seo' => $seo
+        ]);
     }
 
     /**

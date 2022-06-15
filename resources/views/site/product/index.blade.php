@@ -53,13 +53,13 @@ $locale = app()->getLocale();
         $title = $product->localization[0];
         $description = $product->localization[1];
         @endphp
-        <a href="#">
+        <a href="">
             @if ($product->sizeprices->whereIn('available', [1,4])->min('price'))
             <figure class="product shadow-box">
                 <img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
                 <figcaption>
                     <h3>{{ $title->$locale }}</h3>
-                    <p class="description">{{ $description->$locale }}</p>
+                    <p class="description">{!! $description->$locale !!}</p>
                     <p class="description">{{ $product->sizeprices->whereIn('available', [1,4])->min('size') }}</p>
                     <div class="button-line flex-sb">
                         <p class="add-to-basket flex-aic">
@@ -84,7 +84,7 @@ $locale = app()->getLocale();
                 <img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
                 <figcaption>
                     <h3>{{ $title->$locale }}</h3>
-                    <p class="description">{{ $description->$locale }}</p>
+                    <p class="description">{!! $description->$locale !!}</p>
                     <p class="description">{{ $product->sizeprices->min('size') }}</p>
                     <div class="button-line flex-sb">
                         <p class="add-to-basket flex-aic">

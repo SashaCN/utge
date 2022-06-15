@@ -50,13 +50,18 @@ class CategoryController extends Controller
      */
     public function store(MultiRequest $request)
     {
-
         $localization_title = new Localization();
         $localization_title->fill($request->validated());
         $localization_title->var = 'title';
         $localization_title->uk = $request->title_uk;
         $localization_title->ru = $request->title_ru;
-
+        
+        $localization_desc = new Localization();
+        $localization_desc->fill($request->validated());
+        $localization_desc->var = 'description';
+        $localization_desc->uk = $request->description_uk;
+        $localization_desc->ru = $request->description_ru;
+        
 
         $category = new Category();
         $category->fill($request->validated());
@@ -64,6 +69,7 @@ class CategoryController extends Controller
         $category->save();
 
         $category->localization()->save($localization_title);
+        $category->localization()->save($localization_desc);
 
 
         return redirect()->route('category.index');
@@ -109,18 +115,26 @@ class CategoryController extends Controller
      */
     public function update(MultiRequest $request, Category $category)
     {
-
         $localization_title = [
-            'var' => 'title',
+            'var' => "title",
             'uk' => $request->title_uk,
-            'ru' => $request->title_ru
+            'ru' => $request->title_ru,
         ];
 
+        $localization_desc = [
+            'var' => "description",
+            'uk' => $request->description_uk,
+            'ru' => $request->description_ru
+        ];
+
+        
+        
         $category->fill($request->validated());
         $category->product_type_id = $request->product_type_id;
-
+        
         $category->update();
-        $category->localization()->update($localization_title);
+        $category->localization()->where('var', 'title')->update($localization_title);
+        $category->localization()->where('var', 'description')->update($localization_desc);
 
         return redirect()->back();
     }

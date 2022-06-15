@@ -15,8 +15,7 @@ return new class extends Migration
     {
         Schema::create('seos', function (Blueprint $table) {
             $table->id();
-            $table->integer('seoable_id');
-            $table->string('seoable_type');
+            $table->string('page_urlr');
             $table->timestamps();
         });
     }

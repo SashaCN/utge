@@ -29,6 +29,7 @@ class ProductController extends Controller
     public function index(ProductFilter $request)
     {
 
+
         $products = Product::filter($request)->paginate(12);
 
 

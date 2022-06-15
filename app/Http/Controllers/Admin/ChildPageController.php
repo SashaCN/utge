@@ -124,7 +124,7 @@ class ChildPageController extends Controller
             'ru' => $request->description_ru
         ];
 
-        $childPage->update($requestChild->validated());
+        $childPage->update($request->validated());
         $childPage->localization()->where('var', 'title')->update($localization_title);
         $childPage->localization()->where('var', 'description')->update($localization_desc);
 

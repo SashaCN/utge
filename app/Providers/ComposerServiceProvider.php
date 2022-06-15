@@ -25,7 +25,11 @@ class ComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer('admin.admin', function($view){
-            $view->with('version',  );
+            $view->with('seo',  'sasha');
+        });
+
+        View::composer('site.news', function($view){
+            
         });
     }
 }
