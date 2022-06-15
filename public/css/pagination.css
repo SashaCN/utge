@@ -5,7 +5,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
 }
 
 .page-count {
@@ -23,7 +22,7 @@
 }
 
 .page-link-next {
-  margin-left: 22px;
+  margin-left: 30px;
 }
 
 .page-link-previous,
