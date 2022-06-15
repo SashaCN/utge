@@ -242,6 +242,9 @@ aside li:hover span {
   background-image: url(../img/module.svg);
 }
 .aside-menu li:nth-child(7) a::before {
+  background-image: url(../img/seo.svg);
+}
+.aside-menu li:nth-child(8) a::before {
   background-image: url(../img/trash_box.svg);
 }
 

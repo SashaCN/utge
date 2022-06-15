@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     <link rel="stylesheet" href="{{ asset('css/pagination.css') }}">
-    <title>@lang('admin.utge_admin')</title>
+    <title>@lang('admin.utge_admin'){{ $version }}</title>
 </head>
 <body>
     <header>
@@ -56,6 +56,7 @@
                 <li><a href="#"><span class="link-text">@lang('admin.orders')</span></a></li>
                 <li><a href="{{ route('news.index') }}"><span class="link-text">@lang('admin.news')</span></a></li>
                 <li><a href="{{ route('childPage.index') }}"><span class="link-text">@lang('admin.modules')</span></a></li>
+                <li><a href="{{ route('seo.index') }}"><span class="link-text">SEO</span></a></li>
                 <li><a href="{{ route('trashBox.index') }}"><span class="link-text">@lang('admin.trash_box')</span></a></li>
             </ul>
         </nav>

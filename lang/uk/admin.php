@@ -71,5 +71,6 @@
         'error-price_units' => 'Одиниці вимрювання ціни',
         'error-available' => 'Наявність товару',
         'trash_box' => 'Корзина',
+        'seo_panel' => 'SEO панель',
 
     ];

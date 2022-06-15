@@ -71,4 +71,5 @@ return [
     'error-price_units' => 'Единицы измерения цены',
     'error-available' => 'Наличие товара',
     'trash_box' => 'Корзина',
+    'seo_panel' => 'SEO панель',
 ];

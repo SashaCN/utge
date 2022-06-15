@@ -49,6 +49,7 @@ Route::middleware('auth')->group(function()
             Route::get('locale/{locale}', [\App\Http\Controllers\Admin\AdminController::class, 'changeLocale'])->name('locale');
             Route::get('/', [\App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin');
             Route::resource('childPage', \App\Http\Controllers\Admin\ChildPageController::class);
+            Route::resource('seo', \App\Http\Controllers\Admin\SeoController::class);
             Route::resource('news', \App\Http\Controllers\Admin\NewsController::class);
             Route::resource('productType', \App\Http\Controllers\Admin\ProductTypeController::class);
             Route::resource('category', \App\Http\Controllers\Admin\CategoryController::class);
