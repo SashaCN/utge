@@ -67,18 +67,32 @@ let slider = document.querySelector('.goods-list'),
     slide_left_btn = document.querySelector('.page-link-previous'),
     slider_nav = document.querySelector('.slider-nav'),
     slider_nav_links,
+    showed_slides_number,
     active_slide = 0;
 
-(function addPages ()
+window.addEventListener('resize', addPages);
+
+function getSlidesNumber ()
+{
+    if (window.screen.width <= 1300){
+        return 3;
+    }
+    return 4;
+}
+
+addPages();
+
+function addPages ()
 {
     let text = "";
-    for (let i = 0; i < Math.ceil(slides.length/4); i++) {
+    console.log(window.screen.width);
+    for (let i = 0; i < Math.ceil(slides.length/getSlidesNumber()); i++) {
         text += `<p class="page-count" data-number="${i}"><span class="page-link"></span></p>`;
     }
     slider_nav.innerHTML = text;
     slider_nav_links = slider_nav.querySelectorAll('.page-count');
     slider_nav_links[active_slide].classList.add('active');
-}())
+}
 
 function changeActivBtn ()
 {
