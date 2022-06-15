@@ -90,7 +90,6 @@ class AdminController extends Controller
 
         session(['locale' => $locale]);
         App::setLocale($locale);
-
         return redirect()->back();
 
     }

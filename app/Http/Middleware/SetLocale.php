@@ -5,6 +5,9 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Config;
+use Session;
+
 
 class SetLocale
 {
@@ -21,6 +24,7 @@ class SetLocale
         if(empty(session('locale'))){
 
             session('locale') == 'uk';
+            dump(session('locale'));
 
         } else {
 
