@@ -12,6 +12,7 @@ use App\Models\Filter;
 use App\Models\ChildPage;
 use Spatie\QueryBuilder\QueryBuilder;
 use App\Filters\ProductFilter;
+use App\Models\Localization;
 
 class ProductController extends Controller
 {
@@ -40,13 +41,17 @@ class ProductController extends Controller
         ]);
     }
 
-    public function show(Product $product)
+    public function show($id)
     {
         $categories = Category::all();
+        $product = Product::find($id);
+        $localization = Localization::find($id);
+
 
         return view('site.product.show', [
             'product' => $product,
             'categories' => $categories,
+            'localization' => $localization,
         ]);
     }
 }

@@ -24,17 +24,17 @@
                             @case('price units')
                                 @lang('admin.error-price_units')
                                 @break
-                                
+
                             @case('available')
                                 @lang('admin.error-available')
                                 @break
-                                
+
                             @default
-                                
+
                         @endswitch
-                        
+
                         <?= ' '.explode('/', $error)[1];?>
-                    </li> 
+                    </li>
                 @else
                     <li>{{ $error }}</li>
                 @endif
@@ -55,6 +55,7 @@
         <li><a href="#" class="sp-btn">@lang('admin.sizeprice')</a></li>
         <li><a href="#" class="photo-btn">@lang('admin.photo')</a></li>
         <li><a href="#" class="another-btn">@lang('admin.another')</a></li>
+        <li><a href="#" class="seo-btn">SEO</a></li>
     </ul>
 
     <form id="form" action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data" class="current-slide-wrap">
@@ -192,8 +193,10 @@
                 <input type="hidden" name="sizecount" value="1">
                 <hr>
             </div>
-            <button id="add-size-price" class="image-changes-bt">@lang('admin.add_size_price')</button>
-            <button id="delete-size-price" class="image-changes-bt">@lang('admin.delete_size_price')</button>
+            <div class="size-price-bt-wrapp">
+                <button id="delete-size-price" class="size-price-bt-min"><span class="btn-w-sp"><img src="{{ asset('img/minus-label.svg') }}" ><span>@lang('admin.delete_size_price')</span></span></button>
+                <button id="add-size-price" class="size-price-bt-pl"><span class="btn-w-sp"><span>@lang('admin.add_size_price')</span><img src="{{ asset('img/plus-label.svg') }}" ></span></button>
+            </div>
         </div>
         <div class="image-slide flex-col">
             <label><input type="hidden" name="image" value=""></label>
@@ -229,6 +232,89 @@
             {{-- <input type="submit" value="Send" class="save"> --}}
         </div>
 
+        {{-- seo --}}
+        <div class="flex-col">
+
+            <div class="flex">
+                <div class="input-wrap mr-seo-input">
+                    <input type="text" id="title_seo_uk" name="title_seo_uk">
+                    <label class="label" for="title_seo_uk">@lang('admin.add_title_seo_uk')</label>
+                </div>
+
+
+                <div class="input-wrap">
+                    <input type="text" id="title_seo_ru" name="title_seo_ru">
+                    <label class="label" for="title_seo_ru">@lang('admin.add_title_seo')</label>
+                </div>
+            </div>
+
+            <div class="flex">
+                <div class="input-wrap mr-seo-input">
+                    <input type="text" id="og_title_seo_uk" name="og_title_seo_uk">
+                    <label class="label" for="og_title_seo_uk">@lang('admin.og_add_title_seo_uk')</label>
+                </div>
+
+
+                <div class="input-wrap">
+                    <input type="text" id="og_title_seo_ru" name="og_title_seo_ru">
+                    <label class="label" for="og_title_seo_ru">@lang('admin.og_add_title_seo')</label>
+                </div>
+            </div>
+
+            <div class="flex">
+
+                <div class="seo-textarea-wrap mr-seo-input">
+                    <label  class="label seo-label" for="og_desc_seo_uk">@lang('admin.og_add_desc_seo_uk')</label>
+                    <textarea class="seo-textarea" name="og_desc_seo_uk" id=""></textarea>
+                </div>
+
+                <div class="seo-textarea-wrap">
+                    <label  class="label seo-label" for="og_desc_seo_ru">@lang('admin.og_add_desc_seo')</label>
+                    <textarea class="seo-textarea" name="og_desc_seo_ru" id="og_desc_seo_ru"></textarea>
+                </div>
+            </div>
+
+            <div class="flex">
+
+                <div class="seo-textarea-wrap mr-seo-input">
+                    <label  class="label seo-label" for="desc_seo_uk">@lang('admin.add_desc_seo_uk')</label>
+                    <textarea class="seo-textarea" name="desc_seo_uk" id=""></textarea>
+                </div>
+
+                <div class="seo-textarea-wrap">
+                    <label  class="label seo-label" for="desc_seo_ru">@lang('admin.add_desc_seo')</label>
+                    <textarea class="seo-textarea" name="desc_seo_ru" id="desc_seo_ru"></textarea>
+                </div>
+            </div>
+
+            <div class="flex">
+
+                <div class="seo-textarea-wrap mr-seo-input">
+                    <label  class="label seo-label" for="keywords_seo_uk">@lang('admin.add_key_seo_uk')</label>
+                    <textarea class="seo-textarea" name="keywords_seo_uk" id="keywords_seo_uk"></textarea>
+                </div>
+
+                <div class="seo-textarea-wrap">
+                    <label  class="label seo-label" for="keywords_seo_ru">@lang('admin.add_key_seo')</label>
+                    <textarea class="seo-textarea" name="keywords_seo_ru" id="keywords_seo_ru"></textarea>
+                </div>
+            </div>
+
+            <div class="flex">
+
+                <div class="seo-textarea-wrap mr-seo-input">
+                    <label  class="label seo-label" for="custom_seo_uk">@lang('admin.add_custom_seo_uk')</label>
+                    <textarea class="seo-textarea" name="custom_seo_uk" id="custom_seo_uk"></textarea>
+                </div>
+
+                <div class="seo-textarea-wrap">
+                    <label  class="label seo-label" for="custom_seo_ru">@lang('admin.add_custom_seo')</label>
+                    <textarea class="seo-textarea" name="custom_seo_ru" id="custom_seo_ru"></textarea>
+                </div>
+            </div>
+            {{-- seo end --}}
+
+        </div>
         <script>
             function getStructure(counter) {
                 return structure = `

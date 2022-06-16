@@ -12,7 +12,7 @@ class SiteController extends Controller
 {
     public function index()
     {
-        $products  = Product::where('home_view', '1')->paginate(4);
+        $products  = Product::all()->where('home_view', '1');
         $about_us = ChildPage::all()->where('route', 'about_us');
         $phones = ChildPage::all()->where('route', 'phone');
         

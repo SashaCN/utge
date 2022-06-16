@@ -77,6 +77,7 @@ header
   position: absolute
   left: 0
   top: 50px
+  width: 150%
   background-color: $primary
   li, a
     display: inline-block
@@ -203,6 +204,14 @@ aside
       a
         &::before
           background-image: url(../img/module.svg)
+    &:nth-child(7)
+      a
+        &::before
+          background-image: url(../img/seo.svg)
+    &:nth-child(8)
+      a
+        &::before
+          background-image: url(../img/trash_box.svg)
 
 .selected-item
   background-color: $primary-hover
@@ -297,6 +306,27 @@ main
   img
     width: 100%
 
+.restore
+    text-align: center
+    a
+        position: relative
+        display: inline-block
+        width: 24px
+        height: 24px
+        background-color: #4FA839
+        transition: .5s
+        &::before
+            content: ''
+            z-index: 25
+            position: absolute
+            top: 0
+            left: 0
+            width: 100%
+            height: 100%
+            background-image: url(../img/restore_from_trash.svg)
+            background-position: center
+            background-repeat: no-repeat
+
 .action
   text-align: center
   a
@@ -357,11 +387,15 @@ main
   .current-slide
     display: flex
 
+.flex-col
+    & > .input-wrap
+        &:last-child
+            padding-bottom: 0
+
+
 .input-wrap
   position: relative
   padding: 30px 0 20px
-  &:last-child
-    padding-bottom: 0
   input:not([type=radio]),
   textarea,
   select
@@ -385,6 +419,46 @@ main
         input,
         select
             width: 450px
+
+.size-price-bt-wrapp
+    display: flex
+    justify-content: space-between
+    padding: 20px 0 0 0
+
+.size-price-bt-min,
+.size-price-bt-pl
+    cursor: pointer
+    width: 150px
+    padding: 0 15px
+    background-color: #003b95
+    border: none
+    color: #fff
+    transition: 0.5s
+    &:hover
+        background-color: #1255bc
+
+.btn-w-sp
+    display: flex
+    align-items: center
+
+.mr-seo-input
+    margin-right: 20px
+
+.seo-textarea-wrap
+    width: 400px
+
+.seo-textarea
+    width: 370px
+    padding: 15px
+    border: none
+    height: 200px
+    background-color: #D9D9D9
+    font-size: 16px
+    margin-top: 15px
+    margin-bottom: 20px
+    resize: none
+
+
 
 /* -------------------------------------------------------------------------- */
 /*                               product update                               */
@@ -477,7 +551,7 @@ main
 /* -------------------------------------------------------------------------- */
 
 .pagination
-    padding: 25px
+    padding: 25px 0
 
 /* -------------------------------------------------------------------------- */
 /*                                   filter                                   */
@@ -560,3 +634,25 @@ main
 ::-webkit-scrollbar-thumb:hover
     background: #555
 
+/* -------------------------------------------------------------------------- */
+/*                                   seo                                      */
+/* -------------------------------------------------------------------------- */
+.dev-wrap
+    text-align: center
+
+.to-dev
+    height: 87vh
+    display: flex
+    justify-content: center
+    align-items: center
+
+.to-dev-img
+    width: 200px
+    fill: #E6E6E6
+
+.to-dev-desc
+    text-align: center
+    font-weight: bold
+    font-size: 26px
+    text-transform: uppercase
+    color: #E6E6E6

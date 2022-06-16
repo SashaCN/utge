@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="{{ asset('img/logo.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     <link rel="stylesheet" href="{{ asset('css/pagination.css') }}">
     <link rel="stylesheet" href="{{ asset('css/simpleVisualTextEditor.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <title>@lang('admin.utge_admin')</title>
 </head>
 <body>
@@ -27,9 +29,9 @@
                     <div class="add-menu hidden">
                         <ul>
                             <li><a href="{{ route('product.create') }}">@lang('admin.product')</a></li>
+                            <li><a href="{{ route('subCategory.create') }}">@lang('admin.sub_category_add')</a></li>
                             <li><a href="{{ route('category.create') }}">@lang('admin.category')</a></li>
                             <li><a href="{{ route('productType.create') }}">@lang('admin.product_type')</a></li>
-                            <li><a href="{{ route('subCategory.create') }}">@lang('admin.sub_category_add')</a></li>
                         </ul>
                     </div>
                 </li>
@@ -54,10 +56,12 @@
                     </a>
                 </li>
                 <li><a href="{{ route('product.index') }}"><span class="link-text">@lang('admin.products')</span></a></li>
-                <li><a href="{{ route('category.index') }}"><span class="link-text">@lang('admin.categories')</span></a></li>
+                <li><a href="{{ route('category.index') }}"><span class="link-text">@lang('admin.categories')</span></a>    </li>
                 <li><a href="#"><span class="link-text">@lang('admin.orders')</span></a></li>
                 <li><a href="{{ route('news.index') }}"><span class="link-text">@lang('admin.news')</span></a></li>
                 <li><a href="{{ route('childPage.index') }}"><span class="link-text">@lang('admin.modules')</span></a></li>
+                <li><a href="{{ route('seo.index') }}"><span class="link-text">SEO</span></a></li>
+                <li><a href="{{ route('trashBox.index') }}"><span class="link-text">@lang('admin.trash_box')</span></a></li>
             </ul>
         </nav>
         <p class="copy">

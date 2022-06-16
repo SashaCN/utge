@@ -18,7 +18,6 @@ class CategoryFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->city(),
             'product_type_id' => ProductType::factory()->create()
         ];
     }

@@ -81,6 +81,10 @@ return [
     | to any of the locales which will be supported by the application.
     |
     */
+    'locales' => [
+        'uk' => 'Ukrainian',
+        'ru' => 'Russian',
+      ],
 
     'locale' => 'uk',
 
@@ -95,7 +99,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'ru',
+    'fallback_locale' => 'uk',
 
     /*
     |--------------------------------------------------------------------------
@@ -194,6 +198,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\ComposerServiceProvider::class,
+        Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
 
     ],
 
