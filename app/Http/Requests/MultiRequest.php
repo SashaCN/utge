@@ -24,10 +24,17 @@ class MultiRequest extends FormRequest
     public function rules()
     {
 
-        $request = [
-            'title_uk' => 'required|min:2|max:55',
-            'title_ru' => 'required|min:2|max:55',
-        ];
+        $request = [];
+
+        if (isset($_REQUEST['title_uk']))
+        {
+            $request['title_uk'] = 'required|min:2|max:55';
+        }
+
+        if (isset($_REQUEST['title_ru']))
+        {
+            $request['title_ru'] = 'required|min:2';
+        }
 
         if (isset($_REQUEST['description_uk']))
         {
@@ -106,6 +113,12 @@ class MultiRequest extends FormRequest
                 $request['available/'.$i] = 'required';
             }
         }
+
+        if (isset($_REQUEST['phone']))
+        {
+            $request['phone'] = 'required|min:10|max:20';
+        }
+
         return $request;
     }
 }

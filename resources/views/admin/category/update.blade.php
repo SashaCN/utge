@@ -16,7 +16,7 @@
 
     <div class="flex title-line">
         <h2>@lang('admin.category_change')</h2>
-        <button type="submit" form="form" class="add-button">
+        <button type="submit" form="form" class="add-button" id="save-btm">
             <img src="{{ asset('img/save.svg') }}" alt="Add">
         </button>
     </div>
@@ -34,6 +34,7 @@
 
         @php
             $title = $category->localization[0];
+            $description = $category->localization[1];
         @endphp
 
         <div class="name-slide flex-col current-slide">

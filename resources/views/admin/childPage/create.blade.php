@@ -17,28 +17,50 @@
   </div>
 
   <ul class="create-list flex">
-      <li><a href="#" class="name-btn current-btn">@lang('admin.title')</a></li>
+      <li><a href="#" class="another-btn current-btn">@lang('admin.block')</a></li>
+      <li><a href="#" class="name-btn">@lang('admin.title')</a></li>
       <li><a href="#" class="desc-btn">@lang('admin.description')</a></li>
-      <li><a class="another-btn">@lang('admin.another')</a></li>
       <li><a href="#" class="photo-btn" display="none">@lang('admin.photo')</a></li>
   </ul>
 
   <form id="form" action="{{ route('childPage.store') }}" method="POST" enctype="multipart/form-data" class="current-slide-wrap">
       @csrf
-      
-    <div class="name-slide flex-col current-slide">
-        <div class="input-wrap">
-            <input type="text" name="title_uk" id="title_uk">
+
+    <div class="another-slide flex-col current-slide">
+      <div class="input-wrap pt0">
+        <select name="route" id="child-page-select" class="auto-value">
+          <option value="" id="child-page-first-option" selected>@lang('admin.child_page_father')</option>
+          <option value="about_us">@lang('utge.about-us') Видалити на фінальній версії</option>
+          <option value="phone">@lang('admin.phone')</option>
+          <option value="delivery">@lang('utge.delivery')</option>
+          <option value="payment">@lang('utge.payment')</option>
+          <option value="contacts">@lang('utge.contacts')</option>
+        </select>
+      </div> 
+      <div class="input-wrap phone-box">
+        <input type="text" name="phone" class="phone-input" id="phone">
+        <label class="label" for="phone">@lang('admin.add_phone')</label>
+      </div>
+    </div>
+
+
+    <div class="name-slide flex-col">
+        <div class="input-wrap name-box">
+            <input type="text" name="title_uk" id="title_uk" class="name-input-uk">
             <label class="label" for="title_uk">@lang('admin.add_uk_title')</label>
         </div>
-        <div class="input-wrap">
-            <input type="text" name="title_ru" id="title_ru">
+        <div class="input-wrap name-box">
+            <input type="text" name="title_ru" id="title_ru" class="name-input-ru">
             <label class="label" for="title_ru">@lang('admin.add_ru_title')</label>
+        </div>
+        <div class="input-wrap name-box-none">
+          <p class="this-block-name">@lang('admin.this-block-name')</p>
+          <p class="choose-block-name">@lang('admin.choose-block')</p>
         </div>
     </div>
       
     <div class="desc-slide flex-col">
-      <div class="input-wrap">
+      <div class="input-wrap desc-box">
         <div class="content">
           <div id="editparent">
             <div id='editControls1' style='text-align:center; padding:5px;'>
@@ -78,12 +100,12 @@
               </div>
             </div>
             <div id='editor1' style='' contenteditable></div>
-            <textarea id="desc_uk" name="description_uk"></textarea>
+            <textarea id="desc_uk" name="description_uk" class="desc-input-uk"></textarea>
             <label class="label" for="desc_uk">@lang('admin.add_uk_desc')</label>
           </div>
         </div>
       </div>
-      <div class="input-wrap">
+      <div class="input-wrap desc-box">
         <div class="content">
           <div id="editparent">
             <div id='editControls2' style='text-align:center; padding:5px;'>
@@ -123,25 +145,26 @@
               </div>
             </div>
             <div id='editor2' style='' contenteditable></div>
-            <textarea id="desc_ru" name="description_ru"></textarea>
+            <textarea id="desc_ru" name="description_ru" class="desc-input-ru"></textarea>
             <label class="label" for="desc_ru">@lang('admin.add_ru_desc')</label>
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="input-wrap pt0">
-        <select name="route" id="child-page-select" class="auto-value">
-            <option value="" id="child-page-first-option" selected>@lang('admin.child_page_father')</option>
-            <option value="about_us">@lang('utge.about-us')</option>
-            <option value="delivery">@lang('utge.delivery')</option>
-            <option value="payment">@lang('utge.payment')</option>
-            <option value="contacts">@lang('utge.contacts')</option>
-        </select>
-    </div>     
+      <div class="input-wrap desc-box-none">
+        <p class="this-block-desc">@lang('admin.this-block-desc')</p>
+        <p class="choose-block-desc">@lang('admin.choose-block')</p>
+      </div>
+    </div>    
 
     <div class="image-slide flex-col">
-      <p>@lang('admin.first_create_image')</p>
+      <div class="input-wrap img-box">
+          <label><input type="hidden" name="image" class="img-input" value=""></label>
+          <label><input type="file" name="image" class="img-input"></label>
+      </div>
+      <div class="input-wrap img-box-none">
+        <p class="this-block-img">@lang('admin.this-block-img')</p>
+        <p class="choose-block-img">@lang('admin.choose-block')</p>
+      </div>
     </div>
 
   </form>
