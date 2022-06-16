@@ -46,7 +46,7 @@ $locale = app()->getLocale();
 
 <div class="flex title-line">
     <h2>@lang('admin.product_change')</h2>
-    <button type="submit" form="form" class="add-button">
+    <button id="save-btm" type="submit" form="form" class="add-button">
         <img src="{{ asset('img/save.svg') }}" alt="Add">
     </button>
 </div>
@@ -57,6 +57,7 @@ $locale = app()->getLocale();
     <li><a href="#" class="sp-btn">@lang('admin.sizeprice')</a></li>
     <li><a href="#" class="photo-btn">@lang('admin.photo')</a></li>
     <li><a href="#" class="another-btn">@lang('admin.another')</a></li>
+    <li><a href="#" class="seo-btn">SEO</a></li>
 </ul>
 
 <form id="form" action="{{ route('product.update', $product->id ) }}" method="POST" enctype="multipart/form-data"
@@ -66,15 +67,21 @@ $locale = app()->getLocale();
     @method('PUT')
 
     @php
-    $title = $product->localization[0];
-    $description = $product->localization[1];
+        $title = $product->localization[0];
+        $description = $product->localization[1];
+        $title_seo = $product->localization[2];
+        $desc_seo = $product->localization[3];
+        $key_seo = $product->localization[4];
+        $og_title_seo = $product->localization[5];
+        $og_desc_seo = $product->localization[6];
+        $custom_seo = $product->localization[7];
     @endphp
 
     <div class="name-slide flex-col current-slide">
         <div class="input-wrap">
             <input type="text" value="{{ $title->uk }}" id="title_uk" name="title_uk">
             <label class="label" for="title_uk">@lang('admin.add_uk_title')</label>
-        </div>
+        </div>  
         <div class="input-wrap">
             <input type="text" value="{{ $title->ru}}" id="title_ru" name="title_ru">
             <label class="label" for="title_ru">@lang('admin.add_ru_title')</label>
@@ -293,8 +300,86 @@ $locale = app()->getLocale();
             <label for="list_pos" class="label">@lang('admin.add_list_position')</label>
         </div>
     </div>
-</form>
+    <div class="flex-col">
 
+        <div class="flex">
+            <div class="input-wrap mr-seo-input">
+                <input type="text" id="title_seo_uk" value="{{ $title_seo->uk }}" name="title_seo_uk">
+                <label class="label" for="title_seo_uk">@lang('admin.add_title_seo_uk')</label>
+            </div>
+
+
+            <div class="input-wrap">
+                <input type="text" id="title_seo_ru" value="{{ $title_seo->ru }}" name="title_seo_ru">
+                <label class="label" for="title_seo_ru">@lang('admin.add_title_seo')</label>
+            </div>
+        </div>
+
+        <div class="flex">
+            <div class="input-wrap mr-seo-input">
+                <input type="text" id="og_title_seo_uk" value="{{ $og_title_seo->uk }}" name="og_title_seo_uk">
+                <label class="label" for="og_title_seo_uk">@lang('admin.og_add_title_seo_uk')</label>
+            </div>
+
+
+            <div class="input-wrap">
+                <input type="text" id="og_title_seo_ru" value="{{ $og_title_seo->ru }}" name="og_title_seo_ru">
+                <label class="label" for="og_title_seo_ru">@lang('admin.og_add_title_seo')</label>
+            </div>
+        </div>
+
+        <div class="flex">
+
+            <div class="seo-textarea-wrap mr-seo-input">
+                <label  class="label seo-label" for="og_desc_seo_uk">@lang('admin.og_add_desc_seo_uk')</label>
+                <textarea class="seo-textarea" name="og_desc_seo_uk" id="">{{ $og_desc_seo->uk }}</textarea>
+            </div>
+
+            <div class="seo-textarea-wrap">
+                <label  class="label seo-label" for="og_desc_seo_ru">@lang('admin.og_add_desc_seo')</label>
+                <textarea class="seo-textarea" name="og_desc_seo_ru" id="og_desc_seo_ru">{{ $og_desc_seo->ru }}</textarea>
+            </div>
+        </div>
+
+        <div class="flex">
+
+            <div class="seo-textarea-wrap mr-seo-input">
+                <label  class="label seo-label" for="desc_seo_uk">@lang('admin.add_desc_seo_uk')</label>
+                <textarea class="seo-textarea" name="desc_seo_uk" id="">{{ $desc_seo->uk }}</textarea>
+            </div>
+
+            <div class="seo-textarea-wrap">
+                <label  class="label seo-label" for="desc_seo_ru">@lang('admin.add_desc_seo')</label>
+                <textarea class="seo-textarea" name="desc_seo_ru" id="desc_seo_ru">{{ $desc_seo->ru }}</textarea>
+            </div>
+        </div>
+
+        <div class="flex">
+
+            <div class="seo-textarea-wrap mr-seo-input">
+                <label  class="label seo-label" for="keywords_seo_uk">@lang('admin.add_key_seo_uk')</label>
+                <textarea class="seo-textarea" name="keywords_seo_uk" id="keywords_seo_uk">{{ $key_seo->uk }}</textarea>
+            </div>
+
+            <div class="seo-textarea-wrap">
+                <label  class="label seo-label" for="keywords_seo_ru">@lang('admin.add_key_seo')</label>
+                <textarea class="seo-textarea" name="keywords_seo_ru" id="keywords_seo_ru">{{ $key_seo->ru }}</textarea>
+            </div>
+        </div>
+
+        <div class="flex">
+
+            <div class="seo-textarea-wrap mr-seo-input">
+                <label  class="label seo-label" for="custom_seo_uk">@lang('admin.add_custom_seo_uk')</label>
+                <textarea class="seo-textarea" name="custom_seo_uk" id="custom_seo_uk">{{ $custom_seo->uk }}</textarea>
+            </div>
+
+            <div class="seo-textarea-wrap">
+                <label  class="label seo-label" for="custom_seo_ru">@lang('admin.add_custom_seo')</label>
+                <textarea class="seo-textarea" name="custom_seo_ru" id="custom_seo_ru">{{ $custom_seo->ru }}</textarea>
+            </div>
+        </div>
+</form>
 
 <form id="image-change" class="image-changes-form" action="{{ route('product.mediaUpdate', $product->id ) }}"
     method="POST" enctype="multipart/form-data">

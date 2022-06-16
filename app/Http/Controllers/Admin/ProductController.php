@@ -29,6 +29,7 @@ class ProductController extends Controller
     public function index(ProductFilter $request)
     {
 
+
         $products = Product::filter($request)->paginate(12);
 
 
@@ -86,6 +87,48 @@ class ProductController extends Controller
         $localization_desc->uk = $request->description_uk;
         $localization_desc->ru = $request->description_ru;
 
+
+
+        //seo add
+        $localization_title_seo = new Localization();
+        $localization_title_seo->fill($request->validated());
+        $localization_title_seo->var = 'title_seo';
+        $localization_title_seo->uk = $request->title_seo_uk;
+        $localization_title_seo->ru = $request->title_seo_ru;
+
+        $localization_desc_seo = new Localization();
+        $localization_desc_seo->fill($request->validated());
+        $localization_desc_seo->var = 'desc_seo';
+        $localization_desc_seo->uk = $request->desc_seo_uk;
+        $localization_desc_seo->ru = $request->desc_seo_ru;
+
+        $localization_og_desc_seo = new Localization();
+        $localization_og_desc_seo->fill($request->validated());
+        $localization_og_desc_seo->var = 'og_desc_seo';
+        $localization_og_desc_seo->uk = $request->og_desc_seo_uk;
+        $localization_og_desc_seo->ru = $request->og_desc_seo_ru;
+
+        $localization_key_seo = new Localization();
+        $localization_key_seo->fill($request->validated());
+        $localization_key_seo->var = 'key_seo';
+        $localization_key_seo->uk = $request->keywords_seo_uk;
+        $localization_key_seo->ru = $request->keywords_seo_ru;
+
+        $localization_og_title_seo = new Localization();
+        $localization_og_title_seo->fill($request->validated());
+        $localization_og_title_seo->var = 'og_title_seo';
+        $localization_og_title_seo->uk = $request->og_title_seo_uk;
+        $localization_og_title_seo->ru = $request->og_title_seo_ru;
+
+        $localization_custom_seo = new Localization();
+        $localization_custom_seo->fill($request->validated());
+        $localization_custom_seo->var = 'custom_seo';
+        $localization_custom_seo->uk = $request->custom_seo_uk;
+        $localization_custom_seo->ru = $request->custom_seo_ru;
+        //seo end
+
+
+
         $product->fill($request->except(['size/', 'price/', 'available/']));
         $product->save();
 
@@ -106,6 +149,12 @@ class ProductController extends Controller
 
         $product->localization()->save($localization_title);
         $product->localization()->save($localization_desc);
+        $product->localization()->save($localization_title_seo);
+        $product->localization()->save($localization_og_desc_seo);
+        $product->localization()->save($localization_desc_seo);
+        $product->localization()->save($localization_key_seo);
+        $product->localization()->save($localization_og_title_seo);
+        $product->localization()->save($localization_custom_seo);
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $product->addMediaFromRequest('image')
@@ -162,12 +211,40 @@ class ProductController extends Controller
             'uk' => $request->title_uk,
             'ru' => $request->title_ru
         ];
+
         $localization_description = [
             'var' => 'description',
             'uk' => $request->description_uk,
             'ru' => $request->description_ru
         ];
 
+        //seo update
+        $localization_title_seo = [
+            'var' => 'title_seo',
+            'uk' => $request->title_seo_uk,
+            'ru' => $request->title_seo_ru
+        ];
+        $localization_desc_seo = [
+            'var' => 'desc_seo',
+            'uk' => $request->desc_seo_uk,
+            'ru' => $request->desc_seo_ru
+        ];
+        $localization_og_title_seo = [
+            'var' => 'og_title_seo',
+            'uk' => $request->og_title_seo_uk,
+            'ru' => $request->og_title_seo_ru
+        ];
+        $localization_og_desc_seo = [
+            'var' => 'og_desc_seo',
+            'uk' => $request->og_desc_seo_uk,
+            'ru' => $request->og_desc_seo_ru
+        ];
+        $localization_key_seo = [
+            'var' => 'key_seo',
+            'uk' => $request->desc_seo_uk,
+            'ru' => $request->desc_seo_ru
+        ];
+        //seo end
 
         $product->fill($request->except(['size.', 'price.', 'available.', 'price_units.']));
         $product->update();
@@ -189,6 +266,14 @@ class ProductController extends Controller
 
         $product->localization()->where('var', 'title')->update($localization_title);
         $product->localization()->where('var', 'description')->update($localization_description);
+
+        //seo update
+        $product->localization()->where('var', 'title_seo')->update($localization_title_seo);
+        $product->localization()->where('var', 'desc_seo')->update($localization_desc_seo);
+        $product->localization()->where('var', 'og_title_seo')->update($localization_og_title_seo);
+        $product->localization()->where('var', 'og_desc_seo')->update($localization_og_desc_seo);
+        $product->localization()->where('var', 'key_seo')->update($localization_key_seo);
+        //seo end
 
 
         return redirect()->route('product.index');

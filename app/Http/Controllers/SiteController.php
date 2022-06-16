@@ -13,7 +13,7 @@ class SiteController extends Controller
     public function index()
     {
         $products  = Product::all()->where('home_view', '1');
-
+ 
         return view('site.firstPage', [
             'products' => $products,
         ]);

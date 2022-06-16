@@ -985,6 +985,9 @@ select {
 .uppercase {
   text-transform: uppercase;
 }
+.italic {
+  font-style: italic;
+}
 .leading-tight {
   line-height: 1.25;
 }
