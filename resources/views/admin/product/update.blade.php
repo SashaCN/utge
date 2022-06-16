@@ -81,7 +81,7 @@ $locale = app()->getLocale();
         <div class="input-wrap">
             <input type="text" value="{{ $title->uk }}" id="title_uk" name="title_uk">
             <label class="label" for="title_uk">@lang('admin.add_uk_title')</label>
-        </div>
+        </div>  
         <div class="input-wrap">
             <input type="text" value="{{ $title->ru}}" id="title_ru" name="title_ru">
             <label class="label" for="title_ru">@lang('admin.add_ru_title')</label>

@@ -5,7 +5,7 @@
         $locale = app()->getLocale();
     ?>
 
-    <div class="flex title-line">
+    {{-- <div class="flex title-line">
         <h2>@lang('admin.seo_panel')</h2>
     </div>
 
@@ -20,23 +20,15 @@
         </thead>
         <tbody>
             <tr>
-                
-                {{-- @foreach ($uris as $uri)
-
-                <td>
-                    {{$uri->uri}}
-                </td>
-
-                <td class="action">
-                    <a href="#"></a>
-                    <a href="#}"></a>
-                </td>
-
-                @endforeach --}}
             </tr>
 
 
-        </tbody>
+        </tbody> --}}
     </table>
-
+    <div class="to-dev">
+        <div class="dev-wrap">
+            <img class="to-dev-img" src="{{ asset('img/to_develop.svg') }}" alt="">
+            <p class="to-dev-desc">under development</p>
+        </div>
+    </div>
 @endsection
