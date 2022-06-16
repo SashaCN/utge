@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/pagination.css') }}">
     <link rel="stylesheet" href="{{ asset('css/simpleVisualTextEditor.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
+
     <title>@lang('admin.utge_admin')</title>
 </head>
 <body>
@@ -29,9 +29,9 @@
                     <div class="add-menu hidden">
                         <ul>
                             <li><a href="{{ route('product.create') }}">@lang('admin.product')</a></li>
+                            <li><a href="{{ route('subCategory.create') }}">@lang('admin.sub_category_add')</a></li>
                             <li><a href="{{ route('category.create') }}">@lang('admin.category')</a></li>
                             <li><a href="{{ route('productType.create') }}">@lang('admin.product_type')</a></li>
-                            <li><a href="{{ route('subCategory.create') }}">@lang('admin.sub_category_add')</a></li>
                         </ul>
                     </div>
                 </li>

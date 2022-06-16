@@ -231,25 +231,89 @@
             </div>
             {{-- <input type="submit" value="Send" class="save"> --}}
         </div>
-        <div class="">
-            <div class="input-wrap">
-                <input type="text" id="title_seo_uk" name="title_seo_uk">
-                <label class="label" for="title_seo_uk">@lang('admin.add_title_seo')</label>
+
+        {{-- seo --}}
+        <div class="flex-col">
+
+            <div class="flex">
+                <div class="input-wrap mr-seo-input">
+                    <input type="text" id="title_seo_uk" name="title_seo_uk">
+                    <label class="label" for="title_seo_uk">@lang('admin.add_title_seo_uk')</label>
+                </div>
+
+
+                <div class="input-wrap">
+                    <input type="text" id="title_seo_ru" name="title_seo_ru">
+                    <label class="label" for="title_seo_ru">@lang('admin.add_title_seo')</label>
+                </div>
             </div>
 
-            <div class="input-wrap">
-                <input type="text" id="title_seo_ru" name="title_seo_ru">
-                <label class="label" for="title_seo_ru">@lang('admin.add_title_seo')</label>
+            <div class="flex">
+                <div class="input-wrap mr-seo-input">
+                    <input type="text" id="og_title_seo_uk" name="og_title_seo_uk">
+                    <label class="label" for="og_title_seo_uk">@lang('admin.og_add_title_seo_uk')</label>
+                </div>
+
+
+                <div class="input-wrap">
+                    <input type="text" id="og_title_seo_ru" name="og_title_seo_ru">
+                    <label class="label" for="og_title_seo_ru">@lang('admin.og_add_title_seo')</label>
+                </div>
             </div>
 
-            <div class="input-wrap">
-                <input type="text" id="desc_seo_uk" name="desc_seo_uk">
-                <label class="label" for="desc_seo_uk">@lang('admin.add_desc_seo')</label>
+            <div class="flex">
+
+                <div class="seo-textarea-wrap mr-seo-input">
+                    <label  class="label seo-label" for="og_desc_seo_uk">@lang('admin.og_add_desc_seo_uk')</label>
+                    <textarea class="seo-textarea" name="og_desc_seo_uk" id=""></textarea>
+                </div>
+
+                <div class="seo-textarea-wrap">
+                    <label  class="label seo-label" for="og_desc_seo_ru">@lang('admin.og_add_desc_seo')</label>
+                    <textarea class="seo-textarea" name="og_desc_seo_ru" id="og_desc_seo_ru"></textarea>
+                </div>
             </div>
-            <div class="input-wrap">
-                <input type="text" id="desc_seo_ru" name="desc_seo_ru">
-                <label class="label" for="desc_seo_ru">@lang('admin.add_desc_seo')</label>
+
+            <div class="flex">
+
+                <div class="seo-textarea-wrap mr-seo-input">
+                    <label  class="label seo-label" for="desc_seo_uk">@lang('admin.add_desc_seo_uk')</label>
+                    <textarea class="seo-textarea" name="desc_seo_uk" id=""></textarea>
+                </div>
+
+                <div class="seo-textarea-wrap">
+                    <label  class="label seo-label" for="desc_seo_ru">@lang('admin.add_desc_seo')</label>
+                    <textarea class="seo-textarea" name="desc_seo_ru" id="desc_seo_ru"></textarea>
+                </div>
             </div>
+
+            <div class="flex">
+
+                <div class="seo-textarea-wrap mr-seo-input">
+                    <label  class="label seo-label" for="keywords_seo_uk">@lang('admin.add_key_seo_uk')</label>
+                    <textarea class="seo-textarea" name="keywords_seo_uk" id="keywords_seo_uk"></textarea>
+                </div>
+
+                <div class="seo-textarea-wrap">
+                    <label  class="label seo-label" for="keywords_seo_ru">@lang('admin.add_key_seo')</label>
+                    <textarea class="seo-textarea" name="keywords_seo_ru" id="keywords_seo_ru"></textarea>
+                </div>
+            </div>
+
+            <div class="flex">
+
+                <div class="seo-textarea-wrap mr-seo-input">
+                    <label  class="label seo-label" for="custom_seo_uk">@lang('admin.add_custom_seo_uk')</label>
+                    <textarea class="seo-textarea" name="custom_seo_uk" id="custom_seo_uk"></textarea>
+                </div>
+
+                <div class="seo-textarea-wrap">
+                    <label  class="label seo-label" for="custom_seo_ru">@lang('admin.add_custom_seo')</label>
+                    <textarea class="seo-textarea" name="custom_seo_ru" id="custom_seo_ru"></textarea>
+                </div>
+            </div>
+            {{-- seo end --}}
+
         </div>
         <script>
             function getStructure(counter) {

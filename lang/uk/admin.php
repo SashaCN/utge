@@ -73,5 +73,17 @@
         'first_create_image' => 'Оберіть спочатку блок у вкладці Інше',
         'trash_box' => 'Корзина',
         'seo_panel' => 'SEO панель',
+        'add_key_seo_uk' => 'Мета тег KEYWORDS на українській мові',
+        'add_desc_seo_uk' => 'Мета тег DESCRIPTION на українській мові',
+        'og_add_title_seo_uk' => 'Мета тег OG:TITLE на українській мові',
+        'add_title_seo_uk' => 'Мета тег TITLE на українській мові',
+        'add_key_seo' => 'Мета тег KEYWORDS на російській мові',
+        'add_desc_seo' => 'Мета тег DESCRIPTION на російській мові',
+        'og_add_title_seo' => 'Мета тег OG:TITLE на російській мові',
+        'add_title_seo' => 'Мета тег TITLE на російській мові',
+        'og_add_desc_seo_uk' => 'Мета тег OG:DESCRIPTION на українській мові',
+        'og_add_desc_seo' => 'Мета тег OG:DESCRIPTION на російській мові',
+        'add_custom_seo_uk' => 'Кастоминий мета тег на українській мові',
+        'add_custom_seo' => 'Кастоминий мета тег на російській мові',
 
     ];

@@ -99,6 +99,7 @@ header a {
   position: absolute;
   left: 0;
   top: 50px;
+  width: 150%;
   background-color: #003b95;
 }
 .add-menu li, .add-menu a {
@@ -458,12 +459,13 @@ main {
   display: flex;
 }
 
+.flex-col > .input-wrap:last-child {
+  padding-bottom: 0;
+}
+
 .input-wrap {
   position: relative;
   padding: 30px 0 20px;
-}
-.input-wrap:last-child {
-  padding-bottom: 0;
 }
 .input-wrap input:not([type=radio]),
 .input-wrap textarea,
@@ -518,10 +520,24 @@ main {
   align-items: center;
 }
 
-.seo-wrap {
-  display: flex;
-  flex-direction: column;
-  margin-left: 30px;
+.mr-seo-input {
+  margin-right: 20px;
+}
+
+.seo-textarea-wrap {
+  width: 400px;
+}
+
+.seo-textarea {
+  width: 370px;
+  padding: 15px;
+  border: none;
+  height: 200px;
+  background-color: #D9D9D9;
+  font-size: 16px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  resize: none;
 }
 
 /* -------------------------------------------------------------------------- */
