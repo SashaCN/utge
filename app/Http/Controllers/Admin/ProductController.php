@@ -87,6 +87,12 @@ class ProductController extends Controller
         $localization_desc->uk = $request->description_uk;
         $localization_desc->ru = $request->description_ru;
 
+        $localization_desc = new Localization();
+        $localization_desc->fill($request->validated());
+        $localization_desc->var = 'title_seo';
+        $localization_desc->uk = $request->title_seo_uk;
+        $localization_desc->ru = $request->title_seo_ru;
+
         $product->fill($request->except(['size/', 'price/', 'available/']));
         $product->save();
 

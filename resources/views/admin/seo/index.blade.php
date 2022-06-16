@@ -20,6 +20,7 @@
         </thead>
         <tbody>
             <tr>
+                
                 {{-- @foreach ($uris as $uri)
 
                 <td>

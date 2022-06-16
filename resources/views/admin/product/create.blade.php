@@ -55,6 +55,7 @@
         <li><a href="#" class="sp-btn">@lang('admin.sizeprice')</a></li>
         <li><a href="#" class="photo-btn">@lang('admin.photo')</a></li>
         <li><a href="#" class="another-btn">@lang('admin.another')</a></li>
+        <li><a href="#" class="seo-btn">SEO</a></li>
     </ul>
 
     <form id="form" action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data" class="current-slide-wrap">
@@ -230,7 +231,26 @@
             </div>
             {{-- <input type="submit" value="Send" class="save"> --}}
         </div>
+        <div class="">
+            <div class="input-wrap">
+                <input type="text" id="title_seo_uk" name="title_seo_uk">
+                <label class="label" for="title_seo_uk">@lang('admin.add_title_seo')</label>
+            </div>
 
+            <div class="input-wrap">
+                <input type="text" id="title_seo_ru" name="title_seo_ru">
+                <label class="label" for="title_seo_ru">@lang('admin.add_title_seo')</label>
+            </div>
+
+            <div class="input-wrap">
+                <input type="text" id="desc_seo_uk" name="desc_seo_uk">
+                <label class="label" for="desc_seo_uk">@lang('admin.add_desc_seo')</label>
+            </div>
+            <div class="input-wrap">
+                <input type="text" id="desc_seo_ru" name="desc_seo_ru">
+                <label class="label" for="desc_seo_ru">@lang('admin.add_desc_seo')</label>
+            </div>
+        </div>
         <script>
             function getStructure(counter) {
                 return structure = `
