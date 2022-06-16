@@ -27,12 +27,16 @@
             @foreach ($childPages as $childPage)
                 @php
                     $title = $childPage->localization[0];
-                    $description = $childPage->localization[1];
+                    
+                    if ($childPage->route != 'phone')
+                    {
+                        $description = $childPage->localization[1];
+                    }
                 @endphp
                 
                 <tr>
                     <td class="product-image">
-                        @if ($childPage->route != 'about_us')
+                        @if ($childPage->route != 'about_us' && $childPage->route != 'phone')
                             <img src="{{ $childPage->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
                         @endif
                     </td>
@@ -52,19 +56,45 @@
                         @if ($childPage->route == 'about_us')
                             <p>@lang('utge.about-us')</p>
                         @endif
+                        
+                        @if ($childPage->route == 'phone')
+                            <p>@lang('admin.phone')</p></>
+                        @endif
                     </td>
-                    <td>{{ $title->$locale }}</td>
-                    <td>{!! $description->$locale !!}</td>
+                    <td @if ($childPage->route == 'phone') colspan="2"  style="text-align:center;" @endif>{{ $title->$locale }}</td>
+
+                    @if ($childPage->route != 'phone')
+                        <td>
+                            {!! $description->$locale !!}
+                        </td>
+                    @endif
+                    
                     <td>
-                        <a href="{{ route('child', $childPage->route) }}">show</a>
-                        <a href="{{ route('childPage.edit', $childPage->id) }}">update</a>
-                        <form  action="{{ route('childPage.destroy', $childPage->id) }}" method="POST">
-                            <label>
-                                @csrf 
-                                @method('DELETE')
-                                <input type="submit" value="delete">
-                            </label>
-                        </form>
+                        @if ($childPage->route == 'delivery' || $childPage->route == 'payment')
+                        <a href="{{ route('deliveriesAndPayments') }}">show</a>
+                        @endif
+    
+                        @if ($childPage->route == 'contacts')
+                            <a href="{{ route('contacts') }}">show</a>
+                        @endif
+
+                        @if ($childPage->route == 'about_us' || $childPage->route == 'phone')
+                            <a href="{{ route('index') }}">show</a>
+                        @endif
+
+                        @if ($childPage->route != 'phone')
+                            <a href="{{ route('childPage.edit', $childPage->id) }}">update</a>
+                        @endif
+
+                        @if ($childPage->route != 'about_us')
+                            <form  action="{{ route('childPage.destroy', $childPage->id) }}" method="POST">
+                                <label>
+                                    @csrf 
+                                    @method('DELETE')
+                                    <input type="submit" value="delete">
+                                </label>
+                            </form>
+                        @endif
                     </td>
                 </tr>
             @endforeach
