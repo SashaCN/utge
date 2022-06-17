@@ -1,6 +1,10 @@
 @extends('admin.admin')
 
 @section('content')
+    <?php
+            $locale = app()->getLocale();
+    ?>
+
     @if ($errors->any())
         <ul>
             @foreach ($errors->all() as $error)
@@ -20,6 +24,7 @@
         <li><a href="#" class="name-btn current-btn">@lang('admin.title')</a></li>
         <li><a href="#" class="desc-btn">@lang('admin.description')</a></li>
         <li><a href="#" class="photo-btn">@lang('admin.photo')</a></li>
+        <li><a href="#" class="another-btn">@lang('admin.another')</a></li>
     </ul>
 
     <form id="form" action="{{ route('news.store') }}" method="POST" enctype="multipart/form-data" class="current-slide-wrap">
@@ -35,7 +40,7 @@
                 <label class="label" for="title_ru">@lang('admin.add_ru_title')</label>
             </div>
         </div>
-        
+
         <div class="desc-slide flex-col">
             <div class="input-wrap">
               <div class="content">
@@ -132,6 +137,25 @@
         <div class="image-slide flex-col">
             <label><input type="hidden" name="image" value=""></label>
             <label><input type="file" name="image"></label>
+        </div>
+
+        <div class="desc-slide flex-col">
+            <div class="another-slide flex-col">
+                <div class="input-wrap sub-category-wrap">
+                    <p class="label">Виберіть категорію</p>
+                    <div class="flex-space sub-category-wrap">
+                        {{-- <label><input type="hidden" value="" name="product_type_id"></label> --}}
+
+                        @foreach ($newsCategories as $newsCategory)
+                            @php
+                                $title = $newsCategory->localization[0];
+                            @endphp
+
+                            <input class="radio-change" id="newsCategory{{$newsCategory->id}}" type="radio" value="{{$newsCategory->id}}" name="categories_id">
+                            <label class="radio-label" for="newsCategory{{$newsCategory->id}}"><span class="label-circle"></span><span class="label-desc">{{ $title->$locale }}</span></label>
+                        @endforeach
+                    </div>
+                </div>
         </div>
 
     </form>

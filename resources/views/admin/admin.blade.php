@@ -9,8 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/pagination.css') }}">
     <link rel="stylesheet" href="{{ asset('css/simpleVisualTextEditor.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-    <title>@lang('admin.utge_admin')</title>
+    <title>@lang('admin.utge_admin') @lang('admin.product_list')</title>
 </head>
 <body>
     <header>
@@ -24,14 +23,14 @@
 
                 </li>
                 <li class="li-add">
-                    <a href="#" class="add">@lang('admin.add')</a>
+                    <a href="#" class="add drop-btn">@lang('admin.add')</a>
 
-                    <div class="add-menu hidden">
+                    <div class="add-menu drop-list hidden">
                         <ul>
-                            <li><a href="{{ route('product.create') }}">@lang('admin.product')</a></li>
-                            <li><a href="{{ route('subCategory.create') }}">@lang('admin.sub_category_add')</a></li>
-                            <li><a href="{{ route('category.create') }}">@lang('admin.category')</a></li>
-                            <li><a href="{{ route('productType.create') }}">@lang('admin.product_type')</a></li>
+                            <li><a href="{{ route('product.create') }}"><span class="link-text-drop-list">@lang('admin.product')</span></a></li>
+                            <li><a href="{{ route('subCategory.create') }}"><span class="link-text-drop-list">@lang('admin.sub_category_add')</span></a></li>
+                            <li><a href="{{ route('category.create') }}"><span class="link-text-drop-list">@lang('admin.category')</span></a></li>
+                            <li><a href="{{ route('productType.create') }}"><span class="link-text-drop-list">@lang('admin.product_type')</span></a></li>
                         </ul>
                     </div>
                 </li>
@@ -48,20 +47,31 @@
         </div>
     </header>
     <aside>
+        <p class="logo">
+            <a href="{{ route('index') }}" class="flex">
+                <img src="{{ asset('img/logo.png') }}" alt="Hashtag logo">
+            </a>
+        </p>
         <nav>
             <ul class="aside-menu">
-                <li class="logo">
-                    <a href="{{ route('index') }}" class="flex">
-                        <img src="{{ asset('img/logo.png') }}" alt="Hashtag logo">
-                    </a>
-                </li>
                 <li><a href="{{ route('product.index') }}"><span class="link-text">@lang('admin.products')</span></a></li>
-                <li><a href="{{ route('category.index') }}"><span class="link-text">@lang('admin.categories')</span></a>    </li>
+                <li>
+                    <a href="#" class="drop-btn"><span class="link-text">@lang('admin.components')</span></a>
+
+                    <div class="drop-list hidden">
+                        <ul>
+                            <li><a href="{{ route('subCategory.index') }}"><span class="link-text-drop-list">@lang('admin.subcategory_product')</span></a></li>
+                            <li><a href="{{ route('category.index') }}"><span class="link-text-drop-list">@lang('admin.categories_product')</span></a></li>
+                            <li><a href="{{ route('productType.index') }}"><span class="link-text-drop-list">@lang('admin.product_types')</span></a></li>
+                            <li><a href="{{ route('newsCategory.index') }}"><span class="link-text-drop-list">@lang('admin.category_news')</span></a></li>
+                        </ul>
+                    </div>
+                </li>
                 <li><a href="#"><span class="link-text">@lang('admin.orders')</span></a></li>
                 <li><a href="{{ route('news.index') }}"><span class="link-text">@lang('admin.news')</span></a></li>
                 <li><a href="{{ route('childPage.index') }}"><span class="link-text">@lang('admin.modules')</span></a></li>
-                <li><a href="{{ route('seo.index') }}"><span class="link-text">SEO</span></a></li>
                 <li><a href="{{ route('trashBox.index') }}"><span class="link-text">@lang('admin.trash_box')</span></a></li>
+                {{-- <li><a href="{{ route('seo.index') }}"><span class="link-text">SEO</span></a></li> --}}
             </ul>
         </nav>
         <p class="copy">

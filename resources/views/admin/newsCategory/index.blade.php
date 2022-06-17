@@ -7,8 +7,8 @@
     @endphp
 
     <div class="flex title-line">
-        <h2>@lang('admin.subcategory_list')</h2>
-        <a href="{{ route('category.create') }}" class="add-button action-button">
+        <h2>@lang('admin.category_list')</h2>
+        <a href="{{ route('newsCategory.create') }}" class="add-button action-button">
             <img src="{{ asset('img/add.svg') }}" alt="Add">
         </a>
     </div>
@@ -18,17 +18,17 @@
             <th>@lang('admin.title')</th>
             <th>@lang('admin.action')</th>
         </tr>
-        @foreach ($subCategories as $subCategory)
+        @foreach ($newsCategories as $newsCategory)
 
         @php
-            $title = $subCategory->localization[0];
+            $title = $newsCategory->localization[0];
         @endphp
 
         <tr>
             <td>{{ $title->$locale }}</td>
             <td class="action">
-                <a href="{{ route('subCategory.edit', $subCategory->id) }}"></a>
-                <a href="{{ route('subCategory.delete', $subCategory->id) }}"></a>
+                <a href="{{ route('newsCategory.edit', $newsCategory->id) }}"></a>
+                <a href="{{ route('newsCategory.delete', $newsCategory->id) }}"></a>
             </td>
         </tr>
         @endforeach

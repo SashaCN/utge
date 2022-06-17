@@ -1,7 +1,4 @@
 @media screen and ( max-width:  1900px)
-    .product
-        img
-            object-fit: contain
     .add-to-basket
         padding: 8px 25px
     .price
@@ -33,7 +30,75 @@
     & > div
       width: 25%
 
+@media screen and ( max-width:  1300px)
+    .goods-list
+        & > a
+            flex: 0 0 33.33%
+            width: 33.33%
+
 @media screen and ( max-width:  1200px)
-  .info-line
-    & > div
-      width: 30%
+    .info-line
+        & > div
+            width: 30%
+
+    .grid
+        grid-template: 1fr 24px 1fr/1fr 24px 1fr
+
+@media screen and ( max-width:  1000px)
+    .grid
+        grid-template: 1fr 12px 1fr/1fr 12px 1fr
+
+    .goods-list
+        margin: 0 -6px 25px
+        & > a
+            padding: 0 6px
+
+@media screen and ( max-width:  900px)
+    .info-line
+        flex-wrap: wrap
+        .logo
+             order: -1
+             width: 100%
+             margin-bottom: 15px
+        & > div
+            width: 40%
+        .address
+            width: 50%
+            order: 3
+            margin: 0 auto
+
+    footer
+        .phone,
+        .mail
+            margin-bottom: 25px
+
+
+    .menu
+        .burger-btn
+            display: block
+        nav
+            display: none
+
+    .burger-active
+        & + nav
+            display: block
+
+    .grid
+        grid-template: 1fr/1fr 1fr 1fr 1fr
+        grid-row-gap: 20px
+
+    .feed, .water
+        grid-column: 1/4
+
+    .fish, .service
+        grid-column: 2/5
+
+    .service
+        grid-row-start: 4
+
+    .goods-list
+        margin: 0 -15px 25px
+        & > a
+            flex: 0 0 50%
+            width: 50%
+            padding: 0 15px

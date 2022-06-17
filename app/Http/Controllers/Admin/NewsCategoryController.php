@@ -1,24 +1,27 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\MultiRequest;
-use App\Models\ProductType;
+use App\Models\NewsCategory;
 use App\Models\Localization;
+use App\Http\Requests\MultiRequest;
 
-class ProductTypeController extends Controller
+class NewsCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(NewsCategory $newsCategories)
     {
-        $productTypes = ProductType::all();
+        $newsCategories = NewsCategory::all();
 
-        return view('admin.productType.index', ['productTypes' => $productTypes]);
+        return view('admin.newsCategory.index', [
+            'newsCategories' => $newsCategories,
+        ]);
     }
 
     /**
@@ -28,7 +31,7 @@ class ProductTypeController extends Controller
      */
     public function create()
     {
-        return view('admin.productType.create');
+        return view('admin.newsCategory.create');
     }
 
     /**
@@ -39,20 +42,18 @@ class ProductTypeController extends Controller
      */
     public function store(MultiRequest $request)
     {
-
-
         $localization_title = new Localization();
         $localization_title->fill($request->validated());
         $localization_title->var = 'title';
         $localization_title->uk = $request->title_uk;
         $localization_title->ru = $request->title_ru;
 
-        $productType = new ProductType();
-        $productType->save();
+        $newsCategory = new NewsCategory();
+        $newsCategory->save();
 
-        $productType->localization()->save($localization_title);
+        $newsCategory->localization()->save($localization_title);
 
-        return redirect()->route('productType.index');
+        return redirect()->route('newsCategory.index');
     }
 
     /**
@@ -61,12 +62,9 @@ class ProductTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(ProductType $productType)
+    public function show($id)
     {
-
-        return view('admin.ProductType.show', [
-            'productType' => $productType,
-        ]);
+        //
     }
 
     /**
@@ -75,9 +73,11 @@ class ProductTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(ProductType $productType)
+    public function edit(NewsCategory $newsCategory)
     {
-        return view('admin.productType.update', ['productType' => $productType]);
+        return view('admin.newsCategory.create', [
+            'newsCategory' => $newsCategory,
+        ]);
     }
 
     /**
@@ -87,7 +87,7 @@ class ProductTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(MultiRequest $request, ProductType $productType)
+    public function update(MultiRequest $request, NewsCategory $newsCategory)
     {
         $localization_title = [
             'var' => "title",
@@ -95,12 +95,12 @@ class ProductTypeController extends Controller
             'ru' => $request->title_ru,
         ];
 
-        $productType->fill($request->validated());
+        $newsCategory->fill($request->validated());
 
-        $productType->update();
-        $productType->localization()->where('var', 'title')->update($localization_title);
+        $newsCategory->update();
+        $newsCategory->localization()->where('var', 'title')->update($localization_title);
 
-        return redirect()->route('productType.index');
+        return redirect()->route('newsCategory.index');
     }
 
     /**
@@ -109,14 +109,14 @@ class ProductTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProductType $productType)
+    public function destroy($id)
     {
-
+        //
     }
 
-    public function delete(ProductType $productType)
+    public function delete(NewsCategory $newsCategory)
     {
-        $productType->delete();
-        return redirect()->route('productType.index');
+        $newsCategory->delete();
+        return redirect()->route('newsCategory.index');
     }
 }
