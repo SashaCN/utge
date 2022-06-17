@@ -1,4 +1,6 @@
 @extends('admin.admin')
+
+
     @section('content')
 
     <?php

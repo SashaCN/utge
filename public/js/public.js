@@ -28,3 +28,24 @@ function checkText ()
     }
   }
 }
+
+// burger menu
+
+let burger_btn = document.querySelector('.burger-btn'),
+    burger_close = document.querySelector('.close'),
+    nav = document.querySelector('nav');
+
+
+burger_btn.onclick = (e) => {
+    e.preventDefault();
+    burger_btn.classList.toggle('burger-active');
+}
+
+nav.onclick = burgerClose;
+burger_close.onclick = burgerClose;
+
+function burgerClose ()
+{
+    burger_btn.classList.remove('burger-active');
+}
+

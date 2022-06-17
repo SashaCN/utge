@@ -12,9 +12,11 @@
                         <use xlink:href="{{ asset('img/sprite.svg#cow') }}"></use>
                     </svg>
                 </div>
-                <div class="slide">
-                    <h2>@lang('utge.slider-feed-birds')</h2><img src="{{ asset('img/sl_birds.jpg') }}"
-                        alt="@lang('utge.sl_birds')">
+                <div class="container">
+                    <div class="slide">
+                        <h2>@lang('utge.slider-feed-birds')</h2><img src="{{ asset('img/sl_birds.jpg') }}"
+                            alt="@lang('utge.sl_birds')">
+                    </div>
                 </div>
                 <div class="slide">
                     <h2>@lang('utge.slider-feed-fish')</h2><img src="{{ asset('img/sl_fish.jpg') }}"
@@ -143,7 +145,7 @@
                 @endphp
             <a href="#">
                 @if ($product->sizeprices->whereIn('available', [1,4])->min('price'))
-                <figure class="product shadow-box">
+                <figure class="product shadow-box flex-col">
                     <img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
                     <figcaption>
                         <h3>{{ $title->$locale }}</h3>
@@ -168,7 +170,7 @@
                     </figcaption>
                 </figure>
                 @else
-                <figure class="product shadow-box out-of-store">
+                <figure class="product shadow-box out-of-store flex-col">
                     <img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
                     <figcaption>
                         <h3>{{ $title->$locale }}</h3>
@@ -182,11 +184,19 @@
                                 <span>
                                     @lang('utge.add-to-basket')
                                 </span>
-                            </div>
-                        </figcaption>
-                    </figure>
-                    @endif
-                </a>
+                            </p>
+                            <p class="price">{{ $product->sizeprices->min('price') }}</p>
+                            <span class="like">
+                                <svg>
+                                    <use xlink:href="{{ asset('img/sprite.svg#like') }}"></use>
+                                </svg>
+                            </span>
+                        </div>
+
+                    </figcaption>
+                </figure>
+                @endif
+            </a>
             @endforeach
         </div>
         <div class="pagination">

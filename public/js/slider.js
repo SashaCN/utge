@@ -68,13 +68,16 @@ let slider = document.querySelector('.goods-list'),
     slider_nav = document.querySelector('.slider-nav'),
     slider_nav_links,
     showed_slides_number,
+    clickable = true,
     active_slide = 0;
 
 window.addEventListener('resize', addPages);
 
 function getSlidesNumber ()
 {
-    if (window.screen.width <= 1300){
+    if (window.screen.width <= 900){
+        return 2;
+    } else if (window.screen.width <= 1300) {
         return 3;
     }
     return 4;
@@ -94,6 +97,18 @@ function addPages ()
     slider_nav_links[active_slide].classList.add('active');
 }
 
+function blockClick ()
+{
+    if (clickable) {
+        clickable = false;
+        setTimeout(() => {
+            clickable = true;
+        }, 600);
+        return true;
+    }
+    return false;
+}
+
 function changeActivBtn ()
 {
     document.querySelector('.page-count.active').classList.remove('active');
@@ -102,6 +117,9 @@ function changeActivBtn ()
 
 slider_nav_links.forEach(element => {
     element.onclick = (e) => {
+        if (!blockClick()) {
+            return false;
+        }
         active_slide = e.target.getAttribute('data-number');
         slider.scroll(slider.getBoundingClientRect().width*active_slide, 0)
 
@@ -113,6 +131,9 @@ slide_right_btn.onclick = slideRight;
 
 function slideRight ()
 {
+    if (!blockClick()) {
+        return false;
+    }
     if (slider.scrollWidth - slider.scrollLeft > slider.getBoundingClientRect().width) {
         active_slide++;
     }
@@ -124,6 +145,9 @@ slide_left_btn.onclick = slideLeft;
 
 function slideLeft ()
 {
+    if (!blockClick()) {
+        return false;
+    }
     if (slider.scrollLeft > 0) {
         active_slide--;
     }

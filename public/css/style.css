@@ -208,6 +208,93 @@ a.selected-lang {
   text-shadow: 0 0 1px #fff;
 }
 
+a.burger-btn {
+  position: relative;
+  display: none;
+  text-align: center;
+}
+
+.menu-text {
+  padding-right: 50px;
+}
+
+.burger {
+  position: absolute;
+  top: calc(50% - 2px);
+  left: calc(50% + 15px);
+  width: 40px;
+  height: 4px;
+  border-radius: 2px;
+  background: #fff;
+}
+
+.burger:before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 0;
+  width: 40px;
+  height: 4px;
+  border-radius: 2px;
+  background: #fff;
+}
+
+.burger:after {
+  content: "";
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  width: 40px;
+  height: 4px;
+  border-radius: 2px;
+  background: #fff;
+}
+
+.close {
+  position: fixed;
+  display: none;
+  z-index: 6;
+  top: 50px;
+  right: 50px;
+  width: 50px;
+  height: 50px;
+  background-color: #003b95;
+}
+.close svg {
+  width: 100%;
+  height: 100%;
+}
+
+.burger-active + nav {
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #003b95;
+}
+.burger-active + nav .close {
+  display: block;
+}
+.burger-active + nav ul {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  flex-direction: column;
+  justify-content: center;
+}
+.burger-active + nav ul li {
+  min-width: 50%;
+}
+.burger-active + nav ul a {
+  padding: 5px 0;
+  width: 100%;
+  text-align: center;
+}
+
 footer {
   padding: 37px 0;
   background-color: #003b95;
@@ -808,8 +895,90 @@ h3 {
     width: 25%;
   }
 }
+@media screen and (max-width: 1300px) {
+  .goods-list > a {
+    flex: 0 0 33.33%;
+    width: 33.33%;
+  }
+}
 @media screen and (max-width: 1200px) {
   .info-line > div {
     width: 30%;
+  }
+
+  .grid {
+    grid-template: 1fr 24px 1fr/1fr 24px 1fr;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .grid {
+    grid-template: 1fr 12px 1fr/1fr 12px 1fr;
+  }
+
+  .goods-list {
+    margin: 0 -6px 25px;
+  }
+  .goods-list > a {
+    padding: 0 6px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .info-line {
+    flex-wrap: wrap;
+  }
+  .info-line .logo {
+    order: -1;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  .info-line > div {
+    width: 40%;
+  }
+  .info-line .address {
+    width: 50%;
+    order: 3;
+    margin: 0 auto;
+  }
+
+  footer .phone,
+footer .mail {
+    margin-bottom: 25px;
+  }
+
+  .menu .burger-btn {
+    display: block;
+  }
+  .menu nav {
+    display: none;
+  }
+
+  .burger-active + nav {
+    display: block;
+  }
+
+  .grid {
+    grid-template: 1fr/1fr 1fr 1fr 1fr;
+    grid-row-gap: 20px;
+  }
+
+  .feed, .water {
+    grid-column: 1/4;
+  }
+
+  .fish, .service {
+    grid-column: 2/5;
+  }
+
+  .service {
+    grid-row-start: 4;
+  }
+
+  .goods-list {
+    margin: 0 -15px 25px;
+  }
+  .goods-list > a {
+    flex: 0 0 50%;
+    width: 50%;
+    padding: 0 15px;
   }
 }
