@@ -1,3 +1,6 @@
+<?php
+    $locale = app()->getLocale();
+?>
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 
@@ -18,10 +21,7 @@
                     <svg>
                         <use xlink:href="{{ asset('img/sprite.svg#tel') }}"></use>
                     </svg>
-                    <ul class="phone-list">
-                        <li><a href="tel:+380739175254">+38 (073) 917-52-54</a></li>
-                        <li><a href="tel:+380739175254">+38 (073) 917-52-54</a></li>
-                    </ul>
+                    @yield('phone-list')
                 </div>
                 <div class="logo">
                     <a class="flex-col" href="{{ route('index') }}">
@@ -79,9 +79,9 @@
                     <li><a href="{{ route('index') }}">@lang('utge.main')</a></li>
                     <li><a href="{{ route('products') }}">@lang('utge.goods')</a></li>
                     <li><a href="#">@lang('utge.services')</a></li>
-                    <li><a href="{{ route('child', 'delivery') }}">@lang('utge.delivery-payment')</a></li>
+                    <li><a href="{{ route('deliveriesAndPayments') }}">@lang('utge.delivery-payment')</a></li>
                     <li><a href="{{ route('news') }}">@lang('utge.news')</a></li>
-                     <li><a href="{{ route('child', 'contacts') }}">@lang('utge.contacts')</a></li>
+                     <li><a href="{{ route('contacts') }}">@lang('utge.contacts')</a></li>
                 </ul>
             </div>
         </nav>
@@ -96,10 +96,7 @@
                     <svg>
                         <use xlink:href="{{ asset('img/sprite.svg#tel') }}"></use>
                     </svg>
-                    <ul class="phone-list">
-                        <li><a href="tel:+380739175254">+38 (073) 917-52-54</a></li>
-                        <li><a href="tel:+380739175254">+38 (073) 917-52-54</a></li>
-                    </ul>
+                    @yield('phone-list')
                 </div>
                 <div class="address flex-aic">
                     <svg>

@@ -4,7 +4,7 @@
     @php
         $locale = app()->getLocale();
     @endphp
-    
+
     <ul class="phone-list">
         @foreach ($phones as $item)
             @php
@@ -17,22 +17,22 @@
 @endsection
 
 @section('content')
+    @php
+        $locale = app()->getLocale();
+    @endphp
 
-@php
-$locale = app()->getLocale();
-@endphp
-
-    @foreach ($news as $item)
+    @foreach ($contacts as $item)
         @php
             $title = $item->localization[0];
             $description = $item->localization[1];
         @endphp
-        
+
         <div>
             <img src="{{ $item->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
-            <p>{{ $title->$locale }}</p>
-            <p>{{ $description->$locale}}</p>
+            <h3>{{ $title->$locale }}</h2>
+            <p>{!! $description->$locale !!}</p>
         </div>
+
     @endforeach
 
 @endsection

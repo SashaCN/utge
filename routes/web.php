@@ -30,12 +30,13 @@ $locale = App::currentLocale();
 
 Route::middleware('set_locale')->group(function()
 {
-    Route::get('locale/{locale}', [\App\Http\Controllers\Admin\AdminController::class, 'changeLocale'])->name('locale');
     Route::get('/', [\App\Http\Controllers\SiteController::class, 'index'])->name('index');
-    Route::get('/child/{route}', [\App\Http\Controllers\SiteController::class, 'childPageRedirect'])->name('child');
-    Route::get('/news', [\App\Http\Controllers\SiteController::class, 'showNews'])->name('news');
+    Route::get('locale/{locale}', [\App\Http\Controllers\Admin\AdminController::class, 'changeLocale'])->name('locale');
     Route::get('/products', [\App\Http\Controllers\ProductController::class, 'index'])->name('products');
     Route::get('/product/{id}', [\App\Http\Controllers\ProductController::class, 'show'])->name('product');
+    Route::get('/deliveriesAndPayments', [\App\Http\Controllers\SiteController::class, 'showDeliveryAndPay'])->name('deliveriesAndPayments');
+    Route::get('/news', [\App\Http\Controllers\SiteController::class, 'showNews'])->name('news');
+    Route::get('/contacts', [\App\Http\Controllers\SiteController::class, 'showContacts'])->name('contacts');
 });
 
 
