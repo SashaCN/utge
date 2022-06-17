@@ -75,7 +75,9 @@ window.addEventListener('resize', addPages);
 
 function getSlidesNumber ()
 {
-    if (window.screen.width <= 900){
+    if (window.screen.width <= 650) {
+        return 1;
+    } else if (window.screen.width <= 900){
         return 2;
     } else if (window.screen.width <= 1300) {
         return 3;

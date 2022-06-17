@@ -896,6 +896,14 @@ h3 {
   }
 }
 @media screen and (max-width: 1300px) {
+  h2 {
+    font-size: 2rem;
+  }
+
+  .slide h2 {
+    padding: 15px 0;
+  }
+
   .goods-list > a {
     flex: 0 0 33.33%;
     width: 33.33%;
@@ -980,5 +988,61 @@ footer .mail {
     flex: 0 0 50%;
     width: 50%;
     padding: 0 15px;
+  }
+}
+@media screen and (max-width: 700px) {
+  .phone svg {
+    word-wrap: 30px;
+    height: 30px;
+  }
+  .phone ul {
+    margin-left: 10px;
+  }
+
+  .info-line > div {
+    width: 49%;
+  }
+
+  .grid > section {
+    grid-column: 1/5;
+  }
+
+  .goods-list {
+    margin: 0 -7px 25px;
+  }
+  .goods-list > a {
+    padding: 0 7px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .goods-list {
+    width: 70%;
+    margin: 0 auto 25px;
+  }
+  .goods-list > a {
+    width: 100%;
+    flex: 0 0 100%;
+    padding: 0;
+  }
+}
+@media screen and (max-width: 550px) {
+  .info-line > div {
+    width: 100%;
+  }
+
+  .phone {
+    justify-content: center;
+    margin: 15px;
+  }
+  .phone ul {
+    padding-right: 10%;
+  }
+
+  .control {
+    padding: 30px 0;
+  }
+  .control > a, .control > p {
+    text-align: center;
+    width: 30%;
   }
 }
