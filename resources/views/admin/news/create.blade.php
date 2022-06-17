@@ -5,13 +5,14 @@
             $locale = app()->getLocale();
     ?>
 
+<div class="error">
     @if ($errors->any())
-        <ul>
             @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
+                    <div class="error-item"><img class="error-icon" src="{{ asset('img/error.svg') }}" alt="error"><p class="error-desc">{{ $error }}</p></div>
+
             @endforeach
-        </ul>
     @endif
+</div>
 
     <div class="flex title-line">
         <h2>@lang('admin.news_create')</h2>
@@ -32,11 +33,11 @@
 
         <div class="name-slide flex-col current-slide">
             <div class="input-wrap">
-                <input type="text" name="title_uk" id="title_uk">
+                <input type="text" name="title_uk" value="{{ old('title_uk') }}" id="title_uk">
                 <label class="label" for="title_uk">@lang('admin.add_uk_title')</label>
             </div>
             <div class="input-wrap">
-                <input type="text" name="title_ru" id="title_ru">
+                <input type="text" name="title_ru" value="{{ old('title_ru') }}" id="title_ru">
                 <label class="label" for="title_ru">@lang('admin.add_ru_title')</label>
             </div>
         </div>
@@ -81,7 +82,7 @@
                       <a class='btn' id="converToCode1" data-role='switchEditor' href='#' title='Перейти в редактор коду'>&lt;code&gt;</a>
                     </div>
                   </div>
-                  <div id='editor1' style='' contenteditable></div>
+                  <div id='editor1' style='' contenteditable>{!! old('description_uk') !!}</div>
                   <textarea id="desc_uk" name="description_uk"></textarea>
                   <label class="label" for="desc_uk">@lang('admin.add_uk_desc')</label>
                 </div>
@@ -126,7 +127,7 @@
                       <a class='btn' id="converToCode2" data-role='switchEditor' href='#' title='Перейти в редактор коду'>&lt;code&gt;</a>
                     </div>
                   </div>
-                  <div id='editor2' style='' contenteditable></div>
+                  <div id='editor2' style='' contenteditable>{!! old('description_ru') !!}</div>
                   <textarea id="desc_ru" name="description_ru"></textarea>
                   <label class="label" for="desc_ru">@lang('admin.add_ru_desc')</label>
                 </div>

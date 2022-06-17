@@ -5,13 +5,14 @@
         $locale = app()->getLocale();
     @endphp
 
+<div class="error">
     @if ($errors->any())
-        <ul>
             @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
+                    <div class="error-item"><img class="error-icon" src="{{ asset('img/error.svg') }}" alt="error"><p class="error-desc">{{ $error }}</p></div>
+
             @endforeach
-        </ul>
     @endif
+</div>
 
     <div class="flex title-line">
         <h2>@lang('admin.childPage_create')</h2>
@@ -34,7 +35,7 @@
             $title = $childPage->localization[0];
             $description = $childPage->localization[1];
         @endphp
-        
+
         <div class="name-slide flex-col current-slide">
             <div class="input-wrap">
                 <input type="text" name="title_uk" id="title_uk" value="{{ $title->uk }}">
@@ -45,7 +46,7 @@
                 <label class="label" for="title_ru">@lang('admin.add_ru_title')</label>
             </div>
         </div>
-        
+
         <div class="desc-slide flex-col">
             <div class="input-wrap">
               <div class="content">
@@ -143,27 +144,27 @@
             @if ($childPage->route != 'about_us')
                 <label class="image-changes" for="image-changes"><img class="old-image" src="{{ $childPage->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}"></label>
                 <p class="image-changes-desc">@lang('admin.update-image')</p>
-    
+
                 <button class="image-changes-bt" type="submit" form="image-change" class="add-button">@lang('admin.save-new-phot')</button>
-                
+
             @else
               <p class="this-block-img">@lang('admin.this-block-img')</p>
             @endif
-        </div>           
+        </div>
     </form>
-    
+
     @if ($childPage->route != 'about_us')
         <form id="image-change" class="image-changes-form" action="{{ route('childPage.mediaUpdate', $childPage->id ) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('POST')
-            
+
             <input id="image-changes" type="file" name="image">
             <input type="submit" value="img">
         </form>
     @endif
-    
-    
-    
+
+
+
     <script src="{{ asset('js/create.js') }}"></script>
     <script src="{{ asset('js/childPage.js') }}"></script>
     <script src="{{ asset('js/simpleVisualTextEditor.js') }}"></script>

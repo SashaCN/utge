@@ -94,5 +94,10 @@ return [
     'add_custom_seo' => 'Кастомыний мета тег на русском языке',
     'subcategory_change' => 'Редактирование под-категории',
     'product_type_change' => 'Редактировать тип товара',
+    'components' => 'Компоненты',
+    'categories_product' => 'Категории товаров',
+    'subcategory_product' => 'Под-категорії',
+    'product_types' => 'Типы товаров',
+    'category_news' => 'Категории новостей',
 ];
 

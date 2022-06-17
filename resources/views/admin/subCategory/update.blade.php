@@ -10,13 +10,14 @@ $locale = app()->getLocale();
 $title = $subCategory->localization[0];
 @endphp
 
-@if ($errors->any())
-<ul>
-    @foreach ($errors->all() as $error)
-    <li>{{ $error }}</li>
-    @endforeach
-</ul>
-@endif
+<div class="error">
+    @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                    <div class="error-item"><img class="error-icon" src="{{ asset('img/error.svg') }}" alt="error"><p class="error-desc">{{ $error }}</p></div>
+
+            @endforeach
+    @endif
+</div>
 
 <div class="flex title-line">
     <h2>@lang('admin.subcategory_change')</h2>

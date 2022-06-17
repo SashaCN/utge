@@ -206,11 +206,11 @@ aside
             & > a
                 &::before
                     background-image: url(../img/module.svg)
+        // &:nth-child(6)
+        //     & > a
+        //         &::before
+        //             background-image: url(../img/seo.svg)
         &:nth-child(6)
-            & > a
-                &::before
-                    background-image: url(../img/seo.svg)
-        &:nth-child(7)
             & > a
                 &::before
                     background-image: url(../img/trash_box.svg)
@@ -222,10 +222,10 @@ aside
         content: ''
         position: absolute
         z-index: 3
-        top: -5%
+        top: 0%
         left: 0
-        width: 10px
-        height: 110%
+        width: 6px
+        height: 100%
         background-color: #D9D9D9
 
 .copy
@@ -235,13 +235,16 @@ aside
   width: 15vw
   background-color: $primary
   img
-    height: 40px
     width: 100%
+    height: 60px
   a
     justify-content: start
     color: #999
     span
       margin-left: 10px
+
+.link-text-drop-list
+    font-size: 15px
 
 /* -------------------------------------------------------------------------- */
 /*                                    main                                    */
@@ -283,9 +286,8 @@ main
       transform: translate(-50%, -50%) scale(1.1)
 
 .y
-    max-height: 100vh
     width: 75%
-    overflow-y: auto
+
 
 .product-table
   width: 100%
@@ -627,16 +629,17 @@ main
         background-color: #1255bc
 
 ::-webkit-scrollbar
-    width: 10px
+    width: 0
 
 ::-webkit-scrollbar-track
-    background: #f1f1f1
-
-::-webkit-scrollbar-thumb
     background: #003b95
 
+::-webkit-scrollbar-thumb
+    background: #1d5dbe
+    height: 100px
+
 ::-webkit-scrollbar-thumb:hover
-    background: #555
+    background: #003b95
 
 /* -------------------------------------------------------------------------- */
 /*                                   seo                                      */
@@ -660,3 +663,32 @@ main
     font-size: 26px
     text-transform: uppercase
     color: #E6E6E6
+
+
+/* -------------------------------------------------------------------------- */
+/*                                  error                                     */
+/* -------------------------------------------------------------------------- */
+.error
+    display: flex
+    flex-wrap: wrap
+
+.error-item
+    display: flex
+    align-items: center
+    padding: 2px 4px
+    background: #ff3c3c
+    margin: 3px 3px
+    border-radius: 50px
+
+.error-icon
+    width: 30px
+    stroke: #fff
+    fill: #fff
+    margin-right: 10px
+
+.error-desc
+    font-size: 12px
+    color: #fff
+    margin-right: 10px
+    text-transform: uppercase
+

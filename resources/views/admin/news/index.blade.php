@@ -12,7 +12,7 @@
         <img src="{{ asset('img/add.svg') }}" alt="Add">
     </a>
 </div>
-<div><a href="{{ route('newsCategory.index') }}">add cat</a></div>
+
 <div class="list-filter-wrapp">
     <div class="y">
         <table class="product-table">
@@ -35,9 +35,8 @@
                             alt="{{ $title->$locale }}"></td>
                     <td>{{ $title->$locale }}</td>
                     <td>{{ $description->$locale }}</td>
-                    <td>
-                        <a href="{{ route('news') }}">show</a>
-                        <a href="{{ route('news.edit', $item->id) }}">update</a>
+                    <td class="action">
+                        <a href="{{ route('news.edit', $item->id) }}"></a>
                         <form action="{{ route('news.destroy', $item->id) }}" method="POST">
                             <label>
                                 @csrf
