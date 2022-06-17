@@ -1,5 +1,20 @@
 @extends('site.index')
 
+@section('phone-list')
+    @php
+        $locale = app()->getLocale();
+    @endphp
+    <ul class="phone-list">
+        @foreach ($phones as $item)
+            @php
+                $phone = $item->localization[0];
+                $phoneHref = preg_replace( "/[^0-9]/" , '' , $phone->$locale );
+            @endphp
+        <li><a href="tel:+{{ $phoneHref }}">{{ $phone->$locale }}</a></li>
+        @endforeach
+    </ul>
+@endsection
+
 @section('content')
 
 @php
@@ -53,7 +68,7 @@ $locale = app()->getLocale();
         $title = $product->localization[0];
         $description = $product->localization[1];
         @endphp
-        <a href="#">
+        <a href="{{ route('product', $product->id) }}">
             @if ($product->sizeprices->whereIn('available', [1,4])->min('price'))
             <figure class="product shadow-box">
                 <img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">

@@ -1,3 +1,6 @@
+<?php
+    $locale = app()->getLocale();
+?>
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 
@@ -18,10 +21,7 @@
                     <svg>
                         <use xlink:href="{{ asset('img/sprite.svg#tel') }}"></use>
                     </svg>
-                    <ul class="phone-list">
-                        <li><a href="tel:+380739175254">+38 (073) 917-52-54</a></li>
-                        <li><a href="tel:+380739175254">+38 (073) 917-52-54</a></li>
-                    </ul>
+                    @yield('phone-list')
                 </div>
                 <div class="logo">
                     <a class="flex-col" href="{{ route('index') }}">
@@ -105,10 +105,7 @@
                     <svg>
                         <use xlink:href="{{ asset('img/sprite.svg#tel') }}"></use>
                     </svg>
-                    <ul class="phone-list">
-                        <li><a href="tel:+380739175254">+38 (073) 917-52-54</a></li>
-                        <li><a href="tel:+380739175254">+38 (073) 917-52-54</a></li>
-                    </ul>
+                    @yield('phone-list')
                 </div>
                 <div class="address flex-aic">
                     <svg>

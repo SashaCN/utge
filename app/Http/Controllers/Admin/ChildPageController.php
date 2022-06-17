@@ -40,24 +40,41 @@ class ChildPageController extends Controller
      */
     public function store(MultiRequest $request)
     {
+
         $childPage = new ChildPage();
         $childPage->fill($request->validated());
         $childPage->save();
+
         
-        $localization_title = new Localization();
-        $localization_title->fill($request->validated());
-        $localization_title->var = 'title';
-        $localization_title->uk = $request->title_uk;
-        $localization_title->ru = $request->title_ru;
         
-        $localization_desc = new Localization();
-        $localization_desc->fill($request->validated());
-        $localization_desc->var = 'description';
-        $localization_desc->uk = $request->description_uk;
-        $localization_desc->ru = $request->description_ru;
+        if($request->route != 'phone') 
+        {
+            $localization_title = new Localization();
+            $localization_title->fill($request->validated());
+            $localization_title->var = 'title';
+            $localization_title->uk = $request->title_uk;
+            $localization_title->ru = $request->title_ru;
+    
+            $childPage->localization()->save($localization_title);
+
+            $localization_desc = new Localization();
+            $localization_desc->fill($request->validated());
+            $localization_desc->var = 'description';
+            $localization_desc->uk = $request->description_uk;
+            $localization_desc->ru = $request->description_ru;
+            
+            $childPage->localization()->save($localization_desc);
+        } else {
+
+            $localization_title = new Localization();
+            $localization_title->fill($request->validated());
+            $localization_title->var = 'title';
+            $localization_title->uk = $request->phone;
+            $localization_title->ru = $request->phone;
+    
+            $childPage->localization()->save($localization_title);
+        }       
         
-        $childPage->localization()->save($localization_title);
-        $childPage->localization()->save($localization_desc);
         
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {

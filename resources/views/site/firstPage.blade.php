@@ -1,6 +1,23 @@
 @extends('site.index')
 
+<?php
+    $locale = app()->getLocale();
+?>
+
+@section('phone-list')
+    <ul class="phone-list">
+        @foreach ($phones as $item)
+            @php
+                $phone = $item->localization[0];
+                $phoneHref = preg_replace( "/[^0-9]/" , '' , $phone->$locale );
+            @endphp
+        <li><a href="tel:+{{ $phoneHref }}">{{ $phone->$locale }}</a></li>
+        @endforeach
+    </ul>
+@endsection
+
 @section('content')
+
 
 <div class="wrapper">
     <div class="grid">
@@ -105,30 +122,20 @@
     </div>
 </div>
 <div class="about-us">
-    <h2 class="mb30">@lang('utge.about-us')</h2>
-    <div class="wrapper">
-        <div class="text-wrap shadow-box">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus est eaque dolore fugit nobis minima
-                excepturi ut, dolor nemo odit nam, harum libero minus earum vel? Tempore possimus iusto accusantium! Cum
-                ipsa ad veniam, excepturi ab expedita tenetur? Doloribus quos expedita harum eveniet ex quasi at
-                praesentium et libero atque facilis esse, quisquam tempora provident placeat voluptates iusto veritatis
-                eaque! Consectetur, repudiandae. Dolor molestiae numquam quod ipsam alias, corporis nihil et ipsa ea
-                mollitia repellat voluptas assumenda veniam molestias modi!</p>
-            <p>Magnam, sequi aliquid? Neque ullam iste odit culpa reiciendis saepe mollitia nostrum asperiores esse
-                vitae explicabo eveniet error rem dolorem, animi dolores delectus aliquid non. Labore, quas at sint
-                laborum cum ab qui exercitationem neque in assumenda voluptatibus cupiditate possimus laudantium
-                provident ullam quaerat. Provident repellat officia libero neque velit impedit aspernatur beatae
-                repellendus nemo. Dolores, dicta itaque qui cupiditate dolore eveniet quibusdam deleniti porro facilis
-                incidunt vero eius ipsa minima reiciendis laudantium nam quas ratione aut exercitationem molestiae
-                aperiam.</p>
-            <p>Nesciunt magnam alias perferendis sed consequuntur ad perspiciatis, soluta numquam praesentium est libero
-                explicabo eligendi! Dicta mollitia perferendis nobis aut repudiandae fuga est libero pariatur, obcaecati
-                alias neque possimus repellat non recusandae minus natus officia id dolore vel eum ipsum. Quis cum eum
-                odit perferendis. Voluptatibus quisquam ullam fuga, voluptas dignissimos, veritatis maxime dolorum,
-                fugiat magni laborum sint deserunt nobis nisi nemo laudantium enim. Repellendus placeat officiis iste
-                sequi labore, tempora quae explicabo praesentium porro velit alias quasi eos nemo.</p>
+    @foreach ($about_us as $item)
+        @php
+            $title = $item->localization[0];
+            $description = $item->localization[1];
+        @endphp
+        <h2 class="mb30">{{ $title->$locale }}</h2>
+        <div class="wrapper">
+            <div class="text-wrap shadow-box">
+                <div>
+                    {!! $description->$locale !!}
+                </div>
+            </div>
         </div>
-    </div>
+    @endforeach
 </div>
 <div class="best-goods">
     <h2 class="mb30">@lang('utge.best-produts')</h2>

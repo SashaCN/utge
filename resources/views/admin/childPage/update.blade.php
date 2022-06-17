@@ -15,7 +15,7 @@
 
     <div class="flex title-line">
         <h2>@lang('admin.childPage_create')</h2>
-        <button type="submit" form="form" class="add-button">
+        <button type="submit" form="form" class="add-button" id="save-btm">
             <img src="{{ asset('img/save.svg') }}" alt="Add">
         </button>
     </div>
@@ -34,7 +34,7 @@
             $title = $childPage->localization[0];
             $description = $childPage->localization[1];
         @endphp
-
+        
         <div class="name-slide flex-col current-slide">
             <div class="input-wrap">
                 <input type="text" name="title_uk" id="title_uk" value="{{ $title->uk }}">
@@ -147,14 +147,15 @@
                 <button class="image-changes-bt" type="submit" form="image-change" class="add-button">@lang('admin.save-new-phot')</button>
                 
             @else
-                <p>@lang('admin.none-image')</p>
+              <p class="this-block-img">@lang('admin.this-block-img')</p>
             @endif
         </div>           
     </form>
+    
     @if ($childPage->route != 'about_us')
         <form id="image-change" class="image-changes-form" action="{{ route('childPage.mediaUpdate', $childPage->id ) }}" method="POST" enctype="multipart/form-data">
             @csrf
-            @method('PUT')
+            @method('POST')
             
             <input id="image-changes" type="file" name="image">
             <input type="submit" value="img">
