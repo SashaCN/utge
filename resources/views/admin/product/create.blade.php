@@ -6,41 +6,46 @@
     $locale = app()->getLocale();
 
     ?>
+        <div class="error">
+        @if ($errors->any())
 
-    @if ($errors->any())
-        <ul>
-            @foreach ($errors->all() as $error)
-                @if (strripos($error, '/') == true)
-                    <li>
-                        @switch(explode('/', $error)[0])
-                            @case('size')
-                                @lang('admin.error-size')
-                                @break
+                @foreach ($errors->all() as $error)
+                    @if (strripos($error, '/') == true)
+                        <div class="error-item">
+                            <img class="error-icon" src="{{ asset('img/error.svg') }}" alt="error">
 
-                            @case('price')
-                                @lang('admin.error-price')
-                                @break
+                            <p class="error-desc">
+                                @switch(explode('/', $error)[0])
+                                    @case('size')
+                                        @lang('admin.error-size')
+                                        @break
 
-                            @case('price units')
-                                @lang('admin.error-price_units')
-                                @break
+                                    @case('price')
+                                        @lang('admin.error-price')
+                                        @break
 
-                            @case('available')
-                                @lang('admin.error-available')
-                                @break
+                                    @case('price units')
+                                        @lang('admin.error-price_units')
+                                        @break
 
-                            @default
+                                    @case('available')
+                                        @lang('admin.error-available')
+                                        @break
 
-                        @endswitch
+                                    @default
 
-                        <?= ' '.explode('/', $error)[1];?>
-                    </li>
-                @else
-                    <li>{{ $error }}</li>
-                @endif
-            @endforeach
-        </ul>
-    @endif
+                                @endswitch
+
+                                <?= ' '.explode('/', $error)[1];?>
+                            </p>
+                        </div>
+                    @else
+                        <div class="error-item"><img class="error-icon" src="{{ asset('img/error.svg') }}" alt="error"><p class="error-desc">{{ $error }}</p></div>
+                    @endif
+                @endforeach
+
+        @endif
+        </div>
 
     <div class="flex title-line">
         <h2>@lang('admin.product_create')</h2>
@@ -63,12 +68,12 @@
 
         <div class="name-slide flex-col current-slide">
             <div class="input-wrap">
-                <input type="text" id="title_uk" name="title_uk">
-                <label class="label" for="title_uk">@lang('admin.add_uk_title')</label>
+                <input type="text" id="title_uk" value="{{ old('title_uk') }}" name="title_uk">
+                <label class="label" for="title_uk" >@lang('admin.add_uk_title')</label>
             </div>
             <div class="input-wrap">
                 <input type="text" id="title_ru" name="title_ru">
-                <label class="label" for="title_ru">@lang('admin.add_ru_title')</label>
+                <label class="label" for="title_ru" value="{{ old('title_ru')}}">@lang('admin.add_ru_title')</label>
             </div>
         </div>
         <div class="desc-slide flex-col">
@@ -111,7 +116,7 @@
                       <a class='btn' id="converToCode1" data-role='switchEditor' href='#' title='Перейти в редактор коду'>&lt;code&gt;</a>
                     </div>
                   </div>
-                  <div id='editor1' style='' contenteditable></div>
+                  <div id='editor1' style='' contenteditable>{!! old('description_uk') !!}</div>
                   <textarea id="desc_uk" name="description_uk"></textarea>
                   <label class="label" for="desc_uk">@lang('admin.add_uk_desc')</label>
                 </div>
@@ -156,7 +161,7 @@
                       <a class='btn' id="converToCode2" data-role='switchEditor' href='#' title='Перейти в редактор коду'>&lt;code&gt;</a>
                     </div>
                   </div>
-                  <div id='editor2' style='' contenteditable></div>
+                  <div id='editor2' style='' contenteditable>{!! old('description_ru') !!}</div>
                   <textarea id="desc_ru" name="description_ru"></textarea>
                   <label class="label" for="desc_ru">@lang('admin.add_ru_desc')</label>
                 </div>
@@ -166,17 +171,17 @@
         <div class="size-price-slide flex-col">
             <div class="size-price">
                 <div class="input-wrap">
-                    <input type="text" name="size/1" id="size1" class="auto-value">
+                    <input type="text" name="size/1" value="{{ old('size/1') }}" id="size1" class="auto-value">
                     <label class="label" for="size1">@lang('admin.add_size')</label>
                 </div>
 
                 <div class="input-wrap">
-                    <input type="text" name="price/1" id="price1" class="auto-value">
+                    <input type="text" name="price/1" value="{{ old('price/1') }}" id="price1" class="auto-value">
                     <label class="label" for="price1">@lang('admin.add_price')</label>
                 </div>
 
                 <div class="input-wrap">
-                    <input type="text" name="price_units/1" id="price_units1" class="auto-value">
+                    <input type="text" name="price_units/1" value="{{ old('price_units/1') }}" id="price_units1" class="auto-value">
                     <label class="label" for="price_units1">@lang('admin.add_price_units')</label>
                 </div>
 
@@ -200,7 +205,7 @@
         </div>
         <div class="image-slide flex-col">
             <label><input type="hidden" name="image" value=""></label>
-            <label><input type="file" name="image"></label>
+            <label><input type="file"  name="image"></label>
         </div>
         <div class="another-slide flex-col">
             <div class="input-wrap sub-category-wrap">
@@ -226,7 +231,7 @@
                 </select>
             </div>
             <div class="input-wrap">
-                <input type="number" name="list_position" value="0" id="list_pos">
+                <input type="number" name="list_position" value="0" value="{{ old('list_position') }}" id="list_pos">
                 <label for="list_pos" class="label">@lang('admin.add_list_position')</label>
             </div>
             {{-- <input type="submit" value="Send" class="save"> --}}
@@ -237,26 +242,26 @@
 
             <div class="flex">
                 <div class="input-wrap mr-seo-input">
-                    <input type="text" id="title_seo_uk" name="title_seo_uk">
+                    <input type="text" id="title_seo_uk" value="{{ old('title_seo_uk') }}" name="title_seo_uk">
                     <label class="label" for="title_seo_uk">@lang('admin.add_title_seo_uk')</label>
                 </div>
 
 
                 <div class="input-wrap">
-                    <input type="text" id="title_seo_ru" name="title_seo_ru">
+                    <input type="text" id="title_seo_ru"  value="{{ old('title_seo_ru') }}" name="title_seo_ru">
                     <label class="label" for="title_seo_ru">@lang('admin.add_title_seo')</label>
                 </div>
             </div>
 
             <div class="flex">
                 <div class="input-wrap mr-seo-input">
-                    <input type="text" id="og_title_seo_uk" name="og_title_seo_uk">
+                    <input type="text" id="og_title_seo_uk" value="{{ old('og_title_seo_uk') }}" name="og_title_seo_uk">
                     <label class="label" for="og_title_seo_uk">@lang('admin.og_add_title_seo_uk')</label>
                 </div>
 
 
                 <div class="input-wrap">
-                    <input type="text" id="og_title_seo_ru" name="og_title_seo_ru">
+                    <input type="text" id="og_title_seo_ru" value="{{ old('og_title_seo_ru') }}" name="og_title_seo_ru">
                     <label class="label" for="og_title_seo_ru">@lang('admin.og_add_title_seo')</label>
                 </div>
             </div>
@@ -265,12 +270,12 @@
 
                 <div class="seo-textarea-wrap mr-seo-input">
                     <label  class="label seo-label" for="og_desc_seo_uk">@lang('admin.og_add_desc_seo_uk')</label>
-                    <textarea class="seo-textarea" name="og_desc_seo_uk" id=""></textarea>
+                    <textarea class="seo-textarea" name="og_desc_seo_uk" id="">{{ old('og_desc_seo_uk') }}</textarea>
                 </div>
 
                 <div class="seo-textarea-wrap">
                     <label  class="label seo-label" for="og_desc_seo_ru">@lang('admin.og_add_desc_seo')</label>
-                    <textarea class="seo-textarea" name="og_desc_seo_ru" id="og_desc_seo_ru"></textarea>
+                    <textarea class="seo-textarea" name="og_desc_seo_ru" id="og_desc_seo_ru">{{ old('og_desc_seo_ru') }}</textarea>
                 </div>
             </div>
 
@@ -278,12 +283,12 @@
 
                 <div class="seo-textarea-wrap mr-seo-input">
                     <label  class="label seo-label" for="desc_seo_uk">@lang('admin.add_desc_seo_uk')</label>
-                    <textarea class="seo-textarea" name="desc_seo_uk" id=""></textarea>
+                    <textarea class="seo-textarea" name="desc_seo_uk" id="">{{ old('desc_seo_uk') }}</textarea>
                 </div>
 
                 <div class="seo-textarea-wrap">
                     <label  class="label seo-label" for="desc_seo_ru">@lang('admin.add_desc_seo')</label>
-                    <textarea class="seo-textarea" name="desc_seo_ru" id="desc_seo_ru"></textarea>
+                    <textarea class="seo-textarea" name="desc_seo_ru" id="desc_seo_ru">{{ old('desc_seo_ru') }}</textarea>
                 </div>
             </div>
 
@@ -291,12 +296,12 @@
 
                 <div class="seo-textarea-wrap mr-seo-input">
                     <label  class="label seo-label" for="keywords_seo_uk">@lang('admin.add_key_seo_uk')</label>
-                    <textarea class="seo-textarea" name="keywords_seo_uk" id="keywords_seo_uk"></textarea>
+                    <textarea class="seo-textarea" name="keywords_seo_uk" id="keywords_seo_uk">{{ old('keywords_seo_uk') }}</textarea>
                 </div>
 
                 <div class="seo-textarea-wrap">
                     <label  class="label seo-label" for="keywords_seo_ru">@lang('admin.add_key_seo')</label>
-                    <textarea class="seo-textarea" name="keywords_seo_ru" id="keywords_seo_ru"></textarea>
+                    <textarea class="seo-textarea" name="keywords_seo_ru" id="keywords_seo_ru">{{ old('keywords_seo_ru') }}</textarea>
                 </div>
             </div>
 
@@ -304,12 +309,12 @@
 
                 <div class="seo-textarea-wrap mr-seo-input">
                     <label  class="label seo-label" for="custom_seo_uk">@lang('admin.add_custom_seo_uk')</label>
-                    <textarea class="seo-textarea" name="custom_seo_uk" id="custom_seo_uk"></textarea>
+                    <textarea class="seo-textarea" name="custom_seo_uk" id="custom_seo_uk">{{ old('custom_seo_uk') }}</textarea>
                 </div>
 
                 <div class="seo-textarea-wrap">
                     <label  class="label seo-label" for="custom_seo_ru">@lang('admin.add_custom_seo')</label>
-                    <textarea class="seo-textarea" name="custom_seo_ru" id="custom_seo_ru"></textarea>
+                    <textarea class="seo-textarea" name="custom_seo_ru" id="custom_seo_ru">{{ old('custom_seo_ru') }}</textarea>
                 </div>
             </div>
             {{-- seo end --}}

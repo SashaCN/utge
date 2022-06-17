@@ -5,13 +5,14 @@
         $locale = app()->getLocale();
     @endphp
 
+<div class="error">
     @if ($errors->any())
-        <ul>
             @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
+                    <div class="error-item"><img class="error-icon" src="{{ asset('img/error.svg') }}" alt="error"><p class="error-desc">{{ $error }}</p></div>
+
             @endforeach
-        </ul>
     @endif
+</div>
 
     <div class="flex title-line">
         <h2>@lang('admin.news_create')</h2>

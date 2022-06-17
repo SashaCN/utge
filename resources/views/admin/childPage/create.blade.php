@@ -1,13 +1,14 @@
 @extends('admin.admin')
 
 @section('content')
-  @if ($errors->any())
-  <ul>
-      @foreach ($errors->all() as $error)
-          <li>{{ $error }}</li>
-      @endforeach
-  </ul>
-  @endif
+<div class="error">
+    @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                    <div class="error-item"><img class="error-icon" src="{{ asset('img/error.svg') }}" alt="error"><p class="error-desc">{{ $error }}</p></div>
+
+            @endforeach
+    @endif
+</div>
 
   <div class="flex title-line">
       <h2>@lang('admin.childPage_create')</h2>
@@ -36,7 +37,7 @@
           <option value="payment">@lang('utge.payment')</option>
           <option value="contacts">@lang('utge.contacts')</option>
         </select>
-      </div> 
+      </div>
       <div class="input-wrap phone-box">
         <input type="text" name="phone" class="phone-input" id="phone">
         <label class="label" for="phone">@lang('admin.add_phone')</label>
@@ -46,11 +47,11 @@
 
     <div class="name-slide flex-col">
         <div class="input-wrap name-box">
-            <input type="text" name="title_uk" id="title_uk" class="name-input-uk">
+            <input type="text" name="title_uk" id="title_uk" value="{{ old('title_uk') }}" class="name-input-uk">
             <label class="label" for="title_uk">@lang('admin.add_uk_title')</label>
         </div>
         <div class="input-wrap name-box">
-            <input type="text" name="title_ru" id="title_ru" class="name-input-ru">
+            <input type="text" name="title_ru" value="{{ old('title_ru') }}" id="title_ru" class="name-input-ru">
             <label class="label" for="title_ru">@lang('admin.add_ru_title')</label>
         </div>
         <div class="input-wrap name-box-none">
@@ -58,7 +59,7 @@
           <p class="choose-block-name">@lang('admin.choose-block')</p>
         </div>
     </div>
-      
+
     <div class="desc-slide flex-col">
       <div class="input-wrap desc-box">
         <div class="content">
@@ -99,7 +100,7 @@
                 <a class='btn' id="converToCode1" data-role='switchEditor' href='#' title='Перейти в редактор коду'>&lt;code&gt;</a>
               </div>
             </div>
-            <div id='editor1' style='' contenteditable></div>
+            <div id='editor1' style='' contenteditable>{!! old('description_uk') !!}</div>
             <textarea id="desc_uk" name="description_uk" class="desc-input-uk"></textarea>
             <label class="label" for="desc_uk">@lang('admin.add_uk_desc')</label>
           </div>
@@ -144,7 +145,7 @@
                 <a class='btn' id="converToCode2" data-role='switchEditor' href='#' title='Перейти в редактор коду'>&lt;code&gt;</a>
               </div>
             </div>
-            <div id='editor2' style='' contenteditable></div>
+            <div id='editor2' style='' contenteditable>{!! old('description_ru') !!}</div>
             <textarea id="desc_ru" name="description_ru" class="desc-input-ru"></textarea>
             <label class="label" for="desc_ru">@lang('admin.add_ru_desc')</label>
           </div>
@@ -154,7 +155,7 @@
         <p class="this-block-desc">@lang('admin.this-block-desc')</p>
         <p class="choose-block-desc">@lang('admin.choose-block')</p>
       </div>
-    </div>    
+    </div>
 
     <div class="image-slide flex-col">
       <div class="input-wrap img-box">

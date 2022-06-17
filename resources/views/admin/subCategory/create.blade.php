@@ -6,13 +6,14 @@
 $locale = app()->getLocale();
 @endphp
 
-@if ($errors->any())
-<ul>
-    @foreach ($errors->all() as $error)
-    <li>{{ $error }}</li>
-    @endforeach
-</ul>
-@endif
+<div class="error">
+    @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                    <div class="error-item"><img class="error-icon" src="{{ asset('img/error.svg') }}" alt="error"><p class="error-desc">{{ $error }}</p></div>
+
+            @endforeach
+    @endif
+</div>
 
 <div class="flex title-line">
     <h2>@lang('admin.admin.add_sub_category')</h2>
@@ -32,11 +33,11 @@ $locale = app()->getLocale();
 
     <div class="name-slide flex-col current-slide">
         <div class="input-wrap">
-            <input type="text" id="title_uk" name="title_uk">
+            <input type="text" id="title_uk" value="{{ old('title_uk') }}" name="title_uk">
             <label class="label" for="title_uk">@lang('admin.add_uk_title')</label>
         </div>
         <div class="input-wrap">
-            <input type="text" id="title_ru" name="title_ru">
+            <input type="text" id="title_ru" value="{{ old('title_ru') }}" name="title_ru">
             <label class="label" for="title_ru">@lang('admin.add_ru_title')</label>
         </div>
     </div>
