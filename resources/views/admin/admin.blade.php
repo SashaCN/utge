@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <title>@lang('admin.utge_admin')</title>
-    
+
 </head>
 <body>
     <header>
@@ -25,9 +25,9 @@
 
                 </li>
                 <li class="li-add">
-                    <a href="#" class="add">@lang('admin.add')</a>
+                    <a href="#" class="add drop-btn">@lang('admin.add')</a>
 
-                    <div class="add-menu hidden">
+                    <div class="add-menu drop-list hidden">
                         <ul>
                             <li><a href="{{ route('product.create') }}">@lang('admin.product')</a></li>
                             <li><a href="{{ route('subCategory.create') }}">@lang('admin.sub_category_add')</a></li>
@@ -49,15 +49,26 @@
         </div>
     </header>
     <aside>
+        <p class="logo">
+            <a href="{{ route('index') }}" class="flex">
+                <img src="{{ asset('img/logo.png') }}" alt="Hashtag logo">
+            </a>
+        </p>
         <nav>
             <ul class="aside-menu">
-                <li class="logo">
-                    <a href="{{ route('index') }}" class="flex">
-                        <img src="{{ asset('img/logo.png') }}" alt="Hashtag logo">
-                    </a>
-                </li>
                 <li><a href="{{ route('product.index') }}"><span class="link-text">@lang('admin.products')</span></a></li>
-                <li><a href="{{ route('category.index') }}"><span class="link-text">@lang('admin.categories')</span></a>    </li>
+                <li>
+                    <a href="#" class="drop-`"><span class="link-text">@lang('admin.categories')</span></a>
+
+                    <div class="drop-list hidden">
+                        <ul>
+                            <li><a href="{{ route('category.index') }}">@lang('admin.categories')</a></li>
+                            <li><a href="{{ route('subCategory.create') }}">2</a></li>
+                            <li><a href="{{ route('category.create') }}">3</a></li>
+                            <li><a href="{{ route('productType.create') }}">4</a></li>
+                        </ul>
+                    </div>
+                </li>
                 <li><a href="#"><span class="link-text">@lang('admin.orders')</span></a></li>
                 <li><a href="{{ route('news.index') }}"><span class="link-text">@lang('admin.news')</span></a></li>
                 <li><a href="{{ route('childPage.index') }}"><span class="link-text">@lang('admin.modules')</span></a></li>
