@@ -94,4 +94,9 @@
         'add_custom_seo' => 'Кастоминий мета тег на російській мові',
         'subcategory_change' => 'Редагування підкатегорії',
         'product_type_change' => 'Редагувати тип товару',
+        'components' => 'Компоненти',
+        'categories_product' => 'Категорії товарів',
+        'subcategory_product' => 'Під-категорії',
+        'product_types' => 'Типи товару',
+        'category_news' => 'Категорії новин',
     ];
