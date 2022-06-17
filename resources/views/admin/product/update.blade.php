@@ -7,42 +7,46 @@ $locale = app()->getLocale();
 @endphp
 
 
-@if ($errors->any())
-<div class="alert alert-danger">
-    <ul>
-        @foreach ($errors->all() as $error)
-            @if (strripos($error, '/') == true)
-                <li>
-                    @switch(explode('/', $error)[0])
-                        @case('size')
-                            @lang('admin.error-size')
-                            @break
+<div class="error">
+    @if ($errors->any())
 
-                        @case('price')
-                            @lang('admin.error-price')
-                            @break
+            @foreach ($errors->all() as $error)
+                @if (strripos($error, '/') == true)
+                    <div class="error-item">
+                        <img class="error-icon" src="{{ asset('img/error.svg') }}" alt="error">
 
-                        @case('price units')
-                            @lang('admin.error-price_units')
-                            @break
+                        <p class="error-desc">
+                            @switch(explode('/', $error)[0])
+                                @case('size')
+                                    @lang('admin.error-size')
+                                    @break
 
-                        @case('available')
-                            @lang('admin.error-available')
-                            @break
+                                @case('price')
+                                    @lang('admin.error-price')
+                                    @break
 
-                        @default
+                                @case('price units')
+                                    @lang('admin.error-price_units')
+                                    @break
 
-                    @endswitch
+                                @case('available')
+                                    @lang('admin.error-available')
+                                    @break
 
-                    <?= ' '.explode('/', $error)[1];?>
-                </li>
-            @else
-                <li>{{ $error }}</li>
-            @endif
-        @endforeach
-    </ul>
-</div>
-@endif
+                                @default
+
+                            @endswitch
+
+                            <?= ' '.explode('/', $error)[1];?>
+                        </p>
+                    </div>
+                @else
+                    <div class="error-item"><img class="error-icon" src="{{ asset('img/error.svg') }}" alt="error"><p class="error-desc">{{ $error }}</p></div>
+                @endif
+            @endforeach
+
+    @endif
+    </div>
 
 <div class="flex title-line">
     <h2>@lang('admin.product_change')</h2>
@@ -81,7 +85,7 @@ $locale = app()->getLocale();
         <div class="input-wrap">
             <input type="text" value="{{ $title->uk }}" id="title_uk" name="title_uk">
             <label class="label" for="title_uk">@lang('admin.add_uk_title')</label>
-        </div>  
+        </div>
         <div class="input-wrap">
             <input type="text" value="{{ $title->ru}}" id="title_ru" name="title_ru">
             <label class="label" for="title_ru">@lang('admin.add_ru_title')</label>
