@@ -265,12 +265,12 @@
 
                 <div class="seo-textarea-wrap mr-seo-input">
                     <label  class="label seo-label" for="og_desc_seo_uk">@lang('admin.og_add_desc_seo_uk')</label>
-                    <textarea class="seo-textarea" name="og_desc_seo_uk" id="" class="desc_seo_uk"></textarea>
+                    <textarea class="seo-textarea desc_seo_uk" name="og_desc_seo_uk" id=""></textarea>
                 </div>
 
                 <div class="seo-textarea-wrap">
                     <label  class="label seo-label" for="og_desc_seo_ru">@lang('admin.og_add_desc_seo')</label>
-                    <textarea class="seo-textarea" name="og_desc_seo_ru" id="og_desc_seo_ru" class="desc_seo_ru"></textarea>
+                    <textarea class="seo-textarea desc_seo_ru" name="og_desc_seo_ru" id="og_desc_seo_ru"></textarea>
                 </div>
             </div>
 
@@ -278,12 +278,12 @@
 
                 <div class="seo-textarea-wrap mr-seo-input">
                     <label  class="label seo-label" for="desc_seo_uk">@lang('admin.add_desc_seo_uk')</label>
-                    <textarea class="seo-textarea" name="desc_seo_uk" id="" class="desc_seo_uk"></textarea>
+                    <textarea class="seo-textarea desc_seo_uk" name="desc_seo_uk" id=""></textarea>
                 </div>
 
                 <div class="seo-textarea-wrap">
                     <label  class="label seo-label" for="desc_seo_ru">@lang('admin.add_desc_seo')</label>
-                    <textarea class="seo-textarea" name="desc_seo_ru" id="desc_seo_ru" class="desc_seo_ru"></textarea>
+                    <textarea class="seo-textarea desc_seo_ru" name="desc_seo_ru" id="desc_seo_ru"></textarea>
                 </div>
             </div>
 
@@ -291,12 +291,12 @@
 
                 <div class="seo-textarea-wrap mr-seo-input">
                     <label  class="label seo-label" for="keywords_seo_uk">@lang('admin.add_key_seo_uk')</label>
-                    <textarea class="seo-textarea" name="keywords_seo_uk" id="keywords_seo_uk" class="desc_seo_uk"></textarea>
+                    <textarea class="seo-textarea desc_seo_other" name="keywords_seo_uk" id="keywords_seo_uk"></textarea>
                 </div>
 
                 <div class="seo-textarea-wrap">
                     <label  class="label seo-label" for="keywords_seo_ru">@lang('admin.add_key_seo')</label>
-                    <textarea class="seo-textarea" name="keywords_seo_ru" id="keywords_seo_ru" class="desc_seo_ru"></textarea>
+                    <textarea class="seo-textarea desc_seo_other" name="keywords_seo_ru" id="keywords_seo_ru"></textarea>
                 </div>
             </div>
 
@@ -304,12 +304,12 @@
 
                 <div class="seo-textarea-wrap mr-seo-input">
                     <label  class="label seo-label" for="custom_seo_uk">@lang('admin.add_custom_seo_uk')</label>
-                    <textarea class="seo-textarea" name="custom_seo_uk" id="custom_seo_uk" class="desc_seo_uk"></textarea>
+                    <textarea class="seo-textarea desc_seo_other" name="custom_seo_uk" id="custom_seo_uk"></textarea>
                 </div>
 
                 <div class="seo-textarea-wrap">
                     <label  class="label seo-label" for="custom_seo_ru">@lang('admin.add_custom_seo')</label>
-                    <textarea class="seo-textarea" name="custom_seo_ru" id="custom_seo_ru" class="desc_seo_ru"></textarea>
+                    <textarea class="seo-textarea desc_seo_other" name="custom_seo_ru" id="custom_seo_ru"></textarea>
                 </div>
             </div>
             {{-- seo end --}}

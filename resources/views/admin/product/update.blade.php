@@ -317,13 +317,13 @@ $locale = app()->getLocale();
 
         <div class="flex">
             <div class="input-wrap mr-seo-input">
-                <input type="text" id="og_title_seo_uk" value="{{ $og_title_seo->uk }}" name="og_title_seo_uk">
+                <input type="text" id="og_title_seo_uk" value="{{ $og_title_seo->uk }}" name="og_title_seo_uk" class="title_seo_uk">
                 <label class="label" for="og_title_seo_uk">@lang('admin.og_add_title_seo_uk')</label>
             </div>
 
 
             <div class="input-wrap">
-                <input type="text" id="og_title_seo_ru" value="{{ $og_title_seo->ru }}" name="og_title_seo_ru">
+                <input type="text" id="og_title_seo_ru" value="{{ $og_title_seo->ru }}" name="og_title_seo_ru" class="title_seo_ru">
                 <label class="label" for="og_title_seo_ru">@lang('admin.og_add_title_seo')</label>
             </div>
         </div>
@@ -401,6 +401,7 @@ $locale = app()->getLocale();
 </script>
 <script src="{{ asset('js/sizeprice.js') }}"></script>
 <script src="{{ asset('js/create.js') }}"></script>
+<script src="{{ asset('js/seo.js') }}"></script>
 <script src="{{ asset('js/simpleVisualTextEditor.js') }}"></script>
 @endsection
 

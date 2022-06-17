@@ -1,33 +1,40 @@
-let a = [
+let inputsName = [
     document.querySelector('#title_uk'),
     document.querySelector('#title_ru'),
-    document.querySelector('#desc_ru'),
-    document.querySelector('#desc_ru'),
+    document.querySelector('#editor1'),
+    document.querySelector('#editor2'),
 ];
 
-// a.forEach(e => {
-    //     e.onclick = autocompleteSEO;
-    // });
-    document.querySelector('#title_uk').onclick = autocompleteSEO
+inputsName.forEach(e => {
+    e.oninput = autocompleteSEO;
+});
 
 function autocompleteSEO()
 {
-    console.log(1);
+
+    document.querySelectorAll('.title_seo_ru').forEach(e => {
+        e.value = document.querySelector('#title_ru').value;
+    });
     // autocomplete title
-    document.querySelectorAll('title_seo_uk').forEach(e => {
+    document.querySelectorAll('.title_seo_uk').forEach(e => {
         e.value = document.querySelector('#title_uk').value;
     });
     
-    document.querySelectorAll('title_seo_ru').forEach(e => {
-        e.value = document.querySelector('#title_ru').value;
+    
+    // autocomplete description
+    document.querySelectorAll('.desc_seo_uk').forEach(e => {
+        e.value = document.querySelector('#editor1').textContent;
+    });
+    
+    document.querySelectorAll('.desc_seo_ru').forEach(e => {
+        e.value = document.querySelector('#editor2').textContent;
     });
     
     // autocomplete description
-    document.querySelectorAll('desc_seo_uk').forEach(e => {
-        e.value = document.querySelector('#desc_uk').value;
+    document.querySelectorAll('.desc_seo_other').forEach(e => {
+        e.value = "-";
     });
-    
-    document.querySelectorAll('desc_seo_ru').forEach(e => {
-        e.value = document.querySelector('#desc_uk').value;
+    document.querySelectorAll('.desc_seo_other').forEach(e => {
+        e.value = "-";
     });
 }
