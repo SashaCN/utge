@@ -1,12 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MultiRequest;
 use App\Http\Requests\ImageRequest;
 use App\Models\Localization;
 use App\Models\News;
+use App\Models\NewsCategory;
+use App\Filters\NewsFilter;
+use App\Models\Filter;
+use Spatie\QueryBuilder\QueryBuilder;
+use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
@@ -15,11 +20,16 @@ class NewsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(NewsFilter $request, NewsCategory $newsCategories)
     {
-        $news = News::all();
+        $news = News::filter($request)->paginate(12);
 
-        return view('admin.news.index', ['news' => $news]);
+        $newsCategories = NewsCategory::all();
+
+        return view('admin.news.index', [
+            'news' => $news,
+            'newsCategories' => $newsCategories,
+        ]);
     }
 
     /**
@@ -27,9 +37,13 @@ class NewsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(NewsCategory $newsCategory)
     {
-        return view('admin.news.create');
+        $newsCategory = NewsCategory::all();
+
+        return view('admin.news.create', [
+            'newsCategories' => $newsCategory,
+        ]);
     }
 
     /**
@@ -41,6 +55,7 @@ class NewsController extends Controller
     public function store(MultiRequest $request)
     {
         $news = new News();
+        $news->categories_id = $request->categories_id;
         $news->save();
 
         $localization_title = new Localization();
@@ -48,7 +63,7 @@ class NewsController extends Controller
         $localization_title->var = 'title';
         $localization_title->uk = $request->title_uk;
         $localization_title->ru = $request->title_ru;
-        
+
         $localization_desc = new Localization();
         $localization_desc->fill($request->validated());
         $localization_desc->var = 'description';
@@ -98,7 +113,12 @@ class NewsController extends Controller
      */
     public function edit(News $news)
     {
-        return view('admin.news.update', ['news' => $news]);
+        $newsCategory = NewsCategory::all();
+
+        return view('admin.news.update', [
+            'news' => $news,
+            'newsCategories' => $newsCategory
+        ]);
     }
 
     /**
@@ -122,11 +142,12 @@ class NewsController extends Controller
             'ru' => $request->description_ru
         ];
 
+        $news->categories_id = $request->categories_id;
         $news->update();
 
         $news->localization()->where('var', 'title')->update($localization_title);
         $news->localization()->where('var', 'description')->update($localization_desc);
-    
+
         return redirect()->route('news.index');
     }
 

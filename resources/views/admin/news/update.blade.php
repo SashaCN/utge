@@ -12,7 +12,7 @@
             @endforeach
         </ul>
     @endif
-    
+
     <div class="flex title-line">
         <h2>@lang('admin.news_create')</h2>
         <button type="submit" form="form" class="add-button">
@@ -24,6 +24,7 @@
         <li><a href="#" class="name-btn current-btn">@lang('admin.title')</a></li>
         <li><a href="#" class="desc-btn">@lang('admin.description')</a></li>
         <li><a href="#" class="photo-btn">@lang('admin.photo')</a></li>
+        <li><a href="#" class="another-btn">@lang('admin.another')</a></li>
     </ul>
 
     <form id="form" action="{{ route('news.update', $news->id) }}" method="POST" enctype="multipart/form-data" class="current-slide-wrap">
@@ -45,7 +46,7 @@
                 <label class="label" for="title_ru">@lang('admin.add_ru_title')</label>
             </div>
         </div>
-        
+
         <div class="desc-slide flex-col">
             <div class="input-wrap">
               <div class="content">
@@ -142,12 +143,38 @@
         <div class="image-slide flex-col">
             <label class="image-changes" for="image-changes"><img class="old-image" src="{{ $news->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}"></label>
             <p class="image-changes-desc">@lang('admin.update-image')</p>
-    
+
             <button class="image-changes-bt" type="submit" form="image-change" class="add-button">@lang('admin.save-new-phot')</button>
         </div>
 
+        <div class="desc-slide flex-col">
+            <div class="another-slide flex-col">
+                <div class="input-wrap sub-category-wrap">
+                    <p class="label">Виберіть категорію</p>
+                    <div class="flex-space sub-category-wrap">
+                        {{-- <label><input type="hidden" value="" name="product_type_id"></label> --}}
+
+                        @foreach ($newsCategories as $newsCategory)
+                        @php
+                            $title = $newsCategory->localization[0];
+                        @endphp
+
+                        @if ($newsCategory->id == $news->categories_id)
+
+                            <input class="radio-change" id="subCategory{{$newsCategory->id}}" type="radio" value="{{$newsCategory->id}}" name="categories_id" checked>
+                            <label class="radio-label" for="subCategory{{$newsCategory->id}}"><span class="label-circle"></span><span class="label-desc">{{ $title->$locale }}</span></label>
+                        @else
+                            <input class="radio-change" id="subCategoryNon{{$newsCategory->id}}" type="radio" value="{{$newsCategory->id}}" name="categories_id">
+                            <label class="radio-label" for="subCategoryNon{{$newsCategory->id}}"><span class="label-circle"></span><span class="label-desc">{{ $title->$locale }}</span></label>
+                        @endif
+                        @endforeach
+
+                    </div>
+                </div>
+        </div>
+
     </form>
-    
+
     <form id="image-change" class="image-changes-form" action="{{ route('news.mediaUpdate', $news->id ) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('POST')
@@ -156,6 +183,7 @@
         <input type="submit" value="img">
     </form>
 
+
     <script src="{{ asset('js/create.js') }}"></script>
-    <script src="{{ asset('js/simpleVisualTextEditor.js') }}"></script> 
+    <script src="{{ asset('js/simpleVisualTextEditor.js') }}"></script>
 @endsection

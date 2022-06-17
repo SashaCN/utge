@@ -56,6 +56,8 @@ Route::middleware('auth')->group(function()
             Route::resource('subCategory', \App\Http\Controllers\Admin\SubCategoryController::class);
             Route::resource('product', \App\Http\Controllers\Admin\ProductController::class);
             Route::resource('trashBox', \App\Http\Controllers\Admin\TrashBoxController::class);
+            Route::resource('newsCategory', \App\Http\Controllers\Admin\NewsCategoryController::class);
+            Route::get('newsCategory/delete/{newsCategory}', [\App\Http\Controllers\Admin\NewsCategoryController::class, 'delete'])->name('newsCategory.delete');
             Route::get('trashBox/{prouct}/restore/', [\App\Http\Controllers\Admin\TrashBoxController::class, 'restore'])->name('trashBox.restore');
             Route::post('news/mediaUpdate/{news}', [\App\Http\Controllers\Admin\NewsController::class, 'mediaUpdate'])->name('news.mediaUpdate');
             Route::post('childPage/mediaUpdate/{childPage}', [\App\Http\Controllers\Admin\ChildPageController::class, 'mediaUpdate'])->name('childPage.mediaUpdate');
