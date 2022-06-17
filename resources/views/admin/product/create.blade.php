@@ -356,5 +356,6 @@
         <script src="{{ asset('js/sizeprice.js') }}"></script>
     </form>
     <script src="{{ asset('js/create.js') }}"></script>
+    <script src="{{ asset('js/seo.js') }}"></script>
     <script src="{{ asset('js/simpleVisualTextEditor.js') }}"></script>
 @endsection
