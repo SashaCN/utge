@@ -6,6 +6,11 @@
     align-items: center
     justify-content: center
 
+.slider-nav
+    max-width: 190px
+    overflow: hidden
+    p
+        flex: 0 0 20px
 
 .page-count
     background-color: #ffff
@@ -65,9 +70,17 @@
 .page-link-previous::before
     background-image: url(../img/navigate_l.svg)
 
+@media screen and ( max-width:  450px)
+    .page-link-previous
+        margin-right: 10px
 
+    .page-link-next
+        margin-left: 10px
 
-
+    .slider-nav
+        max-width: 150px
+        p
+            margin: 0 4px
 
 
 

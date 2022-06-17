@@ -61,6 +61,9 @@
             padding: 0 6px
 
 @media screen and ( max-width:  900px)
+    html
+        font-size: 9px
+
     .info-line
         flex-wrap: wrap
         .logo
@@ -144,6 +147,8 @@
     .info-line
         & > div
             width: 100%
+        .address
+            width: 80%
 
     .phone
         justify-content: center
@@ -155,4 +160,59 @@
         padding: 30px 0
         & > a, & > p
             text-align: center
+            width: 33%
+
+    .feed svg
+        width: 150px
+        height: 150px
+
+    .fish svg
+        width: 303px
+        height: 75px
+
+    .water svg
+        width: 146px
+        height: 150px
+
+    .service svg
+        width: 150px
+        height: 155px
+
+    .goods-list
+        width: 85%
+
+    .mail
+        justify-content: center
+        padding-right: 10%
+
+
+@media screen and ( max-width:  450px)
+    .control
+        & > a
             width: 30%
+        & > p
+            width: 35%
+
+    .goods-list
+        width: 100%
+
+@media screen and ( max-width:  400px)
+    .control
+        & > a
+            width: 30%
+        & > p
+            width: 40%
+
+    .info-line .address
+        width: 100%
+
+    .fish svg
+        width: 252px
+        height: 63px
+
+@media screen and ( max-width:  350px)
+    .control
+        & > a
+            width: 25%
+        & > p
+            width: 45%

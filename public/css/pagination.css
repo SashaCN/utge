@@ -7,6 +7,14 @@
   justify-content: center;
 }
 
+.slider-nav {
+  max-width: 190px;
+  overflow: hidden;
+}
+.slider-nav p {
+  flex: 0 0 20px;
+}
+
 .page-count {
   background-color: white;
   border: 1px solid #003b95;
@@ -72,4 +80,21 @@
 .page-link-a-previous::before,
 .page-link-previous::before {
   background-image: url(../img/navigate_l.svg);
+}
+
+@media screen and (max-width: 450px) {
+  .page-link-previous {
+    margin-right: 10px;
+  }
+
+  .page-link-next {
+    margin-left: 10px;
+  }
+
+  .slider-nav {
+    max-width: 150px;
+  }
+  .slider-nav p {
+    margin: 0 4px;
+  }
 }
