@@ -60,6 +60,7 @@ $locale = app()->getLocale();
                 </div>
             </div>
         </div>
+    </div>
 
 </form>
 <script src="{{ asset('js/create.js') }}"></script>

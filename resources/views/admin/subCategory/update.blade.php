@@ -77,6 +77,7 @@ $title = $subCategory->localization[0];
                 </div>
             </div>
         </div>
+    </div>
 </form>
 <script src="{{ asset('js/create.js') }}"></script>
 @endsection

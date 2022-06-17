@@ -89,9 +89,18 @@ class ProductTypeController extends Controller
      */
     public function update(MultiRequest $request, ProductType $productType)
     {
-        $productType->update($request->validated());
+        $localization_title = [
+            'var' => "title",
+            'uk' => $request->title_uk,
+            'ru' => $request->title_ru,
+        ];
 
-        return redirect()->route('productType.show', $productType);
+        $productType->fill($request->validated());
+
+        $productType->update();
+        $productType->localization()->where('var', 'title')->update($localization_title);
+
+        return redirect()->route('productType.index');
     }
 
     /**
