@@ -67,18 +67,47 @@ let slider = document.querySelector('.goods-list'),
     slide_left_btn = document.querySelector('.page-link-previous'),
     slider_nav = document.querySelector('.slider-nav'),
     slider_nav_links,
+    showed_slides_number,
+    clickable = true,
     active_slide = 0;
 
-(function addPages ()
+window.addEventListener('resize', addPages);
+
+function getSlidesNumber ()
+{
+    if (window.screen.width <= 900){
+        return 2;
+    } else if (window.screen.width <= 1300) {
+        return 3;
+    }
+    return 4;
+}
+
+addPages();
+
+function addPages ()
 {
     let text = "";
-    for (let i = 0; i < Math.ceil(slides.length/4); i++) {
+    console.log(window.screen.width);
+    for (let i = 0; i < Math.ceil(slides.length/getSlidesNumber()); i++) {
         text += `<p class="page-count" data-number="${i}"><span class="page-link"></span></p>`;
     }
     slider_nav.innerHTML = text;
     slider_nav_links = slider_nav.querySelectorAll('.page-count');
     slider_nav_links[active_slide].classList.add('active');
-}())
+}
+
+function blockClick ()
+{
+    if (clickable) {
+        clickable = false;
+        setTimeout(() => {
+            clickable = true;
+        }, 600);
+        return true;
+    }
+    return false;
+}
 
 function changeActivBtn ()
 {
@@ -88,6 +117,9 @@ function changeActivBtn ()
 
 slider_nav_links.forEach(element => {
     element.onclick = (e) => {
+        if (!blockClick()) {
+            return false;
+        }
         active_slide = e.target.getAttribute('data-number');
         slider.scroll(slider.getBoundingClientRect().width*active_slide, 0)
 
@@ -99,6 +131,9 @@ slide_right_btn.onclick = slideRight;
 
 function slideRight ()
 {
+    if (!blockClick()) {
+        return false;
+    }
     if (slider.scrollWidth - slider.scrollLeft > slider.getBoundingClientRect().width) {
         active_slide++;
     }
@@ -110,6 +145,9 @@ slide_left_btn.onclick = slideLeft;
 
 function slideLeft ()
 {
+    if (!blockClick()) {
+        return false;
+    }
     if (slider.scrollLeft > 0) {
         active_slide--;
     }

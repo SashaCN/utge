@@ -73,18 +73,27 @@
                 </div>
             </div>
         </div>
-        <nav class="menu">
-            <div class="wrapper">
-                <ul class="flex-sb">
-                    <li><a href="{{ route('index') }}">@lang('utge.main')</a></li>
-                    <li><a href="{{ route('products') }}">@lang('utge.goods')</a></li>
-                    <li><a href="#">@lang('utge.services')</a></li>
-                    <li><a href="{{ route('deliveriesAndPayments') }}">@lang('utge.delivery-payment')</a></li>
-                    <li><a href="{{ route('news') }}">@lang('utge.news')</a></li>
-                     <li><a href="{{ route('contacts') }}">@lang('utge.contacts')</a></li>
-                </ul>
-            </div>
-        </nav>
+        <div class="menu">
+            <a href="#" class="burger-btn">
+                <span class="menu-text">@lang('utge.menu')</span>
+                <span class="burger"></span>
+            </a>
+            <nav>
+                <span class="close"><svg>
+                    <use xlink:href="{{ asset('img/sprite.svg#close') }}"></use>
+                </svg></span>
+                <div class="wrapper">
+                    <ul class="flex-sb">
+                        <li><a href="{{ route('index') }}">@lang('utge.main')</a></li>
+                        <li><a href="{{ route('products') }}">@lang('utge.goods')</a></li>
+                        <li><a href="#">@lang('utge.services')</a></li>
+                        <li><a href="{{ route('deliveriesAndPayments') }}">@lang('utge.delivery-payment')</a></li>
+                        <li><a href="{{ route('news') }}">@lang('utge.news')</a></li>
+                         <li><a href="{{ route('contacts') }}">@lang('utge.contacts')</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
     </header>
     <main>
         @yield('content')
