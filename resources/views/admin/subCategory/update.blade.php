@@ -2,55 +2,81 @@
 
 @section('content')
 
+@php
+$locale = app()->getLocale();
+@endphp
+
+@php
+$title = $subCategory->localization[0];
+@endphp
+
+@if ($errors->any())
+<ul>
+    @foreach ($errors->all() as $error)
+    <li>{{ $error }}</li>
+    @endforeach
+</ul>
+@endif
+
+<div class="flex title-line">
+    <h2>@lang('admin.subcategory_change')</h2>
+    <button type="submit" form="form" class="add-button">
+        <img src="{{ asset('img/save.svg') }}" alt="Add">
+    </button>
+</div>
+
+<ul class="create-list flex">
+    <li><a href="#" class="name-btn current-btn">@lang('admin.title')</a></li>
+    <li><a href="#" class="another-btn">@lang('admin.another')</a></li>
+</ul>
+
+<form id="form" class="current-slide-wrap" action="{{ route('subCategory.update', $subCategory->id) }}" method="POST">
+    @csrf
+    @method('PUT')
+
     @php
-        $locale = app()->getLocale();
+    $title = $subCategory->localization[0];
     @endphp
 
-    @if ($errors->any())
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    @endif
-
-    <div class="flex title-line">
-        <h2>@lang('admin.subcategory_change')</h2>
+    <div class="name-slide flex-col current-slide">
+        <div class="input-wrap">
+            <input type="text" name="title_uk" id="title_uk" value="{{ $title->uk }}">
+            <label class="label" for="title_uk">@lang('admin.add_uk_title')</label>
+        </div>
+        <div class="input-wrap">
+            <input type="text" name="title_ru" id="title_ru" value="{{ $title->ru }}">
+            <label class="label" for="title_ru">@lang('admin.add_ru_title')</label>
+        </div>
     </div>
 
+    <div class="desc-slide flex-col">
+        <div class="another-slide flex-col">
+            <div class="input-wrap sub-category-wrap">
+                <p class="label">Виберіть категорію</p>
+                <div class="flex-space sub-category-wrap">
 
-    <form action="{{ route('subCategory.update', $subCategory->id) }}" method="POST">
-        @csrf
-        @method('PUT')
+                    @foreach ($categories as $category)
+                    @php
+                    $title = $category->localization[0];
+                    @endphp
 
-        @php
-            $title = $subCategory->localization[0];
-        @endphp
+                    @if ($category->id == $subCategory->category_id)
 
-        <label>
-            <input type="text" name="title_uk" value="{{ $title->uk }}">
-        </label>
+                    <input class="radio-change" id="subCategory{{$category->id}}" type="radio" value="{{$category->id}}"
+                        name="categories_id" checked>
+                    <label class="radio-label" for="subCategory{{$category->id}}"><span
+                            class="label-circle"></span><span class="label-desc">{{ $title->$locale }}</span></label>
+                    @else
+                    <input class="radio-change" id="subCategoryNon{{$category->id}}" type="radio"
+                        value="{{$category->id}}" name="categories_id">
+                    <label class="radio-label" for="subCategoryNon{{$category->id}}"><span
+                            class="label-circle"></span><span class="label-desc">{{ $title->$locale }}</span></label>
+                    @endif
+                    @endforeach
 
-        <label>
-            <input type="text" name="title_ru" value="{{ $title->ru }}">
-        </label>
-
-        <p>subCategory belong to category</p>
-
-        @foreach ($categories as $category)
-            <label><input type="hidden" value="" name="category_id"></label>
-            
-            @php
-                $title = $category->localization[0];
-            @endphp
-
-            @if ($category->id == $subCategory->category_id)
-                <label><input type="radio" name="category_id" value="{{ $category->id }}" checked>{{ $title->$locale }}</label>
-            @else
-                <label><input type="radio" name="category_id" value="{{ $category->id }}">{{ $title->$locale }}</label>
-            @endif
-        @endforeach
-
-        <input type="submit" value="Send">
-    </form>
+                </div>
+            </div>
+        </div>
+</form>
+<script src="{{ asset('js/create.js') }}"></script>
 @endsection

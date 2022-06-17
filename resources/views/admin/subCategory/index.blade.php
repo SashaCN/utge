@@ -13,10 +13,10 @@
         </a>
     </div>
 
-    <table>
+    <table class="product-table">
         <tr>
-            <th>Title</th>
-            <th>action</th>
+            <th>@lang('admin.title')</th>
+            <th>@lang('admin.action')</th>
         </tr>
         @foreach ($subCategories as $subCategory)
 
@@ -26,10 +26,9 @@
 
         <tr>
             <td>{{ $title->$locale }}</td>
-            <td>
-                <a href="{{ route('subCategory.show', $subCategory->id) }}">show</a>
-                <a href="{{ route('subCategory.edit', $subCategory->id) }}">update</a>
-                <a href="{{ route('subCategory.delete', $subCategory->id) }}">delete</a>
+            <td class="action">
+                <a href="{{ route('subCategory.edit', $subCategory->id) }}"></a>
+                <a href="{{ route('subCategory.delete', $subCategory->id) }}"></a>
             </td>
         </tr>
         @endforeach
