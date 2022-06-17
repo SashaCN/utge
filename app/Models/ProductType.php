@@ -27,8 +27,4 @@ class ProductType extends Model
         return $this->hasMany(Category::class);
     }
 
-    public function sub_categories()
-    {
-        return $this->hasManyThrough(Category::class, SubCategory::class);
-    }
 }

@@ -95,14 +95,12 @@ class NewsCategoryController extends Controller
             'ru' => $request->title_ru,
         ];
 
-
-
         $newsCategory->fill($request->validated());
 
         $newsCategory->update();
         $newsCategory->localization()->where('var', 'title')->update($localization_title);
 
-        return redirect()->back();
+        return redirect()->route('newsCategory.index');
     }
 
     /**

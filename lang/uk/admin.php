@@ -21,7 +21,7 @@
         'action' => 'Дія',
         'sub_category_add' => 'Під-категорію',
         'product_type' => 'Тип товару',
-        'product_change' => 'Редагуват товар',
+        'product_change' => 'Редагувати товар',
         'product_type_list' => 'Список типів товару',
         'category_list' => 'Список категорій',
         'subcategory_list' => 'Список підкатегорій',
@@ -92,4 +92,6 @@
         'og_add_desc_seo' => 'Мета тег OG:DESCRIPTION на російській мові',
         'add_custom_seo_uk' => 'Кастоминий мета тег на українській мові',
         'add_custom_seo' => 'Кастоминий мета тег на російській мові',
+        'subcategory_change' => 'Редагування підкатегорії',
+        'product_type_change' => 'Редагувати тип товару',
     ];
