@@ -56,7 +56,7 @@
             <ul class="aside-menu">
                 <li><a href="{{ route('product.index') }}"><span class="link-text">@lang('admin.products')</span></a></li>
                 <li>
-                    <a href="#" class="drop-`"><span class="link-text">@lang('admin.categories')</span></a>
+                    <a href="#" class="drop-btn"><span class="link-text">@lang('admin.categories')</span></a>
 
                     <div class="drop-list hidden">
                         <ul>
