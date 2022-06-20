@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use phpDocumentor\Reflection\Types\Null_;
 use Spatie\QueryBuilder\QueryBuilder;
+use App\Http\Controllers\Controller;
 
 
 
@@ -57,6 +58,9 @@ Route::middleware('set_locale')->group(function ()
             Route::resource('product', \App\Http\Controllers\Admin\ProductController::class);
             Route::resource('trashBox', \App\Http\Controllers\Admin\TrashBoxController::class);
             Route::resource('newsCategory', \App\Http\Controllers\Admin\NewsCategoryController::class);
+            Route::resource('servicesTypes', \App\Http\Controllers\Admin\ServicesTypeController::class);
+            Route::resource('servicesCategory', \App\Http\Controllers\Admin\ServicesCategoryController::class);
+            Route::resource('services', \App\Http\Controllers\Admin\ServicesController::class);
             Route::get('newsCategory/delete/{newsCategory}', [\App\Http\Controllers\Admin\NewsCategoryController::class, 'delete'])->name('newsCategory.delete');
             Route::get('trashBox/{prouct}/restore/', [\App\Http\Controllers\Admin\TrashBoxController::class, 'restore'])->name('trashBox.restore');
             Route::post('news/mediaUpdate/{news}', [\App\Http\Controllers\Admin\NewsController::class, 'mediaUpdate'])->name('news.mediaUpdate');
@@ -66,6 +70,8 @@ Route::middleware('set_locale')->group(function ()
             Route::get('productType/delete/{productType}', [\App\Http\Controllers\Admin\ProductTypeController::class, 'delete'])->name('productType.delete');
             Route::get('category/delete/{category}', [\App\Http\Controllers\Admin\CategoryController::class, 'delete'])->name('category.delete');
             Route::get('subCategory/delete/{subCategory}', [\App\Http\Controllers\Admin\SubCategoryController::class, 'delete'])->name('subCategory.delete');
+            Route::get('servicesType/delete/{servicesType}', [\App\Http\Controllers\Admin\ServicesTypeController::class, 'delete'])->name('servicesTypes.delete');
+            Route::get('servicesCategory/delete/{servicesCategory}', [\App\Http\Controllers\Admin\ServicesCategoryController::class, 'delete'])->name('servicesCategory.delete');
 
         });
     });
