@@ -99,4 +99,7 @@
         'subcategory_product' => 'Під-категорії',
         'product_types' => 'Типи товару',
         'category_news' => 'Категорії новин',
+
+        // auntification
+        'name' => 'Ім`я',
     ];

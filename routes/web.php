@@ -30,8 +30,8 @@ $locale = App::currentLocale();
 
 Route::middleware('set_locale')->group(function()
 {
-    Route::get('/', [\App\Http\Controllers\SiteController::class, 'index'])->name('index');
     Route::get('locale/{locale}', [\App\Http\Controllers\Admin\AdminController::class, 'changeLocale'])->name('locale');
+    Route::get('/', [\App\Http\Controllers\SiteController::class, 'index'])->name('index');
     Route::get('/products', [\App\Http\Controllers\ProductController::class, 'index'])->name('products');
     Route::get('/product/{id}', [\App\Http\Controllers\ProductController::class, 'show'])->name('product');
     Route::get('/deliveriesAndPayments', [\App\Http\Controllers\SiteController::class, 'showDeliveryAndPay'])->name('deliveriesAndPayments');
@@ -47,7 +47,7 @@ Route::middleware('auth')->group(function()
         Route::prefix('admin')->group(function()
         {
 
-            Route::get('locale/{locale}', [\App\Http\Controllers\Admin\AdminController::class, 'changeLocale'])->name('locale');
+            // Route::get('locale/{locale}', [\App\Http\Controllers\Admin\AdminController::class, 'changeLocale'])->name('locale');
             Route::get('/', [\App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin');
             Route::resource('childPage', \App\Http\Controllers\Admin\ChildPageController::class);
             Route::resource('seo', \App\Http\Controllers\Admin\SeoController::class);
