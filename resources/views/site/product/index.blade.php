@@ -36,6 +36,7 @@ $locale = app()->getLocale();
                     @foreach ($categories->where('product_type_id', $type->id) as $category)
                     @php
                     $title = $category->localization[0];
+                    $description = $category->localization[1];
                     @endphp
                     <li class="category-li">
                         <p class="category-item">
@@ -51,6 +52,25 @@ $locale = app()->getLocale();
                                 <label for="sub{{$sub->id}}">
                                     <p class="sub-item">{{ $title->$locale }}</p>
                                 </label>
+                                @if ((isset($_GET['subcategoryid_'.$sub->id])) && ($_GET['subcategoryid_'.$sub->id] == $sub->id))
+
+                                @php
+                                $description = $category->localization[1];
+                                $desc = [];
+                                array_push($desc, $category->localization[1]);
+
+                                dd($desc);
+
+                                @endphp
+
+
+
+                                <input type="hidden" value="<?php json_encode($desc); ?>" name="test">
+
+
+
+                                @endif
+
                             </li>
                             @endforeach
                         </ul>
@@ -125,22 +145,12 @@ $locale = app()->getLocale();
         <div class="pagination">
             {{ $products->withQueryString()->links('vendor.pagination.utge-pagination') }}
         </div>
+
+
         <div class="text-wrap shadow-box">
-            @foreach ($categories as $category)
-                @foreach ($subcategories as $sub)
-
-                @php
-                $description = $category->localization[1];
-                @endphp
-                
-                @if($category->id == $sub->category_id)
-
-                    <p>{{ $description->$locale}}</p>
-
-                @endif
-                @endforeach
-            @endforeach
+            <input type="text" value="@if (isset($_GET['test'])) {{$_GET['test']}} @endif">
         </div>
+        @dump($_REQUEST)
     </div>
 </div>
 
