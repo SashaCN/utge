@@ -9,13 +9,16 @@ inputsName.forEach(e => {
     e.oninput = autocompleteSEO;
 });
 
+
+
 function autocompleteSEO()
 {
+    console.log('wtf2');
 
+    // autocomplete title
     document.querySelectorAll('.title_seo_ru').forEach(e => {
         e.value = document.querySelector('#title_ru').value;
     });
-    // autocomplete title
     document.querySelectorAll('.title_seo_uk').forEach(e => {
         e.value = document.querySelector('#title_uk').value;
     });
@@ -32,9 +35,6 @@ function autocompleteSEO()
     
     // autocomplete description
     document.querySelectorAll('.desc_seo_other').forEach(e => {
-        e.value = "-";
-    });
-    document.querySelectorAll('.desc_seo_other').forEach(e => {
-        e.value = "-";
+        e.value = '-';
     });
 }
