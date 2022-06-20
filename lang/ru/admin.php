@@ -99,5 +99,13 @@ return [
     'subcategory_product' => 'Под-категорії',
     'product_types' => 'Типы товаров',
     'category_news' => 'Категории новостей',
+    'services_types' => 'Типы услуг',
+    'add_services_type' => 'Добавить тип услуг',
+    'services_type_change' => 'Редактировать тип услуг',
+    'services_type_list' => 'Список типов услуг',
+    'services_category' => 'Категории услуг',
+    'services' => 'Услуги',
+    'services_list' => 'Список услуг',
+
 ];
 

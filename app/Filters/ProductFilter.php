@@ -50,7 +50,7 @@ class ProductFilter extends QueryFilter
         });
     }
 
-    
+
 
 
     // public function search_field($search_str = '')

@@ -55,6 +55,7 @@
         <nav>
             <ul class="aside-menu">
                 <li><a href="{{ route('product.index') }}"><span class="link-text">@lang('admin.products')</span></a></li>
+                <li><a href="{{ route('services.index') }}"><span class="link-text">@lang('admin.services')</span></a></li>
                 <li>
                     <a href="#" class="drop-btn"><span class="link-text">@lang('admin.components')</span></a>
 
@@ -64,6 +65,8 @@
                             <li><a href="{{ route('category.index') }}"><span class="link-text-drop-list">@lang('admin.categories_product')</span></a></li>
                             <li><a href="{{ route('productType.index') }}"><span class="link-text-drop-list">@lang('admin.product_types')</span></a></li>
                             <li><a href="{{ route('newsCategory.index') }}"><span class="link-text-drop-list">@lang('admin.category_news')</span></a></li>
+                            <li><a href="{{ route('servicesTypes.index') }}"><span class="link-text-drop-list">@lang('admin.services_types')</span></a></li>
+                            <li><a href="{{ route('servicesCategory.index') }}"><span class="link-text-drop-list">@lang('admin.services_category')</span></a></li>
                         </ul>
                     </div>
                 </li>

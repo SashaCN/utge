@@ -36,6 +36,7 @@ $locale = app()->getLocale();
                     @foreach ($categories->where('product_type_id', $type->id) as $category)
                     @php
                     $title = $category->localization[0];
+                    $description = $category->localization[1];
                     @endphp
                     <li class="category-li">
                         <p class="category-item">
@@ -51,6 +52,25 @@ $locale = app()->getLocale();
                                 <label for="sub{{$sub->id}}">
                                     <p class="sub-item">{{ $title->$locale }}</p>
                                 </label>
+                                @if ((isset($_GET['subcategoryid_'.$sub->id])) && ($_GET['subcategoryid_'.$sub->id] == $sub->id))
+
+                                @php
+                                $description = $category->localization[1];
+                                $desc = [];
+                                array_push($desc, $category->localization[1]);
+
+                                dd($desc);
+
+                                @endphp
+
+
+
+                                <input type="hidden" value="<?php json_encode($desc); ?>" name="test">
+
+
+
+                                @endif
+
                             </li>
                             @endforeach
                         </ul>
@@ -125,21 +145,12 @@ $locale = app()->getLocale();
         <div class="pagination">
             {{ $products->withQueryString()->links('vendor.pagination.utge-pagination') }}
         </div>
+
+
         <div class="text-wrap shadow-box">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus est eaque dolore fugit nobis minima
-                excepturi ut, dolor nemo odit nam, harum libero minus earum vel? Tempore possimus iusto accusantium! Cum
-                ipsa ad veniam, excepturi ab expedita tenetur? Doloribus quos expedita harum eveniet ex quasi at
-                praesentium et libero atque facilis esse, quisquam tempora provident placeat voluptates iusto veritatis
-                eaque! Consectetur, repudiandae. Dolor molestiae numquam quod ipsam alias, corporis nihil et ipsa ea
-                mollitia repellat voluptas assumenda veniam molestias modi!</p>
-            <p>Magnam, sequi aliquid? Neque ullam iste odit culpa reiciendis saepe mollitia nostrum asperiores esse
-                vitae explicabo eveniet error rem dolorem, animi dolores delectus aliquid non. Labore, quas at sint
-                laborum cum ab qui exercitationem neque in assumenda voluptatibus cupiditate possimus laudantium
-                provident ullam quaerat. Provident repellat officia libero neque velit impedit aspernatur beatae
-                repellendus nemo. Dolores, dicta itaque qui cupiditate dolore eveniet quibusdam deleniti porro facilis
-                incidunt vero eius ipsa minima reiciendis laudantium nam quas ratione aut exercitationem molestiae
-                aperiam.</p>
+            <input type="text" value="@if (isset($_GET['test'])) {{$_GET['test']}} @endif">
         </div>
+        @dump($_REQUEST)
     </div>
 </div>
 
