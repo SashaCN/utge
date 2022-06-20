@@ -3,5 +3,6 @@
     "/css/app.css": "/css/app.css",
     "/css/pagination.css": "/css/pagination.css",
     "/css/style.css": "/css/style.css",
-    "/css/admin.css": "/css/admin.css"
+    "/css/admin.css": "/css/admin.css",
+    "/css/login.css": "/css/login.css"
 }
