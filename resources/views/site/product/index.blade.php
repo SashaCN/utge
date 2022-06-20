@@ -26,7 +26,6 @@ $locale = app()->getLocale();
     <div class="filter-menu">
         <form id="filter" action="{{ route('products') }}">
             @foreach ($producttypes as $type)
-            {{-- {{dd($type)}} --}}
             @php
             $title = $type->localization[0];
             @endphp
@@ -69,13 +68,31 @@ $locale = app()->getLocale();
         $description = $product->localization[1];
         @endphp
         <a href="{{ route('product', $product->id) }}">
-            @if ($product->sizeprices->whereIn('available', [1,4])->min('price'))
-            <figure class="product shadow-box">
+            @php
+                if ($product->sizeprices->whereIn('available', [1,4])->min('price')) {
+                    $min_price = $product->sizeprices->whereIn('available', [1,4])->min('price');
+                } else {
+                    $min_price = $product->sizeprices->min('price');
+                }
+
+
+                if ($product->sizeprices->where('price', $min_price)->first()->available == 1) {
+                    $available = 'available';
+                } elseif ($product->sizeprices->where('price', $min_price)->first()->available == 2) {
+                    $available = 'not_available';
+                } elseif ($product->sizeprices->where('price', $min_price)->first()->available == 3) {
+                    $available = 'waiting_available';
+                } else {
+                    $available = 'available_for_order';
+                }
+            @endphp
+            <figure class="product shadow-box flex-col {{ $available }}">
+                <p class="status">@lang('admin.'.$available)</p>
                 <img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
                 <figcaption>
                     <h3>{{ $title->$locale }}</h3>
                     <p class="description">{!! $description->$locale !!}</p>
-                    <p class="description">{{ $product->sizeprices->whereIn('available', [1,4])->min('size') }}</p>
+                    <p class="description">{{ $product->sizeprices->where('price', $min_price)->first()->size }}</p>
                     <div class="button-line flex-sb">
                         <p class="add-to-basket flex-aic">
                             <svg>
@@ -85,7 +102,7 @@ $locale = app()->getLocale();
                                 @lang('utge.add-to-basket')
                             </span>
                         </p>
-                        <p class="price">{{ $product->sizeprices->whereIn('available', [1,4])->min('price') }}</p>
+                        <p class="price">{{ $min_price }}</p>
                         <span class="like">
                             <svg>
                                 <use xlink:href="{{ asset('img/sprite.svg#like') }}"></use>
@@ -94,32 +111,6 @@ $locale = app()->getLocale();
                     </div>
                 </figcaption>
             </figure>
-            @else
-            <figure class="product shadow-box out-of-store">
-                <img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
-                <figcaption>
-                    <h3>{{ $title->$locale }}</h3>
-                    <p class="description">{!! $description->$locale !!}</p>
-                    <p class="description">{{ $product->sizeprices->min('size') }}</p>
-                    <div class="button-line flex-sb">
-                        <p class="add-to-basket flex-aic">
-                            <svg>
-                                <use xlink:href="{{ asset('img/sprite.svg#basket') }}"></use>
-                            </svg>
-                            <span>
-                                @lang('utge.add-to-basket')
-                            </span>
-                        </p>
-                        <p class="price">{{ $product->sizeprices->min('price') }}</p>
-                        <span class="like">
-                            <svg>
-                                <use xlink:href="{{ asset('img/sprite.svg#like') }}"></use>
-                            </svg>
-                        </span>
-                    </div>
-                </figcaption>
-            </figure>
-            @endif
         </a>
         @endforeach
         <div class="pagination">

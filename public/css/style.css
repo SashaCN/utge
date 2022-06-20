@@ -412,7 +412,7 @@ h2 {
   font-size: 2.4rem;
   font-weight: 400;
   letter-spacing: 1px;
-  padding: 18px 0;
+  padding: 9px 0;
   width: 100%;
   box-sizing: border-box;
   color: #fff;
@@ -591,6 +591,9 @@ h2 {
 }
 
 /* -------------------------------------------------------------------------- */
+/*                                   basket                                   */
+/* -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
 /*                                products page                                */
 /* -------------------------------------------------------------------------- */
 .product-page {
@@ -690,6 +693,7 @@ h4 {
   width: 75%;
   flex-wrap: wrap;
   justify-content: flex-start;
+  align-items: stretch;
   margin: 0 -16px;
 }
 .product-list > a {
@@ -698,12 +702,44 @@ h4 {
   box-sizing: border-box;
   margin-bottom: 30px;
 }
+.product-list figure {
+  justify-content: space-between;
+  height: 100%;
+}
 .product-list div.pagination {
   padding-top: 20px;
   margin-bottom: 50px;
 }
 .product-list .text-wrap {
   margin: 0;
+}
+
+.status {
+  width: 100%;
+  font-size: 2rem;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+  text-transform: lowercase;
+  border-radius: 5px;
+  background-color: #191919;
+  margin-bottom: 20px;
+}
+
+.available .status {
+  background-color: #6FB545;
+}
+
+.not_available .status {
+  background-color: #d6292d;
+}
+
+.waiting_available .status {
+  background-color: #FFB30F;
+}
+
+.available_for_order .status {
+  background-color: #9381FF;
 }
 
 .product {
@@ -729,8 +765,8 @@ h4 {
 }
 .product .like {
   position: absolute;
-  top: 40px;
-  right: 20px;
+  top: 105px;
+  right: 30px;
 }
 .product .like svg {
   width: 29px;
@@ -893,6 +929,14 @@ h3 {
 @media screen and (max-width: 1500px) {
   .info-line > div {
     width: 25%;
+  }
+
+  .product-list {
+    width: 80%;
+    margin: 0 -10px;
+  }
+  .product-list a {
+    padding: 0 10px;
   }
 }
 @media screen and (max-width: 1300px) {

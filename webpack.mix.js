@@ -24,6 +24,6 @@ mix.js('resources/js/app.js', 'public/js').postCss('resources/css/app.css', 'pub
     require('autoprefixer'),
 ]);
 
-mix.sass('resources/sass/admin.sass', 'public/css').sass('resources/sass/style.sass', 'public/css').sass('resources/sass/pagination.sass', 'public/css').options({
+mix.sass('resources/sass/admin.sass', 'public/css').sass('resources/sass/style.sass', 'public/css').sass('resources/sass/pagination.sass', 'public/css').sass('resources/sass/login.sass', 'public/css').options({
     processCssUrls: false
 });
