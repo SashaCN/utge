@@ -205,7 +205,6 @@ class ProductController extends Controller
      */
     public function update(MultiRequest $request, Product $product)
     {
-        // dd($request);
         $localization_title = [
             'var' => 'title',
             'uk' => $request->title_uk,
