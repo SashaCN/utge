@@ -119,6 +119,66 @@ class MultiRequest extends FormRequest
             $request['phone'] = 'required|min:10|max:20';
         }
 
+        if (isset($_REQUEST['title_seo_uk']))
+        {
+            $request['title_seo_uk '] = 'required';
+        }
+
+        if (isset($_REQUEST['title_seo_ru']))
+        {
+            $request['title_seo_ru'] = 'required';
+        }
+
+        if (isset($_REQUEST['og_title_seo_uk']))
+        {
+            $request['og_title_seo_uk'] = 'required';
+        }
+
+        if (isset($_REQUEST['og_title_seo_ru']))
+        {
+            $request['og_title_seo_ru'] = 'required';
+        }
+
+        if (isset($_REQUEST['og_desc_seo_uk']))
+        {
+            $request['og_desc_seo_uk'] = 'required';
+        }
+
+        if (isset($_REQUEST['og_desc_seo_ru']))
+        {
+            $request['og_desc_seo_ru'] = 'required';
+        }
+
+        if (isset($_REQUEST['desc_seo_uk']))
+        {
+            $request['desc_seo_uk'] = 'required';
+        }
+
+        if (isset($_REQUEST['desc_seo_ru']))
+        {
+            $request['desc_seo_ru'] = 'required';
+        }
+
+        if (isset($_REQUEST['keywords_seo_uk']))
+        {
+            $request['keywords_seo_uk'] = 'required';
+        }
+
+        if (isset($_REQUEST['keywords_seo_ru']))
+        {
+            $request['keywords_seo_ru'] = 'required';
+        }
+
+        if (isset($_REQUEST['custom_seo_uk']))
+        {
+            $request['custom_seo_uk'] = 'required';
+        }
+
+        if (isset($_REQUEST['custom_seo_ru']))
+        {
+            $request['custom_seo_ru'] = 'required';
+        }
+
         return $request;
     }
 }
