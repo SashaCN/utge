@@ -54,21 +54,6 @@ $locale = app()->getLocale();
                                 </label>
                                 @if ((isset($_GET['subcategoryid_'.$sub->id])) && ($_GET['subcategoryid_'.$sub->id] == $sub->id))
 
-                                @php
-                                $description = $category->localization[1];
-                                $desc = [];
-                                array_push($desc, $category->localization[1]);
-
-                                dd($desc);
-
-                                @endphp
-
-
-
-                                <input type="hidden" value="<?php json_encode($desc); ?>" name="test">
-
-
-
                                 @endif
 
                             </li>
@@ -147,10 +132,24 @@ $locale = app()->getLocale();
         </div>
 
 
-        <div class="text-wrap shadow-box">
-            <input type="text" value="@if (isset($_GET['test'])) {{$_GET['test']}} @endif">
-        </div>
-        @dump($_REQUEST)
+        @foreach ($_REQUEST as $key => $subcategoryid)
+            @if (explode('_', $key)[0] == 'subcategoryid')
+                @foreach ($subcategories->where('id', $subcategoryid) as $item)
+                    @php
+                        $cat_id;
+                        $cats_id = [];
+                        $cat_id = $item->category_id;
+                        // array_push();
+                    @endphp
+
+                    @foreach ($categories->where('id', $cat_id) as $test)
+                    <div class="text-wrap shadow-box">
+                        <p>{!! $test->localization[1]->$locale !!}</p>     
+                    </div>
+                    @endforeach
+                @endforeach
+            @endif
+        @endforeach
     </div>
 </div>
 

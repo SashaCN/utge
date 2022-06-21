@@ -308,13 +308,13 @@ $locale = app()->getLocale();
 
         <div class="flex">
             <div class="input-wrap mr-seo-input">
-                <input type="text" id="title_seo_uk" value="{{ $title_seo->uk }}" name="title_seo_uk">
+                <input type="text" class="title_seo_uk" id="title_seo_uk" value="{{ $title_seo->uk }}" name="title_seo_uk">
                 <label class="label" for="title_seo_uk">@lang('admin.add_title_seo_uk')</label>
             </div>
 
 
             <div class="input-wrap">
-                <input type="text" id="title_seo_ru" value="{{ $title_seo->ru }}" name="title_seo_ru">
+                <input type="text" class="title_seo_ru" id="title_seo_ru" value="{{ $title_seo->ru }}" name="title_seo_ru">
                 <label class="label" for="title_seo_ru">@lang('admin.add_title_seo')</label>
             </div>
         </div>
