@@ -21,9 +21,14 @@
 $locale = app()->getLocale();
 @endphp
 
-
+<div class="wrapper">
+    <div class="filter-btn">
+        <button>@lang('utge.filter')</button>
+    </div>
+</div>
 <div class="wrapper flex-sb product-page">
     <div class="filter-menu">
+        <div class="close-filter-bg"></div>
         <form id="filter" action="{{ route('products') }}">
             @foreach ($producttypes as $type)
             @php

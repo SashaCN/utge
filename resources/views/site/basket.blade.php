@@ -36,6 +36,7 @@
         </div>
         <div class="basket-products">
             <p class="basket-clear">&nbsp;</p>
+        </div>
             {{-- <div class="basket-row product-row">
                 <div class="img-col col">
                     <img src="img/default_image.jpg" alt="alt">
@@ -61,7 +62,6 @@
                     </a>
                 </div>
             </div> --}}
-        </div>
         <div class="basket-row title-row general-row">
             <div class="img-col col"></div>
             <div class="name-col col">
