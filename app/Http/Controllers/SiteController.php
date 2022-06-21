@@ -23,6 +23,16 @@ class SiteController extends Controller
         ]);
     }
 
+    public function basket (){
+        $products = Product::all();
+        $phones = ChildPage::all()->where('route', 'phone');
+
+        return view('site.basket', [
+            'products' => $products,
+            'phones' => $phones
+        ]);
+    }
+
     public function showContacts()
     {
         $contacts = ChildPage::all()->where('route', 'contacts');

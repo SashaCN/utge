@@ -99,5 +99,8 @@ return [
     'subcategory_product' => 'Под-категорії',
     'product_types' => 'Типы товаров',
     'category_news' => 'Категории новостей',
+
+    // auntification
+    'name' => 'Имя',
 ];
 
