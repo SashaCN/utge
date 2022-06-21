@@ -52,25 +52,6 @@ $locale = app()->getLocale();
                                 <label for="sub{{$sub->id}}">
                                     <p class="sub-item">{{ $title->$locale }}</p>
                                 </label>
-                                @if ((isset($_GET['subcategoryid_'.$sub->id])) && ($_GET['subcategoryid_'.$sub->id] == $sub->id))
-
-                                @php
-                                $description = $category->localization[1];
-                                $desc = [];
-                                array_push($desc, $category->localization[1]);
-
-                                dd($desc);
-
-                                @endphp
-
-
-
-                                <input type="hidden" value="<?php json_encode($desc); ?>" name="test">
-
-
-
-                                @endif
-
                             </li>
                             @endforeach
                         </ul>
@@ -148,9 +129,9 @@ $locale = app()->getLocale();
 
 
         <div class="text-wrap shadow-box">
-            <input type="text" value="@if (isset($_GET['test'])) {{$_GET['test']}} @endif">
+            
         </div>
-        @dump($_REQUEST)
+
     </div>
 </div>
 
