@@ -139,7 +139,7 @@ function slideRight ()
         return false;
     }
 
-    navSlideRight();
+    // navSlideRight();
 
     if (slider.scrollWidth - slider.scrollLeft > slider.getBoundingClientRect().width) {
         active_slide++;

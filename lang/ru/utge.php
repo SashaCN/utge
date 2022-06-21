@@ -33,6 +33,12 @@ return [
 
     //basket
     'basket' => 'Корзина',
+    'product' => 'товар',
+    'quatify' => 'количество',
+    'basket_clear' => 'корзина пустая',
+    'price' => 'цена',
+    'general' => 'в общем',
+    'confirm_order' => 'оформить заказ',
 
     //products
     'add-to-basket' => 'в&nbsp;корзину',

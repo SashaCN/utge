@@ -18,5 +18,68 @@
 @section('content')
 
 <h2>@lang('utge.basket')</h2>
+<div class="wrapper">
 
+    <form method="POST" action="" class="basket-table">
+        <div class="basket-row title-row">
+            <div class="img-col col"></div>
+            <div class="name-col col">
+                <h4>@lang('utge.product')</h4>
+            </div>
+            <div class="count-col col">
+                <h4>@lang('utge.quatify')</h4>
+            </div>
+            <div class="price-col col">
+                <h4>@lang('utge.price')</h4>
+            </div>
+            <div class="delete-col col"></div>
+        </div>
+        <div class="basket-products">
+            <p class="basket-clear">&nbsp;</p>
+            {{-- <div class="basket-row product-row">
+                <div class="img-col col">
+                    <img src="img/default_image.jpg" alt="alt">
+                </div>
+                <div class="name-col col">
+                    <h3>IКРА ЧОРНА, ОСЕТРОВА, СОЛОНА, 50 ГРАМ</h3>
+                </div>
+                <div class="count-col col">
+                    <button class="product-minus">-</button>
+                    <label>
+                        <input type="number" name="product-quantify" class="product-quantify" value="1">
+                    </label>
+                    <button class="product-plus">+</button>
+                </div>
+                <div class="price-col col">
+                    <p class="basket-price">1500 грн</p>
+                </div>
+                <div class="delete-col col">
+                    <a href="#" class="delete-product">
+                        <svg>
+                            <use xlink:href="{{ asset('img/sprite.svg#trashbox') }}"></use>
+                        </svg>
+                    </a>
+                </div>
+            </div> --}}
+        </div>
+        <div class="basket-row title-row general-row">
+            <div class="img-col col"></div>
+            <div class="name-col col">
+                <h4>@lang('utge.general')</h4>
+            </div>
+            <div class="count-col col">
+                <h4 class="general-quantify"></h4>
+            </div>
+            <div class="price-col col">
+                <h4 class="general-price"></h4>
+            </div>
+            <div class="delete-col col"></div>
+        </div>
+        <div class="commit-order">
+            <label><input type="submit" value="@lang('utge.confirm_order')"></label>
+        </div>
+    </form>
+    <script src="{{ asset('js/basket.js') }}"></script>
+
+</div>
 @endsection

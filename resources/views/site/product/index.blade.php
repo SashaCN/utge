@@ -86,7 +86,7 @@ $locale = app()->getLocale();
                     $available = 'available_for_order';
                 }
             @endphp
-            <figure class="product shadow-box flex-col {{ $available }}">
+            <figure class="product shadow-box flex-col {{ $available }}" data-product-number="{{ $product->id }}">
                 <p class="status">@lang('admin.'.$available)</p>
                 <img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
                 <figcaption>
@@ -133,5 +133,6 @@ $locale = app()->getLocale();
         </div>
     </div>
 </div>
+<script src="{{ asset('js/add_to_basket.js') }}"></script>
 
 @endsection
