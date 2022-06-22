@@ -112,7 +112,7 @@ class SubCategoryController extends Controller
 
         $subCategory->localization()->update($localization_title);
 
-        return redirect()->route('subCategory.show', $subCategory);
+        return redirect()->route('subCategory.index');
     }
 
     /**
