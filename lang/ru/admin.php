@@ -107,6 +107,7 @@ return [
     'services' => 'Услуги',
     'services_list' => 'Список услуг',
 
+
     // auntification
     'name' => 'Имя',
 ];

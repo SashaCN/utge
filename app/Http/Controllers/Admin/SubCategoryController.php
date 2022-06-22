@@ -49,14 +49,14 @@ class SubCategoryController extends Controller
         $localization_title->uk = $request->title_uk;
         $localization_title->ru = $request->title_ru;
 
-        
+
         $subCategory = new SubCategory();
-        
+
         $subCategory->fill($request->validated());
         $subCategory->category_id = $request->category_id;
         $subCategory->save();
-        
-        if (isset($request->sub_description_uk) && isset($request->sub_description_ru)) 
+
+        if (isset($request->sub_description_uk) && isset($request->sub_description_ru))
         {
             $localization_desc = new Localization();
             $localization_desc->fill($request->validated());
@@ -118,10 +118,10 @@ class SubCategoryController extends Controller
             'ru' => $request->title_ru
         ];
 
-        
+
         $subCategory->update($request->validated());
-        
-        if (isset($request->sub_description_uk) && isset($request->sub_description_ru)) 
+
+        if (isset($request->sub_description_uk) && isset($request->sub_description_ru))
         {
             $localization_desc = [
                 'var' => "description",
@@ -131,6 +131,9 @@ class SubCategoryController extends Controller
             $subCategory->localization()->where('var', 'description')->updateOrCreate($localization_desc);
         }
         $subCategory->localization()->where('var', 'title')->update($localization_title);
+
+
+        $subCategory->localization()->update($localization_title);
 
         return redirect()->route('subCategory.index');
     }

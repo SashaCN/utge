@@ -1,4 +1,4 @@
-.lang-select 
+.lang-select
   position: relative
   display: flex
   flex-direction: column
@@ -6,16 +6,16 @@
   overflow: hidden
   border-radius: 8px
   transition: $trs
-  a 
-    color: $text-dark
+  a
+    color: $primary
     font-size: 2.4rem
-    text-decoration: none  
+    text-decoration: none
     padding: 5px 35px 5px 10px
     transition: $trs
-    &:hover 
+    &:hover
       color: $second
       background-color: $primary-hover
-    span 
+    span
       margin-left: 5px
   &::before
     content: ''
@@ -29,29 +29,29 @@
     border-left: none
     transition: $trs
     transform: rotate(45deg) translate(-75%, -50%)
-  &:hover 
+  &:hover
     cursor: pointer
-    &::before 
+    &::before
       border-color: $second
 
-.control 
-  .flag 
+.control
+  .flag
     height: 18px
-  .str 
+  .str
     width: 21px
     height: 12px
 
-.active-select 
-  overflow: visible 
-  background-color: $primary-hover 
+.active-select
+  overflow: visible
+  background-color: $primary-hover
   &::before
     border-color: $second
-  a 
+  a
     color: $second
     background-color: $primary
     border-radius: 0 0 8px 8px
-    &:last-child   
-      border-radius: 8px 
+    &:last-child
+      border-radius: 8px
   .selected-lang
     border-radius: 8px 8px 0 0
     background-color: $primary-hover

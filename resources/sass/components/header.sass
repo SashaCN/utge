@@ -17,13 +17,14 @@
 .phone-list
   margin-left: 19px
   font-size: 1.8rem
+
   li
     margin-bottom: 8px
     &:last-child
       margin: 0
   a
     display: inline-block
-    color: $text-dark
+    color: $primary
     transition: $trs
     &:hover
       transform: scale(1.1)
@@ -33,10 +34,10 @@
     width: 146px
     margin-bottom: 9px
   h1
-    font-size: 1.6rem
+    font-size: 2rem
     font-weight: 500
     text-transform: uppercase
-    color: $text-dark
+    color: $primary
 
 .control
   svg
@@ -49,6 +50,13 @@
   transition: $trs
   &:hover
     transform: scale(1.1)
+
+
+.lang-select .active-lang
+    a
+        color: #fff
+        &:hover
+            color: #fff
 
 /* -------------------------------------------------------------------------- */
 /*                                   nav bar                                  */
