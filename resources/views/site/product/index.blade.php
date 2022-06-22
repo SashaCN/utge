@@ -56,6 +56,10 @@ $locale = app()->getLocale();
                                 <label for="sub{{$sub->id}}">
                                     <p class="sub-item">{{ $title->$locale }}</p>
                                 </label>
+                                @if ((isset($_GET['subcategoryid_'.$sub->id])) && ($_GET['subcategoryid_'.$sub->id] == $sub->id))
+
+                                @endif
+
                             </li>
                             @endforeach
                         </ul>
@@ -124,10 +128,37 @@ $locale = app()->getLocale();
         </div>
 
 
+<<<<<<< HEAD
         <div class="text-wrap shadow-box">
-            
+
         </div>
 
+=======
+        @if (isset($_REQUEST))
+            @dump($_REQUEST)
+        @endif
+        @foreach ($_REQUEST as $key => $id)
+
+            @if (explode('_', $key)[0] == 'subcategoryid')
+                @foreach ($subcategories->where('id', $id) as $subcategory)
+                    @if (isset($subcategory->localization[1]->$locale))
+                        <div class="text-wrap shadow-box">
+                            <p>{!! $subcategory->localization[1]->$locale !!}</p>
+                        </div>
+                    @endif
+                @endforeach
+            @endif
+            @if (explode('_', $key)[0] == 'categoryid')
+                @foreach ($categories->where('id', $id) as $category)
+                    @if (isset($category->localization[1]->$locale))
+                        <div class="text-wrap shadow-box">
+                            <p>{!! $category->localization[1]->$locale !!}</p>
+                        </div>
+                    @endif
+                @endforeach
+            @endif
+        @endforeach
+>>>>>>> 2dded6c77e5b7282b49b5a7ac429d56ee7422856
     </div>
 </div>
 <script src="{{ asset('js/add_to_basket.js') }}"></script>
