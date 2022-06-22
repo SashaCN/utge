@@ -106,4 +106,7 @@
         'services_category' => 'Категорії послуг',
         'services' => 'Послуги',
         'services_list' => 'Список послуг',
+
+        // auntification
+        'name' => 'Ім`я',
     ];

@@ -113,6 +113,8 @@ function blockClick ()
 
 function changeActivBtn ()
 {
+    let active_nav = document.querySelector('.page-count.active');
+    console.log(active_slide)
     document.querySelector('.page-count.active').classList.remove('active');
     slider_nav_links[active_slide].classList.add('active');
 }
@@ -136,12 +138,17 @@ function slideRight ()
     if (!blockClick()) {
         return false;
     }
+
+    // navSlideRight();
+
     if (slider.scrollWidth - slider.scrollLeft > slider.getBoundingClientRect().width) {
         active_slide++;
     }
     changeActivBtn();
 
-    slider.scroll(slider.scrollLeft+slider.getBoundingClientRect().width, 0)
+    slider.scroll(slider.scrollLeft+slider.getBoundingClientRect().width, 0);
+
+
 }
 slide_left_btn.onclick = slideLeft;
 
@@ -155,5 +162,11 @@ function slideLeft ()
     }
     changeActivBtn();
 
-    slider.scroll(slider.scrollLeft-slider.getBoundingClientRect().width, 0)
+    slider.scroll(slider.scrollLeft-slider.getBoundingClientRect().width, 0);
 }
+
+// function navSlideRight (){
+//     if (slider_nav_links.length > 5 && active_slide == 4){
+//         slider_nav.scroll(slider_nav.scrollLeft + slider_nav.getBoundingClientRect().width, 0);
+//     }
+// }
