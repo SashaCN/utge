@@ -60,7 +60,7 @@
   transition: all 0.5s ease;
 }
 .lang-select a {
-  color: #191919;
+  color: #003b95;
   font-size: 2.4rem;
   text-decoration: none;
   padding: 5px 35px 5px 10px;
@@ -155,7 +155,7 @@ a.selected-lang {
 }
 .phone-list a {
   display: inline-block;
-  color: #191919;
+  color: #003b95;
   transition: all 0.5s ease;
 }
 .phone-list a:hover {
@@ -167,10 +167,10 @@ a.selected-lang {
   margin-bottom: 9px;
 }
 .logo h1 {
-  font-size: 1.6rem;
+  font-size: 2rem;
   font-weight: 500;
   text-transform: uppercase;
-  color: #191919;
+  color: #003b95;
 }
 
 .control svg {
@@ -186,6 +186,13 @@ a.selected-lang {
 .basket:hover,
 .like:hover {
   transform: scale(1.1);
+}
+
+.lang-select .active-lang a {
+  color: #fff;
+}
+.lang-select .active-lang a:hover {
+  color: #fff;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -1024,10 +1031,10 @@ h3 {
 
 .price {
   font-family: "Roboto", sans-serif;
-  font-size: 1.6rem;
-  color: #191919;
+  font-size: 2rem;
+  color: #003b95;
   font-weight: 500;
-  padding: 9.5px 12px;
+  padding: 6.6px 12px;
   width: 31%;
   box-sizing: border-box;
   text-align: center;
