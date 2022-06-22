@@ -43,20 +43,30 @@ class SubCategoryController extends Controller
      */
     public function store(MultiRequest $request)
     {
-
         $localization_title = new Localization();
         $localization_title->fill($request->validated());
         $localization_title->var = 'title';
         $localization_title->uk = $request->title_uk;
         $localization_title->ru = $request->title_ru;
 
+        
         $subCategory = new SubCategory();
-
+        
         $subCategory->fill($request->validated());
         $subCategory->category_id = $request->category_id;
         $subCategory->save();
-        $subCategory->localization()->save($localization_title);
+        
+        if (isset($request->sub_description_uk) && isset($request->sub_description_ru)) 
+        {
+            $localization_desc = new Localization();
+            $localization_desc->fill($request->validated());
+            $localization_desc->var = 'description';
+            $localization_desc->uk = $request->sub_description_uk;
+            $localization_desc->ru = $request->sub_description_ru;
+            $subCategory->localization()->save($localization_desc);
+        }
 
+        $subCategory->localization()->save($localization_title);
 
         return redirect()->route('subCategory.index');
     }
@@ -108,11 +118,21 @@ class SubCategoryController extends Controller
             'ru' => $request->title_ru
         ];
 
+        
         $subCategory->update($request->validated());
+        
+        if (isset($request->sub_description_uk) && isset($request->sub_description_ru)) 
+        {
+            $localization_desc = [
+                'var' => "description",
+                'uk' => $request->sub_description_uk,
+                'ru' => $request->sub_description_ru
+            ];
+            $subCategory->localization()->where('var', 'description')->updateOrCreate($localization_desc);
+        }
+        $subCategory->localization()->where('var', 'title')->update($localization_title);
 
-        $subCategory->localization()->update($localization_title);
-
-        return redirect()->route('subCategory.show', $subCategory);
+        return redirect()->route('subCategory.index');
     }
 
     /**

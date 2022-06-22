@@ -1,6 +1,9 @@
 let categories = document.querySelectorAll('.category-item'),
     form = document.querySelector('#filter'),
-    sub = document.querySelectorAll('.sub-list input[type=checkbox]');
+    sub = document.querySelectorAll('.sub-list input[type=checkbox]'),
+    filter_btn = document.querySelector('.filter-btn button'),
+    close_bg = document.querySelector('.close-filter-bg'),
+    filter_menu = document.querySelector('.filter-menu');
 
 categories.forEach(elem => {
     elem.onclick = (e) => {
@@ -23,4 +26,12 @@ function showCategory ()
             elem.closest('.category-li').querySelector('.category-item').classList.add('checked-category');
         }
     });
+}
+
+filter_btn.onclick = () => {
+    filter_menu.classList.toggle('active-filter');
+};
+
+close_bg.onclick = () => {
+    filter_menu.classList.remove('active-filter');
 }

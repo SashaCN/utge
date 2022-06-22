@@ -26,9 +26,52 @@
         width: 90%
 
 @media screen and ( max-width:  1500px)
-  .info-line
-    & > div
-      width: 25%
+    .info-line
+        & > div
+            width: 25%
+
+    //product page
+
+    .product-list
+        width: 80%
+        margin: 0 -10px
+        a
+            padding: 0 10px
+
+@media screen and ( max-width:  1350px)
+    .product-page
+        justify-content: center
+
+    .filter-btn
+        display: block
+
+    .filter-menu
+        position: fixed
+        top: 0
+        left: -100%
+        width: 30vw
+        height: 100vh
+        z-index: 1
+        padding: 30px
+        box-sizing: border-box
+        background-color: #dcdcdc
+        transition: $trs
+        form
+            width: 100%
+
+    .active-filter.filter-menu
+        left: 0
+        .close-filter-bg
+            position: fixed
+            z-index: 1
+            top: 0
+            left: 30vw
+            width: 70vw
+            height: 100vh
+
+    .product-list
+        width: 100%
+
 
 @media screen and ( max-width:  1300px)
     h2
@@ -197,6 +240,10 @@
         width: 100%
 
 @media screen and ( max-width:  400px)
+    .close
+        top: 15px
+        right: 15px
+
     .control
         & > a
             width: 30%
