@@ -99,7 +99,6 @@ return [
     'subcategory_product' => 'Под-категорії',
     'product_types' => 'Типы товаров',
     'category_news' => 'Категории новостей',
-<<<<<<< HEAD
     'services_types' => 'Типы услуг',
     'add_services_type' => 'Добавить тип услуг',
     'services_type_change' => 'Редактировать тип услуг',
@@ -108,10 +107,8 @@ return [
     'services' => 'Услуги',
     'services_list' => 'Список услуг',
 
-=======
 
     // auntification
     'name' => 'Имя',
->>>>>>> a20ef92605fd8b0851bd2be4a677e825d9246df3
 ];
 
