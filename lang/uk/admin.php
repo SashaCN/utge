@@ -99,6 +99,13 @@
         'subcategory_product' => 'Під-категорії',
         'product_types' => 'Типи товару',
         'category_news' => 'Категорії новин',
+        'services_types' => 'Типи послуг',
+        'add_services_type' => 'Добавити тип послуг',
+        'services_type_change' => 'Редагувати тип послуг',
+        'services_type_list' => 'Список типів послуг',
+        'services_category' => 'Категорії послуг',
+        'services' => 'Послуги',
+        'services_list' => 'Список послуг',
 
         // auntification
         'name' => 'Ім`я',

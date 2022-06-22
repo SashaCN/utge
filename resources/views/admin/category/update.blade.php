@@ -35,8 +35,11 @@
 
         @php
             $title = $category->localization[0];
-            $description = $category->localization[1];
-        @endphp
+            if (isset($category->localization[1])) 
+            {
+              $description = $category->localization[1];
+            }
+            @endphp
 
         <div class="name-slide flex-col current-slide">
             <div class="input-wrap">
@@ -48,7 +51,6 @@
                 <label class="label" for="title_ru">@lang('admin.add_ru_title')</label>
             </div>
         </div>
-
         <div class="desc-slide flex-col">
             <div class="input-wrap">
               <div class="content">
@@ -89,8 +91,8 @@
                       <a class='btn' id="converToCode1" data-role='switchEditor' href='#' title='Перейти в редактор коду'>&lt;code&gt;</a>
                     </div>
                   </div>
-                  <div id='editor1' style='' contenteditable>{!! $description->uk !!}</div>
-                  <textarea id="desc_uk" name="description_uk"></textarea>
+                  <div id='editor1' style='' contenteditable>@if (isset($category->localization[1])) {!! $description->uk !!}@endif</div>
+                  <textarea id="desc_uk" name="cat_description_uk"></textarea>
                   <label class="label" for="desc_uk">@lang('admin.add_uk_desc')</label>
                 </div>
               </div>
@@ -134,8 +136,8 @@
                       <a class='btn' id="converToCode2" data-role='switchEditor' href='#' title='Перейти в редактор коду'>&lt;code&gt;</a>
                     </div>
                   </div>
-                  <div id='editor2' style='' contenteditable>{!! $description->ru !!}</div>
-                  <textarea id="desc_ru" name="description_ru"></textarea>
+                  <div id='editor2' style='' contenteditable>@if (isset($category->localization[1])) {!! $description->uk !!}@endif</div>
+                  <textarea id="desc_ru" name="cat_description_ru"></textarea>
                   <label class="label" for="desc_ru">@lang('admin.add_ru_desc')</label>
                 </div>
               </div>

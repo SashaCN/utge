@@ -121,7 +121,7 @@ class MultiRequest extends FormRequest
 
         if (isset($_REQUEST['title_seo_uk']))
         {
-            $request['title_seo_uk '] = 'required';
+            $request['title_seo_uk'] = 'required';
         }
 
         if (isset($_REQUEST['title_seo_ru']))
@@ -149,7 +149,7 @@ class MultiRequest extends FormRequest
             $request['og_desc_seo_ru'] = 'required';
         }
 
-        if (isset($_REQUEST['desc_seo_uk']))
+        if (isset($_REQUEST['desc_seo_ru']))
         {
             $request['desc_seo_uk'] = 'required';
         }
