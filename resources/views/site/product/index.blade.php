@@ -128,7 +128,11 @@ $locale = app()->getLocale();
         </div>
 
 
+<<<<<<< HEAD
         {{-- @if (isset($_REQUEST))
+=======
+        @if (isset($_REQUEST))
+>>>>>>> 3599f10a98a78087e86b093a2c00a9d7a8587556
             @dump($_REQUEST)
         @endif --}}
         @foreach ($_REQUEST as $key => $id)
