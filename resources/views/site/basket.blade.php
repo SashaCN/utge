@@ -17,6 +17,12 @@
 
 @section('content')
 
+{{-- <script>sessionStorage['basketProducts'] = JSON.parse(localStorage.basketProduct);</script> --}}
+@php
+    session(['basketProducts' => 'hello']);
+    dd(session('basketProducts'));
+@endphp
+
 <h2>@lang('utge.basket')</h2>
 <div class="wrapper">
 

@@ -59,6 +59,10 @@
         form
             width: 100%
 
+    .close-filter-bg
+        left: 100vw
+        transition: $trs
+
     .active-filter.filter-menu
         left: 0
         .close-filter-bg
@@ -66,8 +70,14 @@
             z-index: 1
             top: 0
             left: 30vw
-            width: 70vw
+            width: 100vw
             height: 100vh
+            background-color: #0000006f
+        form
+            max-height: calc( 100vh - 60px )
+            overflow-y: scroll
+            &::-webkit-scrollbar
+                width: 0
 
     .product-list
         width: 100%
