@@ -17,10 +17,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="{{ $desc_seo->$locale }}">
-    <meta name="keywords" content="{{ $key_seo->$locale }}">
+    <meta property="og:image" content="{{ $product->getFirstMediaUrl('images') }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ Request::url()}}">
     <meta property="og:title" content="{{ $og_title_seo->$locale }}">
     <meta property="og:description" content="{{ $og_desc_seo->$locale }}">
+    <meta name="description" content="{{ $desc_seo->$locale }}">
+    <meta name="keywords" content="{{ $key_seo->$locale }}">
     {{-- <meta property="" content="{{ $custom_seo->$locale }}"> --}}
     <title>{{ $title_seo->$locale }}</title>
 </head>

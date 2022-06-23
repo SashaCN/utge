@@ -15,7 +15,7 @@ class Services extends Model
     use SoftDeletes, CascadeSoftDeletes;
 
 
-    protected $cascadeDeletes = ['sizePrices'];
+    protected $cascadeDeletes = ['servicesSizePrice'];
     protected $dates = ['deleted_at'];
     protected $fillable = ['service_category_id'];
 
@@ -27,9 +27,9 @@ class Services extends Model
     {
         return $this->morphMany(Localization::class, 'localizationable');
     }
-    public function sizePrices()
+    public function servicesSizePrice()
     {
-        return $this->hasMany(ServicesSizePrice::class);
+        return $this->hasMany(ServicesSizePrice::class, 'service_id');
     }
 
 }

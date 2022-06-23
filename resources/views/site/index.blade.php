@@ -25,8 +25,7 @@
                 </div>
                 <div class="logo">
                     <a class="flex-col" href="{{ route('index') }}">
-                        <img src="{{ asset('img/logo.png') }}" alt="@lang('utge.logo')" />
-                        <h1>@lang('utge.utge')</h1>
+                        <img src="{{ asset('img/logo.png') }}" alt="@lang('utge.logo')" /><h1>@lang('utge.utge')</h1>
                     </a>
                 </div>
                 <div class="control flex-sb">
@@ -50,7 +49,7 @@
                         </a>
                         <a href="{{ route('locale', 'ru') }}" class="flex lang-ru">
                             <svg class="flag">
-                                <use xlink:href="{{ asset('img/sprite.svg#ru_flag') }}"></use>
+                                <use xlink:href="{{ asset('img/sprite.svg#uk_flag') }}"></use>
                             </svg>
                             <span>РУС</span>
                         </a>
@@ -63,7 +62,7 @@
                         </a>
                         <a href="{{ route('locale', 'ru') }}" class="flex lang-ru selected-lang">
                             <svg class="flag">
-                                <use xlink:href="{{ asset('img/sprite.svg#ru_flag') }}"></use>
+                                <use xlink:href="{{ asset('img/sprite.svg#uk_flag') }}"></use>
                             </svg>
                             <span>РУС</span>
                         </a>

@@ -7,6 +7,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\ProductType;
 use App\Models\Category;
+use App\Models\Services;
 use App\Models\SizePrice;
 use App\Models\SubCategory;
 
@@ -20,6 +21,7 @@ class TrashBoxController extends Controller
     public function index(Product $products)
     {
         $products = Product::onlyTrashed()->paginate(12);
+        $services = Services::onlyTrashed()->paginate(12);
 
 
         $productTypes = ProductType::onlyTrashed();
@@ -31,6 +33,7 @@ class TrashBoxController extends Controller
             'producttypes' => $productTypes,
             'categories' => $categories,
             'subcategories' => $subCategories,
+            'services' => $services,
         ]);
     }
 
@@ -110,6 +113,6 @@ class TrashBoxController extends Controller
         $product->restore();
 
         return back();
-        
+
     }
 }

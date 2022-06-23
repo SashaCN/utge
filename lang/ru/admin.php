@@ -106,6 +106,15 @@ return [
     'services_category' => 'Категории услуг',
     'services' => 'Услуги',
     'services_list' => 'Список услуг',
+    'delete_material_price' => 'Удалить материал/цену',
+    'add_material_price' => 'Добавить материал/цену',
+    'add_units' => 'Единица измирения',
+    'add_material' => 'Материал',
+    'services_sizeprice' => 'Цена/Материал',
+    'services_create' => 'Создать услугу',
+    'service_sizeprice' => 'Материал/цена',
+
+
 
     // auntification
     'name' => 'Имя',
