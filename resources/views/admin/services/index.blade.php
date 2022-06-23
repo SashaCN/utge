@@ -12,8 +12,6 @@
             <img src="{{ asset('img/add.svg') }}" alt="Add">
         </a>
     </div>
-    <div class="list-filter-wrapp">
-        <div class="y">
 
 
         <table class="product-table">
@@ -32,6 +30,22 @@
                 <tr>
                     <td>{{$title->$locale}}</td>
                     <td>
+                        @foreach ($service->servicessizeprice as $sizeprice)
+                            @if ($sizeprice->materials != null)
+                                <p>
+                                    {{ $sizeprice->materials }}
+                                    /
+                                    {{ $sizeprice->price }}грн
+                                </p>
+                            @else
+                                <p>
+                                    {{ $sizeprice->price }}грн
+
+                                </p>
+                            @endif
+                        @endforeach
+                        {{-- {{dd($product->sizeprice)}} --}}
+                    </td>
                     <td class="action">
                         <a href="{{ route('services.edit', $service->id) }}"></a>
                         <a href="{{ route('services.delete', $service->id) }}"></a>
@@ -41,8 +55,8 @@
             </tbody>
         </table>
 
-        </div>
-    </div>
+
+
 
     <div class="pagination">
         {{ $services->withQueryString()->links('vendor.pagination.utge-pagination') }}

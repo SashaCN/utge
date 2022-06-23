@@ -106,6 +106,13 @@
         'services_category' => 'Категорії послуг',
         'services' => 'Послуги',
         'services_list' => 'Список послуг',
+        'delete_material_price' => 'Удалити матеріал/ціну',
+        'add_material_price' => 'Додати матеріал/ціну',
+        'add_units' => 'Одиниця виміру',
+        'add_material' => 'Матеріал',
+        'services_sizeprice' => 'Ціна/Матеріал',
+        'services_create' => 'Створити послугу',
+        'service_sizeprice' => 'Матеріал/ціна',
 
         // auntification
         'name' => 'Ім`я',
