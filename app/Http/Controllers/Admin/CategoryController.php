@@ -56,21 +56,24 @@ class CategoryController extends Controller
         $localization_title->uk = $request->title_uk;
         $localization_title->ru = $request->title_ru;
 
-        $localization_desc = new Localization();
-        $localization_desc->fill($request->validated());
-        $localization_desc->var = 'description';
-        $localization_desc->uk = $request->description_uk;
-        $localization_desc->ru = $request->description_ru;
-
-
+        
+        
         $category = new Category();
         $category->fill($request->validated());
         $category->product_type_id = $request->product_type_id;
         $category->save();
-
+        
         $category->localization()->save($localization_title);
-        $category->localization()->save($localization_desc);
 
+        if (isset($request->cat_description_uk) && isset($request->cat_description_ru)) 
+        {
+            $localization_desc = new Localization();
+            $localization_desc->fill($request->validated());
+            $localization_desc->var = 'description';
+            $localization_desc->uk = $request->cat_description_uk;
+            $localization_desc->ru = $request->cat_description_ru;
+            $category->localization()->save($localization_desc);
+        }
 
         return redirect()->route('category.index');
     }
@@ -121,20 +124,23 @@ class CategoryController extends Controller
             'ru' => $request->title_ru,
         ];
 
-        $localization_desc = [
-            'var' => "description",
-            'uk' => $request->description_uk,
-            'ru' => $request->description_ru
-        ];
-
-
-
+        
         $category->fill($request->validated());
         $category->product_type_id = $request->product_type_id;
-
+        
         $category->update();
+
+        if (isset($request->cat_description_uk) && isset($request->cat_description_ru)) 
+        {
+            $localization_desc = [
+                'var' => "description",
+                'uk' => $request->cat_description_uk,
+                'ru' => $request->cat_description_ru
+            ];
+            
+            $category->localization()->where('var', 'description')->updateOrCreate($localization_desc);
+        }
         $category->localization()->where('var', 'title')->update($localization_title);
-        $category->localization()->where('var', 'description')->update($localization_desc);
 
         return redirect()->route('category.index');
     }

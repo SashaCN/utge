@@ -7,8 +7,7 @@
 
     ?>
         <div class="error">
-        @if ($errors->any())
-
+            @if ($errors->any())
                 @foreach ($errors->all() as $error)
                     @if (strripos($error, '/') == true)
                         <div class="error-item">
@@ -72,8 +71,8 @@
                 <label class="label" for="title_uk" >@lang('admin.add_uk_title')</label>
             </div>
             <div class="input-wrap">
-                <input type="text" id="title_ru" name="title_ru">
-                <label class="label" for="title_ru" value="{{ old('title_ru')}}">@lang('admin.add_ru_title')</label>
+                <input type="text" id="title_ru" name="title_ru" value="{{ old('title_ru')}}">
+                <label class="label" for="title_ru">@lang('admin.add_ru_title')</label>
             </div>
         </div>
         <div class="desc-slide flex-col">
@@ -242,7 +241,7 @@
 
             <div class="flex">
                 <div class="input-wrap mr-seo-input">
-                    <input type="text" class="title_seo_uk" id="title_seo_uk" value="{{ old('title_seo_uk') }}" name="title_seo_uk">
+                    <input type="text" name="title_seo_uk" class="title_seo_uk" id="title_seo_uk" value="{{ old('title_seo_uk') }}">
                     <label class="label" for="title_seo_uk">@lang('admin.add_title_seo_uk')</label>
                 </div>
 
