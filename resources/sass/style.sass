@@ -492,8 +492,10 @@ p.category-item
 .not_available,
 .waiting_available
     .add-to-basket
+        border-color: #999
         background-color: #999
         &:hover
+            border-color: #999
             background-color: #999
 
 
@@ -522,13 +524,6 @@ p.category-item
             width: 29px
             height: 26px
             fill: $primary
-
-.out-of-store
-    .add-to-basket
-        background-color: #555555
-        &:hover
-            background-color: #555555
-
 
 .shadow-box
   box-shadow: $box-shadow
@@ -566,6 +561,7 @@ h3
     font-size: 2rem
     color: $second
     background-color: $primary
+    border: 2px solid $primary
     border-radius: 5px
     transition: $trs
     svg
@@ -574,6 +570,7 @@ h3
         fill: $second
         margin-right: 17px
     &:hover
+        border-color: $primary-hover
         background-color: $primary-hover
 
 .price
@@ -581,7 +578,7 @@ h3
   font-size: 2rem
   color: $primary
   font-weight: 500
-  padding: 6.6px 12px
+  padding: 9px 12px
   width: 31%
   box-sizing: border-box
   text-align: center

@@ -2,7 +2,7 @@
     .add-to-basket
         padding: 8px 25px
     .price
-        padding: 9.5px 10px
+        padding: 9px 10px
 
 @media screen and ( max-width:  1800px)
     .goods-list
@@ -104,7 +104,7 @@
     .grid
         grid-template: 1fr 24px 1fr/1fr 24px 1fr
 
-@media screen and ( max-width:  1000px)
+@media screen and ( max-width: 1000px)
     .grid
         grid-template: 1fr 12px 1fr/1fr 12px 1fr
 
@@ -113,7 +113,21 @@
         & > a
             padding: 0 6px
 
-@media screen and ( max-width:  900px)
+    /* -------------------------------------------------------------------------- */
+    /*                                product page                                */
+    /* -------------------------------------------------------------------------- */
+
+    .active-filter.filter-menu
+        width: 40vw
+        .close-filter-bg
+            left: 40vw
+            width: 60vw
+
+    .product-list
+        & > a
+            width: 50%
+
+@media screen and ( max-width: 900px)
     html
         font-size: 9px
 
@@ -166,7 +180,21 @@
             width: 50%
             padding: 0 15px
 
-@media screen and ( max-width:  700px)
+    .price
+        padding: 10px
+
+@media screen and ( max-width: 800px)
+    /* -------------------------------------------------------------------------- */
+    /*                                product page                                */
+    /* -------------------------------------------------------------------------- */
+
+    .active-filter.filter-menu
+        width: 60vw
+        .close-filter-bg
+            left: 60vw
+            width: 40vw
+
+@media screen and ( max-width: 700px)
     .phone
         svg
             word-wrap: 30px
@@ -195,6 +223,11 @@
             width: 100%
             flex: 0 0 100%
             padding: 0
+
+    .product-list
+        width: 80%
+        &>a
+            width: 100%
 
 @media screen and ( max-width:  550px)
     .info-line
@@ -238,6 +271,23 @@
         justify-content: center
         padding-right: 10%
 
+    /* -------------------------------------------------------------------------- */
+    /*                                product page                                */
+    /* -------------------------------------------------------------------------- */
+
+    .active-filter.filter-menu
+        width: 80vw
+        .close-filter-bg
+            left: 80vw
+            width: 20vw
+
+    .filter-btn
+        button
+            width: 75%
+
+@media screen and ( max-width:  500px)
+    .product-list
+        width: 100%
 
 @media screen and ( max-width:  450px)
     .control
@@ -266,6 +316,16 @@
     .fish svg
         width: 252px
         height: 63px
+
+    /* -------------------------------------------------------------------------- */
+    /*                                product page                                */
+    /* -------------------------------------------------------------------------- */
+
+    .active-filter.filter-menu
+        width: 90vw
+        .close-filter-bg
+            left: 90vw
+            width: 10vw
 
 @media screen and ( max-width:  350px)
     .control

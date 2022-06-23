@@ -69,7 +69,7 @@
                                 <button class="product-plus">+</button>
                             </div>
                             <div class="price-col col">
-                                <p class="basket-price">{{ $min_price }}</p>
+                                <p class="basket-price">{{ $min_price }} {{ $product->sizeprices->where('price', $min_price)->first()->price_units}}</p>
                             </div>
                             <div class="delete-col col">
                                 <a href="#" class="delete-product">
