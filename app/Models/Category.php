@@ -16,6 +16,10 @@ class Category extends Model
     protected $dates = ['deleted_at'];
     protected $fillable = ['product_type_id'];
 
+    public function services()
+    {
+        return $this->hasMany(Services::class);
+    }
     public function product_types()
     {
         return $this->belongsTo(ProductType::class);

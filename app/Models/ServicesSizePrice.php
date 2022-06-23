@@ -18,12 +18,12 @@ class ServicesSizePrice extends Model
 
     public function services()
     {
-        return $this->belongsTo(Services::class);
+        return $this->belongsTo(Services::class, 'service_id');
     }
-    static function getSizePrice()
+    static function getServicesSizePrice()
     {
         DB::table('services')
-            ->leftJoin('services_size_prices', 'services.id', '=', 'services_size_prices.services_id')
+            ->leftJoin('services_size_prices', 'services.id', '=', 'services_size_prices.service_id')
             ->select('services_size_prices.materials', 'services_size_prices.price')
             ->where('services.id')
             ->get();

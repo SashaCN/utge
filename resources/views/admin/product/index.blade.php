@@ -40,6 +40,7 @@
                     {{-- <td>{{dd($product->subcategory->localization[0]->$locale)}}</td> --}}
                     <td>
                         @foreach ($product->sizeprices as $sizeprice)
+
                             @if ($sizeprice->size != null)
                                 <p>
                                     {{ $sizeprice->size }}
