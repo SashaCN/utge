@@ -129,12 +129,14 @@ $locale = app()->getLocale();
 
 
 <<<<<<< HEAD
-        {{-- @if (isset($_REQUEST))
+        <div class="text-wrap shadow-box">
+
+        </div>
+
 =======
         @if (isset($_REQUEST))
->>>>>>> 3599f10a98a78087e86b093a2c00a9d7a8587556
             @dump($_REQUEST)
-        @endif --}}
+        @endif
         @foreach ($_REQUEST as $key => $id)
 
             @if (explode('_', $key)[0] == 'subcategoryid')
@@ -156,6 +158,7 @@ $locale = app()->getLocale();
                 @endforeach
             @endif
         @endforeach
+>>>>>>> 2dded6c77e5b7282b49b5a7ac429d56ee7422856
     </div>
 </div>
 <script src="{{ asset('js/add_to_basket.js') }}"></script>
