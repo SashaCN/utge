@@ -1,4 +1,5 @@
-let add_button = document.querySelectorAll('.add-to-basket')
+let basket_button = document.querySelector('.basket'),
+    add_button = document.querySelectorAll('.add-to-basket')
     basketProduct = [];
 
 if (localStorage.basketProduct !== undefined) {
@@ -19,3 +20,17 @@ add_button.forEach(elem => {
     }
 });
 
+basket_button.onclick = (e) => {
+    e.preventDefault();
+    let products = "";
+    if (basketProduct != []) {
+        for (let i = 0; i < basketProduct.length; i++) {
+            if (i == 0){
+                products = products+basketProduct[i];
+            } else {
+                products = products+","+basketProduct[i];
+            }
+        }
+    }
+    location.href = `basket?products=[${products}]`;
+}
