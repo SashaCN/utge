@@ -21,7 +21,6 @@
     <table class="product-table">
         <thead>
             <tr>
-                <th>@lang('admin.image')</th>
                 <th>@lang('admin.title')</th>
                 <th>@lang('admin.action')</th>
             </tr>
@@ -33,7 +32,6 @@
                 $description = $product->localization[1];
             @endphp
             <tr>
-                <td class="product-image"><img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}"></td>
                 <td>{{$title->$locale}}</td>
 
                 <td class="restore">
@@ -42,6 +40,21 @@
 
             </tr>
             @endforeach
+
+            @foreach ($services as $service)
+            @php
+                $title = $service->localization[0];
+            @endphp
+            <tr>
+                <td>{{$title->$locale}}</td>
+
+                <td class="restore">
+                    <a href="{{ route('trashBox.restore', $service->id) }}"></a>
+                </td>
+
+            </tr>
+            @endforeach
+
         </tbody>
     </table>
 

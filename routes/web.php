@@ -72,7 +72,7 @@ Route::middleware('set_locale')->group(function ()
             Route::get('subCategory/delete/{subCategory}', [\App\Http\Controllers\Admin\SubCategoryController::class, 'delete'])->name('subCategory.delete');
             Route::get('servicesType/delete/{servicesType}', [\App\Http\Controllers\Admin\ServicesTypeController::class, 'delete'])->name('servicesTypes.delete');
             Route::get('servicesCategory/delete/{servicesCategory}', [\App\Http\Controllers\Admin\ServicesCategoryController::class, 'delete'])->name('servicesCategory.delete');
-
+            Route::get('services/delete/{services}', [\App\Http\Controllers\Admin\ServicesController::class, 'delete'])->name('services.delete');
         });
     });
 });
