@@ -135,7 +135,7 @@ $locale = app()->getLocale();
 
             @if (explode('_', $key)[0] == 'subcategoryid')
                 @foreach ($subcategories->where('id', $id) as $subcategory)
-                    @if (isset($subcategory->localization[1]->$locale))
+                    @if (isset($subcategory->localization[1]->$locale) && $subcategory->localization[1]->$locale != 'utge undefined description')
                         <div class="text-wrap shadow-box">
                             <p>{!! $subcategory->localization[1]->$locale !!}</p>    
                         </div>
@@ -144,7 +144,7 @@ $locale = app()->getLocale();
             @endif
             @if (explode('_', $key)[0] == 'categoryid')
                 @foreach ($categories->where('id', $id) as $category)
-                    @if (isset($category->localization[1]->$locale))
+                    @if (isset($category->localization[1]->$locale) && $category->localization[1]->$locale != 'utge undefined description')
                         <div class="text-wrap shadow-box">
                             <p>{!! $category->localization[1]->$locale !!}</p>    
                         </div>
