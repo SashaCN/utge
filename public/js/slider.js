@@ -91,8 +91,23 @@ function addPages ()
 {
     let text = "";
     console.log(window.screen.width);
-    for (let i = 0; i < Math.ceil(slides.length/getSlidesNumber()); i++) {
-        text += `<p class="page-count" data-number="${i}"><span class="page-link"></span></p>`;
+    if (Math.ceil(slides.length/getSlidesNumber()) > 5){
+        if (Number.isInteger(slides.length/5)) {
+            for (let i = 0; i < Math.ceil(slides.length/getSlidesNumber()); i++) {
+                text += `<p class="page-count" data-number="${i}"><span class="page-link"></span></p>`;
+            }
+        } else {
+            for (let i = 0; i < Math.ceil(slides.length/getSlidesNumber()); i++) {
+                text += `<p class="page-count" data-number="${i}"><span class="page-link"></span></p>`;
+            }
+            for (let i = Math.ceil(slides.length/getSlidesNumber()); i < round(Math.ceil(slides.length/getSlidesNumber()), 5); i++) {
+                text += `<p class="hidden-page-count" data-number="${i}"><span class="page-link"></span></p>`;
+            }
+        }
+    } else {
+        for (let i = 0; i < Math.ceil(slides.length/getSlidesNumber()); i++) {
+            text += `<p class="page-count" data-number="${i}"><span class="page-link"></span></p>`;
+        }
     }
     slider_nav.innerHTML = text;
     slider_nav_links = slider_nav.querySelectorAll('.page-count');
@@ -114,7 +129,6 @@ function blockClick ()
 function changeActivBtn ()
 {
     let active_nav = document.querySelector('.page-count.active');
-    console.log(active_slide)
     document.querySelector('.page-count.active').classList.remove('active');
     slider_nav_links[active_slide].classList.add('active');
 }
@@ -157,6 +171,9 @@ function slideLeft ()
     if (!blockClick()) {
         return false;
     }
+
+    navSlideLeft();
+
     if (slider.scrollLeft > 0) {
         active_slide--;
     }
@@ -165,8 +182,21 @@ function slideLeft ()
     slider.scroll(slider.scrollLeft-slider.getBoundingClientRect().width, 0);
 }
 
-function navSlideRight (){
-    if (slider_nav_links.length > 5 && active_slide == 4){
+function navSlideRight ()
+{
+    if (slider_nav_links.length > round(active_slide, 5) && active_slide == round(active_slide, 5)-1){
         slider_nav.scroll(slider_nav.scrollLeft + slider_nav.getBoundingClientRect().width, 0);
     }
+}
+
+function navSlideLeft ()
+{
+    if (active_slide != 0 && active_slide == round(active_slide, 5)){
+        slider_nav.scroll(slider_nav.scrollLeft - slider_nav.getBoundingClientRect().width, 0);
+    }
+}
+
+function round(x, roundTo)
+{
+    return Math.ceil(x/roundTo)*roundTo;
 }
