@@ -632,8 +632,11 @@ h2 {
 }
 
 .product-row {
-  padding-bottom: 20px;
+  padding: 20px 0;
   border-bottom: 2px solid #003b95;
+}
+.product-row:nth-child(2) {
+  padding-top: 0;
 }
 
 .img-col {
@@ -1180,6 +1183,11 @@ h3 {
     width: 100%;
   }
 
+  .close-filter-bg {
+    left: 100vw;
+    transition: all 0.5s ease;
+  }
+
   .active-filter.filter-menu {
     left: 0;
   }
@@ -1188,8 +1196,16 @@ h3 {
     z-index: 1;
     top: 0;
     left: 30vw;
-    width: 70vw;
+    width: 100vw;
     height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4352941176);
+  }
+  .active-filter.filter-menu form {
+    max-height: calc(100vh - 60px);
+    overflow-y: scroll;
+  }
+  .active-filter.filter-menu form::-webkit-scrollbar {
+    width: 0;
   }
 
   .product-list {

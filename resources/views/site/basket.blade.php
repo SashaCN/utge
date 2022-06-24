@@ -17,6 +17,10 @@
 
 @section('content')
 
+@php
+    $productsId = explode(',', trim($_GET['products'], '[]'));
+@endphp
+
 <h2>@lang('utge.basket')</h2>
 <div class="wrapper">
 
@@ -34,35 +38,53 @@
             </div>
             <div class="delete-col col"></div>
         </div>
-        <div class="basket-products">
-            <p class="basket-clear">&nbsp;</p>
-        </div>
-            {{-- <div class="basket-row product-row">
-                <div class="img-col col">
-                    <img src="img/default_image.jpg" alt="alt">
-                </div>
-                <div class="name-col col">
-                    <h3>IКРА ЧОРНА, ОСЕТРОВА, СОЛОНА, 50 ГРАМ</h3>
-                </div>
-                <div class="count-col col">
-                    <button class="product-minus">-</button>
-                    <label>
-                        <input type="number" name="product-quantify" class="product-quantify" value="1">
-                    </label>
-                    <button class="product-plus">+</button>
-                </div>
-                <div class="price-col col">
-                    <p class="basket-price">1500 грн</p>
-                </div>
-                <div class="delete-col col">
-                    <a href="#" class="delete-product">
-                        <svg>
-                            <use xlink:href="{{ asset('img/sprite.svg#trashbox') }}"></use>
-                        </svg>
-                    </a>
-                </div>
-            </div> --}}
-        <div class="basket-row title-row general-row">
+        @if (empty($productsId))
+            <div class="basket-products">
+                <p class="basket-clear">&nbsp;</p>
+            </div>
+        @else
+
+            @foreach ($productsId as $id)
+                @foreach ($products as $product)
+                    @if ($product->id == $id)
+                        @php
+                            $title = $product->localization[0];
+                            $description = $product->localization[1];
+
+                            $min_price = $product->sizeprices->whereIn('available', [1,4])->min('price');
+                        @endphp
+
+                        <div class="basket-row product-row">
+                            <div class="img-col col">
+                                <img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
+                            </div>
+                            <div class="name-col col">
+                                <h3>{{ $title->$locale }}</h3>
+                            </div>
+                            <div class="count-col col">
+                                <button class="product-minus">-</button>
+                                <label>
+                                    <input type="number" name="product-quantify" class="product-quantify" value="1">
+                                </label>
+                                <button class="product-plus">+</button>
+                            </div>
+                            <div class="price-col col">
+                                <p class="basket-price">{{ $min_price }}</p>
+                            </div>
+                            <div class="delete-col col">
+                                <a href="#" class="delete-product">
+                                    <svg>
+                                        <use xlink:href="{{ asset('img/sprite.svg#trashbox') }}"></use>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+
+                    @endif
+                @endforeach
+            @endforeach
+        @endif
+            <div class="basket-row title-row general-row">
             <div class="img-col col"></div>
             <div class="name-col col">
                 <h4>@lang('utge.general')</h4>
