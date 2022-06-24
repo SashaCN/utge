@@ -139,7 +139,7 @@ function slideRight ()
         return false;
     }
 
-    // navSlideRight();
+    navSlideRight();
 
     if (slider.scrollWidth - slider.scrollLeft > slider.getBoundingClientRect().width) {
         active_slide++;
@@ -165,8 +165,8 @@ function slideLeft ()
     slider.scroll(slider.scrollLeft-slider.getBoundingClientRect().width, 0);
 }
 
-// function navSlideRight (){
-//     if (slider_nav_links.length > 5 && active_slide == 4){
-//         slider_nav.scroll(slider_nav.scrollLeft + slider_nav.getBoundingClientRect().width, 0);
-//     }
-// }
+function navSlideRight (){
+    if (slider_nav_links.length > 5 && active_slide == 4){
+        slider_nav.scroll(slider_nav.scrollLeft + slider_nav.getBoundingClientRect().width, 0);
+    }
+}
