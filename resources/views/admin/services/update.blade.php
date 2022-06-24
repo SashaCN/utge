@@ -18,7 +18,7 @@ $locale = app()->getLocale();
                         <p class="error-desc">
                             @switch(explode('/', $error)[0])
                                 @case('size')
-                                    @lang('admin.error-size')
+                                    @lang('admin.error-materials')
                                     @break
 
                                 @case('price')
@@ -26,12 +26,9 @@ $locale = app()->getLocale();
                                     @break
 
                                 @case('price units')
-                                    @lang('admin.error-price_units')
+                                    @lang('admin.error-units')
                                     @break
 
-                                @case('available')
-                                    @lang('admin.error-available')
-                                    @break
 
                                 @default
 
@@ -117,6 +114,7 @@ $locale = app()->getLocale();
         </div>
 
         <input type="hidden" name="counter" value="{{ $counter }}">
+
         <div class="size-price-bt-wrapp">
             <button id="delete-size-price" class="size-price-bt-min"><span class="btn-w-sp"><img src="{{ asset('img/minus-label.svg') }}" ><span>@lang('admin.delete_size_price')</span></span></button>
             <button id="add-size-price" class="size-price-bt-pl"><span class="btn-w-sp"><span>@lang('admin.add_size_price')</span><img src="{{ asset('img/plus-label.svg') }}" ></span></button>

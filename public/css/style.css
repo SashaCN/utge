@@ -130,7 +130,7 @@ a.selected-lang {
 /*                                info line                                */
 /* -------------------------------------------------------------------------- */
 .info-line > div {
-  width: 20%;
+  width: 21%;
 }
 
 .info-line {
@@ -167,8 +167,8 @@ a.selected-lang {
   margin-bottom: 9px;
 }
 .logo h1 {
-  font-size: 2rem;
-  font-weight: 500;
+  font-size: 2.4rem;
+  font-weight: 800;
   text-transform: uppercase;
   color: #003b95;
 }
@@ -1097,6 +1097,10 @@ h3 {
   }
 }
 @media screen and (max-width: 1800px) {
+  .info-line > div {
+    width: 23%;
+  }
+
   .goods-list {
     margin: 0 -10px 25px;
   }
@@ -1115,11 +1119,19 @@ h3 {
   }
 }
 @media screen and (max-width: 1700px) {
+  .info-line > div {
+    width: 23%;
+  }
+
   .add-to-basket {
     padding: 8px 15px;
   }
 }
 @media screen and (max-width: 1600px) {
+  .info-line > div {
+    width: 22%;
+  }
+
   .wrapper {
     width: 90%;
   }
@@ -1137,7 +1149,16 @@ h3 {
     padding: 0 10px;
   }
 }
+@media screen and (max-width: 1370px) {
+  .info-line > div {
+    width: 26%;
+  }
+}
 @media screen and (max-width: 1350px) {
+  .info-line > div {
+    width: 26%;
+  }
+
   .product-page {
     justify-content: center;
   }
@@ -1192,6 +1213,11 @@ h3 {
   }
 }
 @media screen and (max-width: 1300px) {
+  .info-line > div {
+    width: 25%;
+    text-align: center;
+  }
+
   h2 {
     font-size: 2rem;
   }
@@ -1208,6 +1234,7 @@ h3 {
 @media screen and (max-width: 1200px) {
   .info-line > div {
     width: 30%;
+    text-align: center;
   }
 
   .grid {

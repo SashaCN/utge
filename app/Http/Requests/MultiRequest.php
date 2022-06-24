@@ -179,7 +179,7 @@ class MultiRequest extends FormRequest
             $request['custom_seo_ru'] = 'required';
         }
 
-        
+
 
         return $request;
     }
