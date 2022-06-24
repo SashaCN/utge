@@ -94,7 +94,7 @@ $title = $subCategory->localization[0];
                   <a class='btn' id="converToCode1" data-role='switchEditor' href='#' title='Перейти в редактор коду'>&lt;code&gt;</a>
                 </div>
               </div>
-              <div id='editor1' style='' contenteditable>@if (isset($subCategory->localization[1])) {!! $description->uk !!}@endif</div>
+              <div id='editor1' style='' contenteditable>@if (isset($subCategory->localization[1]) && $description->uk != 'utge undefined description') {!! $description->uk !!}@endif</div>
               <textarea id="desc_uk" name="sub_description_uk"></textarea>
               <label class="label" for="desc_uk">@lang('admin.add_uk_desc')</label>
             </div>
@@ -139,7 +139,7 @@ $title = $subCategory->localization[0];
                   <a class='btn' id="converToCode2" data-role='switchEditor' href='#' title='Перейти в редактор коду'>&lt;code&gt;</a>
                 </div>
               </div>
-              <div id='editor2' style='' contenteditable>@if (isset($subCategory->localization[1])) {!! $description->ru !!}@endif</div>
+              <div id='editor2' style='' contenteditable>@if (isset($subCategory->localization[1]) && $description->ru != 'utge undefined description') {!! $description->ru !!}@endif</div>
               <textarea id="desc_ru" name="sub_description_ru"></textarea>
               <label class="label" for="desc_ru">@lang('admin.add_ru_desc')</label>
             </div>

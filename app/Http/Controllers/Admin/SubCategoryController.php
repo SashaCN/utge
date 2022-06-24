@@ -55,14 +55,37 @@ class SubCategoryController extends Controller
         $subCategory->fill($request->validated());
         $subCategory->category_id = $request->category_id;
         $subCategory->save();
-
-        if (isset($request->sub_description_uk) && isset($request->sub_description_ru))
+        
+        if (isset($request->sub_description_uk) || isset($request->sub_description_ru)) 
         {
             $localization_desc = new Localization();
             $localization_desc->fill($request->validated());
             $localization_desc->var = 'description';
-            $localization_desc->uk = $request->sub_description_uk;
-            $localization_desc->ru = $request->sub_description_ru;
+
+            if ($request->sub_description_uk != null && $request->sub_description_ru != null) 
+            {
+                $localization_desc->uk = $request->sub_description_uk;
+                $localization_desc->ru = $request->sub_description_ru;
+            }
+
+            if ($request->sub_description_uk != null && $request->sub_description_ru == null) 
+            {
+                $localization_desc->uk = $request->sub_description_uk;
+                $localization_desc->ru = 'utge undefined description';
+            }
+            
+            if ($request->sub_description_uk == null && $request->sub_description_ru != null) 
+            {
+                $localization_desc->uk = 'utge undefined description';
+                $localization_desc->ru = $request->sub_description_ru;
+            }
+
+            if ($request->sub_description_uk == null && $request->sub_description_ru == null) 
+            {
+                $localization_desc->uk = 'utge undefined description';
+                $localization_desc->ru = 'utge undefined description';
+            }
+
             $subCategory->localization()->save($localization_desc);
         }
 
@@ -120,15 +143,38 @@ class SubCategoryController extends Controller
 
 
         $subCategory->update($request->validated());
-
-        if (isset($request->sub_description_uk) && isset($request->sub_description_ru))
+        
+        if (isset($request->sub_description_uk) || isset($request->sub_description_ru)) 
         {
             $localization_desc = [
                 'var' => "description",
-                'uk' => $request->sub_description_uk,
-                'ru' => $request->sub_description_ru
             ];
-            $subCategory->localization()->where('var', 'description')->updateOrCreate($localization_desc);
+
+            if ($request->sub_description_uk != null && $request->sub_description_ru != null) 
+            {
+                $localization_desc['uk'] = $request->sub_description_uk;
+                $localization_desc['ru'] = $request->sub_description_ru;
+            }
+
+            if ($request->sub_description_uk != null && $request->sub_description_ru == null) 
+            {
+                $localization_desc['uk'] = $request->sub_description_uk;
+                $localization_desc['ru'] = 'utge undefined description';
+            }
+            
+            if ($request->sub_description_uk == null && $request->sub_description_ru != null) 
+            {
+                $localization_desc['uk'] = 'utge undefined description';
+                $localization_desc['ru'] = $request->sub_description_ru;
+            }
+
+            if ($request->sub_description_uk == null && $request->sub_description_ru == null) 
+            {
+                $localization_desc['uk'] = 'utge undefined description';
+                $localization_desc['ru'] = 'utge undefined description';
+            }
+
+            $subCategory->localization()->where('var', 'description')->update($localization_desc);
         }
         $subCategory->localization()->where('var', 'title')->update($localization_title);
 

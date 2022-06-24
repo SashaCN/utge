@@ -114,7 +114,7 @@ class ServicesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Services $service)
+    public function update(MultiRequest $request, Services $service)
     {
         $localization_title = [
             'var' => 'title',
