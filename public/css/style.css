@@ -136,6 +136,9 @@ a.selected-lang {
 .info-line {
   padding: 20px 0;
 }
+.info-line .logo {
+  width: 25%;
+}
 
 .phone svg {
   width: 42px;
@@ -1151,6 +1154,9 @@ h3 {
   .info-line > div {
     width: 26%;
   }
+  .info-line .logo {
+    width: 30%;
+  }
 }
 @media screen and (max-width: 1350px) {
   .info-line > div {
@@ -1234,12 +1240,19 @@ h3 {
     width: 30%;
     text-align: center;
   }
+  .info-line .logo {
+    width: 35%;
+  }
 
   .grid {
     grid-template: 1fr 24px 1fr/1fr 24px 1fr;
   }
 }
 @media screen and (max-width: 1000px) {
+  .info-line .logo {
+    width: 40%;
+  }
+
   .grid {
     grid-template: 1fr 12px 1fr/1fr 12px 1fr;
   }
