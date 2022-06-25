@@ -63,9 +63,7 @@
   height: 100%;
 }
 
-.page-link-a-previous::before,
 .page-link-previous::before,
-.page-link-a-next::before,
 .page-link-next::before {
   content: "";
   position: absolute;
