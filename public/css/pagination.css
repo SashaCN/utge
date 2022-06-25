@@ -16,7 +16,8 @@
   flex: 0 0 20px;
 }
 
-.page-count {
+.page-count,
+.hidden-page-count {
   background-color: white;
   border: 1px solid #003b95;
   display: block;
@@ -24,6 +25,10 @@
   height: 20px;
   border-radius: 100px;
   margin: 8px;
+}
+
+.hidden-page-count {
+  visibility: hidden;
 }
 
 .page-link-previous {
@@ -58,9 +63,7 @@
   height: 100%;
 }
 
-.page-link-a-previous::before,
 .page-link-previous::before,
-.page-link-a-next::before,
 .page-link-next::before {
   content: "";
   position: absolute;
