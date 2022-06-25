@@ -90,7 +90,6 @@ addPages();
 function addPages ()
 {
     let text = "";
-    console.log(window.screen.width);
     if (Math.ceil(slides.length/getSlidesNumber()) > 5){
         if (Number.isInteger(slides.length/5)) {
             for (let i = 0; i < Math.ceil(slides.length/getSlidesNumber()); i++) {
@@ -128,7 +127,7 @@ function blockClick ()
 
 function changeActivBtn ()
 {
-    let active_nav = document.querySelector('.page-count.active');
+    console.log(slider_nav_links.length-1);
     document.querySelector('.page-count.active').classList.remove('active');
     slider_nav_links[active_slide].classList.add('active');
 }
@@ -149,13 +148,13 @@ slide_right_btn.onclick = slideRight;
 
 function slideRight ()
 {
-    if (!blockClick()) {
+    if (!blockClick()) {            //timeout for animation
         return false;
     }
 
     navSlideRight();
 
-    if (slider.scrollWidth - slider.scrollLeft > slider.getBoundingClientRect().width) {
+    if (active_slide < slider_nav_links.length-1) {
         active_slide++;
     }
     changeActivBtn();
@@ -168,13 +167,13 @@ slide_left_btn.onclick = slideLeft;
 
 function slideLeft ()
 {
-    if (!blockClick()) {
+    if (!blockClick()) {            //timeout for animation
         return false;
     }
 
     navSlideLeft();
 
-    if (slider.scrollLeft > 0) {
+    if (active_slide > 0) {
         active_slide--;
     }
     changeActivBtn();
