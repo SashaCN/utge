@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\ChildPage;
 use App\Models\Seo;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -25,17 +26,10 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // $seo = Seo::all();
 
-        View::composer('admin.admin', function($view){
-            $view->with('seo',  'sasha');
+        View::composer('site.index', function($view){
+            $view->with('phones',  ChildPage::all()->where('route', 'phone'));
         });
 
-
-        View::composer('site.news', function($view){
-
-        });
-
-        return view('admin.seo.index');
     }
 }
