@@ -32,7 +32,7 @@ Route::get('locale/{locale}', [\App\Http\Controllers\Admin\AdminController::clas
 
 Route::middleware('set_locale')->group(function()
 {
-    Route::get('/', [\App\Http\Controllers\SiteController::class, 'index','test'])->name('index');
+    Route::get('/', [\App\Http\Controllers\SiteController::class, 'index','headerFooter'])->name('index');
     Route::get('/products', [\App\Http\Controllers\ProductController::class, 'index'])->name('products');
     Route::get('/product/{id}', [\App\Http\Controllers\ProductController::class, 'show'])->name('product');
     Route::get('/basket', [\App\Http\Controllers\SiteController::class, 'basket'])->name('basket');
@@ -63,6 +63,7 @@ Route::middleware('set_locale')->group(function ()
             Route::resource('services', \App\Http\Controllers\Admin\ServicesController::class);
             Route::get('newsCategory/delete/{newsCategory}', [\App\Http\Controllers\Admin\NewsCategoryController::class, 'delete'])->name('newsCategory.delete');
             Route::get('trashBox/{prouct}/restore/', [\App\Http\Controllers\Admin\TrashBoxController::class, 'restore'])->name('trashBox.restore');
+            Route::get('trashBox/{prouct}/productForceDelete/', [\App\Http\Controllers\Admin\TrashBoxController::class, 'productForceDelete'])->name('trashBox.productForceDelete');
             Route::post('news/mediaUpdate/{news}', [\App\Http\Controllers\Admin\NewsController::class, 'mediaUpdate'])->name('news.mediaUpdate');
             Route::post('childPage/mediaUpdate/{childPage}', [\App\Http\Controllers\Admin\ChildPageController::class, 'mediaUpdate'])->name('childPage.mediaUpdate');
             Route::post('product/mediaUpdate/{product}', [\App\Http\Controllers\Admin\ProductController::class, 'mediaUpdate'])->name('product.mediaUpdate');

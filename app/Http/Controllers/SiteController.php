@@ -33,6 +33,15 @@ class SiteController extends Controller
         ]);     
     }
 
+    public function headerFooter()
+    {
+        $phones = ChildPage::all()->where('route', 'phone');
+        dd($phones);
+        return view('site.index', [
+            'phones' => $phones,
+        ]);
+    }
+
     public function basket (){
         $products = Product::all();
         $phones = ChildPage::all()->where('route', 'phone');

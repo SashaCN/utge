@@ -115,4 +115,15 @@ class TrashBoxController extends Controller
         return back();
 
     }
+
+    public function productForceDelete(Product $product, SizePrice $sizePrice, $id)
+    {
+        $product = Product::onlyTrashed()->findOrFail($id);
+        $sizePrice = SizePrice::onlyTrashed()->where('product_id', $id);
+
+        $sizePrice->forceDelete();
+        $product->forceDelete();
+
+        return back();
+    }
 }
