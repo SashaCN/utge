@@ -127,7 +127,6 @@ $locale = app()->getLocale();
             {{ $products->withQueryString()->links('vendor.pagination.utge-pagination') }}
         </div>
 
-
         @foreach ($_REQUEST as $key => $id)
 
             @if (explode('_', $key)[0] == 'subcategoryid')
