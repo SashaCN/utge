@@ -21,7 +21,15 @@
                     <svg>
                         <use xlink:href="{{ asset('img/sprite.svg#tel') }}"></use>
                     </svg>
-                    @yield('phone-list')
+                    {{-- <ul class="phone-list">
+                        @foreach ($phones as $item)
+                            @php
+                                $phone = $item->localization[0];
+                                $phoneHref = preg_replace( "/[^0-9]/" , '' , $phone->$locale );
+                            @endphp
+                        <li><a href="tel:+{{ $phoneHref }}">{{ $phone->$locale }}</a></li>
+                        @endforeach
+                    </ul> --}}
                 </div>
                 <div class="logo">
                     <a class="flex-col" href="{{ route('index') }}">

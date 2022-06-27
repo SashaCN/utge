@@ -32,7 +32,8 @@ Route::get('locale/{locale}', [\App\Http\Controllers\Admin\AdminController::clas
 
 Route::middleware('set_locale')->group(function()
 {
-    Route::get('/', [\App\Http\Controllers\SiteController::class, 'index'])->name('index');
+    Route::get('/', [\App\Http\Controllers\SiteController::class, 'index','headerFooter'])->name('index');
+    // Route::get('s', [\App\Http\Controllers\SiteController::class, 'headerFooter'])->name('headerFooter');
     Route::get('/products', [\App\Http\Controllers\ProductController::class, 'index'])->name('products');
     Route::get('/product/{id}', [\App\Http\Controllers\ProductController::class, 'show'])->name('product');
     Route::get('/basket', [\App\Http\Controllers\SiteController::class, 'basket'])->name('basket');
