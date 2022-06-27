@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\News;
 use App\Models\Product;
 use App\Models\SizePrice;
+use App\Models\ChildPage;
 
 class SiteController extends Controller
 {
@@ -14,10 +15,10 @@ class SiteController extends Controller
     {
         $products  = Product::all()->where('home_view', '1');
         $about_us = ChildPage::all()->where('route', 'about_us');
-        
+
         return view('site.firstPage', [
             'products' => $products,
-            'about_us' => $about_us,
+            'about_us' => $about_us
         ]);
     }
 

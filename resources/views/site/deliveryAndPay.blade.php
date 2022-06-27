@@ -1,6 +1,6 @@
 @extends('site.index')
 
-@section('phone-list')
+{{-- @section('phone-list')
     @php
         $locale = app()->getLocale();
     @endphp
@@ -14,7 +14,7 @@
         <li><a href="tel:+{{ $phoneHref }}">{{ $phone->$locale }}</a></li>
         @endforeach
     </ul>
-@endsection
+@endsection --}}
 
 @section('content')
 
