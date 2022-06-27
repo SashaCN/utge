@@ -36,6 +36,7 @@
 
                 <td class="restore">
                     <a href="{{ route('trashBox.restore', $product->id) }}"></a>
+                    <a href="{{ route('trashBox.productForceDelete', $product->id) }}"></a>
                 </td>
 
             </tr>
