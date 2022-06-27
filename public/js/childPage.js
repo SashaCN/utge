@@ -2,10 +2,12 @@
 
     document.querySelector('#child-page-select').addEventListener('mouseenter', e => {
         document.querySelector('#child-page-first-option').disabled = true;
+        document.querySelector('#child-page-first-option').style.visibility = 'hidden';
     });
 
     document.querySelector('#child-page-select').addEventListener('mouseleave', e => {
         document.querySelector('#child-page-first-option').disabled = false;
+        document.querySelector('#child-page-first-option').style.visibility = 'visible';
     });
 
 // photo and desckription show

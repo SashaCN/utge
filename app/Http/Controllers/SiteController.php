@@ -10,17 +10,27 @@ use App\Models\SizePrice;
 
 class SiteController extends Controller
 {
+    
     public function index()
     {
         $products  = Product::all()->where('home_view', '1');
         $about_us = ChildPage::all()->where('route', 'about_us');
-        $phones = ChildPage::all()->where('route', 'phone');
-
+        // $phones = ChildPage::all()->where('route', 'phone');
+        
         return view('site.firstPage', [
             'products' => $products,
             'about_us' => $about_us,
-            'phones' => $phones,
+            // 'phones' => $phones,
         ]);
+    }
+    
+    public function test()
+    {
+        $phones = ChildPage::all()->where('route', 'phone');
+    
+        return view('site.index', [
+            'phones' => $phones,
+        ]);     
     }
 
     public function basket (){

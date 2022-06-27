@@ -46,44 +46,46 @@ class ChildPageController extends Controller
         $childPage->save();
 
         
-        
-        if($request->route != 'phone' && $request->route != 'email') 
+        if ($request->route != 'logo-img')
         {
-            $localization_title = new Localization();
-            $localization_title->fill($request->validated());
-            $localization_title->var = 'title';
-            $localization_title->uk = $request->title_uk;
-            $localization_title->ru = $request->title_ru;
+            if($request->route != 'phone' && $request->route != 'email') 
+            {
+                $localization_title = new Localization();
+                $localization_title->fill($request->validated());
+                $localization_title->var = 'title';
+                $localization_title->uk = $request->title_uk;
+                $localization_title->ru = $request->title_ru;
+        
+                $childPage->localization()->save($localization_title);
     
-            $childPage->localization()->save($localization_title);
-
-            if ($request->route != 'logo-name' &&  $request->route != 'footer-place') {
-                $localization_desc = new Localization();
-                $localization_desc->fill($request->validated());
-                $localization_desc->var = 'description';
-                $localization_desc->uk = $request->description_uk;
-                $localization_desc->ru = $request->description_ru;
-                
-                $childPage->localization()->save($localization_desc);
-            }
-        } else {
-
-            $localization_title = new Localization();
-            $localization_title->fill($request->validated());
-            $localization_title->var = 'title';
-
-            if (isset($request->phone)) {
-                $localization_title->uk = $request->phone;
-                $localization_title->ru = $request->phone;
-            }
-
-            if (isset($request->email)) {
-                $localization_title->uk = $request->email;
-                $localization_title->ru = $request->email;
-            }
+                if ($request->route != 'logo-name' &&  $request->route != 'footer-place') {
+                    $localization_desc = new Localization();
+                    $localization_desc->fill($request->validated());
+                    $localization_desc->var = 'description';
+                    $localization_desc->uk = $request->description_uk;
+                    $localization_desc->ru = $request->description_ru;
+                    
+                    $childPage->localization()->save($localization_desc);
+                }
+            } else {
     
-            $childPage->localization()->save($localization_title);
-        }       
+                $localization_title = new Localization();
+                $localization_title->fill($request->validated());
+                $localization_title->var = 'title';
+    
+                if (isset($request->phone)) {
+                    $localization_title->uk = $request->phone;
+                    $localization_title->ru = $request->phone;
+                }
+    
+                if (isset($request->email)) {
+                    $localization_title->uk = $request->email;
+                    $localization_title->ru = $request->email;
+                }
+        
+                $childPage->localization()->save($localization_title);
+            }       
+        }
         
         
 

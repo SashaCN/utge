@@ -24,9 +24,9 @@
     <div style="padding: 10px 0"><hr></div>
 
     <h3>header</h3>
-    <div>
+    <div class="header-modulus">
         <div>
-            <p>telephone</p>
+            <p>@lang('admin.phone')</p>
             <table class="product-table">
                 <thead>
                     <tr>
@@ -62,7 +62,7 @@
             </table>
         </div>
         <div>
-            <p>logo photo</p>
+            <p>@lang('admin.logo-img')</p>
         <table class="product-table">
             <thead>
                 <tr>
@@ -73,13 +73,9 @@
             <tbody>
                 @foreach ($childPages as $childPage)
                     @if ($childPage->route == 'logo-img')
-                        @php
-                                $title = $childPage->localization[0];
-                        @endphp
                         
                         <tr>
-                            <td>{{ $title->$locale }}</td>
-    
+                            <td><img src="{{ $childPage->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}"></td>
                             <td>    
                                 <a href="{{ route('index') }}">show</a>
     
@@ -98,7 +94,7 @@
         </table>
         </div>
         <div>
-            <p>logo name</p>
+            <p>@lang('admin.logo-name')</p>
             <table class="product-table">
                 <thead>
                     <tr>
@@ -138,9 +134,9 @@
     <div style="padding: 10px 0"><hr></div>
 
     <h3>footer</h3>
-    <div>
+    <div class="footer-modulus">
         <div>
-            <p>telephone</p>
+            <p>@lang('admin.phone')</p>
             <table class="product-table">
                 <thead>
                     <tr>
@@ -176,7 +172,7 @@
             </table>
         </div>
         <div>
-            <p>adres</p>
+            <p>@lang('admin.footer-place')</p>
         <table class="product-table">
             <thead>
                 <tr>
@@ -212,7 +208,7 @@
         </table>
         </div>
         <div>
-            <p>email</p>
+            <p>@lang('admin.email')</p>
             <table class="product-table">
                 <thead>
                     <tr>

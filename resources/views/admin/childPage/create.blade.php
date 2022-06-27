@@ -27,24 +27,24 @@
       @csrf
 
     <div class="another-slide flex-col current-slide">
-      <div class="input-wrap pt0">
-        <select name="route" id="child-page-select" class="auto-value">
-          <option value="" id="child-page-first-option" selected>@lang('admin.child_page_father')</option>
-          <option disabled style="background: grey; color: white;">------контент в хедері------</option>
-          <option value="phone">@lang('admin.phone')</option>
-          <option value="logo-img">@lang('admin.logo-img')</option>
-          <option value="logo-name">@lang('admin.logo-name')</option>
-          <option disabled style="background: grey; color: white;">------контент в футері>------</option>
-          <option value="phone">@lang('admin.phone')</option>
-          <option value="footer-place">@lang('admin.footer-place')</option>
-          <option value="email">@lang('admin.email')</option>
-          <option disabled style="background: grey; color: white;">------контент на додаткових сторінках>------</option>
-          <option value="about_us">@lang('utge.about-us') Видалити на фінальній версії</option>
-          <option value="delivery">@lang('utge.delivery')</option>
-          <option value="payment">@lang('utge.payment')</option>
-          <option value="contacts">@lang('utge.contacts')</option>
-        </select>
-      </div>
+        <div class="input-wrap pt0">
+            <select name="route" id="child-page-select" class="auto-value">
+                <option value="" id="child-page-first-option" selected>@lang('admin.child_page_father')</option>
+                <option disabled style="background: grey; color: white;">------контент в хедері------</option>
+                <option value="phone">@lang('admin.phone')</option>
+                <option value="logo-img">@lang('admin.logo-img')</option>
+                <option value="logo-name">@lang('admin.logo-name')</option>
+                <option disabled style="background: grey; color: white;">------контент в футері------</option>
+                <option value="phone">@lang('admin.phone')</option>
+                <option value="footer-place">@lang('admin.footer-place')</option>
+                <option value="email">@lang('admin.email')</option>
+                <option disabled style="background: grey; color: white;">------контент на додаткових сторінках------</option>
+                <option value="about_us">@lang('utge.about-us') Видалити на фінальній версії</option>
+                <option value="delivery">@lang('utge.delivery')</option>
+                <option value="payment">@lang('utge.payment')</option>
+                <option value="contacts">@lang('utge.contacts')</option>
+            </select>
+        </div>
       <div class="input-wrap phone-box">
         <input type="text" name="phone" class="phone-input" id="phone">
         <label class="label" for="phone">@lang('admin.add_phone')</label>
