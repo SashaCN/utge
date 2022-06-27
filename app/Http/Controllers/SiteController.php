@@ -15,32 +15,13 @@ class SiteController extends Controller
     {
         $products  = Product::all()->where('home_view', '1');
         $about_us = ChildPage::all()->where('route', 'about_us');
-        // $phones = ChildPage::all()->where('route', 'phone');
         
         return view('site.firstPage', [
             'products' => $products,
             'about_us' => $about_us,
-            // 'phones' => $phones,
         ]);
-    }
-    
-    public function test()
-    {
-        $phones = ChildPage::all()->where('route', 'phone');
-    
-        return view('site.index', [
-            'phones' => $phones,
-        ]);     
     }
 
-    public function headerFooter()
-    {
-        $phones = ChildPage::all()->where('route', 'phone');
-        dd($phones);
-        return view('site.index', [
-            'phones' => $phones,
-        ]);
-    }
 
     public function basket (){
         $products = Product::all();
@@ -55,7 +36,6 @@ class SiteController extends Controller
     public function showContacts()
     {
         $contacts = ChildPage::all()->where('route', 'contacts');
-        $phones = ChildPage::all()->where('route', 'phone');
 
         return view('site.contacts', [
             'contacts' => $contacts,
@@ -70,7 +50,6 @@ class SiteController extends Controller
         $deliveries = ChildPage::all()->where('route', 'delivery');
         $payments = ChildPage::all()->where('route', 'payment');
         $contacts = ChildPage::all()->where('route', 'contacts');
-        $phones = ChildPage::all()->where('route', 'phone');
 
         return view('site.deliveryAndPay', [
             'deliveries' => $deliveries,

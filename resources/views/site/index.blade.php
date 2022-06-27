@@ -112,7 +112,15 @@
                     <svg>
                         <use xlink:href="{{ asset('img/sprite.svg#tel') }}"></use>
                     </svg>
-                    {{-- @yield('phone-list') --}}
+                    <ul class="phone-list">
+                        @foreach ($phones as $item)
+                            @php
+                                $phone = $item->localization[0];
+                                $phoneHref = preg_replace( "/[^0-9]/" , '' , $phone->$locale );
+                            @endphp
+                            <li><a href="tel:+{{ $phoneHref }}">{{ $phone->$locale }}</a></li>
+                        @endforeach
+                    </ul>
                 </div>
                 <div class="address flex-aic">
                     <svg>
@@ -126,6 +134,13 @@
                     <svg>
                         <use xlink:href="{{ asset('img/sprite.svg#email') }}"></use>
                     </svg>
+                    @foreach ($phones as $item)
+                            @php
+                                $email = $item->localization[0];
+                                $phoneHref = preg_replace( "/[^0-9]/" , '' , $phone->$locale );
+                            @endphp
+                            <a href="tel:+{{ $phoneHref }}">{{ $phone->$locale }}</a>
+                        @endforeach
                     <a href="mailto:info@utge.net">info@utge.net</a>
                 </div>
             </div>
