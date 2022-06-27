@@ -1088,6 +1088,50 @@ h3 {
   padding-bottom: 0;
 }
 
+/* -------------------------------------------------------------------------- */
+/*                                product page                                */
+/* -------------------------------------------------------------------------- */
+.current-product {
+  align-items: flex-start;
+}
+.current-product.available .status {
+  background-color: #6A994E;
+}
+.current-product .status {
+  border-radius: 5px 5px 0 0;
+}
+.current-product .img-wrap {
+  padding: 20px;
+}
+.current-product .img-wrap img {
+  width: 100%;
+  height: 430px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.img-half,
+.desc-wrap {
+  background-color: #fff;
+}
+
+.img-half {
+  width: 43%;
+}
+
+.desc-half {
+  width: 50%;
+}
+
+.desc-wrap {
+  padding: 20px;
+}
+
+.desc {
+  max-height: 200px;
+  overflow-y: scroll;
+}
+
 @media screen and (max-width: 1900px) {
   .add-to-basket {
     padding: 8px 25px;

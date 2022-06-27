@@ -40,7 +40,7 @@ return [
     'add_price_units' => 'Введите единицы измерения цены (Пример: грн, грн/кг)',
     'add_size' => 'Введите вес (Пример: 100 г)',
     'add_available' => 'Наличие товара',
-    'available' => 'Есть в наличии',
+    'available' => 'В наличии',
     'not_available' => 'Нет в наличии',
     'waiting_available' => 'Ожидается',
     'available_for_order' => 'Под заказ',

@@ -620,4 +620,39 @@ h3
 .payment-list
     padding-bottom: 0
 
+/* -------------------------------------------------------------------------- */
+/*                                product page                                */
+/* -------------------------------------------------------------------------- */
+
+.current-product
+    align-items: flex-start
+    &.available
+        .status
+            background-color: #6A994E
+    .status
+        border-radius: 5px 5px 0 0
+    .img-wrap
+        padding: 20px
+        img
+            width: 100%
+            height: 430px
+            object-fit: cover
+
+.img-half,
+.desc-wrap
+    background-color: $second
+
+.img-half
+    width: 43%
+
+.desc-half
+    width: 50%
+
+.desc-wrap
+    padding: 20px
+
+.desc
+    max-height: 200px
+    overflow-y: scroll
+
 @import components/media
