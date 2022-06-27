@@ -73,14 +73,14 @@
             <div class="img-wrap">
                 <img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
             </div>
-        </div>
+        </div> 
         <section class="desc-half">
             <h2>{{ $title->$locale }}</h2>
             <div class="desc-wrap">
                 <p class="desc">
                     {!! $description->$locale !!}
                 </p>
-                
+
             </div>
         </section>
     </figure>
