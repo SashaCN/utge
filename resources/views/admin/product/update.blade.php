@@ -50,7 +50,7 @@ $locale = app()->getLocale();
 
 <div class="flex title-line">
     <h2>@lang('admin.product_change')</h2>
-    <button id="save-btm" type="submit" form="form" class="add-button">
+    <button id="save-btn" type="submit" form="form" class="add-button">
         <img src="{{ asset('img/save.svg') }}" alt="Add">
     </button>
 </div>

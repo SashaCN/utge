@@ -61,10 +61,13 @@
 
                     <div class="drop-list hidden">
                         <ul>
+                            <li><span class="link-text-drop-list">Продукт</span></li>
                             <li><a href="{{ route('subCategory.index') }}"><span class="link-text-drop-list">@lang('admin.subcategory_product')</span></a></li>
                             <li><a href="{{ route('category.index') }}"><span class="link-text-drop-list">@lang('admin.categories_product')</span></a></li>
                             <li><a href="{{ route('productType.index') }}"><span class="link-text-drop-list">@lang('admin.product_types')</span></a></li>
+                            <li><span class="link-text-drop-list">Новини</span></li>
                             <li><a href="{{ route('newsCategory.index') }}"><span class="link-text-drop-list">@lang('admin.category_news')</span></a></li>
+                            <li><span class="link-text-drop-list">Сервіс</span></li>
                             <li><a href="{{ route('servicesTypes.index') }}"><span class="link-text-drop-list">@lang('admin.services_types')</span></a></li>
                             <li><a href="{{ route('servicesCategory.index') }}"><span class="link-text-drop-list">@lang('admin.services_category')</span></a></li>
                         </ul>

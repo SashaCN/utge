@@ -113,8 +113,10 @@ return [
     'services_sizeprice' => 'Цена/Материал',
     'services_create' => 'Создать услугу',
     'service_sizeprice' => 'Материал/цена',
-
-
+    'logo-img' => 'Логотип изображение',
+    'logo-name' => 'Логотип текст',
+    'footer-place' => 'Расположение',
+    'email' => 'Почта',
 
     // auntification
     'name' => 'Имя',
