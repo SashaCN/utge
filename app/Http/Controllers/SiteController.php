@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\ChildPage;
 use App\Models\News;
 use App\Models\Product;
 use App\Models\SizePrice;
@@ -25,11 +24,9 @@ class SiteController extends Controller
 
     public function basket (){
         $products = Product::all();
-        $phones = ChildPage::all()->where('route', 'phone');
 
         return view('site.basket', [
             'products' => $products,
-            'phones' => $phones
         ]);
     }
 
@@ -39,7 +36,6 @@ class SiteController extends Controller
 
         return view('site.contacts', [
             'contacts' => $contacts,
-            'phones' => $phones,
         ]);
 
     }
@@ -54,17 +50,14 @@ class SiteController extends Controller
         return view('site.deliveryAndPay', [
             'deliveries' => $deliveries,
             'payments' => $payments,
-            'phones' => $phones,
         ]);
     }
 
     public function showNews(){
         $news = News::all();
-        $phones = ChildPage::all()->where('route', 'phone');
 
         return view('site.news', [
             'news' => $news,
-            'phones' => $phones,
         ]);
     }
 

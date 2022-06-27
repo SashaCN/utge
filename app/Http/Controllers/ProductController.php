@@ -9,7 +9,6 @@ use App\Models\SizePrice;
 use App\Models\ProductType;
 use App\Models\SubCategory;
 use App\Models\Filter;
-use App\Models\ChildPage;
 use Spatie\QueryBuilder\QueryBuilder;
 use App\Filters\ProductFilter;
 use App\Models\Localization;
@@ -29,7 +28,6 @@ class ProductController extends Controller
         $productTypes = ProductType::all();
         $categories = Category::all();
         $subCategories = SubCategory::all();
-        $phones = ChildPage::all()->where('route', 'phone');
 
         return view('site.product.index', [
             'products' => $products,
@@ -37,7 +35,6 @@ class ProductController extends Controller
             'producttypes' => $productTypes,
             'categories' => $categories,
             'subcategories' => $subCategories,
-            'phones' => $phones,
         ]);
     }
 
