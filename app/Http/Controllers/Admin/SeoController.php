@@ -4,11 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\News;
-use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Seo;
 use Illuminate\Routing\RouteUri;
+use App\Http\Requests\MultiRequest;
+use App\Models\Localization;
 
 
 class SeoController extends Controller
@@ -20,9 +21,9 @@ class SeoController extends Controller
      */
     public function index()
     {
-        // $seo = Seo::all();
+        $seos = Seo::all();
         return view('admin.seo.index', [
-            // 'seo' => $seo
+            'seos' => $seos
         ]);
     }
 
@@ -33,7 +34,7 @@ class SeoController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.seo.create');
     }
 
     /**
@@ -42,9 +43,58 @@ class SeoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MultiRequest $request)
     {
-        //
+
+        $seo = new Seo();
+
+        $localization_title_seo = new Localization();
+        $localization_title_seo->fill($request->validated());
+        $localization_title_seo->var = 'title_seo';
+        $localization_title_seo->uk = $request->title_seo_uk;
+        $localization_title_seo->ru = $request->title_seo_ru;
+
+        $localization_og_title_seo = new Localization();
+        $localization_og_title_seo->fill($request->validated());
+        $localization_og_title_seo->var = 'og_title_seo';
+        $localization_og_title_seo->uk = $request->og_title_seo_uk;
+        $localization_og_title_seo->ru = $request->og_title_seo_ru;
+
+        $localization_desc_seo = new Localization();
+        $localization_desc_seo->fill($request->validated());
+        $localization_desc_seo->var = 'desc_seo';
+        $localization_desc_seo->uk = $request->desc_seo_uk;
+        $localization_desc_seo->ru = $request->desc_seo_ru;
+
+        $localization_og_desc_seo = new Localization();
+        $localization_og_desc_seo->fill($request->validated());
+        $localization_og_desc_seo->var = 'og_desc_seo';
+        $localization_og_desc_seo->uk = $request->og_desc_seo_uk;
+        $localization_og_desc_seo->ru = $request->og_desc_seo_ru;
+
+        $localization_key_seo = new Localization();
+        $localization_key_seo->fill($request->validated());
+        $localization_key_seo->var = 'key_seo';
+        $localization_key_seo->uk = $request->keywords_seo_uk;
+        $localization_key_seo->ru = $request->keywords_seo_ru;
+
+        $localization_custom_seo = new Localization();
+        $localization_custom_seo->fill($request->validated());
+        $localization_custom_seo->var = 'custom_seo';
+        $localization_custom_seo->uk = $request->custom_seo_uk;
+        $localization_custom_seo->ru = $request->custom_seo_ru;
+
+        $seo->fill($request->validated());
+        $seo->save();
+
+        $seo->localization()->save($localization_title_seo);
+        $seo->localization()->save($localization_og_title_seo);
+        $seo->localization()->save($localization_desc_seo);
+        $seo->localization()->save($localization_og_desc_seo);
+        $seo->localization()->save($localization_key_seo);
+        $seo->localization()->save($localization_custom_seo);
+
+        return redirect()->route('seo.index');
     }
 
     /**

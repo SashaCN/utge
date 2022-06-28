@@ -113,6 +113,14 @@
         'services_sizeprice' => 'Ціна/Матеріал',
         'services_create' => 'Створити послугу',
         'service_sizeprice' => 'Матеріал/ціна',
+        'seo_create' => 'SEO оптимизація',
+        'home-page' => 'Головна сторінка',
+        'product-page' => 'Сторінка товарів',
+        'delivery-page' => 'Доставка та оплата',
+        'news-page' => 'Сторінка новин',
+        'contacts-page' => 'Сторінка контактів',
+        'page' => 'Оберіть сторінку',
+        'title-page' => 'Назва сторінки',
 
         // auntification
         'name' => 'Ім`я',
