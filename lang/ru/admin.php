@@ -114,9 +114,10 @@ return [
     'services_create' => 'Создать услугу',
     'service_sizeprice' => 'Материал/цена',
 
-
-
     // auntification
     'name' => 'Имя',
+
+    // product page
+    'quality-certificate' => 'сертификат качества',
 ];
 

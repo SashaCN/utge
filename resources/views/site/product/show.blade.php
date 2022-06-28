@@ -68,19 +68,49 @@
 
 <div class="wrapper">
     <figure class="current-product flex-sb {{ $available }}" data-product-number="{{ $product->id }}">
-        <div class="img-half">
+        <div class="img-half shadow-box">
             <p class="status">@lang('admin.'.$available)</p>
             <div class="img-wrap">
                 <img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
             </div>
-        </div> 
+        </div>
         <section class="desc-half">
             <h2>{{ $title->$locale }}</h2>
-            <div class="desc-wrap">
+            <div class="desc-wrap shadow-box">
                 <p class="desc">
                     {!! $description->$locale !!}
                 </p>
-
+                <p>
+                    <a href="#" class="button add-to-basket">@lang('utge.quality-certificate')</a>
+                </p>
+            </div>
+            <div class="size-line flex-aic">
+                @foreach ($product->sizePrices as $sizePrice)
+                    <p class="price active-size">{{ $sizePrice->size }}</p>
+                @endforeach
+            </div>
+            <hr>
+            <div class="price-line flex-sb">
+                <p class="general-price">
+                    @lang('utge.price'):  {{ $sizePrice->price }} {{ $sizePrice->price_units }}
+                </p>
+                <div class="right-part flex-aic">
+                    <form action="#" class="count-col">
+                        <button class="product-minus">-</button>
+                        <label>
+                            <input type="number" name="product-quantify" class="product-quantify" value="1">
+                        </label>
+                        <button class="product-plus">+</button>
+                    </form>
+                    <p class="add-to-basket flex-aic">
+                        <svg>
+                            <use xlink:href="{{ asset('img/sprite.svg#basket') }}"></use>
+                        </svg>
+                        <span>
+                            @lang('utge.add-to-basket')
+                        </span>
+                    </p>
+                </div>
             </div>
         </section>
     </figure>
