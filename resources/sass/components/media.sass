@@ -1,6 +1,4 @@
 @media screen and ( max-width:  1900px)
-    .add-to-basket
-        padding: 8px 25px
     .price
         padding: 9px 10px
 
@@ -24,8 +22,10 @@
     .info-line
         & > div
             width: 23%
-    .add-to-basket
-        padding: 8px 15px
+
+    .product-list
+        .price
+            padding: 9px 5px
 
 @media screen and ( max-width:  1600px)
     .info-line
@@ -101,6 +101,15 @@
     .product-list
         width: 100%
 
+    .product
+        .button-line
+            flex-wrap: wrap
+            .add-to-basket
+                width: 100%
+            .price
+                width: 100%
+                order: -1
+                margin-bottom: 5px
 
 @media screen and ( max-width:  1300px)
     .info-line
