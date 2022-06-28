@@ -118,7 +118,9 @@
                     <svg>
                         <use xlink:href="{{ asset('img/sprite.svg#email') }}"></use>
                     </svg>
-                    <a href="mailto:info@utge.net">info@utge.net</a>
+                    <div class="mail-wrap flex-col">
+                        <a href="mailto:info@utge.net">info@utge.net</a>
+                    </div>
                 </div>
             </div>
             <p class="copy">&copy; utge since 2016</p>

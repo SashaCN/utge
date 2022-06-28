@@ -354,6 +354,7 @@ footer .address address {
   display: inline-block;
   font-size: 1.6rem;
   padding-left: 20px;
+  margin-bottom: 5px;
   transition: all 0.5s ease;
 }
 .mail a:hover {
