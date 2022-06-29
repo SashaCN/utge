@@ -14,6 +14,7 @@
     </div>
 
     <h3>slider</h3>
+    <a href="{{ route('childPage.create') }}">створення або редагування</a>
     <div>
         <div>slider 1</div>
         <div>slider 2</div>
@@ -78,7 +79,9 @@
                             <td><img src="{{ $childPage->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}"></td>
                             <td>    
                                 <a href="{{ route('index') }}">show</a>
-    
+
+                                <a href="{{ route('childPage.edit', $childPage->id) }}">update</a>
+                                
                                 <form  action="{{ route('childPage.destroy', $childPage->id) }}" method="POST">
                                     <label>
                                         @csrf 
@@ -114,7 +117,9 @@
         
                                 <td>    
                                     <a href="{{ route('index') }}">show</a>
-        
+
+                                    <a href="{{ route('childPage.edit', $childPage->id) }}">update</a>
+
                                     <form  action="{{ route('childPage.destroy', $childPage->id) }}" method="POST">
                                         <label>
                                             @csrf 
@@ -192,7 +197,9 @@
     
                             <td>    
                                 <a href="{{ route('index') }}">show</a>
-    
+
+                                <a href="{{ route('childPage.edit', $childPage->id) }}">update</a>
+
                                 <form  action="{{ route('childPage.destroy', $childPage->id) }}" method="POST">
                                     <label>
                                         @csrf 

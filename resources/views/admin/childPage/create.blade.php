@@ -30,9 +30,13 @@
         <div class="input-wrap pt0">
             <select name="route" id="child-page-select" class="auto-value">
                 <option value="" id="child-page-first-option" selected>@lang('admin.child_page_father')</option>
-                <option disabled style="background: grey; color: white;">------контент в хедері------</option>
+                <option disabled style="background: grey; color: white;">------слайдери------</option>
                 <option value="phone">@lang('admin.phone')</option>
                 <option value="logo-img">@lang('admin.logo-img')</option>
+                <option value="logo-name">@lang('admin.logo-name')</option>
+                <option disabled style="background: grey; color: white;">------контент в хедері------</option>
+                <option value="phone">@lang('admin.phone')</option>
+                <option value="logo-img">@lang('admin.logo-img')</option> 
                 <option value="logo-name">@lang('admin.logo-name')</option>
                 <option disabled style="background: grey; color: white;">------контент в футері------</option>
                 <option value="phone">@lang('admin.phone')</option>

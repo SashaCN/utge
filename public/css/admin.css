@@ -822,3 +822,20 @@ main {
   margin-right: 10px;
   text-transform: uppercase;
 }
+
+/* -------------------------------------------------------------------------- */
+/*                                  modulus                                   */
+/* -------------------------------------------------------------------------- */
+.header-modulus,
+.footer-modulus {
+  display: flex;
+  justify-content: space-between;
+}
+.header-modulus div,
+.footer-modulus div {
+  width: 30%;
+}
+
+.header-modulus img {
+  width: 150px;
+}
