@@ -375,12 +375,12 @@ $locale = app()->getLocale();
 
             <div class="seo-textarea-wrap mr-seo-input">
                 <label  class="label seo-label" for="custom_seo_uk">@lang('admin.add_custom_seo_uk')</label>
-                <textarea class="seo-textarea" name="custom_seo_uk" id="custom_seo_uk">{{ $custom_seo->uk }}</textarea>
+                <textarea class="seo-textarea" name="custom_seo_uk" id="custom_seo_uk">{{ htmlspecialchars_decode($custom_seo->uk) }}</textarea>
             </div>
 
             <div class="seo-textarea-wrap">
                 <label  class="label seo-label" for="custom_seo_ru">@lang('admin.add_custom_seo')</label>
-                <textarea class="seo-textarea" name="custom_seo_ru" id="custom_seo_ru">{{ $custom_seo->ru }}</textarea>
+                <textarea class="seo-textarea" name="custom_seo_ru" id="custom_seo_ru">{{ htmlspecialchars_decode($custom_seo->ru) }}</textarea>
             </div>
         </div>
 </form>

@@ -123,8 +123,8 @@ class ProductController extends Controller
         $localization_custom_seo = new Localization();
         $localization_custom_seo->fill($request->validated());
         $localization_custom_seo->var = 'custom_seo';
-        $localization_custom_seo->uk = $request->custom_seo_uk;
-        $localization_custom_seo->ru = $request->custom_seo_ru;
+        $localization_custom_seo->uk = htmlspecialchars($request->custom_seo_uk, ENT_QUOTES);
+        $localization_custom_seo->ru = htmlspecialchars($request->custom_seo_uk, ENT_QUOTES);
         //seo end
 
 
