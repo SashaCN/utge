@@ -30,12 +30,13 @@
                         <td>@lang('admin.delivery-page')</td>
                     @elseif ($seo->route == 'http://utge/contacts')
                         <td>@lang('admin.contacts-page')</td>
-                    @elseif ($seo->route == 'http://utge/')
+                    @elseif ($seo->route == 'http://utge/home')
                         <td>@lang('admin.home-page')</td>
                     @endif
 
                     <td class="action">
                         <a href="{{ route('seo.edit', $seo->id) }}"></a>
+                        <a href="{{ route('seo.delete', $seo->id) }}"></a>
                     </td>
                 </tr>
                 @endforeach

@@ -22,7 +22,7 @@
 
     <div class="name-slide flex-col current-slide">
         <select name="route">
-            <option value="http://utge/">@lang('admin.home-page')</option>
+            <option value="http://utge/home">@lang('admin.home-page')</option>
             <option value="http://utge/products">@lang('admin.product-page')</option>
             <option value="http://utge/deliveriesAndPayments">@lang('admin.delivery-page')</option>
             <option value="http://utge/news">@lang('admin.news-page')</option>

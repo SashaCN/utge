@@ -26,7 +26,7 @@ class SeoServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer('site.index', function($view){
-            $view->with('seo',  Seo::all());
+            $view->with('seos',  Seo::all());
         });
     }
 }

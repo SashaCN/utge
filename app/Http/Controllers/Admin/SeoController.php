@@ -81,8 +81,8 @@ class SeoController extends Controller
         $localization_custom_seo = new Localization();
         $localization_custom_seo->fill($request->validated());
         $localization_custom_seo->var = 'custom_seo';
-        $localization_custom_seo->uk = $request->custom_seo_uk;
-        $localization_custom_seo->ru = $request->custom_seo_ru;
+        $localization_custom_seo->uk = htmlspecialchars($request->custom_seo_uk, ENT_QUOTES);
+        $localization_custom_seo->ru = htmlspecialchars($request->custom_seo_uk, ENT_QUOTES);
 
         $seo->fill($request->validated());
         $seo->save();
@@ -92,6 +92,9 @@ class SeoController extends Controller
         $seo->localization()->save($localization_desc_seo);
         $seo->localization()->save($localization_og_desc_seo);
         $seo->localization()->save($localization_key_seo);
+
+
+        // dd($localization_custom_seo);
         $seo->localization()->save($localization_custom_seo);
 
         return redirect()->route('seo.index');
@@ -114,9 +117,11 @@ class SeoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Seo $seo)
     {
-        //
+        return view('admin.seo.update', [
+            'seo' => $seo
+        ]);
     }
 
     /**
@@ -126,9 +131,49 @@ class SeoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Seo $seo, MultiRequest $request)
     {
-        //
+        $localization_title_seo = [
+            'var' => 'title_seo',
+            'uk' => $request->title_seo_uk,
+            'ru' => $request->title_seo_ru
+        ];
+        $localization_desc_seo = [
+            'var' => 'desc_seo',
+            'uk' => $request->desc_seo_uk,
+            'ru' => $request->desc_seo_ru
+        ];
+        $localization_og_title_seo = [
+            'var' => 'og_title_seo',
+            'uk' => $request->og_title_seo_uk,
+            'ru' => $request->og_title_seo_ru
+        ];
+        $localization_og_desc_seo = [
+            'var' => 'og_desc_seo',
+            'uk' => $request->og_desc_seo_uk,
+            'ru' => $request->og_desc_seo_ru
+        ];
+        $localization_key_seo = [
+            'var' => 'key_seo',
+            'uk' => $request->keywords_seo_uk,
+            'ru' => $request->keywords_seo_ru
+        ];
+        $localization_custom_seo = [
+            'var' => 'custom_seo_uk',
+            'uk' => $request->custom_seo_uk,
+            'ru' => $request->custom_seo_ru
+        ];
+
+        $seo->fill($request->validated());
+        $seo->update();
+        $seo->localization()->where('var', 'title_seo')->update($localization_title_seo);
+        $seo->localization()->where('var', 'desc_seo')->update($localization_desc_seo);
+        $seo->localization()->where('var', 'og_title_seo')->update($localization_og_title_seo);
+        $seo->localization()->where('var', 'og_desc_seo')->update($localization_og_desc_seo);
+        $seo->localization()->where('var', 'key_seo')->update($localization_key_seo);
+        $seo->localization()->where('var', 'custom_seo')->update($localization_custom_seo);
+
+        return redirect()->route('seo.index');
     }
 
     /**
@@ -137,8 +182,15 @@ class SeoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Seo $seo)
     {
         //
+    }
+
+
+    public function delete(Seo $seo)
+    {
+        $seo->forceDelete();
+        return redirect()->route('seo.index');
     }
 }
