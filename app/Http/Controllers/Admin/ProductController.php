@@ -148,9 +148,9 @@ class ProductController extends Controller
         }
 
         $product->localization()->save($localization_title);
+        $product->localization()->save($localization_desc);
         $product->localization()->save($localization_title_seo);
         $product->localization()->save($localization_og_title_seo);
-        $product->localization()->save($localization_desc);
         $product->localization()->save($localization_desc_seo);
         $product->localization()->save($localization_og_desc_seo);
         $product->localization()->save($localization_key_seo);
@@ -205,6 +205,7 @@ class ProductController extends Controller
      */
     public function update(MultiRequest $request, Product $product)
     {
+
         $localization_title = [
             'var' => 'title',
             'uk' => $request->title_uk,
