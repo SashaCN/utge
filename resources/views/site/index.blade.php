@@ -1,14 +1,50 @@
-<?php
+@php
     $locale = app()->getLocale();
-?>
+@endphp
+
 <!DOCTYPE html>
+
 <html lang="{{ app()->getLocale() }}">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@lang('utge.utge')</title>
+    @foreach ($seos as $seo)
+        @php
+            $title_seo = $seo->localization[0];
+            $og_title_seo = $seo->localization[1];
+            $desc_seo = $seo->localization[2];
+            $og_desc_seo = $seo->localization[3];
+            $key_seo = $seo->localization[4];
+            $custom_seo = $seo->localization[5];
+        @endphp
+
+
+        @switch(Request::url() == $seo->route)
+
+            @case("http://utge/news")
+            @case("http://utge/products")
+            @case("http://utge/contacts")
+            @case("http://utge/home")
+            @case("http://utge/deliveriesAndPayments")
+
+                <title>{{$title_seo->$locale}}</title>
+                <meta property="og:url" content="{{ Request::url() }}">
+                <meta property="og:title" content="{{ $og_title_seo->$locale }}">
+                <meta property="og:description" content="{{ $og_desc_seo->$locale }}">
+                <meta property="og:type" content="website">
+                <meta property="og:img" content="public\img\logo.png">
+                <meta name="description" content="{{ $desc_seo->$locale }}">
+                <meta name="keywords" content="{{ $key_seo->$locale }}">
+                {{ $custom_seo->locale }}
+                @break
+
+            @default
+
+        @endswitch
+
+    @endforeach
     <link rel="stylesheet" href="{{ asset('css/style.css')}}">
     <link rel="stylesheet" href="{{ asset('css/pagination.css') }}">
 </head>
@@ -21,7 +57,15 @@
                     <svg>
                         <use xlink:href="{{ asset('img/sprite.svg#tel') }}"></use>
                     </svg>
-                    @yield('phone-list')
+                    <ul class="phone-list">
+                        @foreach ($phones as $item)
+                            @php
+                                $phone = $item->localization[0];
+                                $phoneHref = preg_replace( "/[^0-9]/" , '' , $phone->$locale );
+                            @endphp
+                        <li><a href="tel:+{{ $phoneHref }}">{{ $phone->$locale }}</a></li>
+                        @endforeach
+                    </ul>
                 </div>
                 <div class="logo">
                     <a class="flex-col" href="{{ route('index') }}">

@@ -244,7 +244,7 @@ class ProductController extends Controller
             'ru' => $request->keywords_seo_ru
         ];
         $localization_custom_seo = [
-            'var' => 'key_seo',
+            'var' => 'custom_seo_uk',
             'uk' => $request->custom_seo_uk,
             'ru' => $request->custom_seo_ru
         ];

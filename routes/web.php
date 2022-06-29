@@ -32,13 +32,18 @@ Route::get('locale/{locale}', [\App\Http\Controllers\Admin\AdminController::clas
 
 Route::middleware('set_locale')->group(function()
 {
-    Route::get('/', [\App\Http\Controllers\SiteController::class, 'index'])->name('index');
-    Route::get('/products', [\App\Http\Controllers\ProductController::class, 'index'])->name('products');
-    Route::get('/product/{id}', [\App\Http\Controllers\ProductController::class, 'show'])->name('product');
-    Route::get('/basket', [\App\Http\Controllers\SiteController::class, 'basket'])->name('basket');
-    Route::get('/deliveriesAndPayments', [\App\Http\Controllers\SiteController::class, 'showDeliveryAndPay'])->name('deliveriesAndPayments');
-    Route::get('/news', [\App\Http\Controllers\SiteController::class, 'showNews'])->name('news');
-    Route::get('/contacts', [\App\Http\Controllers\SiteController::class, 'showContacts'])->name('contacts');
+    Route::prefix('/')->group(function(){
+
+        Route::get('home', [\App\Http\Controllers\SiteController::class, 'index'])->name('index');
+        Route::get('products', [\App\Http\Controllers\ProductController::class, 'index'])->name('products');
+        Route::get('product/{id}', [\App\Http\Controllers\ProductController::class, 'show'])->name('product');
+        Route::get('basket', [\App\Http\Controllers\SiteController::class, 'basket'])->name('basket');
+        Route::get('deliveriesAndPayments', [\App\Http\Controllers\SiteController::class, 'showDeliveryAndPay'])->name('deliveriesAndPayments');
+        Route::get('news', [\App\Http\Controllers\SiteController::class, 'showNews'])->name('news');
+        Route::get('contacts', [\App\Http\Controllers\SiteController::class, 'showContacts'])->name('contacts');
+
+
+    });
 });
 
 
@@ -74,6 +79,7 @@ Route::middleware('set_locale')->group(function ()
             Route::get('servicesType/delete/{servicesType}', [\App\Http\Controllers\Admin\ServicesTypeController::class, 'delete'])->name('servicesTypes.delete');
             Route::get('servicesCategory/delete/{servicesCategory}', [\App\Http\Controllers\Admin\ServicesCategoryController::class, 'delete'])->name('servicesCategory.delete');
             Route::get('services/delete/{services}', [\App\Http\Controllers\Admin\ServicesController::class, 'delete'])->name('services.delete');
+            Route::get('seo/delete/{seo}', [\App\Http\Controllers\Admin\SeoController::class, 'delete'])->name('seo.delete');
         });
     });
 });
