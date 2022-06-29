@@ -37,7 +37,7 @@
                 <meta property="og:img" content="public\img\logo.png">
                 <meta name="description" content="{{ $desc_seo->$locale }}">
                 <meta name="keywords" content="{{ $key_seo->$locale }}">
-                {{ $custom_seo->locale }}
+                {!! htmlspecialchars_decode($custom_seo->$locale) !!}
                 @break
 
             @default
