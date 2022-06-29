@@ -112,7 +112,7 @@ $locale = app()->getLocale();
                                 @lang('utge.add-to-basket')
                             </span>
                         </p>
-                        <p class="price">{{ $min_price }}</p>
+                        <p class="price">{{ $min_price }}&nbsp;{{ $product->sizeprices->where('price', $min_price)->first()->price_units }}</p>
                         <span class="like">
                             <svg>
                                 <use xlink:href="{{ asset('img/sprite.svg#like') }}"></use>

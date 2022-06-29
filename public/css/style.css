@@ -354,7 +354,11 @@ footer .address address {
   display: inline-block;
   font-size: 1.6rem;
   padding-left: 20px;
+  margin-bottom: 5px;
   transition: all 0.5s ease;
+}
+.mail a:last-child {
+  margin: 0;
 }
 .mail a:hover {
   transform: scale(1.1);
@@ -906,6 +910,9 @@ p.category-item::before {
 .product-list .text-wrap {
   margin: 0;
 }
+.product-list .add-to-basket {
+  padding: 8px 10px;
+}
 
 .status {
   width: 100%;
@@ -1010,8 +1017,8 @@ h3 {
 
 .add-to-basket {
   justify-content: center;
-  padding: 8px 35px;
-  width: 67%;
+  padding: 8px 30px;
+  width: 63%;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
   letter-spacing: 1px;
@@ -1026,7 +1033,7 @@ h3 {
   width: 29px;
   height: 26px;
   fill: #fff;
-  margin-right: 17px;
+  margin-right: 10px;
 }
 .add-to-basket:hover {
   border-color: #042c68;
@@ -1039,7 +1046,7 @@ h3 {
   color: #003b95;
   font-weight: 500;
   padding: 9px 12px;
-  width: 31%;
+  width: 35%;
   box-sizing: border-box;
   text-align: center;
   font-family: "Roboto", sans-serif;
@@ -1088,11 +1095,125 @@ h3 {
   padding-bottom: 0;
 }
 
-@media screen and (max-width: 1900px) {
-  .add-to-basket {
-    padding: 8px 25px;
-  }
+/* -------------------------------------------------------------------------- */
+/*                                product page                                */
+/* -------------------------------------------------------------------------- */
+.current-product {
+  align-items: flex-start;
+}
+.current-product.available .status {
+  background-color: #6A994E;
+}
+.current-product .status,
+.current-product h2 {
+  border-radius: 5px 5px 0 0;
+  margin: 0;
+}
+.current-product .img-wrap {
+  padding: 20px;
+}
+.current-product .img-wrap img {
+  width: 100%;
+  height: 430px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.current-product .price {
+  display: inline-block;
+  width: auto;
+  padding: 9px 20px;
+  margin: 10px 15px;
+  transition: all 0.5s ease;
+}
+.current-product .price:hover {
+  background-color: #003b95;
+  color: #fff;
+}
+.current-product .active-size {
+  background-color: #003b95;
+  color: #fff;
+}
+.current-product hr {
+  border: none;
+  border-bottom: 2px solid #003b95;
+}
+.current-product .general-price {
+  font-size: 3.6rem;
+  line-height: 43px;
+  text-transform: uppercase;
+  color: #003b95;
+}
 
+.size-line {
+  margin: 0 -15px;
+  padding: 25px 0;
+}
+
+.img-half,
+.desc-wrap {
+  background-color: #fff;
+}
+
+.img-half {
+  width: 43%;
+}
+
+.img-half,
+.desc-wrap {
+  border-radius: 5px;
+}
+
+.desc-half {
+  width: 50%;
+}
+
+.desc-wrap {
+  padding: 20px;
+}
+.desc-wrap a {
+  display: inline-block;
+  width: auto;
+}
+
+.desc {
+  height: 180px;
+  overflow-y: scroll;
+  padding-right: 20px;
+  margin-bottom: 20px;
+}
+.desc::-webkit-scrollbar {
+  width: 5px;
+  background: linear-gradient(to right, transparent 0% 20%, #999 20% 40%, transparent 40% 60%, #999 60% 80%, transparent 80% 100%);
+  border-radius: 2px;
+}
+.desc::-webkit-scrollbar-button {
+  display: none;
+}
+.desc::-webkit-scrollbar-thumb {
+  background-color: #003b95;
+  width: 5px;
+  border-radius: 2px;
+}
+
+.price-line {
+  padding-top: 25px;
+}
+.price-line .count-col {
+  display: flex;
+}
+.price-line .count-col input {
+  font-size: 2rem;
+  padding: 9.5px 27px;
+}
+.price-line .count-col button {
+  font-size: 2rem;
+  padding: 9.5px 15px;
+}
+.price-line .add-to-basket {
+  margin-left: 30px;
+}
+
+@media screen and (max-width: 1900px) {
   .price {
     padding: 9px 10px;
   }
@@ -1124,8 +1245,8 @@ h3 {
     width: 23%;
   }
 
-  .add-to-basket {
-    padding: 8px 15px;
+  .product-list .price {
+    padding: 9px 5px;
   }
 }
 @media screen and (max-width: 1600px) {
@@ -1215,6 +1336,18 @@ h3 {
   .product-list {
     width: 100%;
   }
+
+  .product .button-line {
+    flex-wrap: wrap;
+  }
+  .product .button-line .add-to-basket {
+    width: 100%;
+  }
+  .product .button-line .price {
+    width: 100%;
+    order: -1;
+    margin-bottom: 5px;
+  }
 }
 @media screen and (max-width: 1300px) {
   .info-line > div {
@@ -1233,6 +1366,16 @@ h3 {
   .goods-list > a {
     flex: 0 0 33.33%;
     width: 33.33%;
+  }
+
+  /* -------------------------------------------------------------------------- */
+  /*                         delivery and payments page                         */
+  /* -------------------------------------------------------------------------- */
+  .delivery-card .img-wrap {
+    width: 25%;
+  }
+  .delivery-card figcaption {
+    width: 75%;
   }
 }
 @media screen and (max-width: 1200px) {
@@ -1277,6 +1420,16 @@ h3 {
 
   .product-list > a {
     width: 50%;
+  }
+
+  /* -------------------------------------------------------------------------- */
+  /*                         delivery and payments page                         */
+  /* -------------------------------------------------------------------------- */
+  .delivery-card .img-wrap {
+    width: 30%;
+  }
+  .delivery-card figcaption {
+    width: 70%;
   }
 }
 @media screen and (max-width: 900px) {
@@ -1357,6 +1510,23 @@ footer .mail {
   .active-filter.filter-menu .close-filter-bg {
     left: 60vw;
     width: 40vw;
+  }
+
+  /* -------------------------------------------------------------------------- */
+  /*                         delivery and payments page                         */
+  /* -------------------------------------------------------------------------- */
+  .delivery-card {
+    padding: 25px 5%;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+  .delivery-card .img-wrap {
+    width: 50%;
+    margin-bottom: 20px;
+  }
+  .delivery-card figcaption {
+    width: 100%;
   }
 }
 @media screen and (max-width: 700px) {
@@ -1471,6 +1641,16 @@ footer .mail {
 }
 @media screen and (max-width: 500px) {
   .product-list {
+    width: 100%;
+  }
+
+  /* -------------------------------------------------------------------------- */
+  /*                         delivery and payments page                         */
+  /* -------------------------------------------------------------------------- */
+  .delivery-card .img-wrap {
+    width: 70%;
+  }
+  .delivery-card figcaption {
     width: 100%;
   }
 }

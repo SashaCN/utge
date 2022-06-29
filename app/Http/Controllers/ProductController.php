@@ -46,12 +46,13 @@ class ProductController extends Controller
         $categories = Category::all();
         $product = Product::find($id);
         $localization = Localization::find($id);
-
+        $phones = ChildPage::all()->where('route', 'phone');
 
         return view('site.product.show', [
             'product' => $product,
             'categories' => $categories,
             'localization' => $localization,
+            'phones' => $phones,
         ]);
     }
 }

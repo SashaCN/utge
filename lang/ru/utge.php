@@ -43,4 +43,7 @@ return [
     //products
     'add-to-basket' => 'в&nbsp;корзину',
     'filter' => 'фильтр',
+
+    // product 
+    'quality-certificate' => 'сертификат качества',
 ];
