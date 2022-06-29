@@ -116,5 +116,9 @@
     </figure>
 </div>
 
+<<<<<<< HEAD
 @endsection
 
+=======
+@endsection
+>>>>>>> 63bf94e9d82d80b684dd9718f7d0d86da7643232
