@@ -2,8 +2,9 @@
 
 @section('seo')
 
-@php
-    $locale = app()->getLocale();
+    @php
+        $locale = app()->getLocale();
+
 
     $title_seo = $product->localization[2];
     $og_title_seo = $product->localization[3];
@@ -12,7 +13,7 @@
     $key_seo = $product->localization[6];
     $custom_seo = $product->localization[7];
 
-@endphp
+    @endphp
 
 <meta property="og:image" content="{{ $product->getFirstMediaUrl('images') }}">
 <meta property="og:type" content="website">
@@ -80,7 +81,7 @@
                 <p class="desc">
                     {!! $description->$locale !!}
                 </p>
-                <p>
+                <p class="certificate-line">
                     <a href="#" class="button add-to-basket">@lang('utge.quality-certificate')</a>
                 </p>
             </div>

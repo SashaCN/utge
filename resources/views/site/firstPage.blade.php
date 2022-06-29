@@ -150,7 +150,7 @@
                     $title = $product->localization[0];
                     $description = $product->localization[1];
                 @endphp
-            <a href="#">
+            <a href="{{ route('product', $product->id) }}">
                 @php
                     if ($product->sizeprices->whereIn('available', [1,4])->min('price')) {
                         $min_price = $product->sizeprices->whereIn('available', [1,4])->min('price');
