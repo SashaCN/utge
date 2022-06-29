@@ -640,6 +640,7 @@ main {
   border-radius: 50px;
   border: 1px solid #cccccc;
   margin-left: 10px;
+  flex-shrink: 0;
 }
 
 .label-desc {

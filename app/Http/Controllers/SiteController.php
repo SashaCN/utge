@@ -22,7 +22,8 @@ class SiteController extends Controller
     }
 
 
-    public function basket (){
+    public function basket ()
+    {
         $products = Product::all();
         $phones = ChildPage::all()->where('route', 'phone');
 
@@ -57,7 +58,8 @@ class SiteController extends Controller
         ]);
     }
 
-    public function showNews(){
+    public function showNews()
+    {
         $news = News::all();
         $phones = ChildPage::all()->where('route', 'phone');
 
@@ -65,6 +67,11 @@ class SiteController extends Controller
             'news' => $news,
             'phones' => $phones,
         ]);
+    }
+
+    public function services ()
+    {
+        return view('site.services');
     }
 
 }

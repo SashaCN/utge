@@ -37,6 +37,7 @@ Route::middleware('set_locale')->group(function()
         Route::get('home', [\App\Http\Controllers\SiteController::class, 'index'])->name('index');
         Route::get('products', [\App\Http\Controllers\ProductController::class, 'index'])->name('products');
         Route::get('product/{id}', [\App\Http\Controllers\ProductController::class, 'show'])->name('product');
+        Route::get('services', [\App\Http\Controllers\SiteController::class, 'services'])->name('services');
         Route::get('basket', [\App\Http\Controllers\SiteController::class, 'basket'])->name('basket');
         Route::get('deliveriesAndPayments', [\App\Http\Controllers\SiteController::class, 'showDeliveryAndPay'])->name('deliveriesAndPayments');
         Route::get('news', [\App\Http\Controllers\SiteController::class, 'showNews'])->name('news');
