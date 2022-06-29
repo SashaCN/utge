@@ -4,7 +4,7 @@
     $locale = app()->getLocale();
 ?>
 
-@section('phone-list')
+{{-- @section('phone-list')
     <ul class="phone-list">
         @foreach ($phones as $item)
             @php
@@ -14,7 +14,7 @@
         <li><a href="tel:+{{ $phoneHref }}">{{ $phone->$locale }}</a></li>
         @endforeach
     </ul>
-@endsection
+@endsection --}}
 
 @section('content')
 

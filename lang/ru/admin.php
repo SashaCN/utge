@@ -113,6 +113,14 @@ return [
     'services_sizeprice' => 'Цена/Материал',
     'services_create' => 'Создать услугу',
     'service_sizeprice' => 'Материал/цена',
+    'seo_create' => 'SEO оптимизацыя',
+    'home-page' => 'Головная страница',
+    'product-page' => 'Страница товаров',
+    'delivery-page' => 'Доставка и оплата',
+    'news-page' => 'Страница новостей',
+    'contacts-page' => 'Страница контактов',
+    'page' => 'Выберете страницу',
+    'title-page' => 'Название страницы',
 
     // auntification
     'name' => 'Имя',
