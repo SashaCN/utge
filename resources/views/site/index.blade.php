@@ -130,7 +130,7 @@
                     <ul class="flex-sb">
                         <li><a href="{{ route('index') }}">@lang('utge.main')</a></li>
                         <li><a href="{{ route('products') }}">@lang('utge.goods')</a></li>
-                        <li><a href="#">@lang('utge.services')</a></li>
+                        <li><a href="{{ route('services') }}">@lang('utge.services')</a></li>
                         <li><a href="{{ route('deliveriesAndPayments') }}">@lang('utge.delivery-payment')</a></li>
                         <li><a href="{{ route('news') }}">@lang('utge.news')</a></li>
                          <li><a href="{{ route('contacts') }}">@lang('utge.contacts')</a></li>

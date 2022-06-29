@@ -311,8 +311,6 @@ footer {
   background-color: #003b95;
 }
 footer .phone svg {
-  width: 28px;
-  height: 29px;
   fill: #fff;
 }
 footer .phone li {
@@ -329,8 +327,8 @@ footer .address {
   width: 25%;
 }
 footer .address svg {
-  width: 22px;
-  height: 30px;
+  width: 45px;
+  height: 43px;
   fill: #fff;
 }
 footer .address address {
@@ -346,8 +344,8 @@ footer .address address {
   justify-content: flex-end;
 }
 .mail svg {
-  width: 41px;
-  height: 29px;
+  width: 50px;
+  height: 34px;
   fill: #fff;
 }
 .mail a {
@@ -1184,8 +1182,11 @@ h3 {
 }
 .desc::-webkit-scrollbar {
   width: 5px;
+  border: 1px solid #999;
+  border-left: none;
+  border-right: none;
   background: linear-gradient(to right, transparent 0% 20%, #999 20% 40%, transparent 40% 60%, #999 60% 80%, transparent 80% 100%);
-  border-radius: 2px;
+  border-radius: 5px;
 }
 .desc::-webkit-scrollbar-button {
   display: none;
