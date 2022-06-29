@@ -2,15 +2,14 @@
 
 namespace App\Providers;
 
-use App\Models\ChildPage;
 use App\Models\Seo;
-use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View;
 
-class ComposerServiceProvider extends ServiceProvider
+class SeoServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
+     * Register services.
      *
      * @return void
      */
@@ -20,16 +19,14 @@ class ComposerServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bootstrap any application services.
+     * Bootstrap services.
      *
      * @return void
      */
     public function boot()
     {
-
         View::composer('site.index', function($view){
-            $view->with('phones',  ChildPage::all()->where('route', 'phone'));
+            $view->with('seos',  Seo::all());
         });
-
     }
 }

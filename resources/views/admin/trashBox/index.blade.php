@@ -42,20 +42,6 @@
             </tr>
             @endforeach
 
-            @foreach ($services as $service)
-            @php
-                $title = $service->localization[0];
-            @endphp
-            <tr>
-                <td>{{$title->$locale}}</td>
-
-                <td class="restore">
-                    <a href="{{ route('trashBox.restore', $service->id) }}"></a>
-                </td>
-
-            </tr>
-            @endforeach
-
         </tbody>
     </table>
 

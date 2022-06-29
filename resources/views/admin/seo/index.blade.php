@@ -1,34 +1,47 @@
 @extends('admin.admin')
-    @section('content')
+@section('content')
 
-    <?php
+<?php
         $locale = app()->getLocale();
     ?>
 
-    {{-- <div class="flex title-line">
-        <h2>@lang('admin.seo_panel')</h2>
-    </div>
+<div class="flex title-line">
+    <h2>SEO</h2>
+    <a href="{{ route('seo.create') }}" class="add-button action-button">
+        <img src="{{ asset('img/add.svg') }}" alt="Add">
+    </a>
+</div>
+<div class="list-filter-wrapp">
+        <table class="product-table">
+            <thead>
+                <tr>
+                    <th>@lang('admin.title-page')</th>
+                    <th>@lang('admin.action')</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($seos as $seo)
+                <tr>
+                    @if ($seo->route == 'http://utge/news')
+                        <td>@lang('admin.news-page')</td>
+                    @elseif ($seo->route == 'http://utge/products')
+                        <td>@lang('admin.product-page')</td>
+                    @elseif ($seo->route == 'http://utge/deliveriesAndPayments')
+                        <td>@lang('admin.delivery-page')</td>
+                    @elseif ($seo->route == 'http://utge/contacts')
+                        <td>@lang('admin.contacts-page')</td>
+                    @elseif ($seo->route == 'http://utge/home')
+                        <td>@lang('admin.home-page')</td>
+                    @endif
 
-    <table class="product-table">
-        <thead>
-            <tr>
-
-                <th>@lang('admin.title')</th>
-
-                <th>@lang('admin.action')</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-            </tr>
+                    <td class="action">
+                        <a href="{{ route('seo.edit', $seo->id) }}"></a>
+                        <a href="{{ route('seo.delete', $seo->id) }}"></a>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
 
 
-        </tbody> --}}
-    </table>
-    <div class="to-dev">
-        <div class="dev-wrap">
-            <img class="to-dev-img" src="{{ asset('img/to_develop.svg') }}" alt="">
-            <p class="to-dev-desc">under development</p>
-        </div>
-    </div>
 @endsection
