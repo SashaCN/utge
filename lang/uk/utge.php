@@ -47,4 +47,7 @@ return [
 
     // product
     'quality-certificate' => 'сертифікат якості',
+
+    //services
+    'more' => 'Детальніше',
 ];
