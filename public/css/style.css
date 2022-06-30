@@ -1036,6 +1036,7 @@ h3 {
 .add-to-basket:hover {
   border-color: #042c68;
   background-color: #042c68;
+  cursor: pointer;
 }
 
 .price {
@@ -1213,6 +1214,59 @@ h3 {
 }
 .price-line .add-to-basket {
   margin-left: 30px;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                services page                               */
+/* -------------------------------------------------------------------------- */
+.services {
+  display: grid;
+  grid-template: 1fr/1fr 1fr 1fr;
+  gap: 50px 4%;
+}
+.services h2 {
+  padding: 9px 40px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+.services .service {
+  grid-column-start: auto;
+  grid-row-start: auto;
+  display: grid;
+  grid-template: 1fr 390px 1.8fr/1fr;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #fff;
+}
+.services .service img {
+  padding: 0 30px;
+  width: 100%;
+  height: 390px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  box-sizing: border-box;
+}
+.services figcaption {
+  padding: 20px 30px 30px;
+  box-sizing: border-box;
+}
+.services .desc {
+  height: 80px;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.6rem;
+  font-style: italic;
+  line-height: 20px;
+  margin-bottom: 25px;
+}
+.services .button-line {
+  text-align: center;
+}
+.services .add-to-basket {
+  display: inline-block;
+  width: auto;
+  padding: 12px 70px;
+  text-transform: lowercase;
+  border-radius: 10px;
 }
 
 @media screen and (max-width: 1900px) {

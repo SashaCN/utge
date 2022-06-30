@@ -7,6 +7,7 @@ use App\Models\ChildPage;
 use App\Models\News;
 use App\Models\Product;
 use App\Models\SizePrice;
+use App\Models\ServicesType;
 
 class SiteController extends Controller
 {
@@ -71,7 +72,11 @@ class SiteController extends Controller
 
     public function services ()
     {
-        return view('site.services');
+        $services = ServicesType::all();
+
+        return view('site.services', [
+            'services' => $services,
+        ]);
     }
 
 }
