@@ -25,40 +25,40 @@ function attributeAdd() {
     }
 }
 
-// function prMinus(event) {
-//     event.preventDefault()
-//     productNumber = this.closest(".product").getAttribute("data-product-number")
-//     if (productQuantify[productNumber].value > 0) {
-//         productQuantify[productNumber].value = productQuantify[productNumber].value - 1
-//         productQuantify[productNumber].setAttribute("value", productQuantify[productNumber].value)
-//         localStorageAdd()
-//         productPrice[productNumber].innerHTML = `${parseInt(productPrice[productNumber].getAttribute("data-product-price")) - parseInt(productPrice[productNumber].getAttribute("data-product-starting-price"))}$`
-//         productPrice[productNumber].dataset.productPrice = productPrice[productNumber].textContent.slice(0, productPrice[productNumber].textContent.length - 1)
-//         totalPriceCount()
-//     } else {
-//         return false
-//     }
-// }
+function prMinus(event) {
+    event.preventDefault()
+    productNumber = this.closest(".product-row").getAttribute("data-product-number")
+    if (productQuantify[productNumber].value > 0) {
+        productQuantify[productNumber].value = productQuantify[productNumber].value - 1
+        productQuantify[productNumber].setAttribute("value", productQuantify[productNumber].value)
+        // localStorageAdd()
+        productPrice[productNumber].innerHTML = `${parseInt(productPrice[productNumber].getAttribute("data-product-price")) - parseInt(productPrice[productNumber].getAttribute("data-product-starting-price"))} грн`
+        productPrice[productNumber].dataset.productPrice = productPrice[productNumber].textContent.slice(0, productPrice[productNumber].textContent.length - 1)
+        totalPriceCount()
+    } else {
+        return false
+    }
+}
 
-// function prPlus(event) {
-//     event.preventDefault()
-//     productNumber = this.closest(".product").getAttribute("data-product-number")
-//     productQuantify[productNumber].value = parseInt(productQuantify[productNumber].value) + 1
-//     productQuantify[productNumber].setAttribute("value", productQuantify[productNumber].value)
-//     localStorageAdd()
-//     productPrice[productNumber].innerHTML = `${parseInt(productPrice[productNumber].getAttribute("data-product-starting-price")) + parseInt(productPrice[productNumber].getAttribute("data-product-price"))}$`
-//     productPrice[productNumber].dataset.productPrice = productPrice[productNumber].textContent.slice(0, productPrice[productNumber].textContent.length - 1)
-//     totalPriceCount()
-// }
+function prPlus(event) {
+    event.preventDefault()
+    productNumber = this.closest(".product-row").getAttribute("data-product-number")
+    productQuantify[productNumber].value = parseInt(productQuantify[productNumber].value) + 1
+    productQuantify[productNumber].setAttribute("value", productQuantify[productNumber].value)
+    // localStorageAdd()
+    productPrice[productNumber].innerHTML = `${parseInt(productPrice[productNumber].getAttribute("data-product-starting-price")) + parseInt(productPrice[productNumber].getAttribute("data-product-price"))} грн`
+    productPrice[productNumber].dataset.productPrice = productPrice[productNumber].textContent.slice(0, productPrice[productNumber].textContent.length - 1)
+    totalPriceCount()
+}
 
-// function valueChange() {
-//     productNumber = this.closest(".product").getAttribute("data-product-number")
-//     productQuantify[productNumber].setAttribute("value", productQuantify[productNumber].value)
-//     localStorageAdd()
-//     productPrice[productNumber].innerHTML = `${parseInt(productPrice[productNumber].getAttribute("data-product-starting-price")) * this.value}$`
-//     productPrice[productNumber].dataset.productPrice = productPrice[productNumber].textContent.slice(0, productPrice[productNumber].textContent.length - 1)
-//     totalPriceCount()
-// }
+function valueChange() {
+    productNumber = this.closest(".product-row").getAttribute("data-product-number")
+    productQuantify[productNumber].setAttribute("value", productQuantify[productNumber].value)
+    // localStorageAdd()
+    productPrice[productNumber].innerHTML = `${parseInt(productPrice[productNumber].getAttribute("data-product-starting-price")) * this.value} грн`
+    productPrice[productNumber].dataset.productPrice = productPrice[productNumber].textContent.slice(0, productPrice[productNumber].textContent.length - 1)
+    totalPriceCount()
+}
 
 function totalPriceCount() {
     productPrice = document.querySelectorAll(".basket-price")
@@ -83,15 +83,15 @@ function refreshProducts() {
     attributeAdd()
     totalPriceCount()
 
-    // productPlus.forEach((elem) => {
-    //     elem.onclick = prPlus
-    // })
-    // productMinus.forEach((elem) => {
-    //     elem.onclick = prMinus
-    // })
-    // productQuantify.forEach((elem) => {
-    //     elem.oninput = valueChange
-    // })
+    productPlus.forEach((elem) => {
+        elem.onclick = prPlus
+    })
+    productMinus.forEach((elem) => {
+        elem.onclick = prMinus
+    })
+    productQuantify.forEach((elem) => {
+        elem.oninput = valueChange
+    })
     // deleteProduct.forEach((elem) => {
     //     elem.onclick = (event) => {
     //         event.preventDefault()
