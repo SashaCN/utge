@@ -54,7 +54,7 @@
                             $min_price = $product->sizeprices->whereIn('available', [1,4])->min('price');
                         @endphp
 
-                        <div class="basket-row product-row">
+                        <div class="basket-row product-row" data-product-id="{{ $product->id }}">
                             <div class="img-col col">
                                 <img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
                             </div>
@@ -101,6 +101,8 @@
             <label><input type="submit" value="@lang('utge.confirm_order')"></label>
         </div>
     </form>
+
+    <script src="{{ asset('js/add_to_basket.js') }}"></script>
     <script src="{{ asset('js/basket.js') }}"></script>
 
 </div>

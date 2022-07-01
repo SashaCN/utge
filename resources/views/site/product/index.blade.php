@@ -96,7 +96,7 @@ $locale = app()->getLocale();
                     $available = 'available_for_order';
                 }
             @endphp
-            <figure class="product shadow-box flex-col {{ $available }}" data-product-number="{{ $product->id }}">
+            <figure class="product shadow-box flex-col {{ $available }}" data-product-id="{{ $product->id }}">
                 <p class="status">@lang('admin.'.$available)</p>
                 <img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
                 <figcaption>
