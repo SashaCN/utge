@@ -1270,6 +1270,10 @@ h3 {
 }
 
 @media screen and (max-width: 1900px) {
+  .add-to-basket {
+    padding: 8px 15px;
+  }
+
   .price {
     padding: 9px 10px;
   }
