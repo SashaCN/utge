@@ -7,7 +7,7 @@ window.onload = () => {
         deleteProduct = document.querySelectorAll(".delete-product"),
         generalQuantify = document.querySelector(".general-quantify"),
         generalPrice = document.querySelector(".general-price"),
-        basketProducts = document.querySelector(".basket-products"),
+        basketProducts,
         innerString = "",
         totalQuantify = 0,
         totalPrice = 0,
@@ -20,7 +20,6 @@ function attributeAdd() {
     for (let i = 0; i < orderProducts.length; i++) {
         orderProducts[i].dataset.productNumber = i
         productPrice[i].dataset.productStartingPrice = productPrice[i].textContent.slice(0, productPrice[i].textContent.length - 1)
-        console.log(productPrice[i].textContent)
         productPrice[i].dataset.productPrice = productPrice[i].textContent.slice(0, productPrice[i].textContent.length - 1)
     }
 }
@@ -67,7 +66,6 @@ function totalPriceCount() {
         totalPrice += parseInt(elem.getAttribute("data-product-price"))
     })
     generalPrice.innerHTML = `${totalPrice} грн`
-    // balance.innerHTML = `${totalPrice}$`
     totalPrice = 0
 }
 
@@ -92,22 +90,20 @@ function refreshProducts() {
     productQuantify.forEach((elem) => {
         elem.oninput = valueChange
     })
-    // deleteProduct.forEach((elem) => {
-    //     elem.onclick = (event) => {
-    //         event.preventDefault()
-    //         basketProducts.removeChild(orderProducts[elem.closest(".product").getAttribute("data-product-number")])
-    //         orderProducts = document.querySelectorAll(".product")
-    //         localStorage.basketContent = basketProducts.innerHTML
-    //         if (orderProducts[0] === undefined) {
-    //             basketProducts.innerHTML = `<p class="basket-clear">Basket is clear</p>`
-    //         }
-    //         innerString = ""
-    //         attributeAdd()
-    //         totalPriceCount()
-    //         // localStorage.basketPrice = balance.innerHTML
-    //     }
-    // })
-    // localStorageAdd()
+    deleteProduct.forEach((elem) => {
+        elem.onclick = (event) => {
+            event.preventDefault()
+            basketProducts = JSON.parse(localStorage.basketProduct)
+            for (let i = 0; i < basketProducts.length; i++){
+                if (event.target.closest(".product-row").getAttribute("data-product-id") == basketProducts[i]) {
+                    basketProducts.splice(i, 1)
+                    break
+                }
+            }
+            localStorage.basketProduct = JSON.stringify(basketProducts)
+            openBasket(event, basketProducts)
+        }
+    })
 }
 
 // function localStorageAdd() {

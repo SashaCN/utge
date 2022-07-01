@@ -15,20 +15,24 @@ add_button.forEach(elem => {
             return false;
         }
 
-        basketProduct.push(product.getAttribute('data-product-number'));
+        basketProduct.push(product.getAttribute('data-product-id'));
         localStorage.basketProduct = JSON.stringify(basketProduct);
     }
 });
 
-basket_button.onclick = (e) => {
+basket_button.onclick = openBasket;
+
+function openBasket (e, basketProducts = basketProduct){
+    console.log(e)
     e.preventDefault();
     let products = "";
-    if (basketProduct != []) {
-        for (let i = 0; i < basketProduct.length; i++) {
+    console.log(basketProducts)
+    if (basketProducts != []) {
+        for (let i = 0; i < basketProducts.length; i++) {
             if (i == 0){
-                products = products+basketProduct[i];
+                products = products+basketProducts[i];
             } else {
-                products = products+","+basketProduct[i];
+                products = products+","+basketProducts[i];
             }
         }
     }
