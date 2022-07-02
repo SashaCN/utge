@@ -105,7 +105,7 @@ function refreshProducts() {
         }
     })
 }
-
+ 
 // function localStorageAdd() {
 //     localStorage.basketContent = basketProducts.innerHTML
 //     // localStorage.basketPrice = balance.innerHTML
