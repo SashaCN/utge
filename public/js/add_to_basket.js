@@ -15,7 +15,20 @@ add_button.forEach(elem => {
             return false;
         }
 
-        basketProduct.push(product.getAttribute('data-product-id'));
+        if (basketProduct.length == 0) {
+            basketProduct.push({id: product.getAttribute('data-product-id'), quantify:  1});
+        } else {
+            for (let i = 0; i < basketProduct.length; i++) {
+                if (basketProduct[i]['id'] == product.getAttribute('data-product-id')) {
+                    basketProduct[i]['quantify']++;
+                    break;
+                } else if (i == basketProduct.length-1) {
+                    basketProduct.push({id: product.getAttribute('data-product-id'), quantify:  1});
+                    break; 
+                }
+            }
+        }
+
         localStorage.basketProduct = JSON.stringify(basketProduct);
     }
 });
@@ -30,9 +43,9 @@ function openBasket (e, basketProducts = basketProduct){
     if (basketProducts != []) {
         for (let i = 0; i < basketProducts.length; i++) {
             if (i == 0){
-                products = products+basketProducts[i];
+                products = products+basketProducts[i]['id'];
             } else {
-                products = products+","+basketProducts[i];
+                products = products+","+basketProducts[i]['id'];
             }
         }
     }
