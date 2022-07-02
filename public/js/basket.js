@@ -16,11 +16,13 @@ window.onload = () => {
 
 refreshProducts()
 
+// refreshProducts()
+
 function attributeAdd() {
     for (let i = 0; i < orderProducts.length; i++) {
         orderProducts[i].dataset.productNumber = i
-        productPrice[i].dataset.productStartingPrice = productPrice[i].textContent.slice(0, productPrice[i].textContent.length - 1)
-        productPrice[i].dataset.productPrice = productPrice[i].textContent.slice(0, productPrice[i].textContent.length - 1)
+        productPrice[i].dataset.productStartingPrice = productPrice[i].textContent.match(/\d+/g)
+        productPrice[i].dataset.productPrice = productPrice[i].textContent.match(/\d+/g)
     }
 }
 
@@ -79,6 +81,7 @@ function refreshProducts() {
         generalQuantify = document.querySelector(".general-quantify")
 
     attributeAdd()
+    checkQuatify()
     totalPriceCount()
 
     productPlus.forEach((elem) => {
@@ -105,7 +108,22 @@ function refreshProducts() {
         }
     })
 }
- 
+
+function checkQuatify(){
+    basketProducts = JSON.parse(localStorage.basketProduct)
+    for(let i = 0; i < orderProducts.length; i++){
+        basketProducts.forEach(basket => {
+            if (orderProducts[i].getAttribute("data-product-id") == basket['id']) {
+                productQuantify[i].value = parseInt(basket['quantify'])
+                productQuantify[i].setAttribute("value", productQuantify[i].value)
+                productPrice[i].innerHTML = `${parseInt(productPrice[i].getAttribute("data-product-starting-price")) * parseInt(basket['quantify'])} грн`
+                productPrice[i].dataset.productPrice = productPrice[i].textContent.match(/\d+/g)
+            }
+        })
+    }
+    // totalPriceCount()
+}
+
 // function localStorageAdd() {
 //     localStorage.basketContent = basketProducts.innerHTML
 //     // localStorage.basketPrice = balance.innerHTML
