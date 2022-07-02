@@ -24,7 +24,7 @@ add_button.forEach(elem => {
                     break;
                 } else if (i == basketProduct.length-1) {
                     basketProduct.push({id: product.getAttribute('data-product-id'), quantify:  1});
-                    break;
+                    break; 
                 }
             }
         }
