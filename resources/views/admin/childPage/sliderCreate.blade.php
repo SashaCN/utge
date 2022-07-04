@@ -48,20 +48,16 @@
             <input type="text" name="title_ru" value="{{ old('title_ru') }}" id="title_ru" class="name-input-ru">
             <label class="label" for="title_ru">@lang('admin.add_ru_title')</label>
         </div>
-        <div class="input-wrap name-box-none">
-          <p class="this-block-name">@lang('admin.this-block-name')</p>
-          <p class="choose-block-name">@lang('admin.choose-block')</p>
+        <div class="input-wrap name-box">
+            <input type="text" name="img_a_url" value="{{ old('img_a_url') }}" id="img_a_url" class="name-input-ru">
+            <label class="label" for="img_a_url">url</label>
         </div>
     </div>
 
     <div class="image-slide flex-col">
-      <div class="input-wrap img-box">
+      <div class="input-wrap">
           <label><input type="hidden" name="image" class="img-input" value=""></label>
           <label><input type="file" name="image" class="img-input"></label>
-      </div>
-      <div class="input-wrap img-box-none">
-        <p class="this-block-img">@lang('admin.this-block-img')</p>
-        <p class="choose-block-img">@lang('admin.choose-block')</p>
       </div>
     </div>
 

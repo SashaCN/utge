@@ -14,15 +14,25 @@
     </div>
 
     <h3>slider</h3>
-    <a href="{{ route('childPage.create') }}">створення або редагування</a>
-    <div>
-        <div>slider 1</div>
-        <div>slider 2</div>
-        <div>slider 3</div>
-        <div>slider 4</div>
+    <a href="{{ route('childPage.sliderCreate') }}">створення або редагування</a>
+    <div class="sliders-box">
+        {{-- @foreach ($childPages as $childPage)
+            @if ($childPage->route == 'slider1')
+                @php
+                        $title = $childPage->localization[0];
+                @endphp
+                
+                <tr>
+                    <td>{{ $title->$locale }}</td>
+                    <td><img style="width: 100px;" src="{{ $childPage->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}"></td>
+                </tr>
+            @endif
+        @endforeach --}}
+        <div class="slider"><a href="{{ route('childPage.sliderEdit', 'slider1') }}">slider 1</a></div>
+        <div class="slider"><a href="{{ route('childPage.sliderEdit', 'slider2') }}">slider 2</a></div>
+        <div class="slider"><a href="{{ route('childPage.sliderEdit', 'slider3') }}">slider 3</a></div>
+        <div class="slider"><a href="{{ route('childPage.sliderEdit', 'slider4') }}">slider 4</a></div>
     </div>
-
-    <div style="padding: 10px 0"><hr></div>
 
     <h3>header</h3>
     <div class="header-modulus">
@@ -81,7 +91,7 @@
                                 <a href="{{ route('index') }}">show</a>
 
                                 <a href="{{ route('childPage.edit', $childPage->id) }}">update</a>
-                                
+
                                 <form  action="{{ route('childPage.destroy', $childPage->id) }}" method="POST">
                                     <label>
                                         @csrf 
@@ -136,8 +146,6 @@
         </div>
     </div>
     
-    <div style="padding: 10px 0"><hr></div>
-
     <h3>footer</h3>
     <div class="footer-modulus">
         <div>
@@ -252,8 +260,6 @@
         </div>
     </div>
 
-    <div style="padding: 20px 0"><hr></div>
-
     <h3>others</h3>
     <table class="product-table">
         <thead>
@@ -267,7 +273,7 @@
         </thead>
         <tbody>
             @foreach ($childPages as $childPage)
-                @if ($childPage->route != 'logo-img' && $childPage->route != 'logo-name' && $childPage->route != 'phone' && $childPage->route != 'footer-place' && $childPage->route != 'email')
+                @if ($childPage->route != 'logo-img' && $childPage->route != 'logo-name' && $childPage->route != 'phone' && $childPage->route != 'footer-place' && $childPage->route != 'email' &&  $childPage->route != 'slider1' &&  $childPage->route != 'slider2' &&  $childPage->route != 'slider3' &&  $childPage->route != 'slider4')
                     @php
                         $title = $childPage->localization[0];
                         $description = $childPage->localization[1];

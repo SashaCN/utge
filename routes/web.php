@@ -48,6 +48,9 @@ Route::middleware('set_locale')->group(function ()
     {
         Route::prefix('admin')->group(function()
         {
+            Route::get('contact-form', 'ContactController@create');
+            Route::post('sliderEdit/slider4/mediaUpdat/{id}', [\App\Http\Controllers\Admin\ChildPageController::class, 'mediaUpdate']);
+
             Route::get('/', [\App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin');
             Route::resource('childPage', \App\Http\Controllers\Admin\ChildPageController::class);
             Route::resource('seo', \App\Http\Controllers\Admin\SeoController::class);
@@ -61,6 +64,8 @@ Route::middleware('set_locale')->group(function ()
             Route::resource('servicesTypes', \App\Http\Controllers\Admin\ServicesTypeController::class);
             Route::resource('servicesCategory', \App\Http\Controllers\Admin\ServicesCategoryController::class);
             Route::resource('services', \App\Http\Controllers\Admin\ServicesController::class);
+            Route::get('sliderCreate', [\App\Http\Controllers\Admin\ChildPageController::class, 'sliderCreate'])->name('childPage.sliderCreate');
+            Route::get('sliderEdit/{slider_id}', [\App\Http\Controllers\Admin\ChildPageController::class, 'sliderEdit'])->name('childPage.sliderEdit');
             Route::get('newsCategory/delete/{newsCategory}', [\App\Http\Controllers\Admin\NewsCategoryController::class, 'delete'])->name('newsCategory.delete');
             Route::get('trashBox/{prouct}/restore/', [\App\Http\Controllers\Admin\TrashBoxController::class, 'restore'])->name('trashBox.restore');
             Route::get('trashBox/{prouct}/productForceDelete/', [\App\Http\Controllers\Admin\TrashBoxController::class, 'productForceDelete'])->name('trashBox.productForceDelete');

@@ -830,12 +830,38 @@ main {
 .footer-modulus {
   display: flex;
   justify-content: space-between;
+  align-items: stretch;
+  margin-bottom: 75px;
 }
 .header-modulus div,
 .footer-modulus div {
   width: 30%;
 }
+.header-modulus div p,
+.footer-modulus div p {
+  margin-bottom: 10px;
+  text-align: center;
+}
 
+.header-modulus {
+  margin-bottom: 50px;
+}
 .header-modulus img {
   width: 150px;
+}
+
+.sliders-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-bottom: 50px;
+}
+.sliders-box .slider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 25px;
+  width: 45%;
+  height: 75px;
+  background: #D9D9D9;
 }

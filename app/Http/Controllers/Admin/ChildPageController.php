@@ -19,7 +19,9 @@ class ChildPageController extends Controller
     {
         $childPages = ChildPage::all();
 
-        return view('admin.childPage.index', ['childPages' => $childPages]);
+        return view('admin.childPage.index', [
+            'childPages' => $childPages,
+        ]);
     }
 
     /**
@@ -32,6 +34,10 @@ class ChildPageController extends Controller
         return view('admin.childPage.create');
     }
 
+    public function sliderCreate()
+    {
+        return view('admin.childPage.sliderCreate');
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -57,8 +63,18 @@ class ChildPageController extends Controller
                 $localization_title->ru = $request->title_ru;
         
                 $childPage->localization()->save($localization_title);
-    
-                if ($request->route != 'logo-name' &&  $request->route != 'footer-place') {
+
+                if ($request->route == 'slider1' ||  $request->route == 'slider2' || $request->route == 'slider3' ||  $request->route == 'slider4') {
+                    $localization_img_a_url = new Localization();
+                    $localization_img_a_url->fill($request->validated());
+                    $localization_img_a_url->var = 'img_a_url';
+                    $localization_img_a_url->uk = $request->img_a_url;
+                    $localization_img_a_url->ru = $request->img_a_url;
+                    
+                    $childPage->localization()->save($localization_img_a_url);
+                }
+
+                if ($request->route != 'logo-name' &&  $request->route != 'footer-place' && $request->route != 'slider1' &&  $request->route != 'slider2' && $request->route != 'slider3' &&  $request->route != 'slider4') {
                     $localization_desc = new Localization();
                     $localization_desc->fill($request->validated());
                     $localization_desc->var = 'description';
@@ -67,6 +83,7 @@ class ChildPageController extends Controller
                     
                     $childPage->localization()->save($localization_desc);
                 }
+
             } else {
     
                 $localization_title = new Localization();
@@ -100,16 +117,15 @@ class ChildPageController extends Controller
     public function mediaUpdate(ImageRequest $request, ChildPage $childPage)
     {
         if ($request->hasFile('image')) {
+            // $childPage = ChildPage::where('id', $childPageId);
 
             $childPage->clearMediaCollection('images');
             $childPage->addMediaFromRequest('image')
             ->toMediaCollection('images');
 
         }
-
-        return redirect()->route('childPage.edit', $childPage->id);
+        return response()->json(['success'=>'Form is successfully submitted!']);
     }
-
     /**
      * Display the specified resource.
      *
@@ -130,6 +146,13 @@ class ChildPageController extends Controller
     public function edit(ChildPage $childPage)
     {
         return view('admin.childPage.update', ['childPage' => $childPage]);
+    }
+
+    public function sliderEdit($request)
+    {
+        $sliderImages = ChildPage::all()->where('route', $request);
+        $sliderId = $request;
+        return view('admin.childPage.sliderEdit', ['sliderImages' => $sliderImages, 'sliderId' => $sliderId]);
     }
 
     /**

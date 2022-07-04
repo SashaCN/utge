@@ -177,8 +177,6 @@
         </form>
     @endif
 
-
-
     <script src="{{ asset('js/create.js') }}"></script>
     <script src="{{ asset('js/childPage.js') }}"></script>
     <script src="{{ asset('js/simpleVisualTextEditor.js') }}"></script>
