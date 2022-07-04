@@ -572,9 +572,12 @@ h3
         fill: $second
         margin-right: 10px
     &:hover
+        transform: scale(1.1)
         border-color: $primary-hover
         background-color: $primary-hover
         cursor: pointer
+        & + .price
+            transform: scale(0.8)
 
 .price
   font-family: $roboto
@@ -689,6 +692,7 @@ h3
         width: auto
 
 .desc
+    font-size: 1.4rem
     height: 180px
     overflow-y: scroll
     padding-right: 20px

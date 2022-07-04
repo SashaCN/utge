@@ -1034,9 +1034,13 @@ h3 {
   margin-right: 10px;
 }
 .add-to-basket:hover {
+  transform: scale(1.1);
   border-color: #042c68;
   background-color: #042c68;
   cursor: pointer;
+}
+.add-to-basket:hover + .price {
+  transform: scale(0.8);
 }
 
 .price {
@@ -1176,6 +1180,7 @@ h3 {
 }
 
 .desc {
+  font-size: 1.4rem;
   height: 180px;
   overflow-y: scroll;
   padding-right: 20px;

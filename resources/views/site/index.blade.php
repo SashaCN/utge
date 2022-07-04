@@ -55,7 +55,7 @@
         <div class="wrapper">
             <div class="info-line flex-sb">
                 <div class="phone flex-aic">
-                    <svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
                         <use xlink:href="{{ asset('img/sprite.svg#tel') }}"></use>
                     </svg>
                     <ul class="phone-list">
@@ -75,12 +75,12 @@
                 </div>
                 <div class="control flex-sb">
                     <a href="{{ route('basket') }}" class="basket">
-                        <svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
                             <use xlink:href="{{ asset('img/sprite.svg#basket') }}"></use>
                         </svg>
                     </a>
                     <a href="#" class="like">
-                        <svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
                             <use xlink:href="{{ asset('img/sprite.svg#like') }}"></use>
                         </svg>
                     </a>
@@ -123,7 +123,7 @@
                 <span class="burger"></span>
             </a>
             <nav>
-                <span class="close"><svg>
+                <span class="close"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
                     <use xlink:href="{{ asset('img/sprite.svg#close') }}"></use>
                 </svg></span>
                 <div class="wrapper">
@@ -146,13 +146,13 @@
         <div class="wrapper">
             <div class="info-line flex-sb">
                 <div class="phone flex-aic">
-                    <svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
                         <use xlink:href="{{ asset('img/sprite.svg#tel') }}"></use>
                     </svg>
                     @yield('phone-list')
                 </div>
                 <div class="address flex-aic">
-                    <svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
                         <use xlink:href="{{ asset('img/sprite.svg#gps') }}"></use>
                     </svg>
                     <address>
@@ -160,7 +160,7 @@
                     </address>
                 </div>
                 <div class="mail flex-aic">
-                    <svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
                         <use xlink:href="{{ asset('img/sprite.svg#email') }}"></use>
                     </svg>
                     <div class="mail-wrap flex-col">

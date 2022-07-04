@@ -25,7 +25,7 @@
             <div class="slider-line">
                 <div class="slide slide-preview current-slide">
                     <h2>@lang('utge.slider-feed')</h2>
-                    <svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
                         <use xlink:href="{{ asset('img/sprite.svg#cow') }}"></use>
                     </svg>
                 </div>
@@ -51,7 +51,7 @@
             <div class="slider-line">
                 <div class="slide slide-preview current-slide">
                     <h2>@lang('utge.slider-staves')</h2>
-                    <svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
                         <use xlink:href="{{ asset('img/sprite.svg#fish') }}"></use>
                     </svg>
                 </div>
@@ -75,7 +75,7 @@
             <div class="slider-line">
                 <div class="slide slide-preview current-slide">
                     <h2>@lang('utge.slider-product')</h2>
-                    <svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
                         <use xlink:href="{{ asset('img/sprite.svg#goods') }}"></use>
                     </svg>
                 </div>
@@ -99,7 +99,7 @@
             <div class="slider-line">
                 <div class="slide slide-preview current-slide">
                     <h2>@lang('utge.slider-service')</h2>
-                    <svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
                         <use xlink:href="{{ asset('img/sprite.svg#man') }}"></use>
                     </svg>
                 </div>
@@ -178,7 +178,7 @@
                         <p class="description">{{ $product->sizeprices->where('price', $min_price)->first()->size }}</p>
                         <div class="button-line flex-sb">
                             <p class="add-to-basket flex-aic">
-                                <svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
                                     <use xlink:href="{{ asset('img/sprite.svg#basket') }}"></use>
                                 </svg>
                                 <span>
@@ -187,7 +187,7 @@
                             </p>
                             <p class="price">{{ $min_price }}&nbsp;{{ $product->sizeprices->where('price', $min_price)->first()->price_units }}</p>
                             <span class="like">
-                                <svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
                                     <use xlink:href="{{ asset('img/sprite.svg#like') }}"></use>
                                 </svg>
                             </span>
