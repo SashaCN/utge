@@ -3,7 +3,7 @@ window.onload = () => {
         productPlus = document.querySelectorAll(".product-plus"),
         productMinus = document.querySelectorAll(".product-minus"),
         productQuantify = document.querySelectorAll(".product-quantify"),
-        productPrice = document.querySelectorAll(".basket-price"), // in popup
+        productPrice = document.querySelectorAll(".basket-price"),
         deleteProduct = document.querySelectorAll(".delete-product"),
         generalQuantify = document.querySelector(".general-quantify"),
         generalPrice = document.querySelector(".general-price"),
@@ -73,11 +73,20 @@ function valueChange() {
 
 function totalPriceCount() {
     productPrice = document.querySelectorAll(".basket-price")
+    productQuantify = document.querySelectorAll(".product-quantify")
+
     productPrice.forEach((elem) => {
         totalPrice += parseInt(elem.getAttribute("data-product-price"))
     })
+
+    productQuantify.forEach((elem) => {
+        totalQuantify += parseInt(elem.value)
+    })
+
     generalPrice.innerHTML = `${totalPrice} грн`
+    generalQuantify.innerHTML = `${totalQuantify} шт`
     totalPrice = 0
+    totalQuantify = 0
 }
 
 function refreshProducts() {
