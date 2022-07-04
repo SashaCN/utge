@@ -26,7 +26,6 @@ class ServicesType extends Model implements HasMedia
 
     public function categories()
     {
-
         return $this->hasMany(ServicesCategory::class);
     }
 }
