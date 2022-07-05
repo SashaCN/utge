@@ -8,6 +8,8 @@ use App\Models\News;
 use App\Models\Product;
 use App\Models\SizePrice;
 use App\Models\ServicesType;
+use App\Filters\NewsFilter;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class SiteController extends Controller
 {
@@ -59,9 +61,9 @@ class SiteController extends Controller
         ]);
     }
 
-    public function showNews()
+    public function showNews(NewsFilter $request)
     {
-        $news = News::all();
+        $news = News::filter($request)->paginate(4);
         $phones = ChildPage::all()->where('route', 'phone');
 
         return view('site.news', [
