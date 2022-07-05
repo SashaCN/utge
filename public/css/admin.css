@@ -232,6 +232,12 @@ aside li:hover span {
   height: 24px;
   transform: translate(-50%, -50%);
 }
+.aside-menu .drop-list {
+  background-color: #042c68;
+}
+.aside-menu .drop-list a:hover {
+  background-color: #00255c;
+}
 
 .product-btn::before {
   background-image: url(../img/product.svg);
