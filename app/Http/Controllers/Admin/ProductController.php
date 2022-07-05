@@ -253,6 +253,7 @@ class ProductController extends Controller
         $product->fill($request->except(['size.', 'price.', 'available.', 'price_units.']));
         $product->update();
 
+
         for($i = 1; $i <= $request->counter; $i++){
             $size = 'size/'.$i;
             $price = 'price/'.$i;
