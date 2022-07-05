@@ -219,24 +219,11 @@ aside li:hover span {
   overflow-x: hidden;
   overflow-y: scroll;
 }
-
-.product-btn,
-.services-btn,
-.orders-btn,
-.news-btn,
-.module-btn,
-.seo-btn,
-.trash-btn {
+.aside-menu a {
   position: relative;
   padding-left: 54px;
 }
-.product-btn::before,
-.services-btn::before,
-.orders-btn::before,
-.news-btn::before,
-.module-btn::before,
-.seo-btn::before,
-.trash-btn::before {
+.aside-menu a::before {
   content: "";
   position: absolute;
   top: 50%;
