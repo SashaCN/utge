@@ -780,30 +780,33 @@ h3
 .news-category-line
     flex-wrap: wrap
     margin: 0 -10px 10px
-    li
+    p
         display: inline-block
         width: 20%
         padding: 0 10px
         box-sizing: border-box
-    a
-        font-size: 2.4rem
-        font-family: $roboto
-        font-weight: 500
-        display: block
-        padding: 9px
-        box-sizing: border-box
-        color: $primary
-        text-align: center
-        text-transform: lowercase
-        border: 2px solid $primary
-        border-radius: 10px
-        transition: $trs
-        margin-bottom: 20px
-        &:not(.active):hover
-            background-color: $second
-            cursor: pointer
-    .active
-        color: $second
+    input
+        display: none
+        &+label
+            font-size: 2.4rem
+            font-family: $roboto
+            font-weight: 500
+            display: block
+            padding: 9px
+            box-sizing: border-box
+            color: $primary
+            text-align: center
+            text-transform: lowercase
+            border: 2px solid $primary
+            border-radius: 10px
+            transition: $trs
+            margin-bottom: 20px
+            &:hover
+                background-color: $second
+                cursor: pointer
+        &:checked + label
+            background-color: $primary
+            color: $second
 
 .new
     display: flex
