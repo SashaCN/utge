@@ -23,8 +23,14 @@ $locale = app()->getLocale();
 @endphp
 
 <div class="wrapper">
-    <form action="" class="news-category-line flex-aic">
-        <p><input type="radio" name="category" id="all-news" checked><label for="all-news">@lang('utge.all_categories')</label></p>
+    <form action=""class="news-category-line flex-aic">
+        @foreach ($categories as $category)
+        @php
+            $title = $category->localization[0];
+        @endphp
+        <p>{{$title->$locale}}</p>
+            <p><input type="radio" name="category" id="all-news" checked><label for="all-news">@lang('utge.all_categories')</label></p>
+        @endforeach
     </form>
 
     <div class="news-list">

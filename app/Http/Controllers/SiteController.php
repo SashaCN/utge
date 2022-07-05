@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ChildPage;
 use App\Models\News;
+use App\Models\NewsCategory;
 use App\Models\Product;
 use App\Models\SizePrice;
 use App\Models\ServicesType;
+use App\Filters\NewsFilter;
 
 class SiteController extends Controller
 {
@@ -59,14 +61,16 @@ class SiteController extends Controller
         ]);
     }
 
-    public function showNews()
+    public function showNews(NewsFilter $request)
     {
         $news = News::all();
+        $categories = NewsCategory::filter($request);
         $phones = ChildPage::all()->where('route', 'phone');
 
         return view('site.news', [
             'news' => $news,
             'phones' => $phones,
+            'categories' => $categories,
         ]);
     }
 
