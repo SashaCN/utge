@@ -22,7 +22,7 @@ class ServicesCategory extends Model
     }
     public function services()
     {
-        return $this->hasMany(Services::class);
+        return $this->hasMany(Services::class, 'service_category_id');
     }
     public function localization()
     {

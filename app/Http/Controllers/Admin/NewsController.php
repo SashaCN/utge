@@ -78,6 +78,7 @@ class NewsController extends Controller
             ->toMediaCollection('images');
         }
 
+
         return redirect()->route('news.index');
     }
 
