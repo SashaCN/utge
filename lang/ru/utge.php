@@ -49,4 +49,8 @@ return [
 
     //services
     'more' => 'Подробнее',
+
+    //news
+    'all_categories' => 'все категории',
+    'full_new' => 'больше',
 ];
