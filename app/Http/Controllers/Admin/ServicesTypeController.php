@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Localization;
 use App\Models\Services;
 use App\Http\Requests\MultiRequest;
+use App\Http\Requests\ImageRequest;
 
 class ServicesTypeController extends Controller
 {
@@ -43,16 +44,34 @@ class ServicesTypeController extends Controller
      */
     public function store(MultiRequest $request)
     {
+        $servicesType = new servicesType();
+        $servicesType->save();
+
         $localization_title = new Localization();
         $localization_title->fill($request->validated());
         $localization_title->var = 'title';
         $localization_title->uk = $request->title_uk;
         $localization_title->ru = $request->title_ru;
 
-        $servicesTypes = new servicesType();
-        $servicesTypes->save();
+        $localization_desc = new Localization();
+        $localization_desc->fill($request->validated());
+        $localization_desc->var = 'description';
+        $localization_desc->uk = $request->description_uk;
+        $localization_desc->ru = $request->description_ru;
 
-        $servicesTypes->localization()->save($localization_title);
+        // $servicesType->fill($request->validated());
+
+
+
+        $servicesType->localization()->save($localization_title);
+        $servicesType->localization()->save($localization_desc);
+
+
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $servicesType->addMediaFromRequest('image')
+            ->toMediaCollection('images');
+        }
+     
 
         return redirect()->route('servicesTypes.index');
     }
@@ -96,12 +115,33 @@ class ServicesTypeController extends Controller
             'ru' => $request->title_ru,
         ];
 
-        $servicesType->fill($request->validated());
+        $localization_desc = [
+            'var' => "description",
+            'uk' => $request->description_uk,
+            'ru' => $request->description_ru
+        ];
 
         $servicesType->update();
+
         $servicesType->localization()->where('var', 'title')->update($localization_title);
+        $servicesType->localization()->where('var', 'description')->update($localization_desc);
+
+        return redirect()->route('news.index');
 
         return redirect()->route('servicesTypes.index');
+    }
+
+    public function mediaUpdate(ImageRequest $request, ServicesType $servicesType)
+    {
+        if ($request->hasFile('image')) {
+
+            $servicesType->clearMediaCollection('images');
+            $servicesType->addMediaFromRequest('image')
+            ->toMediaCollection('images');
+
+        }
+
+        return redirect()->route('servicesTypes.edit', $servicesType->id);
     }
 
     /**

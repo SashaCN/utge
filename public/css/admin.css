@@ -219,11 +219,11 @@ aside li:hover span {
   overflow-x: hidden;
   overflow-y: scroll;
 }
-.aside-menu > li a {
+.aside-menu a {
   position: relative;
   padding-left: 54px;
 }
-.aside-menu > li a::before {
+.aside-menu a::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -232,28 +232,38 @@ aside li:hover span {
   height: 24px;
   transform: translate(-50%, -50%);
 }
-.aside-menu > li:nth-child(1) > a::before {
+.aside-menu .drop-list {
+  background-color: #042c68;
+}
+.aside-menu .drop-list a:hover {
+  background-color: #00255c;
+}
+
+.product-btn::before {
   background-image: url(../img/product.svg);
 }
-.aside-menu > li:nth-child(2) > a::before {
+
+.services-btn::before {
   background-image: url(../img/services.svg);
 }
-.aside-menu > li:nth-child(3) > a::before {
+
+.orders-btn::before {
   background-image: url(../img/category.svg);
 }
-.aside-menu > li:nth-child(4) > a::before {
-  background-image: url(../img/order.svg);
-}
-.aside-menu > li:nth-child(5) > a::before {
+
+.news-btn::before {
   background-image: url(../img/new.svg);
 }
-.aside-menu > li:nth-child(6) > a::before {
+
+.module-btn::before {
   background-image: url(../img/module.svg);
 }
-.aside-menu > li:nth-child(7) > a::before {
+
+.seo-btn::before {
   background-image: url(../img/seo.svg);
 }
-.aside-menu > li:nth-child(8) > a::before {
+
+.trash-btn::before {
   background-image: url(../img/trash_box.svg);
 }
 

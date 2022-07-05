@@ -12,7 +12,7 @@
             <div class="slider-line">
                 <div class="slide slide-preview current-slide">
                     <h2>@lang('utge.slider-feed')</h2>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
+                    <svg>
                         <use xlink:href="{{ asset('img/sprite.svg#cow') }}"></use>
                     </svg>
                 </div>
@@ -22,14 +22,15 @@
                             alt="@lang('utge.sl_birds')">
                     </div>
                 </div>
-                <div class="slide">
-                    <h2>@lang('utge.slider-feed-fish')</h2><img src="{{ asset('img/sl_fish.jpg') }}"
-                        alt="@lang('utge.sl_fish')">
-                </div>
-                <div class="slide">
-                    <h2>@lang('utge.slider-feed-animals')</h2><img src="{{ asset('img/sl_animals.jpg') }}"
-                        alt="@lang('utge.sl_animals')">
-                </div>
+                @foreach ($slider1 as $item)
+                    @php
+                        $title = $item->localization[0];
+                    @endphp   
+                    <div class="slide">
+                        <h2>{{ $title->$locale }}</h2>
+                        <img src="{{ $item->getFirstMediaUrl('images') }}" alt="$title->$locale">
+                    </div>
+                @endforeach
             </div>
             <div class="slider-control"><span class="current-slide-btn"></span><span></span><span></span><span></span>
             </div>
@@ -38,22 +39,19 @@
             <div class="slider-line">
                 <div class="slide slide-preview current-slide">
                     <h2>@lang('utge.slider-staves')</h2>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
+                    <svg>
                         <use xlink:href="{{ asset('img/sprite.svg#fish') }}"></use>
                     </svg>
                 </div>
-                <div class="slide">
-                    <h2>@lang('utge.slider-staves-caviar')</h2>
-                    <img src="{{ asset('img/sl_birds.jpg') }}" alt="@lang('utge.sl_birds')">
-                </div>
-                <div class="slide">
-                    <h2>@lang('utge.slider-staves-fish')</h2>
-                    <img src="{{ asset('img/sl_fish.jpg') }}" alt="@lang('utge.sl_fish')">
-                </div>
-                <div class="slide">
-                    <h2>@lang('utge.slider-staves-canned')</h2>
-                    <img src="{{ asset('img/sl_animals.jpg') }}" alt="@lang('utge.sl_animals')">
-                </div>
+                @foreach ($slider2 as $item)
+                    @php
+                        $title = $item->localization[0];
+                    @endphp   
+                    <div class="slide">
+                        <h2>{{ $title->$locale }}</h2>
+                        <img src="{{ $item->getFirstMediaUrl('images') }}" alt="$title->$locale">
+                    </div>
+                @endforeach
             </div>
             <div class="slider-control"><span class="current-slide-btn"></span><span></span><span></span><span></span>
             </div>
@@ -62,22 +60,19 @@
             <div class="slider-line">
                 <div class="slide slide-preview current-slide">
                     <h2>@lang('utge.slider-product')</h2>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
+                    <svg>
                         <use xlink:href="{{ asset('img/sprite.svg#goods') }}"></use>
                     </svg>
                 </div>
-                <div class="slide">
-                    <h2>@lang('utge.slider-product-electric')</h2>
-                    <img src="{{ asset('img/sl_birds.jpg') }}" alt="@lang('utge.sl_birds')">
-                </div>
-                <div class="slide">
-                    <h2>@lang('utge.slider-product-plumbing')</h2>
-                    <img src="{{ asset('img/sl_fish.jpg') }}" alt="@lang('utge.sl_fish')">
-                </div>
-                <div class="slide">
-                    <h2>@lang('utge.slider-product-heating')</h2>
-                    <img src="{{ asset('img/sl_animals.jpg') }}" alt="@lang('utge.sl_animals')">
-                </div>
+                @foreach ($slider3 as $item)
+                    @php
+                        $title = $item->localization[0];
+                    @endphp   
+                    <div class="slide">
+                        <h2>{{ $title->$locale }}</h2>
+                        <img src="{{ $item->getFirstMediaUrl('images') }}" alt="$title->$locale">
+                    </div>
+                @endforeach
             </div>
             <div class="slider-control"><span class="current-slide-btn"></span><span></span><span></span><span></span>
             </div>
@@ -86,22 +81,19 @@
             <div class="slider-line">
                 <div class="slide slide-preview current-slide">
                     <h2>@lang('utge.slider-service')</h2>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
+                    <svg>
                         <use xlink:href="{{ asset('img/sprite.svg#man') }}"></use>
                     </svg>
                 </div>
-                <div class="slide">
-                    <h2>@lang('utge.slider-service')</h2>
-                    <img src="{{ asset('img/sl_birds.jpg') }}" alt="@lang('utge.sl_birds')">
-                </div>
-                <div class="slide">
-                    <h2>@lang('utge.slider-service')</h2>
-                    <img src="{{ asset('img/sl_fish.jpg') }}" alt="@lang('utge.sl_fish')">
-                </div>
-                <div class="slide">
-                    <h2>@lang('utge.slider-service')</h2>
-                    <img src="{{ asset('img/sl_animals.jpg') }}" alt="@lang('utge.sl_animals')">
-                </div>
+                @foreach ($slider4 as $item)
+                    @php
+                        $title = $item->localization[0];
+                    @endphp   
+                    <div class="slide">
+                        <h2>{{ $title->$locale }}</h2>
+                        <img src="{{ $item->getFirstMediaUrl('images') }}" alt="$title->$locale">
+                    </div>
+                @endforeach
             </div>
             <div class="slider-control"><span class="current-slide-btn"></span><span></span><span></span><span></span>
             </div>
@@ -165,7 +157,7 @@
                         <p class="description">{{ $product->sizeprices->where('price', $min_price)->first()->size }}</p>
                         <div class="button-line flex-sb">
                             <p class="add-to-basket flex-aic">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
+                                <svg>
                                     <use xlink:href="{{ asset('img/sprite.svg#basket') }}"></use>
                                 </svg>
                                 <span>
@@ -174,7 +166,7 @@
                             </p>
                             <p class="price">{{ $min_price }}&nbsp;{{ $product->sizeprices->where('price', $min_price)->first()->price_units }}</p>
                             <span class="like">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
+                                <svg>
                                     <use xlink:href="{{ asset('img/sprite.svg#like') }}"></use>
                                 </svg>
                             </span>

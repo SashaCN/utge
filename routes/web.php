@@ -61,7 +61,6 @@ Route::middleware('set_locale')->group(function ()
             Route::resource('productType', \App\Http\Controllers\Admin\ProductTypeController::class);
             Route::resource('category', \App\Http\Controllers\Admin\CategoryController::class);
             Route::resource('subCategory', \App\Http\Controllers\Admin\SubCategoryController::class);
-            Route::resource('product', \App\Http\Controllers\Admin\ProductController::class);
             Route::resource('trashBox', \App\Http\Controllers\Admin\TrashBoxController::class);
             Route::resource('newsCategory', \App\Http\Controllers\Admin\NewsCategoryController::class);
             Route::resource('servicesTypes', \App\Http\Controllers\Admin\ServicesTypeController::class);
@@ -74,7 +73,6 @@ Route::middleware('set_locale')->group(function ()
             Route::get('trashBox/{prouct}/productForceDelete/', [\App\Http\Controllers\Admin\TrashBoxController::class, 'productForceDelete'])->name('trashBox.productForceDelete');
             Route::post('news/mediaUpdate/{news}', [\App\Http\Controllers\Admin\NewsController::class, 'mediaUpdate'])->name('news.mediaUpdate');
             Route::post('childPage/mediaUpdate/{childPage}', [\App\Http\Controllers\Admin\ChildPageController::class, 'mediaUpdate'])->name('childPage.mediaUpdate');
-            Route::post('product/mediaUpdate/{product}', [\App\Http\Controllers\Admin\ProductController::class, 'mediaUpdate'])->name('product.mediaUpdate');
             Route::get('product/delete/{product}', [\App\Http\Controllers\Admin\ProductController::class, 'delete'])->name('product.delete');
             Route::get('productType/delete/{productType}', [\App\Http\Controllers\Admin\ProductTypeController::class, 'delete'])->name('productType.delete');
             Route::get('category/delete/{category}', [\App\Http\Controllers\Admin\CategoryController::class, 'delete'])->name('category.delete');
@@ -83,6 +81,11 @@ Route::middleware('set_locale')->group(function ()
             Route::get('servicesCategory/delete/{servicesCategory}', [\App\Http\Controllers\Admin\ServicesCategoryController::class, 'delete'])->name('servicesCategory.delete');
             Route::get('services/delete/{services}', [\App\Http\Controllers\Admin\ServicesController::class, 'delete'])->name('services.delete');
             Route::get('seo/delete/{seo}', [\App\Http\Controllers\Admin\SeoController::class, 'delete'])->name('seo.delete');
+            Route::middleware('optimizeImages')->group(function (){
+                Route::post('product/mediaUpdate/{product}', [\App\Http\Controllers\Admin\ProductController::class, 'mediaUpdate'])->name('product.mediaUpdate');
+                Route::post('servicesType/mediaUpdate/{servicesType}', [\App\Http\Controllers\Admin\ServicesTypeController::class, 'mediaUpdate'])->name('servicesType.mediaUpdate');
+                Route::resource('product', \App\Http\Controllers\Admin\ProductController::class);
+            });
         });
     });
 });

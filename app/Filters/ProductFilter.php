@@ -61,11 +61,11 @@ class ProductFilter extends QueryFilter
     //     ->where('size_prices.price', 'LIKE', '"%'.$search_str.'%"');
     // }
 
-    // public function search_field($search_str = '')
-    // {
-    //     return $this->builder
-    //     ->leftJoin('localizations', 'products.id', '=', 'localizations.localizationable_id')
-    //     ->where('products.id', 'LIKE', '"%'.$search_str.'%"');
+    public function search_field($search_str = '')
+    {
+        return $this->builder
+        ->leftJoin('localizations', 'products.id', '=', 'localizations.localizationable_id')
+        ->where('products.id', 'LIKE', '"%'.$search_str.'%"');
 
-    // }
+    }
 }

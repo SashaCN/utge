@@ -50,4 +50,8 @@ return [
 
     //services
     'more' => 'Детальніше',
+
+    //news
+    'all_categories' => 'усі категорії',
+    'full_new' => 'більше',
 ];

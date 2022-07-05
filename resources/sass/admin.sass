@@ -175,50 +175,43 @@ aside
     max-height: 80vh
     overflow-x: hidden
     overflow-y: scroll
-    & > li
-        a
-            position: relative
-            padding-left: 54px
-            &::before
-                content: ''
-                position: absolute
-                top: 50%
-                left: 30px
-                width: 24px
-                height: 24px
-                transform: translate(-50%, -50%)
-        &:nth-child(1)
-            & > a
-                &::before
-                    background-image: url(../img/product.svg)
-        &:nth-child(2)
-            & > a
-                &::before
-                    background-image: url(../img/services.svg)
-        &:nth-child(3)
-            & > a
-                &::before
-                    background-image: url(../img/category.svg)
-        &:nth-child(4)
-            & > a
-                &::before
-                    background-image: url(../img/order.svg)
-        &:nth-child(5)
-            & > a
-                &::before
-                    background-image: url(../img/new.svg)
-        &:nth-child(6)
-            & > a
-                &::before
-                    background-image: url(../img/module.svg)
-        &:nth-child(7)
-            & > a
-                &::before
-                    background-image: url(../img/seo.svg)
-        &:nth-child(8)
-            & > a
-                &::before
-                    background-image: url(../img/trash_box.svg)
+    a
+        position: relative
+        padding-left: 54px
+        &::before
+            content: ''
+            position: absolute
+            top: 50%
+            left: 30px
+            width: 24px
+            height: 24px
+            transform: translate(-50%, -50%)
+    .drop-list
+        background-color: $primary-hover
+        a:hover
+            background-color: #00255c
+
+.product-btn
+    &::before
+        background-image: url(../img/product.svg)
+.services-btn
+    &::before
+        background-image: url(../img/services.svg)
+.orders-btn
+    &::before
+        background-image: url(../img/category.svg)
+.news-btn
+    &::before
+        background-image: url(../img/new.svg)
+.module-btn
+    &::before
+        background-image: url(../img/module.svg)
+.seo-btn
+    &::before
+        background-image: url(../img/seo.svg)
+.trash-btn
+    &::before
+        background-image: url(../img/trash_box.svg)
 
 .selected-item
     position: relative

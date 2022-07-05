@@ -16,18 +16,6 @@
     <h3>slider</h3>
     <a href="{{ route('childPage.sliderCreate') }}">створення або редагування</a>
     <div class="sliders-box">
-        {{-- @foreach ($childPages as $childPage)
-            @if ($childPage->route == 'slider1')
-                @php
-                        $title = $childPage->localization[0];
-                @endphp
-                
-                <tr>
-                    <td>{{ $title->$locale }}</td>
-                    <td><img style="width: 100px;" src="{{ $childPage->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}"></td>
-                </tr>
-            @endif
-        @endforeach --}}
         <div class="slider"><a href="{{ route('childPage.sliderEdit', 'slider1') }}">slider 1</a></div>
         <div class="slider"><a href="{{ route('childPage.sliderEdit', 'slider2') }}">slider 2</a></div>
         <div class="slider"><a href="{{ route('childPage.sliderEdit', 'slider3') }}">slider 3</a></div>

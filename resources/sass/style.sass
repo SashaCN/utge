@@ -460,7 +460,12 @@ p.category-item
         padding-top: 20px
         margin-bottom: 50px
     .text-wrap
+        width: 100%
+        padding: 45px 35px
         margin: 0
+        margin-bottom: 30px
+        &:last-child
+            margin: 0
     .add-to-basket
         padding: 8px 10px
 
@@ -772,5 +777,52 @@ h3
         padding: 12px 70px
         text-transform: lowercase
         border-radius: 10px
+
+/* -------------------------------------------------------------------------- */
+/*                                  news page                                 */
+/* -------------------------------------------------------------------------- */
+
+.news-category-line
+    flex-wrap: wrap
+    margin: 0 -10px 10px
+    p
+        display: inline-block
+        width: 20%
+        padding: 0 10px
+        box-sizing: border-box
+    input
+        display: none
+        &+label
+            font-size: 2.4rem
+            font-family: $roboto
+            font-weight: 500
+            display: block
+            padding: 9px
+            box-sizing: border-box
+            color: $primary
+            text-align: center
+            text-transform: lowercase
+            border: 2px solid $primary
+            border-radius: 10px
+            transition: $trs
+            margin-bottom: 20px
+            &:hover
+                background-color: $second
+                cursor: pointer
+        &:checked + label
+            background-color: $primary
+            color: $second
+
+.new
+    display: flex
+    padding: 25px 30px
+    border-radius: 10px
+    background-color: $second
+    margin-bottom: 30px
+    img
+        width: 200px
+        height: 200px
+        object-fit: cover
+        margin-right: 20px
 
 @import components/media

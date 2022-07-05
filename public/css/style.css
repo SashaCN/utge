@@ -327,7 +327,7 @@ footer .address {
   width: 25%;
 }
 footer .address svg {
-  width: 45px;
+  width: 70px;
   height: 43px;
   fill: #fff;
 }
@@ -906,6 +906,12 @@ p.category-item::before {
   margin-bottom: 50px;
 }
 .product-list .text-wrap {
+  width: 100%;
+  padding: 45px 35px;
+  margin: 0;
+  margin-bottom: 30px;
+}
+.product-list .text-wrap:last-child {
   margin: 0;
 }
 .product-list .add-to-basket {
@@ -1272,6 +1278,61 @@ h3 {
   padding: 12px 70px;
   text-transform: lowercase;
   border-radius: 10px;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                  news page                                 */
+/* -------------------------------------------------------------------------- */
+.news-category-line {
+  flex-wrap: wrap;
+  margin: 0 -10px 10px;
+}
+.news-category-line p {
+  display: inline-block;
+  width: 20%;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+.news-category-line input {
+  display: none;
+}
+.news-category-line input + label {
+  font-size: 2.4rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  display: block;
+  padding: 9px;
+  box-sizing: border-box;
+  color: #003b95;
+  text-align: center;
+  text-transform: lowercase;
+  border: 2px solid #003b95;
+  border-radius: 10px;
+  transition: all 0.5s ease;
+  margin-bottom: 20px;
+}
+.news-category-line input + label:hover {
+  background-color: #fff;
+  cursor: pointer;
+}
+.news-category-line input:checked + label {
+  background-color: #003b95;
+  color: #fff;
+}
+
+.new {
+  display: flex;
+  padding: 25px 30px;
+  border-radius: 10px;
+  background-color: #fff;
+  margin-bottom: 30px;
+}
+.new img {
+  width: 200px;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-right: 20px;
 }
 
 @media screen and (max-width: 1900px) {
