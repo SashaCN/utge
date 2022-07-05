@@ -258,7 +258,7 @@ class ProductController extends Controller
             $price = 'price/'.$i;
             $available = 'available/'.$i;
             $price_units = 'price_units/'.$i;
-            $size_price =[
+            $size_price = [
                 'size' => $request->$size,
                 'price' => $request->$price,
                 'available' => $request->$available,
