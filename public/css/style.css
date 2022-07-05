@@ -1281,13 +1281,16 @@ h3 {
   flex-wrap: wrap;
   margin: 0 -10px 10px;
 }
-.news-category-line li {
+.news-category-line p {
   display: inline-block;
   width: 20%;
   padding: 0 10px;
   box-sizing: border-box;
 }
-.news-category-line a {
+.news-category-line input {
+  display: none;
+}
+.news-category-line input + label {
   font-size: 2.4rem;
   font-family: "Roboto", sans-serif;
   font-weight: 500;
@@ -1302,11 +1305,12 @@ h3 {
   transition: all 0.5s ease;
   margin-bottom: 20px;
 }
-.news-category-line a:not(.active):hover {
+.news-category-line input + label:hover {
   background-color: #fff;
   cursor: pointer;
 }
-.news-category-line .active {
+.news-category-line input:checked + label {
+  background-color: #003b95;
   color: #fff;
 }
 

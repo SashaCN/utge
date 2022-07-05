@@ -23,13 +23,9 @@ $locale = app()->getLocale();
 @endphp
 
 <div class="wrapper">
-    <ul class="news-category-line flex-aic">
-        <li><a href="#" class="active">@lang('utge.all_categories')</a></li>
-        <li><a href="#">осетрові</a></li>
-        <li><a href="#">комбікорм</a></li>
-        <li><a href="#">послуги</a></li>
-        <li><a href="#">інші товари</a></li>
-    </ul>
+    <form action="" class="news-category-line flex-aic">
+        <p><input type="radio" name="category" id="all-news" checked><label for="all-news">@lang('utge.all_categories')</label></p>
+    </form>
 
     <div class="news-list">
         @foreach ($news as $item)
