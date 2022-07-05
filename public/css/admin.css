@@ -219,24 +219,11 @@ aside li:hover span {
   overflow-x: hidden;
   overflow-y: scroll;
 }
-
-.product-btn,
-.services-btn,
-.orders-btn,
-.news-btn,
-.module-btn,
-.seo-btn,
-.trash-btn {
+.aside-menu a {
   position: relative;
   padding-left: 54px;
 }
-.product-btn::before,
-.services-btn::before,
-.orders-btn::before,
-.news-btn::before,
-.module-btn::before,
-.seo-btn::before,
-.trash-btn::before {
+.aside-menu a::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -244,6 +231,12 @@ aside li:hover span {
   width: 24px;
   height: 24px;
   transform: translate(-50%, -50%);
+}
+.aside-menu .drop-list {
+  background-color: #042c68;
+}
+.aside-menu .drop-list a:hover {
+  background-color: #00255c;
 }
 
 .product-btn::before {

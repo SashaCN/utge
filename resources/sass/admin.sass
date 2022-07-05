@@ -175,23 +175,21 @@ aside
     max-height: 80vh
     overflow-x: hidden
     overflow-y: scroll
-.product-btn,
-.services-btn,
-.orders-btn,
-.news-btn,
-.module-btn,
-.seo-btn,
-.trash-btn
-    position: relative
-    padding-left: 54px
-    &::before
-        content: ''
-        position: absolute
-        top: 50%
-        left: 30px
-        width: 24px
-        height: 24px
-        transform: translate(-50%, -50%)
+    a
+        position: relative
+        padding-left: 54px
+        &::before
+            content: ''
+            position: absolute
+            top: 50%
+            left: 30px
+            width: 24px
+            height: 24px
+            transform: translate(-50%, -50%)
+    .drop-list
+        background-color: $primary-hover
+        a:hover
+            background-color: #00255c
 
 .product-btn
     &::before
