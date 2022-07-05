@@ -54,27 +54,43 @@
         </p>
         <nav>
             <ul class="aside-menu">
-                <li><a href="{{ route('product.index') }}"><span class="link-text">@lang('admin.products')</span></a></li>
-                <li><a href="{{ route('services.index') }}"><span class="link-text">@lang('admin.services')</span></a></li>
                 <li>
-                    <a href="#" class="drop-btn"><span class="link-text">@lang('admin.components')</span></a>
+                    <a href="#" class="drop-btn product-btn"><span class="link-text">@lang('admin.products')</span></a></li>
 
                     <div class="drop-list hidden">
                         <ul>
+                            <li><a href="{{ route('product.index') }}"><span class="link-text-drop-list">@lang('admin.products')</span></a></li>
                             <li><a href="{{ route('subCategory.index') }}"><span class="link-text-drop-list">@lang('admin.subcategory_product')</span></a></li>
                             <li><a href="{{ route('category.index') }}"><span class="link-text-drop-list">@lang('admin.categories_product')</span></a></li>
                             <li><a href="{{ route('productType.index') }}"><span class="link-text-drop-list">@lang('admin.product_types')</span></a></li>
-                            <li><a href="{{ route('newsCategory.index') }}"><span class="link-text-drop-list">@lang('admin.category_news')</span></a></li>
+
+
+                        </ul>
+                    </div>
+                <li>
+                    <a href="#" class="drop-btn services-btn"><span span class="link-text">@lang('admin.services')</span></a></li>
+
+                    <div class="drop-list hidden">
+                        <ul>
+                            <li><a href="{{ route('services.index') }}"><span class="link-text-drop-list">@lang('admin.services')</span></a></li>
                             <li><a href="{{ route('servicesTypes.index') }}"><span class="link-text-drop-list">@lang('admin.services_types')</span></a></li>
                             <li><a href="{{ route('servicesCategory.index') }}"><span class="link-text-drop-list">@lang('admin.services_category')</span></a></li>
                         </ul>
                     </div>
-                </li>
-                <li><a href="#"><span class="link-text">@lang('admin.orders')</span></a></li>
-                <li><a href="{{ route('news.index') }}"><span class="link-text">@lang('admin.news')</span></a></li>
-                <li><a href="{{ route('childPage.index') }}"><span class="link-text">@lang('admin.modules')</span></a></li>
-                <li><a href="{{ route('seo.index') }}"><span class="link-text">SEO</span></a></li>
-                <li><a href="{{ route('trashBox.index') }}"><span class="link-text">@lang('admin.trash_box')</span></a></li>
+                <li><a href="#" class="orders-btn"><span class="link-text">@lang('admin.orders')</span></a></li>
+                <li>
+                    <a href="#" class="drop-btn news-btn"><span class="link-text">@lang('admin.news')</span></a></li>
+
+                    <div class="drop-list hidden">
+                        <ul>
+                            <li><a href="{{ route('news.index') }}"><span class="link-text-drop-list">@lang('admin.news')</span></a></li>
+                            <li><a href="{{ route('newsCategory.index') }}"><span class="link-text-drop-list">@lang('admin.category_news')</span></a></li>
+
+                        </ul>
+                    </div>
+                <li><a href="{{ route('childPage.index') }}" class="module-btn"><span class="link-text">@lang('admin.modules')</span></a></li>
+                <li><a href="{{ route('seo.index') }}" class="seo-btn"><span class="link-text">SEO</span></a></li>
+                <li><a href="{{ route('trashBox.index') }}" class="trash-btn"><span class="link-text">@lang('admin.trash_box')</span></a></li>
             </ul>
         </nav>
         <p class="copy">
