@@ -327,7 +327,7 @@ footer .address {
   width: 25%;
 }
 footer .address svg {
-  width: 45px;
+  width: 70px;
   height: 43px;
   fill: #fff;
 }
@@ -906,6 +906,12 @@ p.category-item::before {
   margin-bottom: 50px;
 }
 .product-list .text-wrap {
+  width: 100%;
+  padding: 45px 35px;
+  margin: 0;
+  margin-bottom: 30px;
+}
+.product-list .text-wrap:last-child {
   margin: 0;
 }
 .product-list .add-to-basket {
