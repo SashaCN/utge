@@ -9,6 +9,7 @@ class Seo extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['route'];
     public function localization()
     {
         return $this->morphMany(Localization::class, 'localizationable');

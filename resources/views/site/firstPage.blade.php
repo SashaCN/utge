@@ -12,7 +12,7 @@
             <div class="slider-line">
                 <div class="slide slide-preview current-slide">
                     <h2>@lang('utge.slider-feed')</h2>
-                    <svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
                         <use xlink:href="{{ asset('img/sprite.svg#cow') }}"></use>
                     </svg>
                 </div>
@@ -38,7 +38,7 @@
             <div class="slider-line">
                 <div class="slide slide-preview current-slide">
                     <h2>@lang('utge.slider-staves')</h2>
-                    <svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
                         <use xlink:href="{{ asset('img/sprite.svg#fish') }}"></use>
                     </svg>
                 </div>
@@ -62,7 +62,7 @@
             <div class="slider-line">
                 <div class="slide slide-preview current-slide">
                     <h2>@lang('utge.slider-product')</h2>
-                    <svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
                         <use xlink:href="{{ asset('img/sprite.svg#goods') }}"></use>
                     </svg>
                 </div>
@@ -86,7 +86,7 @@
             <div class="slider-line">
                 <div class="slide slide-preview current-slide">
                     <h2>@lang('utge.slider-service')</h2>
-                    <svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
                         <use xlink:href="{{ asset('img/sprite.svg#man') }}"></use>
                     </svg>
                 </div>
@@ -137,7 +137,7 @@
                     $title = $product->localization[0];
                     $description = $product->localization[1];
                 @endphp
-            <a href="#">
+            <a href="{{ route('product', $product->id) }}">
                 @php
                     if ($product->sizeprices->whereIn('available', [1,4])->min('price')) {
                         $min_price = $product->sizeprices->whereIn('available', [1,4])->min('price');
@@ -156,7 +156,7 @@
                         $available = 'available_for_order';
                     }
                 @endphp
-                <figure class="product shadow-box flex-col {{ $available }}" data-product-number="{{ $product->id }}">
+                <figure class="product shadow-box flex-col {{ $available }}" data-product-id="{{ $product->id }}">
                     <p class="status">@lang('admin.'.$available)</p>
                     <img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
                     <figcaption>
@@ -165,16 +165,16 @@
                         <p class="description">{{ $product->sizeprices->where('price', $min_price)->first()->size }}</p>
                         <div class="button-line flex-sb">
                             <p class="add-to-basket flex-aic">
-                                <svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
                                     <use xlink:href="{{ asset('img/sprite.svg#basket') }}"></use>
                                 </svg>
                                 <span>
                                     @lang('utge.add-to-basket')
                                 </span>
                             </p>
-                            <p class="price">{{ $min_price }}</p>
+                            <p class="price">{{ $min_price }}&nbsp;{{ $product->sizeprices->where('price', $min_price)->first()->price_units }}</p>
                             <span class="like">
-                                <svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
                                     <use xlink:href="{{ asset('img/sprite.svg#like') }}"></use>
                                 </svg>
                             </span>

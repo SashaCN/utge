@@ -1,5 +1,4 @@
 @extends('site.index')
-
 {{-- @section('phone-list')
     @php
         $locale = app()->getLocale();

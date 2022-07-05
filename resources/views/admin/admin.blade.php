@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{ asset('css/simpleVisualTextEditor.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>@lang('admin.utge_admin') @lang('admin.product_list')</title>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    @yield('ajax')
 </head>
 <body>
     <header>
@@ -77,8 +77,8 @@
                 <li><a href="#"><span class="link-text">@lang('admin.orders')</span></a></li>
                 <li><a href="{{ route('news.index') }}"><span class="link-text">@lang('admin.news')</span></a></li>
                 <li><a href="{{ route('childPage.index') }}"><span class="link-text">@lang('admin.modules')</span></a></li>
+                <li><a href="{{ route('seo.index') }}"><span class="link-text">SEO</span></a></li>
                 <li><a href="{{ route('trashBox.index') }}"><span class="link-text">@lang('admin.trash_box')</span></a></li>
-                {{-- <li><a href="{{ route('seo.index') }}"><span class="link-text">SEO</span></a></li> --}}
             </ul>
         </nav>
         <p class="copy">

@@ -54,7 +54,7 @@
                             $min_price = $product->sizeprices->whereIn('available', [1,4])->min('price');
                         @endphp
 
-                        <div class="basket-row product-row">
+                        <div class="basket-row product-row" data-product-id="{{ $product->id }}">
                             <div class="img-col col">
                                 <img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
                             </div>
@@ -73,7 +73,7 @@
                             </div>
                             <div class="delete-col col">
                                 <a href="#" class="delete-product">
-                                    <svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
                                         <use xlink:href="{{ asset('img/sprite.svg#trashbox') }}"></use>
                                     </svg>
                                 </a>
@@ -101,6 +101,8 @@
             <label><input type="submit" value="@lang('utge.confirm_order')"></label>
         </div>
     </form>
+
+    <script src="{{ asset('js/add_to_basket.js') }}"></script>
     <script src="{{ asset('js/basket.js') }}"></script>
 
 </div>

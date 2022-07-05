@@ -1,6 +1,6 @@
 @media screen and ( max-width:  1900px)
     .add-to-basket
-        padding: 8px 25px
+        padding: 8px 15px
     .price
         padding: 9px 10px
 
@@ -24,8 +24,22 @@
     .info-line
         & > div
             width: 23%
-    .add-to-basket
-        padding: 8px 15px
+
+    .product-list
+        .price
+            padding: 9px 5px
+
+    /* -------------------------------------------------------------------------- */
+    /*                                product page                                */
+    /* -------------------------------------------------------------------------- */
+
+    .current-product
+        .general-price
+            font-size: 3.2rem
+
+    .price-line
+        .add-to-basket
+            margin-left: 15px
 
 @media screen and ( max-width:  1600px)
     .info-line
@@ -39,13 +53,42 @@
         & > div
             width: 25%
 
-    //product page
+    /* -------------------------------------------------------------------------- */
+    /*                                products page                               */
+    /* -------------------------------------------------------------------------- */
 
     .product-list
         width: 80%
         margin: 0 -10px
         a
             padding: 0 10px
+
+    /* -------------------------------------------------------------------------- */
+    /*                                product page                                */
+    /* -------------------------------------------------------------------------- */
+
+    .img-half
+        width: 47%
+
+    .desc
+        height: 150px
+        margin-bottom: 15px
+
+    .size-line
+        padding: 20px 0
+
+    .price-line
+        justify-content: center
+        flex-wrap: wrap
+        padding-top: 20px
+        .general-price
+            font-size: 3.6rem
+            text-align: center
+            margin-bottom: 10px
+        .right-part
+            min-width: 70%
+
+
 
 @media screen and ( max-width:  1370px)
     .info-line
@@ -101,6 +144,15 @@
     .product-list
         width: 100%
 
+    .product
+        .button-line
+            flex-wrap: wrap
+            .add-to-basket
+                width: 100%
+            .price
+                width: 100%
+                order: -1
+                margin-bottom: 5px
 
 @media screen and ( max-width:  1300px)
     .info-line
@@ -118,6 +170,16 @@
         & > a
             flex: 0 0 33.33%
             width: 33.33%
+
+    /* -------------------------------------------------------------------------- */
+    /*                         delivery and payments page                         */
+    /* -------------------------------------------------------------------------- */
+
+    .delivery-card
+        .img-wrap
+            width: 25%
+        figcaption
+            width: 75%
 
 @media screen and ( max-width:  1200px)
     .info-line
@@ -144,7 +206,7 @@
             padding: 0 6px
 
     /* -------------------------------------------------------------------------- */
-    /*                                product page                                */
+    /*                                products page                                */
     /* -------------------------------------------------------------------------- */
 
     .active-filter.filter-menu
@@ -156,6 +218,25 @@
     .product-list
         & > a
             width: 50%
+
+    /* -------------------------------------------------------------------------- */
+    /*                                product page                                */
+    /* -------------------------------------------------------------------------- */
+
+    .current-product
+        .img-half
+            img
+                height: 320px
+
+    /* -------------------------------------------------------------------------- */
+    /*                         delivery and payments page                         */
+    /* -------------------------------------------------------------------------- */
+
+    .delivery-card
+        .img-wrap
+            width: 30%
+        figcaption
+            width: 70%
 
 @media screen and ( max-width: 900px)
     html
@@ -213,9 +294,20 @@
     .price
         padding: 10px
 
-@media screen and ( max-width: 800px)
     /* -------------------------------------------------------------------------- */
     /*                                product page                                */
+    /* -------------------------------------------------------------------------- */
+
+    .price-line
+        .count-col
+            button
+                padding: 10.5px 15px
+            input
+                padding: 10.5px 27px
+
+@media screen and ( max-width: 800px)
+    /* -------------------------------------------------------------------------- */
+    /*                                products page                                */
     /* -------------------------------------------------------------------------- */
 
     .active-filter.filter-menu
@@ -223,6 +315,42 @@
         .close-filter-bg
             left: 60vw
             width: 40vw
+
+    /* -------------------------------------------------------------------------- */
+    /*                         delivery and payments page                         */
+    /* -------------------------------------------------------------------------- */
+
+    .delivery-card
+        padding: 25px 5%
+        justify-content: center
+        flex-wrap: wrap
+        text-align: center
+        .img-wrap
+            width: 50%
+            margin-bottom: 20px
+        figcaption
+            width: 100%
+
+    /* -------------------------------------------------------------------------- */
+    /*                                product page                               */
+    /* -------------------------------------------------------------------------- */
+
+    .current-product
+        flex-wrap: wrap
+
+    .img-half,
+    .desc-half
+        width: 100%
+
+    .img-half
+        margin-bottom: 20px
+
+    .price-line
+        justify-content: space-between
+        .general-price
+            margin: 0
+        .right-part
+            min-width: auto
 
 @media screen and ( max-width: 700px)
     .phone
@@ -244,6 +372,17 @@
         margin: 0 -7px 25px
         & > a
             padding: 0 7px
+
+    /* -------------------------------------------------------------------------- */
+    /*                                product page                                */
+    /* -------------------------------------------------------------------------- */
+
+    .price-line
+        justify-content: center
+        .general-price
+            margin-bottom: 10px
+        .right-part
+            min-width: 70%
 
 @media screen and ( max-width:  650px)
     .goods-list
@@ -319,6 +458,16 @@
     .product-list
         width: 100%
 
+    /* -------------------------------------------------------------------------- */
+    /*                         delivery and payments page                         */
+    /* -------------------------------------------------------------------------- */
+
+    .delivery-card
+        .img-wrap
+            width: 70%
+        figcaption
+            width: 100%
+
 @media screen and ( max-width:  450px)
     .control
         & > a
@@ -348,7 +497,7 @@
         height: 63px
 
     /* -------------------------------------------------------------------------- */
-    /*                                product page                                */
+    /*                                products page                                */
     /* -------------------------------------------------------------------------- */
 
     .active-filter.filter-menu
@@ -356,6 +505,22 @@
         .close-filter-bg
             left: 90vw
             width: 10vw
+
+    /* -------------------------------------------------------------------------- */
+    /*                                product page                                */
+    /* -------------------------------------------------------------------------- */
+
+    .desc-wrap
+        .certificate-line
+            text-align: center
+
+    .right-part
+        flex-wrap: wrap
+        justify-content: center
+        .count-col
+            margin-bottom: 10px
+        .add-to-basket
+            margin: 0
 
 @media screen and ( max-width:  350px)
     .control

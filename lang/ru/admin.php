@@ -40,7 +40,7 @@ return [
     'add_price_units' => 'Введите единицы измерения цены (Пример: грн, грн/кг)',
     'add_size' => 'Введите вес (Пример: 100 г)',
     'add_available' => 'Наличие товара',
-    'available' => 'Есть в наличии',
+    'available' => 'В наличии',
     'not_available' => 'Нет в наличии',
     'waiting_available' => 'Ожидается',
     'available_for_order' => 'Под заказ',
@@ -117,8 +117,19 @@ return [
     'logo-name' => 'Логотип текст',
     'footer-place' => 'Расположение',
     'email' => 'Почта',
+    'seo_create' => 'SEO оптимизацыя',
+    'home-page' => 'Головная страница',
+    'product-page' => 'Страница товаров',
+    'delivery-page' => 'Доставка и оплата',
+    'news-page' => 'Страница новостей',
+    'contacts-page' => 'Страница контактов',
+    'page' => 'Выберете страницу',
+    'title-page' => 'Название страницы',
 
     // auntification
     'name' => 'Имя',
+
+    // product page
+    'quality-certificate' => 'сертификат качества',
 ];
 

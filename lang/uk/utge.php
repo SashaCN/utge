@@ -43,4 +43,11 @@ return [
     //products
     'add-to-basket' => 'в&nbsp;корзину',
     'filter' => 'фільтр',
+
+
+    // product
+    'quality-certificate' => 'сертифікат якості',
+
+    //services
+    'more' => 'Детальніше',
 ];

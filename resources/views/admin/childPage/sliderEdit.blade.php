@@ -41,13 +41,8 @@
     @foreach ($sliderImages as $sliderImg)
         @php
             $title = $sliderImg->localization[0];
-        @endphp
+        @endphp       
 
-        {{-- <div>
-            <p>{{ $sliderImg->id }}</p>
-            <p>{{ $title->$locale }}</p>
-            <span><img style="width: 200px;" src="{{ $sliderImg->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}"></span>
-        </div> --}}
         <div>
             <form action="{{ route('childPage.update', $sliderImg->id) }}" method="POST" enctype="multipart/form-data" class="current-slide-wrap">
                 @csrf
@@ -72,7 +67,7 @@
                 <div class="image-slide flex-col current-slide">
                     <label class="image-changes" for="image-changes"><img class="old-image" src="{{ $sliderImg->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}"></label>
                     <p class="image-changes-desc">@lang('admin.update-image')</p>
-                     <button class="image-changes-bt" type="submit" form="image-change" class="add-button">@lang('admin.save-new-phot')</button>    
+                     <button class="image-changes-bt add-button" form="image-change" type="submit">@lang('admin.save-new-phot')</button>    
                 </div>
         
                 <button type="submit" class="add-button" id="save-btn">
@@ -89,103 +84,16 @@
                 </label>
             </form>
         
-            {{-- <form id="image-change" class="image-changes-form" action="{{ route('childPage.mediaUpdate', $sliderImg->id ) }}" method="POST" enctype="multipart/form-data">
+            <form id="image-change" class="image-changes-form" action="{{ route('childPage.mediaUpdate', $sliderImg->id ) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('POST')
         
                 <input id="image-changes" type="file" name="image">
                 <input type="submit" value="img">
-            </form> --}}
-
-            <form id="image-change" class="image-changes-form" action="{{ route('childPage.mediaUpdate', $sliderImg->id ) }}" method="POST" enctype="multipart/form-data">
-                {{-- @csrf --}}
-                @method('POST')
-        
-                <input id="image-changes" type="file" name="image">
-                <input type="submit" value="img">
             </form>
+
+            <form id="image-change" class="image-changes-form" enctype="multipart/form-data">
+            
         </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
-        <script>
-
-            $('#image-change').on('submit',function(event){
-                
-
-
-                
-                $.ajax({
-                    headers: {
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    },
-                    beforeSend: function (xhr) {
-                    xhr.setRequestHeader ("Accept", "application/json");
-                        },
-                        url: '/childPage/mediaUpdate/{childPage}',
-                        type: "POST",
-                        dataType: "JSON",
-                        data: data,
-                        success: function(reponseData, textStatus, jqXHR){
-                        let data = $.parseJSON(responseData);
-                        token = data.token;
-                            console.log(responseData);
-                            console.log(data);
-                        },
-                        error: function(jqXHR, reponseData, errorThrown){
-                        console.log(errorThrown);
-                        },
-                        complete: function(jqXHR, data){
-                        console.log(data);
-                        },
-                });
-                //---------------------
-                // event.preventDefault();
-    
-
-                // let xhr = new XMLHttpRequest();
-
-                // function sendAjax (method, requestURL, params = null) {
-                //     return new Promise ((resolve, reject) => {
-                //     const xhr = new XMLHttpRequest()
-                //     xhr.open(method, requestURL)
-                //     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                //     //  xhr.responseType = "json"
-                // xhr.onerror = () => {
-                //     reject(xhr.response)
-                // }
-                // xhr.onreadystatechange = function (){
-                //         if (xhr.readyState !== 4) return;// відповідь від сервера
-                        
-                //         if (xhr.status !== 200 ) {// перевірка на наявність файлу
-                //             console.log(xhr.status + ' ' + xhr.statusText);
-                //         } else {
-                //             resolve(xhr.response)
-                //         }
-                //     }
-                // xhr.send(params)
-                // })
-                // }
-
-                // sendAjax('POST', '/admin/sliderEdit/slider4/mediaUpdate', [{{ $sliderImg->id }}])
-                //     .catch(er => console.log(er))
-//----
-                // let img = $('#image-changes').val();
-    
-                // $.ajax({
-                // url: "/admin/sliderEdit/slider4/mediaUpdate",
-                // type:"POST",
-                // data:{
-                //     "_token": "{{ csrf_token() }}",
-                //     request:img,
-                //     childPageId:{{$sliderImg->id}}
-                    
-                // },
-                //     success:function(response){
-                //     console.log(response);
-                // },
-                // });
-            });
-        </script>
     @endforeach
-   
-
 @endsection

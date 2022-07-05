@@ -7,6 +7,7 @@ use App\Models\News;
 use App\Models\Product;
 use App\Models\SizePrice;
 use App\Models\ChildPage;
+use App\Models\ServicesType;
 
 class SiteController extends Controller
 {
@@ -23,7 +24,8 @@ class SiteController extends Controller
     }
 
 
-    public function basket (){
+    public function basket ()
+    {
         $products = Product::all();
 
         return view('site.basket', [
@@ -54,11 +56,21 @@ class SiteController extends Controller
         ]);
     }
 
-    public function showNews(){
+    public function showNews()
+    {
         $news = News::all();
 
         return view('site.news', [
             'news' => $news,
+        ]);
+    }
+
+    public function services ()
+    {
+        $services = ServicesType::all();
+
+        return view('site.services', [
+            'services' => $services,
         ]);
     }
 

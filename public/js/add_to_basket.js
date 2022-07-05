@@ -15,20 +15,37 @@ add_button.forEach(elem => {
             return false;
         }
 
-        basketProduct.push(product.getAttribute('data-product-number'));
+        if (basketProduct.length == 0) {
+            basketProduct.push({id: product.getAttribute('data-product-id'), quantify:  1});
+        } else {
+            for (let i = 0; i < basketProduct.length; i++) {
+                if (basketProduct[i]['id'] == product.getAttribute('data-product-id')) {
+                    basketProduct[i]['quantify']++;
+                    break;
+                } else if (i == basketProduct.length-1) {
+                    basketProduct.push({id: product.getAttribute('data-product-id'), quantify:  1});
+                    break; 
+                }
+            }
+        }
+
         localStorage.basketProduct = JSON.stringify(basketProduct);
     }
 });
 
-basket_button.onclick = (e) => {
+basket_button.onclick = openBasket;
+
+function openBasket (e, basketProducts = basketProduct){
+    console.log(e)
     e.preventDefault();
     let products = "";
-    if (basketProduct != []) {
-        for (let i = 0; i < basketProduct.length; i++) {
+    console.log(basketProducts)
+    if (basketProducts != []) {
+        for (let i = 0; i < basketProducts.length; i++) {
             if (i == 0){
-                products = products+basketProduct[i];
+                products = products+basketProducts[i]['id'];
             } else {
-                products = products+","+basketProduct[i];
+                products = products+","+basketProducts[i]['id'];
             }
         }
     }

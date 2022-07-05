@@ -81,7 +81,7 @@ $locale = app()->getLocale();
                     $available = 'available_for_order';
                 }
             @endphp
-            <figure class="product shadow-box flex-col {{ $available }}" data-product-number="{{ $product->id }}">
+            <figure class="product shadow-box flex-col {{ $available }}" data-product-id="{{ $product->id }}">
                 <p class="status">@lang('admin.'.$available)</p>
                 <img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
                 <figcaption>
@@ -90,16 +90,16 @@ $locale = app()->getLocale();
                     <p class="description">{{ $product->sizeprices->where('price', $min_price)->first()->size }}</p>
                     <div class="button-line flex-sb">
                         <p class="add-to-basket flex-aic">
-                            <svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
                                 <use xlink:href="{{ asset('img/sprite.svg#basket') }}"></use>
                             </svg>
                             <span>
                                 @lang('utge.add-to-basket')
                             </span>
                         </p>
-                        <p class="price">{{ $min_price }}</p>
+                        <p class="price">{{ $min_price }}&nbsp;{{ $product->sizeprices->where('price', $min_price)->first()->price_units }}</p>
                         <span class="like">
-                            <svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
                                 <use xlink:href="{{ asset('img/sprite.svg#like') }}"></use>
                             </svg>
                         </span>

@@ -117,14 +117,12 @@ class ChildPageController extends Controller
     public function mediaUpdate(ImageRequest $request, ChildPage $childPage)
     {
         if ($request->hasFile('image')) {
-            // $childPage = ChildPage::where('id', $childPageId);
-
             $childPage->clearMediaCollection('images');
             $childPage->addMediaFromRequest('image')
             ->toMediaCollection('images');
 
         }
-        return response()->json(['success'=>'Form is successfully submitted!']);
+        return redirect()->back();
     }
     /**
      * Display the specified resource.
@@ -170,17 +168,42 @@ class ChildPageController extends Controller
             'ru' => $request->title_ru,
         ];
 
-        $localization_desc = [
-            'var' => "description",
-            'uk' => $request->description_uk,
-            'ru' => $request->description_ru
-        ];
+        if(isset($request->description_uk) && isset($request->description_ru))
+        {
+            $localization_desc = [
+                'var' => "description",
+                'uk' => $request->description_uk,
+                'ru' => $request->description_ru
+            ];
+        }
+
+        if(isset($request->img_a_url))
+        {
+            $localization_img_a_url = [
+                'var' => "img_a_url",
+                'uk' => $request->img_a_url,
+                'ru' => $request->img_a_url
+            ];
+        }
 
         $childPage->update($request->validated());
         $childPage->localization()->where('var', 'title')->update($localization_title);
-        $childPage->localization()->where('var', 'description')->update($localization_desc);
 
-        return redirect()->route('childPage.index');
+        if(isset($request->description_uk) && isset($request->description_ru))
+        {
+            $childPage->localization()->where('var', 'description')->update($localization_desc);
+        }
+
+        if(isset($request->img_a_url))
+        {
+            $childPage->localization()->where('var', 'img_a_url')->update($localization_img_a_url);
+        }
+        if(isset($request->img_a_url))
+        {
+            return redirect()->back();
+        } else {
+            return redirect()->route('childPage.index');
+        }
     }
 
     /**
