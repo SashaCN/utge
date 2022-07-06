@@ -56,6 +56,7 @@ class NewsController extends Controller
     {
         $news = new News();
         $news->categories_id = $request->categories_id;
+        // dd($request);
         $news->save();
 
         $localization_title = new Localization();

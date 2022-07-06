@@ -1,6 +1,7 @@
 let sizeprice = document.querySelector('.size-price'),
     size_price_add_btn = document.querySelector('#add-size-price'),
     size_price_delete_btn = document.querySelector('#delete-size-price'),
+    counter_input = document.querySelector('#product-counter'),
     auto_value_inuts = [],
     auto_selects = [],
     new_auto_value_inuts,
@@ -17,8 +18,12 @@ function addSizePrice(e)
         e.preventDefault();
     }
 
-    counter++;
     countSizePrices (counter);
+
+    counter++;
+
+    counter_input.value = counter;
+
 }
 
 function deleteSizePrice(e)
@@ -46,7 +51,6 @@ function countSizePrices (counter)
     // auto_selects = document.querySelectorAll('.auto-select');
     sizeprice.innerHTML = text;
     new_auto_value_inuts = document.querySelectorAll('.auto-value');
-    console.log(new_auto_value_inuts);
     // new_auto_selects = document.querySelectorAll('.auto-select');
 
     for (let i = 0; i < auto_value_inuts.length; i++) {

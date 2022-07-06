@@ -56,6 +56,11 @@ class MultiRequest extends FormRequest
             $request['category_id'] = 'required';
         }
 
+        if (isset($_REQUEST['categories_id']))
+        {
+            $request['categories_id'] = 'required';
+        }
+
         if (isset($_REQUEST['sub_category_id']))
         {
             $request['sub_category_id'] = 'required';
