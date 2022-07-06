@@ -54,7 +54,7 @@ $locale = app()->getLocale();
             </div>
             @endforeach
         </form>
-        <script src="{{ asset('js/filter.js') }}"></script>
+        <script src="{{ asset('js/product_filter.js') }}"></script>
     </div>
     <div class="product-list flex-sb">
         @foreach ($products as $product)
