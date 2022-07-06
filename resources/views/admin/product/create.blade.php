@@ -48,7 +48,7 @@
 
     <div class="flex title-line">
         <h2>@lang('admin.product_create')</h2>
-        <button type="submit" form="form" class="add-button" id="save-btm">
+        <button type="submit" form="form" class="add-button" id="save-btn">
             <img src="{{ asset('img/save.svg') }}" alt="Add">
         </button>
     </div>

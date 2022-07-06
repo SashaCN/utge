@@ -3,16 +3,15 @@
 @section('content')
 <div class="error">
     @if ($errors->any())
-            @foreach ($errors->all() as $error)
-                    <div class="error-item"><img class="error-icon" src="{{ asset('img/error.svg') }}" alt="error"><p class="error-desc">{{ $error }}</p></div>
-
-            @endforeach
+      @foreach ($errors->all() as $error)
+            <div class="error-item"><img class="error-icon" src="{{ asset('img/error.svg') }}" alt="error"><p class="error-desc">{{ $error }}</p></div>
+      @endforeach
     @endif
 </div>
 
   <div class="flex title-line">
       <h2>@lang('admin.childPage_create')</h2>
-      <button type="submit" form="form" class="add-button" id="save-btm">
+      <button type="submit" form="form" class="add-button" id="save-btn">
           <img src="{{ asset('img/save.svg') }}" alt="Add">
       </button>
   </div>
@@ -28,19 +27,31 @@
       @csrf
 
     <div class="another-slide flex-col current-slide">
-      <div class="input-wrap pt0">
-        <select name="route" id="child-page-select" class="auto-value">
-          <option value="" id="child-page-first-option" selected>@lang('admin.child_page_father')</option>
-          <option value="about_us">@lang('utge.about-us') Видалити на фінальній версії</option>
-          <option value="phone">@lang('admin.phone')</option>
-          <option value="delivery">@lang('utge.delivery')</option>
-          <option value="payment">@lang('utge.payment')</option>
-          <option value="contacts">@lang('utge.contacts')</option>
-        </select>
-      </div>
+        <div class="input-wrap pt0">
+            <select name="route" id="child-page-select" class="auto-value">
+                <option value="" id="child-page-first-option" selected>@lang('admin.child_page_father')</option>
+                <option disabled  class="models-slider-option">------------</option>
+                <option value="phone">@lang('admin.phone')</option>
+                <option value="logo-img">@lang('admin.logo-img')</option> 
+                <option value="logo-name">@lang('admin.logo-name')</option>
+                <option disabled class="models-slider-option">------------</option>
+                <option value="phone">@lang('admin.phone')</option>
+                <option value="footer-place">@lang('admin.footer-place')</option>
+                <option value="email">@lang('admin.email')</option>
+                <option disabled class="models-slider-option">------------</option>
+                <option value="about_us">@lang('utge.about-us') Видалити на фінальній версії</option>
+                <option value="delivery">@lang('utge.delivery')</option>
+                <option value="payment">@lang('utge.payment')</option>
+                <option value="contacts">@lang('utge.contacts')</option>
+            </select>
+        </div>
       <div class="input-wrap phone-box">
         <input type="text" name="phone" class="phone-input" id="phone">
         <label class="label" for="phone">@lang('admin.add_phone')</label>
+      </div>
+      <div class="input-wrap email-box">
+        <input type="email" name="email" class="email-input" id="email">
+        <label class="label" for="email">@lang('admin.email')</label>
       </div>
     </div>
 

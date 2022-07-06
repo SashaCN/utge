@@ -184,6 +184,16 @@ class MultiRequest extends FormRequest
             $request['custom_seo_ru'] = 'required';
         }
 
+        if (isset($_REQUEST['custom_seo_ru']))
+        {
+            $request['custom_seo_ru'] = 'required';
+        }
+
+        if (isset($_REQUEST['email']))
+        {
+            $request['email'] = 'required|regex:#^[a-zA-z-.]+@[a-z]+\.[a-z]{2,3}$#';
+        }
+
 
 
         return $request;

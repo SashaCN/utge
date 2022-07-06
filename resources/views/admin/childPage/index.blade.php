@@ -13,6 +13,192 @@
         </a>
     </div>
 
+    <h3 class="models-h3">@lang('admin.slider')</h3>
+    <div class="sliders-box">
+        <div class="slider"><a href="{{ route('childPage.sliderEdit', 'slider1') }}"><svg><use xlink:href="{{ asset('img/sprite.svg#cow') }}"></use></svg>@lang('utge.slider-feed')</a></div>
+        <div class="slider"><a href="{{ route('childPage.sliderEdit', 'slider2') }}"><svg class="svg-fish"><use xlink:href="{{ asset('img/sprite.svg#fish') }}"></use></svg>@lang('utge.slider-staves')</a></div>
+        <div class="slider"><a href="{{ route('childPage.sliderEdit', 'slider3') }}"><svg class="svg-goods"><use xlink:href="{{ asset('img/sprite.svg#goods') }}"></use></svg>@lang('utge.slider-product')</a></div>
+        <div class="slider"><a href="{{ route('childPage.sliderEdit', 'slider4') }}"><svg><use xlink:href="{{ asset('img/sprite.svg#man') }}"></use></svg>@lang('utge.slider-service')</a></div>
+    </div>
+
+    <h3 class="models-h3">header</h3>
+    <div class="header-modulus">
+        <div>
+            <p class="models-p">@lang('admin.phone')</p>
+            <table class="product-table">
+                <thead>
+                    <tr>
+                        <th>@lang('admin.title')</th>
+                        <th>@lang('admin.action')</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($childPages as $childPage)
+                        @if ($childPage->route == 'phone')
+                            @php
+                                    $title = $childPage->localization[0];
+                            @endphp
+                            
+                            <tr>
+                                <td>{{ $title->$locale }}</td>
+        
+                                <td class="action">    
+                                    <a href="{{ route('childPage.delete', $childPage->id) }}"></a>
+                                </td>
+                            </tr>
+                        @endif
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <p class="models-p">@lang('admin.logo-img')</p>
+        <table class="product-table">
+            <thead>
+                <tr>
+                    <th>@lang('admin.title')</th>
+                    <th>@lang('admin.action')</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($childPages as $childPage)
+                    @if ($childPage->route == 'logo-img')
+                        
+                        <tr>
+                            <td><img src="{{ $childPage->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}"></td>
+                            <td class="action">    
+                                <a href="{{ route('childPage.edit', $childPage->id) }}"></a>
+
+                                <a href="{{ route('childPage.delete', $childPage->id) }}"></a>
+                            </td>
+                        </tr>
+                    @endif
+                @endforeach
+            </tbody>
+        </table>
+        </div>
+        <div>
+            <p class="models-p">@lang('admin.logo-name')</p>
+            <table class="product-table">
+                <thead>
+                    <tr>
+                        <th>@lang('admin.title')</th>
+                        <th>@lang('admin.action')</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($childPages as $childPage)
+                        @if ($childPage->route == 'logo-name')
+                            @php
+                                    $title = $childPage->localization[0];
+                            @endphp
+                            
+                            <tr>
+                                <td>{{ $title->$locale }}</td>
+        
+                                <td class="action">    
+                                    <a href="{{ route('childPage.edit', $childPage->id) }}"></a>
+
+                                    <a href="{{ route('childPage.delete', $childPage->id) }}"></a>
+                                </td>
+                            </tr>
+                        @endif
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <h3 class="models-h3">footer</h3>
+    <div class="footer-modulus">
+        <div>
+            <p class="models-p">@lang('admin.phone')</p>
+            <table class="product-table">
+                <thead>
+                    <tr>
+                        <th>@lang('admin.title')</th>
+                        <th>@lang('admin.action')</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($childPages as $childPage)
+                        @if ($childPage->route == 'phone')
+                            @php
+                                    $title = $childPage->localization[0];
+                            @endphp
+                            
+                            <tr>
+                                <td>{{ $title->$locale }}</td>
+        
+                                <td class="action">    
+                                    <a href="{{ route('childPage.delete', $childPage->id) }}"></a>
+                                </td>
+                            </tr>
+                        @endif
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <p class="models-p">@lang('admin.footer-place')</p>
+        <table class="product-table">
+            <thead>
+                <tr>
+                    <th>@lang('admin.title')</th>
+                    <th>@lang('admin.action')</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($childPages as $childPage)
+                    @if ($childPage->route == 'footer-place')
+                        @php
+                                $title = $childPage->localization[0];
+                        @endphp
+                        
+                        <tr>
+                            <td>{{ $title->$locale }}</td>
+    
+                            <td class="action">    
+                                <a href="{{ route('childPage.edit', $childPage->id) }}"></a>
+                                <a href="{{ route('childPage.delete', $childPage->id) }}"></a>
+                            </td>
+                        </tr>
+                    @endif
+                @endforeach
+            </tbody>
+        </table>
+        </div>
+        <div>
+            <p class="models-p">@lang('admin.email')</p>
+            <table class="product-table">
+                <thead>
+                    <tr>
+                        <th>@lang('admin.title')</th>
+                        <th>@lang('admin.action')</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($childPages as $childPage)
+                        @if ($childPage->route == 'email')
+                            @php
+                                    $title = $childPage->localization[0];
+                            @endphp
+                            
+                            <tr>
+                                <td>{{ $title->$locale }}</td>
+        
+                                <td class="action">    
+                                    <a href="{{ route('childPage.delete', $childPage->id) }}"></a>
+                                </td>
+                            </tr>
+                        @endif
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <h3 class="models-p">@lang('admin.another')</h3>
     <table class="product-table">
         <thead>
             <tr>
@@ -25,78 +211,50 @@
         </thead>
         <tbody>
             @foreach ($childPages as $childPage)
-                @php
-                    $title = $childPage->localization[0];
-                    
-                    if ($childPage->route != 'phone')
-                    {
+                @if ($childPage->route != 'logo-img' && $childPage->route != 'logo-name' && $childPage->route != 'phone' && $childPage->route != 'footer-place' && $childPage->route != 'email' &&  $childPage->route != 'slider1' &&  $childPage->route != 'slider2' &&  $childPage->route != 'slider3' &&  $childPage->route != 'slider4')
+                    @php
+                        $title = $childPage->localization[0];
                         $description = $childPage->localization[1];
-                    }
-                @endphp
-                
-                <tr>
-                    <td class="product-image">
-                        @if ($childPage->route != 'about_us' && $childPage->route != 'phone')
-                            <img src="{{ $childPage->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
-                        @endif
-                    </td>
-                    <td>
-                        @if ($childPage->route == 'delivery')
-                            <p>@lang('utge.delivery')</p>
-                        @endif
-    
-                        @if ($childPage->route == 'payment')
-                            <p>@lang('utge.payment')</p>
-                        @endif
-    
-                        @if ($childPage->route == 'contacts')
-                            <p>@lang('utge.contacts')</p>
-                        @endif
-
-                        @if ($childPage->route == 'about_us')
-                            <p>@lang('utge.about-us')</p>
-                        @endif
-                        
-                        @if ($childPage->route == 'phone')
-                            <p>@lang('admin.phone')</p></>
-                        @endif
-                    </td>
-                    <td @if ($childPage->route == 'phone') colspan="2"  style="text-align:center;" @endif>{{ $title->$locale }}</td>
-
-                    @if ($childPage->route != 'phone')
-                        <td>
-                            {!! $description->$locale !!}
-                        </td>
-                    @endif
+                    @endphp
                     
-                    <td>
-                        @if ($childPage->route == 'delivery' || $childPage->route == 'payment')
-                        <a href="{{ route('deliveriesAndPayments') }}">show</a>
-                        @endif
-    
-                        @if ($childPage->route == 'contacts')
-                            <a href="{{ route('contacts') }}">show</a>
-                        @endif
+                    <tr>
+                        <td class="product-image">
+                            @if ($childPage->route != 'about_us')
+                                <img src="{{ $childPage->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
+                            @endif
+                        </td>
 
-                        @if ($childPage->route == 'about_us' || $childPage->route == 'phone')
-                            <a href="{{ route('index') }}">show</a>
-                        @endif
+                        <td>
+                            @if ($childPage->route == 'delivery')
+                                <p>@lang('utge.delivery')</p>
+                            @endif
+        
+                            @if ($childPage->route == 'payment')
+                                <p>@lang('utge.payment')</p>
+                            @endif
+        
+                            @if ($childPage->route == 'contacts')
+                                <p>@lang('utge.contacts')</p>
+                            @endif
 
-                        @if ($childPage->route != 'phone')
-                            <a href="{{ route('childPage.edit', $childPage->id) }}">update</a>
-                        @endif
+                            @if ($childPage->route == 'about_us')
+                                <p>@lang('utge.about-us')</p>
+                            @endif
+                        </td>
 
-                        @if ($childPage->route != 'about_us')
-                            <form  action="{{ route('childPage.destroy', $childPage->id) }}" method="POST">
-                                <label>
-                                    @csrf 
-                                    @method('DELETE')
-                                    <input type="submit" value="delete">
-                                </label>
-                            </form>
-                        @endif
-                    </td>
-                </tr>
+                        <td>{{ $title->$locale }}</td>
+
+                        <td>{!! $description->$locale !!}</td>
+
+                        <td class="action">
+                            <a href="{{ route('childPage.edit', $childPage->id) }}"></a>
+                            
+                            @if ($childPage->route != 'about_us')
+                                <a href="{{ route('childPage.delete', $childPage->id) }}"></a>
+                            @endif
+                        </td>
+                    </tr>
+                @endif
             @endforeach
         </tbody>
     </table>
