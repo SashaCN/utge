@@ -93,6 +93,7 @@
                         <h2>{{ $title->$locale }}</h2>
                         <img src="{{ $item->getFirstMediaUrl('images') }}" alt="$title->$locale">
                     </div>
+
                 @endforeach
             </div>
             <div class="slider-control"><span class="current-slide-btn"></span><span></span><span></span><span></span>

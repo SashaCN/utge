@@ -55,14 +55,15 @@ return [
     'add_size_price' => 'Добавить вес/цену',
     'delete_size_price' => 'Убрать вес/цену',
     'child_page_father' => 'Выбрать блок',
+    'child_page_slider' => 'Выбрать слайдер',
     'childPage_create' => 'Добавить блок',
+    'childPage_create_slider' => 'Добавить слайдер',
     'route' => 'блок',
     'news_create' => 'Добавить новости',
     'to_sub_category' => 'По под-категориях',
     'to_category' => 'По категориях',
     'to_product_type' => 'По типах товара',
     'search' => 'Поиск',
-    'child_page_father' => 'выбрать блок',
     'childPage_create' => 'Добавить блок',
     'route' => 'блок',
     'news_create' => 'Добавить новости',
@@ -125,7 +126,9 @@ return [
     'contacts-page' => 'Страница контактов',
     'page' => 'Выберете страницу',
     'title-page' => 'Название страницы',
-
+    'models-url' => 'Ссылка',
+    'slider' => 'Слайдеры',
+    
     // auntification
     'name' => 'Имя',
 

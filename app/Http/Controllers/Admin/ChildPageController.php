@@ -111,7 +111,12 @@ class ChildPageController extends Controller
             ->toMediaCollection('images');
         }
 
-        return redirect()->route('childPage.index');
+        if(isset($request->img_a_url))
+        {
+            return redirect()->back();
+        } else {
+            return redirect()->route('childPage.index');
+        }
     }
 
     public function mediaUpdate(ImageRequest $request, ChildPage $childPage)
@@ -198,6 +203,7 @@ class ChildPageController extends Controller
         {
             $childPage->localization()->where('var', 'img_a_url')->update($localization_img_a_url);
         }
+
         if(isset($request->img_a_url))
         {
             return redirect()->back();
@@ -215,6 +221,13 @@ class ChildPageController extends Controller
     public function destroy(ChildPage $childPage)
     {
         $childPage->delete();
+        return redirect()->route('childPage.index');
+    }
+
+    public function delete(ChildPage $childPage)
+    {
+        $childPage->forceDelete();
+
         return redirect()->route('childPage.index');
     }
 }

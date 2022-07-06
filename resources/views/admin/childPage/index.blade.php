@@ -13,19 +13,18 @@
         </a>
     </div>
 
-    <h3>slider</h3>
-    <a href="{{ route('childPage.sliderCreate') }}">створення або редагування</a>
+    <h3 class="models-h3">@lang('admin.slider')</h3>
     <div class="sliders-box">
-        <div class="slider"><a href="{{ route('childPage.sliderEdit', 'slider1') }}">slider 1</a></div>
-        <div class="slider"><a href="{{ route('childPage.sliderEdit', 'slider2') }}">slider 2</a></div>
-        <div class="slider"><a href="{{ route('childPage.sliderEdit', 'slider3') }}">slider 3</a></div>
-        <div class="slider"><a href="{{ route('childPage.sliderEdit', 'slider4') }}">slider 4</a></div>
+        <div class="slider"><a href="{{ route('childPage.sliderEdit', 'slider1') }}"><svg><use xlink:href="{{ asset('img/sprite.svg#cow') }}"></use></svg>@lang('utge.slider-feed')</a></div>
+        <div class="slider"><a href="{{ route('childPage.sliderEdit', 'slider2') }}"><svg class="svg-fish"><use xlink:href="{{ asset('img/sprite.svg#fish') }}"></use></svg>@lang('utge.slider-staves')</a></div>
+        <div class="slider"><a href="{{ route('childPage.sliderEdit', 'slider3') }}"><svg class="svg-goods"><use xlink:href="{{ asset('img/sprite.svg#goods') }}"></use></svg>@lang('utge.slider-product')</a></div>
+        <div class="slider"><a href="{{ route('childPage.sliderEdit', 'slider4') }}"><svg><use xlink:href="{{ asset('img/sprite.svg#man') }}"></use></svg>@lang('utge.slider-service')</a></div>
     </div>
 
-    <h3>header</h3>
+    <h3 class="models-h3">header</h3>
     <div class="header-modulus">
         <div>
-            <p>@lang('admin.phone')</p>
+            <p class="models-p">@lang('admin.phone')</p>
             <table class="product-table">
                 <thead>
                     <tr>
@@ -43,16 +42,8 @@
                             <tr>
                                 <td>{{ $title->$locale }}</td>
         
-                                <td>    
-                                    <a href="{{ route('index') }}">show</a>
-        
-                                    <form  action="{{ route('childPage.destroy', $childPage->id) }}" method="POST">
-                                        <label>
-                                            @csrf 
-                                            @method('DELETE')
-                                            <input type="submit" value="delete">
-                                        </label>
-                                    </form>
+                                <td class="action">    
+                                    <a href="{{ route('childPage.delete', $childPage->id) }}"></a>
                                 </td>
                             </tr>
                         @endif
@@ -61,7 +52,7 @@
             </table>
         </div>
         <div>
-            <p>@lang('admin.logo-img')</p>
+            <p class="models-p">@lang('admin.logo-img')</p>
         <table class="product-table">
             <thead>
                 <tr>
@@ -75,18 +66,10 @@
                         
                         <tr>
                             <td><img src="{{ $childPage->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}"></td>
-                            <td>    
-                                <a href="{{ route('index') }}">show</a>
+                            <td class="action">    
+                                <a href="{{ route('childPage.edit', $childPage->id) }}"></a>
 
-                                <a href="{{ route('childPage.edit', $childPage->id) }}">update</a>
-
-                                <form  action="{{ route('childPage.destroy', $childPage->id) }}" method="POST">
-                                    <label>
-                                        @csrf 
-                                        @method('DELETE')
-                                        <input type="submit" value="delete">
-                                    </label>
-                                </form>
+                                <a href="{{ route('childPage.delete', $childPage->id) }}"></a>
                             </td>
                         </tr>
                     @endif
@@ -95,7 +78,7 @@
         </table>
         </div>
         <div>
-            <p>@lang('admin.logo-name')</p>
+            <p class="models-p">@lang('admin.logo-name')</p>
             <table class="product-table">
                 <thead>
                     <tr>
@@ -113,18 +96,10 @@
                             <tr>
                                 <td>{{ $title->$locale }}</td>
         
-                                <td>    
-                                    <a href="{{ route('index') }}">show</a>
+                                <td class="action">    
+                                    <a href="{{ route('childPage.edit', $childPage->id) }}"></a>
 
-                                    <a href="{{ route('childPage.edit', $childPage->id) }}">update</a>
-
-                                    <form  action="{{ route('childPage.destroy', $childPage->id) }}" method="POST">
-                                        <label>
-                                            @csrf 
-                                            @method('DELETE')
-                                            <input type="submit" value="delete">
-                                        </label>
-                                    </form>
+                                    <a href="{{ route('childPage.delete', $childPage->id) }}"></a>
                                 </td>
                             </tr>
                         @endif
@@ -134,10 +109,10 @@
         </div>
     </div>
     
-    <h3>footer</h3>
+    <h3 class="models-h3">footer</h3>
     <div class="footer-modulus">
         <div>
-            <p>@lang('admin.phone')</p>
+            <p class="models-p">@lang('admin.phone')</p>
             <table class="product-table">
                 <thead>
                     <tr>
@@ -155,16 +130,8 @@
                             <tr>
                                 <td>{{ $title->$locale }}</td>
         
-                                <td>    
-                                    <a href="{{ route('index') }}">show</a>
-        
-                                    <form  action="{{ route('childPage.destroy', $childPage->id) }}" method="POST">
-                                        <label>
-                                            @csrf 
-                                            @method('DELETE')
-                                            <input type="submit" value="delete">
-                                        </label>
-                                    </form>
+                                <td class="action">    
+                                    <a href="{{ route('childPage.delete', $childPage->id) }}"></a>
                                 </td>
                             </tr>
                         @endif
@@ -173,7 +140,7 @@
             </table>
         </div>
         <div>
-            <p>@lang('admin.footer-place')</p>
+            <p class="models-p">@lang('admin.footer-place')</p>
         <table class="product-table">
             <thead>
                 <tr>
@@ -191,18 +158,9 @@
                         <tr>
                             <td>{{ $title->$locale }}</td>
     
-                            <td>    
-                                <a href="{{ route('index') }}">show</a>
-
-                                <a href="{{ route('childPage.edit', $childPage->id) }}">update</a>
-
-                                <form  action="{{ route('childPage.destroy', $childPage->id) }}" method="POST">
-                                    <label>
-                                        @csrf 
-                                        @method('DELETE')
-                                        <input type="submit" value="delete">
-                                    </label>
-                                </form>
+                            <td class="action">    
+                                <a href="{{ route('childPage.edit', $childPage->id) }}"></a>
+                                <a href="{{ route('childPage.delete', $childPage->id) }}"></a>
                             </td>
                         </tr>
                     @endif
@@ -211,7 +169,7 @@
         </table>
         </div>
         <div>
-            <p>@lang('admin.email')</p>
+            <p class="models-p">@lang('admin.email')</p>
             <table class="product-table">
                 <thead>
                     <tr>
@@ -229,16 +187,8 @@
                             <tr>
                                 <td>{{ $title->$locale }}</td>
         
-                                <td>    
-                                    <a href="{{ route('index') }}">show</a>
-        
-                                    <form  action="{{ route('childPage.destroy', $childPage->id) }}" method="POST">
-                                        <label>
-                                            @csrf 
-                                            @method('DELETE')
-                                            <input type="submit" value="delete">
-                                        </label>
-                                    </form>
+                                <td class="action">    
+                                    <a href="{{ route('childPage.delete', $childPage->id) }}"></a>
                                 </td>
                             </tr>
                         @endif
@@ -248,7 +198,7 @@
         </div>
     </div>
 
-    <h3>others</h3>
+    <h3 class="models-p">@lang('admin.another')</h3>
     <table class="product-table">
         <thead>
             <tr>
@@ -296,29 +246,11 @@
 
                         <td>{!! $description->$locale !!}</td>
 
-                        <td>
-                            @if ($childPage->route == 'delivery' || $childPage->route == 'payment')
-                            <a href="{{ route('deliveriesAndPayments') }}">show</a>
-                            @endif
-        
-                            @if ($childPage->route == 'contacts')
-                                <a href="{{ route('contacts') }}">show</a>
-                            @endif
-
-                            @if ($childPage->route == 'about_us')
-                                <a href="{{ route('index') }}">show</a>
-                            @endif
-
-                            <a href="{{ route('childPage.edit', $childPage->id) }}">update</a>
-
+                        <td class="action">
+                            <a href="{{ route('childPage.edit', $childPage->id) }}"></a>
+                            
                             @if ($childPage->route != 'about_us')
-                                <form  action="{{ route('childPage.destroy', $childPage->id) }}" method="POST">
-                                    <label>
-                                        @csrf 
-                                        @method('DELETE')
-                                        <input type="submit" value="delete">
-                                    </label>
-                                </form>
+                                <a href="{{ route('childPage.delete', $childPage->id) }}"></a>
                             @endif
                         </td>
                     </tr>

@@ -30,19 +30,15 @@
         <div class="input-wrap pt0">
             <select name="route" id="child-page-select" class="auto-value">
                 <option value="" id="child-page-first-option" selected>@lang('admin.child_page_father')</option>
-                <option disabled style="background: grey; color: white;">------слайдери------</option>
-                <option value="phone">@lang('admin.phone')</option>
-                <option value="logo-img">@lang('admin.logo-img')</option>
-                <option value="logo-name">@lang('admin.logo-name')</option>
-                <option disabled style="background: grey; color: white;">------контент в хедері------</option>
+                <option disabled  class="models-slider-option">------------</option>
                 <option value="phone">@lang('admin.phone')</option>
                 <option value="logo-img">@lang('admin.logo-img')</option> 
                 <option value="logo-name">@lang('admin.logo-name')</option>
-                <option disabled style="background: grey; color: white;">------контент в футері------</option>
+                <option disabled class="models-slider-option">------------</option>
                 <option value="phone">@lang('admin.phone')</option>
                 <option value="footer-place">@lang('admin.footer-place')</option>
                 <option value="email">@lang('admin.email')</option>
-                <option disabled style="background: grey; color: white;">------контент на додаткових сторінках------</option>
+                <option disabled class="models-slider-option">------------</option>
                 <option value="about_us">@lang('utge.about-us') Видалити на фінальній версії</option>
                 <option value="delivery">@lang('utge.delivery')</option>
                 <option value="payment">@lang('utge.payment')</option>

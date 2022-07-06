@@ -10,7 +10,7 @@
 </div>
 
   <div class="flex title-line">
-      <h2>@lang('admin.childPage_create')</h2>
+      <h2>@lang('admin.childPage_create_slider')</h2>
       <button type="submit" form="form" class="add-button" id="save-btn">
           <img src="{{ asset('img/save.svg') }}" alt="Add">
       </button>
@@ -28,12 +28,11 @@
     <div class="another-slide flex-col current-slide">
         <div class="input-wrap pt0">
             <select name="route" id="child-page-select" class="auto-value">
-                <option value="" id="child-page-first-option" selected>@lang('admin.child_page_father')</option>
-                <option disabled style="background: grey; color: white;">------слайдери------</option>
-                <option value="slider1">slider1</option>
-                <option value="slider2">slider2</option>
-                <option value="slider3">slider3</option>
-                <option value="slider4">slider4</option>
+                <option value="" id="child-page-first-option" selected>@lang('admin.child_page_slider')</option>
+                <option value="slider1">@lang('utge.slider-feed')</option>
+                <option value="slider2">@lang('utge.slider-staves')</option>
+                <option value="slider3">@lang('utge.slider-product')</option>
+                <option value="slider4">@lang('utge.slider-service')</option>
             </select>
         </div>
     </div>
@@ -50,7 +49,7 @@
         </div>
         <div class="input-wrap name-box">
             <input type="text" name="img_a_url" value="{{ old('img_a_url') }}" id="img_a_url" class="name-input-ru">
-            <label class="label" for="img_a_url">url</label>
+            <label class="label" for="img_a_url">@lang('admin.models-url')</label>
         </div>
     </div>
 
