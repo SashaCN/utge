@@ -1,21 +1,5 @@
 @extends('site.index')
 
-@section('phone-list')
-    @php
-        $locale = app()->getLocale();
-    @endphp
-
-    <ul class="phone-list">
-        @foreach ($phones as $item)
-            @php
-                $phone = $item->localization[0];
-                $phoneHref = preg_replace( "/[^0-9]/" , '' , $phone->$locale );
-            @endphp
-        <li><a href="tel:+{{ $phoneHref }}">{{ $phone->$locale }}</a></li>
-        @endforeach
-    </ul>
-@endsection
-
 @section('content')
 
 @php
@@ -23,8 +7,8 @@ $locale = app()->getLocale();
 @endphp
 
 <div class="wrapper">
-    <form action="{{ route('news') }}"class="news-category-line flex-aic">
-        <p><input type="radio" name="category" id="all-news" checked><label for="all-news">@lang('utge.all_categories')</label></p>
+    <form id="filter" action="{{ route('news') }}"class="news-category-line flex-aic">
+        <p><input type="radio" name="category" id="all-news" @if (!isset($_GET['newsCategoryid_'])) checked @endif><label for="all-news">@lang('utge.all_categories')</label></p>
         @foreach ($newsCategories as $newsCategory)
         @php
             $title = $newsCategory->localization[0];
@@ -46,7 +30,7 @@ $locale = app()->getLocale();
                 <img src="{{ $item->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
                 <div class="new-desc">
                     <h3>{{ $title->$locale }}</h3>
-                    <div class="desc">{!! $description->$locale !!}<a href="#">@lang('utge.full_new')</a></div>
+                    <div class="desc">{!! $description->$locale !!}</div>
                 </div>
             </article>
         @endforeach
@@ -60,6 +44,6 @@ $locale = app()->getLocale();
         <p class="page-link-next disabled"></p>
     </div>
 </div>
-
+<script src="{{ asset('js/news_filter.js') }}"></script>
 
 @endsection
