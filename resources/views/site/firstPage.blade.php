@@ -87,7 +87,7 @@
                 </div>
                 @foreach ($slider4 as $item)
                     @php
-                        $title = $item->localization[0];
+                       $title = $item->localization[0];
                     @endphp   
                     <div class="slide">
                         <h2>{{ $title->$locale }}</h2>
