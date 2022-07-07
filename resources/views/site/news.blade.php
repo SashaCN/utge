@@ -8,13 +8,13 @@ $locale = app()->getLocale();
 
 <div class="wrapper">
     <form id="filter" action="{{ route('news') }}"class="news-category-line flex-aic">
-        <p><input type="radio" name="category" id="all-news" @if (!isset($_GET['newsCategoryid_'])) checked @endif><label for="all-news">@lang('utge.all_categories')</label></p>
+        <p><input type="radio" name="category" id="all-news" @if (!isset($_GET['newsCategoryid_'])) checked @endif><label for="all-news" class="flex-aic">@lang('utge.all_categories')</label></p>
         @foreach ($newsCategories as $newsCategory)
         @php
             $title = $newsCategory->localization[0];
         @endphp
             <p><input id="newsCategoryid_{{$newsCategory->id}}" type="radio" name="newsCategoryid_" value="{{$newsCategory->id}}" @if (isset($_GET['newsCategoryid_'])) @if ($_GET['newsCategoryid_'] == $newsCategory->id) checked @endif @endif>
-            <label for="newsCategoryid_{{$newsCategory->id}}">{{ $title->$locale }}</label></p>
+            <label for="newsCategoryid_{{$newsCategory->id}}" class="flex-aic">{{ $title->$locale }}</label></p>
         @endforeach
     </form>
 
