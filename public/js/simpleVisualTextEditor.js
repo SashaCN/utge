@@ -113,7 +113,7 @@ window.onload = function (){
 
 // save textarea value
 
-document.querySelector('#save-btm').onclick = function(e){
+document.querySelector('#save-btn').onclick = function(e){
   document.querySelector("#converToCode1").click();    
   document.querySelector("#converToCode2").click();    
 }

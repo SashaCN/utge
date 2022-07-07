@@ -56,6 +56,7 @@ class NewsController extends Controller
     {
         $news = new News();
         $news->categories_id = $request->categories_id;
+        // dd($request);
         $news->save();
 
         $localization_title = new Localization();
@@ -161,6 +162,13 @@ class NewsController extends Controller
     public function destroy(News $news)
     {
         $news->delete();
+
+        return redirect()->route('news.index');
+    }
+
+    public function delete(News $news)
+    {
+        $news->forceDelete();
 
         return redirect()->route('news.index');
     }

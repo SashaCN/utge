@@ -699,3 +699,118 @@ main
     margin-right: 10px
     text-transform: uppercase
 
+/* -------------------------------------------------------------------------- */
+/*                                  modulus                                   */
+/* -------------------------------------------------------------------------- */
+.header-modulus,
+.footer-modulus 
+    display: flex
+    justify-content: space-between
+    align-items: stretch
+    margin-bottom: 75px
+    div
+        width: 30%
+        max-width: 30%
+
+.header-modulus 
+    margin-bottom: 50px
+    img 
+        width: 150px
+
+.sliders-box
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-around
+    margin-bottom: 50px
+    .slider
+        margin-bottom: 25px
+        width: 45%
+        height: 75px
+        background: #D9D9D9
+        transition: .5s
+        position: relative
+        &:hover
+            background: #B4B4B4
+            cursor: pointer
+        svg
+            width: 50px
+            margin-right: 15px
+        .svg-fish
+            width: 90px
+        .svg-goods
+            width: 40px
+        a
+            display: flex
+            justify-content: center
+            align-items: center
+            position: absolute
+            width: 100%
+            height: 100%
+            text-decoration: none
+            color: black
+            font-size: 22px
+            transition: .5s
+
+
+.models-h3,
+.models-p
+    background: #003b95
+    color: white
+    padding: 10px
+    text-align: center
+
+.models-h3
+    margin-bottom: 20px
+
+.models-p
+    margin-bottom: 0
+
+.models-slider-option
+    background: grey
+    color: white
+
+.box-slider-page
+    margin-bottom: 75px
+    form:first-child
+        display: flex
+        justify-content: space-around
+        padding: 40px 30px 50px
+        background-color: #B4B4B4
+        box-sizing: border-box
+        
+
+.image-slider-page
+    max-width: 45%
+    img
+        max-width: 400px
+        min-width: 400px
+        max-height: 400px
+        object-fit: contain
+
+.update-text-slider-page
+    display: flex
+    flex-direction: column-reverse
+    justify-content: flex-end
+    font-size: 18px    
+    max-width: 45%
+    .input-wrap
+        input
+            font-size: 16px
+
+.slider-page-actions-btn
+    display: flex
+    justify-content: flex-end
+    margin-bottom: 10px
+    a
+        margin-right: 10px
+        position: relative
+        display: inline-block
+        width: 35px
+        height: 35px
+        transition: .5s
+        background-color: #cb0000
+        background-image: url(/img/delete.svg)
+        background-repeat: no-repeat
+        background-position: center
+        &:hover
+            background-color: #a00000

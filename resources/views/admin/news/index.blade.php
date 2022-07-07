@@ -37,13 +37,7 @@
                     <td>{{ $description->$locale }}</td>
                     <td class="action">
                         <a href="{{ route('news.edit', $item->id) }}"></a>
-                        <form action="{{ route('news.destroy', $item->id) }}" method="POST">
-                            <label>
-                                @csrf
-                                @method('DELETE')
-                                <input type="submit" value="delete">
-                            </label>
-                        </form>
+                        <a href="{{ route('news.delete', $item->id) }}"></a>
                     </td>
                 </tr>
                 @endforeach

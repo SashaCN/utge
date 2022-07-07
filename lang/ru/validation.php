@@ -112,7 +112,7 @@ return [
     'prohibited_if' => 'The :attribute field is prohibited when :other is :value.',
     'prohibited_unless' => 'The :attribute field is prohibited unless :other is in :values.',
     'prohibits' => 'The :attribute field prohibits :other from being present.',
-    'regex' => 'The :attribute format is invalid.',
+    'regex' => ':attribute введено некорректно.',
     'required' => ':attribute - обизатильное поле',
     'required_array_keys' => 'The :attribute field must contain entries for: :values.',
     'required_if' => 'The :attribute field is required when :other is :value.',
@@ -190,6 +190,7 @@ return [
         'keywords_seo_ru' => 'СЕО ключевые слова на украинском языке',
         'custom_seo_uk' => 'Собственноє СЕО на украинском языке',
         'custom_seo_ru' => 'Собственноє СЕО на украинском языке',
+        'email' => 'Пошта',
     ],
 
 ];

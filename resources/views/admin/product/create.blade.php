@@ -48,7 +48,7 @@
 
     <div class="flex title-line">
         <h2>@lang('admin.product_create')</h2>
-        <button type="submit" form="form" class="add-button" id="save-btm">
+        <button type="submit" form="form" class="add-button" id="save-btn">
             <img src="{{ asset('img/save.svg') }}" alt="Add">
         </button>
     </div>
@@ -169,6 +169,7 @@
         </div>
         <div class="size-price-slide flex-col">
             <div class="size-price">
+
                 <div class="input-wrap">
                     <input type="text" name="size/1" value="{{ old('size/1') }}" id="size1" class="auto-value">
                     <label class="label" for="size1">@lang('admin.add_size')</label>
@@ -321,6 +322,7 @@
         </div>
         <script>
             function getStructure(counter) {
+
                 return structure = `
                     <div class="input-wrap">
                         <input type="number" name="size/${counter}" id="size${counter}" class="auto-value">

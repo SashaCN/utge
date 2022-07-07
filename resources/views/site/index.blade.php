@@ -70,7 +70,20 @@
                 </div>
                 <div class="logo">
                     <a class="flex-col" href="{{ route('index') }}">
-                        <img src="{{ asset('img/logo.png') }}" alt="@lang('utge.logo')" /><h1>@lang('utge.utge')</h1>
+
+                        {{-- <img src="{{ asset('img/logo.png') }}" alt="@lang('utge.logo')" /> --}}
+
+                        @foreach ($logoImg as $item)
+                            
+                            <img src="{{ $item->getFirstMediaUrl('images') }}" alt="@lang('utge.logo')" />
+                        @endforeach
+
+                        @foreach ($logoName as $item)
+                            @php
+                                $name = $item->localization[0];
+                            @endphp
+                            <h1>{{ $name->$locale }}</h1>
+                        @endforeach
                     </a>
                 </div>
                 <div class="control flex-sb">
@@ -149,23 +162,39 @@
                     <svg>
                         <use xlink:href="{{ asset('img/sprite.svg#tel') }}"></use>
                     </svg>
-                    @yield('phone-list')
+                    <ul class="phone-list">
+                        @foreach ($phones as $item)
+                            @php
+                                $phone = $item->localization[0];
+                                $phoneHref = preg_replace( "/[^0-9]/" , '' , $phone->$locale );
+                            @endphp
+                            <li><a href="tel:+{{ $phoneHref }}">{{ $phone->$locale }}</a></li>
+                        @endforeach
+                    </ul>
                 </div>
                 <div class="address flex-aic">
                     <svg>
                         <use xlink:href="{{ asset('img/sprite.svg#gps') }}"></use>
                     </svg>
                     <address>
-                        @lang('utge.address')
+                        @foreach ($footerPlace as $item)
+                            @php
+                                $place = $item->localization[0];
+                            @endphp
+                                {!! $place->$locale !!}
+                        @endforeach
                     </address>
                 </div>
                 <div class="mail flex-aic">
                     <svg>
                         <use xlink:href="{{ asset('img/sprite.svg#email') }}"></use>
                     </svg>
-                    <div class="mail-wrap flex-col">
-                        <a href="mailto:info@utge.net">info@utge.net</a>
-                    </div>
+                        @foreach ($email as $item)
+                            @php
+                                $email = $item->localization[0];
+                            @endphp
+                            <a href="mailto:{{ $email }}">{{ $email->$locale }}</a>
+                        @endforeach
                 </div>
             </div>
             <p class="copy">&copy; utge since 2016</p>

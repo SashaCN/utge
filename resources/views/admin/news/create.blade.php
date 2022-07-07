@@ -16,7 +16,7 @@
 
     <div class="flex title-line">
         <h2>@lang('admin.news_create')</h2>
-        <button type="submit" form="form" class="add-button" id="save-btm">
+        <button type="submit" form="form" class="add-button" id="save-btn">
             <img src="{{ asset('img/save.svg') }}" alt="Add">
         </button>
     </div>
@@ -145,7 +145,6 @@
                 <div class="input-wrap sub-category-wrap">
                     <p class="label">Виберіть категорію</p>
                     <div class="flex-space sub-category-wrap">
-                        {{-- <label><input type="hidden" value="" name="product_type_id"></label> --}}
 
                         @foreach ($newsCategories as $newsCategory)
                             @php
@@ -155,6 +154,7 @@
                             <input class="radio-change" id="newsCategory{{$newsCategory->id}}" type="radio" value="{{$newsCategory->id}}" name="categories_id">
                             <label class="radio-label" for="newsCategory{{$newsCategory->id}}"><span class="label-circle"></span><span class="label-desc">{{ $title->$locale }}</span></label>
                         @endforeach
+
                     </div>
                 </div>
         </div>

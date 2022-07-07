@@ -56,6 +56,11 @@ class MultiRequest extends FormRequest
             $request['category_id'] = 'required';
         }
 
+        if (isset($_REQUEST['categories_id']))
+        {
+            $request['categories_id'] = 'required';
+        }
+
         if (isset($_REQUEST['sub_category_id']))
         {
             $request['sub_category_id'] = 'required';
@@ -177,6 +182,16 @@ class MultiRequest extends FormRequest
         if (isset($_REQUEST['custom_seo_ru']))
         {
             $request['custom_seo_ru'] = 'required';
+        }
+
+        if (isset($_REQUEST['custom_seo_ru']))
+        {
+            $request['custom_seo_ru'] = 'required';
+        }
+
+        if (isset($_REQUEST['email']))
+        {
+            $request['email'] = 'required|regex:#^[a-zA-z-.]+@[a-z]+\.[a-z]{2,3}$#';
         }
 
 
