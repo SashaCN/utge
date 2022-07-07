@@ -67,7 +67,7 @@
 @endphp
 
 <div class="wrapper">
-    <figure class="current-product flex-sb {{ $available }}" data-product-number="{{ $product->id }}">
+    <figure id="product" class="current-product flex-sb {{ $available }}" data-product-id="{{ $product->id }}">
         <div class="img-half shadow-box">
             <p class="status">@lang('admin.'.$available)</p>
             <div class="img-wrap">
@@ -115,5 +115,7 @@
         </section>
     </figure>
 </div>
+
+<script src="{{ asset('js/add_to_basket.js') }}"></script>
 
 @endsection
