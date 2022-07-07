@@ -18,7 +18,7 @@ class ChildPageController extends Controller
     public function index()
     {
         $childPages = ChildPage::all();
-
+        
         return view('admin.childPage.index', [
             'childPages' => $childPages,
         ]);
@@ -31,7 +31,11 @@ class ChildPageController extends Controller
      */
     public function create()
     {
-        return view('admin.childPage.create');
+        $childPages = ChildPage::all();
+        
+        return view('admin.childPage.create', [
+            'childPages' => $childPages,
+        ]);
     }
 
     public function sliderCreate()

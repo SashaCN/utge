@@ -247,11 +247,11 @@
                         <td>{!! $description->$locale !!}</td>
 
                         <td class="action">
-                            <a href="{{ route('childPage.edit', $childPage->id) }}"></a>
-                            
                             @if ($childPage->route != 'about_us')
-                                <a href="{{ route('childPage.delete', $childPage->id) }}"></a>
+                                <a href="{{ route('childPage.edit', $childPage->id) }}"></a>
                             @endif
+                            
+                            <a href="{{ route('childPage.delete', $childPage->id) }}"></a>
                         </td>
                     </tr>
                 @endif

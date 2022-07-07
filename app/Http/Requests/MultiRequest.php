@@ -28,7 +28,7 @@ class MultiRequest extends FormRequest
 
         if (isset($_REQUEST['title_uk']))
         {
-            $request['title_uk'] = 'required|min:2|max:55';
+            $request['title_uk'] = 'required|min:2';
         }
 
         if (isset($_REQUEST['title_ru']))
