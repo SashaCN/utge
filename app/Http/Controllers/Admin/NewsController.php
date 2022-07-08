@@ -54,9 +54,9 @@ class NewsController extends Controller
      */
     public function store(MultiRequest $request)
     {
+        dd($request);
         $news = new News();
-        $news->categories_id = $request->categories_id;
-        // dd($request);
+        $news->categories_id = $request->news_category_id;
         $news->save();
 
         $localization_title = new Localization();
@@ -144,7 +144,7 @@ class NewsController extends Controller
             'ru' => $request->description_ru
         ];
 
-        $news->categories_id = $request->categories_id;
+        $news->categories_id = $request->news_category_id;
         $news->update();
 
         $news->localization()->where('var', 'title')->update($localization_title);

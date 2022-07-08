@@ -48,8 +48,12 @@
             <label class="label" for="title_ru">@lang('admin.add_ru_title')</label>
         </div>
         <div class="input-wrap name-box">
-            <input type="text" name="img_a_url" value="{{ old('img_a_url') }}" id="img_a_url" class="name-input-ru">
-            <label class="label" for="img_a_url">@lang('admin.models-url')</label>
+            <input type="text" name="slider_link" value="{{ old('slider_link') }}" id="slider_link" class="name-input-ru">
+            <label class="label" for="slider_link">@lang('admin.models-url')</label>
+        </div>
+        <div class="input-wrap name-box">
+            <input type="text" name="slider_order" value="0" id="slider_order" class="name-input-ru">
+            <label class="label" for="slider_order">@lang('admin.models-slider_order')</label>
         </div>
     </div>
 
