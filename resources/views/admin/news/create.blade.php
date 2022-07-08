@@ -154,6 +154,7 @@
                             <input class="radio-change" id="newsCategory{{$newsCategory->id}}" type="radio" value="{{$newsCategory->id}}" name="news_category_id">
                             <label class="radio-label" for="newsCategory{{$newsCategory->id}}"><span class="label-circle"></span><span class="label-desc">{{ $title->$locale }}</span></label>
                         @endforeach
+
                     </div>
                 </div>
         </div>

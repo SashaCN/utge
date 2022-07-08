@@ -1,6 +1,7 @@
 let basket_button = document.querySelector('.basket'),
     add_button = document.querySelectorAll('.add-to-basket')
-    basketProduct = [];
+    basketProduct = [],
+    pr_weight = 0;
 
 if (localStorage.basketProduct !== undefined) {
     basketProduct = JSON.parse(localStorage.basketProduct);
@@ -9,22 +10,23 @@ if (localStorage.basketProduct !== undefined) {
 add_button.forEach(elem => {
     elem.onclick = (e) => {
         e.preventDefault();
-        let product = elem.closest('.product')
+        let product = elem.closest('#product');
 
         if (product.classList.contains('not_available') || product.classList.contains('waiting_available')) {
             return false;
         }
 
+        pr_weight = product.querySelector('.active-size').textContent;
         if (basketProduct.length == 0) {
-            basketProduct.push({id: product.getAttribute('data-product-id'), quantify:  1});
+            basketProduct.push({id: product.getAttribute('data-product-id'), quantify:  1, size: pr_weight});
         } else {
             for (let i = 0; i < basketProduct.length; i++) {
-                if (basketProduct[i]['id'] == product.getAttribute('data-product-id')) {
+                if (basketProduct[i]['id'] == product.getAttribute('data-product-id') && basketProduct[i]['size'] == pr_weight) {
                     basketProduct[i]['quantify']++;
                     break;
                 } else if (i == basketProduct.length-1) {
-                    basketProduct.push({id: product.getAttribute('data-product-id'), quantify:  1});
-                    break; 
+                    basketProduct.push({id: product.getAttribute('data-product-id'), quantify:  1, size: pr_weight});
+                    break;
                 }
             }
         }
@@ -36,10 +38,8 @@ add_button.forEach(elem => {
 basket_button.onclick = openBasket;
 
 function openBasket (e, basketProducts = basketProduct){
-    console.log(e)
     e.preventDefault();
     let products = "";
-    console.log(basketProducts)
     if (basketProducts != []) {
         for (let i = 0; i < basketProducts.length; i++) {
             if (i == 0){

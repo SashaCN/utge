@@ -255,18 +255,21 @@ class ProductController extends Controller
 
 
         for($i = 1; $i <= $request->counter; $i++){
-            $size = 'size/'.$i;
-            $price = 'price/'.$i;
-            $available = 'available/'.$i;
-            $price_units = 'price_units/'.$i;
-            $size_price = [
-                'size' => $request->$size,
-                'price' => $request->$price,
-                'available' => $request->$available,
-                'price_units' => $request->$price_units
-            ];
 
-            $product->sizePrices[$i-1]->update($size_price);
+                $size = 'size/'.$i;
+                $price = 'price/'.$i;
+                $available = 'available/'.$i;
+                $price_units = 'price_units/'.$i;
+                $size_price = [
+                    'size' => $request->$size,
+                    'price' => $request->$price,
+                    'available' => $request->$available,
+                    'price_units' => $request->$price_units
+                ];
+
+                $product->sizePrices[$i-1]->update($size_price);
+
+
         }
 
         $product->localization()->where('var', 'title')->update($localization_title);
