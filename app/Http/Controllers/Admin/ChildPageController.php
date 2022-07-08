@@ -50,7 +50,6 @@ class ChildPageController extends Controller
      */
     public function store(MultiRequest $request)
     {
-
         $childPage = new ChildPage();
         $childPage->fill($request->validated());
         $childPage->save();
@@ -69,13 +68,13 @@ class ChildPageController extends Controller
                 $childPage->localization()->save($localization_title);
 
                 if ($request->route == 'slider1' ||  $request->route == 'slider2' || $request->route == 'slider3' ||  $request->route == 'slider4') {
-                    $localization_img_a_url = new Localization();
-                    $localization_img_a_url->fill($request->validated());
-                    $localization_img_a_url->var = 'img_a_url';
-                    $localization_img_a_url->uk = $request->img_a_url;
-                    $localization_img_a_url->ru = $request->img_a_url;
+                    $localization_slider_link = new Localization();
+                    $localization_slider_link->fill($request->validated());
+                    $localization_slider_link->var = 'slider_link';
+                    $localization_slider_link->uk = $request->slider_link;
+                    $localization_slider_link->ru = $request->slider_link;
                     
-                    $childPage->localization()->save($localization_img_a_url);
+                    $childPage->localization()->save($localization_slider_link);
                 }
 
                 if ($request->route != 'logo-name' &&  $request->route != 'footer-place' && $request->route != 'slider1' &&  $request->route != 'slider2' && $request->route != 'slider3' &&  $request->route != 'slider4') {
@@ -115,12 +114,7 @@ class ChildPageController extends Controller
             ->toMediaCollection('images');
         }
 
-        if(isset($request->img_a_url))
-        {
-            return redirect()->back();
-        } else {
-            return redirect()->route('childPage.index');
-        }
+        return redirect()->route('childPage.index');
     }
 
     public function mediaUpdate(ImageRequest $request, ChildPage $childPage)
@@ -186,13 +180,17 @@ class ChildPageController extends Controller
             ];
         }
 
-        if(isset($request->img_a_url))
+        if(isset($request->slider_link))
         {
-            $localization_img_a_url = [
-                'var' => "img_a_url",
-                'uk' => $request->img_a_url,
-                'ru' => $request->img_a_url
+            $localization_slider_link = [
+                'var' => "slider_link",
+                'uk' => $request->slider_link,
+                'ru' => $request->slider_link
             ];
+        }
+
+        if (isset($request->slider_order)) {
+            $childPage->order = $request->slider_order;
         }
 
         $childPage->update($request->validated());
@@ -203,12 +201,12 @@ class ChildPageController extends Controller
             $childPage->localization()->where('var', 'description')->update($localization_desc);
         }
 
-        if(isset($request->img_a_url))
+        if(isset($request->slider_link))
         {
-            $childPage->localization()->where('var', 'img_a_url')->update($localization_img_a_url);
+            $childPage->localization()->where('var', 'slider_link')->update($localization_slider_link);
         }
 
-        if(isset($request->img_a_url))
+        if(isset($request->slider_link))
         {
             return redirect()->back();
         } else {

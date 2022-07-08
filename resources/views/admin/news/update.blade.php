@@ -16,7 +16,7 @@
 
     <div class="flex title-line">
         <h2>@lang('admin.news_create')</h2>
-        <button type="submit" form="form" class="add-button">
+        <button type="submit" form="form" class="add-button" id="save-btn">
             <img src="{{ asset('img/save.svg') }}" alt="Add">
         </button>
     </div>
@@ -153,8 +153,8 @@
                 <div class="input-wrap sub-category-wrap">
                     <p class="label">Виберіть категорію</p>
                     <div class="flex-space sub-category-wrap">
-                        {{-- <label><input type="hidden" value="" name="product_type_id"></label> --}}
 
+                        <input type="hidden" name="news_category_id">
                         @foreach ($newsCategories as $newsCategory)
                         @php
                             $title = $newsCategory->localization[0];
@@ -162,10 +162,10 @@
 
                         @if ($newsCategory->id == $news->categories_id)
 
-                            <input class="radio-change" id="subCategory{{$newsCategory->id}}" type="radio" value="{{$newsCategory->id}}" name="categories_id" checked>
+                            <input class="radio-change" id="subCategory{{$newsCategory->id}}" type="radio" value="{{$newsCategory->id}}" name="news_category_id" checked>
                             <label class="radio-label" for="subCategory{{$newsCategory->id}}"><span class="label-circle"></span><span class="label-desc">{{ $title->$locale }}</span></label>
                         @else
-                            <input class="radio-change" id="subCategoryNon{{$newsCategory->id}}" type="radio" value="{{$newsCategory->id}}" name="categories_id">
+                            <input class="radio-change" id="subCategoryNon{{$newsCategory->id}}" type="radio" value="{{$newsCategory->id}}" name="news_category_id">
                             <label class="radio-label" for="subCategoryNon{{$newsCategory->id}}"><span class="label-circle"></span><span class="label-desc">{{ $title->$locale }}</span></label>
                         @endif
                         @endforeach

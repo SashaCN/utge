@@ -16,7 +16,7 @@
 
     <div class="flex title-line">
         <h2>@lang('admin.add_services_type')</h2>
-        <button type="submit" form="form" class="add-button" id="save-btm">
+        <button type="submit" form="form" class="add-button" id="save-btn">
             <img src="{{ asset('img/save.svg') }}" alt="Add">
         </button>
     </div>
@@ -137,7 +137,7 @@
         </div>
 
         <div class="image-slide flex-col">
-            {{-- <label><input type="hidden" name="image" value=""></label> --}}
+            <label><input type="hidden" name="image" value=""></label>
             <label><input type="file"  name="image"></label>
         </div>
 

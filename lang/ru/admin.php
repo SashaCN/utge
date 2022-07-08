@@ -55,7 +55,7 @@ return [
     'add_size_price' => 'Добавить вес/цену',
     'delete_size_price' => 'Убрать вес/цену',
     'child_page_father' => 'Выбрать блок',
-    'child_page_slider' => 'Выбрать слайдер',
+    'child_page_slider' => 'Выбрать блок слайдера',
     'childPage_create' => 'Добавить блок',
     'childPage_create_slider' => 'Добавить слайдер',
     'route' => 'блок',
@@ -68,6 +68,7 @@ return [
     'route' => 'блок',
     'news_create' => 'Добавить новости',
     'error-size' => 'Вес',
+    'error-material' => 'Материал',
     'error-price' => 'Цена',
     'error-price_units' => 'Единицы измерения цены',
     'error-available' => 'Наличие товара',
@@ -128,7 +129,8 @@ return [
     'title-page' => 'Название страницы',
     'models-url' => 'Ссылка',
     'slider' => 'Слайдеры',
-    
+    'models-slider_order' => 'Порядок слайдера',
+
     // auntification
     'name' => 'Имя',
 

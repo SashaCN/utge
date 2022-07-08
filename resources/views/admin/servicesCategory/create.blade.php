@@ -53,10 +53,8 @@ $locale = app()->getLocale();
                         $title = $servicesType->localization[0];
                     @endphp
 
-                    <input class="radio-change" id="subCategory{{$servicesType->id}}" type="radio" value="{{$servicesType->id}}"
-                        name="service_type_id">
-                    <label class="radio-label" for="subCategory{{$servicesType->id}}"><span
-                            class="label-circle"></span><span class="label-desc">{{ $title->$locale }}</span></label>
+                    <input class="radio-change" id="subCategory{{$servicesType->id}}" type="radio" value="{{$servicesType->id}}" name="service_type_id">
+                    <label class="radio-label" for="subCategory{{$servicesType->id}}"><span class="label-circle"></span><span class="label-desc">{{ $title->$locale }}</span></label>
                     @endforeach
                 </div>
             </div>

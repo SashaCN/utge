@@ -51,9 +51,24 @@ class MultiRequest extends FormRequest
             $request['product_type_id'] = 'required';
         }
 
+        if (isset($_REQUEST['service_type_id']))
+        {
+            $request['service_type_id'] = 'required';
+        }
+
         if (isset($_REQUEST['category_id']))
         {
             $request['category_id'] = 'required';
+        }
+
+        if (isset($_REQUEST['news_category_id']))
+        {
+            $request['news_category_id'] = 'required';
+        }
+
+        if (isset($_REQUEST['service_category_id']))
+        {
+            $request['service_category_id'] = 'required';
         }
 
         if (isset($_REQUEST['sub_category_id']))
@@ -111,6 +126,20 @@ class MultiRequest extends FormRequest
         {
             for ($i = 1; $i <= $count; $i++) {
                 $request['available/'.$i] = 'required';
+            }
+        }
+
+        if (isset($_REQUEST['materials/1']))
+        {
+            for ($i = 1; $i <= $count; $i++) {
+                $request['materials/'.$i] = 'required';
+            }
+        }
+        
+        if (isset($_REQUEST['units/1']))
+        {
+            for ($i = 1; $i <= $count; $i++) {
+                $request['units/'.$i] = 'required';
             }
         }
 
@@ -188,8 +217,16 @@ class MultiRequest extends FormRequest
         {
             $request['email'] = 'required|regex:#^[a-zA-z-.]+@[a-z]+\.[a-z]{2,3}$#';
         }
+        
+        if (isset($_REQUEST['slider_order']))
+        {
+            $request['slider_order'] = 'required';
+        }
 
-
+        if (isset($_REQUEST['slider_link']))
+        {
+            $request['slider_link'] = 'required';
+        }
 
         return $request;
     }
