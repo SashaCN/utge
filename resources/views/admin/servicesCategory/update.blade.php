@@ -21,7 +21,7 @@ $title = $servicesCategory->localization[0];
 
 <div class="flex title-line">
     <h2>@lang('admin.services_type_change')</h2>
-    <button type="submit" form="form" class="add-button">
+    <button type="submit" form="form" class="add-button" id="save-btn">
         <img src="{{ asset('img/save.svg') }}" alt="Add">
     </button>
 </div>

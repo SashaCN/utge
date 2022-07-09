@@ -145,13 +145,13 @@
                 <div class="input-wrap sub-category-wrap">
                     <p class="label">Виберіть категорію</p>
                     <div class="flex-space sub-category-wrap">
-
+                        <label><input type="hidden" name="news_category_id"></label>
                         @foreach ($newsCategories as $newsCategory)
                             @php
                                 $title = $newsCategory->localization[0];
                             @endphp
 
-                            <input class="radio-change" id="newsCategory{{$newsCategory->id}}" type="radio" value="{{$newsCategory->id}}" name="categories_id">
+                            <input class="radio-change" id="newsCategory{{$newsCategory->id}}" type="radio" value="{{$newsCategory->id}}" name="news_category_id">
                             <label class="radio-label" for="newsCategory{{$newsCategory->id}}"><span class="label-circle"></span><span class="label-desc">{{ $title->$locale }}</span></label>
                         @endforeach
 

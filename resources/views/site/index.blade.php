@@ -70,20 +70,19 @@
                 </div>
                 <div class="logo">
                     <a class="flex-col" href="{{ route('index') }}">
-
-                        {{-- <img src="{{ asset('img/logo.png') }}" alt="@lang('utge.logo')" /> --}}
-
-                        @foreach ($logoImg as $item)
-                            
-                            <img src="{{ $item->getFirstMediaUrl('images') }}" alt="@lang('utge.logo')" />
-                        @endforeach
-
                         @foreach ($logoName as $item)
                             @php
                                 $name = $item->localization[0];
                             @endphp
-                            <h1>{{ $name->$locale }}</h1>
                         @endforeach
+
+                        @foreach ($logoImg as $item)
+                            
+                            <img src="{{ $item->getFirstMediaUrl('images') }}" alt="{{ $name->$locale }}" />
+                        @endforeach
+
+                        
+                        <h1>{{ $name->$locale }}</h1>
                     </a>
                 </div>
                 <div class="control flex-sb">
@@ -176,14 +175,14 @@
                     <svg>
                         <use xlink:href="{{ asset('img/sprite.svg#gps') }}"></use>
                     </svg>
-                    <address>
-                        @foreach ($footerPlace as $item)
+                    @foreach ($footerPlace as $item)
+                        <address>
                             @php
                                 $place = $item->localization[0];
                             @endphp
                                 {!! $place->$locale !!}
-                        @endforeach
-                    </address>
+                        </address>
+                    @endforeach
                 </div>
                 <div class="mail flex-aic">
                     <svg>

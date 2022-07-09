@@ -15,8 +15,8 @@
 
                             <p class="error-desc">
                                 @switch(explode('/', $error)[0])
-                                    @case('material')
-                                        @lang('admin.error-size')
+                                    @case('materials')
+                                        @lang('admin.error-material')
                                         @break
 
                                     @case('price')
@@ -45,7 +45,7 @@
 
     <div class="flex title-line">
         <h2>@lang('admin.services_create')</h2>
-        <button type="submit" form="form" class="add-button" id="save-btm">
+        <button type="submit" form="form" class="add-button" id="save-btn">
             <img src="{{ asset('img/save.svg') }}" alt="Add">
         </button>
     </div>
@@ -99,7 +99,7 @@
             <div class="input-wrap sub-category-wrap">
                 <p class="label">Виберіть категорію</p>
                 <div class="flex-space sub-category-wrap">
-                    {{-- <label><input type="hidden" name="sub_category_id"></label> --}}
+                    <label><input type="hidden" name="service_category_id"></label>
 
                     @foreach ($servicesCategories as $sevicesCategory)
                         @php

@@ -1,8 +1,8 @@
 window.onload = () => {
     changeSlide(document.querySelector('.feed'), 0);
-    changeSlide(document.querySelector('.fish'), 500);
-    changeSlide(document.querySelector('.water'), 1000);
-    changeSlide(document.querySelector('.service'), 1500);
+    // changeSlide(document.querySelector('.fish'), 500);
+    // changeSlide(document.querySelector('.water'), 1000);
+    // changeSlide(document.querySelector('.service'), 1500);
 }
 
 function changeSlide (section, time)

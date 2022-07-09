@@ -740,6 +740,7 @@ h2 {
 .delete-col a svg {
   width: 100%;
   height: 100%;
+  fill: #003b95;
 }
 
 .general-row {

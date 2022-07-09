@@ -17,8 +17,8 @@ $locale = app()->getLocale();
 
                         <p class="error-desc">
                             @switch(explode('/', $error)[0])
-                                @case('size')
-                                    @lang('admin.error-materials')
+                                @case('materials')
+                                    @lang('admin.error-material')
                                     @break
 
                                 @case('price')
@@ -47,7 +47,7 @@ $locale = app()->getLocale();
 
 <div class="flex title-line">
     <h2>@lang('admin.product_change')</h2>
-    <button id="save-btm" type="submit" form="form" class="add-button">
+    <button type="submit" form="form" class="add-button" id="save-btn">
         <img src="{{ asset('img/save.svg') }}" alt="Add">
     </button>
 </div>
@@ -126,22 +126,18 @@ $locale = app()->getLocale();
         <div class="input-wrap sub-category-wrap">
             <p class="label">Виберіть під-категорію</p>
             <ul class="flex-space sub-category-wrap">
-                <label><input type="hidden" name="sub_category_id"></label>
+                {{-- <label><input type="hidden" name="sub_category_id"></label> --}}
                 @foreach ($servicescategories as $category)
                 @php
                 $title = $category->localization[0];
                 @endphp
 
                 @if ($category->id == $service->sub_category_id)
-                <input class="radio-change" id="subCategory{{$category->id}}" type="radio"
-                    value="{{$category->id}}" name="service_category_id" checked>
-                <label class="radio-label" for="subCategory{{$category->id}}"><span class="label-circle"></span><span
-                        class="label-desc">{{ $title->$locale }}</span></label>
+                <input class="radio-change" id="subCategory{{$category->id}}" type="radio" value="{{$category->id}}" name="service_category_id" checked>
+                <label class="radio-label" for="subCategory{{$category->id}}"><span class="label-circle"></span><span class="label-desc">{{ $title->$locale }}</span></label>
                 @else
-                <input class="radio-change" id="subCategoryNon{{$category->id}}" type="radio"
-                    value="{{$category->id}}" name="service_category_id">
-                <label class="radio-label" for="subCategoryNon{{$category->id}}"><span
-                        class="label-circle"></span><span class="label-desc">{{ $title->$locale }}</span></label>
+                <input class="radio-change" id="subCategoryNon{{$category->id}}" type="radio" value="{{$category->id}}" name="service_category_id">
+                <label class="radio-label" for="subCategoryNon{{$category->id}}"><span class="label-circle"></span><span class="label-desc">{{ $title->$locale }}</span></label>
                 @endif
                 @endforeach
             </ul>

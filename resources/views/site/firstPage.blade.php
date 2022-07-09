@@ -16,23 +16,17 @@
                         <use xlink:href="{{ asset('img/sprite.svg#cow') }}"></use>
                     </svg>
                 </div>
-                <div class="container">
-                    <div class="slide">
-                        <h2>@lang('utge.slider-feed-birds')</h2><img src="{{ asset('img/sl_birds.jpg') }}"
-                            alt="@lang('utge.sl_birds')">
-                    </div>
-                </div>
                 @foreach ($slider1 as $item)
                     @php
                         $title = $item->localization[0];
-                    @endphp   
+                    @endphp
                     <div class="slide">
                         <h2>{{ $title->$locale }}</h2>
-                        <img src="{{ $item->getFirstMediaUrl('images') }}" alt="$title->$locale">
+                        <img src="{{ $item->getFirstMediaUrl('images') }}" alt="{{$title->$locale}}">
                     </div>
                 @endforeach
             </div>
-            <div class="slider-control"><span class="current-slide-btn"></span><span></span><span></span><span></span>
+            <div class="slider-control"><span class="current-slide-btn"></span><span></span>
             </div>
         </section>
         <section class="fish">
@@ -46,7 +40,7 @@
                 @foreach ($slider2 as $item)
                     @php
                         $title = $item->localization[0];
-                    @endphp   
+                    @endphp
                     <div class="slide">
                         <h2>{{ $title->$locale }}</h2>
                         <img src="{{ $item->getFirstMediaUrl('images') }}" alt="$title->$locale">
@@ -67,7 +61,7 @@
                 @foreach ($slider3 as $item)
                     @php
                         $title = $item->localization[0];
-                    @endphp   
+                    @endphp
                     <div class="slide">
                         <h2>{{ $title->$locale }}</h2>
                         <img src="{{ $item->getFirstMediaUrl('images') }}" alt="$title->$locale">
@@ -88,7 +82,7 @@
                 @foreach ($slider4 as $item)
                     @php
                        $title = $item->localization[0];
-                    @endphp   
+                    @endphp
                     <div class="slide">
                         <h2>{{ $title->$locale }}</h2>
                         <img src="{{ $item->getFirstMediaUrl('images') }}" alt="$title->$locale">

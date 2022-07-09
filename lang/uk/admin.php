@@ -55,7 +55,7 @@
         'add_size_price' => 'Додати вагу/ціну',
         'delete_size_price' => 'Забрати вагу/ціну',
         'child_page_father' => 'Обрати блок',
-        'child_page_slider' => 'Обрати слайдер',
+        'child_page_slider' => 'Обрати блок слайдера',
         'childPage_create' => 'Додати блок',
         'childPage_create_slider' => 'Додати слайдер',
         'route' => 'Блок',
@@ -68,6 +68,7 @@
         'route' => 'блок',
         'news_create' => 'Додати новини',
         'error-size' => 'Вага',
+        'error-material' => 'Матеріал',
         'error-price' => 'Ціна',
         'error-price_units' => 'Одиниці вимрювання ціни',
         'error-available' => 'Наявність товару',
@@ -127,7 +128,8 @@
         'page' => 'Оберіть сторінку',
         'title-page' => 'Назва сторінки',
         'models-url' => 'Посилання',
-        'slider' => 'Сладери',
+        'slider' => 'Слайдери',
+        'models-slider_order' => 'Порядок слайдера',
 
         // auntification
         'name' => 'Ім`я',

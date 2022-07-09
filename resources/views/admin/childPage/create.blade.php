@@ -28,18 +28,53 @@
 
     <div class="another-slide flex-col current-slide">
         <div class="input-wrap pt0">
+            
+            @foreach ($childPages as $childPage)
+                @php
+                    if ($childPage->route == 'logo-img') {
+                        $isLogoImg = true;
+                        break;
+
+                    } else {
+                        $isLogoName = false;
+                    }
+                @endphp
+            @endforeach
+            @foreach ($childPages as $childPage)
+                @php
+                    if ($childPage->route == 'logo-name') {
+                        $isLogoName = true;
+                        break;
+                    } else {
+                        $isLogoName = false;
+                    }
+                    
+                @endphp
+            @endforeach
+            @foreach ($childPages as $childPage)
+                @php
+                    if ($childPage->route == 'about_us') {
+                        $isLogoAbout = true;
+                        break;
+                    } else {
+                        $isLogoAbout = false;
+                    }
+                @endphp
+            @endforeach
+            
+
             <select name="route" id="child-page-select" class="auto-value">
                 <option value="" id="child-page-first-option" selected>@lang('admin.child_page_father')</option>
                 <option disabled  class="models-slider-option">------------</option>
                 <option value="phone">@lang('admin.phone')</option>
-                <option value="logo-img">@lang('admin.logo-img')</option> 
-                <option value="logo-name">@lang('admin.logo-name')</option>
+                <option value="logo-img" @if ($isLogoImg == true) disabled @endif>@lang('admin.logo-img')</option> 
+                <option value="logo-name" @if ($isLogoName == true) disabled @endif>@lang('admin.logo-name')</option>
                 <option disabled class="models-slider-option">------------</option>
                 <option value="phone">@lang('admin.phone')</option>
                 <option value="footer-place">@lang('admin.footer-place')</option>
                 <option value="email">@lang('admin.email')</option>
                 <option disabled class="models-slider-option">------------</option>
-                <option value="about_us">@lang('utge.about-us') Видалити на фінальній версії</option>
+                <option value="about_us" @if ($isLogoAbout == true) disabled @endif>@lang('utge.about-us')</option>
                 <option value="delivery">@lang('utge.delivery')</option>
                 <option value="payment">@lang('utge.payment')</option>
                 <option value="contacts">@lang('utge.contacts')</option>
