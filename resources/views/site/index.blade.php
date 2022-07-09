@@ -69,7 +69,7 @@
                     </ul>
                 </div>
                 <div class="logo">
-                    <a class="flex-col" href="{{ route('index') }}">
+                    {{-- <a class="flex-col" href="{{ route('index') }}">
                         @foreach ($logoName as $item)
                             @php
                                 $name = $item->localization[0];
@@ -77,13 +77,13 @@
                         @endforeach
 
                         @foreach ($logoImg as $item)
-                            
+
                             <img src="{{ $item->getFirstMediaUrl('images') }}" alt="{{ $name->$locale }}" />
                         @endforeach
 
-                        
+
                         <h1>{{ $name->$locale }}</h1>
-                    </a>
+                    </a> --}}
                 </div>
                 <div class="control flex-sb">
                     <a href="{{ route('basket') }}" class="basket">

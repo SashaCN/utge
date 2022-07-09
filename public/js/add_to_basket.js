@@ -39,15 +39,12 @@ basket_button.onclick = openBasket;
 
 function openBasket (e, basketProducts = basketProduct){
     e.preventDefault();
-    let products = "";
+    let products = [];
     if (basketProducts != []) {
         for (let i = 0; i < basketProducts.length; i++) {
-            if (i == 0){
-                products = products+basketProducts[i]['id'];
-            } else {
-                products = products+","+basketProducts[i]['id'];
-            }
+            products.push([basketProducts[i]['id'], basketProducts[i]['size']]);
         }
     }
-    location.href = `basket?products=[${products}]`;
+    console.log(products);
+    location.href = `basket?products=${JSON.stringify(products)}`;
 }

@@ -7,7 +7,7 @@
 @section('content')
 
 @php
-    $productsId = explode(',', trim($_GET['products'], '[]'));
+    $productsJs = json_decode($_GET['products']);
 @endphp
 
 <h2>@lang('utge.basket')</h2>
@@ -27,20 +27,20 @@
             </div>
             <div class="delete-col col"></div>
         </div>
-        @if (empty($productsId))
+        @if (empty($productsJs))
             <div class="basket-products">
                 <p class="basket-clear">&nbsp;</p>
             </div>
         @else
 
-            @foreach ($productsId as $id)
+            @foreach ($productsJs as $id)
                 @foreach ($products as $product)
-                    @if ($product->id == $id)
+                    @if ($product->id == $id[0])
                         @php
+
                             $title = $product->localization[0];
                             $description = $product->localization[1];
 
-                            $min_price = $product->sizeprices->whereIn('available', [1,4])->min('price');
                         @endphp
 
                         <div class="basket-row product-row" data-product-id="{{ $product->id }}">
@@ -58,7 +58,7 @@
                                 <button class="product-plus">+</button>
                             </div>
                             <div class="price-col col">
-                                <p class="basket-price">{{ $min_price }} {{ $product->sizeprices->where('price', $min_price)->first()->price_units}}</p>
+                                <p class="basket-price">{{ $product->sizeprices->where('size', $id[1])->first()->price }} {{ $product->sizeprices->where('size', $id[1])->first()->price_units}}</p>
                             </div>
                             <div class="delete-col col">
                                 <a href="#" class="delete-product">

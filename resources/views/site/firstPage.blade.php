@@ -149,7 +149,7 @@
                     <figcaption>
                         <h3>{{ $title->$locale }}</h3>
                         <p class="description">{!! $description->$locale !!}</p>
-                        <p class="description">{{ $product->sizeprices->where('price', $min_price)->first()->size }}</p>
+                        <p class="description active-size">{{ $product->sizeprices->where('price', $min_price)->first()->size }}</p>
                         <div class="button-line flex-sb">
                             <p class="add-to-basket flex-aic">
                                 <svg>
