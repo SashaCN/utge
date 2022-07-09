@@ -58,7 +58,7 @@
                                 <button class="product-plus">+</button>
                             </div>
                             <div class="price-col col">
-                                <p class="basket-price">{{ $product->sizeprices->where('size', $id[1])->first()->price }} {{ $product->sizeprices->where('size', $id[1])->first()->price_units}}</p>
+                                <p class="basket-price">{{ $product->sizeprices->where('size', $id[1])->first()->price }} {{ $product->sizeprices->where('size', $id[1])->first()->price    _units}}</p>
                             </div>
                             <div class="delete-col col">
                                 <a href="#" class="delete-product">
