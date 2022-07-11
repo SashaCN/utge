@@ -65,7 +65,7 @@
         'to_product_type' => 'По типах товару',
         'search' => 'Пошук',
         'childPage_create' => 'Додати блок',
-        'route' => 'блок',
+        'route' => 'Блок',
         'news_create' => 'Додати новини',
         'error-size' => 'Вага',
         'error-material' => 'Матеріал',

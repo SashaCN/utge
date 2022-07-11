@@ -1,16 +1,44 @@
 window.onload = () => {
-    changeSlide(document.querySelector('.feed'), 0);
-    changeSlide(document.querySelector('.fish'), 500);
-    changeSlide(document.querySelector('.water'), 1000);
-    changeSlide(document.querySelector('.service'), 1500);
+
+    let feed = document.querySelector('.feed'),
+        fish = document.querySelector('.fish'),
+        water = document.querySelector('.water'),
+        service = document.querySelector('.service');
+
+    spanCreator(feed);
+    spanCreator(fish);
+    spanCreator(water);
+    spanCreator(service);
+
+    changeSlide(feed, 0);
+    changeSlide(fish, 500);
+    changeSlide(water, 1000);
+    changeSlide(service, 1500);
+}
+
+function spanCreator(selector){
+    let span = '<span class="current-slide-btn"></span>',
+        slides = selector.querySelectorAll('.slide'),
+        father = selector.querySelector('.slider-control');
+
+    if (slides.length == 1) return false;
+
+    for (let i = 1; i < slides.length; i++) {
+        span += '<span></span>';
+    }
+
+    father.innerHTML = span;
 }
 
 function changeSlide (section, time)
 {
     let current_slide = section.querySelector('.current-slide'),
-        current_slide_btn = section.querySelector('.current-slide-btn'),
-        slides = section.querySelectorAll('.slide'),
-        controll_btns = section.querySelectorAll('.slider-control span');
+    current_slide_btn = section.querySelector('.current-slide-btn'),
+    slides = section.querySelectorAll('.slide'),
+    controll_btns = section.querySelectorAll('.slider-control span');
+    
+    if (slides.length == 1) return false;
+    
 
     for (i = 0; i < controll_btns.length; i++) {
         slides[i].dataset.number = i
@@ -19,9 +47,17 @@ function changeSlide (section, time)
 
     controll_btns.forEach(elem => {
         elem.onclick = (e) => {
+            if (current_slide == null) {
+                console.log('wow someone tried to hack the slider');
+                slides[0].classList.add('current-slide');
+                current_slide = section.querySelector('.current-slide')
+                controll_btns[controll_btns.length - 1].classList.add('current-slide-btn');
+            }
+
             if (current_slide_btn.getAttribute("data-number") == e.target.getAttribute("data-number")) {
                 return false;
             }
+
             current_slide_btn.classList.remove('current-slide-btn');
             current_slide.classList.add('prev-slide');
 
