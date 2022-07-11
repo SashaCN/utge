@@ -36,7 +36,7 @@
                         break;
 
                     } else {
-                        $isLogoName = false;
+                        $isLogoImg = false;
                     }
                 @endphp
             @endforeach

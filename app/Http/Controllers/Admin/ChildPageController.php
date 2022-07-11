@@ -52,9 +52,13 @@ class ChildPageController extends Controller
     {
         $childPage = new ChildPage();
         $childPage->fill($request->validated());
+
+        if (isset($request->slider_order)) {
+            $childPage->order = $request->slider_order;
+        }
+
         $childPage->save();
 
-        
         if ($request->route != 'logo-img')
         {
             if($request->route != 'phone' && $request->route != 'email') 
@@ -106,7 +110,7 @@ class ChildPageController extends Controller
                 $childPage->localization()->save($localization_title);
             }       
         }
-        
+
         
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
@@ -165,6 +169,8 @@ class ChildPageController extends Controller
      */
     public function update(MultiRequest $request, ChildPage $childPage)
     {
+        // dd();
+
         $localization_title = [
             'var' => "title",
             'uk' => $request->title_uk,
@@ -204,6 +210,7 @@ class ChildPageController extends Controller
         if(isset($request->slider_link))
         {
             $childPage->localization()->where('var', 'slider_link')->update($localization_slider_link);
+            
         }
 
         if(isset($request->slider_link))
@@ -222,7 +229,7 @@ class ChildPageController extends Controller
      */
     public function destroy(ChildPage $childPage)
     {
-        $childPage->delete();
+        $childPage->forceDelete();
         return redirect()->route('childPage.index');
     }
 

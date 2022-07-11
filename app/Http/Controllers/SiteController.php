@@ -18,20 +18,15 @@ class SiteController extends Controller
     
     public function index()
     {
-        $products  = Product::all()->where('home_view', '1');
-        $about_us = ChildPage::all()->where('route', 'about_us');
-        $slider1 = ChildPage::all()->where('route', 'slider1');
-        $slider2 = ChildPage::all()->where('route', 'slider2');
-        $slider3 = ChildPage::all()->where('route', 'slider3');
-        $slider4 = ChildPage::all()->where('route', 'slider4');
 
         return view('site.firstPage', [
-            'products' => $products,
-            'about_us' => $about_us,
-            'slider1' => $slider1,
-            'slider2' => $slider2,
-            'slider3' => $slider3,
-            'slider4' => $slider4,
+            'products' => Product::all()->where('home_view', '1'),
+            'about_us' => ChildPage::all()->where('route', 'about_us'),
+            // 'slider1' => ChildPage::orderSlider(),
+            'slider1' => ChildPage::where('route', 'slider1')->orderBy('order')->get(),
+            'slider2' => ChildPage::where('route', 'slider2')->orderBy('order')->get(),
+            'slider3' => ChildPage::where('route', 'slider3')->orderBy('order')->get(),
+            'slider4' => ChildPage::where('route', 'slider4')->orderBy('order')->get(),
         ]);
     }
     

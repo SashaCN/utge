@@ -387,8 +387,7 @@ $locale = app()->getLocale();
         </div>
 </form>
 
-<form id="image-change" class="image-changes-form" action="{{ route('product.mediaUpdate', $product->id ) }}"
-    method="POST" enctype="multipart/form-data">
+<form id="image-change" class="image-changes-form" action="{{ route('product.mediaUpdate', $product->id ) }}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('POST')
 
