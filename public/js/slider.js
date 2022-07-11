@@ -6,6 +6,9 @@ window.onload = () => {
         service = document.querySelector('.service');
 
     spanCreator(feed);
+    spanCreator(fish);
+    spanCreator(water);
+    spanCreator(service);
 
     changeSlide(feed, 0);
     changeSlide(fish, 500);
@@ -14,21 +17,28 @@ window.onload = () => {
 }
 
 function spanCreator(selector){
-    let span = document.createElement('span'),
+    let span = '<span class="current-slide-btn"></span>',
         slides = selector.querySelectorAll('.slide'),
         father = selector.querySelector('.slider-control');
 
-    for (let i = 0; i < slides.length; i++) {
-        father.appendChild(span);
+    if (slides.length == 1) return false;
+
+    for (let i = 1; i < slides.length; i++) {
+        span += '<span></span>';
     }
+
+    father.innerHTML = span;
 }
 
 function changeSlide (section, time)
 {
     let current_slide = section.querySelector('.current-slide'),
-        current_slide_btn = section.querySelector('.current-slide-btn'),
-        slides = section.querySelectorAll('.slide'),
-        controll_btns = section.querySelectorAll('.slider-control span');
+    current_slide_btn = section.querySelector('.current-slide-btn'),
+    slides = section.querySelectorAll('.slide'),
+    controll_btns = section.querySelectorAll('.slider-control span');
+    
+    if (slides.length == 1) return false;
+    
 
     for (i = 0; i < controll_btns.length; i++) {
         slides[i].dataset.number = i
@@ -37,9 +47,17 @@ function changeSlide (section, time)
 
     controll_btns.forEach(elem => {
         elem.onclick = (e) => {
+            if (current_slide == null) {
+                console.log('wow someone tried to hack the slider');
+                slides[0].classList.add('current-slide');
+                current_slide = section.querySelector('.current-slide')
+                controll_btns[controll_btns.length - 1].classList.add('current-slide-btn');
+            }
+
             if (current_slide_btn.getAttribute("data-number") == e.target.getAttribute("data-number")) {
                 return false;
             }
+
             current_slide_btn.classList.remove('current-slide-btn');
             current_slide.classList.add('prev-slide');
 
