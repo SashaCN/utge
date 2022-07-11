@@ -1,8 +1,26 @@
 window.onload = () => {
-    changeSlide(document.querySelector('.feed'), 0);
-    changeSlide(document.querySelector('.fish'), 500);
-    changeSlide(document.querySelector('.water'), 1000);
-    changeSlide(document.querySelector('.service'), 1500);
+
+    let feed = document.querySelector('.feed'),
+        fish = document.querySelector('.fish'),
+        water = document.querySelector('.water'),
+        service = document.querySelector('.service');
+
+    spanCreator(feed);
+
+    changeSlide(feed, 0);
+    changeSlide(fish, 500);
+    changeSlide(water, 1000);
+    changeSlide(service, 1500);
+}
+
+function spanCreator(selector){
+    let span = document.createElement('span'),
+        slides = selector.querySelectorAll('.slide'),
+        father = selector.querySelector('.slider-control');
+
+    for (let i = 0; i < slides.length; i++) {
+        father.appendChild(span);
+    }
 }
 
 function changeSlide (section, time)

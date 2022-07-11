@@ -47,8 +47,8 @@
                         {{-- {{dd($product->sizeprice)}} --}}
                     </td>
                     <td class="action">
-                        <a href="{{ route('services.edit', $service->id) }}"></a>
-                        <a href="{{ route('services.delete', $service->id) }}"></a>
+                        <a title="Редагувати" href="{{ route('services.edit', $service->id) }}"></a>
+                        <a title="Видалити" href="{{ route('services.delete', $service->id) }}"></a>
                     </td>
                 </tr>
                 @endforeach

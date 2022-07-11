@@ -31,13 +31,12 @@
                 $description = $item->localization[1];
                 @endphp
                 <tr>
-                    <td class="product-image"><img src="{{ $item->getFirstMediaUrl('images') }}"
-                            alt="{{ $title->$locale }}"></td>
+                    <td class="product-image"><img src="{{ $item->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}"></td>
                     <td>{{ $title->$locale }}</td>
-                    <td>{{ $description->$locale }}</td>
+                    <td>{{ htmlspecialchars_decode(substr($description->$locale, 0, 100))."..." }}</td>
                     <td class="action">
-                        <a href="{{ route('news.edit', $item->id) }}"></a>
-                        <a href="{{ route('news.delete', $item->id) }}"></a>
+                        <a title="Редагувати" href="{{ route('news.edit', $item->id) }}"></a>
+                        <a title="Видалити" href="{{ route('news.delete', $item->id) }}"></a>
                     </td>
                 </tr>
                 @endforeach
