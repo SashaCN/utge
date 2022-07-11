@@ -35,8 +35,8 @@
                     @endif
 
                     <td class="action">
-                        <a href="{{ route('seo.edit', $seo->id) }}"></a>
-                        <a href="{{ route('seo.delete', $seo->id) }}"></a>
+                        <a title="Редагувати" href="{{ route('seo.edit', $seo->id) }}"></a>
+                        <a title="Редагувати" href="{{ route('seo.delete', $seo->id) }}"></a>
                     </td>
                 </tr>
                 @endforeach

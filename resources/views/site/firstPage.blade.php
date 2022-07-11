@@ -17,22 +17,25 @@
                     </svg>
                 </div>
                 <div class="container">
-                    <div class="slide">
-                        <h2>@lang('utge.slider-feed-birds')</h2><img src="{{ asset('img/sl_birds.jpg') }}"
-                            alt="@lang('utge.sl_birds')">
-                    </div>
+                        <div class="slide">
+                            <h2>@lang('utge.slider-feed-birds')</h2><img src="{{ asset('img/sl_birds.jpg') }}" alt="@lang('utge.sl_birds')">
+                        </div>
+                        @foreach ($slider1 as $item)
+                            @php
+                                $title = $item->localization[0];
+                            @endphp
+                            <div class="slide">
+                                <h2>слайд3</h2>
+                                <img src="{{ asset('img/default_image.jpg') }}" alt="$title->$locale">
+                            </div>
+                            <div class="slide">
+                                <h2>слайд3</h2>
+                                <img src="{{ asset('img/default_image.jpg') }}" alt="$title->$locale">
+                            </div>
+                        @endforeach
                 </div>
-                @foreach ($slider1 as $item)
-                    @php
-                        $title = $item->localization[0];
-                    @endphp   
-                    <div class="slide">
-                        <h2>{{ $title->$locale }}</h2>
-                        <img src="{{ $item->getFirstMediaUrl('images') }}" alt="$title->$locale">
-                    </div>
-                @endforeach
             </div>
-            <div class="slider-control"><span class="current-slide-btn"></span><span></span><span></span><span></span>
+            <div class="slider-control"><span class="current-slide-btn"></span>
             </div>
         </section>
         <section class="fish">
@@ -46,10 +49,18 @@
                 @foreach ($slider2 as $item)
                     @php
                         $title = $item->localization[0];
-                    @endphp   
+                    @endphp
                     <div class="slide">
-                        <h2>{{ $title->$locale }}</h2>
-                        <img src="{{ $item->getFirstMediaUrl('images') }}" alt="$title->$locale">
+                        <h2>слайд3</h2>
+                        <img src="{{ asset('img/default_image.jpg') }}" alt="$title->$locale">
+                    </div>
+                    <div class="slide">
+                        <h2>слайд3</h2>
+                        <img src="{{ asset('img/default_image.jpg') }}" alt="$title->$locale">
+                    </div>
+                    <div class="slide">
+                        <h2>слайд3</h2>
+                        <img src="{{ asset('img/default_image.jpg') }}" alt="$title->$locale">
                     </div>
                 @endforeach
             </div>
@@ -67,10 +78,18 @@
                 @foreach ($slider3 as $item)
                     @php
                         $title = $item->localization[0];
-                    @endphp   
+                    @endphp
                     <div class="slide">
-                        <h2>{{ $title->$locale }}</h2>
-                        <img src="{{ $item->getFirstMediaUrl('images') }}" alt="$title->$locale">
+                        <h2>слайд3</h2>
+                        <img src="{{ asset('img/default_image.jpg') }}" alt="$title->$locale">
+                    </div>
+                    <div class="slide">
+                        <h2>слайд3</h2>
+                        <img src="{{ asset('img/default_image.jpg') }}" alt="$title->$locale">
+                    </div>
+                    <div class="slide">
+                        <h2>слайд3</h2>
+                        <img src="{{ asset('img/default_image.jpg') }}" alt="$title->$locale">
                     </div>
                 @endforeach
             </div>
@@ -88,10 +107,18 @@
                 @foreach ($slider4 as $item)
                     @php
                        $title = $item->localization[0];
-                    @endphp   
+                    @endphp
                     <div class="slide">
-                        <h2>{{ $title->$locale }}</h2>
-                        <img src="{{ $item->getFirstMediaUrl('images') }}" alt="$title->$locale">
+                        <h2>слайд3</h2>
+                        <img src="{{ asset('img/default_image.jpg') }}" alt="$title->$locale">
+                    </div>
+                    <div class="slide">
+                        <h2>слайд3</h2>
+                        <img src="{{ asset('img/default_image.jpg') }}" alt="$title->$locale">
+                    </div>
+                    <div class="slide">
+                        <h2>слайд3</h2>
+                        <img src="{{ asset('img/default_image.jpg') }}" alt="$title->$locale">
                     </div>
 
                 @endforeach
