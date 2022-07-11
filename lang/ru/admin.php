@@ -130,6 +130,10 @@ return [
     'models-url' => 'Ссылка',
     'slider' => 'Слайдеры',
     'models-slider_order' => 'Порядок слайдера',
+    'services-change' => 'Редактировать услугу',
+    'material-price' => 'Материал/Цена',
+    'change-services-type' => 'Выберите тип услуги',
+    'change-news' => 'Редактировать новость',
 
     // auntification
     'name' => 'Имя',

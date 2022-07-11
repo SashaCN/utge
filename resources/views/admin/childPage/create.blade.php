@@ -28,15 +28,15 @@
 
     <div class="another-slide flex-col current-slide">
         <div class="input-wrap pt0">
-            
+
             @foreach ($childPages as $childPage)
                 @php
                     if ($childPage->route == 'logo-img') {
-                        $isLogoImg = true;
+                        $isLogoImg == true;
                         break;
 
                     } else {
-                        $isLogoName = false;
+                        $isLogoImg = false;
                     }
                 @endphp
             @endforeach
@@ -48,7 +48,7 @@
                     } else {
                         $isLogoName = false;
                     }
-                    
+
                 @endphp
             @endforeach
             @foreach ($childPages as $childPage)
@@ -61,13 +61,13 @@
                     }
                 @endphp
             @endforeach
-            
+
 
             <select name="route" id="child-page-select" class="auto-value">
                 <option value="" id="child-page-first-option" selected>@lang('admin.child_page_father')</option>
                 <option disabled  class="models-slider-option">------------</option>
                 <option value="phone">@lang('admin.phone')</option>
-                <option value="logo-img" @if ($isLogoImg == true) disabled @endif>@lang('admin.logo-img')</option> 
+                <option value="logo-img" @if ($isLogoImg == true) disabled @endif>@lang('admin.logo-img')</option>
                 <option value="logo-name" @if ($isLogoName == true) disabled @endif>@lang('admin.logo-name')</option>
                 <option disabled class="models-slider-option">------------</option>
                 <option value="phone">@lang('admin.phone')</option>

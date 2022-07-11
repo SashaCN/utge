@@ -17,7 +17,7 @@
         'price' => 'Ціна',
         'sizeprice' => 'Вага/Ціна | Наявність',
         'another' => 'Інше',
-        'photo' => 'Фотография',
+        'photo' => 'Фото',
         'action' => 'Дія',
         'sub_category_add' => 'Під-категорію',
         'product_type' => 'Тип товару',
@@ -41,7 +41,7 @@
         'add_size' => 'Введіть вагу (Приклад: 100 г)',
         'add_available' => 'Наявність товару',
         'available' => 'В наявності',
-        'not_available' => 'Нема в наявності',
+        'not_available' => 'Немає в наявності',
         'waiting_available' => 'Очікується',
         'available_for_order' => 'Під замовлення',
         'add_home_view' => 'Відображати на головній сторінці',
@@ -130,7 +130,10 @@
         'models-url' => 'Посилання',
         'slider' => 'Слайдери',
         'models-slider_order' => 'Порядок слайдера',
-
+        'services-change' => 'Редагувати послугу',
+        'material-price' => 'Матеріал/Ціна',
+        'change-services-type' => 'Виберіть тип послуги',
+        'change-news' => 'Редагувати новину',
         // auntification
         'name' => 'Ім`я',
     ];

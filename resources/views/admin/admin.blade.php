@@ -28,9 +28,8 @@
                     <div class="add-menu drop-list hidden">
                         <ul>
                             <li><a href="{{ route('product.create') }}"><span class="link-text-drop-list">@lang('admin.product')</span></a></li>
-                            <li><a href="{{ route('subCategory.create') }}"><span class="link-text-drop-list">@lang('admin.sub_category_add')</span></a></li>
-                            <li><a href="{{ route('category.create') }}"><span class="link-text-drop-list">@lang('admin.category')</span></a></li>
-                            <li><a href="{{ route('productType.create') }}"><span class="link-text-drop-list">@lang('admin.product_type')</span></a></li>
+                            <li><a href="{{ route('services.create') }}"><span class="link-text-drop-list">@lang('admin.services')</span></a></li>
+                            <li><a href="{{ route('news.create') }}"><span class="link-text-drop-list">@lang('admin.news')</span></a></li>
                         </ul>
                     </div>
                 </li>
