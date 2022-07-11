@@ -349,7 +349,7 @@ footer .address address {
   fill: #fff;
 }
 .mail a {
-  display: inline-block;
+  align-items: left;
   font-size: 1.6rem;
   padding-left: 20px;
   margin-bottom: 5px;
@@ -368,6 +368,11 @@ footer .address address {
   letter-spacing: 1px;
   color: #fff;
   text-align: center;
+}
+
+.flex-col-left {
+  display: flex;
+  flex-direction: column;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -1680,6 +1685,10 @@ footer .mail {
 
   .price {
     padding: 10px;
+  }
+
+  .services {
+    display: block;
   }
 
   /* -------------------------------------------------------------------------- */

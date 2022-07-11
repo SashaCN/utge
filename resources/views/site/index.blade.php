@@ -77,11 +77,11 @@
                         @endforeach
 
                         @foreach ($logoImg as $item)
-                            
+
                             <img src="{{ $item->getFirstMediaUrl('images') }}" alt="{{ $name->$locale }}" />
                         @endforeach
 
-                        
+
                         <h1>{{ $name->$locale }}</h1>
                     </a>
                 </div>
@@ -175,25 +175,27 @@
                     <svg>
                         <use xlink:href="{{ asset('img/sprite.svg#gps') }}"></use>
                     </svg>
-                    @foreach ($footerPlace as $item)
-                        <address>
+                    <address>
+                        @foreach ($footerPlace as $item)
                             @php
                                 $place = $item->localization[0];
                             @endphp
                                 {!! $place->$locale !!}
-                        </address>
-                    @endforeach
+                        @endforeach
+                    </address>
                 </div>
                 <div class="mail flex-aic">
                     <svg>
                         <use xlink:href="{{ asset('img/sprite.svg#email') }}"></use>
                     </svg>
-                        @foreach ($email as $item)
-                            @php
-                                $email = $item->localization[0];
-                            @endphp
-                            <a href="mailto:{{ $email }}">{{ $email->$locale }}</a>
-                        @endforeach
+                    <div class="flex-col-left">
+                    @foreach ($email as $item)
+                        @php
+                            $email = $item->localization[0];
+                        @endphp
+                        <a href="mailto:{{ $email }}">{{ $email->$locale }}</a>
+                    @endforeach
+                    </div>
                 </div>
             </div>
             <p class="copy">&copy; utge since 2016</p>
