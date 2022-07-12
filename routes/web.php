@@ -42,6 +42,7 @@ Route::middleware('set_locale')->group(function()
         Route::get('deliveriesAndPayments', [\App\Http\Controllers\SiteController::class, 'showDeliveryAndPay'])->name('deliveriesAndPayments');
         Route::get('news', [\App\Http\Controllers\SiteController::class, 'showNews'])->name('news');
         Route::get('contacts', [\App\Http\Controllers\SiteController::class, 'showContacts'])->name('contacts');
+        Route::get('addToBascket', [\App\Http\Controllers\SiteController::class, 'addToBascket'])->name('addToBascket');
 
 
     });
@@ -54,7 +55,7 @@ Route::middleware('set_locale')->group(function ()
     {
         Route::prefix('admin')->group(function()
         {
-            //pages route 
+            //pages route
             Route::get('/', [\App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin');
             Route::resource('productType', \App\Http\Controllers\Admin\ProductTypeController::class);
             Route::resource('category', \App\Http\Controllers\Admin\CategoryController::class);
@@ -82,7 +83,7 @@ Route::middleware('set_locale')->group(function ()
             Route::get('seo/delete/{seo}', [\App\Http\Controllers\Admin\SeoController::class, 'delete'])->name('seo.delete');
             Route::get('trashBox/{prouct}/restore/', [\App\Http\Controllers\Admin\TrashBoxController::class, 'restore'])->name('trashBox.restore');
             Route::get('trashBox/{prouct}/productForceDelete/', [\App\Http\Controllers\Admin\TrashBoxController::class, 'productForceDelete'])->name('trashBox.productForceDelete');
-            
+
             Route::middleware('optimizeImages')->group(function (){
                 Route::post('product/mediaUpdate/{product}', [\App\Http\Controllers\Admin\ProductController::class, 'mediaUpdate'])->name('product.mediaUpdate');
                 Route::post('servicesType/mediaUpdate/{servicesType}', [\App\Http\Controllers\Admin\ServicesTypeController::class, 'mediaUpdate'])->name('servicesType.mediaUpdate');

@@ -78,11 +78,13 @@ class SeoController extends Controller
         $localization_key_seo->uk = $request->keywords_seo_uk;
         $localization_key_seo->ru = $request->keywords_seo_ru;
 
+
         $localization_custom_seo = new Localization();
         $localization_custom_seo->fill($request->validated());
         $localization_custom_seo->var = 'custom_seo';
         $localization_custom_seo->uk = htmlspecialchars($request->custom_seo_uk, ENT_QUOTES);
         $localization_custom_seo->ru = htmlspecialchars($request->custom_seo_uk, ENT_QUOTES);
+
 
         $seo->fill($request->validated());
         $seo->save();
@@ -92,9 +94,6 @@ class SeoController extends Controller
         $seo->localization()->save($localization_desc_seo);
         $seo->localization()->save($localization_og_desc_seo);
         $seo->localization()->save($localization_key_seo);
-
-
-        // dd($localization_custom_seo);
         $seo->localization()->save($localization_custom_seo);
 
         return redirect()->route('seo.index');
@@ -159,13 +158,14 @@ class SeoController extends Controller
             'ru' => $request->keywords_seo_ru
         ];
         $localization_custom_seo = [
-            'var' => 'custom_seo_uk',
+            'var' => 'custom_seo',
             'uk' => $request->custom_seo_uk,
             'ru' => $request->custom_seo_ru
         ];
 
         $seo->fill($request->validated());
         $seo->update();
+
         $seo->localization()->where('var', 'title_seo')->update($localization_title_seo);
         $seo->localization()->where('var', 'desc_seo')->update($localization_desc_seo);
         $seo->localization()->where('var', 'og_title_seo')->update($localization_og_title_seo);
@@ -173,7 +173,8 @@ class SeoController extends Controller
         $seo->localization()->where('var', 'key_seo')->update($localization_key_seo);
         $seo->localization()->where('var', 'custom_seo')->update($localization_custom_seo);
 
-        return redirect()->route('seo.index');
+
+        return redirect()->back();
     }
 
     /**
