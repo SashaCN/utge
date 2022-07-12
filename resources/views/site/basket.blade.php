@@ -8,7 +8,6 @@
 
 <h2>@lang('utge.basket')</h2>
 <div class="wrapper">
-
     <form method="POST" action="" class="basket-table">
         <div class="basket-row title-row">
             <div class="img-col col"></div>

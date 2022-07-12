@@ -15,7 +15,7 @@ use Spatie\QueryBuilder\QueryBuilder;
 
 class SiteController extends Controller
 {
-    
+
     public function index()
     {
 
@@ -29,7 +29,7 @@ class SiteController extends Controller
             'slider4' => ChildPage::where('route', 'slider4')->orderBy('order')->get(),
         ]);
     }
-    
+
     public function basket ()
     {
         $products = Product::all();
@@ -85,5 +85,10 @@ class SiteController extends Controller
             'services' => $services,
         ]);
     }
+
+    // public function addToBascket(Request $request, Product $id){
+    //     $request->session()->put('product', $id);
+    //     return redirect()->back();
+    // }
 
 }

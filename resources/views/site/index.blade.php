@@ -12,7 +12,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @foreach ($seos as $seo)
         @php
-            $title_seo = $seo->localization[0];
+            if(!isset($seo->localization[0])){
+                $seo->localization[0] = 'def';
+            } else {
+                $title_seo = $seo->localization[0];
+            }
             $og_title_seo = $seo->localization[1];
             $desc_seo = $seo->localization[2];
             $og_desc_seo = $seo->localization[3];
@@ -37,7 +41,12 @@
                 <meta property="og:img" content="public\img\logo.png">
                 <meta name="description" content="{{ $desc_seo->$locale }}">
                 <meta name="keywords" content="{{ $key_seo->$locale }}">
-                {!! htmlspecialchars_decode($custom_seo->$locale) !!}
+                    @if(is_string(htmlspecialchars_decode($custom_seo->$locale)) && stristr(htmlspecialchars_decode($custom_seo->$locale), '<script>'))
+                        {!! htmlspecialchars_decode($custom_seo->$locale) !!}
+                    @else
+                        {{$custom_seo->$locale = false}}
+                    @endif
+
                 @break
 
             @default
