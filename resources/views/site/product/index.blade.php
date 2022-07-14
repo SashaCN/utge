@@ -89,14 +89,18 @@ $locale = app()->getLocale();
                     <p class="description">{!! $description->$locale !!}</p>
                     <p class="description active-size">{{ $product->sizeprices->where('price', $min_price)->first()->size }}</p>
                     <div class="button-line flex-sb">
-                        <p class="add-to-basket flex-aic">
-                            <svg>
-                                <use xlink:href="{{ asset('img/sprite.svg#basket') }}"></use>
-                            </svg>
-                            <span>
-                                @lang('utge.add-to-basket')
-                            </span>
-                        </p>
+
+                            <p class="add-to-basket flex-aic">
+
+
+                                    <svg>
+                                        <use xlink:href="{{ asset('img/sprite.svg#basket') }}"></use>
+                                    </svg>
+                                    <span>
+                                        @lang('utge.add-to-basket')
+                                    </span>
+
+                            </p>
                         <p class="price">{{ $min_price }}&nbsp;{{ $product->sizeprices->where('price', $min_price)->first()->price_units }}</p>
                         <span class="like">
                             <svg>

@@ -7,7 +7,6 @@
 
     $productsId = explode(',', trim($_GET['products'], '[]'));
 @endphp
-    
         <div class="basket-table">
             <h2>@lang('utge.basket')</h2>
             <div class="wrapper">
