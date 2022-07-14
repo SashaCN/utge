@@ -37,7 +37,7 @@ return [
     'quatify' => 'кількість',
     'price' => 'ціна',
     'basket_clear' => 'корзина пуста',
-    'general' => 'загалом',
+    'general' => 'разом',
     'confirm_order' => 'оформити замовлення',
 
     //products

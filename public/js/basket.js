@@ -14,10 +14,9 @@ window.onload = () => {
         totalPrice = 0,
         productNumber
 
+    console.log(JSON.parse(localStorage.basketProduct)); 
 
     refreshProducts()
-
-    // refreshProducts()
 
     function attributeAdd() {
         for (let i = 0; i < orderProducts.length; i++) {
@@ -77,6 +76,7 @@ window.onload = () => {
 
         productPrice.forEach((elem) => {
             totalPrice += parseInt(elem.getAttribute("data-product-price"))
+            console.log(totalPrice);
         })
 
         productQuantify.forEach((elem) => {

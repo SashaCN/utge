@@ -89,6 +89,7 @@ class SiteController extends Controller
         return view('site.services', [
             'services' => $services,
         ]);
+
     }
 
     public function service(ServicesType $id)
@@ -123,4 +124,5 @@ class SiteController extends Controller
 
         return redirect()->back();
     }
+
 }

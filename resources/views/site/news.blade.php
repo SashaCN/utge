@@ -48,5 +48,4 @@ $locale = app()->getLocale();
     </div>
 </div>
 <script src="{{ asset('js/news_filter.js') }}"></script>
-
 @endsection
