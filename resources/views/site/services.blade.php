@@ -20,7 +20,7 @@
                     {{$description->$locale}}
                 </p>
                 <div class="button-line">
-                    <a href="{{ route('service', $service->id) }}" class="add-to-basket">
+                    <a href="{{ route('service', $service->id) }}" class="details-btn">
                         @lang('utge.more')
                     </a>
                 </div>
