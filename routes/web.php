@@ -38,6 +38,8 @@ Route::middleware('set_locale')->group(function()
         Route::get('products', [\App\Http\Controllers\ProductController::class, 'index'])->name('products');
         Route::get('product/{id}', [\App\Http\Controllers\ProductController::class, 'show'])->name('product');
         Route::get('services', [\App\Http\Controllers\SiteController::class, 'services'])->name('services');
+        Route::get('service/{id}', [\App\Http\Controllers\SiteController::class, 'service'])->name('service');
+        Route::post('storeServiceOrder', [\App\Http\Controllers\SiteController::class, 'storeServiceOrder'])->name('storeServiceOrder');
         Route::get('basket', [\App\Http\Controllers\SiteController::class, 'basket'])->name('basket');
         Route::get('deliveriesAndPayments', [\App\Http\Controllers\SiteController::class, 'showDeliveryAndPay'])->name('deliveriesAndPayments');
         Route::get('news', [\App\Http\Controllers\SiteController::class, 'showNews'])->name('news');
@@ -66,6 +68,7 @@ Route::middleware('set_locale')->group(function ()
             Route::resource('servicesCategory', \App\Http\Controllers\Admin\ServicesCategoryController::class);
             Route::resource('services', \App\Http\Controllers\Admin\ServicesController::class);
             Route::resource('trashBox', \App\Http\Controllers\Admin\TrashBoxController::class);
+            Route::resource('servicesOrder', \App\Http\Controllers\Admin\ServiceOrderController::class);
             // create route
             Route::get('sliderCreate', [\App\Http\Controllers\Admin\ChildPageController::class, 'sliderCreate'])->name('childPage.sliderCreate');
             Route::get('sliderEdit/{slider_id}', [\App\Http\Controllers\Admin\ChildPageController::class, 'sliderEdit'])->name('childPage.sliderEdit');

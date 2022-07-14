@@ -66,9 +66,16 @@ class ServicesController extends Controller
             $services_size_price = new ServicesSizePrice();
             $services_size_price->fill($request->validated());
             $materials = 'materials/'.$i;
+
+                if($request->$materials == null){
+                    $request->$materials == false;
+                } else {
+                    $services_size_price->materials = $request->$materials;
+                }
+
+            $services_size_price->materials = $request->$materials;
             $price = 'price/'.$i;
             $units = 'units/'.$i;
-            $services_size_price->materials = $request->$materials;
             $services_size_price->price = $request->$price;
             $services_size_price->units = $request->$units;
 

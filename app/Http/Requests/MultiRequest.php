@@ -129,13 +129,13 @@ class MultiRequest extends FormRequest
             }
         }
 
-        if (isset($_REQUEST['materials/1']))
-        {
-            for ($i = 1; $i <= $count; $i++) {
-                $request['materials/'.$i] = 'required';
-            }
-        }
-        
+        // if (isset($_REQUEST['materials/1']))
+        // {
+        //     for ($i = 1; $i <= $count; $i++) {
+        //         $request['materials/'.$i] = 'required';
+        //     }
+        // }
+
         if (isset($_REQUEST['units/1']))
         {
             for ($i = 1; $i <= $count; $i++) {
@@ -217,7 +217,7 @@ class MultiRequest extends FormRequest
         {
             $request['email'] = 'required|regex:#^[a-zA-z-.]+@[a-z]+\.[a-z]{2,3}$#';
         }
-        
+
         if (isset($_REQUEST['slider_order']))
         {
             $request['slider_order'] = 'required';

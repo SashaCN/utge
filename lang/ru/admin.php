@@ -140,5 +140,12 @@ return [
 
     // product page
     'quality-certificate' => 'сертификат качества',
+    'number' => '№',
+    'fio' => 'Имя/Фамилия',
+    'contacts' => 'Контакты',
+    'status' => 'Статус заказа',
+    'order-list' => 'Список заказов',
+    'order-service' => 'Заказ №',
+
 ];
 

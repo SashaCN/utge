@@ -13,9 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('news', function (Blueprint $table) {
-            $table->foreignId('categories_id')->constrained('news_categories');
+        Schema::create('services_orders', function (Blueprint $table) {
+            $table->id();
+            $table->text('firstname', 55);
+            $table->text('lastname', 55);
+            $table->bigInteger('phone');
+            $table->string('email')->nullable();
+            $table->text('interes', 2500);
             $table->softDeletes();
+            $table->timestamps();
         });
     }
 
@@ -26,8 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('categories_id');
-        });
+        Schema::dropIfExists('services_orders');
     }
 };

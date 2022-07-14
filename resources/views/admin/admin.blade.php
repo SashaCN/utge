@@ -76,7 +76,14 @@
                             <li><a href="{{ route('servicesCategory.index') }}"><span class="link-text-drop-list">@lang('admin.services_category')</span></a></li>
                         </ul>
                     </div>
-                <li><a href="#" class="orders-btn"><span class="link-text">@lang('admin.orders')</span></a></li>
+                <li>
+                    <a href="#" class="drop-btn orders-btn"><span class="link-text">@lang('admin.orders')</span></a></li>
+
+                    <div class="drop-list hidden">
+                        <ul>
+                            <li><a href="{{ route('servicesOrder.index') }}"><span class="link-text-drop-list">@lang('admin.services')</span></a></li>
+                        </ul>
+                    </div>
                 <li>
                     <a href="#" class="drop-btn news-btn"><span class="link-text">@lang('admin.news')</span></a></li>
 

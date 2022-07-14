@@ -36,11 +36,11 @@
                     @foreach ($childPages as $childPage)
                         @if ($childPage->route == 'phone')
                             @php
-                                    $title = $childPage->localization[0];
+                                    $phone = $childPage->localization[0];
                             @endphp
 
                             <tr>
-                                <td>{{ $title->$locale }}</td>
+                                <td>{{ $phone->$locale }}</td>
 
                                 <td class="action">
                                     <a title="Видалити" href="{{ route('childPage.delete', $childPage->id) }}"></a>
@@ -65,7 +65,7 @@
                     @if ($childPage->route == 'logo-img')
 
                         <tr>
-                            <td><img src="{{ $childPage->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}"></td>
+                            <td><img src="{{ $childPage->getFirstMediaUrl('images') }}" alt="logo"></td>
                             <td class="action">
                                 <a title="Редагувати" href="{{ route('childPage.edit', $childPage->id) }}"></a>
 
