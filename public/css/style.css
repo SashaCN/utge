@@ -1030,7 +1030,8 @@ h3 {
   margin-bottom: 7px;
 }
 
-.add-to-basket {
+.add-to-basket,
+.details-btn {
   justify-content: center;
   padding: 8px 30px;
   width: 63%;
@@ -1044,19 +1045,22 @@ h3 {
   border-radius: 5px;
   transition: all 0.5s ease;
 }
-.add-to-basket svg {
+.add-to-basket svg,
+.details-btn svg {
   width: 29px;
   height: 26px;
   fill: #fff;
   margin-right: 10px;
 }
-.add-to-basket:hover {
+.add-to-basket:hover,
+.details-btn:hover {
   transform: scale(1.1);
   border-color: #042c68;
   background-color: #042c68;
   cursor: pointer;
 }
-.add-to-basket:hover + .price {
+.add-to-basket:hover + .price,
+.details-btn:hover + .price {
   transform: scale(0.8);
 }
 
@@ -1234,7 +1238,8 @@ h3 {
   font-size: 2rem;
   padding: 9.5px 15px;
 }
-.price-line .add-to-basket {
+.price-line .add-to-basket,
+.price-line .details-btn {
   margin-left: 30px;
 }
 
@@ -1283,7 +1288,8 @@ h3 {
 .services .button-line {
   text-align: center;
 }
-.services .add-to-basket {
+.services .add-to-basket,
+.services .details-btn {
   display: inline-block;
   width: auto;
   padding: 12px 70px;
@@ -1749,6 +1755,13 @@ tr + tr:nth-child(even) {
   }
   .info-line .logo {
     width: 35%;
+  }
+
+  /* --------------------------------------------------------------------------  */
+  /*                           services                                          */
+  /* --------------------------------------------------------------------------  */
+  .services {
+    grid-template: 2fr/2fr 2fr;
   }
 }
 @media screen and (max-width: 1000px) {
