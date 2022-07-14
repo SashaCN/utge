@@ -179,8 +179,8 @@ a.selected-lang {
 
 .control svg {
   fill: #003b95;
-  width: 29px;
-  height: 26px;
+  width: 42px;
+  height: 43px;
 }
 
 .basket,
@@ -292,6 +292,7 @@ a.burger-btn {
   position: absolute;
   top: 50%;
   left: 50%;
+  row-gap: 10px;
   width: 100%;
   transform: translate(-50%, -50%);
   flex-direction: column;
@@ -444,7 +445,8 @@ h2 {
 /* -------------------------------------------------------------------------- */
 .grid {
   display: grid;
-  grid-template: 1fr 48px 1fr/1fr 48px 1fr;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
   margin-bottom: 50px;
 }
 .grid section {
@@ -468,16 +470,6 @@ h2 {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-}
-
-.fish,
-.service {
-  grid-column-start: 3;
-}
-
-.water,
-.service {
-  grid-row-start: 3;
 }
 
 .slide svg {
@@ -529,6 +521,7 @@ h2 {
   visibility: hidden;
   overflow: hidden;
   transition: all 0.5s ease;
+  background-color: #fff;
 }
 
 .slide-preview {
@@ -544,17 +537,18 @@ h2 {
 
 .slider-control {
   position: absolute;
-  z-index: 2;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
-  justify-content: space-between;
-  width: 112px;
+  justify-content: center;
+  left: 50%;
+  bottom: 20px;
+  width: 90%;
+  transform: translateX(-50%);
+  z-index: 2;
 }
 .slider-control span {
   width: 20px;
   height: 20px;
+  margin: 3px;
   border: 1px solid #003b95;
   border-radius: 50%;
   transition: all 0.5s ease;
@@ -618,7 +612,8 @@ h2 {
 /* -------------------------------------------------------------------------- */
 /*                                   basket                                   */
 /* -------------------------------------------------------------------------- */
-.basket-table {
+.basket-table .wrapper,
+.placing-an-order .wrapper {
   padding-top: 40px;
 }
 
@@ -774,6 +769,10 @@ h2 {
 }
 .commit-order input:hover {
   background-color: #042c68;
+}
+
+.placing-an-order {
+  display: none;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -1581,25 +1580,10 @@ h3 {
   .info-line .logo {
     width: 35%;
   }
-
-  .grid {
-    grid-template: 1fr 24px 1fr/1fr 24px 1fr;
-  }
-
-  /* --------------------------------------------------------------------------  */
-  /*                           services                                          */
-  /* --------------------------------------------------------------------------  */
-  .services {
-    grid-template: 2fr/2fr 2fr;
-  }
 }
 @media screen and (max-width: 1000px) {
   .info-line .logo {
     width: 40%;
-  }
-
-  .grid {
-    grid-template: 1fr 12px 1fr/1fr 12px 1fr;
   }
 
   .goods-list {
@@ -1800,11 +1784,13 @@ footer .mail {
   }
 }
 @media screen and (max-width: 700px) {
-  .phone svg {
+  .phone svg,
+.control svg {
     word-wrap: 30px;
     height: 30px;
   }
-  .phone ul {
+  .phone ul,
+.control ul {
     margin-left: 10px;
   }
 
@@ -1894,6 +1880,12 @@ footer .mail {
     text-align: center;
     width: 33%;
   }
+  .control > a {
+    width: 20%;
+  }
+  .control > p {
+    width: 50%;
+  }
 
   .feed svg {
     width: 150px;
@@ -1962,13 +1954,6 @@ footer .mail {
   }
 }
 @media screen and (max-width: 450px) {
-  .control > a {
-    width: 30%;
-  }
-  .control > p {
-    width: 35%;
-  }
-
   .goods-list {
     width: 100%;
   }
@@ -1977,13 +1962,6 @@ footer .mail {
   .close {
     top: 15px;
     right: 15px;
-  }
-
-  .control > a {
-    width: 30%;
-  }
-  .control > p {
-    width: 40%;
   }
 
   .info-line .address {
@@ -2022,21 +2000,6 @@ footer .mail {
   }
   .right-part .add-to-basket {
     margin: 0;
-  }
-
-  /* --------------------------------------------------------------------------  */
-  /*                         news page                                           */
-  /* --------------------------------------------------------------------------  */
-  .news-category-line .category-wrap-btn {
-    width: 100%;
-  }
-}
-@media screen and (max-width: 350px) {
-  .control > a {
-    width: 25%;
-  }
-  .control > p {
-    width: 45%;
   }
 
   /* --------------------------------------------------------------------------  */

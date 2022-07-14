@@ -95,7 +95,6 @@ class ProductTypeController extends Controller
             'ru' => $request->title_ru,
         ];
 
-        $productType->fill($request->validated());
 
         $productType->update();
         $productType->localization()->where('var', 'title')->update($localization_title);

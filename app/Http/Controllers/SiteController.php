@@ -84,11 +84,4 @@ class SiteController extends Controller
         return view('site.services', [
             'services' => $services,
         ]);
-    }
-
-    // public function addToBascket(Request $request, Product $id){
-    //     $request->session()->put('product', $id);
-    //     return redirect()->back();
-    // }
-
 }
