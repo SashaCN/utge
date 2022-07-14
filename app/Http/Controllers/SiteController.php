@@ -84,6 +84,5 @@ class SiteController extends Controller
         return view('site.services', [
             'services' => $services,
         ]);
-    }
-
+    }    
 }

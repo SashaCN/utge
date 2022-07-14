@@ -81,13 +81,13 @@ $locale = app()->getLocale();
                     $available = 'available_for_order';
                 }
             @endphp
-            <figure id="product" class="product shadow-box flex-col {{ $available }}" data-product-id="{{ $product->id }}">
+            <figure class="product product_id shadow-box flex-col {{ $available }}" data-product-id="{{ $product->id }}">
                 <p class="status">@lang('admin.'.$available)</p>
                 <img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
                 <figcaption>
                     <h3>{{ $title->$locale }}</h3>
                     <p class="description">{!! $description->$locale !!}</p>
-                    <p class="description">{{ $product->sizeprices->where('price', $min_price)->first()->size }}</p>
+                    <p class="description active-size">{{ $product->sizeprices->where('price', $min_price)->first()->size }}</p>
                     <div class="button-line flex-sb">
                         <p class="add-to-basket flex-aic">
                             <svg>

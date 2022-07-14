@@ -189,16 +189,12 @@
         .logo
             width: 35%
 
-    .grid
-        grid-template: 1fr 24px 1fr/1fr 24px 1fr
 
 @media screen and ( max-width: 1000px)
     .info-line
         .logo
             width: 40%
 
-    .grid
-        grid-template: 1fr 12px 1fr/1fr 12px 1fr
 
     .goods-list
         margin: 0 -6px 25px
@@ -356,7 +352,8 @@
             min-width: auto
 
 @media screen and ( max-width: 700px)
-    .phone
+    .phone,
+    .control
         svg
             word-wrap: 30px
             height: 30px
@@ -419,6 +416,10 @@
         & > a, & > p
             text-align: center
             width: 33%
+        & > a
+            width: 20%
+        & > p
+            width: 50%
 
     .feed svg
         width: 150px
@@ -472,11 +473,6 @@
             width: 100%
 
 @media screen and ( max-width:  450px)
-    .control
-        & > a
-            width: 30%
-        & > p
-            width: 35%
 
     .goods-list
         width: 100%
@@ -485,12 +481,6 @@
     .close
         top: 15px
         right: 15px
-
-    .control
-        & > a
-            width: 30%
-        & > p
-            width: 40%
 
     .info-line .address
         width: 100%
@@ -524,10 +514,3 @@
             margin-bottom: 10px
         .add-to-basket
             margin: 0
-
-@media screen and ( max-width:  350px)
-    .control
-        & > a
-            width: 25%
-        & > p
-            width: 45%

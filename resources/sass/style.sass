@@ -64,8 +64,10 @@ h2
 
 .grid
   display: grid
-  grid-template: 1fr 48px 1fr/1fr 48px 1fr
+  grid-template-columns: 1fr  1fr
+  gap: 48px
   margin-bottom: 50px
+  
   section
     position: relative
     border-radius: 10px
@@ -83,14 +85,6 @@ h2
         width: 100%
         height: 100%
         object-fit: cover
-
-.fish,
-.service
-  grid-column-start: 3
-
-.water,
-.service
-  grid-row-start: 3
 
 .slide
   svg
@@ -138,6 +132,7 @@ h2
     visibility: hidden
     overflow: hidden
     transition: $trs
+    background-color: $second
 
 .slide-preview
   display: flex
@@ -150,16 +145,17 @@ h2
 
 .slider-control
     position: absolute
-    z-index: 2
-    bottom: 20px
-    left: 50%
-    transform: translateX(-50%)
     display: flex
-    justify-content: space-between
-    width: 112px
+    justify-content: center
+    left: 50%
+    bottom: 20px
+    width: 90%
+    transform: translateX(-50%)
+    z-index: 2
     span
         width: 20px
         height: 20px
+        margin: 3px
         border: 1px solid $primary
         border-radius: 50%
         transition: $trs
@@ -216,8 +212,10 @@ h2
 /*                                   basket                                   */
 /* -------------------------------------------------------------------------- */
 
-.basket-table
-    padding-top: 40px
+.basket-table,
+.placing-an-order
+    .wrapper
+        padding-top: 40px
 
 .title-row
     .col

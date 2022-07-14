@@ -10,7 +10,7 @@ if (localStorage.basketProduct !== undefined) {
 add_button.forEach(elem => {
     elem.onclick = (e) => {
         e.preventDefault();
-        let product = elem.closest('#product');
+        let product = elem.closest('.product_id');
 
         if (product.classList.contains('not_available') || product.classList.contains('waiting_available')) {
             return false;

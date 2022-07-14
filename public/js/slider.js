@@ -6,7 +6,7 @@ window.onload = () => {
         service = document.querySelector('.service');
 
     spanCreator(feed);
-    spanCreator(fish);
+    // spanCreator(fish);
     spanCreator(water);
     spanCreator(service);
 
@@ -21,7 +21,7 @@ function spanCreator(selector){
         slides = selector.querySelectorAll('.slide'),
         father = selector.querySelector('.slider-control');
 
-    if (slides.length == 1) return false;
+    if (slides.length == 0 || slides.length == 1) return false;
 
     for (let i = 1; i < slides.length; i++) {
         span += '<span></span>';
@@ -37,12 +37,24 @@ function changeSlide (section, time)
     slides = section.querySelectorAll('.slide'),
     controll_btns = section.querySelectorAll('.slider-control span');
     
-    if (slides.length == 1) return false;
+    if (slides.length == 0) return false;
+
+    if (slides.length == 1 ) {
+        slides[0].classList.add('current-slide');
+        current_slide = section.querySelector('.current-slide')
+        return false;
+    }
     
 
     for (i = 0; i < controll_btns.length; i++) {
         slides[i].dataset.number = i
         controll_btns[i].dataset.number = i
+    }
+
+    if (current_slide == null) {
+        slides[0].classList.add('current-slide');
+        current_slide = section.querySelector('.current-slide')
+        controll_btns[0].classList.add('current-slide-btn');
     }
 
     controll_btns.forEach(elem => {
@@ -51,7 +63,7 @@ function changeSlide (section, time)
                 console.log('wow someone tried to hack the slider');
                 slides[0].classList.add('current-slide');
                 current_slide = section.querySelector('.current-slide')
-                controll_btns[controll_btns.length - 1].classList.add('current-slide-btn');
+                controll_btns[0].classList.add('current-slide-btn');
             }
 
             if (current_slide_btn.getAttribute("data-number") == e.target.getAttribute("data-number")) {
@@ -76,6 +88,7 @@ function changeSlide (section, time)
 
     setTimeout(() => {
         let interval = setInterval(()=>{
+
             current_slide_btn.classList.remove('current-slide-btn');
             current_slide.classList.add('prev-slide');
 
