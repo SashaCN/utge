@@ -836,5 +836,153 @@ h3
         margin-right: 20px
     .new-desc
         width: 100%
+/* -------------------------------------------------------------------------- */
+/*                                  services show                             */
+/* -------------------------------------------------------------------------- */
+.services-show
+    h3
+        background: $primary
+        font-size: 24px
+        color: white
+        text-align: center
+        padding: 15px 0
+
+    .services-desc
+        padding: 48px 0 45px 0
+        font-size: 18px
+
+.service-table
+    margin-bottom: 50px
+    border-collapse: collapse
+    width: 100%
+    font-size: 18px
+tr+tr
+    &:nth-child(odd)
+        background-color: #e5e5e5
+    &:nth-child(even)
+        background-color: #fff
+
+
+.service-table
+    .service-units
+        font-size: 18px
+        font-weight: 500
+        text-transform: uppercase
+        color: $primary
+        td
+            padding-bottom: 30px
+            text-align: center
+
+    .service-category
+        color: #fff
+        background-color: $primary
+        text-transform: uppercase
+        td
+            padding: 15px
+            border: 1px solid $primary
+
+
+.service-item
+    td
+        border: 1px solid $primary
+        padding: 15px
+        &:nth-child(1)
+            width: 50%
+        &:nth-child(2)
+            width: 25%
+        &:nth-child(3)
+            width: 12.5%
+            text-align: center
+        &:nth-child(4)
+            width: 12.5%
+            text-align: center
+
+        .service-item-materials
+            text-align: center
+
+.service-btn
+    text-align: center
+    margin-bottom: 30px
+    p
+        display: inline-block
+        cursor: pointer
+        border-radius: 10px
+        color: #fff
+        background: $primary
+        padding: 20px 30px
+        text-transform: uppercase
+        font-size: 24px
+        transition: 0.5s
+        &:hover
+            background: $primary-hover
+
+.service-popup
+    filter: drop-shadow(0px 10px 5px rgba(24,20,25,0.1))
+    width: 735px
+    margin: 0 auto
+    border-radius: 10px
+    p
+        background: $primary
+        text-align: center
+        font-size: 24px
+        text-transform: uppercase
+        color: #fff
+        padding: 17px
+        border-radius: 10px 10px 0 0
+.service-form
+    display: flex
+    flex-direction: column
+    padding: 30px
+    background: #fff
+    border-radius: 0 0 10px 10px
+    span
+        color: red
+    i
+        font-size: 18px
+        margin-bottom: 15px
+    .service-form-item
+        display: flex
+        justify-content: space-between
+    label
+        margin-bottom: 10px
+        font-size: 16px
+        text-transform: uppercase
+        display: block
+        font-size: 17px
+        color: #000
+        font-weight: 550
+
+    input,
+    textarea
+        outline: none
+        box-sizing: border-box
+        border: 2px solid $primary
+        width: 309px
+        border-radius: 5px
+        font-size: 16px
+        padding: 10px
+        margin-bottom: 30px
+        &:focus
+            outline: none
+            border: 2px solid $primary
+
+    textarea
+        width: 100%
+        min-height: 210px
+        resize: none
+
+    button
+        width: 233px
+        margin: 0 auto
+        border-radius: 5px
+        border: none
+        cursor: pointer
+        padding: 10px
+        background: $primary
+        color: #fff
+        font-size: 20px
+        transition: 0.5s
+        &:hover
+            background: $primary-hover
 
 @import components/media

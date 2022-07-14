@@ -54,4 +54,16 @@ return [
     //news
     'all_categories' => 'усі категорії',
     'full_new' => 'більше',
+
+
+    'firstname' => "Ім'я",
+    'lastname' => 'Прізвеще',
+    'price-units' => 'Вартість, грн',
+    'units' => 'Одиниці виміру',
+    'material' => 'Матеріал',
+    'type-work' => 'Види робіт',
+    'order-service' => 'Замовити послугу',
+    'number-phone' => 'Номер телефону',
+    'interes-service' => 'Яка послуга Вас цікавить',
+    'i' => "Обов'язкове до замовлення",
 ];

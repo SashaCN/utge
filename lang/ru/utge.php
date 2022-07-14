@@ -53,4 +53,16 @@ return [
     //news
     'all_categories' => 'все категории',
     'full_new' => 'больше',
+
+
+    'firstname' => "Имя",
+    'lastname' => 'Фамилия',
+    'price-units' => 'Цена, грн',
+    'units' => 'Единицы измерения',
+    'material' => 'Материал',
+    'type-work' => 'Виды робот',
+    'order-service' => 'Заказать услугу',
+    'number-phone' => 'Номер телефона',
+    'interes-service' => 'Какая услуга вас интересует',
+    'i' => "Обизатильно к заполнению",
 ];

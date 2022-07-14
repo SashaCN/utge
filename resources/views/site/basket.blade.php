@@ -4,7 +4,6 @@
 
 @php
     $locale = app()->getLocale();
-
     $productsId = explode(',', trim($_GET['products'], '[]'));
 @endphp
         <div class="basket-table">

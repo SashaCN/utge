@@ -10,8 +10,13 @@ use App\Models\SizePrice;
 use App\Models\ChildPage;
 use App\Models\ServicesType;
 use App\Filters\NewsFilter;
+use App\Models\Services;
+use App\Models\ServicesCategory;
 use Spatie\QueryBuilder\QueryBuilder;
-
+use App\Http\Requests\MultiRequest;
+use App\Http\Requests\StoreServicesOrderRequest;
+use App\Models\ServicesOrder;
+use Illuminate\Auth\Events\Validated;
 
 class SiteController extends Controller
 {
@@ -77,11 +82,47 @@ class SiteController extends Controller
 
     }
 
-    public function services ()
+    public function services()
     {
         $services = ServicesType::all();
 
         return view('site.services', [
             'services' => $services,
         ]);
+
+    }
+
+    public function service(ServicesType $id)
+    {
+        $types = ServicesType::all()->where('id', $id->id);
+        $categories = ServicesCategory::all()->where('service_type_id', $id->id);
+        $services = Services::all();
+
+        return view('site.services.index', [
+
+            'categories' => $categories,
+            'services' => $services,
+            'types' => $types,
+
+        ]);
+    }
+
+    public function storeServiceOrder(StoreServicesOrderRequest $request)
+    {
+
+
+        $serviceOrder = new ServicesOrder();
+        $validated = $request->validated();
+        $serviceOrder->firstname = $request->firstname;
+        $serviceOrder->lastname = $request->lastname;
+        $serviceOrder->phone = $request->phone;
+        $serviceOrder->email = $request->email;
+        $serviceOrder->interes = $request->interes;
+        $serviceOrder->status = '0';
+        $serviceOrder->fill($request->validated());
+        $serviceOrder->save();
+
+        return redirect()->back();
+    }
+
 }
