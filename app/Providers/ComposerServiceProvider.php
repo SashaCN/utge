@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Seo;
 use App\Models\Product;
 use App\Models\ChildPage;
+use App\Models\ServicesOrder;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -43,5 +44,11 @@ class ComposerServiceProvider extends ServiceProvider
         View::composer('site.index', function($view){
             $view->with('email',  ChildPage::all()->where('route', 'email'));
         });
+        
+        View::composer('admin.admin', function($view){
+            $view->with('servicesOrders',  ServicesOrder::all()->where('status' , '0'));
+        });
+
+
     }
 }

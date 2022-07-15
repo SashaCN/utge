@@ -146,6 +146,8 @@ return [
     'status' => 'Статус заказа',
     'order-list' => 'Список заказов',
     'order-service' => 'Заказ №',
+    'interes-service' => 'Что интересует',
+    'change' => 'Изменить',
 
 ];
 
