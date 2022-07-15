@@ -13,8 +13,6 @@ inputsName.forEach(e => {
 
 function autocompleteSEO()
 {
-    console.log('wtf2');
-
     // autocomplete title
     document.querySelectorAll('.title_seo_ru').forEach(e => {
         e.value = document.querySelector('#title_ru').value;
