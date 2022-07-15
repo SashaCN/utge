@@ -36,14 +36,14 @@
                     @foreach ($childPages as $childPage)
                         @if ($childPage->route == 'phone')
                             @php
-                                    $title = $childPage->localization[0];
+                                    $phone = $childPage->localization[0];
                             @endphp
-                            
+
                             <tr>
-                                <td>{{ $title->$locale }}</td>
-        
-                                <td class="action">    
-                                    <a href="{{ route('childPage.delete', $childPage->id) }}"></a>
+                                <td>{{ $phone->$locale }}</td>
+
+                                <td class="action">
+                                    <a title="Видалити" href="{{ route('childPage.delete', $childPage->id) }}"></a>
                                 </td>
                             </tr>
                         @endif
@@ -63,13 +63,13 @@
             <tbody>
                 @foreach ($childPages as $childPage)
                     @if ($childPage->route == 'logo-img')
-                        
-                        <tr>
-                            <td><img src="{{ $childPage->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}"></td>
-                            <td class="action">    
-                                <a href="{{ route('childPage.edit', $childPage->id) }}"></a>
 
-                                <a href="{{ route('childPage.delete', $childPage->id) }}"></a>
+                        <tr>
+                            <td><img src="{{ $childPage->getFirstMediaUrl('images') }}" alt="logo"></td>
+                            <td class="action">
+                                <a title="Редагувати" href="{{ route('childPage.edit', $childPage->id) }}"></a>
+
+                                <a title="Видалити" href="{{ route('childPage.delete', $childPage->id) }}"></a>
                             </td>
                         </tr>
                     @endif
@@ -92,14 +92,14 @@
                             @php
                                     $title = $childPage->localization[0];
                             @endphp
-                            
+
                             <tr>
                                 <td>{{ $title->$locale }}</td>
-        
-                                <td class="action">    
-                                    <a href="{{ route('childPage.edit', $childPage->id) }}"></a>
 
-                                    <a href="{{ route('childPage.delete', $childPage->id) }}"></a>
+                                <td class="action">
+                                    <a title="Редагувати" href="{{ route('childPage.edit', $childPage->id) }}"></a>
+
+                                    <a title="Видалити" href="{{ route('childPage.delete', $childPage->id) }}"></a>
                                 </td>
                             </tr>
                         @endif
@@ -108,7 +108,7 @@
             </table>
         </div>
     </div>
-    
+
     <h3 class="models-h3">footer</h3>
     <div class="footer-modulus">
         <div>
@@ -126,12 +126,12 @@
                             @php
                                     $title = $childPage->localization[0];
                             @endphp
-                            
+
                             <tr>
                                 <td>{{ $title->$locale }}</td>
-        
-                                <td class="action">    
-                                    <a href="{{ route('childPage.delete', $childPage->id) }}"></a>
+
+                                <td class="action">
+                                    <a title="Видалити" href="{{ route('childPage.delete', $childPage->id) }}"></a>
                                 </td>
                             </tr>
                         @endif
@@ -154,13 +154,13 @@
                         @php
                                 $title = $childPage->localization[0];
                         @endphp
-                        
+
                         <tr>
                             <td>{{ $title->$locale }}</td>
-    
-                            <td class="action">    
-                                <a href="{{ route('childPage.edit', $childPage->id) }}"></a>
-                                <a href="{{ route('childPage.delete', $childPage->id) }}"></a>
+
+                            <td class="action">
+                                <a title="Редагувати" href="{{ route('childPage.edit', $childPage->id) }}"></a>
+                                <a title="Видалити" href="{{ route('childPage.delete', $childPage->id) }}"></a>
                             </td>
                         </tr>
                     @endif
@@ -183,12 +183,12 @@
                             @php
                                     $title = $childPage->localization[0];
                             @endphp
-                            
+
                             <tr>
                                 <td>{{ $title->$locale }}</td>
-        
-                                <td class="action">    
-                                    <a href="{{ route('childPage.delete', $childPage->id) }}"></a>
+
+                                <td class="action">
+                                    <a title="Видалити" href="{{ route('childPage.delete', $childPage->id) }}"></a>
                                 </td>
                             </tr>
                         @endif
@@ -216,7 +216,7 @@
                         $title = $childPage->localization[0];
                         $description = $childPage->localization[1];
                     @endphp
-                    
+
                     <tr>
                         <td class="product-image">
                             @if ($childPage->route != 'about_us')
@@ -228,11 +228,11 @@
                             @if ($childPage->route == 'delivery')
                                 <p>@lang('utge.delivery')</p>
                             @endif
-        
+
                             @if ($childPage->route == 'payment')
                                 <p>@lang('utge.payment')</p>
                             @endif
-        
+
                             @if ($childPage->route == 'contacts')
                                 <p>@lang('utge.contacts')</p>
                             @endif
@@ -244,14 +244,14 @@
 
                         <td>{{ $title->$locale }}</td>
 
-                        <td>{!! $description->$locale !!}</td>
+                        <td>{!! substr($description->$locale, 0,100) !!}</td>
 
                         <td class="action">
                             @if ($childPage->route != 'about_us')
-                                <a href="{{ route('childPage.edit', $childPage->id) }}"></a>
+                                <a title="Редагувати" href="{{ route('childPage.edit', $childPage->id) }}"></a>
                             @endif
-                            
-                            <a href="{{ route('childPage.delete', $childPage->id) }}"></a>
+
+                            <a title="Видалити" href="{{ route('childPage.delete', $childPage->id) }}"></a>
                         </td>
                     </tr>
                 @endif

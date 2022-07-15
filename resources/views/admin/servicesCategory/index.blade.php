@@ -30,8 +30,8 @@
             <tr>
                 <td>{{ $title->$locale }}</td>
                 <td class="action">
-                    <a href="{{ route('servicesCategory.edit', $servicesCategory->id) }}"></a>
-                    <a href="{{ route('servicesCategory.delete', $servicesCategory->id) }}"></a>
+                    <a title="Редагувати" href="{{ route('servicesCategory.edit', $servicesCategory->id) }}"></a>
+                    <a title="Видалити" href="{{ route('servicesCategory.delete', $servicesCategory->id) }}"></a>
                 </td>
             </tr>
             @endforeach

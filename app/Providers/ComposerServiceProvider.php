@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Seo;
+use App\Models\Product;
 use App\Models\ChildPage;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -41,6 +42,9 @@ class ComposerServiceProvider extends ServiceProvider
         });
         View::composer('site.index', function($view){
             $view->with('email',  ChildPage::all()->where('route', 'email'));
+        });
+        View::composer('site.basket', function($view){
+            $view->with('products',  Product::all());
         });
 
     }

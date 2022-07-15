@@ -10,31 +10,31 @@ use App\Models\SizePrice;
 use App\Models\ChildPage;
 use App\Models\ServicesType;
 use App\Filters\NewsFilter;
+use App\Models\Services;
+use App\Models\ServicesCategory;
 use Spatie\QueryBuilder\QueryBuilder;
-
+use App\Http\Requests\MultiRequest;
+use App\Http\Requests\StoreServicesOrderRequest;
+use App\Models\ServicesOrder;
+use Illuminate\Auth\Events\Validated;
 
 class SiteController extends Controller
 {
-    
+
     public function index()
     {
-        $products  = Product::all()->where('home_view', '1');
-        $about_us = ChildPage::all()->where('route', 'about_us');
-        $slider1 = ChildPage::all()->where('route', 'slider1');
-        $slider2 = ChildPage::all()->where('route', 'slider2');
-        $slider3 = ChildPage::all()->where('route', 'slider3');
-        $slider4 = ChildPage::all()->where('route', 'slider4');
 
         return view('site.firstPage', [
-            'products' => $products,
-            'about_us' => $about_us,
-            'slider1' => $slider1,
-            'slider2' => $slider2,
-            'slider3' => $slider3,
-            'slider4' => $slider4,
+            'products' => Product::all()->where('home_view', '1'),
+            'about_us' => ChildPage::all()->where('route', 'about_us'),
+            // 'slider1' => ChildPage::orderSlider(),
+            'slider1' => ChildPage::where('route', 'slider1')->orderBy('order')->get(),
+            'slider2' => ChildPage::where('route', 'slider2')->orderBy('order')->get(),
+            'slider3' => ChildPage::where('route', 'slider3')->orderBy('order')->get(),
+            'slider4' => ChildPage::where('route', 'slider4')->orderBy('order')->get(),
         ]);
     }
-    
+
     public function basket ()
     {
         $products = Product::all();
@@ -82,13 +82,47 @@ class SiteController extends Controller
 
     }
 
-    public function services ()
+    public function services()
     {
         $services = ServicesType::all();
 
         return view('site.services', [
             'services' => $services,
         ]);
+
+    }
+
+    public function service(ServicesType $id)
+    {
+        $types = ServicesType::all()->where('id', $id->id);
+        $categories = ServicesCategory::all()->where('service_type_id', $id->id);
+        $services = Services::all();
+
+        return view('site.services.index', [
+
+            'categories' => $categories,
+            'services' => $services,
+            'types' => $types,
+
+        ]);
+    }
+
+    public function storeServiceOrder(StoreServicesOrderRequest $request)
+    {
+
+
+        $serviceOrder = new ServicesOrder();
+        $validated = $request->validated();
+        $serviceOrder->firstname = $request->firstname;
+        $serviceOrder->lastname = $request->lastname;
+        $serviceOrder->phone = $request->phone;
+        $serviceOrder->email = $request->email;
+        $serviceOrder->interes = $request->interes;
+        $serviceOrder->status = '0';
+        $serviceOrder->fill($request->validated());
+        $serviceOrder->save();
+
+        return redirect()->back();
     }
 
 }

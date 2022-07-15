@@ -46,7 +46,7 @@ $locale = app()->getLocale();
     </div>
 
 <div class="flex title-line">
-    <h2>@lang('admin.product_change')</h2>
+    <h2>@lang('admin.services-change')</h2>
     <button type="submit" form="form" class="add-button" id="save-btn">
         <img src="{{ asset('img/save.svg') }}" alt="Add">
     </button>
@@ -54,7 +54,7 @@ $locale = app()->getLocale();
 
 <ul class="create-list flex">
     <li><a href="#" class="name-btn current-btn">@lang('admin.title')</a></li>
-    <li><a href="#" class="sp-btn">@lang('admin.sizeprice')</a></li>
+    <li><a href="#" class="sp-btn">@lang('admin.material-price')</a></li>
     <li><a href="#" class="another-btn">@lang('admin.another')</a></li>
 </ul>
 

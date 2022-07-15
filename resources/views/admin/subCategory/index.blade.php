@@ -27,8 +27,8 @@
         <tr>
             <td>{{ $title->$locale }}</td>
             <td class="action">
-                <a href="{{ route('subCategory.edit', $subCategory->id) }}"></a>
-                <a href="{{ route('subCategory.delete', $subCategory->id) }}"></a>
+                <a title="Редагувати" href="{{ route('subCategory.edit', $subCategory->id) }}"></a>
+                <a title="Видалити" href="{{ route('subCategory.delete', $subCategory->id) }}"></a>
             </td>
         </tr>
         @endforeach

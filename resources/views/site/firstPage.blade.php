@@ -10,87 +10,79 @@
     <div class="grid">
         <section class="feed">
             <div class="slider-line">
-                <div class="slide slide-preview current-slide">
-                    <h2>@lang('utge.slider-feed')</h2>
-                    <svg>
-                        <use xlink:href="{{ asset('img/sprite.svg#cow') }}"></use>
-                    </svg>
+                <div class="container">
+                    @foreach ($slider1 as $item)
+                        @php
+                            $title = $item->localization[0];
+                            $link = $item->localization[1];
+                        @endphp
+
+                        <div class="slide">
+                            <a href="{{ $link->$locale }}"></a>
+                            <h2>{{ $title->$locale }}</h2>
+                            <img src="{{ $item->getFirstMediaUrl('images') }}" alt="{{$title->$locale }}">
+                        </div>
+                    @endforeach
                 </div>
-                @foreach ($slider1 as $item)
-                    @php
-                        $title = $item->localization[0];
-                    @endphp
-                    <div class="slide">
-                        <h2>{{ $title->$locale }}</h2>
-                        <img src="{{ $item->getFirstMediaUrl('images') }}" alt="{{$title->$locale}}">
-                    </div>
-                @endforeach
             </div>
-            <div class="slider-control"><span class="current-slide-btn"></span><span></span>
+            <div class="slider-control">
             </div>
         </section>
         <section class="fish">
             <div class="slider-line">
-                <div class="slide slide-preview current-slide">
-                    <h2>@lang('utge.slider-staves')</h2>
-                    <svg>
-                        <use xlink:href="{{ asset('img/sprite.svg#fish') }}"></use>
-                    </svg>
+                <div class="container">
+                    @foreach ($slider2 as $item)
+                        @php
+                            $title = $item->localization[0];
+                            $link = $item->localization[1];
+                        @endphp
+                        <div class="slide">
+                            <a href="{{ $link->$locale }}"></a>
+                            <h2>{{ $title->$locale }}</h2>
+                            <img src="{{ $item->getFirstMediaUrl('images') }}" alt="$title->$locale">
+                        </div>
+                    @endforeach
                 </div>
-                @foreach ($slider2 as $item)
-                    @php
-                        $title = $item->localization[0];
-                    @endphp
-                    <div class="slide">
-                        <h2>{{ $title->$locale }}</h2>
-                        <img src="{{ $item->getFirstMediaUrl('images') }}" alt="$title->$locale">
-                    </div>
-                @endforeach
             </div>
-            <div class="slider-control"><span class="current-slide-btn"></span><span></span><span></span><span></span>
+            <div class="slider-control">
             </div>
         </section>
         <section class="water">
             <div class="slider-line">
-                <div class="slide slide-preview current-slide">
-                    <h2>@lang('utge.slider-product')</h2>
-                    <svg>
-                        <use xlink:href="{{ asset('img/sprite.svg#goods') }}"></use>
-                    </svg>
+                <div class="container">
+                    @foreach ($slider3 as $item)
+                        @php
+                            $title = $item->localization[0];
+                            $link = $item->localization[1];
+                        @endphp
+                        <div class="slide">
+                            <a href="{{ $link->$locale }}"></a>
+                            <h2>{{ $title->$locale }}</h2>
+                            <img src="{{ $item->getFirstMediaUrl('images') }}" alt="$title->$locale">
+                        </div>
+                    @endforeach
                 </div>
-                @foreach ($slider3 as $item)
-                    @php
-                        $title = $item->localization[0];
-                    @endphp
-                    <div class="slide">
-                        <h2>{{ $title->$locale }}</h2>
-                        <img src="{{ $item->getFirstMediaUrl('images') }}" alt="$title->$locale">
-                    </div>
-                @endforeach
             </div>
-            <div class="slider-control"><span class="current-slide-btn"></span><span></span><span></span><span></span>
+            <div class="slider-control">
             </div>
         </section>
         <section class="service">
             <div class="slider-line">
-                <div class="slide slide-preview current-slide">
-                    <h2>@lang('utge.slider-service')</h2>
-                    <svg>
-                        <use xlink:href="{{ asset('img/sprite.svg#man') }}"></use>
-                    </svg>
+                <div class="container">
+                    @foreach ($slider4 as $item)
+                        @php
+                            $title = $item->localization[0];
+                            $link = $item->localization[1];
+                        @endphp
+                        <div class="slide">
+                            <a href="{{ $link->$locale }}"></a>
+                            <h2>{{ $title->$locale }}</h2>
+                            <img src="{{ $item->getFirstMediaUrl('images') }}" alt="$title->$locale">
+                        </div>
+                    @endforeach
                 </div>
-                @foreach ($slider4 as $item)
-                    @php
-                       $title = $item->localization[0];
-                    @endphp
-                    <div class="slide">
-                        <h2>{{ $title->$locale }}</h2>
-                        <img src="{{ $item->getFirstMediaUrl('images') }}" alt="$title->$locale">
-                    </div>
-
-                @endforeach
             </div>
-            <div class="slider-control"><span class="current-slide-btn"></span><span></span><span></span><span></span>
+            <div class="slider-control">
             </div>
         </section>
     </div>
@@ -143,7 +135,8 @@
                         $available = 'available_for_order';
                     }
                 @endphp
-                <figure id="product" class="product shadow-box flex-col {{ $available }}" data-product-id="{{ $product->id }}">
+
+                <figure class="product product_id shadow-box flex-col {{ $available }}" data-product-id="{{ $product->id }}">
                     <p class="status">@lang('admin.'.$available)</p>
                     <img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
                     <figcaption>
@@ -181,6 +174,4 @@
     </div>
 </div>
 <script src="{{ asset('js/slider.js') }}"></script>
-<script src="{{ asset('js/add_to_basket.js') }}"></script>
-
 @endsection

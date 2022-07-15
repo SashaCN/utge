@@ -16,7 +16,7 @@ $locale = app()->getLocale();
 </div>
 
 <div class="flex title-line">
-    <h2>@lang('admin.admin.add_sub_category')</h2>
+    <h2>@lang('admin.add_category')</h2>
     <button type="submit" form="form" class="add-button">
         <img src="{{ asset('img/save.svg') }}" alt="Add">
     </button>
@@ -44,7 +44,7 @@ $locale = app()->getLocale();
     <div class="desc-slide flex-col">
         <div class="another-slide flex-col">
             <div class="input-wrap sub-category-wrap">
-                <p class="label">Виберіть тип послуги</p>
+                <p class="label">@lang('admin.change-services-type')</p>
                 <div class="flex-space sub-category-wrap">
                     <label><input type="hidden" value="" name="service_type_id"></label>
 

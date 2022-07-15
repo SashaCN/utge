@@ -58,14 +58,14 @@ return [
     'child_page_slider' => 'Выбрать блок слайдера',
     'childPage_create' => 'Добавить блок',
     'childPage_create_slider' => 'Добавить слайдер',
-    'route' => 'блок',
+    'route' => 'Блок',
     'news_create' => 'Добавить новости',
     'to_sub_category' => 'По под-категориях',
     'to_category' => 'По категориях',
     'to_product_type' => 'По типах товара',
     'search' => 'Поиск',
     'childPage_create' => 'Добавить блок',
-    'route' => 'блок',
+    'route' => 'Блок',
     'news_create' => 'Добавить новости',
     'error-size' => 'Вес',
     'error-material' => 'Материал',
@@ -130,11 +130,22 @@ return [
     'models-url' => 'Ссылка',
     'slider' => 'Слайдеры',
     'models-slider_order' => 'Порядок слайдера',
+    'services-change' => 'Редактировать услугу',
+    'material-price' => 'Материал/Цена',
+    'change-services-type' => 'Выберите тип услуги',
+    'change-news' => 'Редактировать новость',
 
     // auntification
     'name' => 'Имя',
 
     // product page
     'quality-certificate' => 'сертификат качества',
+    'number' => '№',
+    'fio' => 'Имя/Фамилия',
+    'contacts' => 'Контакты',
+    'status' => 'Статус заказа',
+    'order-list' => 'Список заказов',
+    'order-service' => 'Заказ №',
+
 ];
 

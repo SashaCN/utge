@@ -54,7 +54,6 @@ class NewsController extends Controller
      */
     public function store(MultiRequest $request)
     {
-        dd($request);
         $news = new News();
         $news->categories_id = $request->news_category_id;
         $news->save();

@@ -38,10 +38,13 @@ Route::middleware('set_locale')->group(function()
         Route::get('products', [\App\Http\Controllers\ProductController::class, 'index'])->name('products');
         Route::get('product/{id}', [\App\Http\Controllers\ProductController::class, 'show'])->name('product');
         Route::get('services', [\App\Http\Controllers\SiteController::class, 'services'])->name('services');
+        Route::get('service/{id}', [\App\Http\Controllers\SiteController::class, 'service'])->name('service');
+        Route::post('storeServiceOrder', [\App\Http\Controllers\SiteController::class, 'storeServiceOrder'])->name('storeServiceOrder');
         Route::get('basket', [\App\Http\Controllers\SiteController::class, 'basket'])->name('basket');
         Route::get('deliveriesAndPayments', [\App\Http\Controllers\SiteController::class, 'showDeliveryAndPay'])->name('deliveriesAndPayments');
         Route::get('news', [\App\Http\Controllers\SiteController::class, 'showNews'])->name('news');
         Route::get('contacts', [\App\Http\Controllers\SiteController::class, 'showContacts'])->name('contacts');
+        Route::get('addToBascket', [\App\Http\Controllers\SiteController::class, 'addToBascket'])->name('addToBascket');
 
 
     });
@@ -54,7 +57,7 @@ Route::middleware('set_locale')->group(function ()
     {
         Route::prefix('admin')->group(function()
         {
-            //pages route 
+            //pages route
             Route::get('/', [\App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin');
             Route::resource('productType', \App\Http\Controllers\Admin\ProductTypeController::class);
             Route::resource('category', \App\Http\Controllers\Admin\CategoryController::class);
@@ -65,6 +68,7 @@ Route::middleware('set_locale')->group(function ()
             Route::resource('servicesCategory', \App\Http\Controllers\Admin\ServicesCategoryController::class);
             Route::resource('services', \App\Http\Controllers\Admin\ServicesController::class);
             Route::resource('trashBox', \App\Http\Controllers\Admin\TrashBoxController::class);
+            Route::resource('servicesOrder', \App\Http\Controllers\Admin\ServiceOrderController::class);
             // create route
             Route::get('sliderCreate', [\App\Http\Controllers\Admin\ChildPageController::class, 'sliderCreate'])->name('childPage.sliderCreate');
             Route::get('sliderEdit/{slider_id}', [\App\Http\Controllers\Admin\ChildPageController::class, 'sliderEdit'])->name('childPage.sliderEdit');
@@ -82,7 +86,7 @@ Route::middleware('set_locale')->group(function ()
             Route::get('seo/delete/{seo}', [\App\Http\Controllers\Admin\SeoController::class, 'delete'])->name('seo.delete');
             Route::get('trashBox/{prouct}/restore/', [\App\Http\Controllers\Admin\TrashBoxController::class, 'restore'])->name('trashBox.restore');
             Route::get('trashBox/{prouct}/productForceDelete/', [\App\Http\Controllers\Admin\TrashBoxController::class, 'productForceDelete'])->name('trashBox.productForceDelete');
-            
+
             Route::middleware('optimizeImages')->group(function (){
                 Route::post('product/mediaUpdate/{product}', [\App\Http\Controllers\Admin\ProductController::class, 'mediaUpdate'])->name('product.mediaUpdate');
                 Route::post('servicesType/mediaUpdate/{servicesType}', [\App\Http\Controllers\Admin\ServicesTypeController::class, 'mediaUpdate'])->name('servicesType.mediaUpdate');

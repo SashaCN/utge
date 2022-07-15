@@ -62,7 +62,7 @@ $locale = app()->getLocale();
         $title = $product->localization[0];
         $description = $product->localization[1];
         @endphp
-        <a href="{{ route('product', $product->id) }}">
+        <a href="{{ route('product', $product->id, $product->localization[0]) }}">
             @php
                 if ($product->sizeprices->whereIn('available', [1,4])->min('price')) {
                     $min_price = $product->sizeprices->whereIn('available', [1,4])->min('price');
@@ -81,7 +81,7 @@ $locale = app()->getLocale();
                     $available = 'available_for_order';
                 }
             @endphp
-            <figure id="product" class="product shadow-box flex-col {{ $available }}" data-product-id="{{ $product->id }}">
+            <figure class="product product_id shadow-box flex-col {{ $available }}" data-product-id="{{ $product->id }}">
                 <p class="status">@lang('admin.'.$available)</p>
                 <img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
                 <figcaption>
@@ -89,14 +89,18 @@ $locale = app()->getLocale();
                     <p class="description">{!! $description->$locale !!}</p>
                     <p class="description active-size">{{ $product->sizeprices->where('price', $min_price)->first()->size }}</p>
                     <div class="button-line flex-sb">
-                        <p class="add-to-basket flex-aic">
-                            <svg>
-                                <use xlink:href="{{ asset('img/sprite.svg#basket') }}"></use>
-                            </svg>
-                            <span>
-                                @lang('utge.add-to-basket')
-                            </span>
-                        </p>
+
+                            <p class="add-to-basket flex-aic">
+
+
+                                    <svg>
+                                        <use xlink:href="{{ asset('img/sprite.svg#basket') }}"></use>
+                                    </svg>
+                                    <span>
+                                        @lang('utge.add-to-basket')
+                                    </span>
+
+                            </p>
                         <p class="price">{{ $min_price }}&nbsp;{{ $product->sizeprices->where('price', $min_price)->first()->price_units }}</p>
                         <span class="like">
                             <svg>

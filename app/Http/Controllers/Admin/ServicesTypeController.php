@@ -126,8 +126,6 @@ class ServicesTypeController extends Controller
         $servicesType->localization()->where('var', 'title')->update($localization_title);
         $servicesType->localization()->where('var', 'description')->update($localization_desc);
 
-        return redirect()->route('news.index');
-
         return redirect()->route('servicesTypes.index');
     }
 
