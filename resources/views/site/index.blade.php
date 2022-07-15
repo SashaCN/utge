@@ -102,12 +102,13 @@
                     </a>
                 </div>
                 <div class="control flex-sb">
-                    <a href="{{ route('basket') }}" class="basket">
+                    <a href="{{ route('basket') }}" class="basket flex-sb">
+                        <span></span>
                         <svg>
                             <use xlink:href="{{ asset('img/sprite.svg#basket') }}"></use>
                         </svg>
                     </a>
-                    <a href="#" class="like">
+                    <a href="{{ route('favourite') }}" class="like">
                         <svg>
                             <use xlink:href="{{ asset('img/sprite.svg#like') }}"></use>
                         </svg>
@@ -220,6 +221,7 @@
 
 <script src="{{ asset('js/public.js') }}"></script>
 <script src="{{ asset('js/add_to_basket.js') }}"></script>
+<script src="{{ asset('js/add_to_favourite.js') }}"></script>
 
 </body>
 
