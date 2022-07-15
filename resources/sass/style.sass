@@ -324,6 +324,7 @@ h2
         svg
             width: 100%
             height: 100%
+            fill: $primary
 
 .general-row
     padding: 30px 0
@@ -1025,5 +1026,14 @@ tr+tr
         transition: 0.5s
         &:last-child
             transform: rotate(135deg)
+/* -------------------------------------------------------------------------- */
+/*                                  favourite                                 */
+/* -------------------------------------------------------------------------- */
+
+.favourite
+    .product-list
+        width: 100%
+        & > a
+            width: 25%
 
 @import components/media

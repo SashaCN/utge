@@ -143,7 +143,7 @@
                         $available = 'available_for_order';
                     }
                 @endphp
-                
+
                 <figure class="product product_id shadow-box flex-col {{ $available }}" data-product-id="{{ $product->id }}">
                     <p class="status">@lang('admin.'.$available)</p>
                     <img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
@@ -161,7 +161,7 @@
                                 </span>
                             </p>
                             <p class="price">{{ $min_price }}&nbsp;{{ $product->sizeprices->where('price', $min_price)->first()->price_units }}</p>
-                            <span class="like">
+                            <span class="like add-to-favourite">
                                 <svg>
                                     <use xlink:href="{{ asset('img/sprite.svg#like') }}"></use>
                                 </svg>
