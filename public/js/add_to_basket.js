@@ -1,4 +1,5 @@
 let basket_button = document.querySelector('.basket'),
+    basket_count = basket_button.querySelector('span'),
     add_button = document.querySelectorAll('.add-to-basket')
     basketProduct = [],
     pr_weight = 0;
@@ -31,6 +32,7 @@ add_button.forEach(elem => {
             }
         }
 
+        // showProductsNumber();
         localStorage.basketProduct = JSON.stringify(basketProduct);
     }
 });
@@ -52,6 +54,6 @@ function openBasket (e, basketProducts = basketProduct)
 
 function showProductsNumber ()
 {
-    console.log(basketProduct.length);
+    basket_count.innerText = basketProduct.length;
 }
-countBasketProducts()
+// showProductsNumber();

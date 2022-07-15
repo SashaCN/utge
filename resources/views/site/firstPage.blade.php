@@ -161,7 +161,7 @@
                                 </span>
                             </p>
                             <p class="price">{{ $min_price }}&nbsp;{{ $product->sizeprices->where('price', $min_price)->first()->price_units }}</p>
-                            <span class="like">
+                            <span class="like add-to-favourite">
                                 <svg>
                                     <use xlink:href="{{ asset('img/sprite.svg#like') }}"></use>
                                 </svg>
