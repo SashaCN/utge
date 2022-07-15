@@ -1,5 +1,6 @@
 @php
     $locale = app()->getLocale();
+    $isName = false;
 @endphp
 
 <!DOCTYPE html>
@@ -80,18 +81,24 @@
                 <div class="logo">
                     <a class="flex-col" href="{{ route('index') }}">
                         @foreach ($logoName as $item)
-                            @php
-                                $name = $item->localization[0];
-                            @endphp
+                            @if (isset($item) && !empty($item))
+                                @php
+                                    $name = $item->localization[0];
+                                    $isName = true;
+                                @endphp
+                            @endif
                         @endforeach
-
+                        
                         @foreach ($logoImg as $item)
+                            @if (isset($item) && !empty($item))
 
-                            <img src="{{ $item->getFirstMediaUrl('images') }}" alt="{{ $name->$locale }}" />
+                                <img src="{{ $item->getFirstMediaUrl('images') }}" alt=" @if ($isName == true) {{ $name->$locale }} @endif " />
+                            @endif
                         @endforeach
 
-
-                        <h1>{{ $name->$locale }}</h1>
+                        @if ($isName == true)
+                            <h1>{{ $name->$locale }}</h1>
+                        @endif
                     </a>
                 </div>
                 <div class="control flex-sb">
