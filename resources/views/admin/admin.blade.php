@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>@lang('admin.utge_admin') @lang('admin.product_list')</title>
 </head>
+{{-- @dump($servicesOrders) --}}
 <body>
     <header>
         <div class="header-line flex">
@@ -20,7 +21,6 @@
                     <a href="{{ route('admin') }}" class="home flex">
                         <img src="{{ asset('img/home.svg') }}" alt="Home">
                     </a>
-
                 </li>
                 <li class="li-add">
                     <a href="#" class="add drop-btn">@lang('admin.add')</a>
@@ -77,13 +77,23 @@
                         </ul>
                     </div>
                 <li>
-                    <a href="#" class="drop-btn orders-btn"><span class="link-text">@lang('admin.orders')</span></a></li>
+
+                    @if(!empty($count = count($servicesOrders)))
+                        <a href="#" class="drop-btn orders-btn"><span class="link-text aside-menu-item">@lang('admin.orders')<span class="order-circle-counter aside-menu-item"><span>{{ $count }}</span></span></a></li>
+                    @else
+                        <a href="#" class="drop-btn orders-btn"><span class="link-text">@lang('admin.orders')</span></a></li>
+                    @endif
 
                     <div class="drop-list hidden">
                         <ul>
-                            <li><a href="{{ route('servicesOrder.index') }}"><span class="link-text-drop-list">@lang('admin.services')</span></a></li>
+                            @if(!empty($count = count($servicesOrders)))
+                                <li><a href="{{ route('servicesOrder.index') }}"><span class="link-text-drop-list aside-menu-item">@lang('admin.services')<span class="order-circle-counter"><span>{{ $count }}</span></span></a></li>
+                            @else
+                                <li><a href="{{ route('servicesOrder.index') }}"><span class="link-text-drop-list">@lang('admin.services')<span></span></span></a></li>
+                            @endif
                         </ul>
                     </div>
+
                 <li>
                     <a href="#" class="drop-btn news-btn"><span class="link-text">@lang('admin.news')</span></a></li>
 

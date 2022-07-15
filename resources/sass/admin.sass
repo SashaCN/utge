@@ -198,6 +198,7 @@ aside
     &::before
         background-image: url(../img/services.svg)
 .orders-btn
+    position: relative
     &::before
         background-image: url(../img/category.svg)
 .news-btn
@@ -703,7 +704,7 @@ main
 /*                                  modulus                                   */
 /* -------------------------------------------------------------------------- */
 .header-modulus,
-.footer-modulus 
+.footer-modulus
     display: flex
     justify-content: space-between
     align-items: stretch
@@ -712,9 +713,9 @@ main
         width: 30%
         max-width: 30%
 
-.header-modulus 
+.header-modulus
     margin-bottom: 50px
-    img 
+    img
         width: 150px
 
 .sliders-box
@@ -777,7 +778,7 @@ main
         padding: 40px 30px 50px
         background-color: #B4B4B4
         box-sizing: border-box
-        
+
 
 .image-slider-page
     max-width: 45%
@@ -791,7 +792,7 @@ main
     display: flex
     flex-direction: column-reverse
     justify-content: flex-end
-    font-size: 18px    
+    font-size: 18px
     max-width: 45%
     .input-wrap
         input
@@ -814,3 +815,65 @@ main
         background-position: center
         &:hover
             background-color: #a00000
+
+
+/* -------------------------------------------------------------------------- */
+/*                                  services-order                            */
+/* -------------------------------------------------------------------------- */
+.aside-menu-item
+    display: flex
+    justify-content: space-between
+    text-align: center
+    align-items: center
+
+.order-circle-counter
+    display: inline-block
+    font-weight: bold
+    border-radius: 50px
+    display: inline-block
+    color: $primary
+    width: 20px
+    height: 20px
+    background: #fff
+    span
+        display: inline-block
+        padding-top: 2px
+
+.service-radio-wrap
+    display: inline-block
+    background: #ccc
+
+.contacts-custom
+    display: flex
+
+    .contacts-custom-desc,
+    .contacts-custom-item
+        margin-right: 25px
+        margin-bottom: 25px
+        p
+            margin-bottom: 15px
+    .contacts-custom-item
+        p
+            font-weight: bold
+
+.contacts-custom-interes
+    p
+        margin-bottom: 15px
+        &:last-child
+            margin-bottom: 50px
+            background: #fff
+            padding: 15px
+
+.services-order-form
+    button
+        padding: 15px
+        cursor: pointer
+
+.services-order-wrapper
+    padding: 25px
+    background: #B0C4DE
+    select
+        cursor: pointer
+        padding: 15px
+
+

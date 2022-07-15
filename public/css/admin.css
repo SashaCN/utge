@@ -247,6 +247,9 @@ aside li:hover span {
   background-image: url(../img/services.svg);
 }
 
+.orders-btn {
+  position: relative;
+}
 .orders-btn::before {
   background-image: url(../img/category.svg);
 }
@@ -950,4 +953,73 @@ main {
 }
 .slider-page-actions-btn a:hover {
   background-color: #a00000;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                  services-order                            */
+/* -------------------------------------------------------------------------- */
+.aside-menu-item {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
+}
+
+.order-circle-counter {
+  display: inline-block;
+  font-weight: bold;
+  border-radius: 50px;
+  display: inline-block;
+  color: #003b95;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+}
+.order-circle-counter span {
+  display: inline-block;
+  padding-top: 2px;
+}
+
+.service-radio-wrap {
+  display: inline-block;
+  background: #ccc;
+}
+
+.contacts-custom {
+  display: flex;
+}
+.contacts-custom .contacts-custom-desc,
+.contacts-custom .contacts-custom-item {
+  margin-right: 25px;
+  margin-bottom: 25px;
+}
+.contacts-custom .contacts-custom-desc p,
+.contacts-custom .contacts-custom-item p {
+  margin-bottom: 15px;
+}
+.contacts-custom .contacts-custom-item p {
+  font-weight: bold;
+}
+
+.contacts-custom-interes p {
+  margin-bottom: 15px;
+}
+.contacts-custom-interes p:last-child {
+  margin-bottom: 50px;
+  background: #fff;
+  padding: 15px;
+}
+
+.services-order-form button {
+  padding: 15px;
+  cursor: pointer;
+}
+
+.services-order-wrapper {
+  padding: 25px;
+  background: #B0C4DE;
+}
+.services-order-wrapper select {
+  cursor: pointer;
+  padding: 15px;
 }

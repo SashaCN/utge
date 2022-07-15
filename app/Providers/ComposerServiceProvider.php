@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Seo;
 use App\Models\Product;
 use App\Models\ChildPage;
+use App\Models\ServicesOrder;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -45,6 +46,9 @@ class ComposerServiceProvider extends ServiceProvider
         });
         View::composer('site.basket', function($view){
             $view->with('products',  Product::all());
+        });
+        View::composer('admin.admin', function($view){
+            $view->with('servicesOrders',  ServicesOrder::all()->where('status' , '0'));
         });
 
     }

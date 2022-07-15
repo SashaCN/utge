@@ -16,12 +16,13 @@ class ServiceOrderController extends Controller
      */
     public function index(ServicesOrder $serviceOrder)
     {
-        $serviceOrder = ServicesOrder::all();
+        $serviceOrder = ServicesOrder::orderByServices();
 
         return view('admin.serviceOrder.index',[
-            'serviceOrders' => $serviceOrder
+            'serviceOrders' => $serviceOrder,
         ]);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -75,10 +76,12 @@ class ServiceOrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(MultiRequest $request,ServicesOrder $servicesOrder)
+    public function update(MultiRequest $request, ServicesOrder $servicesOrder)
     {
         $servicesOrder->status = $request->status;
         $servicesOrder->update();
+
+        return redirect()->back();
 
     }
 
@@ -91,5 +94,13 @@ class ServiceOrderController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function delete(ServicesOrder $servicesOrder)
+    {
+        $servicesOrder->delete();
+
+        return redirect()->back();
     }
 }

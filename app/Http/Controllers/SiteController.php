@@ -17,6 +17,8 @@ use App\Http\Requests\MultiRequest;
 use App\Http\Requests\StoreServicesOrderRequest;
 use App\Models\ServicesOrder;
 use Illuminate\Auth\Events\Validated;
+use App\Mail\OrderShipped;
+use Illuminate\Support\Facades\Mail;
 
 class SiteController extends Controller
 {
@@ -121,7 +123,8 @@ class SiteController extends Controller
         $serviceOrder->status = '0';
         $serviceOrder->fill($request->validated());
         $serviceOrder->save();
-
+        $user = 'igrdkl@icloud.com';
+        Mail::to($user)->send(new OrderShipped($serviceOrder));
         return redirect()->back();
     }
 
