@@ -11,15 +11,29 @@ window.onload = () => {
         water = document.querySelector('.water'),
         service = document.querySelector('.service');
 
-    spanCreator(feed);
-    // spanCreator(fish);
-    spanCreator(water);
-    spanCreator(service);
+    
+    
+    
+    
+    if(feed != null) {
+        spanCreator(feed);
+        changeSlide(feed, 0);
+    } 
 
-    changeSlide(feed, 0);
-    changeSlide(fish, 500);
-    changeSlide(water, 1000);
-    changeSlide(service, 1500);
+    if(fish != null) {
+        spanCreator(fish);
+        changeSlide(fish, 500)
+    }
+
+    if(water != null){
+        spanCreator(water);
+        changeSlide(water, 1000);
+    }
+
+    if(service != null) {
+        spanCreator(service);
+        hangeSlide(service, 1500)
+    }
 }
 
 function spanCreator(selector){
