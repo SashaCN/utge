@@ -37,7 +37,8 @@ add_button.forEach(elem => {
 
 basket_button.onclick = openBasket;
 
-function openBasket (e, basketProducts = basketProduct){
+function openBasket (e, basketProducts = basketProduct)
+{
     e.preventDefault();
     let products = [];
     if (basketProducts != []) {
@@ -48,3 +49,9 @@ function openBasket (e, basketProducts = basketProduct){
     console.log(products);
     location.href = `basket?products=${JSON.stringify(products)}`;
 }
+
+function showProductsNumber ()
+{
+    console.log(basketProduct.length);
+}
+countBasketProducts()

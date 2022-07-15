@@ -96,6 +96,7 @@
                 </div>
                 <div class="control flex-sb">
                     <a href="{{ route('basket') }}" class="basket">
+                        s
                         <svg>
                             <use xlink:href="{{ asset('img/sprite.svg#basket') }}"></use>
                         </svg>

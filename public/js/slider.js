@@ -1,24 +1,18 @@
 window.onload = () => {
-<<<<<<< HEAD
-    changeSlide(document.querySelector('.feed'), 0);
-    // changeSlide(document.querySelector('.fish'), 500);
-    // changeSlide(document.querySelector('.water'), 1000);
-    // changeSlide(document.querySelector('.service'), 1500);
-=======
 
     let feed = document.querySelector('.feed'),
         fish = document.querySelector('.fish'),
         water = document.querySelector('.water'),
         service = document.querySelector('.service');
 
-    
-    
-    
-    
+
+
+
+
     if(feed != null) {
         spanCreator(feed);
         changeSlide(feed, 0);
-    } 
+    }
 
     if(fish != null) {
         spanCreator(fish);
@@ -48,7 +42,6 @@ function spanCreator(selector){
     }
 
     father.innerHTML = span;
->>>>>>> fffeadced870023c573139f728e6931a697038b4
 }
 
 function changeSlide (section, time)
@@ -57,7 +50,7 @@ function changeSlide (section, time)
     current_slide_btn = section.querySelector('.current-slide-btn'),
     slides = section.querySelectorAll('.slide'),
     controll_btns = section.querySelectorAll('.slider-control span');
-    
+
     if (slides.length == 0) return false;
 
     if (slides.length == 1 ) {
@@ -65,7 +58,7 @@ function changeSlide (section, time)
         current_slide = section.querySelector('.current-slide')
         return false;
     }
-    
+
 
     for (i = 0; i < controll_btns.length; i++) {
         slides[i].dataset.number = i
