@@ -44,6 +44,8 @@ class ServicesTypeController extends Controller
      */
     public function store(MultiRequest $request)
     {
+
+
         $servicesType = new servicesType();
         $servicesType->save();
 
@@ -71,7 +73,7 @@ class ServicesTypeController extends Controller
             $servicesType->addMediaFromRequest('image')
             ->toMediaCollection('images');
         }
-     
+
 
         return redirect()->route('servicesTypes.index');
     }
