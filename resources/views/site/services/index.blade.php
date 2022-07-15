@@ -54,12 +54,14 @@
                                     <td></td>
                                     <td></td>
                                 </tr>
+                                @foreach ($service->servicesSizePrice as $sizePrize)
                                 <tr class="service-item">
                                     <td></td>
-                                    <td class="service-item-materials">{{ $service->servicesSizePrice[0]->materials}}</td>
-                                    <td>{{ $service->servicesSizePrice[0]->units}}</td>
-                                    <td>{{ $service->servicesSizePrice[0]->price}}</td>
+                                    <td class="service-item-materials">{{ $sizePrize->materials}}</td>
+                                    <td>{{ $sizePrize->units}}</td>
+                                    <td>{{ $sizePrize->price}}</td>
                                 </tr>
+                                @endforeach
                             @endif
                         @endif
                     @endforeach
@@ -81,7 +83,7 @@
             <form class="service-form" id="service-form" action="{{ route('storeServiceOrder') }}" method="POST">
                 @csrf
                 @method('POST')
-    
+
                 <div>
                     <div class="service-form-item">
                         <div>
