@@ -45,6 +45,14 @@ class SiteController extends Controller
             'products' => $products,
         ]);
     }
+    public function favourite ()
+    {
+        $products = Product::all();
+
+        return view('site.favourite', [
+            'products' => $products,
+        ]);
+    }
 
     public function showContacts()
     {

@@ -41,6 +41,7 @@ Route::middleware('set_locale')->group(function()
         Route::get('service/{id}', [\App\Http\Controllers\SiteController::class, 'service'])->name('service');
         Route::post('storeServiceOrder', [\App\Http\Controllers\SiteController::class, 'storeServiceOrder'])->name('storeServiceOrder');
         Route::get('basket', [\App\Http\Controllers\SiteController::class, 'basket'])->name('basket');
+        Route::get('favourite', [\App\Http\Controllers\SiteController::class, 'favourite'])->name('favourite');
         Route::get('deliveriesAndPayments', [\App\Http\Controllers\SiteController::class, 'showDeliveryAndPay'])->name('deliveriesAndPayments');
         Route::get('news', [\App\Http\Controllers\SiteController::class, 'showNews'])->name('news');
         Route::get('contacts', [\App\Http\Controllers\SiteController::class, 'showContacts'])->name('contacts');

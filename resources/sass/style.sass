@@ -324,6 +324,7 @@ h2
         svg
             width: 100%
             height: 100%
+            fill: $primary
 
 .general-row
     padding: 30px 0
@@ -843,6 +844,7 @@ h3
 /*                                  services show                             */
 /* -------------------------------------------------------------------------- */
 .services-show
+    position: relative
     h3
         background: $primary
         font-size: 24px
@@ -854,8 +856,11 @@ h3
         padding: 48px 0 45px 0
         font-size: 18px
 
-.service-table
+
+.service-table-box
     margin-bottom: 50px
+
+.service-table
     border-collapse: collapse
     width: 100%
     font-size: 18px
@@ -867,6 +872,7 @@ tr+tr
 
 
 .service-table
+    min-width: 490px
     .service-units
         font-size: 18px
         font-weight: 500
@@ -905,7 +911,6 @@ tr+tr
 
 .service-btn
     text-align: center
-    margin-bottom: 30px
     p
         display: inline-block
         cursor: pointer
@@ -914,24 +919,37 @@ tr+tr
         background: $primary
         padding: 20px 30px
         text-transform: uppercase
-        font-size: 24px
+        font-size: 2.4rem
         transition: 0.5s
         &:hover
             background: $primary-hover
 
+#popupBox
+    display: none
+    justify-content: center
+    align-items: center
+    position: absolute
+    top: -50px
+    width: 100%
+    height: calc( 100% + 100px )
+    background: rgba(0, 0, 0, .5)
+    z-index: 2
+
 .service-popup
+    position: relative
+    z-index: 4
     filter: drop-shadow(0px 10px 5px rgba(24,20,25,0.1))
     width: 735px
-    margin: 0 auto
     border-radius: 10px
     p
         background: $primary
         text-align: center
-        font-size: 24px
+        font-size: 2.4rem
         text-transform: uppercase
         color: #fff
         padding: 17px
         border-radius: 10px 10px 0 0
+
 .service-form
     display: flex
     flex-direction: column
@@ -941,30 +959,29 @@ tr+tr
     span
         color: red
     i
-        font-size: 18px
+        font-size: 1.7rem
         margin-bottom: 15px
     .service-form-item
         display: flex
         justify-content: space-between
     label
         margin-bottom: 10px
-        font-size: 16px
         text-transform: uppercase
         display: block
-        font-size: 17px
+        font-size: 1.7rem
         color: #000
         font-weight: 550
 
     input,
     textarea
-        outline: none
-        box-sizing: border-box
-        border: 2px solid $primary
-        width: 309px
-        border-radius: 5px
-        font-size: 16px
-        padding: 10px
         margin-bottom: 30px
+        padding: 10px
+        width: 309px
+        box-sizing: border-box
+        font-size: 1.7rem
+        outline: none
+        border: 2px solid $primary
+        border-radius: 5px
         &:focus
             outline: none
             border: 2px solid $primary
@@ -983,9 +1000,40 @@ tr+tr
         padding: 10px
         background: $primary
         color: #fff
-        font-size: 20px
+        font-size: 2rem
         transition: 0.5s
         &:hover
             background: $primary-hover
+
+.close-popup-btn
+    padding: 5px
+    position: absolute
+    top: 2%
+    right: 2%
+    width: 16px
+    height: 16px
+    &:hover span
+        width: 23px
+        height: 4px
+    span
+        position: absolute
+        top: 40%
+        right: 20%
+        width: 20px
+        height: 3px
+        background: #fff
+        transform: rotate(45deg)
+        transition: 0.5s
+        &:last-child
+            transform: rotate(135deg)
+/* -------------------------------------------------------------------------- */
+/*                                  favourite                                 */
+/* -------------------------------------------------------------------------- */
+
+.favourite
+    .product-list
+        width: 100%
+        & > a
+            width: 25%
 
 @import components/media

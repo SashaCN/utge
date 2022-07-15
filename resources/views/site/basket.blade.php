@@ -1,5 +1,9 @@
 @extends('site.index')
 
+@php
+    $locale = app()->getLocale();
+@endphp
+
 @section('content')
 
 @php
@@ -22,7 +26,7 @@
                     </div>
                     <div class="delete-col col"></div>
                 </div>
-                
+
                 @if (empty($productsId))
                     <div class="basket-products">
                         <p class="basket-clear">&nbsp;</p>
@@ -34,10 +38,10 @@
                                 @php
                                     $title = $product->localization[0];
                                     $description = $product->localization[1];
-        
+
                                     $min_price = $product->sizeprices->whereIn('available', [1,4])->min('price');
                                 @endphp
-        
+
                                 <div class="basket-row product-row" data-product-id="{{ $product->id }}">
                                     <div class="img-col col">
                                         <img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
@@ -59,11 +63,11 @@
                                         <a href="#" class="delete-product">
                                             <svg>
                                                 <use xlink:href="{{ asset('img/sprite.svg#trashBox') }}"></use>
-                                            </svg>  
+                                            </svg>
                                         </a>
                                     </div>
                                 </div>
-        
+
                             @endif
                         @endforeach
                     @endforeach
@@ -97,7 +101,7 @@
                             <label class="basket-second-name">прізвище<input type="text"></label>
                             <label class="basket-number">телефон<input type="text"></label>
                         </div>
-        
+
                         <h3>доставка</h3>
                         <div class="basket-delivery">
                             <p>місто</p>
@@ -110,7 +114,7 @@
                             <label>інтайм<input type="radio" name="basket-delivery"></label>
                             <label>автолюкс<input type="radio" name="basket-delivery"></label>
                         </div>
-                        
+
                         <h3>оплата</h3>
                         <div class="basket-payment">
                             <p>спосіб оплати</p>
@@ -118,9 +122,9 @@
                             <label>приват<input type="radio" name="basket-payment"></label>
                             <label >без готівки<input type="radio" name="basket-payment"></label>
                         </div>
-        
+
                     </div>
-                    <div class="basket-your-order"> 
+                    <div class="basket-your-order">
                         <h4>ваше замовлення</h4>
                         @if (empty($productsId))
                             <div class="basket-products">

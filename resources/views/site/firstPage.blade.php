@@ -8,83 +8,91 @@
 
 <div class="wrapper">
     <div class="grid">
-        <section class="feed">
-            <div class="slider-line">
-                <div class="container">
-                    @foreach ($slider1 as $item)
-                        @php
-                            $title = $item->localization[0];
-                            $link = $item->localization[1];
-                        @endphp
+        @if (isset($slider1[0]) == true && !empty($slider1[0]))
+            <section class="feed">
+                <div class="slider-line">
+                    <div class="container">
+                        @foreach ($slider1 as $item)
+                            @php
+                                $title = $item->localization[0];
+                                $link = $item->localization[1];
+                            @endphp
 
-                        <div class="slide">
-                            <a href="{{ $link->$locale }}"></a>
-                            <h2>{{ $title->$locale }}</h2>
-                            <img src="{{ $item->getFirstMediaUrl('images') }}" alt="{{$title->$locale }}">
-                        </div>
-                    @endforeach
+                            <div class="slide">
+                                <a href="{{ $link->$locale }}"></a>
+                                <h2>{{ $title->$locale }}</h2>
+                                <img src="{{ $item->getFirstMediaUrl('images') }}" alt="{{$title->$locale }}">
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
-            </div>
-            <div class="slider-control">
-            </div>
-        </section>
-        <section class="fish">
-            <div class="slider-line">
-                <div class="container">
-                    @foreach ($slider2 as $item)
-                        @php
-                            $title = $item->localization[0];
-                            $link = $item->localization[1];
-                        @endphp
-                        <div class="slide">
-                            <a href="{{ $link->$locale }}"></a>
-                            <h2>{{ $title->$locale }}</h2>
-                            <img src="{{ $item->getFirstMediaUrl('images') }}" alt="$title->$locale">
-                        </div>
-                    @endforeach
+                <div class="slider-control">
                 </div>
-            </div>
-            <div class="slider-control">
-            </div>
-        </section>
-        <section class="water">
-            <div class="slider-line">
-                <div class="container">
-                    @foreach ($slider3 as $item)
-                        @php
-                            $title = $item->localization[0];
-                            $link = $item->localization[1];
-                        @endphp
-                        <div class="slide">
-                            <a href="{{ $link->$locale }}"></a>
-                            <h2>{{ $title->$locale }}</h2>
-                            <img src="{{ $item->getFirstMediaUrl('images') }}" alt="$title->$locale">
-                        </div>
-                    @endforeach
+            </section>
+        @endif
+        @if (isset($slider2[0]) == true && !empty($slider2[0]))
+            <section class="fish">
+                <div class="slider-line">
+                    <div class="container">
+                        @foreach ($slider2 as $item)
+                            @php
+                                $title = $item->localization[0];
+                                $link = $item->localization[1];
+                            @endphp
+                            <div class="slide">
+                                <a href="{{ $link->$locale }}"></a>
+                                <h2>{{ $title->$locale }}</h2>
+                                <img src="{{ $item->getFirstMediaUrl('images') }}" alt="$title->$locale">
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
-            </div>
-            <div class="slider-control">
-            </div>
-        </section>
-        <section class="service">
-            <div class="slider-line">
-                <div class="container">
-                    @foreach ($slider4 as $item)
-                        @php
-                            $title = $item->localization[0];
-                            $link = $item->localization[1];
-                        @endphp
-                        <div class="slide">
-                            <a href="{{ $link->$locale }}"></a>
-                            <h2>{{ $title->$locale }}</h2>
-                            <img src="{{ $item->getFirstMediaUrl('images') }}" alt="$title->$locale">
-                        </div>
-                    @endforeach
+                <div class="slider-control">
                 </div>
-            </div>
-            <div class="slider-control">
-            </div>
-        </section>
+            </section>
+        @endif
+        @if (isset($slider3[0]) == true && !empty($slider3[0]))
+            <section class="water">
+                <div class="slider-line">
+                    <div class="container">
+                        @foreach ($slider3 as $item)
+                            @php
+                                $title = $item->localization[0];
+                                $link = $item->localization[1];
+                            @endphp
+                            <div class="slide">
+                                <a href="{{ $link->$locale }}"></a>
+                                <h2>{{ $title->$locale }}</h2>
+                                <img src="{{ $item->getFirstMediaUrl('images') }}" alt="$title->$locale">
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="slider-control">
+                </div>
+            </section>
+        @endif
+        @if (isset($slider4[0]) == true && !empty($slider4[0]))
+            <section class="service">
+                <div class="slider-line">
+                    <div class="container">
+                        @foreach ($slider4 as $item)
+                            @php
+                                $title = $item->localization[0];
+                                $link = $item->localization[1];
+                            @endphp
+                            <div class="slide">
+                                <a href="{{ $link->$locale }}"></a>
+                                <h2>{{ $title->$locale }}</h2>
+                                <img src="{{ $item->getFirstMediaUrl('images') }}" alt="$title->$locale">
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="slider-control">
+                </div>
+            </section>
+        @endif
     </div>
 </div>
 <div class="about-us">
@@ -135,7 +143,7 @@
                         $available = 'available_for_order';
                     }
                 @endphp
-                
+
                 <figure class="product product_id shadow-box flex-col {{ $available }}" data-product-id="{{ $product->id }}">
                     <p class="status">@lang('admin.'.$available)</p>
                     <img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
@@ -153,7 +161,7 @@
                                 </span>
                             </p>
                             <p class="price">{{ $min_price }}&nbsp;{{ $product->sizeprices->where('price', $min_price)->first()->price_units }}</p>
-                            <span class="like">
+                            <span class="like add-to-favourite">
                                 <svg>
                                     <use xlink:href="{{ asset('img/sprite.svg#like') }}"></use>
                                 </svg>

@@ -44,12 +44,11 @@ class ComposerServiceProvider extends ServiceProvider
         View::composer('site.index', function($view){
             $view->with('email',  ChildPage::all()->where('route', 'email'));
         });
-        View::composer('site.basket', function($view){
-            $view->with('products',  Product::all());
-        });
+        
         View::composer('admin.admin', function($view){
             $view->with('servicesOrders',  ServicesOrder::all()->where('status' , '0'));
         });
+
 
     }
 }

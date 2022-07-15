@@ -30,16 +30,16 @@
         <div class="input-wrap pt0">
 
             @foreach ($childPages as $childPage)
-                @php
+				@php
                     if ($childPage->route == 'logo-img') {
-                        $isLogoImg == true;
+                        $isLogoImg = true;
                         break;
-
                     } else {
-                        $isLogoImg = false;
+						$isLogoImg = false;
                     }
                 @endphp
             @endforeach
+
             @foreach ($childPages as $childPage)
                 @php
                     if ($childPage->route == 'logo-name') {
