@@ -87,8 +87,8 @@
                     <label class="label" for="units1">@lang('admin.add_units')</label>
                 </div>
 
-                <input type="hidden" name="sizecount" value="1">
                 <hr>
+                <input type="hidden" name="sizecount" value="1">
             </div>
             <div class="size-price-bt-wrapp">
                 <button id="delete-size-price" class="size-price-bt-min"><span class="btn-w-sp"><img src="{{ asset('img/minus-label.svg') }}" ><span>@lang('admin.delete_material_price')</span></span></button>
@@ -116,8 +116,8 @@
             function getStructure(counter) {
                 return structure = `
                     <div class="input-wrap">
-                        <input type="number" name="materials/${counter}" id="materials${counter}" class="auto-value">
-                        <label class="label" for="materials${counter}">@lang('admin.add_size')</label>
+                        <input type="text" name="materials/${counter}" id="materials${counter}" class="auto-value">
+                        <label class="label" for="materials${counter}">@lang('admin.add_material')</label>
                     </div>
 
                     <div class="input-wrap">
@@ -127,8 +127,10 @@
 
                     <div class="input-wrap">
                         <input type="text" name="units/${counter}" id="units${counter}" class="auto-value">
-                        <label class="label" for="units${counter}">@lang('admin.add_price_units')</label>
+                        <label class="label" for="units${counter}">@lang('admin.add_units')</label>
                     </div>
+                    <input type="hidden" name="sizecount" value="${counter}">
+                    <hr>
                 `;
             }
 

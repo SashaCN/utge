@@ -325,7 +325,7 @@
 
                 return structure = `
                     <div class="input-wrap">
-                        <input type="number" name="size/${counter}" id="size${counter}" class="auto-value">
+                        <input type="text" name="size/${counter}" id="size${counter}" class="auto-value">
                         <label class="label" for="size${counter}">@lang('admin.add_size')</label>
                     </div>
 

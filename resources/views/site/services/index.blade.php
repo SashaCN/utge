@@ -15,7 +15,7 @@
         <h3>{{ $title_type->$locale }}</h3>
         <p class="wrapper services-desc">{{ $desc_type->$locale }}</p>
     @endforeach
-    <div class="wrapper">
+    <div class="wrapper service-table-box">
         <table class="service-table">
             <tr class="service-units">
                 <td>@lang('utge.type-work')</td>
@@ -35,6 +35,11 @@
                             $title_service = $service->localization[0];
                         @endphp
                         @if ($service->service_category_id == $category->id)
+
+                            @foreach ($service->servicesSizePrice as $item)
+                                {{-- @dump($item->service_id) --}}
+                            @endforeach
+
                             @if ($service->servicesSizePrice[0]->materials == 0)
                                 <tr class="service-item">
                                     <td>{{ $title_service->$locale }}</td>
@@ -60,15 +65,23 @@
                     @endforeach
             @endforeach
         </table>
-        <div class="service-btn">
+    </div>
+    <div class="wrapper">
+        <div class="service-btn" id="popupBtn">
             <p>@lang('utge.order-service')</p>
         </div>
-        <div class="service-popup">
+    </div>
+    <div id="popupBox">
+        <div class="service-popup" id="popup">
+            <div class="close-popup-btn">
+                <span></span>
+                <span></span>
+            </div>
             <p>@lang('utge.order-service')</p>
             <form class="service-form" id="service-form" action="{{ route('storeServiceOrder') }}" method="POST">
                 @csrf
                 @method('POST')
-
+    
                 <div>
                     <div class="service-form-item">
                         <div>
@@ -102,5 +115,6 @@
     </div>
 </div>
 <script src="{{ asset('js/site.js') }}"></script>
+<script src="{{ asset('js/popup.js') }}"></script>
 
 @endsection
