@@ -26,7 +26,7 @@ window.onload = () => {
 
     if(service != null) {
         spanCreator(service);
-        hangeSlide(service, 1500)
+        changeSlide(service, 1500)
     }
 }
 
