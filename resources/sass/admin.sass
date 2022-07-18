@@ -827,14 +827,15 @@ main
     align-items: center
 
 .order-circle-counter
+    flex-shrink: 0
     display: inline-block
     font-weight: bold
     border-radius: 50px
     display: inline-block
-    color: $primary
+    color: #fff
     width: 20px
     height: 20px
-    background: #fff
+    background: #20a100
     span
         display: inline-block
         padding-top: 2px
@@ -876,4 +877,23 @@ main
         cursor: pointer
         padding: 15px
 
+.order-status,
+.order-status-one
+    p
+        color: #fff
+        font-weight: bold
+        text-align: center
+        padding: 5px
+        font-size: 12px
+        text-transform: uppercase
+        border-radius: 50px
+
+
+.order-status
+    p
+        background: #20a100
+
+.order-status-one
+    p
+        background: $primary
 

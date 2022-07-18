@@ -131,8 +131,13 @@ class SiteController extends Controller
         $serviceOrder->status = '0';
         $serviceOrder->fill($request->validated());
         $serviceOrder->save();
+
+        
         $user = 'igrdkl@icloud.com';
         Mail::to($user)->send(new OrderShipped($serviceOrder));
+
+
+
         return redirect()->back();
     }
 
