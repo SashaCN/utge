@@ -1589,7 +1589,7 @@ tr + tr:nth-child(even) {
 .favourite .product-list {
   width: 100%;
 }
-.favourite .product-list > a {
+.favourite a {
   width: 25%;
 }
 
@@ -1830,6 +1830,13 @@ tr + tr:nth-child(even) {
   }
   .delivery-card figcaption {
     width: 75%;
+  }
+
+  /* -------------------------------------------------------------------------- */
+  /*                               favourite page                               */
+  /* -------------------------------------------------------------------------- */
+  .favourite a {
+    width: 33.3%;
   }
 }
 @media screen and (max-width: 1200px) {
