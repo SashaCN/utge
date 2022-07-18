@@ -37,13 +37,23 @@ $locale = app()->getLocale();
                     <td>
                         {{ substr($order->interes, 0, 55) . '...' }}
                     </td>
-                    <td>
-                        @if($order->status == 0)
-                            <p>Нове замовлення</p>
-                        @elseif($order->status == 1)
-                            <p>Опрацьоване замовлення</p>
-                        @endif
-                    </td>
+                    @if ($order->status == 0)
+                        <td class="order-status">
+                            @if($order->status == 0)
+                                <p>Нове замовлення</p>
+                            @elseif($order->status == 1)
+                                <p>Опрацьоване замовлення</p>
+                            @endif
+                        </td>
+                    @else
+                        <td class="order-status-one">
+                            @if($order->status == 0)
+                                <p>Нове замовлення</p>
+                            @elseif($order->status == 1)
+                                <p>Опрацьоване замовлення</p>
+                            @endif
+                        </td>
+                    @endif
                     <td class="action">
                         <a title="Редагувати" href="{{ route('servicesOrder.edit', $order->id) }}"></a>
                         <a title="Видалити" href="{{ route('servicesOrder.delete', $order->id) }}"></a>

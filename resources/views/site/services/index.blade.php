@@ -74,9 +74,10 @@
         </div>
     </div>
     <div id="popupBox">
+        <div id="popupCloseBox"></div>
         <div class="service-popup" id="popup">
             <div class="close-popup-btn">
-                <span></span>
+                <span></span>*
                 <span></span>
             </div>
             <p>@lang('utge.order-service')</p>

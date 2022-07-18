@@ -68,6 +68,16 @@
         a
             padding: 0 10px
 
+    .service-popup
+        p
+            padding: 14px
+    
+    .service-form
+        padding: 20px
+        input,
+        textarea
+            margin-bottom: 20px
+
     /* -------------------------------------------------------------------------- */
     /*                                product page                                */
     /* -------------------------------------------------------------------------- */
@@ -94,6 +104,10 @@
             min-width: 70%
 
 
+@media screen and ( max-width:  1400px)
+    .service-form
+            max-height: 450px
+            overflow-y: auto
 
 @media screen and ( max-width:  1370px)
     .info-line
@@ -193,6 +207,10 @@
             text-align: center
         .logo
             width: 35%
+
+    .service-form
+        max-height: 350px
+        overflow-y: auto
 
 
     /* --------------------------------------------------------------------------  */
@@ -382,6 +400,7 @@
         .right-part
             min-width: auto
     .service-popup
+        overflow-y: scroll
         width: 80%  
 
     .service-form
@@ -591,3 +610,14 @@
     .news-category-line
         .category-wrap-btn
             width: 100%
+
+    /* --------------------------------------------------------------------------  */
+    /*                         news page                                           */
+    /* --------------------------------------------------------------------------  */
+    .close-popup-btn
+        span
+            width: 16px
+            height: 2px
+    .service-popup
+        p
+            font-size: 2rem
