@@ -5,13 +5,20 @@ let favourite_button = document.querySelector('.like'),
 
 if (localStorage.favouriteProduct !== undefined) {
     favouriteProduct = JSON.parse(localStorage.favouriteProduct);
+    checkLike();
 }
 
 add_favourite_button.forEach(elem => {
-    elem.onclick = (e) => {
-        e.preventDefault();
-        let product = elem.closest('.product_id');
+    elem.onclick = toggleFav;
+});
 
+function toggleFav (e)
+{
+    e.preventDefault();
+    let product = e.target.closest('.product_id');
+
+    if (!product.classList.contains('liked')) {
+        console.log("add")
         if (favouriteProduct.length == 0) {
             favouriteProduct.push(product.getAttribute('data-product-id'));
         } else {
@@ -24,11 +31,19 @@ add_favourite_button.forEach(elem => {
                 }
             }
         }
+    } else {
+        console.log('del')
+        favouriteProduct.splice(favouriteProduct.indexOf(product.getAttribute('data-product-id')), 1);
 
-        // showProductsNumber();
-        localStorage.favouriteProduct = JSON.stringify(favouriteProduct);
+        if (location.pathname == '/favourite') {
+            openfavourite(e);
+        }
     }
-});
+
+    product.classList.toggle('liked');
+    // showProductsNumber();
+    localStorage.favouriteProduct = JSON.stringify(favouriteProduct);
+}
 
 favourite_button.onclick = openfavourite;
 
@@ -43,3 +58,9 @@ function showProductsNumber ()
     // favourite_count.innerText = favouriteProduct.length;
 }
 // showProductsNumber();
+
+function checkLike (){
+    for (let i = 0; i < favouriteProduct.length; i++) {
+        document.querySelector(`.product[data-product-id="${favouriteProduct[i]}"]`).classList.add('liked');
+    }
+}

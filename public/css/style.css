@@ -930,6 +930,10 @@ p.category-item::before {
   padding: 8px 10px;
 }
 
+.liked .like svg {
+  transform: rotate(180deg);
+}
+
 .status {
   width: 100%;
   font-size: 2rem;
@@ -996,8 +1000,8 @@ p.category-item::before {
   right: 30px;
 }
 .product .like svg {
-  width: 29px;
-  height: 26px;
+  width: 35px;
+  height: 31px;
   fill: #003b95;
 }
 
