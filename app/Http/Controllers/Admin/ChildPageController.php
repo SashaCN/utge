@@ -75,8 +75,8 @@ class ChildPageController extends Controller
                     $localization_slider_link = new Localization();
                     $localization_slider_link->fill($request->validated());
                     $localization_slider_link->var = 'slider_link';
-                    $localization_slider_link->uk = $request->slider_link;
-                    $localization_slider_link->ru = $request->slider_link;
+                    $localization_slider_link->uk = preg_replace('#(https?:\/\/)#', '', $request->slider_link);
+                    $localization_slider_link->ru = preg_replace('#(https?:\/\/)#', '', $request->slider_link);
                     
                     $childPage->localization()->save($localization_slider_link);
                 }
@@ -190,8 +190,8 @@ class ChildPageController extends Controller
         {
             $localization_slider_link = [
                 'var' => "slider_link",
-                'uk' => $request->slider_link,
-                'ru' => $request->slider_link
+                'uk' => preg_replace('#(https?:\/\/)#', '', $request->slider_link),
+                'ru' => preg_replace('#(https?:\/\/)#', '', $request->slider_link)
             ];
         }
 
