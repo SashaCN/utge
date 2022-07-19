@@ -182,5 +182,4 @@
     </div>
 </div>
 <script src="{{ asset('js/slider.js') }}"></script>
-<script src="{{ asset('js/favourite.js') }}"></script>
 @endsection

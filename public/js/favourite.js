@@ -18,7 +18,6 @@ function toggleFav (e)
     let product = e.target.closest('.product_id');
 
     if (!product.classList.contains('liked')) {
-        console.log("add")
         if (favouriteProduct.length == 0) {
             favouriteProduct.push(product.getAttribute('data-product-id'));
         } else {
@@ -32,7 +31,6 @@ function toggleFav (e)
             }
         }
     } else {
-        console.log('del')
         favouriteProduct.splice(favouriteProduct.indexOf(product.getAttribute('data-product-id')), 1);
 
         if (location.pathname == '/favourite') {
