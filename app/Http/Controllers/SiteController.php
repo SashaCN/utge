@@ -132,13 +132,20 @@ class SiteController extends Controller
         $serviceOrder->fill($request->validated());
         $serviceOrder->save();
 
-        
-        $user = 'igrdkl@icloud.com';
+
+        $user = 'info@utge.net';
         Mail::to($user)->send(new OrderShipped($serviceOrder));
 
 
 
         return redirect()->back();
+    }
+
+    public function viewMailService(ServicesOrder $servicesOrder)
+    {
+        return view('site.email.serviceOrder', [
+            'servicesOrder' => $servicesOrder,
+        ]);
     }
 
 }
