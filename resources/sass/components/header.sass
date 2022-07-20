@@ -158,19 +158,32 @@ a.burger-btn
     
 .sub-menu-parent
     position: relative
+    &:hover .sub-menu
+        display: block
+        opacity: 1
 
 .sub-menu
+    display: none
+    opacity: 0
     padding: 30px
     position: absolute
-    left: 0
+    min-width: 250px
+    left: 50%
+    transform: translateX(-50%)
     background: $second
     z-index: 5
-    min-width: 300px
+    transition: $trs
     a
-        padding: 0
+        display: block
+        margin-bottom: 15px
+        padding: 0 0 5px 0
         color: $primary
+        border-bottom: 2px solid transparent
+        transition: $trs
+        &:last-child
+            margin-bottom: 0
         &:hover
-            text-decoration: underline
+            border-bottom: 2px solid $primary
             background-color: transparent
             text-shadow: none
 
