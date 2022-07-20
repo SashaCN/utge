@@ -205,7 +205,6 @@
                 <th>@lang('admin.image')</th>
                 <th>@lang('admin.route')</th>
                 <th>@lang('admin.title')</th>
-                <th>@lang('admin.description')</th>
                 <th>@lang('admin.action')</th>
             </tr>
         </thead>
@@ -243,8 +242,6 @@
                         </td>
 
                         <td>{{ $title->$locale }}</td>
-
-                        <td>{!! substr($description->$locale, 0,100) !!}</td>
 
                         <td class="action">
                             @if ($childPage->route != 'about_us')

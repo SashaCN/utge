@@ -311,6 +311,10 @@
     .services
         grid-template: 2fr/2fr 2fr
 
+@media screen and ( max-width: 1000px)
+    .service-form label
+        font-size: 1.5rem
+
 @media screen and ( max-width: 900px)
     html
         font-size: 9px
@@ -388,6 +392,30 @@
     .service
         margin-bottom: 25px
 
+    /* -------------------------------------------------------------------------- */
+    /*                                  contacts                                  */
+    /* -------------------------------------------------------------------------- */
+    .main-contacts-header
+        justify-content: flex-start
+        flex-direction: column
+
+    .own-section
+        display: flex
+        flex-flow: wrap
+        margin-bottom: 40px
+
+    .own-section,
+    .feedback-section
+        width: 100%
+    
+    .own-block
+        display: flex
+        flex-direction: column
+        justify-content: flex-start
+        align-items: flex-start
+        margin-bottom: 20px
+        width: 50%
+
 @media screen and ( max-width: 800px)
     /* -------------------------------------------------------------------------- */
     /*                                products page                                */
@@ -448,6 +476,13 @@
         button
             width: 100%
 
+    /* -------------------------------------------------------------------------- */
+    /*                                  contacts                                  */
+    /* -------------------------------------------------------------------------- */
+    .feedback-section
+        .service-form-item
+            display: flex
+
 @media screen and ( max-width: 700px)
     .phone,
     .control
@@ -495,6 +530,28 @@
     .new-desc
         h3
             margin-bottom: 25px
+
+    /* -------------------------------------------------------------------------- */
+    /*                                  contacts                                  */
+    /* -------------------------------------------------------------------------- */
+    .own-section
+        display: block
+
+    .own-block
+        display: flex
+        flex-direction: column
+        justify-content: flex-start
+        align-items: center
+        margin-bottom: 20px
+        width: 100%
+
+    .feedback-section
+        .service-form
+            .service-form-item
+                display: block
+                div
+                    width: 100%
+
 
 @media screen and ( max-width:  650px)
     .goods-list
@@ -691,3 +748,7 @@
     .service-popup
         p
             font-size: 2rem
+
+    /* -------------------------------------------------------------------------- */
+    /*                                  contacts                                  */
+    /* -------------------------------------------------------------------------- */
