@@ -214,7 +214,7 @@
         </div>
     </div>
 
-    {{-- <script src="{{ asset('js/basket.js') }}"></script> --}}
+    <script src="{{ asset('js/basket.js') }}"></script>
 
 
 @endsection

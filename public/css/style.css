@@ -773,7 +773,7 @@ h2 {
 }
 
 .placing-an-order {
-  display: block;
+  display: none;
 }
 
 .order-form {
