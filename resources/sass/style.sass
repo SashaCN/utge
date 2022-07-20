@@ -598,6 +598,8 @@ p.category-item
         &:checked + label:before
             visibility: visible
 
+
+
 .product-list
     width: 75%
     flex-wrap: wrap
@@ -624,6 +626,10 @@ p.category-item
             margin: 0
     .add-to-basket
         padding: 8px 10px
+
+.liked
+    .like svg
+        transform: rotate(180deg)
 
 .status
     width: 100%
@@ -684,8 +690,8 @@ p.category-item
         top: 105px
         right: 30px
         svg
-            width: 29px
-            height: 26px
+            width: 35px
+            height: 31px
             fill: $primary
 
 .shadow-box
@@ -1093,12 +1099,12 @@ h3
     width: 735px
     border-radius: 10px
     p
-        background: $primary
+        padding: 17px
         text-align: center
+        color: #fff
         font-size: 2.4rem
         text-transform: uppercase
-        color: #fff
-        padding: 17px
+        background: $primary
         border-radius: 10px 10px 0 0
 
 .service-form
@@ -1184,7 +1190,9 @@ h3
 .favourite
     .product-list
         width: 100%
-        & > a
-            width: 25%
+    a
+        width: 25%
+
+
 
 @import components/media

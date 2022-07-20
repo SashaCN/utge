@@ -19,7 +19,7 @@
                             @endphp
 
                             <div class="slide">
-                                <a href="{{ $link->$locale }}"></a>
+                                <a href="http://{{ $link->$locale }}"></a>
                                 <h2>{{ $title->$locale }}</h2>
                                 <img src="{{ $item->getFirstMediaUrl('images') }}" alt="{{$title->$locale }}">
                             </div>
@@ -40,7 +40,7 @@
                                 $link = $item->localization[1];
                             @endphp
                             <div class="slide">
-                                <a href="{{ $link->$locale }}"></a>
+                                <a href="http://{{ $link->$locale }}"></a>
                                 <h2>{{ $title->$locale }}</h2>
                                 <img src="{{ $item->getFirstMediaUrl('images') }}" alt="$title->$locale">
                             </div>
@@ -61,7 +61,7 @@
                                 $link = $item->localization[1];
                             @endphp
                             <div class="slide">
-                                <a href="{{ $link->$locale }}"></a>
+                                <a href="http://{{ $link->$locale }}"></a>
                                 <h2>{{ $title->$locale }}</h2>
                                 <img src="{{ $item->getFirstMediaUrl('images') }}" alt="$title->$locale">
                             </div>
@@ -82,7 +82,7 @@
                                 $link = $item->localization[1];
                             @endphp
                             <div class="slide">
-                                <a href="{{ $link->$locale }}"></a>
+                                <a href="http://{{ $link->$locale }}"></a>
                                 <h2>{{ $title->$locale }}</h2>
                                 <img src="{{ $item->getFirstMediaUrl('images') }}" alt="$title->$locale">
                             </div>
@@ -182,4 +182,5 @@
     </div>
 </div>
 <script src="{{ asset('js/slider.js') }}"></script>
+<script src="{{ asset('js/favourite.js') }}"></script>
 @endsection
