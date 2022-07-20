@@ -310,21 +310,36 @@ a.burger-btn {
 .sub-menu-parent {
   position: relative;
 }
+.sub-menu-parent:hover .sub-menu {
+  display: block;
+  opacity: 1;
+}
 
 .sub-menu {
+  display: none;
+  opacity: 0;
   padding: 30px;
   position: absolute;
-  left: 0;
+  min-width: 250px;
+  left: 50%;
+  transform: translateX(-50%);
   background: #fff;
   z-index: 5;
-  min-width: 300px;
+  transition: all 0.5s ease;
 }
 .sub-menu a {
-  padding: 0;
+  display: block;
+  margin-bottom: 15px;
+  padding: 0 0 5px 0;
   color: #003b95;
+  border-bottom: 2px solid transparent;
+  transition: all 0.5s ease;
+}
+.sub-menu a:last-child {
+  margin-bottom: 0;
 }
 .sub-menu a:hover {
-  text-decoration: underline;
+  border-bottom: 2px solid #003b95;
   background-color: transparent;
   text-shadow: none;
 }
@@ -2310,6 +2325,25 @@ footer .mail {
 
   .burger-active + nav {
     display: block;
+  }
+  .burger-active + nav ul .sub-menu a {
+    padding: 0 0 5px 0;
+  }
+
+  .sub-menu {
+    padding: 10px 0;
+    margin: 0 0 5px 0;
+    display: block;
+    position: relative;
+    opacity: 1;
+    background: #042c68;
+  }
+  .sub-menu a {
+    margin-bottom: 0;
+    color: #fff;
+    font-size: 1.5rem;
+    text-transform: none;
+    border-bottom: none;
   }
 
   .grid {

@@ -347,6 +347,25 @@
     .burger-active
         & + nav
             display: block
+            ul
+                .sub-menu
+                    a
+                        padding: 0 0 5px 0
+
+    .sub-menu
+        padding: 10px 0
+        margin: 0 0 5px 0
+        display: block
+        position: relative
+        opacity: 1
+        background: $primary-hover
+        a
+            margin-bottom: 0
+            color: $second
+            font-size: 1.5rem
+            text-transform: none
+            border-bottom: none
+
 
     .grid
         grid-template: 1fr/1fr 1fr 1fr 1fr
