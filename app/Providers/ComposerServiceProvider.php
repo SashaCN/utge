@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Seo;
 use App\Models\Product;
+use App\Models\Category;
 use App\Models\ChildPage;
 use App\Models\ServicesOrder;
 use Illuminate\Support\Facades\View;
@@ -43,6 +44,9 @@ class ComposerServiceProvider extends ServiceProvider
         });
         View::composer('site.index', function($view){
             $view->with('email',  ChildPage::all()->where('route', 'email'));
+        });
+        View::composer('site.index', function($view){
+            $view->with('categories',  Category::all());
         });
         
         View::composer('admin.admin', function($view){

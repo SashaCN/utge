@@ -20,7 +20,6 @@
                 <tr>
                     <th>@lang('admin.image')</th>
                     <th>@lang('admin.title')</th>
-                    <th>@lang('admin.description')</th>
                     <th>@lang('admin.action')</th>
                 </tr>
             </thead>
@@ -33,7 +32,6 @@
                 <tr>
                     <td class="product-image"><img src="{{ $item->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}"></td>
                     <td>{{ $title->$locale }}</td>
-                    <td>{{ htmlspecialchars_decode(substr($description->$locale, 0, 100))."..." }}</td>
                     <td class="action">
                         <a title="Редагувати" href="{{ route('news.edit', $item->id) }}"></a>
                         <a title="Видалити" href="{{ route('news.delete', $item->id) }}"></a>

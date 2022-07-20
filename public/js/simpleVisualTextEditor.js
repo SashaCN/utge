@@ -81,8 +81,8 @@ window.onload = function (){
           }
           break
         case "insertTable":
-          let rows = prompt("How many rows?"),
-              cells = prompt("How many cells?"),
+          let rows = prompt("Скільки рядів?"),
+              cells = prompt("Скільки клітинок?"),
               table = "<div class='adaptive-table'><table>",
               cellsCount
           while (rows != 0) {
