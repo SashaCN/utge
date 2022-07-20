@@ -93,46 +93,120 @@
         <div class="placing-an-order">
             <h2>оформлення замовлення</h2>
             <div class="wrapper">
-                <form method="POST" action="">
-                    <div class="basket-get-inf">
-                        <h3>ваші данні</h3>
-                        <div class="basket-contacts">
-                            <label class="basket-name">ім'я<input type="text"></label>
-                            <label class="basket-second-name">прізвище<input type="text"></label>
-                            <label class="basket-number">телефон<input type="text"></label>
+                <form class="order-form" method="POST" action="">
+                    <div class="order-contacts">
+
+                        <h3>1. Ваші контактні дані</h3>
+
+                        <div class="basket-contacts-wrapp">
+
+                            <div class="bascket-name">
+                                <div>
+                                    <label for="">@lang('utge.firstname')<span>*</span></label>
+                                    <input type="text" >
+                                </div>
+                                <div>
+                                    <label for="">@lang('utge.lastname')<span>*</span></label>
+                                    <input type="text">
+                                </div>
+                            </div>
+
+                            <div class="bascket-number">
+                                <label for="">@lang('utge.number-phone')<span>*</span></label>
+                                <input type="text">
+                            </div>
+
                         </div>
 
-                        <h3>доставка</h3>
+                        <h3>2. Доставка</h3>
+
                         <div class="basket-delivery">
-                            <p>місто</p>
-                            <label class="basket-city"><input type="text" name="basket-city"></label>
-                            <p>спосіб доставки</p>
-                            <label>саменькі<input type="radio" name="basket-delivery"></label>
-                            <label>адресна по києву<input type="radio" name="basket-delivery"></label>
-                            <label>нова<input type="radio" name="basket-delivery"></label>
-                            <label>укр<input type="radio" name="basket-delivery"></label>
-                            <label>інтайм<input type="radio" name="basket-delivery"></label>
-                            <label>автолюкс<input type="radio" name="basket-delivery"></label>
+
+                            <label for="">Місто<span>*</span></label>
+                            <input type="text">
+
+                            <p>Спосіб доставки<span>*</span></p>
+
+                            <div class="basket-delivery-type">
+
+                                <input type="radio" name="delivery_type" id="ind">
+                                <label for="ind">Самовивіз</label>
+
+                                <input type="radio" name="delivery_type" id="adres">
+                                <label for="adres">Адресна доставка по Києву</label>
+
+                                <input type="radio" name="delivery_type" id="nova">
+                                <label for="nova">Нова пошта</label>
+
+                                <input type="radio" name="delivery_type" id="ukr">
+                                <label for="ukr">Укрпошта</label>
+
+                                <input type="radio" name="delivery_type" id="int">
+                                <label for="int">Інтайм</label>
+
+                                <input type="radio" name="delivery_type" id="avl">
+                                <label for="avl">Автолюкс</label>
+
+                            </div>
+
+                            <label for="">Адреса доставки<span>*</span></label>
+                            <input type="text">
+
                         </div>
 
-                        <h3>оплата</h3>
-                        <div class="basket-payment">
-                            <p>спосіб оплати</p>
-                            <label>готівка<input type="radio" name="basket-payment"></label>
-                            <label>приват<input type="radio" name="basket-payment"></label>
-                            <label >без готівки<input type="radio" name="basket-payment"></label>
+                        <h3>3. оплата</h3>
+
+                        <div class="basket-payment-type">
+
+                            <p>спосіб оплати<span>*</span></p>
+
+                            <input type="radio" name="payment_type" id="cash">
+                            <label for="cash">Готівка</label>
+
+                            <input type="radio" name="payment_type" id="privat">
+                            <label for="privat">Оплата на картку Приватбанку</label>
+
+                            <input type="radio" name="payment_type" id="cart">
+                            <label for="cart">Безготівкова оплата</label>
+
                         </div>
 
                     </div>
-                    <div class="basket-your-order">
-                        <h4>ваше замовлення</h4>
-                        @if (empty($productsId))
-                            <div class="basket-products">
-                                <p class="basket-clear">&nbsp;</p>
+                    <div class="order-product">
+                        <div class="order-product-wrap">
+                            <h3>ваше замовлення</h3>
+                            <div class="order-product-inf">
+                                <table class="order-product-table">
+                                    <tr>
+                                        <td>Ікра чорна, осетрова, солона, 50грам</td>
+                                        <td class="bold">1шт</td>
+                                        <td class="bold">1500грн</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ікра чорна, осетрова, солона, 50грам</td>
+                                        <td class="bold">1шт</td>
+                                        <td class="bold">1500грн</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ікра чорна, осетрова, солона, 50грам</td>
+                                        <td class="bold">1шт</td>
+                                        <td class="bold">1500грн</td>
+                                    </tr>
+                                </table>
+
+                                <div class="price-delivery">
+                                    <p>Вартість доставки</p>
+                                    <p>за тарифами перевізника</p>
+                                </div>
+
+                                <div class="total-price">
+                                    <p>до оплати без доставки</p>
+                                    <p>4500 грн</p>
+                                </div>
+                                <div class="btn-wrap">
+                                    <button class="send-order-btn" type="submit">підтвердити замовлення</button>
+                                </div>
                             </div>
-                        @endif
-                        <div class="commit-order">
-                            <label><input type="submit" value="@lang('utge.confirm_order')"></label>
                         </div>
                     </div>
                 </form>

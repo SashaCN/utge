@@ -798,6 +798,192 @@ h2 {
   display: none;
 }
 
+.order-form {
+  display: flex;
+  justify-content: space-between;
+}
+.order-form h3 {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+
+.order-contacts {
+  width: 50%;
+  padding-right: 90px;
+}
+
+.basket-contacts-wrapp .bascket-name,
+.basket-delivery .bascket-name,
+.basket-payment-type .bascket-name {
+  display: flex;
+  margin-bottom: 30px;
+  justify-content: space-between;
+}
+.basket-contacts-wrapp .bascket-name div,
+.basket-delivery .bascket-name div,
+.basket-payment-type .bascket-name div {
+  width: 45%;
+}
+.basket-contacts-wrapp .bascket-number,
+.basket-delivery .bascket-number,
+.basket-payment-type .bascket-number {
+  margin-bottom: 50px;
+}
+.basket-contacts-wrapp p,
+.basket-contacts-wrapp label,
+.basket-delivery p,
+.basket-delivery label,
+.basket-payment-type p,
+.basket-payment-type label {
+  display: block;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.basket-contacts-wrapp p span,
+.basket-contacts-wrapp label span,
+.basket-delivery p span,
+.basket-delivery label span,
+.basket-payment-type p span,
+.basket-payment-type label span {
+  color: red;
+}
+.basket-contacts-wrapp input[type=text],
+.basket-delivery input[type=text],
+.basket-payment-type input[type=text] {
+  box-sizing: border-box;
+  width: 100%;
+  outline: none;
+  border: 1px solid #003b95;
+  border-radius: 5px;
+  padding: 12px 10px;
+  font-size: 16px;
+}
+
+.basket-delivery {
+  margin-bottom: 30px;
+}
+.basket-delivery input[type=text] {
+  width: 45%;
+  margin-bottom: 30px;
+}
+
+.basket-delivery-type,
+.basket-payment-type {
+  margin-bottom: 30px;
+}
+.basket-delivery-type input[type=radio],
+.basket-payment-type input[type=radio] {
+  display: none;
+}
+.basket-delivery-type label,
+.basket-payment-type label {
+  cursor: pointer;
+  position: relative;
+  font-size: 16px;
+  font-weight: normal;
+  text-transform: none;
+  padding-left: 30px;
+  margin-bottom: 15px;
+}
+.basket-delivery-type label::before,
+.basket-payment-type label::before {
+  position: absolute;
+  content: "";
+  left: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid #003b95;
+  background: #fff;
+}
+.basket-delivery-type input[type=radio]:checked + label::before,
+.basket-payment-type input[type=radio]:checked + label::before {
+  background: #003b95;
+}
+
+.order-product {
+  width: 50%;
+  padding-left: 30px;
+}
+.order-product h3 {
+  border-radius: 10px 10px 0 0;
+  text-align: center;
+  background: #003b95;
+  font-weight: normal;
+  color: #fff;
+  padding: 15px;
+  margin-bottom: 0;
+}
+
+.order-product-wrap {
+  filter: drop-shadow(0px 10px 5px rgba(24, 20, 25, 0.1));
+}
+
+.order-product-inf {
+  border-radius: 0 0 10px 10px;
+  background: #fff;
+  padding: 50px 30px;
+}
+.order-product-inf .order-product-table {
+  font-size: 16px;
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+}
+.order-product-inf .order-product-table .bold {
+  font-weight: bold;
+  -moz-text-align-last: right;
+       text-align-last: right;
+}
+.order-product-inf .order-product-table td {
+  border-bottom: 1px solid #003b95;
+  padding-bottom: 15px;
+  padding-top: 30px;
+}
+.order-product-inf .order-product-table tr:first-child td {
+  padding-top: 0;
+}
+
+.price-delivery,
+.total-price {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.price-delivery p {
+  font-size: 16px;
+}
+
+.total-price p {
+  font-size: 24px;
+  color: #003b95;
+  text-transform: uppercase;
+}
+
+.btn-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.send-order-btn {
+  cursor: pointer;
+  background: #003b95;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 30px;
+  font-size: 20px;
+  transition: 0.2s;
+}
+.send-order-btn:hover {
+  background: #042c68;
+  transform: scaleX(1.1) scaleY(1.1);
+}
+
 /* -------------------------------------------------------------------------- */
 /*                                products page                                */
 /* -------------------------------------------------------------------------- */
@@ -1402,6 +1588,13 @@ h3 {
   font-size: 18px;
 }
 
+.service-item:nth-child(odd) {
+  background-color: #e5e5e5;
+}
+.service-item:nth-child(even) {
+  background-color: #fff;
+}
+
 .service-table-box {
   margin-bottom: 50px;
 }
@@ -1410,13 +1603,6 @@ h3 {
   border-collapse: collapse;
   width: 100%;
   font-size: 18px;
-}
-
-tr + tr:nth-child(odd) {
-  background-color: #e5e5e5;
-}
-tr + tr:nth-child(even) {
-  background-color: #fff;
 }
 
 .service-table {
@@ -1987,6 +2173,13 @@ tr + tr:nth-child(even) {
   }
 
   /* --------------------------------------------------------------------------  */
+  /*                           product-order                                     */
+  /* --------------------------------------------------------------------------  */
+  .total-price p {
+    font-size: 20px;
+  }
+
+  /* --------------------------------------------------------------------------  */
   /*                           services                                          */
   /* --------------------------------------------------------------------------  */
   .services {
@@ -2003,6 +2196,31 @@ tr + tr:nth-child(even) {
   }
   .goods-list > a {
     padding: 0 6px;
+  }
+
+  /* --------------------------------------------------------------------------  */
+  /*                           product-order                                     */
+  /* --------------------------------------------------------------------------  */
+  .order-form {
+    flex-direction: column;
+  }
+  .order-form .order-contacts {
+    width: 100%;
+    padding-right: 0;
+    margin-bottom: 50px;
+  }
+
+  .bascket-number {
+    width: 45%;
+  }
+
+  .order-product {
+    padding-left: 0;
+    width: 100%;
+  }
+
+  .total-price p {
+    font-size: 24px;
   }
 
   /* -------------------------------------------------------------------------- */
@@ -2412,6 +2630,13 @@ footer .mail {
     overflow-x: scroll;
   }
 
+  /* --------------------------------------------------------------------------  */
+  /*                           product-order                                     */
+  /* --------------------------------------------------------------------------  */
+  .total-price p {
+    font-size: 20px;
+  }
+
   /* -------------------------------------------------------------------------- */
   /*                                product page                                */
   /* -------------------------------------------------------------------------- */
@@ -2447,6 +2672,42 @@ footer .mail {
   }
   .delivery-card figcaption {
     width: 100%;
+  }
+
+  /* --------------------------------------------------------------------------  */
+  /*                           product-order                                     */
+  /* --------------------------------------------------------------------------  */
+  .basket-contacts-wrapp .bascket-name {
+    flex-direction: column;
+  }
+  .basket-contacts-wrapp .bascket-name div {
+    width: 100%;
+  }
+  .basket-contacts-wrapp .bascket-name div:first-child {
+    margin-bottom: 30px;
+  }
+
+  .bascket-number {
+    width: 100%;
+  }
+
+  .basket-delivery input[type=text] {
+    width: 100%;
+  }
+
+  .order-product-inf .order-product-table {
+    font-size: 15px;
+  }
+  .order-product-inf .order-product-table .bold {
+    padding-left: 7px;
+  }
+
+  .price-delivery p {
+    font-size: 14px;
+  }
+
+  .total-price p {
+    font-size: 16px;
   }
 }
 @media screen and (max-width: 450px) {

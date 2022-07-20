@@ -347,6 +347,153 @@ h2
 .placing-an-order
     display: none
 
+.order-form
+    display: flex
+    justify-content: space-between
+    h3
+        font-size: 24px
+        font-weight: 500
+        margin-bottom: 30px
+
+
+.order-contacts
+    width: 50%
+    padding-right: 90px
+
+.basket-contacts-wrapp,
+.basket-delivery,
+.basket-payment-type
+    .bascket-name
+        display: flex
+        margin-bottom: 30px
+        justify-content: space-between
+        div
+            width: 45%
+
+    .bascket-number
+        margin-bottom: 50px
+
+    p,
+    label
+        display: block
+        text-transform: uppercase
+        font-size: 16px
+        font-weight: 500
+        margin-bottom: 8px
+        span
+            color: red
+    input[type=text]
+        box-sizing: border-box
+        width: 100%
+        outline: none
+        border: 1px solid $primary
+        border-radius: 5px
+        padding: 12px 10px
+        font-size: 16px
+
+.basket-delivery
+    margin-bottom: 30px
+    input[type=text]
+        width: 45%
+        margin-bottom: 30px
+
+.basket-delivery-type,
+.basket-payment-type
+    margin-bottom: 30px
+    input[type=radio]
+        display: none
+
+    label
+        cursor: pointer
+        position: relative
+        font-size: 16px
+        font-weight: normal
+        text-transform: none
+        padding-left: 30px
+        margin-bottom: 15px
+        &::before
+            position: absolute
+            content: ""
+            left: 0
+            width: 16px
+            height: 16px
+            border-radius: 50%
+            border: 1px solid $primary
+            background: #fff
+
+    input[type=radio]
+        &:checked + label::before
+            background: $primary
+
+.order-product
+    width: 50%
+    padding-left: 30px
+    h3
+        border-radius: 10px 10px 0 0
+        text-align: center
+        background: $primary
+        font-weight: normal
+        color: #fff
+        padding: 15px
+        margin-bottom: 0
+
+.order-product-wrap
+    filter: drop-shadow(0px 10px 5px rgba(24,20,25,0.1))
+.order-product-inf
+    border-radius: 0 0 10px 10px
+    background: #fff
+    padding: 50px 30px
+
+    .order-product-table
+        font-size: 16px
+        width: 100%
+        border-collapse: collapse
+        margin-bottom: 30px
+        .bold
+            font-weight: bold
+            text-align-last: right
+        td
+            border-bottom: 1px solid $primary
+            padding-bottom: 15px
+            padding-top: 30px
+        tr
+            &:first-child td
+                padding-top: 0
+
+.price-delivery,
+.total-price
+    display: flex
+    justify-content: space-between
+    margin-bottom: 30px
+
+.price-delivery
+    p
+        font-size: 16px
+
+.total-price
+    p
+        font-size: 24px
+        color: $primary
+        text-transform: uppercase
+
+.btn-wrap
+    display: flex
+    justify-content: center
+
+.send-order-btn
+    cursor: pointer
+    background: $primary
+    color: #fff
+    border: none
+    border-radius: 5px
+    padding: 10px 30px
+    font-size: 20px
+    transition: 0.2s
+    &:hover
+        background: $primary-hover
+        transform: scaleX(1.1) scaleY(1.1)
+
+
 
 /* -------------------------------------------------------------------------- */
 /*                                products page                                */
@@ -862,6 +1009,11 @@ h3
         padding: 48px 0 45px 0
         font-size: 18px
 
+.service-item
+    &:nth-child(odd)
+        background-color: #e5e5e5
+    &:nth-child(even)
+        background-color: #fff
 
 .service-table-box
     margin-bottom: 50px
@@ -870,11 +1022,6 @@ h3
     border-collapse: collapse
     width: 100%
     font-size: 18px
-tr+tr
-    &:nth-child(odd)
-        background-color: #e5e5e5
-    &:nth-child(even)
-        background-color: $second
 
 
 .service-table
