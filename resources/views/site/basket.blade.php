@@ -1,16 +1,16 @@
 @extends('site.index')
 
-@php
-    $locale = app()->getLocale();
-@endphp
 
 @section('content')
 
-@php
-    $locale = app()->getLocale();
-    $productsId = explode(',', trim($_GET['products'], '[]'));
-@endphp
-        <div class="basket-table">
+    @php
+        $locale = app()->getLocale();
+        $productsData = json_decode($_GET['products']);
+    @endphp
+
+
+<div>
+    <div class="basket-table">
             <h2>@lang('utge.basket')</h2>
             <div class="wrapper">
                 <div class="basket-row title-row">
@@ -27,19 +27,18 @@
                     <div class="delete-col col"></div>
                 </div>
 
-                @if (empty($productsId))
+                @if (empty($productsData))
                     <div class="basket-products">
                         <p class="basket-clear">&nbsp;</p>
                     </div>
                 @else
-                    @foreach ($productsId as $id)
+                    @foreach ($productsData as $productData)
                         @foreach ($products as $product)
-                            @if ($product->id == $id)
+                            @if ($product->id == $productData[0])
                                 @php
                                     $title = $product->localization[0];
                                     $description = $product->localization[1];
-
-                                    $min_price = $product->sizeprices->whereIn('available', [1,4])->min('price');
+                                    $min_price = $productData[3];
                                 @endphp
 
                                 <div class="basket-row product-row" data-product-id="{{ $product->id }}">
@@ -52,7 +51,7 @@
                                     <div class="count-col col">
                                         <button class="product-minus">-</button>
                                         <label>
-                                            <input type="number" name="product-quantify" class="product-quantify" value="1">
+                                            <input type="number" name="product-quantify" class="product-quantify" value="{{ $productData[1] }}">
                                         </label>
                                         <button class="product-plus">+</button>
                                     </div>
@@ -177,21 +176,29 @@
                             <h3>ваше замовлення</h3>
                             <div class="order-product-inf">
                                 <table class="order-product-table">
-                                    <tr>
-                                        <td>Ікра чорна, осетрова, солона, 50грам</td>
-                                        <td class="bold">1шт</td>
-                                        <td class="bold">1500грн</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ікра чорна, осетрова, солона, 50грам</td>
-                                        <td class="bold">1шт</td>
-                                        <td class="bold">1500грн</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ікра чорна, осетрова, солона, 50грам</td>
-                                        <td class="bold">1шт</td>
-                                        <td class="bold">1500грн</td>
-                                    </tr>
+                                    @foreach ($productsData as $productData)
+                                        @foreach ($products as $product)
+                                            @if ($product->id == $productData[0])
+                                                @php
+                                                    $title = $product->localization[0];
+                                                    $description = $product->localization[1];
+                                                    $min_size = $productData[2];
+                                                @endphp
+
+                                                <tr>
+                                                    <td>{{ $title->$locale }}, {{ $min_size }} {{ $product->sizeprices->where('size', $min_size)->first()->price_units}}</td>
+                                                    <td class="bold product-quantify-order"></td>
+                                                    <td class="bold product-price-order"></td>
+
+                                                    <input type="hidden" name="product_{{ $product->id }}" value="{{ $product->id }}">
+                                                    <input type="hidden" name="product_{{ $product->id }}-quantify" class="product_input_quantify" value="">
+                                                    <input type="hidden" name="product_{{ $product->id }}-size" value="{{ $min_size }} {{ $product->sizeprices->where('size', $min_size)->first()->price_units}}">
+                                                    <input type="hidden" name="product_{{ $product->id }}-price" class="product_input_price" value="">
+                                                </tr>
+                                                
+                                            @endif
+                                        @endforeach
+                                    @endforeach
                                 </table>
 
                                 <div class="price-delivery">
@@ -201,7 +208,8 @@
 
                                 <div class="total-price">
                                     <p>до оплати без доставки</p>
-                                    <p>4500 грн</p>
+                                    <p class="general-price"></p>
+                                    <input type="hidden" name="general_price" class="product_input_general_price" value="">
                                 </div>
                                 <div class="btn-wrap">
                                     <button class="send-order-btn" type="submit">підтвердити замовлення</button>

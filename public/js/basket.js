@@ -2,11 +2,11 @@ window.onload = () => {
     let orderProducts = document.querySelectorAll(".product-row"),
         productPlus = document.querySelectorAll(".product-plus"),
         productMinus = document.querySelectorAll(".product-minus"),
-        productQuantify = document.querySelectorAll(".product-quantify"),
+        productQuantify = document.querySelector(".product-quantify"),
         productPrice = document.querySelectorAll(".basket-price"),
         deleteProduct = document.querySelectorAll(".delete-product"),
         generalQuantify = document.querySelector(".general-quantify"),
-        generalPrice = document.querySelector(".general-price"),
+        generalPrice = document.querySelectorAll(".general-price"),
         basketProducts,
         productId,
         innerString = "",
@@ -14,7 +14,6 @@ window.onload = () => {
         totalPrice = 0,
         productNumber
 
-    console.log(JSON.parse(localStorage.basketProduct)); 
 
     refreshProducts()
 
@@ -53,8 +52,7 @@ window.onload = () => {
         productQuantify[productNumber].value = parseInt(productQuantify[productNumber].value) + 1
         productQuantify[productNumber].setAttribute("value", productQuantify[productNumber].value)
 
-        console.log(productId+","+productQuantify[productNumber].value)
-        storeQuantify (productId, productQuantify[productNumber].value)
+            storeQuantify (productId, productQuantify[productNumber].value)
 
         productPrice[productNumber].innerHTML = `${parseInt(productPrice[productNumber].getAttribute("data-product-starting-price")) + parseInt(productPrice[productNumber].getAttribute("data-product-price"))} грн`
         productPrice[productNumber].dataset.productPrice = productPrice[productNumber].textContent.slice(0, productPrice[productNumber].textContent.length - 1)
@@ -76,14 +74,15 @@ window.onload = () => {
 
         productPrice.forEach((elem) => {
             totalPrice += parseInt(elem.getAttribute("data-product-price"))
-            console.log(totalPrice);
         })
 
         productQuantify.forEach((elem) => {
             totalQuantify += parseInt(elem.value)
         })
 
-        generalPrice.innerHTML = `${totalPrice} грн`
+        generalPrice.forEach(element => {
+            element.innerHTML = `${totalPrice} грн`
+        });
         generalQuantify.innerHTML = `${totalQuantify} шт`
         totalPrice = 0
         totalQuantify = 0
@@ -114,6 +113,7 @@ window.onload = () => {
         deleteProduct.forEach((elem) => {
             elem.onclick = (event) => {
                 event.preventDefault()
+
                 basketProducts = JSON.parse(localStorage.basketProduct)
                 for (let i = 0; i < basketProducts.length; i++){
                     if (event.target.closest(".product-row").getAttribute("data-product-id") == basketProducts[i]['id']) {
@@ -161,4 +161,21 @@ window.onload = () => {
 document.querySelector('#to-order-btn').onclick = function (){
     document.querySelector('.basket-table').style.display = 'none';
     document.querySelector('.placing-an-order').style.display = 'block';
+
+    productQuantify = document.querySelectorAll('.product-quantify');
+    productPrice = document.querySelectorAll('.basket-price');
+    productQuantifyOrder = document.querySelectorAll('.product-quantify-order');
+    productPriceOrder = document.querySelectorAll('.product-price-order');
+    productPriceOrder = document.querySelectorAll('.product-price-order');
+    productInputQuantify = document.querySelectorAll('.product_input_quantify');
+    productInputPrice = document.querySelectorAll('.product_input_price');
+
+    document.querySelector('.product_input_general_price').value = document.querySelector('.general-price').textContent;
+
+    for (let i = 0; i < productQuantify.length; i++) {
+        productQuantifyOrder[i].innerHTML = productQuantify[i].value;
+        productPriceOrder[i].innerHTML = productPrice[i].textContent;
+        productInputQuantify[i].value = productQuantify[i].value;
+        productInputPrice[i].value = productPrice[i].textContent;
+    }
 }
