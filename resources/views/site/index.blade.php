@@ -158,7 +158,15 @@
                 <div class="wrapper">
                     <ul class="flex-sb">
                         <li><a href="{{ route('index') }}">@lang('utge.main')</a></li>
-                        <li><a href="{{ route('products') }}">@lang('utge.goods')</a></li>
+                        <li class="sub-menu-parent">
+                            <a href="{{ route('products') }}">@lang('utge.goods')</a>
+                            <div class="sub-menu">
+                                @foreach ($categories as $category)
+
+                                    <a href="{{ route('products') }}">{{ $category->localization[0]->$locale }}</a>
+                                @endforeach
+                            </div>
+                        </li>
                         <li><a href="{{ route('services') }}">@lang('utge.services')</a></li>
                         <li><a href="{{ route('deliveriesAndPayments') }}">@lang('utge.delivery-payment')</a></li>
                         <li><a href="{{ route('news') }}">@lang('utge.news')</a></li>
