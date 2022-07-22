@@ -10,6 +10,7 @@ use App\Models\SizePrice;
 use App\Models\ChildPage;
 use App\Models\ServicesType;
 use App\Filters\NewsFilter;
+use App\Filters\ProductFilter;
 use App\Models\Services;
 use App\Models\ServicesCategory;
 use Spatie\QueryBuilder\QueryBuilder;
@@ -18,24 +19,25 @@ use App\Http\Requests\StoreServicesOrderRequest;
 use App\Models\ServicesOrder;
 use Illuminate\Auth\Events\Validated;
 use App\Mail\OrderShipped;
+use App\Models\Category;
 use Illuminate\Support\Facades\Mail;
 
 class SiteController extends Controller
 {
 
-    public function index()
+    public function index(ProductFilter $request,)
     {
-
+        $products = Product::filter($request)->where('home_view', '1')->paginate(12);
         return view('site.firstPage', [
-            'products' => Product::all()->where('home_view', '1'),
+            'products' => $products,
             'about_us' => ChildPage::all()->where('route', 'about_us'),
-            // 'slider1' => ChildPage::orderSlider(),
             'slider1' => ChildPage::where('route', 'slider1')->orderBy('order')->get(),
             'slider2' => ChildPage::where('route', 'slider2')->orderBy('order')->get(),
             'slider3' => ChildPage::where('route', 'slider3')->orderBy('order')->get(),
             'slider4' => ChildPage::where('route', 'slider4')->orderBy('order')->get(),
         ]);
     }
+
 
     public function basket ()
     {

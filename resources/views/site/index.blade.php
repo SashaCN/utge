@@ -88,7 +88,7 @@
                                 @endphp
                             @endif
                         @endforeach
-                        
+
                         @foreach ($logoImg as $item)
                             @if (isset($item) && !empty($item))
 
@@ -151,6 +151,7 @@
                 <span class="menu-text">@lang('utge.menu')</span>
                 <span class="burger"></span>
             </a>
+
             <nav>
                 <span class="close"><svg>
                     <use xlink:href="{{ asset('img/sprite.svg#close') }}"></use>
@@ -162,15 +163,14 @@
                             <a href="{{ route('products') }}">@lang('utge.goods')</a>
                             <div class="sub-menu">
                                 @foreach ($categories as $category)
-
-                                    <a href="{{ route('products') }}">{{ $category->localization[0]->$locale }}</a>
+                                    <a name="categoryid_{{$category->id}}" href="http://utge/products?categoryid_{{$category->id}}={{$category->id}}">{{ $category->localization[0]->$locale }}</a>
                                 @endforeach
                             </div>
                         </li>
                         <li><a href="{{ route('services') }}">@lang('utge.services')</a></li>
                         <li><a href="{{ route('deliveriesAndPayments') }}">@lang('utge.delivery-payment')</a></li>
                         <li><a href="{{ route('news') }}">@lang('utge.news')</a></li>
-                         <li><a href="{{ route('contacts') }}">@lang('utge.contacts')</a></li>
+                        <li><a href="{{ route('contacts') }}">@lang('utge.contacts')</a></li>
                     </ul>
                 </div>
             </nav>
