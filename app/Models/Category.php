@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Dyrynda\Database\Support\CascadeSoftDeletes;
+use Illuminate\Support\Facades\DB;
 
 class Category extends Model
 {
@@ -31,5 +32,15 @@ class Category extends Model
     public function localization()
     {
         return $this->morphMany(Localization::class, 'localizationable');
+    }
+
+    static function getProduct($id)
+    {
+        return DB::table('categories')
+        ->select('products.id')
+        ->leftJoin('sub_categories','category_id', '=', 'categories.id')
+        ->leftJoin('products','sub_category_id', '=', 'sub_categories.id')
+        ->where('categories.id', $id)
+        ->get();
     }
 }

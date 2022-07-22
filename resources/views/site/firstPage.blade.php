@@ -5,7 +5,6 @@
 ?>
 
 @section('content')
-
 <div class="wrapper">
     <div class="grid">
         @if (isset($slider1[0]) == true && !empty($slider1[0]))
@@ -124,7 +123,7 @@
                     $title = $product->localization[0];
                     $description = $product->localization[1];
                 @endphp
-            <a href="{{ route('product', $product->id) }}">
+            <a href="{{ route('product', [$product->id, $product->localization[0]->locale]) }}">
                 @php
                     if ($product->sizeprices->whereIn('available', [1,4])->min('price')) {
                         $min_price = $product->sizeprices->whereIn('available', [1,4])->min('price');

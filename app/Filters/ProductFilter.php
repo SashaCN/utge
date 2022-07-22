@@ -50,16 +50,15 @@ class ProductFilter extends QueryFilter
         });
     }
 
-
-
-
-    // public function search_field($search_str = '')
-    // {
-    //     return $this->builder->when(DB::table('products'))
-    //     ->leftJoin('size_prices', 'products.id', '=', 'size_prices.product_id')
-    //     ->select('products.id')
-    //     ->where('size_prices.price', 'LIKE', '"%'.$search_str.'%"');
-    // }
+    public function searchcategory($id)
+    {
+        return $this->builder->when($id, function($query) use($id){
+            $query
+            ->leftJoin('sub_categories','sub_categories.id', '=', 'products.sub_category_id')
+            ->leftJoin('categories','categories.id', '=', 'sub_categories.category_id')
+            ->select('product.id');
+        });
+    }
 
     public function search_field($search_str = '')
     {
