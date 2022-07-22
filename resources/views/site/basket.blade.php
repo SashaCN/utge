@@ -131,19 +131,19 @@
                                 <input type="radio" name="delivery_type" id="ind">
                                 <label for="ind">Самовивіз</label>
 
-                                <input type="radio" name="delivery_type" id="adres">
+                                <input type="radio" name="delivery_type" id="adres" class="adress_delivery">
                                 <label for="adres">Адресна доставка по Києву</label>
 
-                                <input type="radio" name="delivery_type" id="nova">
+                                <input type="radio" name="delivery_type" id="nova" class="post_delivery">
                                 <label for="nova">Нова пошта</label>
 
-                                <input type="radio" name="delivery_type" id="ukr">
+                                <input type="radio" name="delivery_type" id="ukr" class="post_delivery">
                                 <label for="ukr">Укрпошта</label>
 
-                                <input type="radio" name="delivery_type" id="int">
+                                <input type="radio" name="delivery_type" id="int" class="post_delivery">
                                 <label for="int">Інтайм</label>
 
-                                <input type="radio" name="delivery_type" id="avl">
+                                <input type="radio" name="delivery_type" id="avl" class="adress_delivery">
                                 <label for="avl">Автолюкс</label>
 
                             </div>

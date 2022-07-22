@@ -71,7 +71,9 @@
             <svg><use xlink:href="{{ asset('img/sprite.svg#globus') }}"></use></svg>
             @lang('utge.contact-map')
         </h3>
-        <div class="map"></div>
+        <div class="map">
+            <iframe src="https://www.google.com/maps/d/embed?mid=1bfywxVrKQe2RLd_IV4VH6Z5_jgHCyJU&ehbc=2E312F" width="100%" height="100%"></iframe>
+        </div>
     </div>
 </div>
 
