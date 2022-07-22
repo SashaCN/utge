@@ -160,7 +160,7 @@
                                     @lang('utge.add-to-basket')
                                 </span>
                             </p>
-                            <p class="price">{{ $min_price }}&nbsp;{{ $product->sizeprices->where('price', $min_price)->first()->price_units }}</p>
+                            <p class="price"><span class="active-price">{{ $min_price }}</span>&nbsp;{{ $product->sizeprices->where('price', $min_price)->first()->price_units }}</p>
                             <span class="like add-to-favourite">
                                 <svg>
                                     <use xlink:href="{{ asset('img/sprite.svg#like') }}"></use>
