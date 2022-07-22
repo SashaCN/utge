@@ -190,10 +190,10 @@
                                                     <td class="bold product-quantify-order"></td>
                                                     <td class="bold product-price-order"></td>
 
-                                                    <input type="hidden" name="product_{{ $product->id }}" value="{{ $product->id }}">
-                                                    <input type="hidden" name="product_{{ $product->id }}-quantify" class="product_input_quantify" value="">
-                                                    <input type="hidden" name="product_{{ $product->id }}-size" value="{{ $min_size }} {{ $product->sizeprices->where('size', $min_size)->first()->price_units}}">
-                                                    <input type="hidden" name="product_{{ $product->id }}-price" class="product_input_price" value="">
+                                                    <input type="hidden" name="product_id" value="product_{{ $product->id }}">
+                                                    <input type="hidden" name="product-quantify" class="product_input_quantify" value="">
+                                                    <input type="hidden" name="product-size" value="{{ $min_size }} {{ $product->sizeprices->where('size', $min_size)->first()->price_units}}">
+                                                    <input type="hidden" name="product-price" class="product_input_price" value="">
                                                 </tr>
                                                 
                                             @endif
