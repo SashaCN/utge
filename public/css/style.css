@@ -649,6 +649,10 @@ h2 {
 /* -------------------------------------------------------------------------- */
 /*                                   basket                                   */
 /* -------------------------------------------------------------------------- */
+.basket-page {
+  position: relative;
+}
+
 .basket-table .wrapper,
 .placing-an-order .wrapper {
   padding-top: 40px;
@@ -999,9 +1003,64 @@ h2 {
   transform: scaleX(1.1) scaleY(1.1);
 }
 
+.basket-popup {
+  padding: 50px 150px;
+  width: auto;
+  text-align: center;
+  background: #fff;
+}
+.basket-popup .basket-popup-img {
+  margin-bottom: 30px;
+}
+.basket-popup .basket-popup-img img {
+  width: 450px;
+  height: 250px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: top;
+     object-position: top;
+}
+.basket-popup h3 {
+  margin-bottom: 35px;
+}
+.basket-popup a {
+  display: inline-block;
+  font-size: 1.8em;
+}
+
+.self_delivery_label {
+  display: none;
+}
+
 /* -------------------------------------------------------------------------- */
 /*                                products page                                */
 /* -------------------------------------------------------------------------- */
+.filter-menu {
+  position: relative;
+}
+
+.filter-close-btn {
+  position: absolute;
+  right: 5px;
+  top: 8px;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+.filter-close-btn span {
+  display: inline-block;
+  position: absolute;
+  top: 40%;
+  right: 20%;
+  width: 20px;
+  height: 3px;
+  background: #003b95;
+  transform: rotate(45deg);
+}
+.filter-close-btn span:last-child {
+  transform: rotate(-45deg);
+}
+
 .product-page {
   align-items: flex-start;
 }
@@ -1700,13 +1759,14 @@ h3 {
   z-index: 3;
 }
 
+.basket-popup,
 .service-popup {
   position: fixed;
   filter: drop-shadow(0px 10px 5px rgba(24, 20, 25, 0.1));
-  width: 735px;
   border-radius: 10px;
   z-index: 4;
 }
+.basket-popup p,
 .service-popup p {
   padding: 17px;
   text-align: center;
@@ -1715,6 +1775,10 @@ h3 {
   text-transform: uppercase;
   background: #003b95;
   border-radius: 10px 10px 0 0;
+}
+
+.service-popup {
+  width: 735px;
 }
 
 .service-form {
@@ -2508,8 +2572,17 @@ footer .mail {
   /* -------------------------------------------------------------------------- */
   /*                                  contacts                                  */
   /* -------------------------------------------------------------------------- */
+  .feedback-section {
+    /* -------------------------------------------------------------------------- */
+  }
   .feedback-section .service-form-item {
     display: flex;
+  }
+
+  /*                                  basket                                    */
+  /* -------------------------------------------------------------------------- */
+  .basket-popup {
+    padding: 25px 75px;
   }
 }
 @media screen and (max-width: 700px) {
@@ -2589,6 +2662,25 @@ footer .mail {
   }
   .feedback-section .service-form .service-form-item div {
     width: 100%;
+  }
+
+  /* -------------------------------------------------------------------------- */
+  /*                                  basket                                    */
+  /* -------------------------------------------------------------------------- */
+  .basket-popup {
+    padding: 25px 75px;
+    margin-bottom: 25px;
+  }
+  .basket-popup .basket-popup-img {
+    margin-bottom: 20px;
+  }
+  .basket-popup .basket-popup-img img {
+    width: 350px;
+    height: 200px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: top;
+       object-position: top;
   }
 }
 @media screen and (max-width: 650px) {
@@ -2672,6 +2764,24 @@ footer .mail {
     overflow-x: scroll;
   }
 
+  /* -------------------------------------------------------------------------- */
+  /*                                  basket                                    */
+  /* -------------------------------------------------------------------------- */
+  .basket-popup {
+    padding: 15px 45px;
+    margin-bottom: 15px;
+  }
+  .basket-popup .basket-popup-img {
+    margin-bottom: 10px;
+  }
+  .basket-popup .basket-popup-img img {
+    width: 250px;
+    height: 100px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: top;
+       object-position: top;
+  }
   /* --------------------------------------------------------------------------  */
   /*                           product-order                                     */
   /* --------------------------------------------------------------------------  */
@@ -2823,4 +2933,10 @@ footer .mail {
   /* -------------------------------------------------------------------------- */
   /*                                  contacts                                  */
   /* -------------------------------------------------------------------------- */
+  /* -------------------------------------------------------------------------- */
+  /*                                  basket                                    */
+  /* -------------------------------------------------------------------------- */
+  .basket-popup {
+    padding: 15px 25px;
+  }
 }

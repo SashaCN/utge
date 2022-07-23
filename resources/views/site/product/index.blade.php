@@ -13,6 +13,7 @@ $locale = app()->getLocale();
 </div>
 <div class="wrapper flex-sb product-page">
     <div class="filter-menu">
+        <div class="filter-close-btn"><span></span><span></span></div>
         <div class="close-filter-bg"></div>
         <form id="filter" action="{{ route('products') }}">
             @foreach ($producttypes as $type)

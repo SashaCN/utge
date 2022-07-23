@@ -179,3 +179,37 @@ document.querySelector('#to-order-btn').onclick = function (){
         productInputPrice[i].value = productPrice[i].textContent;
     }
 }
+
+let selfDelivery = document.querySelector('.self_delivery'),
+    adressDelivery = document.querySelectorAll('.adress_delivery'),
+    postDelivery = document.querySelectorAll('.post_delivery'),
+    selfDeliveryLabel = document.querySelector('.self_delivery_label'),
+    postDeliveryLabel = document.querySelector('.post_delivery_label'),
+    adressDeliveryLabel = document.querySelector('.adress_delivery_label');
+
+    selfDelivery.onclick = hiddeSelfDeliveryLabel;
+
+    adressDelivery.forEach(element => {
+        element.onclick = showAdressDeliveryLabel();
+    });
+    
+    postDelivery.forEach(element => {
+        
+        element.onclick = showPostDeliveryLabel();
+    });
+    
+    function showPostDeliveryLabel() {
+        selfDeliveryLabel.style.display = 'block';
+        postDeliveryLabel.style.display = 'block';
+        adressDeliveryLabel.style.display = 'none';
+    }
+    
+    function showAdressDeliveryLabel() {
+        selfDeliveryLabel.style.display = 'block';
+        postDeliveryLabel.style.display = 'none';
+        adressDeliveryLabel.style.display = 'block';
+    }
+    
+    function hiddeSelfDeliveryLabel() {
+        selfDeliveryLabel.style.display = 'none';
+    }

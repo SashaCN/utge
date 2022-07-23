@@ -9,7 +9,7 @@
     @endphp
 
 
-<div>
+<div class="basket-page">
     <div class="basket-table">
             <h2>@lang('utge.basket')</h2>
             <div class="wrapper">
@@ -128,7 +128,7 @@
 
                             <div class="basket-delivery-type">
 
-                                <input type="radio" name="delivery_type" id="ind">
+                                <input type="radio" name="delivery_type" id="ind" class="self_delivery">
                                 <label for="ind">Самовивіз</label>
 
                                 <input type="radio" name="delivery_type" id="adres" class="adress_delivery">
@@ -147,9 +147,10 @@
                                 <label for="avl">Автолюкс</label>
 
                             </div>
-
-                            <label for="">Адреса доставки<span>*</span></label>
-                            <input type="text">
+                            <div class="self_delivery_label">
+                                <label for=""><div class="post_delivery_label">Номер віділення</div><div class="adress_delivery_label">Адреса доставки</div><span>*</span></label>
+                                <input type="text">
+                            </div>
 
                         </div>
 
@@ -212,7 +213,7 @@
                                     <input type="hidden" name="general_price" class="product_input_general_price" value="">
                                 </div>
                                 <div class="btn-wrap">
-                                    <button class="send-order-btn" type="submit">підтвердити замовлення</button>
+                                    <button class="send-order-btn" type="button" {{--type="submit"--}} id="popupBtn">підтвердити замовлення</button>
                                 </div>
                             </div>
                         </div>
@@ -220,9 +221,19 @@
                 </form>
             </div>
         </div>
+        <div id="popupBox">
+            <div id="popupCloseBox"></div>
+            <div class="basket-popup" id="popup">
+                <div class="basket-popup-img">
+                    <img src="{{ asset('img/basket-popup-img.jpg') }}" alt="basket popup img">
+                </div>
+                <h3>дякуємо за замовлення!</h3>
+                <a href="{{ route('products') }}" class="send-order-btn">повернутися до покупок</a>
+            </div>
+        </div>
     </div>
 
     <script src="{{ asset('js/basket.js') }}"></script>
-
+    <script src="{{ asset('js/popup.js') }}"></script>
 
 @endsection
