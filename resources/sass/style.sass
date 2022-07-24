@@ -628,9 +628,13 @@ p.category-item
     .add-to-basket
         padding: 8px 10px
 
+
+
 .liked
     .like svg
-        transform: rotate(180deg)
+        .inside
+            fill: $primary
+
 
 .status
     width: 100%
@@ -693,7 +697,10 @@ p.category-item
         svg
             width: 35px
             height: 31px
-            fill: $primary
+.outside
+    fill: $primary
+.inside
+    fill: none
 
 .shadow-box
   box-shadow: $box-shadow
