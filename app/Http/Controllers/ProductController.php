@@ -21,7 +21,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function index(ProductFilter $request)
+    public function index(ProductFilter $request, Category $category)
     {
         $products = Product::filter($request)->paginate(12);
 

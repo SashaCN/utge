@@ -11,6 +11,7 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Dyrynda\Database\Support\CascadeSoftDeletes;
+use Illuminate\Support\Facades\DB;
 
 class Product extends Model implements HasMedia
 {
@@ -39,5 +40,15 @@ class Product extends Model implements HasMedia
     public function scopeFilter(Builder $builder, QueryFilter $filter)
     {
         return $filter->apply($builder);
+    }
+
+    static function getProduct($id)
+    {
+        return DB::table('categories')
+        ->select('products.id')
+        ->leftJoin('sub_categories','category_id', '=', 'categories.id')
+        ->leftJoin('products','sub_category_id', '=', 'sub_categories.id')
+        ->where('categories.id', $id)
+        ->get();
     }
 }
