@@ -189,7 +189,7 @@ $locale = app()->getLocale();
         @php
             $counter = 0;
         @endphp
-            <div class="size-c">
+            <div class="size-price">
                 @foreach ($product->sizeprices as $sizeprice)
 
                     @php
@@ -197,12 +197,12 @@ $locale = app()->getLocale();
                     @endphp
 
                     <div class="input-wrap">
-                        <input type="text" value="{{ $sizeprice->size }}" name="size/{{$counter}}" id="size{{$counter}}">
+                        <input type="text" value="{{ $sizeprice->size }}" name="size/{{$counter}}" id="size{{$counter}}" class="auto-value">
                         <label class="label" for="size{{$counter}}">@lang('admin.add_size')</label>
                     </div>
 
                     <div class="input-wrap">
-                        <input type="text" value="{{ $sizeprice->price }}" name="price/{{$counter}}" id="price{{$counter}}">
+                        <input type="number" value="{{ $sizeprice->price }}" name="price/{{$counter}}" id="price{{$counter}}" class="auto-value">
                         <label class="label" for="price">@lang('admin.add_price')</label>
                     </div>
 
@@ -213,7 +213,7 @@ $locale = app()->getLocale();
 
                     <div class="input-wrap pt0">
                         <p>@lang('admin.add_available')</p>
-                        <select name="available/{{$counter}}">
+                        <select name="available/{{$counter}}" class="auto-value">
                             @if ($sizeprice->available == 1)
                                 <option value="1" selected>@lang('admin.available')</option>
                             @else
@@ -236,16 +236,10 @@ $locale = app()->getLocale();
                             @endif
                         </select>
                     </div>
+                    <input type="hidden" name="counter" value="{{$counter}}" id="product-counter">
                     <hr>
                 @endforeach
             </div>
-            <div class="size-price">
-                
-            </div>
-
-
-
-        <input type="hidden" name="counter" value="" id="product-counter">
         <div class="size-price-bt-wrapp">
             <button id="delete-size-price" class="size-price-bt-min"><span class="btn-w-sp"><img src="{{ asset('img/minus-label.svg') }}" ><span>@lang('admin.delete_size_price')</span></span></button>
             <button id="add-size-price" class="size-price-bt-pl"><span class="btn-w-sp"><span>@lang('admin.add_size_price')</span><img src="{{ asset('img/plus-label.svg') }}" ></span></button>
@@ -396,13 +390,36 @@ $locale = app()->getLocale();
 </form>
 
 <script>
-    getStructure();
-
     function getStructure(counter) {
-        let structure = document.querySelector('.size-c').innerHTML;
-        return structure;
-    }
+        return structure = `
+                    <div class="input-wrap">
+                        <input type="text" name="size/${counter}" id="size${counter}" class="auto-value">
+                        <label class="label" for="size${counter}">@lang('admin.add_size')</label>
+                    </div>
 
+                    <div class="input-wrap">
+                        <input type="number" name="price/${counter}" id="price${counter}" class="auto-value">
+                        <label class="label" for="price${counter}">@lang('admin.add_price')</label>
+                    </div>
+
+                    <div class="input-wrap">
+                        <input type="text" name="price_units/${counter}" id="price_units${counter}" class="auto-value">
+                        <label class="label" for="price_units${counter}">@lang('admin.add_price_units')</label>
+                    </div>
+
+                    <div class="input-wrap pt0">
+                        <p>@lang('admin.add_available')</p>
+                        <select name="available/${counter}" class="auto-value">
+                            <option value="1">@lang('admin.available')</option>
+                            <option value="2">@lang('admin.not_available')</option>
+                            <option value="3">@lang('admin.waiting_available')</option>
+                            <option value="4">@lang('admin.available_for_order')</option>
+                        </select>
+                    </div>
+                    <input type="hidden" name="sizecount" value="${counter}" id="#product-counter">
+                    <hr>
+        `;
+    }
 </script>
 
 <script src="{{ asset('js/sizeprice.js') }}"></script>
