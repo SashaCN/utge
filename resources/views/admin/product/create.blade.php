@@ -194,15 +194,15 @@
                             <option value="4">@lang('admin.available_for_order')</option>
                         </select>
                     </div>
-
-                    <input type="hidden" name="sizecount" value="1" id="product-counter">
-                    <hr>
+                    <div class="input-wrap size-price-bt-wrap">
+                        <button id="delete-size-price" class="size-price-bt-min"><span class="btn-w-sp"><span>@lang('admin.delete_size_price')</span><img src="{{ asset('img/minus-label.svg') }}" ></span></button>
+                    </div>
                 </div>
             </div>
-            <div class="size-price-bt-wrapp">
-                {{-- <button id="delete-size-price" class="size-price-bt-min"><span class="btn-w-sp"><img src="{{ asset('img/minus-label.svg') }}" ><span>@lang('admin.delete_size_price')</span></span></button> --}}
+            <div class="size-price-bt-wrap">
                 <button id="add-size-price" class="size-price-bt-pl"><span class="btn-w-sp"><span>@lang('admin.add_size_price')</span><img src="{{ asset('img/plus-label.svg') }}" ></span></button>
             </div>
+            <input type="hidden" name="sizecount" value="1" id="product-counter">
         </div>
         <div class="image-slide flex-col">
             <label><input type="hidden" name="image" value=""></label>
@@ -351,8 +351,10 @@
                                 <option value="4">@lang('admin.available_for_order')</option>
                             </select>
                         </div>
+                        <div class="input-wrap size-price-bt-wrap">
+                            <button id="delete-size-price" class="size-price-bt-min"><span class="btn-w-sp"><span>@lang('admin.delete_size_price')</span><img src="{{ asset('img/minus-label.svg') }}" ></span></button>
+                        </div>
                         <input type="hidden" name="sizecount" value="${counter}" id="product-counter">
-                        <hr>
                     </div>
                 `;
             }
