@@ -1,16 +1,19 @@
 let sizeprice = document.querySelector('.size-price'),
     size_price_add_btn = document.querySelector('#add-size-price'),
-    size_price_delete_btn = document.querySelector('#delete-size-price'),
+    size_price_delete_btns = document.querySelectorAll('.size-price-bt-min'),
     counter_input = document.querySelector('#product-counter'),
     auto_value_inuts = [],
     auto_selects = [],
     new_auto_value_inuts,
     new_auto_selects,
     options,
-    counter = 1;
+    counter = size_price_delete_btns.length;
 
 size_price_add_btn.onclick = addSizePrice;
-size_price_delete_btn.onclick = deleteSizePrice;
+
+size_price_delete_btns.forEach(elem => {
+    elem.onclick = deleteSizePrice;
+});
 
 // countSizePrices (counter)
 
@@ -25,7 +28,6 @@ function addSizePrice(e)
     countSizePrices (counter);
 
     counter_input.value = counter;
-
 }
 
 function deleteSizePrice(e)
@@ -35,11 +37,14 @@ function deleteSizePrice(e)
     }
 
     if (counter <= 1) {
+        alert('Має залишатись хоча б одна грамовка. Щоб видалити її, спочатку додайте нову');
         return false;
     }
 
     counter--;
-    countSizePrices (counter);
+
+    e.target.closest('.size').remove();
+    countSizePrices(counter);
 }
 
 function countSizePrices (counter)
@@ -51,7 +56,6 @@ function countSizePrices (counter)
     }
 
     auto_value_inuts = document.querySelectorAll('.auto-value');
-    console.log(auto_value_inuts);
     sizeprice.innerHTML = text;
     new_auto_value_inuts = document.querySelectorAll('.auto-value');
 
@@ -73,6 +77,12 @@ function countSizePrices (counter)
             }
         }
     }
+
+    counter_input.value = counter;
+    size_price_delete_btns = document.querySelectorAll('.size-price-bt-min');
+    size_price_delete_btns.forEach(elem => {
+        elem.onclick = deleteSizePrice;
+    });
 }
 
 

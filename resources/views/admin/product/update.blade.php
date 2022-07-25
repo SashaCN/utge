@@ -196,54 +196,57 @@ $locale = app()->getLocale();
                     $counter++;
                     @endphp
 
-                    <div class="input-wrap">
-                        <input type="text" value="{{ $sizeprice->size }}" name="size/{{$counter}}" id="size{{$counter}}" class="auto-value">
-                        <label class="label" for="size{{$counter}}">@lang('admin.add_size')</label>
-                    </div>
+                    <div class="size{{$counter}} size">
+                        <div class="input-wrap">
+                            <input type="text" value="{{ $sizeprice->size }}" name="size/{{$counter}}" id="size{{$counter}}" class="auto-value">
+                            <label class="label" for="size{{$counter}}">@lang('admin.add_size')</label>
+                        </div>
 
-                    <div class="input-wrap">
-                        <input type="number" value="{{ $sizeprice->price }}" name="price/{{$counter}}" id="price{{$counter}}" class="auto-value">
-                        <label class="label" for="price">@lang('admin.add_price')</label>
-                    </div>
+                        <div class="input-wrap">
+                            <input type="number" value="{{ $sizeprice->price }}" name="price/{{$counter}}" id="price{{$counter}}" class="auto-value">
+                            <label class="label" for="price">@lang('admin.add_price')</label>
+                        </div>
 
-                    <div class="input-wrap">
-                        <input type="text" value="{{ $sizeprice->price_units }}" name="price_units/{{$counter}}" id="price_units{{$counter}}" class="auto-value">
-                        <label class="label" for="price_units{{$counter}}">@lang('admin.add_price_units')</label>
-                    </div>
+                        <div class="input-wrap">
+                            <input type="text" value="{{ $sizeprice->price_units }}" name="price_units/{{$counter}}" id="price_units{{$counter}}" class="auto-value">
+                            <label class="label" for="price_units{{$counter}}">@lang('admin.add_price_units')</label>
+                        </div>
 
-                    <div class="input-wrap pt0">
-                        <p>@lang('admin.add_available')</p>
-                        <select name="available/{{$counter}}" class="auto-value">
-                            @if ($sizeprice->available == 1)
-                                <option value="1" selected>@lang('admin.available')</option>
-                            @else
-                                <option value="1">@lang('admin.available')</option>
-                            @endif
-                            @if ($sizeprice->available == 2)
-                                <option value="2" selected>@lang('admin.not_available')</option>
-                            @else
-                                <option value="2">@lang('admin.not_available')</option>
-                            @endif
-                            @if ($sizeprice->available == 3)
-                                <option value="3" selected>@lang('admin.waiting_available')</option>
-                            @else
-                                <option value="3">@lang('admin.waiting_available')</option>
-                            @endif
-                            @if ($sizeprice->available == 4)
-                                <option value="4" selected>@lang('admin.available_for_order')</option>
-                            @else
-                                <option value="4">@lang('admin.available_for_order')</option>
-                            @endif
-                        </select>
+                        <div class="input-wrap pt0">
+                            <p>@lang('admin.add_available')</p>
+                            <select name="available/{{$counter}}" class="auto-value">
+                                @if ($sizeprice->available == 1)
+                                    <option value="1" selected>@lang('admin.available')</option>
+                                @else
+                                    <option value="1">@lang('admin.available')</option>
+                                @endif
+                                @if ($sizeprice->available == 2)
+                                    <option value="2" selected>@lang('admin.not_available')</option>
+                                @else
+                                    <option value="2">@lang('admin.not_available')</option>
+                                @endif
+                                @if ($sizeprice->available == 3)
+                                    <option value="3" selected>@lang('admin.waiting_available')</option>
+                                @else
+                                    <option value="3">@lang('admin.waiting_available')</option>
+                                @endif
+                                @if ($sizeprice->available == 4)
+                                    <option value="4" selected>@lang('admin.available_for_order')</option>
+                                @else
+                                    <option value="4">@lang('admin.available_for_order')</option>
+                                @endif
+                            </select>
+                        </div>
+                        <div class="input-wrap size-price-bt-wrap">
+                            <button class="size-price-bt-min" data-size-num="{{ $counter }}"><span class="btn-w-sp"><span>@lang('admin.delete_size_price')</span><img src="{{ asset('img/minus-label.svg') }}" ></span></button>
+                        </div>
                     </div>
-                    <input type="hidden" name="counter" value="{{$counter}}" id="product-counter">
-                    <hr>
                 @endforeach
             </div>
-        <div class="size-price-bt-wrapp">
-            <button id="delete-size-price" class="size-price-bt-min"><span class="btn-w-sp"><img src="{{ asset('img/minus-label.svg') }}" ><span>@lang('admin.delete_size_price')</span></span></button>
-            <button id="add-size-price" class="size-price-bt-pl"><span class="btn-w-sp"><span>@lang('admin.add_size_price')</span><img src="{{ asset('img/plus-label.svg') }}" ></span></button>
-        </div>
+            <div class="size-price-bt-wrap">
+                <button id="add-size-price" class="size-price-bt-pl"><span class="btn-w-sp"><span>@lang('admin.add_size_price')</span><img src="{{ asset('img/plus-label.svg') }}" ></span></button>
+            </div>
+            <input type="hidden" name="sizecount" value="{{$counter}}" id="product-counter">
     </div>
 
     <div class="image-slide flex-col">
@@ -392,32 +395,35 @@ $locale = app()->getLocale();
 <script>
     function getStructure(counter) {
         return structure = `
-                    <div class="input-wrap">
-                        <input type="text" name="size/${counter}" id="size${counter}" class="auto-value">
-                        <label class="label" for="size${counter}">@lang('admin.add_size')</label>
-                    </div>
+                    <div class="size${counter} size">
+                        <div class="input-wrap">
+                            <input type="text" name="size/${counter}" id="size${counter}" class="auto-value">
+                            <label class="label" for="size${counter}">@lang('admin.add_size')</label>
+                        </div>
 
-                    <div class="input-wrap">
-                        <input type="number" name="price/${counter}" id="price${counter}" class="auto-value">
-                        <label class="label" for="price${counter}">@lang('admin.add_price')</label>
-                    </div>
+                        <div class="input-wrap">
+                            <input type="number" name="price/${counter}" id="price${counter}" class="auto-value">
+                            <label class="label" for="price${counter}">@lang('admin.add_price')</label>
+                        </div>
 
-                    <div class="input-wrap">
-                        <input type="text" name="price_units/${counter}" id="price_units${counter}" class="auto-value">
-                        <label class="label" for="price_units${counter}">@lang('admin.add_price_units')</label>
-                    </div>
+                        <div class="input-wrap">
+                            <input type="text" name="price_units/${counter}" id="price_units${counter}" class="auto-value">
+                            <label class="label" for="price_units${counter}">@lang('admin.add_price_units')</label>
+                        </div>
 
-                    <div class="input-wrap pt0">
-                        <p>@lang('admin.add_available')</p>
-                        <select name="available/${counter}" class="auto-value">
-                            <option value="1">@lang('admin.available')</option>
-                            <option value="2">@lang('admin.not_available')</option>
-                            <option value="3">@lang('admin.waiting_available')</option>
-                            <option value="4">@lang('admin.available_for_order')</option>
-                        </select>
+                        <div class="input-wrap pt0">
+                            <p>@lang('admin.add_available')</p>
+                            <select name="available/${counter}" class="auto-value">
+                                <option value="1">@lang('admin.available')</option>
+                                <option value="2">@lang('admin.not_available')</option>
+                                <option value="3">@lang('admin.waiting_available')</option>
+                                <option value="4">@lang('admin.available_for_order')</option>
+                            </select>
+                        </div>
+                        <div class="input-wrap size-price-bt-wrap">
+                            <button class="size-price-bt-min" data-size-num="${counter}"><span class="btn-w-sp"><span>@lang('admin.delete_size_price')</span><img src="{{ asset('img/minus-label.svg') }}" ></span></button>
+                        </div>
                     </div>
-                    <input type="hidden" name="sizecount" value="${counter}" id="#product-counter">
-                    <hr>
         `;
     }
 </script>
@@ -427,5 +433,3 @@ $locale = app()->getLocale();
 <script src="{{ asset('js/seo.js') }}"></script>
 <script src="{{ asset('js/simpleVisualTextEditor.js') }}"></script>
 @endsection
-
-`

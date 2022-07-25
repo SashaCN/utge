@@ -169,7 +169,7 @@
         </div>
         <div class="size-price-slide flex-col">
             <div class="size-price">
-                <div class="size1">
+                <div class="size1 size">
                     <div class="input-wrap">
                         <input type="text" name="size/1" value="{{ old('size/1') }}" id="size1" class="auto-value">
                         <label class="label" for="size1">@lang('admin.add_size')</label>
@@ -194,15 +194,15 @@
                             <option value="4">@lang('admin.available_for_order')</option>
                         </select>
                     </div>
-
-                    <input type="hidden" name="sizecount" value="1" id="product-counter">
-                    <hr>
+                    <div class="input-wrap size-price-bt-wrap">
+                        <button class="size-price-bt-min" data-size-num="1"><span class="btn-w-sp"><span>@lang('admin.delete_size_price')</span><img src="{{ asset('img/minus-label.svg') }}" ></span></button>
+                    </div>
                 </div>
             </div>
-            <div class="size-price-bt-wrapp">
-                <button id="delete-size-price" class="size-price-bt-min"><span class="btn-w-sp"><img src="{{ asset('img/minus-label.svg') }}" ><span>@lang('admin.delete_size_price')</span></span></button>
+            <div class="size-price-bt-wrap">
                 <button id="add-size-price" class="size-price-bt-pl"><span class="btn-w-sp"><span>@lang('admin.add_size_price')</span><img src="{{ asset('img/plus-label.svg') }}" ></span></button>
             </div>
+            <input type="hidden" name="sizecount" value="1" id="product-counter">
         </div>
         <div class="image-slide flex-col">
             <label><input type="hidden" name="image" value=""></label>
@@ -326,7 +326,7 @@
 
                 return structure = `
 
-                    <div class="size${counter}">
+                    <div class="size${counter} size">
                         <div class="input-wrap">
                             <input type="text" name="size/${counter}" id="size${counter}" class="auto-value">
                             <label class="label" for="size${counter}">@lang('admin.add_size')</label>
@@ -351,8 +351,9 @@
                                 <option value="4">@lang('admin.available_for_order')</option>
                             </select>
                         </div>
-                        <input type="hidden" name="sizecount" value="${counter}" id="product-counter">
-                        <hr>
+                        <div class="input-wrap size-price-bt-wrap">
+                            <button class="size-price-bt-min" data-size-num="${counter}"><span class="btn-w-sp"><span>@lang('admin.delete_size_price')</span><img src="{{ asset('img/minus-label.svg') }}" ></span></button>
+                        </div>
                     </div>
                 `;
             }
