@@ -764,6 +764,7 @@ h2 {
   text-transform: uppercase;
   font-size: 2.7rem;
   font-weight: 500;
+  padding: 0 5px;
   color: #003b95;
 }
 
@@ -2652,8 +2653,64 @@ footer .mail {
   /* -------------------------------------------------------------------------- */
   /*                                   basket                                   */
   /* -------------------------------------------------------------------------- */
-  .count-col input {
+  .title-row:first-child {
+    display: none;
+  }
+
+  .basket-row:not(.title-row) {
+    grid-template: 30px 45px 30px/1fr minmax(60%, 2fr) 0.2fr;
+  }
+  .basket-row:not(.title-row) > div {
+    align-items: flex-start;
+  }
+  .basket-row:not(.title-row) .img-col {
+    grid-area: 1/1/4/2;
+  }
+  .basket-row:not(.title-row) .img-col img {
+    height: 100%;
+  }
+  .basket-row:not(.title-row) .name-col {
+    grid-area: 1/2/2/3;
+  }
+  .basket-row:not(.title-row) .name-col h3 {
+    margin: 0;
+    max-width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  .basket-row:not(.title-row) .count-col {
+    grid-area: 2/2/3/3;
+    justify-content: flex-start;
+  }
+  .basket-row:not(.title-row) .count-col input {
     padding: 10px 15px;
+  }
+  .basket-row:not(.title-row) .name-col,
+.basket-row:not(.title-row) .count-col,
+.basket-row:not(.title-row) .price-col {
+    padding: 0 15px;
+  }
+  .basket-row:not(.title-row) .price-col {
+    grid-area: 3/2/4/3;
+    justify-content: flex-start;
+  }
+  .basket-row:not(.title-row) .delete-col {
+    grid-area: 2/3/3/4;
+  }
+
+  .general-row {
+    grid-template: 1fr/repeat(3, 1fr);
+    padding: 15px 0;
+  }
+  .general-row .name-col {
+    grid-column: 1/2;
+  }
+  .general-row .count-col {
+    grid-column: 2/3;
+  }
+  .general-row .price-col {
+    grid-column: 3/4;
   }
 }
 @media screen and (max-width: 550px) {
