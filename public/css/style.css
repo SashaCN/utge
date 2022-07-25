@@ -1154,7 +1154,7 @@ p.category-item::before {
   padding: 8px 10px;
 }
 
-.liked .like svg .inside {
+.like svg {
   fill: #003b95;
 }
 
@@ -1226,14 +1226,6 @@ p.category-item::before {
 .product .like svg {
   width: 35px;
   height: 31px;
-}
-
-.outside {
-  fill: #003b95;
-}
-
-.inside {
-  fill: none;
 }
 
 .shadow-box {
