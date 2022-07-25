@@ -1,6 +1,6 @@
 let sizeprice = document.querySelector('.size-price'),
     size_price_add_btn = document.querySelector('#add-size-price'),
-    size_price_delete_btn = document.querySelector('#delete-size-price'),
+    size_price_delete_btns = document.querySelectorAll('.size-price-bt-min'),
     counter_input = document.querySelector('#product-counter'),
     auto_value_inuts = [],
     auto_selects = [],
@@ -10,7 +10,10 @@ let sizeprice = document.querySelector('.size-price'),
     counter = 1;
 
 size_price_add_btn.onclick = addSizePrice;
-size_price_delete_btn.onclick = deleteSizePrice;
+
+size_price_delete_btns.forEach(elem => {
+    elem.onclick = deleteSizePrice;
+});
 
 // countSizePrices (counter)
 
@@ -39,7 +42,9 @@ function deleteSizePrice(e)
     }
 
     counter--;
-    countSizePrices (counter);
+
+    e.target.closest('.size').remove();
+    countSizePrices(counter);
 }
 
 function countSizePrices (counter)
@@ -73,6 +78,12 @@ function countSizePrices (counter)
             }
         }
     }
+
+    counter_input.value = counter;
+    size_price_delete_btns = document.querySelectorAll('.size-price-bt-min');
+    size_price_delete_btns.forEach(elem => {
+        elem.onclick = deleteSizePrice;
+    });
 }
 
 

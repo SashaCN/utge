@@ -169,7 +169,7 @@
         </div>
         <div class="size-price-slide flex-col current-slide">
             <div class="size-price">
-                <div class="size1">
+                <div class="size1 size">
                     <div class="input-wrap">
                         <input type="text" name="size/1" value="{{ old('size/1') }}" id="size1" class="auto-value">
                         <label class="label" for="size1">@lang('admin.add_size')</label>
@@ -195,7 +195,7 @@
                         </select>
                     </div>
                     <div class="input-wrap size-price-bt-wrap">
-                        <button id="delete-size-price" class="size-price-bt-min"><span class="btn-w-sp"><span>@lang('admin.delete_size_price')</span><img src="{{ asset('img/minus-label.svg') }}" ></span></button>
+                        <button class="size-price-bt-min" data-size-num="1"><span class="btn-w-sp"><span>@lang('admin.delete_size_price')</span><img src="{{ asset('img/minus-label.svg') }}" ></span></button>
                     </div>
                 </div>
             </div>
@@ -326,7 +326,7 @@
 
                 return structure = `
 
-                    <div class="size${counter}">
+                    <div class="size${counter} size">
                         <div class="input-wrap">
                             <input type="text" name="size/${counter}" id="size${counter}" class="auto-value">
                             <label class="label" for="size${counter}">@lang('admin.add_size')</label>
@@ -352,9 +352,8 @@
                             </select>
                         </div>
                         <div class="input-wrap size-price-bt-wrap">
-                            <button id="delete-size-price" class="size-price-bt-min"><span class="btn-w-sp"><span>@lang('admin.delete_size_price')</span><img src="{{ asset('img/minus-label.svg') }}" ></span></button>
+                            <button class="size-price-bt-min" data-size-num="${counter}"><span class="btn-w-sp"><span>@lang('admin.delete_size_price')</span><img src="{{ asset('img/minus-label.svg') }}" ></span></button>
                         </div>
-                        <input type="hidden" name="sizecount" value="${counter}" id="product-counter">
                     </div>
                 `;
             }
