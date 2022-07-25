@@ -65,7 +65,7 @@
     <form id="form" action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data" class="current-slide-wrap">
         @csrf
 
-        <div class="name-slide flex-col current-slide">
+        <div class="name-slide flex-col">
             <div class="input-wrap">
                 <input type="text" id="title_uk" value="{{ old('title_uk') }}" name="title_uk">
                 <label class="label" for="title_uk" >@lang('admin.add_uk_title')</label>
@@ -167,7 +167,7 @@
               </div>
             </div>
         </div>
-        <div class="size-price-slide flex-col">
+        <div class="size-price-slide flex-col current-slide">
             <div class="size-price">
                 <div class="size1">
                     <div class="input-wrap">
@@ -200,7 +200,7 @@
                 </div>
             </div>
             <div class="size-price-bt-wrapp">
-                <button id="delete-size-price" class="size-price-bt-min"><span class="btn-w-sp"><img src="{{ asset('img/minus-label.svg') }}" ><span>@lang('admin.delete_size_price')</span></span></button>
+                {{-- <button id="delete-size-price" class="size-price-bt-min"><span class="btn-w-sp"><img src="{{ asset('img/minus-label.svg') }}" ><span>@lang('admin.delete_size_price')</span></span></button> --}}
                 <button id="add-size-price" class="size-price-bt-pl"><span class="btn-w-sp"><span>@lang('admin.add_size_price')</span><img src="{{ asset('img/plus-label.svg') }}" ></span></button>
             </div>
         </div>
