@@ -1154,8 +1154,8 @@ p.category-item::before {
   padding: 8px 10px;
 }
 
-.liked .like svg {
-  transform: rotate(180deg);
+.like svg {
+  fill: #003b95;
 }
 
 .status {
@@ -1226,7 +1226,6 @@ p.category-item::before {
 .product .like svg {
   width: 35px;
   height: 31px;
-  fill: #003b95;
 }
 
 .shadow-box {

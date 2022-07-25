@@ -164,6 +164,7 @@
                                 <svg>
                                     <use xlink:href="{{ asset('img/sprite.svg#like') }}"></use>
                                 </svg>
+
                             </span>
                         </div>
                     </figcaption>
