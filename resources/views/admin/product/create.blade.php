@@ -65,7 +65,7 @@
     <form id="form" action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data" class="current-slide-wrap">
         @csrf
 
-        <div class="name-slide flex-col">
+        <div class="name-slide flex-col current-slide">
             <div class="input-wrap">
                 <input type="text" id="title_uk" value="{{ old('title_uk') }}" name="title_uk">
                 <label class="label" for="title_uk" >@lang('admin.add_uk_title')</label>
@@ -167,7 +167,7 @@
               </div>
             </div>
         </div>
-        <div class="size-price-slide flex-col current-slide">
+        <div class="size-price-slide flex-col">
             <div class="size-price">
                 <div class="size1 size">
                     <div class="input-wrap">

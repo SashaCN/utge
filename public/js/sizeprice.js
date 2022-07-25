@@ -7,7 +7,7 @@ let sizeprice = document.querySelector('.size-price'),
     new_auto_value_inuts,
     new_auto_selects,
     options,
-    counter = 1;
+    counter = size_price_delete_btns.length;
 
 size_price_add_btn.onclick = addSizePrice;
 
@@ -28,7 +28,6 @@ function addSizePrice(e)
     countSizePrices (counter);
 
     counter_input.value = counter;
-
 }
 
 function deleteSizePrice(e)
@@ -38,6 +37,7 @@ function deleteSizePrice(e)
     }
 
     if (counter <= 1) {
+        alert('Має залишатись хоча б одна грамовка. Щоб видалити її, спочатку додайте нову');
         return false;
     }
 
@@ -56,7 +56,6 @@ function countSizePrices (counter)
     }
 
     auto_value_inuts = document.querySelectorAll('.auto-value');
-    console.log(auto_value_inuts);
     sizeprice.innerHTML = text;
     new_auto_value_inuts = document.querySelectorAll('.auto-value');
 
