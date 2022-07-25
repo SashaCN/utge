@@ -18,7 +18,8 @@ function toggleFav (e)
     let product = e.target.closest('.product_id');
 
     if (!product.classList.contains('liked')) {
-        console.log("add")
+        product.querySelector('.like svg use').setAttribute('xlink:href', 'img/sprite.svg#like_active');
+
         if (favouriteProduct.length == 0) {
             favouriteProduct.push(product.getAttribute('data-product-id'));
         } else {
@@ -32,7 +33,8 @@ function toggleFav (e)
             }
         }
     } else {
-        console.log('del')
+        product.querySelector('.like svg use').setAttribute('xlink:href', 'img/sprite.svg#like');
+
         favouriteProduct.splice(favouriteProduct.indexOf(product.getAttribute('data-product-id')), 1);
 
         if (location.pathname == '/favourite') {
@@ -61,6 +63,10 @@ function showProductsNumber ()
 
 function checkLike (){
     for (let i = 0; i < favouriteProduct.length; i++) {
-        document.querySelector(`.product[data-product-id="${favouriteProduct[i]}"]`).classList.add('liked');
+        let product = document.querySelector(`.product[data-product-id="${favouriteProduct[i]}"]`);
+
+        product.classList.add('liked');
+
+        product.querySelector('.like svg use').setAttribute('xlink:href', 'img/sprite.svg#like_active');
     }
 }
