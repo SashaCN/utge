@@ -108,7 +108,7 @@
         'services_category' => 'Категорії послуг',
         'services' => 'Послуги',
         'services_list' => 'Список послуг',
-        'delete_material_price' => 'Удалити матеріал/ціну',
+        'delete_material_price' => 'забрати матеріал/ціну',
         'add_material_price' => 'Додати матеріал/ціну',
         'add_units' => 'Одиниця виміру',
         'add_material' => 'Матеріал',
