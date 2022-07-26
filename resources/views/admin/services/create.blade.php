@@ -72,28 +72,30 @@
 
         <div class="size-price-slide flex-col">
             <div class="size-price">
-                <div class="input-wrap">
-                    <input type="text" name="materials/1" value="{{ old('materials/1') }}" id="materials1" class="auto-value">
-                    <label class="label" for="materials1">@lang('admin.add_material')</label>
-                </div>
+                <div class="size size1">
+                    <div class="input-wrap">
+                        <input type="text" name="materials/1" value="{{ old('materials/1') }}" id="materials1" class="auto-value">
+                        <label class="label" for="materials1">@lang('admin.add_material')</label>
+                    </div>
 
-                <div class="input-wrap">
-                    <input type="text" name="price/1" value="{{ old('price/1') }}" id="price1" class="auto-value">
-                    <label class="label" for="price1">@lang('admin.add_price')</label>
-                </div>
+                    <div class="input-wrap">
+                        <input type="text" name="price/1" value="{{ old('price/1') }}" id="price1" class="auto-value">
+                        <label class="label" for="price1">@lang('admin.add_price')</label>
+                    </div>
 
-                <div class="input-wrap">
-                    <input type="text" name="units/1" value="{{ old('units/1') }}" id="units1" class="auto-value">
-                    <label class="label" for="units1">@lang('admin.add_units')</label>
+                    <div class="input-wrap">
+                        <input type="text" name="units/1" value="{{ old('units/1') }}" id="units1" class="auto-value">
+                        <label class="label" for="units1">@lang('admin.add_units')</label>
+                    </div>
+                    <div class="input-wrap size-price-bt-wrap">
+                        <button class="size-price-bt-min" data-size-num="1"><span class="btn-w-sp"><span>@lang('admin.delete_material_price')</span><img src="{{ asset('img/minus-label.svg') }}" ></span></button>
+                    </div>
                 </div>
-
-                <hr>
-                <input type="hidden" name="sizecount" value="1">
             </div>
-            <div class="size-price-bt-wrapp">
-                <button id="delete-size-price" class="size-price-bt-min"><span class="btn-w-sp"><img src="{{ asset('img/minus-label.svg') }}" ><span>@lang('admin.delete_material_price')</span></span></button>
+            <div class="size-price-bt-wrap">
                 <button id="add-size-price" class="size-price-bt-pl"><span class="btn-w-sp"><span>@lang('admin.add_material_price')</span><img src="{{ asset('img/plus-label.svg') }}" ></span></button>
             </div>
+            <input type="hidden" name="sizecount" value="1" id="product-counter">
         </div>
         <div class="another-slide flex-col">
             <div class="input-wrap sub-category-wrap">
@@ -115,27 +117,30 @@
         <script>
             function getStructure(counter) {
                 return structure = `
-                    <div class="input-wrap">
-                        <input type="text" name="materials/${counter}" id="materials${counter}" class="auto-value">
-                        <label class="label" for="materials${counter}">@lang('admin.add_material')</label>
-                    </div>
+                    <div class="size size${counter}">
+                        <div class="input-wrap">
+                            <input type="text" name="materials/${counter}" id="materials${counter}" class="auto-value">
+                            <label class="label" for="materials${counter}">@lang('admin.add_material')</label>
+                        </div>
 
-                    <div class="input-wrap">
-                        <input type="number" name="price/${counter}" id="price${counter}" class="auto-value">
-                        <label class="label" for="price${counter}">@lang('admin.add_price')</label>
-                    </div>
+                        <div class="input-wrap">
+                            <input type="number" name="price/${counter}" id="price${counter}" class="auto-value">
+                            <label class="label" for="price${counter}">@lang('admin.add_price')</label>
+                        </div>
 
-                    <div class="input-wrap">
-                        <input type="text" name="units/${counter}" id="units${counter}" class="auto-value">
-                        <label class="label" for="units${counter}">@lang('admin.add_units')</label>
+                        <div class="input-wrap">
+                            <input type="text" name="units/${counter}" id="units${counter}" class="auto-value">
+                            <label class="label" for="units${counter}">@lang('admin.add_units')</label>
+                        </div>
+                        <div class="input-wrap size-price-bt-wrap">
+                            <button class="size-price-bt-min" data-size-num="${counter}"><span class="btn-w-sp"><span>@lang('admin.delete_material_price')</span><img src="{{ asset('img/minus-label.svg') }}" ></span></button>
+                        </div>
                     </div>
-                    <input type="hidden" name="sizecount" value="${counter}">
-                    <hr>
                 `;
             }
 
         </script>
-        <script src="{{ asset('js/servicessizeprice.js') }}"></script>
+        <script src="{{ asset('js/sizeprice.js') }}"></script>
     </form>
     <script src="{{ asset('js/create.js') }}"></script>
     <script src="{{ asset('js/seo.js') }}"></script>
