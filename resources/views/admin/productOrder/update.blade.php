@@ -67,7 +67,7 @@ $locale = app()->getLocale();
     </table>
     <table>
         @foreach ($orders as $order)
-            @dump($order->product)
+            @dump($order)
         @endforeach
     </table>
 </div>

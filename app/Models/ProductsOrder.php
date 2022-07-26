@@ -23,8 +23,12 @@ class ProductsOrder extends Model
         return $this->hasOne(Customers::class);
     }
 
-    public static function getProduct()
+    static function getProduct($id)
     {
-
+        return DB::table('products')
+                ->leftJoin('products_orders', 'product_id', '=', 'products.id')
+                ->select('products.id')
+                ->where('products_orders.product_id', $id)
+                ->get();
     }
 }

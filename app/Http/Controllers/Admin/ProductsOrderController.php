@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Customers;
 use App\Models\ProductsOrder;
 use Illuminate\Http\Request;
+use App\Models\Product;
 
 class ProductsOrderController extends Controller
 {
@@ -64,11 +65,11 @@ class ProductsOrderController extends Controller
     public function edit($id)
     {
         $customer = Customers::find($id);
-        $orders = ProductsOrder::all()->where('customer_id', $id);
-        
+        $orders = ProductsOrder::getProduct($id)->where('customer_id', $id);
+
         return view('admin.productOrder.update', [
             'customers' => $customer,
-            'orders'=> $orders
+            'orders'=> $orders,
         ]);
     }
 
