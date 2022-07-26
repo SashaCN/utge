@@ -3,7 +3,8 @@ let categories = document.querySelectorAll('.category-item'),
     sub = document.querySelectorAll('.sub-list input[type=checkbox]'),
     filter_btn = document.querySelector('.filter-btn button'),
     close_bg = document.querySelector('.close-filter-bg'),
-    filter_menu = document.querySelector('.filter-menu');
+    filter_menu = document.querySelector('.filter-menu'),
+    close_btn = document.querySelector('.close-btn');
 
 categories.forEach(elem => {
     elem.onclick = (e) => {
@@ -35,3 +36,8 @@ filter_btn.onclick = () => {
 close_bg.onclick = () => {
     filter_menu.classList.remove('active-filter');
 }
+
+close_btn.onclick = () => {
+    filter_menu.classList.remove('active-filter');
+}
+

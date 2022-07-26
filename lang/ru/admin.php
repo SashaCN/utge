@@ -148,6 +148,5 @@ return [
     'order-service' => 'Заказ №',
     'interes-service' => 'Что интересует',
     'change' => 'Изменить',
-
 ];
 
