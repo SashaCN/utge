@@ -36,10 +36,11 @@ Route::middleware('set_locale')->group(function()
 
         Route::get('home', [\App\Http\Controllers\SiteController::class, 'index'])->name('index');
         Route::get('products', [\App\Http\Controllers\ProductController::class, 'index'])->name('products');
-        Route::get('product/{id}', [\App\Http\Controllers\ProductController::class, 'show'])->name('product');
+        Route::get('product/{id}/', [\App\Http\Controllers\ProductController::class, 'show'])->name('product');
         Route::get('services', [\App\Http\Controllers\SiteController::class, 'services'])->name('services');
-        Route::get('service/{id}', [\App\Http\Controllers\SiteController::class, 'service'])->name('service');
+        Route::get('service/{id}/', [\App\Http\Controllers\SiteController::class, 'service'])->name('service');
         Route::post('storeServiceOrder', [\App\Http\Controllers\SiteController::class, 'storeServiceOrder'])->name('storeServiceOrder');
+        Route::post('storeProductOrder', [\App\Http\Controllers\SiteController::class, 'storeProductOrder'])->name('storeProductOrder');
         Route::get('basket', [\App\Http\Controllers\SiteController::class, 'basket'])->name('basket');
         Route::get('favourite', [\App\Http\Controllers\SiteController::class, 'favourite'])->name('favourite');
         Route::get('deliveriesAndPayments', [\App\Http\Controllers\SiteController::class, 'showDeliveryAndPay'])->name('deliveriesAndPayments');
@@ -71,6 +72,7 @@ Route::middleware('set_locale')->group(function ()
             Route::resource('services', \App\Http\Controllers\Admin\ServicesController::class);
             Route::resource('trashBox', \App\Http\Controllers\Admin\TrashBoxController::class);
             Route::resource('servicesOrder', \App\Http\Controllers\Admin\ServiceOrderController::class);
+            Route::resource('productsOrder', \App\Http\Controllers\Admin\ProductsOrderController::class);
             // create route
             Route::get('sliderCreate', [\App\Http\Controllers\Admin\ChildPageController::class, 'sliderCreate'])->name('childPage.sliderCreate');
             Route::get('sliderEdit/{slider_id}', [\App\Http\Controllers\Admin\ChildPageController::class, 'sliderEdit'])->name('childPage.sliderEdit');

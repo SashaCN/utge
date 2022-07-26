@@ -9,6 +9,7 @@ use App\Models\ChildPage;
 use App\Models\ServicesOrder;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use App\Models\ProductsOrder;
 
 class ComposerServiceProvider extends ServiceProvider
 {
@@ -48,9 +49,12 @@ class ComposerServiceProvider extends ServiceProvider
         View::composer('site.index', function($view){
             $view->with('categories',  Category::all());
         });
-        
+
         View::composer('admin.admin', function($view){
             $view->with('servicesOrders',  ServicesOrder::all()->where('status' , '0'));
+        });
+        View::composer('admin.admin', function($view){
+            $view->with('productsOrders',  ProductsOrder::all()->where('status' , '0'));
         });
 
 

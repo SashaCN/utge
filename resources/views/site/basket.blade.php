@@ -92,7 +92,10 @@
         <div class="placing-an-order">
             <h2>оформлення замовлення</h2>
             <div class="wrapper">
-                <form class="order-form" method="POST" action="">
+                <form class="order-form" method="POST" action="{{ route('storeProductOrder') }}">
+
+                    @csrf
+
                     <div class="order-contacts">
 
                         <h3>1. Ваші контактні дані</h3>
@@ -102,17 +105,17 @@
                             <div class="bascket-name">
                                 <div>
                                     <label for="">@lang('utge.firstname')<span>*</span></label>
-                                    <input type="text" >
+                                    <input name="firstname" type="text" >
                                 </div>
                                 <div>
                                     <label for="">@lang('utge.lastname')<span>*</span></label>
-                                    <input type="text">
+                                    <input name="lastname" type="text">
                                 </div>
                             </div>
 
                             <div class="bascket-number">
                                 <label for="">@lang('utge.number-phone')<span>*</span></label>
-                                <input type="text">
+                                <input name="phone" type="text">
                             </div>
 
                         </div>
@@ -122,34 +125,34 @@
                         <div class="basket-delivery">
 
                             <label for="">Місто<span>*</span></label>
-                            <input type="text">
+                            <input name="city" type="text">
 
                             <p>Спосіб доставки<span>*</span></p>
 
                             <div class="basket-delivery-type">
 
-                                <input type="radio" name="delivery_type" id="ind">
+                                <input value="ind" type="radio" name="delivery_type" id="ind">
                                 <label for="ind">Самовивіз</label>
 
-                                <input type="radio" name="delivery_type" id="adres">
+                                <input value="adres" type="radio" name="delivery_type" id="adres">
                                 <label for="adres">Адресна доставка по Києву</label>
 
-                                <input type="radio" name="delivery_type" id="nova">
+                                <input value="nova" type="radio" name="delivery_type" id="nova">
                                 <label for="nova">Нова пошта</label>
 
-                                <input type="radio" name="delivery_type" id="ukr">
+                                <input value="ukr" type="radio" name="delivery_type" id="ukr">
                                 <label for="ukr">Укрпошта</label>
 
-                                <input type="radio" name="delivery_type" id="int">
+                                <input value="int" type="radio" name="delivery_type" id="int">
                                 <label for="int">Інтайм</label>
 
-                                <input type="radio" name="delivery_type" id="avl">
+                                <input value="avl" type="radio" name="delivery_type" id="avl">
                                 <label for="avl">Автолюкс</label>
 
                             </div>
 
                             <label for="">Адреса доставки<span>*</span></label>
-                            <input type="text">
+                            <input name="adress_delivery" type="text">
 
                         </div>
 
@@ -159,13 +162,13 @@
 
                             <p>спосіб оплати<span>*</span></p>
 
-                            <input type="radio" name="payment_type" id="cash">
+                            <input value="cash" type="radio" name="payment_type" id="cash">
                             <label for="cash">Готівка</label>
 
-                            <input type="radio" name="payment_type" id="privat">
+                            <input value="privat" type="radio" name="payment_type" id="privat">
                             <label for="privat">Оплата на картку Приватбанку</label>
 
-                            <input type="radio" name="payment_type" id="cart">
+                            <input value="cart" type="radio" name="payment_type" id="cart">
                             <label for="cart">Безготівкова оплата</label>
 
                         </div>
@@ -190,12 +193,12 @@
                                                     <td class="bold product-quantify-order"></td>
                                                     <td class="bold product-price-order"></td>
 
-                                                    <input type="hidden" name="product_{{ $product->id }}" value="{{ $product->id }}">
-                                                    <input type="hidden" name="product_{{ $product->id }}-quantify" class="product_input_quantify" value="">
-                                                    <input type="hidden" name="product_{{ $product->id }}-size" value="{{ $min_size }} {{ $product->sizeprices->where('size', $min_size)->first()->price_units}}">
-                                                    <input type="hidden" name="product_{{ $product->id }}-price" class="product_input_price" value="">
+                                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                                    <input type="hidden" name="quantity" value="5">
+                                                    <input type="hidden" name="size" value="{{ $min_size }} {{ $product->sizeprices->where('size', $min_size)->first()->price_units}}">
+                                                    <input type="hidden" name="price" value="1000">
                                                 </tr>
-                                                
+
                                             @endif
                                         @endforeach
                                     @endforeach
@@ -209,7 +212,7 @@
                                 <div class="total-price">
                                     <p>до оплати без доставки</p>
                                     <p class="general-price"></p>
-                                    <input type="hidden" name="general_price" class="product_input_general_price" value="">
+                                    <input type="hidden" name="general_price" value="3000">
                                 </div>
                                 <div class="btn-wrap">
                                     <button class="send-order-btn" type="submit">підтвердити замовлення</button>

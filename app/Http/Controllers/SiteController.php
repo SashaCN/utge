@@ -20,7 +20,9 @@ use App\Models\ServicesOrder;
 use Illuminate\Auth\Events\Validated;
 use App\Mail\OrderShipped;
 use App\Models\Category;
+use App\Models\ProductOrder;
 use Illuminate\Support\Facades\Mail;
+use App\Models\ProductsOrder;
 
 class SiteController extends Controller
 {
@@ -137,6 +139,37 @@ class SiteController extends Controller
 
         $user = 'info@utge.net';
         Mail::to($user)->send(new OrderShipped($serviceOrder));
+
+
+
+        return redirect()->back();
+    }
+    public function storeProductOrder(StoreServicesOrderRequest $request)
+    {
+
+
+        $serviceOrder = new ProductsOrder();
+        $validated = $request->validated();
+        $serviceOrder->firstname = $request->firstname;
+        $serviceOrder->lastname = $request->lastname;
+        $serviceOrder->phone = $request->phone;
+        $serviceOrder->city = $request->city;
+        $serviceOrder->adress_delivery = $request->adress_delivery;
+        $serviceOrder->delivery_type = $request->delivery_type;
+        $serviceOrder->product_id = $request->product_id;
+        $serviceOrder->adress_delivery = $request->adress_delivery;
+        $serviceOrder->size = $request->size;
+        $serviceOrder->price = $request->price;
+        $serviceOrder->quantity = $request->quantity;
+        $serviceOrder->payment_type = $request->payment_type;
+        $serviceOrder->general_price = $request->general_price;
+        $serviceOrder->status = '0';
+        $serviceOrder->fill($request->validated());
+        $serviceOrder->save();
+
+
+        // $user = 'info@utge.net';
+        // Mail::to($user)->send(new OrderShipped($serviceOrder));
 
 
 

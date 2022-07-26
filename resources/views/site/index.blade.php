@@ -161,9 +161,18 @@
                         <li><a href="{{ route('index') }}">@lang('utge.main')</a></li>
                         <li class="sub-menu-parent">
                             <a href="{{ route('products') }}">@lang('utge.goods')</a>
+                            @php
+
+                                $url = Request::url();
+                                $e = explode('/', $url);
+                                $r = [3 => 'products'];
+                                $er = array_replace($e,$r);
+                                $urlp = implode('/', $er);
+
+                            @endphp
                             <div class="sub-menu">
                                 @foreach ($categories as $category)
-                                    <a name="categoryid_{{$category->id}}" href="http://utge/products?categoryid_{{$category->id}}={{$category->id}}">{{ $category->localization[0]->$locale }}</a>
+                                    <a href="{{$urlp}}/?categoryid_{{$category->id}}={{$category->id}}">{{ $category->localization[0]->$locale }}</a>
                                 @endforeach
                             </div>
                         </li>

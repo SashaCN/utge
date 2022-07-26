@@ -5,6 +5,7 @@
 @php
 $locale = app()->getLocale();
 @endphp
+
 <div class="flex title-line">
     <h2>@lang('admin.order-list')</h2>
 </div>
