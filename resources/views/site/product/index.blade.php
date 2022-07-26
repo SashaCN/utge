@@ -15,6 +15,12 @@ $locale = app()->getLocale();
     <div class="filter-menu">
         <div class="close-filter-bg"></div>
         <form id="filter" action="{{ route('products') }}">
+            <p class="close-btn flex-aic">
+                <span>@lang('utge.close')</span>
+                <svg>
+                    <use xlink:href="{{ asset('img/sprite.svg#close') }}"></use>
+                </svg>
+            </p>
             @foreach ($producttypes as $type)
             @php
             $title = $type->localization[0];

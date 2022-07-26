@@ -78,8 +78,6 @@ $locale = app()->getLocale();
             <label class="label" for="title_ru">@lang('admin.add_ru_title')</label>
         </div>
     </div>
-
-
     <div class="size-price-slide flex-col">
         @php
             $counter = 0;
@@ -92,33 +90,31 @@ $locale = app()->getLocale();
                 @php
                 $counter++;
                 @endphp
+                <div class="size size{{ $counter }}">
+                    <div class="input-wrap">
+                        <input type="text" value="{{ $sizeprice->materials }}" name="materials/{{$counter}}" id="materials{{$counter}}" class="auto-value">
+                        <label class="label" for="materials{{$counter}}">@lang('admin.add_size')</label>
+                    </div>
 
-                <div class="input-wrap">
-                    <input type="text" value="{{ $sizeprice->materials }}" name="materials/{{$counter}}" id="materials{{$counter}}">
-                    <label class="label" for="materials{{$counter}}">@lang('admin.add_size')</label>
+                    <div class="input-wrap">
+                        <input type="text" value="{{ $sizeprice->price }}" name="price/{{$counter}}" id="price{{$counter}}" class="auto-value">
+                        <label class="label" for="price">@lang('admin.add_price')</label>
+                    </div>
+
+                    <div class="input-wrap">
+                        <input type="text" value="{{ $sizeprice->units }}" name="units/{{$counter}}" id="units{{$counter}}" class="auto-value">
+                        <label class="label" for="units{{$counter}}">@lang('admin.add_price_units')</label>
+                    </div>
+                    <div class="input-wrap size-price-bt-wrap">
+                        <button class="size-price-bt-min" data-size-num="{{ $counter }}"><span class="btn-w-sp"><span>@lang('admin.delete_size_price')</span><img src="{{ asset('img/minus-label.svg') }}" ></span></button>
+                    </div>
                 </div>
-
-                <div class="input-wrap">
-                    <input type="text" value="{{ $sizeprice->price }}" name="price/{{$counter}}" id="price{{$counter}}">
-                    <label class="label" for="price">@lang('admin.add_price')</label>
-                </div>
-
-                <div class="input-wrap">
-                    <input type="text" value="{{ $sizeprice->units }}" name="units/{{$counter}}" id="units{{$counter}}" class="auto-value">
-                    <label class="label" for="units{{$counter}}">@lang('admin.add_price_units')</label>
-                </div>
-
-                <hr>
             @endforeach
-
         </div>
-
-        <input type="hidden" name="counter" value="{{ $counter }}">
-
-        <div class="size-price-bt-wrapp">
-            <button id="delete-size-price" class="size-price-bt-min"><span class="btn-w-sp"><img src="{{ asset('img/minus-label.svg') }}" ><span>@lang('admin.delete_size_price')</span></span></button>
+        <div class="size-price-bt-wrap">
             <button id="add-size-price" class="size-price-bt-pl"><span class="btn-w-sp"><span>@lang('admin.add_size_price')</span><img src="{{ asset('img/plus-label.svg') }}" ></span></button>
         </div>
+        <input type="hidden" name="sizecount" value="{{ $counter }}" id="product-counter">
     </div>
 
 
@@ -148,12 +144,29 @@ $locale = app()->getLocale();
 
 
 <script>
-    getStructure();
-
     function getStructure(counter) {
-        let structure = document.querySelector('.size-price').innerHTML;
-        return structure;
-    }
+                return structure = `
+                    <div class="size size${counter}">
+                        <div class="input-wrap">
+                            <input type="text" name="materials/${counter}" id="materials${counter}" class="auto-value">
+                            <label class="label" for="materials${counter}">@lang('admin.add_material')</label>
+                        </div>
+
+                        <div class="input-wrap">
+                            <input type="number" name="price/${counter}" id="price${counter}" class="auto-value">
+                            <label class="label" for="price${counter}">@lang('admin.add_price')</label>
+                        </div>
+
+                        <div class="input-wrap">
+                            <input type="text" name="units/${counter}" id="units${counter}" class="auto-value">
+                            <label class="label" for="units${counter}">@lang('admin.add_units')</label>
+                        </div>
+                        <div class="input-wrap size-price-bt-wrap">
+                            <button class="size-price-bt-min" data-size-num="${counter}"><span class="btn-w-sp"><span>@lang('admin.delete_material_price')</span><img src="{{ asset('img/minus-label.svg') }}" ></span></button>
+                        </div>
+                    </div>
+                `;
+            }
 
 </script>
 <script src="{{ asset('js/sizeprice.js') }}"></script>

@@ -526,7 +526,10 @@ h2
 .filter-menu
   width: 20%
 
-h4
+
+
+h4,
+.close-btn
     font-family: $rubik
     font-size: 1.6rem
     font-weight: normal
@@ -535,6 +538,19 @@ h4
     padding: 14px 20px
     background: $primary
     text-transform: uppercase
+
+.close-btn
+    display: none
+    justify-content: center
+    background-color: $primary
+    padding: 5px 20px
+    margin-bottom: 20px
+    transition: $trs
+    svg
+        width: 35px
+        height: 35px
+    &:hover
+        background-color: $primary-hover
 
 .filter-list
     padding: 25px 0

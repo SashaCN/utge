@@ -1034,7 +1034,8 @@ h2 {
   width: 20%;
 }
 
-h4 {
+h4,
+.close-btn {
   font-family: "Rubik", sans-serif;
   font-size: 1.6rem;
   font-weight: normal;
@@ -1043,6 +1044,22 @@ h4 {
   padding: 14px 20px;
   background: #003b95;
   text-transform: uppercase;
+}
+
+.close-btn {
+  display: none;
+  justify-content: center;
+  background-color: #003b95;
+  padding: 5px 20px;
+  margin-bottom: 20px;
+  transition: all 0.5s ease;
+}
+.close-btn svg {
+  width: 35px;
+  height: 35px;
+}
+.close-btn:hover {
+  background-color: #042c68;
 }
 
 .filter-list {
@@ -2255,6 +2272,9 @@ h3 {
   /* -------------------------------------------------------------------------- */
   .active-filter.filter-menu {
     width: 40vw;
+  }
+  .active-filter.filter-menu .close-btn {
+    display: flex;
   }
   .active-filter.filter-menu .close-filter-bg {
     left: 40vw;
