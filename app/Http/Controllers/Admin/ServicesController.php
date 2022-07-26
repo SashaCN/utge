@@ -132,17 +132,28 @@ class ServicesController extends Controller
         $service->fill($request->except(['materials.', 'price.', 'units.']));
         $service->update();
 
-        for($i = 1; $i <= $request->counter; $i++){
+
+        foreach ($service->servicesSizePrice as $size) {
+            $size->delete();
+        }
+        for($i = 1; $i <= $request->sizecount; $i++){
+            $services_size_price = new ServicesSizePrice();
+            $services_size_price->fill($request->validated());
             $materials = 'materials/'.$i;
+
+                if($request->$materials == null){
+                    $request->$materials == false;
+                } else {
+                    $services_size_price->materials = $request->$materials;
+                }
+
+            $services_size_price->materials = $request->$materials;
             $price = 'price/'.$i;
             $units = 'units/'.$i;
-            $services_size_price =[
-                'materials' => $request->$materials,
-                'price' => $request->$price,
-                'units' => $request->$units
-            ];
+            $services_size_price->price = $request->$price;
+            $services_size_price->units = $request->$units;
 
-            $service->servicesSizePrice[$i-1]->update($services_size_price);
+            $service->ServicesSizePrice()->save($services_size_price);
         }
 
         $service->localization()->where('var', 'title')->update($localization_title);

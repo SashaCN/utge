@@ -169,39 +169,40 @@
         </div>
         <div class="size-price-slide flex-col">
             <div class="size-price">
+                <div class="size1 size">
+                    <div class="input-wrap">
+                        <input type="text" name="size/1" value="{{ old('size/1') }}" id="size1" class="auto-value">
+                        <label class="label" for="size1">@lang('admin.add_size')</label>
+                    </div>
 
-                <div class="input-wrap">
-                    <input type="text" name="size/1" value="{{ old('size/1') }}" id="size1" class="auto-value">
-                    <label class="label" for="size1">@lang('admin.add_size')</label>
+                    <div class="input-wrap">
+                        <input type="number" name="price/1" value="{{ old('price/1') }}" id="price1" class="auto-value">
+                        <label class="label" for="price1">@lang('admin.add_price')</label>
+                    </div>
+
+                    <div class="input-wrap">
+                        <input type="text" name="price_units/1" value="{{ old('price_units/1') }}" id="price_units1" class="auto-value">
+                        <label class="label" for="price_units1">@lang('admin.add_price_units')</label>
+                    </div>
+
+                    <div class="input-wrap pt0">
+                        <p>@lang('admin.add_available')</p>
+                        <select name="available/1" class="auto-value">
+                            <option value="1">@lang('admin.available')</option>
+                            <option value="2">@lang('admin.not_available')</option>
+                            <option value="3">@lang('admin.waiting_available')</option>
+                            <option value="4">@lang('admin.available_for_order')</option>
+                        </select>
+                    </div>
+                    <div class="input-wrap size-price-bt-wrap">
+                        <button class="size-price-bt-min" data-size-num="1"><span class="btn-w-sp"><span>@lang('admin.delete_size_price')</span><img src="{{ asset('img/minus-label.svg') }}" ></span></button>
+                    </div>
                 </div>
-
-                <div class="input-wrap">
-                    <input type="text" name="price/1" value="{{ old('price/1') }}" id="price1" class="auto-value">
-                    <label class="label" for="price1">@lang('admin.add_price')</label>
-                </div>
-
-                <div class="input-wrap">
-                    <input type="text" name="price_units/1" value="{{ old('price_units/1') }}" id="price_units1" class="auto-value">
-                    <label class="label" for="price_units1">@lang('admin.add_price_units')</label>
-                </div>
-
-                <div class="input-wrap pt0">
-                    <p>@lang('admin.add_available')</p>
-                    <select name="available/1" class="auto-value">
-                        <option value="1">@lang('admin.available')</option>
-                        <option value="2">@lang('admin.not_available')</option>
-                        <option value="3">@lang('admin.waiting_available')</option>
-                        <option value="4">@lang('admin.available_for_order')</option>
-                    </select>
-                </div>
-
-                <input type="hidden" name="sizecount" value="1">
-                <hr>
             </div>
-            <div class="size-price-bt-wrapp">
-                <button id="delete-size-price" class="size-price-bt-min"><span class="btn-w-sp"><img src="{{ asset('img/minus-label.svg') }}" ><span>@lang('admin.delete_size_price')</span></span></button>
+            <div class="size-price-bt-wrap">
                 <button id="add-size-price" class="size-price-bt-pl"><span class="btn-w-sp"><span>@lang('admin.add_size_price')</span><img src="{{ asset('img/plus-label.svg') }}" ></span></button>
             </div>
+            <input type="hidden" name="sizecount" value="1" id="product-counter">
         </div>
         <div class="image-slide flex-col">
             <label><input type="hidden" name="image" value=""></label>
@@ -324,32 +325,36 @@
             function getStructure(counter) {
 
                 return structure = `
-                    <div class="input-wrap">
-                        <input type="text" name="size/${counter}" id="size${counter}" class="auto-value">
-                        <label class="label" for="size${counter}">@lang('admin.add_size')</label>
-                    </div>
 
-                    <div class="input-wrap">
-                        <input type="number" name="price/${counter}" id="price${counter}" class="auto-value">
-                        <label class="label" for="price${counter}">@lang('admin.add_price')</label>
-                    </div>
+                    <div class="size${counter} size">
+                        <div class="input-wrap">
+                            <input type="text" name="size/${counter}" id="size${counter}" class="auto-value">
+                            <label class="label" for="size${counter}">@lang('admin.add_size')</label>
+                        </div>
 
-                    <div class="input-wrap">
-                        <input type="text" name="price_units/${counter}" id="price_units${counter}" class="auto-value">
-                        <label class="label" for="price_units${counter}">@lang('admin.add_price_units')</label>
-                    </div>
+                        <div class="input-wrap">
+                            <input type="number" name="price/${counter}" id="price${counter}" class="auto-value">
+                            <label class="label" for="price${counter}">@lang('admin.add_price')</label>
+                        </div>
 
-                    <div class="input-wrap pt0">
-                        <p>@lang('admin.add_available')</p>
-                        <select name="available/${counter}" class="auto-value">
-                            <option value="1">@lang('admin.available')</option>
-                            <option value="2">@lang('admin.not_available')</option>
-                            <option value="3">@lang('admin.waiting_available')</option>
-                            <option value="4">@lang('admin.available_for_order')</option>
-                        </select>
+                        <div class="input-wrap">
+                            <input type="text" name="price_units/${counter}" id="price_units${counter}" class="auto-value">
+                            <label class="label" for="price_units${counter}">@lang('admin.add_price_units')</label>
+                        </div>
+
+                        <div class="input-wrap pt0">
+                            <p>@lang('admin.add_available')</p>
+                            <select name="available/${counter}" class="auto-value">
+                                <option value="1">@lang('admin.available')</option>
+                                <option value="2">@lang('admin.not_available')</option>
+                                <option value="3">@lang('admin.waiting_available')</option>
+                                <option value="4">@lang('admin.available_for_order')</option>
+                            </select>
+                        </div>
+                        <div class="input-wrap size-price-bt-wrap">
+                            <button class="size-price-bt-min" data-size-num="${counter}"><span class="btn-w-sp"><span>@lang('admin.delete_size_price')</span><img src="{{ asset('img/minus-label.svg') }}" ></span></button>
+                        </div>
                     </div>
-                    <input type="hidden" name="sizecount" value="${counter}">
-                    <hr>
                 `;
             }
 
