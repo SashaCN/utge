@@ -16,7 +16,6 @@ $locale = app()->getLocale();
             <th>@lang('admin.number')</th>
             <th>@lang('admin.fio')</th>
             <th>@lang('admin.contacts')</th>
-            <th>Загальна сумма замовлення</th>
             <th>@lang('admin.status')</th>
             <th>@lang('admin.action')</th>
         </tr>
@@ -30,7 +29,6 @@ $locale = app()->getLocale();
                         <p>{{ $order->firstname }}</p>
                         <p>{{ $order->lastname }}</p>
                     </td>
-                    <td>{{ $order->general_price }}</td>
                     <td>{{ $order->phone }}</td>
                     @if ($order->status == 0)
                     <td class="order-status">

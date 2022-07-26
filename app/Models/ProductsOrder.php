@@ -12,12 +12,19 @@ class ProductsOrder extends Model
     use HasFactory, SoftDeletes;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = ['firstname', 'lastname', 'phone', 'city', 'adress_delivery', 'delivery_type', 'product_id', 'size', 'price', 'quantity', 'payment_type', 'products_orders', 'status'];
+    protected $fillable = ['product_id', 'size', 'price', 'quantity', 'status'];
 
-
-    public static function orderByProduct()
+    public function product()
     {
-        return DB::table('products_orders')->select('*')->orderBy('status', 'asc' ,'deleted_at', 'NULL')->get();
+        return $this->hasMany(Product::class, 'product_id');
+    }
+    public function customers()
+    {
+        return $this->hasOne(Customers::class);
+    }
+
+    public static function getProduct()
+    {
 
     }
 }

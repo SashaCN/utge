@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Customers;
 use App\Models\ProductsOrder;
 use Illuminate\Http\Request;
 
@@ -13,9 +14,9 @@ class ProductsOrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(ProductsOrder $productsOrder)
+    public function index()
     {
-        $productsOrder = ProductsOrder::orderByProduct();
+        $productsOrder = Customers::orderByAsc();
 
         return view('admin.productOrder.index',[
             'productsOrder' => $productsOrder,
@@ -60,10 +61,14 @@ class ProductsOrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(ProductsOrder $productsOrder)
+    public function edit($id)
     {
+        $customer = Customers::find($id);
+        $orders = ProductsOrder::all()->where('customer_id', $id);
+        
         return view('admin.productOrder.update', [
-            'productsOrder' => $productsOrder,
+            'customers' => $customer,
+            'orders'=> $orders
         ]);
     }
 

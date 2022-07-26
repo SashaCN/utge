@@ -6,6 +6,7 @@ use App\Models\Seo;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\ChildPage;
+use App\Models\Customers;
 use App\Models\ServicesOrder;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -54,7 +55,7 @@ class ComposerServiceProvider extends ServiceProvider
             $view->with('servicesOrders',  ServicesOrder::all()->where('status' , '0'));
         });
         View::composer('admin.admin', function($view){
-            $view->with('productsOrders',  ProductsOrder::all()->where('status' , '0'));
+            $view->with('productsOrders',  Customers::all()->where('status' , '0'));
         });
 
 

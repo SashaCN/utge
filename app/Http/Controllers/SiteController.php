@@ -20,6 +20,7 @@ use App\Models\ServicesOrder;
 use Illuminate\Auth\Events\Validated;
 use App\Mail\OrderShipped;
 use App\Models\Category;
+use App\Models\Customers;
 use App\Models\ProductOrder;
 use Illuminate\Support\Facades\Mail;
 use App\Models\ProductsOrder;
@@ -148,24 +149,31 @@ class SiteController extends Controller
     {
 
 
-        $serviceOrder = new ProductsOrder();
+        $customers = new Customers();
         $validated = $request->validated();
-        $serviceOrder->firstname = $request->firstname;
-        $serviceOrder->lastname = $request->lastname;
-        $serviceOrder->phone = $request->phone;
-        $serviceOrder->city = $request->city;
-        $serviceOrder->adress_delivery = $request->adress_delivery;
-        $serviceOrder->delivery_type = $request->delivery_type;
-        $serviceOrder->product_id = $request->product_id;
-        $serviceOrder->adress_delivery = $request->adress_delivery;
-        $serviceOrder->size = $request->size;
-        $serviceOrder->price = $request->price;
-        $serviceOrder->quantity = $request->quantity;
-        $serviceOrder->payment_type = $request->payment_type;
-        $serviceOrder->general_price = $request->general_price;
-        $serviceOrder->status = '0';
-        $serviceOrder->fill($request->validated());
-        $serviceOrder->save();
+        $customers->firstname = $request->firstname;
+        $customers->lastname = $request->lastname;
+        $customers->phone = $request->phone;
+        $customers->city = $request->city;
+        $customers->adress_delivery = $request->adress_delivery;
+        $customers->delivery_type = $request->delivery_type;
+        $customers->payment_type = $request->payment_type;
+        $customers->status = '0';
+        $customers->fill($request->validated());
+        $customers->save();
+
+        $products = json_decode($request->product);
+        foreach($products as $product){
+            $productsOrder = new ProductsOrder();
+            $productsOrder->customer_id = $customers->id;
+            $productsOrder->product_id = $product[0];
+            $productsOrder->quantity = $product[1];
+            $productsOrder->top_price = $product[3] * $product[1];
+            $productsOrder->size = $product[2];
+            $productsOrder->price = $product[3];
+            $productsOrder->fill($request->validated());
+            $productsOrder->save();
+        }
 
 
         // $user = 'info@utge.net';

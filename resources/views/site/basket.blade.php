@@ -179,9 +179,13 @@
                             <h3>ваше замовлення</h3>
                             <div class="order-product-inf">
                                 <table class="order-product-table">
+
                                     @foreach ($productsData as $productData)
+
                                         @foreach ($products as $product)
-                                            @if ($product->id == $productData[0])
+
+                                        @if ($product->id == $productData[0])
+
                                                 @php
                                                     $title = $product->localization[0];
                                                     $description = $product->localization[1];
@@ -192,17 +196,16 @@
                                                     <td>{{ $title->$locale }}, {{ $min_size }} {{ $product->sizeprices->where('size', $min_size)->first()->price_units}}</td>
                                                     <td class="bold product-quantify-order"></td>
                                                     <td class="bold product-price-order"></td>
-
-                                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                                    <input type="hidden" name="quantity" value="5">
-                                                    <input type="hidden" name="size" value="{{ $min_size }} {{ $product->sizeprices->where('size', $min_size)->first()->price_units}}">
-                                                    <input type="hidden" name="price" value="1000">
                                                 </tr>
 
                                             @endif
                                         @endforeach
                                     @endforeach
+
                                 </table>
+
+                                <input type="hidden" name="product" value="{{ json_encode($productsData) }}">
+
 
                                 <div class="price-delivery">
                                     <p>Вартість доставки</p>
@@ -212,7 +215,6 @@
                                 <div class="total-price">
                                     <p>до оплати без доставки</p>
                                     <p class="general-price"></p>
-                                    <input type="hidden" name="general_price" value="3000">
                                 </div>
                                 <div class="btn-wrap">
                                     <button class="send-order-btn" type="submit">підтвердити замовлення</button>
