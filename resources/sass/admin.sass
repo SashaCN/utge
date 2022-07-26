@@ -433,16 +433,27 @@ main
         select
             width: 450px
 
-.size-price-bt-wrapp
+.size-price
+    &>div
+        padding: 20px 0
+        border-top: 3px dashed $primary
+        &:last-child
+            border-bottom: 3px dashed $primary
+
+.size-price-bt-wrap
     display: flex
-    justify-content: space-between
+    justify-content: center
     padding: 20px 0 0 0
 
-.size-price-bt-min,
-.size-price-bt-pl
+.size-price-bt-pl,
+.size-price-bt-min
+    font-size: 1rem
+    font-weight: bold
     cursor: pointer
-    width: 150px
+    width: 250px
     padding: 0 15px
+    text-align: center
+    text-transform: uppercase
     background-color: #003b95
     border: none
     color: #fff
@@ -450,8 +461,15 @@ main
     &:hover
         background-color: #1255bc
 
+.size-price-bt-min
+    background-color: #940000
+    &:hover
+        background-color: #cb0000
+
+
 .btn-w-sp
     display: flex
+    justify-content: space-around
     align-items: center
 
 .mr-seo-input

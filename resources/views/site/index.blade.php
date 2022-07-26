@@ -238,7 +238,7 @@
 
 <script src="{{ asset('js/public.js') }}"></script>
 <script src="{{ asset('js/add_to_basket.js') }}"></script>
-<script src="{{ asset('js/add_to_favourite.js') }}"></script>
+<script src="{{ asset('js/favourite.js') }}"></script>
 
 </body>
 
