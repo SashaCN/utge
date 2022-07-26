@@ -37,7 +37,6 @@ add_button.forEach(elem => {
 
         // showProductsNumber();
         localStorage.basketProduct = JSON.stringify(basketProduct);
-        console.log(localStorage.basketProduct);
     }
 });
 

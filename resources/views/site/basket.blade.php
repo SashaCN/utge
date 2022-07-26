@@ -38,6 +38,7 @@
                                 @php
                                     $title = $product->localization[0];
                                     $description = $product->localization[1];
+                                    $min_size = $productData[2];
                                     $min_price = $productData[3];
                                 @endphp
 
@@ -56,7 +57,11 @@
                                         <button class="product-plus">+</button>
                                     </div>
                                     <div class="price-col col">
-                                        <p class="basket-price">{{ $min_price }} {{ $product->sizeprices->where('price', $min_price)->first()->price_units}}</p>
+                                        <input type="hidden" class="default-price" value="{{ $min_price }}">
+                                        <p class="basket-price">{{ $min_price }} грн</p>
+                                    </div>
+                                    <div class="size-col col">
+                                        <input type="hidden" class="default-size" value="{{ $min_size }}">
                                     </div>
                                     <div class="delete-col col">
                                         <a href="#" class="delete-product">

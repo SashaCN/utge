@@ -16,5 +16,5 @@ if (popupCloseBtn != null) {
 }
 
 function closePopup() {
-    popupBox.style.display = 'none';
+    popupBox.style.display =  'none';
 }
