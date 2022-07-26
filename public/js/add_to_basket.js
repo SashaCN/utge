@@ -46,6 +46,7 @@ function openBasket (e, basketProducts = basketProduct)
 {
     console.log(basketProducts);
     e.preventDefault();
+    
     let products = [];
     if (basketProducts != []) {
         for (let i = 0; i < basketProducts.length; i++) {
