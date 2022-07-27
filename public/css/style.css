@@ -185,11 +185,35 @@ a.selected-lang {
 
 .basket,
 .like {
+  position: relative;
   transition: all 0.5s ease;
 }
 .basket:hover,
 .like:hover {
   transform: scale(1.1);
+}
+.basket span,
+.like span {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  font-size: 1.4rem;
+  color: #003b95;
+}
+.basket span::before,
+.like span::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: 0 0 4px #444;
+  transform: translate(-50%, -50%);
 }
 
 .lang-select .active-lang a {

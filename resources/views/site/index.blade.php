@@ -109,6 +109,7 @@
                         </svg>
                     </a>
                     <a href="{{ route('favourite') }}" class="like">
+                        <span></span>
                         <svg>
                             <use xlink:href="{{ asset('img/sprite.svg#like') }}"></use>
                         </svg>

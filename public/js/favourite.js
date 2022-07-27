@@ -5,6 +5,7 @@ let favourite_button = document.querySelector('.like'),
 
 if (localStorage.favouriteProduct !== undefined) {
     favouriteProduct = JSON.parse(localStorage.favouriteProduct);
+    favourite_button.querySelector('span').innerText = favouriteProduct.length;
     checkLike();
 }
 
@@ -64,6 +65,10 @@ function showProductsNumber ()
 function checkLike (){
     for (let i = 0; i < favouriteProduct.length; i++) {
         let product = document.querySelector(`.product[data-product-id="${favouriteProduct[i]}"]`);
+
+        if (product == null) {
+            return false;
+        }
 
         product.classList.add('liked');
 
