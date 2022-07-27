@@ -1063,3 +1063,28 @@ main {
 .order-status-one p {
   background: #003b95;
 }
+
+/* -------------------------------------------------------------------------- */
+/*                                  product-order                           */
+/* -------------------------------------------------------------------------- */
+.order-product-img {
+  width: 100px;
+}
+
+.order-product-wrapper {
+  display: flex;
+}
+
+.contacts-table-wrap {
+  width: 30%;
+}
+
+.contacts-table {
+  width: 100%;
+}
+
+.table-desc {
+  font-size: 18px;
+  font-weight: bold;
+  padding-bottom: 30px;
+}
