@@ -146,7 +146,7 @@ class SiteController extends Controller
 
         return redirect()->back();
     }
-    public function storeProductOrder(StoreServicesOrderRequest $request)
+    public function storeProductOrder(StoreServicesOrderRequest $request, Product $productsall)
     {
 
 
@@ -178,7 +178,7 @@ class SiteController extends Controller
 
 
         $user = 'info@utge.net';
-        Mail::to($user)->send(new ProductOrderShipped($customers, $productsOrder, $products));
+        Mail::to($user)->send(new ProductOrderShipped($customers, $productsOrder, $productsall));
 
 
         return redirect()->back();
