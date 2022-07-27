@@ -387,6 +387,7 @@ footer .info-line a {
 }
 footer .address {
   width: 30% !important;
+  text-align: justify !important;
 }
 footer .address svg {
   width: 70px;
