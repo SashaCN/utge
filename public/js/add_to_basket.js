@@ -48,16 +48,17 @@ function addToBasket (e)
 
 basket_button.onclick = openBasket;
 
-function openBasket (e, basketProducts = basketProduct)
-{
-    e.preventDefault();
+function openBasket ()
+{    
     let products = [];
+        basketProducts = JSON.parse(localStorage.basketProduct);
+
     if (basketProducts != []) {
         for (let i = 0; i < basketProducts.length; i++) {
             products.push([basketProducts[i]['id'], basketProducts[i]['quantify'], basketProducts[i]['size'], basketProducts[i]['price']]);
         }
     }
-    location.href = `${location.origin}/basket?products=${JSON.stringify(products)}`;
+    document.querySelector('#basket_products').value = JSON.stringify(products);
 }
 
 function showBasketNum ()

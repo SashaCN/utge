@@ -5,11 +5,11 @@
 
     @php
         $locale = app()->getLocale();
-        $productsData = json_decode($_GET['products']);
+        $productsData = json_decode($_POST['products']);
     @endphp
 
 
-<div>
+<div class="basket-page">
     <div class="basket-table">
             <h2>@lang('utge.basket')</h2>
             <div class="wrapper">
@@ -38,6 +38,7 @@
                                 @php
                                     $title = $product->localization[0];
                                     $description = $product->localization[1];
+                                    $min_size = $productData[2];
                                     $min_price = $productData[3];
                                 @endphp
 
@@ -56,7 +57,9 @@
                                         <button class="product-plus">+</button>
                                     </div>
                                     <div class="price-col col">
-                                        <p class="basket-price">{{ $min_price }} {{ $product->sizeprices->where('price', $min_price)->first()->price_units}}</p>
+                                        <input type="hidden" class="default-size" value="{{ $min_size }}">
+                                        <input type="hidden" class="default-price" value="{{ $min_price }}">
+                                        <p class="basket-price">{{ $min_price }} грн</p>
                                     </div>
                                     <div class="delete-col col">
                                         <a href="#" class="delete-product">
@@ -131,28 +134,29 @@
 
                             <div class="basket-delivery-type">
 
-                                <input value="ind" type="radio" name="delivery_type" id="ind">
+                                <input type="radio" name="delivery_type" id="ind" class="self_delivery" checked>
                                 <label for="ind">Самовивіз</label>
 
-                                <input value="adres" type="radio" name="delivery_type" id="adres">
+                                <input type="radio" name="delivery_type" id="adres" class="adress_delivery">
                                 <label for="adres">Адресна доставка по Києву</label>
 
-                                <input value="nova" type="radio" name="delivery_type" id="nova">
+                                <input type="radio" name="delivery_type" id="nova" class="post_delivery">
                                 <label for="nova">Нова пошта</label>
 
-                                <input value="ukr" type="radio" name="delivery_type" id="ukr">
+                                <input type="radio" name="delivery_type" id="ukr" class="post_delivery">
                                 <label for="ukr">Укрпошта</label>
 
-                                <input value="int" type="radio" name="delivery_type" id="int">
+                                <input type="radio" name="delivery_type" id="int" class="post_delivery">
                                 <label for="int">Інтайм</label>
 
-                                <input value="avl" type="radio" name="delivery_type" id="avl">
+                                <input type="radio" name="delivery_type" id="avl" class="adress_delivery">
                                 <label for="avl">Автолюкс</label>
 
                             </div>
-
-                            <label for="">Адреса доставки<span>*</span></label>
-                            <input name="adress_delivery" type="text">
+                            <div class="self_delivery_label">
+                                <label for=""><div class="post_delivery_label">Номер віділення</div><div class="adress_delivery_label">Адреса доставки</div><span>*</span></label>
+                                <input type="text">
+                            </div>
 
                         </div>
 
@@ -192,7 +196,7 @@
                                                     $min_size = $productData[2];
                                                 @endphp
 
-                                                <tr>
+                                                <tr class="product-tr" data-product-id="{{ $product->id }}">
                                                     <td>{{ $title->$locale }}, {{ $min_size }} {{ $product->sizeprices->where('size', $min_size)->first()->price_units}}</td>
                                                     <td class="bold product-quantify-order"></td>
                                                     <td class="bold product-price-order"></td>
@@ -204,7 +208,8 @@
 
                                 </table>
 
-                                <input type="hidden" name="product" value="{{ json_encode($productsData) }}">
+                                {{-- <input type="hidden" name="product" value="{{ json_encode($productsData) }}"> --}}
+                                <input type="hidden" name="product" id="products" value="">
 
 
                                 <div class="price-delivery">
@@ -217,7 +222,7 @@
                                     <p class="general-price"></p>
                                 </div>
                                 <div class="btn-wrap">
-                                    <button class="send-order-btn" type="submit">підтвердити замовлення</button>
+                                    <button class="send-order-btn" type="button" {{--type="submit"--}} id="popupBtn">підтвердити замовлення</button>
                                 </div>
                             </div>
                         </div>
@@ -225,9 +230,19 @@
                 </form>
             </div>
         </div>
+        <div id="popupBox">
+            <div class="basket-popup" id="popup">
+                <div class="basket-popup-img">
+                    <img src="{{ asset('img/basket-popup-img.jpg') }}" alt="basket popup img">
+                </div>
+                <h3>дякуємо за замовлення!</h3>
+                <a href="{{ route('products') }}" class="send-order-btn">повернутися до покупок</a>
+            </div>
+            <div id="popupCloseBox"></div>
+        </div>
     </div>
 
     <script src="{{ asset('js/basket.js') }}"></script>
-
+    <script src="{{ asset('js/popup.js') }}"></script>
 
 @endsection
