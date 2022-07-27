@@ -1,21 +1,15 @@
 window.onload = () => {
-    let productPlus = document.querySelectorAll(".product-plus"),
-        productMinus = document.querySelectorAll(".product-minus"),
-        productQuantify = document.querySelectorAll(".product-quantify"),
-        productPrice = document.querySelectorAll(".basket-price"),
-        deleteProduct = document.querySelectorAll(".delete-product"),
-        generalPrice = document.querySelectorAll(".general-price"),
-        generalQuantify = document.querySelector(".general-quantify"),
-        productQuantifyOrder = document.querySelectorAll('.product-quantify-order'),
+    let productPlus = document.querySelectorAll('.product-plus'),
+        productMinus = document.querySelectorAll('.product-minus'),
+        productQuantify = document.querySelectorAll('.product-quantify'),
+        productPrice = document.querySelectorAll('.basket-price'),
+        deleteProduct = document.querySelectorAll('.delete-product'),
+        generalPrice = document.querySelectorAll('.general-price'),
+        generalQuantify = document.querySelector('.general-quantify'),
+        helperProductMass = [],
         productId;
-
-    // productPrice = document.querySelectorAll('.basket-price');
-    // orderProducts = document.querySelectorAll(".product-row")
-    // productPriceOrder = document.querySelectorAll('.product-price-order');
-    // productPriceOrder = document.querySelectorAll('.product-price-order');
-    // productInputQuantify = document.querySelectorAll('.product_input_quantify');
-    // productInputPrice = document.querySelectorAll('.product_input_price');
-
+        
+    firstLoad();
 
     productPlus.forEach(element => {
         element.onclick = () => { quantifyCounter(element); }
@@ -29,16 +23,25 @@ window.onload = () => {
         element.oninput = () => { quantifyCounter(element); }
     });
 
-    productQuantify.forEach(element => {
-        quantifyCounter(element);
-    });
+    function firstLoad() {
+
+        document.querySelectorAll('.product-row').forEach(element => {
+            quantifyInput = element.querySelector('.product-quantify').value;
+            defaultPrice = element.querySelector('.default-price');
+            productPrice = element.querySelector('.basket-price');
+
+            productPrice.innerHTML = defaultPrice.value * quantifyInput + ' грн';
+        });
+
+        generalCounter();
+    }
 
     function quantifyCounter (element) 
     {
         event.preventDefault();
 
-        product = element.closest(".product-row");
-        productId = product.getAttribute("data-product-id");
+        product = element.closest('.product-row');
+        productId = product.getAttribute('data-product-id');
         quantifyInput = product.querySelector('.product-quantify');
 
 
@@ -56,10 +59,6 @@ window.onload = () => {
         {
             quantifyInput.value++;
         }
-        
-        // можливо видалити
-        productQuantifyOrder[productId - 1].innerHTML = quantifyInput.value;
-        // кінець можливому видаленю
 
         priceCounter(quantifyInput.value, product);
         generalCounter();
@@ -100,7 +99,7 @@ window.onload = () => {
             basketProducts = JSON.parse(localStorage.basketProduct)
 
             for (let i = 0; i < basketProducts.length; i++){
-                if (event.target.closest(".product-row").getAttribute("data-product-id") == basketProducts[i]['id']) {
+                if (event.target.closest('.product-row').getAttribute('data-product-id') == basketProducts[i]['id']) {
                     basketProducts.splice(i, 1)
                     break
                 }
@@ -113,16 +112,27 @@ window.onload = () => {
 
     function pushToLocalStorage() {
         productsMass = [];
-        products = document.querySelectorAll(".product-row");
+        helperProductMass = [];
+
+        products = document.querySelectorAll('.product-row');
 
         products.forEach(element => {
+
             productsMass.push({
                 id: element.getAttribute('data-product-id'), 
                 quantify:  element.querySelector('.product-quantify').value, 
                 size:  element.querySelector('.default-size').value, 
             });
+
+            helperProductMass.push({
+                id: element.getAttribute('data-product-id'), 
+                quantify:  element.querySelector('.product-quantify').value, 
+                size:  element.querySelector('.default-size').value, 
+                price:  element.querySelector('.basket-price').textContent.split(' ')[0], 
+            });
         });
 
+        console.log(helperProductMass);
         localStorageBasket = JSON.parse(localStorage.basketProduct)
 
         localStorageBasket.forEach((e, i) => {
@@ -135,29 +145,40 @@ window.onload = () => {
         localStorage.basketProduct = JSON.stringify(localStorageBasket)
         // openBasket(event, localStorageBasket)
     }
-}
 
 
-document.querySelector('#to-order-btn').onclick = function (){
-    document.querySelector('.basket-table').style.display = 'none';
-    document.querySelector('.placing-an-order').style.display = 'block';
+
+    document.querySelector('#to-order-btn').onclick = function (){
+        pushToLocalStorage();
+
+        document.querySelector('.basket-table').style.display = 'none';
+        document.querySelector('.placing-an-order').style.display = 'block';
+        document.querySelector('#products').value = JSON.parse(localStorage.basketProduct);
+        console.log('pasr' + JSON.parse(localStorage.basketProduct));
+        console.log('stringify' + JSON.stringify(localStorage.basketProduct));
+        console.log('_' + localStorage.basketProduct);
 
 
-    
-}
+        document.querySelectorAll('.product-tr').forEach((element, i) => {
+            if (element.getAttribute('data-product-id') == helperProductMass[i]['id']) {
+                element.querySelector('.product-quantify-order').innerHTML = helperProductMass[i]['quantify'];
+                element.querySelector('.product-price-order').innerHTML = helperProductMass[i]['price'] + 'грн';
+            }
+        });
+    }
 
-// ------------------------
-// delivery block
-// ------------------------
+    // ------------------------
+    // delivery block
+    // ------------------------
 
-let selfDelivery = document.querySelector('.self_delivery'),
-    adressDelivery = document.querySelectorAll('.adress_delivery'),
-    postDelivery = document.querySelectorAll('.post_delivery'),
-    selfDeliveryLabel = document.querySelector('.self_delivery_label'),
-    postDeliveryLabel = document.querySelector('.post_delivery_label'),
-    adressDeliveryLabel = document.querySelector('.adress_delivery_label');
+    let selfDelivery = document.querySelector('.self_delivery'),
+        adressDelivery = document.querySelectorAll('.adress_delivery'),
+        postDelivery = document.querySelectorAll('.post_delivery'),
+        selfDeliveryLabel = document.querySelector('.self_delivery_label'),
+        postDeliveryLabel = document.querySelector('.post_delivery_label'),
+        adressDeliveryLabel = document.querySelector('.adress_delivery_label');
 
-  
+
     selfDelivery.onclick = () => {
         selfDeliveryLabel.style.display = 'none';
     };
@@ -178,3 +199,4 @@ let selfDelivery = document.querySelector('.self_delivery'),
             adressDeliveryLabel.style.display = 'none';
         };
     });
+}
