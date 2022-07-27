@@ -3,8 +3,10 @@ let favourite_button = document.querySelector('.like'),
     add_favourite_button = document.querySelectorAll('.add-to-favourite'),
     favouriteProduct = [];
 
+showFavNum();
 if (localStorage.favouriteProduct !== undefined) {
     favouriteProduct = JSON.parse(localStorage.favouriteProduct);
+    showFavNum();
     checkLike();
 }
 
@@ -43,7 +45,7 @@ function toggleFav (e)
     }
 
     product.classList.toggle('liked');
-    // showProductsNumber();
+    showFavNum();
     localStorage.favouriteProduct = JSON.stringify(favouriteProduct);
 }
 
@@ -52,21 +54,24 @@ favourite_button.onclick = openfavourite;
 function openfavourite (e)
 {
     e.preventDefault();
-    location.href = `favourite?products=${JSON.stringify(favouriteProduct)}`;
+    location.href = `${location.origin}/favourite?products=${JSON.stringify(favouriteProduct)}`;
 }
-
-function showProductsNumber ()
-{
-    // favourite_count.innerText = favouriteProduct.length;
-}
-// showProductsNumber();
 
 function checkLike (){
     for (let i = 0; i < favouriteProduct.length; i++) {
         let product = document.querySelector(`.product[data-product-id="${favouriteProduct[i]}"]`);
 
+        if (product == null) {
+            return false;
+        }
+
         product.classList.add('liked');
 
         product.querySelector('.like svg use').setAttribute('xlink:href', 'img/sprite.svg#like_active');
     }
+}
+
+function showFavNum ()
+{
+    favourite_button.querySelector('span').innerText = favouriteProduct.length;
 }

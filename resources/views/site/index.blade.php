@@ -102,13 +102,22 @@
                     </a>
                 </div>
                 <div class="control flex-sb">
-                    <a href="{{ route('basket') }}" class="basket flex-sb">
-                        <span></span>
-                        <svg>
-                            <use xlink:href="{{ asset('img/sprite.svg#basket') }}"></use>
-                        </svg>
-                    </a>
+                    <form action="{{ route('basket') }}" method="POST">
+                        @csrf
+                        @method('POST')
+
+                        <label><input type="hidden" name="products" id="basket_products" value=""></label>
+                        <label class="basket flex-sb">
+                            <span></span>
+                            <svg>
+                                <use xlink:href="{{ asset('img/sprite.svg#basket') }}"></use>
+                            </svg>
+                            <input type="submit">
+                        </label>
+                    </form>
+
                     <a href="{{ route('favourite') }}" class="like">
+                        <span></span>
                         <svg>
                             <use xlink:href="{{ asset('img/sprite.svg#like') }}"></use>
                         </svg>

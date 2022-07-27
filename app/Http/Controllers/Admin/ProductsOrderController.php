@@ -7,6 +7,7 @@ use App\Models\Customers;
 use App\Models\ProductsOrder;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Http\Requests\MultiRequest;
 
 class ProductsOrderController extends Controller
 {
@@ -65,11 +66,14 @@ class ProductsOrderController extends Controller
     public function edit($id)
     {
         $customer = Customers::find($id);
-        $orders = ProductsOrder::getProduct($id)->where('customer_id', $id);
+        $orders = ProductsOrder::getProduct($id);
+        $products = Product::all();
+
 
         return view('admin.productOrder.update', [
             'customers' => $customer,
             'orders'=> $orders,
+            'products'=> $products,
         ]);
     }
 
@@ -80,9 +84,12 @@ class ProductsOrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(MultiRequest $request, Customers $productsOrder)
     {
-        //
+        $productsOrder->status = $request->status;
+        $productsOrder->update();
+
+        return redirect()->back();
     }
 
     /**
@@ -94,5 +101,13 @@ class ProductsOrderController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function delete(Customers $productsOrder)
+    {
+        $productsOrder->delete();
+
+        return redirect()->back();
     }
 }

@@ -24,6 +24,7 @@ use App\Models\Customers;
 use App\Models\ProductOrder;
 use Illuminate\Support\Facades\Mail;
 use App\Models\ProductsOrder;
+use App\Mail\ProductOrderShipped;
 
 class SiteController extends Controller
 {
@@ -176,9 +177,8 @@ class SiteController extends Controller
         }
 
 
-        // $user = 'info@utge.net';
-        // Mail::to($user)->send(new OrderShipped($serviceOrder));
-
+        $user = 'info@utge.net';
+        Mail::to($user)->send(new ProductOrderShipped($customers, $productsOrder, $products));
 
 
         return redirect()->back();
@@ -188,6 +188,20 @@ class SiteController extends Controller
     {
         return view('site.email.serviceOrder', [
             'servicesOrder' => $servicesOrder,
+        ]);
+    }
+
+    public function viewMailProduct(Customers $customer)
+    {
+        // $customer = Customers::find($customer);
+        $productsOrder = ProductsOrder::getProduct($customer->id);
+        $products = Product::all();
+
+
+        return view('site.email.productOrder', [
+            'customers' => $customer,
+            'orders'=> $productsOrder,
+            'products'=> $products,
         ]);
     }
 

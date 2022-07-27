@@ -5,7 +5,7 @@
 
     @php
         $locale = app()->getLocale();
-        $productsData = json_decode($_GET['products']);
+        $productsData = json_decode($_POST['products']);
     @endphp
 
 
@@ -231,7 +231,6 @@
             </div>
         </div>
         <div id="popupBox">
-            <div id="popupCloseBox"></div>
             <div class="basket-popup" id="popup">
                 <div class="basket-popup-img">
                     <img src="{{ asset('img/basket-popup-img.jpg') }}" alt="basket popup img">
@@ -239,10 +238,11 @@
                 <h3>дякуємо за замовлення!</h3>
                 <a href="{{ route('products') }}" class="send-order-btn">повернутися до покупок</a>
             </div>
+            <div id="popupCloseBox"></div>
         </div>
     </div>
 
-    <script src="{{ asset('js/basket.js') }}"></scrip>
-    <script src="{{ asset('js/popup.js') }}"></s>
+    <script src="{{ asset('js/basket.js') }}"></script>
+    <script src="{{ asset('js/popup.js') }}"></script>
 
 @endsection

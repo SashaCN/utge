@@ -34,7 +34,7 @@ return [
     //basket
     'basket' => 'Корзина',
     'product' => 'товар',
-    'quatify' => 'кількість',
+    'quatify' => 'Кількість',
     'price' => 'ціна',
     'basket_clear' => 'корзина пуста',
     'general' => 'разом',

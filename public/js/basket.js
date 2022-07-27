@@ -106,7 +106,12 @@ window.onload = () => {
             }
 
             localStorage.basketProduct = JSON.stringify(basketProducts)
-            openBasket(event, basketProducts)
+
+            elem.closest('.product-row').remove();
+            document.querySelectorAll('.product-tr')[elem.closest('.product-row').getAttribute('data-product-id') - 1].remove();
+            
+            showBasketNum();
+            generalCounter();
         }
     });
 
@@ -132,7 +137,6 @@ window.onload = () => {
             });
         });
 
-        console.log(helperProductMass);
         localStorageBasket = JSON.parse(localStorage.basketProduct)
 
         localStorageBasket.forEach((e, i) => {
@@ -154,10 +158,6 @@ window.onload = () => {
         document.querySelector('.basket-table').style.display = 'none';
         document.querySelector('.placing-an-order').style.display = 'block';
         document.querySelector('#products').value = JSON.parse(localStorage.basketProduct);
-        console.log('pasr' + JSON.parse(localStorage.basketProduct));
-        console.log('stringify' + JSON.stringify(localStorage.basketProduct));
-        console.log('_' + localStorage.basketProduct);
-
 
         document.querySelectorAll('.product-tr').forEach((element, i) => {
             if (element.getAttribute('data-product-id') == helperProductMass[i]['id']) {
