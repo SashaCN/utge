@@ -1310,9 +1310,14 @@ h3
         text-align: center
         font-weight: bold
     .map
+        position: relative
+        overflow: hidden
         width: 100%
         height: 400px
-        background: #000
+        iframe
+            position: absolute
+            top: -20%
+            border: none
 
 .map-section-title
     display: flex
