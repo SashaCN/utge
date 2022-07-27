@@ -65,6 +65,10 @@ function checkLike (){
     for (let i = 0; i < favouriteProduct.length; i++) {
         let product = document.querySelector(`.product[data-product-id="${favouriteProduct[i]}"]`);
 
+        if (product == null) {
+            return false;
+        }
+        
         product.classList.add('liked');
 
         product.querySelector('.like svg use').setAttribute('xlink:href', 'img/sprite.svg#like_active');
