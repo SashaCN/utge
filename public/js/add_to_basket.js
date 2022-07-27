@@ -5,47 +5,51 @@ let basket_button = document.querySelector('.basket'),
     pr_weight = 0,
     pr_price = 0;
 
+
+showBasketNum();
 if (localStorage.basketProduct !== undefined) {
     basketProduct = JSON.parse(localStorage.basketProduct);
-    basket_button.querySelector('span').innerText = basketProduct.length;
+    showBasketNum();
 }
 
 add_button.forEach(elem => {
-    elem.onclick = (e) => {
-        e.preventDefault();
-        let product = elem.closest('.product_id');
+    elem.onclick = addToBasket;
+});
 
-        if (product.classList.contains('not_available') || product.classList.contains('waiting_available')) {
-            return false;
-        }
+function addToBasket (e)
+{
+    e.preventDefault();
+    let product = e.target.closest('.product_id');
 
-        pr_weight = product.querySelector('.active-size').textContent;
-        pr_price = product.querySelector('.active-price').textContent;
+    if (product.classList.contains('not_available') || product.classList.contains('waiting_available')) {
+        return false;
+    }
 
-        if (basketProduct.length == 0) {
-            basketProduct.push({id: product.getAttribute('data-product-id'), quantify:  1, size: pr_weight, price: pr_price});
-        } else {
-            for (let i = 0; i < basketProduct.length; i++) {
-                if (basketProduct[i]['id'] == product.getAttribute('data-product-id') && basketProduct[i]['size'] == pr_weight) {
-                    basketProduct[i]['quantify']++;
-                    break;
-                } else if (i == basketProduct.length-1) {
-                    basketProduct.push({id: product.getAttribute('data-product-id'), quantify:  1, size: pr_weight, price: pr_price});
-                    break;
-                }
+    pr_weight = product.querySelector('.active-size').textContent;
+    pr_price = product.querySelector('.active-price').textContent;
+
+    if (basketProduct.length == 0) {
+        basketProduct.push({id: product.getAttribute('data-product-id'), quantify:  1, size: pr_weight, price: pr_price});
+    } else {
+        for (let i = 0; i < basketProduct.length; i++) {
+            if (basketProduct[i]['id'] == product.getAttribute('data-product-id') && basketProduct[i]['size'] == pr_weight) {
+                basketProduct[i]['quantify']++;
+                break;
+            } else if (i == basketProduct.length-1) {
+                basketProduct.push({id: product.getAttribute('data-product-id'), quantify:  1, size: pr_weight, price: pr_price});
+                break;
             }
         }
-
-        localStorage.basketProduct = JSON.stringify(basketProduct);
-        console.log(localStorage.basketProduct);
     }
-});
+
+    showBasketNum();
+    localStorage.basketProduct = JSON.stringify(basketProduct);
+}
 
 basket_button.onclick = openBasket;
 
 function openBasket (e, basketProducts = basketProduct)
 {
-    console.log(basketProducts);
     e.preventDefault();
     let products = [];
     if (basketProducts != []) {
@@ -54,4 +58,9 @@ function openBasket (e, basketProducts = basketProduct)
         }
     }
     location.href = `${location.origin}/basket?products=${JSON.stringify(products)}`;
+}
+
+function showBasketNum ()
+{
+    basket_button.querySelector('span').innerText = basketProduct.length;
 }

@@ -3,9 +3,10 @@ let favourite_button = document.querySelector('.like'),
     add_favourite_button = document.querySelectorAll('.add-to-favourite'),
     favouriteProduct = [];
 
+showFavNum();
 if (localStorage.favouriteProduct !== undefined) {
     favouriteProduct = JSON.parse(localStorage.favouriteProduct);
-    favourite_button.querySelector('span').innerText = favouriteProduct.length;
+    showFavNum();
     checkLike();
 }
 
@@ -44,6 +45,7 @@ function toggleFav (e)
     }
 
     product.classList.toggle('liked');
+    showFavNum();
     localStorage.favouriteProduct = JSON.stringify(favouriteProduct);
 }
 
@@ -67,4 +69,9 @@ function checkLike (){
 
         product.querySelector('.like svg use').setAttribute('xlink:href', 'img/sprite.svg#like_active');
     }
+}
+
+function showFavNum ()
+{
+    favourite_button.querySelector('span').innerText = favouriteProduct.length;
 }
