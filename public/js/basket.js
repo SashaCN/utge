@@ -147,7 +147,7 @@ window.onload = () => {
         });
 
         localStorage.basketProduct = JSON.stringify(localStorageBasket)
-        // openBasket(event, localStorageBasket)
+        openBasket()
     }
 
 
@@ -157,11 +157,12 @@ window.onload = () => {
 
         document.querySelector('.basket-table').style.display = 'none';
         document.querySelector('.placing-an-order').style.display = 'block';
-        document.querySelector('#products').value = JSON.parse(localStorage.basketProduct);
+        
+        document.querySelector('#products').value = JSON.stringify(localStorage.basketProduct);
 
         document.querySelectorAll('.product-tr').forEach((element, i) => {
             if (element.getAttribute('data-product-id') == helperProductMass[i]['id']) {
-                element.querySelector('.product-quantify-order').innerHTML = helperProductMass[i]['quantify'];
+                element.querySelector('.product-quantify-order').innerHTML = helperProductMass[i]['quantify'] + 'шт';
                 element.querySelector('.product-price-order').innerHTML = helperProductMass[i]['price'] + 'грн';
             }
         });
