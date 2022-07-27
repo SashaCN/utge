@@ -44,7 +44,6 @@ function toggleFav (e)
     }
 
     product.classList.toggle('liked');
-    // showProductsNumber();
     localStorage.favouriteProduct = JSON.stringify(favouriteProduct);
 }
 
@@ -53,14 +52,8 @@ favourite_button.onclick = openfavourite;
 function openfavourite (e)
 {
     e.preventDefault();
-    location.href = `favourite?products=${JSON.stringify(favouriteProduct)}`;
+    location.href = `${location.origin}/favourite?products=${JSON.stringify(favouriteProduct)}`;
 }
-
-function showProductsNumber ()
-{
-    // favourite_count.innerText = favouriteProduct.length;
-}
-// showProductsNumber();
 
 function checkLike (){
     for (let i = 0; i < favouriteProduct.length; i++) {

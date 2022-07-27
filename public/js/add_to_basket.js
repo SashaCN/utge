@@ -36,7 +36,6 @@ add_button.forEach(elem => {
             }
         }
 
-        // showProductsNumber();
         localStorage.basketProduct = JSON.stringify(basketProduct);
         console.log(localStorage.basketProduct);
     }
@@ -54,11 +53,5 @@ function openBasket (e, basketProducts = basketProduct)
             products.push([basketProducts[i]['id'], basketProducts[i]['quantify'], basketProducts[i]['size'], basketProducts[i]['price']]);
         }
     }
-    location.href = `basket?products=${JSON.stringify(products)}`;
+    location.href = `${location.origin}/basket?products=${JSON.stringify(products)}`;
 }
-
-function showProductsNumber ()
-{
-    basket_count.innerText = basketProduct.length;
-}
-// showProductsNumber();
