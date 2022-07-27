@@ -75,7 +75,7 @@ class NewsCategoryController extends Controller
      */
     public function edit(NewsCategory $newsCategory)
     {
-        return view('admin.newsCategory.create', [
+        return view('admin.newsCategory.update', [
             'newsCategory' => $newsCategory,
         ]);
     }
