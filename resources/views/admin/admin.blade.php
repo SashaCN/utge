@@ -78,8 +78,23 @@
                     </div>
                 <li>
 
-                    @if(!empty($count = count($servicesOrders)))
-                        <a href="#" class="drop-btn orders-btn"><span class="link-text aside-menu-item">@lang('admin.orders')<span class="order-circle-counter aside-menu-item"><span>{{ $count }}</span></span></a></li>
+                    @if(!empty($counts = count($servicesOrders)) || !empty($countp = count($productsOrders)))
+                        @if (!isset($countp))
+                        @php
+                            $countp = count($productsOrders);
+                        @endphp
+                            <a href="#" class="drop-btn orders-btn"><span class="link-text aside-menu-item">@lang('admin.orders')<span class="order-circle-counter aside-menu-item">
+                                <span>
+                                    {{ $counts + $countp }}
+                                </span>
+                            </span></a></li>
+                        @else
+                            <a href="#" class="drop-btn orders-btn"><span class="link-text aside-menu-item">@lang('admin.orders')<span class="order-circle-counter aside-menu-item">
+                                <span>
+                                    {{ $counts + $countp }}
+                                </span>
+                            </span></a></li>
+                        @endif
                     @else
                         <a href="#" class="drop-btn orders-btn"><span class="link-text">@lang('admin.orders')</span></a></li>
                     @endif
@@ -87,9 +102,14 @@
                     <div class="drop-list hidden">
                         <ul>
                             @if(!empty($count = count($servicesOrders)))
-                                <li><a href="{{ route('servicesOrder.index') }}"><span class="link-text-drop-list aside-menu-item">@lang('admin.services')<span class="order-circle-counter"><span>{{ $count }}</span></span></a></li>
+                                <li><a href="{{ route('servicesOrder.index') }}"><span class="link-text-drop-list aside-menu-item">@lang('admin.services')<span class="order-circle-counter"><span>{{ $counts }}</span></span></a></li>
                             @else
                                 <li><a href="{{ route('servicesOrder.index') }}"><span class="link-text-drop-list">@lang('admin.services')<span></span></span></a></li>
+                            @endif
+                            @if(!empty($countp = count($productsOrders)))
+                                <li><a href="{{ route('productsOrder.index') }}"><span class="link-text-drop-list aside-menu-item">@lang('admin.products')<span class="order-circle-counter"><span>{{ $countp }}</span></span></a></li>
+                            @else
+                                <li><a href="{{ route('productsOrder.index') }}"><span class="link-text-drop-list">@lang('admin.products')<span></span></span></a></li>
                             @endif
                         </ul>
                     </div>

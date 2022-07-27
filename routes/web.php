@@ -36,14 +36,16 @@ Route::middleware('set_locale')->group(function()
 
         Route::get('home', [\App\Http\Controllers\SiteController::class, 'index'])->name('index');
         Route::get('products', [\App\Http\Controllers\ProductController::class, 'index'])->name('products');
-        Route::get('product/{id}', [\App\Http\Controllers\ProductController::class, 'show'])->name('product');
+        Route::get('product/{id}/', [\App\Http\Controllers\ProductController::class, 'show'])->name('product');
         Route::get('services', [\App\Http\Controllers\SiteController::class, 'services'])->name('services');
-        Route::get('service/{id}', [\App\Http\Controllers\SiteController::class, 'service'])->name('service');
+        Route::get('service/{id}/', [\App\Http\Controllers\SiteController::class, 'service'])->name('service');
         Route::post('storeServiceOrder', [\App\Http\Controllers\SiteController::class, 'storeServiceOrder'])->name('storeServiceOrder');
+        Route::post('storeProductOrder', [\App\Http\Controllers\SiteController::class, 'storeProductOrder'])->name('storeProductOrder');
         Route::get('basket', [\App\Http\Controllers\SiteController::class, 'basket'])->name('basket');
         Route::get('favourite', [\App\Http\Controllers\SiteController::class, 'favourite'])->name('favourite');
         Route::get('deliveriesAndPayments', [\App\Http\Controllers\SiteController::class, 'showDeliveryAndPay'])->name('deliveriesAndPayments');
-        Route::get('mailview', [\App\Http\Controllers\SiteController::class, 'viewMailService'])->name('viewMailService');
+        Route::get('mailviewservise', [\App\Http\Controllers\SiteController::class, 'viewMailService'])->name('viewMailService');
+        Route::get('mailviewproduct', [\App\Http\Controllers\SiteController::class, 'viewMailProduct'])->name('viewMailProduct');
         Route::get('news', [\App\Http\Controllers\SiteController::class, 'showNews'])->name('news');
         Route::get('contacts', [\App\Http\Controllers\SiteController::class, 'showContacts'])->name('contacts');
         Route::get('addToBascket', [\App\Http\Controllers\SiteController::class, 'addToBascket'])->name('addToBascket');
@@ -71,11 +73,13 @@ Route::middleware('set_locale')->group(function ()
             Route::resource('services', \App\Http\Controllers\Admin\ServicesController::class);
             Route::resource('trashBox', \App\Http\Controllers\Admin\TrashBoxController::class);
             Route::resource('servicesOrder', \App\Http\Controllers\Admin\ServiceOrderController::class);
+            Route::resource('productsOrder', \App\Http\Controllers\Admin\ProductsOrderController::class);
             // create route
             Route::get('sliderCreate', [\App\Http\Controllers\Admin\ChildPageController::class, 'sliderCreate'])->name('childPage.sliderCreate');
             Route::get('sliderEdit/{slider_id}', [\App\Http\Controllers\Admin\ChildPageController::class, 'sliderEdit'])->name('childPage.sliderEdit');
             //delete route
             Route::get('servicesOrder/delete/{servicesOrder}', [\App\Http\Controllers\Admin\ServiceOrderController::class, 'delete'])->name('servicesOrder.delete');
+            Route::get('productsOrder/delete/{productsOrder}', [\App\Http\Controllers\Admin\ProductsOrderController::class, 'delete'])->name('productsOrder.delete');
             Route::get('productType/delete/{productType}', [\App\Http\Controllers\Admin\ProductTypeController::class, 'delete'])->name('productType.delete');
             Route::get('category/delete/{category}', [\App\Http\Controllers\Admin\CategoryController::class, 'delete'])->name('category.delete');
             Route::get('subCategory/delete/{subCategory}', [\App\Http\Controllers\Admin\SubCategoryController::class, 'delete'])->name('subCategory.delete');

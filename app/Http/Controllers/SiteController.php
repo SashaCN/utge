@@ -20,7 +20,11 @@ use App\Models\ServicesOrder;
 use Illuminate\Auth\Events\Validated;
 use App\Mail\OrderShipped;
 use App\Models\Category;
+use App\Models\Customers;
+use App\Models\ProductOrder;
 use Illuminate\Support\Facades\Mail;
+use App\Models\ProductsOrder;
+use App\Mail\ProductOrderShipped;
 
 class SiteController extends Controller
 {
@@ -142,11 +146,62 @@ class SiteController extends Controller
 
         return redirect()->back();
     }
+    public function storeProductOrder(StoreServicesOrderRequest $request)
+    {
+
+
+        $customers = new Customers();
+        $validated = $request->validated();
+        $customers->firstname = $request->firstname;
+        $customers->lastname = $request->lastname;
+        $customers->phone = $request->phone;
+        $customers->city = $request->city;
+        $customers->adress_delivery = $request->adress_delivery;
+        $customers->delivery_type = $request->delivery_type;
+        $customers->payment_type = $request->payment_type;
+        $customers->status = '0';
+        $customers->fill($request->validated());
+        $customers->save();
+
+        $products = json_decode($request->product);
+        foreach($products as $product){
+            $productsOrder = new ProductsOrder();
+            $productsOrder->customer_id = $customers->id;
+            $productsOrder->product_id = $product[0];
+            $productsOrder->quantity = $product[1];
+            $productsOrder->top_price = $product[3] * $product[1];
+            $productsOrder->size = $product[2];
+            $productsOrder->price = $product[3];
+            $productsOrder->fill($request->validated());
+            $productsOrder->save();
+        }
+
+
+        $user = 'info@utge.net';
+        Mail::to($user)->send(new ProductOrderShipped($customers, $productsOrder, $products));
+
+
+        return redirect()->back();
+    }
 
     public function viewMailService(ServicesOrder $servicesOrder)
     {
         return view('site.email.serviceOrder', [
             'servicesOrder' => $servicesOrder,
+        ]);
+    }
+
+    public function viewMailProduct(Customers $customer)
+    {
+        // $customer = Customers::find($customer);
+        $productsOrder = ProductsOrder::getProduct($customer->id);
+        $products = Product::all();
+
+
+        return view('site.email.productOrder', [
+            'customers' => $customer,
+            'orders'=> $productsOrder,
+            'products'=> $products,
         ]);
     }
 
