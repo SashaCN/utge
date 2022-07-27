@@ -147,7 +147,7 @@ window.onload = () => {
         });
 
         localStorage.basketProduct = JSON.stringify(localStorageBasket)
-        openBasket()
+        // openBasket()
     }
 
 
@@ -157,8 +157,16 @@ window.onload = () => {
 
         document.querySelector('.basket-table').style.display = 'none';
         document.querySelector('.placing-an-order').style.display = 'block';
-        
-        document.querySelector('#products').value = JSON.stringify(localStorage.basketProduct);
+
+        let products = [];
+        basketProducts = JSON.parse(localStorage.basketProduct);
+
+        if (basketProducts != []) {
+            for (let i = 0; i < basketProducts.length; i++) {
+                products.push([basketProducts[i]['id'], basketProducts[i]['quantify'], basketProducts[i]['size'], basketProducts[i]['price']]);
+            }
+        }
+        document.querySelector('#products').value = JSON.stringify(products);
 
         document.querySelectorAll('.product-tr').forEach((element, i) => {
             if (element.getAttribute('data-product-id') == helperProductMass[i]['id']) {
