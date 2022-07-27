@@ -181,7 +181,7 @@ class SiteController extends Controller
         Mail::to($user)->send(new ProductOrderShipped($customers, $productsOrder, $productsall));
 
 
-        return redirect()->back();
+        return redirect()->view('site.email.productOrder');
     }
 
     public function viewMailService(ServicesOrder $servicesOrder)
@@ -194,14 +194,14 @@ class SiteController extends Controller
     public function viewMailProduct(Customers $customer)
     {
         // $customer = Customers::find($customer);
-        $productsOrder = ProductsOrder::getProduct($customer->id);
-        $products = Product::all();
+        // $productsOrder = ProductsOrder::getProduct($customer);
+        // $productsall = Product::all();
 
 
         return view('site.email.productOrder', [
             'customers' => $customer,
             'orders'=> $productsOrder,
-            'products'=> $products,
+            'productsall'=> $productsall,
         ]);
     }
 

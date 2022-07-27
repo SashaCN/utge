@@ -29,22 +29,22 @@
             <td style="padding: 15px">Спосіб доставки:</td>
             @switch($customers->delivery_type)
                 @case('nova')
-                    <td class="table-desc-contact">@lang('admin.nova-poshta')</td>
+                    <td class="table-desc-contact" style="padding: 15px">@lang('admin.nova-poshta')</td>
                     @break
                 @case('ind')
-                    <td class="table-desc-contact">@lang('admin.ind-delivery')</td>
+                    <td class="table-desc-contact" style="padding: 15px">@lang('admin.ind-delivery')</td>
                     @break
                 @case('adres')
-                    <td class="table-desc-contact">@lang('admin.adres-delivery')</td>
+                    <td class="table-desc-contact" style="padding: 15px">@lang('admin.adres-delivery')</td>
                     @break
                 @case('int')
-                    <td class="table-desc-contact">@lang('admin.intime')</td>
+                    <td class="table-desc-contact" style="padding: 15px">@lang('admin.intime')</td>
                     @break
                 @case('avl')
-                    <td class="table-desc-contact">@lang('admin.avtolux')</td>
+                    <td class="table-desc-contact" style="padding: 15px">@lang('admin.avtolux')</td>
                     @break
                 @case('ukr')
-                    <td class="table-desc-contact">@lang('admin.ukr-poshta')</td>
+                    <td class="table-desc-contact" style="padding: 15px">@lang('admin.ukr-poshta')</td>
                     @break
                 @default
             @endswitch
@@ -57,13 +57,13 @@
             <td style="padding: 15px">Спосіб оплати:</td>
             @switch($customers->payment_type)
                 @case('cash')
-                    <td class="table-desc-contact">@lang('admin.cash')</td>
+                    <td class="table-desc-contact" style="padding: 15px">@lang('admin.cash')</td>
                     @break
                 @case('privat')
-                    <td class="table-desc-contact">@lang('admin.privat')</td>
+                    <td class="table-desc-contact" style="padding: 15px">@lang('admin.privat')</td>
                     @break
                 @case('cart')
-                    <td class="table-desc-contact">@lang('admin.cart')</td>
+                    <td class="table-desc-contact" style="padding: 15px">@lang('admin.cart')</td>
                     @break
                 @default
             @endswitch
@@ -71,7 +71,7 @@
     </table>
     <table style="width: 600px; padding: 25px; margin: 0 auto; font-family: sans-serif; background: #003b95; color: #fff;">
         <tr>
-            <td style="padding: 15px">Список замовлення:</td>
+            <td style="padding: 15px">Список замовлення</td>
         </tr>
         <tr>
             <td style="padding: 15px">Товар</td>
@@ -79,14 +79,16 @@
             <td style="padding: 15px">Ціна за одиницю</td>
             <td style="padding: 15px">Загальна ціна</td>
         </tr>
-
+    @dump($orders)
+    @dd($productsall)
     @foreach ($orders as $order)
-        @foreach ($products as $product)
-            @php
-                $title = $product->localization[0];
-                $description = $product->localization[1];
-            @endphp
+
+        @foreach ($productsall as $product)
             @if ($order->product_id == $product->id)
+                @php
+                    $title = $product->localization[0];
+                    $description = $product->localization[1];
+                @endphp
             <tr>
                 {{-- <td><img class="order-product-img" src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}"></label></td> --}}
                 <td>{{ $title->$locale }}</td>

@@ -31,7 +31,7 @@
             @case("http://utge/news")
             @case("http://utge/products")
             @case("http://utge/contacts")
-            @case("http://utge/home")
+            @case("http://utge")
             @case("http://utge/deliveriesAndPayments")
 
                 <title>{{$title_seo->$locale}}</title>

@@ -108,17 +108,17 @@
                             <div class="bascket-name">
                                 <div>
                                     <label for="">@lang('utge.firstname')<span>*</span></label>
-                                    <input name="firstname" type="text" >
+                                    <input required name="firstname" type="text" >
                                 </div>
                                 <div>
                                     <label for="">@lang('utge.lastname')<span>*</span></label>
-                                    <input name="lastname" type="text">
+                                    <input required name="lastname" type="text">
                                 </div>
                             </div>
 
                             <div class="bascket-number">
                                 <label for="">@lang('utge.number-phone')<span>*</span></label>
-                                <input name="phone" type="text">
+                                <input id="popup-phone" required name="phone" type="text">
                             </div>
 
                         </div>
@@ -134,28 +134,28 @@
 
                             <div class="basket-delivery-type">
 
-                                <input type="radio" name="delivery_type" id="ind" class="self_delivery" checked>
+                                <input required type="radio" value="ind" name="delivery_type" id="ind" class="self_delivery" checked>
                                 <label for="ind">Самовивіз</label>
 
-                                <input type="radio" name="delivery_type" id="adres" class="adress_delivery">
+                                <input required type="radio" value="adres" name="delivery_type" id="adres" class="adress_delivery">
                                 <label for="adres">Адресна доставка по Києву</label>
 
-                                <input type="radio" name="delivery_type" id="nova" class="post_delivery">
+                                <input required type="radio" value="nova" name="delivery_type" id="nova" class="post_delivery">
                                 <label for="nova">Нова пошта</label>
 
-                                <input type="radio" name="delivery_type" id="ukr" class="post_delivery">
+                                <input required type="radio"  value="ukr"name="delivery_type" id="ukr" class="post_delivery">
                                 <label for="ukr">Укрпошта</label>
 
-                                <input type="radio" name="delivery_type" id="int" class="post_delivery">
+                                <input required type="radio" value="int" name="delivery_type" id="int" class="post_delivery">
                                 <label for="int">Інтайм</label>
 
-                                <input type="radio" name="delivery_type" id="avl" class="adress_delivery">
+                                <input required type="radio" value="avl" name="delivery_type" id="avl" class="adress_delivery">
                                 <label for="avl">Автолюкс</label>
 
                             </div>
                             <div class="self_delivery_label">
-                                <label for=""><div class="post_delivery_label">Номер віділення</div><div class="adress_delivery_label">Адреса доставки</div><span>*</span></label>
-                                <input type="text">
+                                <label><div class="post_delivery_label">Номер віділення</div><div class="adress_delivery_label">Адреса доставки</div><span>*</span></label>
+                                <input name="adress_delivery" type="text">
                             </div>
 
                         </div>
@@ -166,13 +166,13 @@
 
                             <p>спосіб оплати<span>*</span></p>
 
-                            <input value="cash" type="radio" name="payment_type" id="cash">
+                            <input required value="cash" type="radio" name="payment_type" id="cash" checked>
                             <label for="cash">Готівка</label>
 
-                            <input value="privat" type="radio" name="payment_type" id="privat">
+                            <input required value="privat" type="radio" name="payment_type" id="privat">
                             <label for="privat">Оплата на картку Приватбанку</label>
 
-                            <input value="cart" type="radio" name="payment_type" id="cart">
+                            <input required value="cart" type="radio" name="payment_type" id="cart">
                             <label for="cart">Безготівкова оплата</label>
 
                         </div>
@@ -208,8 +208,8 @@
 
                                 </table>
 
-                                {{-- <input type="hidden" name="product" value="{{ json_encode($productsData) }}"> --}}
-                                <input type="hidden" name="product" id="products" value="">
+                                <input type="hidden" name="product" value="{{ json_encode($productsData) }}">
+                                {{-- <input type="hidden" name="product" id="products" value=""> --}}
 
 
                                 <div class="price-delivery">
@@ -222,7 +222,7 @@
                                     <p class="general-price"></p>
                                 </div>
                                 <div class="btn-wrap">
-                                    <button class="send-order-btn" type="button" {{--type="submit"--}} id="popupBtn">підтвердити замовлення</button>
+                                    <button class="send-order-btn" {{--type="button"--}} type="submit" id="popupBtn">підтвердити замовлення</button>
                                 </div>
                             </div>
                         </div>
@@ -242,6 +242,7 @@
         </div>
     </div>
 
+    <script src="{{ asset('js/site.js') }}"></script>
     <script src="{{ asset('js/basket.js') }}"></script>
     <script src="{{ asset('js/popup.js') }}"></script>
 

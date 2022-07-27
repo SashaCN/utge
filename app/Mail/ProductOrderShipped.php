@@ -20,10 +20,10 @@ class ProductOrderShipped extends Mailable
      *
      * @return void
      */
-    public function __construct(Customers $customers, ProductsOrder $productsOrder, Product $productsall)
+    public function __construct(Customers $customers, ProductsOrder $orders, Product $productsall)
     {
         $this->customers = $customers;
-        $this->productsOrder = $productsOrder;
+        $this->orders = $orders;
         $this->productsall = $productsall;
     }
 
@@ -36,7 +36,7 @@ class ProductOrderShipped extends Mailable
     {
         return $this->view('site.email.productOrder', [
             'customers' => $this->customers,
-            'order' => $this->productsOrder,
+            'orders' => $this->orders,
             'productsall' => $this->productsall
         ]);
     }
