@@ -1076,15 +1076,57 @@ main {
 }
 
 .contacts-table-wrap {
+  padding: 25px;
+  background: #ccc;
   width: 30%;
+}
+
+.order-list-wrap {
+  padding: 25px;
+  background: #A8A8A8;
 }
 
 .contacts-table {
   width: 100%;
+  margin-bottom: 25px;
+}
+.contacts-table td {
+  padding: 5px 0;
 }
 
 .table-desc {
   font-size: 18px;
   font-weight: bold;
   padding-bottom: 30px;
+}
+
+.order-list-table .table-desc-item {
+  padding-bottom: 25px;
+  padding-right: 25px;
+}
+.order-list-table td {
+  padding: 5px 0;
+}
+.order-list-table .table-desc-total-price {
+  padding-right: 25px;
+  padding-top: 25px;
+}
+
+.table-desc-contact {
+  font-weight: bold;
+}
+
+.order-select-wrap select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.order-product-form button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+}
+.order-product-form p {
+  margin-bottom: 10px;
 }
