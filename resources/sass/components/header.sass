@@ -50,9 +50,29 @@
 
 .basket,
 .like
-  transition: $trs
-  &:hover
-    transform: scale(1.1)
+    position: relative
+    transition: $trs
+    &:hover
+        transform: scale(1.1)
+    span
+        position: absolute
+        top: 0
+        right: 0
+        z-index: 2
+        font-size: 1.4rem
+        color: $primary
+        &::before
+            content: ''
+            position: absolute
+            top: 50%
+            left: 50%
+            z-index: -1
+            width: 20px
+            height: 20px
+            border-radius: 50%
+            background-color: $second
+            box-shadow: 0 0 4px #444
+            transform: translate(-50%, -50%)
 
 
 .lang-select .active-lang
@@ -155,7 +175,7 @@ a.burger-btn
                 padding: 5px 0
                 width: 100%
                 text-align: center
-    
+
 .sub-menu-parent
     position: relative
     &:hover .sub-menu

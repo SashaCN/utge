@@ -5,6 +5,7 @@ let favourite_button = document.querySelector('.like'),
 
 if (localStorage.favouriteProduct !== undefined) {
     favouriteProduct = JSON.parse(localStorage.favouriteProduct);
+    favourite_button.querySelector('span').innerText = favouriteProduct.length;
     checkLike();
 }
 
@@ -68,7 +69,7 @@ function checkLike (){
         if (product == null) {
             return false;
         }
-        
+
         product.classList.add('liked');
 
         product.querySelector('.like svg use').setAttribute('xlink:href', 'img/sprite.svg#like_active');

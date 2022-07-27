@@ -7,6 +7,7 @@ let basket_button = document.querySelector('.basket'),
 
 if (localStorage.basketProduct !== undefined) {
     basketProduct = JSON.parse(localStorage.basketProduct);
+    basket_button.querySelector('span').innerText = basketProduct.length;
 }
 
 add_button.forEach(elem => {
