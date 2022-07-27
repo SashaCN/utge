@@ -386,7 +386,8 @@ footer .info-line a {
   color: #fff;
 }
 footer .address {
-  width: 25%;
+  width: 30% !important;
+  text-align: justify !important;
 }
 footer .address svg {
   width: 70px;
@@ -1227,6 +1228,13 @@ p.category-item::before {
 .product-list .add-to-basket {
   padding: 8px 10px;
 }
+.product-list h3 {
+  min-height: 43px;
+}
+
+.stretch-wrap {
+  width: 100%;
+}
 
 .like svg {
   fill: #003b95;
@@ -2046,12 +2054,12 @@ h3 {
   .add-to-basket {
     font-size: 1.8rem;
   }
+
+  footer .address {
+    width: 30%;
+  }
 }
 @media screen and (max-width: 1700px) {
-  .info-line > div {
-    width: 23%;
-  }
-
   .product-list .price {
     padding: 9px 5px;
   }
@@ -2268,7 +2276,6 @@ h3 {
 @media screen and (max-width: 1200px) {
   .info-line > div {
     width: 30%;
-    text-align: center;
   }
   .info-line .logo {
     width: 35%;
@@ -2288,6 +2295,13 @@ h3 {
   }
   .basket-popup img {
     width: 400px;
+  }
+
+  footer .address {
+    width: 37% !important;
+  }
+  footer .address address {
+    padding-left: 5px;
   }
 
   /* --------------------------------------------------------------------------  */
@@ -2412,7 +2426,7 @@ h3 {
     width: 40%;
   }
   .info-line .address {
-    width: 50%;
+    width: 60% !important;
     order: 3;
     margin: 0 auto;
   }
@@ -2834,7 +2848,7 @@ footer .mail {
     width: 100%;
   }
   .info-line .address {
-    width: 80%;
+    width: 80% !important;
   }
 
   .phone {
@@ -3006,7 +3020,7 @@ footer .mail {
   }
 
   .info-line .address {
-    width: 100%;
+    width: 100% !important;
   }
 
   .fish svg {

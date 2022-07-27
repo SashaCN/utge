@@ -144,8 +144,10 @@
                 @endphp
 
                 <figure class="product product_id shadow-box flex-col {{ $available }}" data-product-id="{{ $product->id }}">
-                    <p class="status">@lang('admin.'.$available)</p>
-                    <img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
+                    <div class="stretch-wrap">
+                        <p class="status">@lang('admin.'.$available)</p>
+                        <img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
+                    </div>
                     <figcaption>
                         <h3>{{ $title->$locale }}</h3>
                         <p class="description">{!! $description->$locale !!}</p>
