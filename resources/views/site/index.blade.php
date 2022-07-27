@@ -185,7 +185,14 @@
                                 @endforeach
                             </div>
                         </li>
-                        <li><a href="{{ route('services') }}">@lang('utge.services')</a></li>
+                        <li class="sub-menu-parent">
+                            <a href="{{ route('services') }}">@lang('utge.services')</a>
+                            <div class="sub-menu">
+                                @foreach ($servicesType as $serviceType)
+                                    <a href="{{ route('service', $serviceType->id) }}">{{ $serviceType->localization[0]->$locale }}</a>
+                                @endforeach
+                            </div>
+                        </li>
                         <li><a href="{{ route('deliveriesAndPayments') }}">@lang('utge.delivery-payment')</a></li>
                         <li><a href="{{ route('news') }}">@lang('utge.news')</a></li>
                         <li><a href="{{ route('contacts') }}">@lang('utge.contacts')</a></li>
