@@ -39,6 +39,7 @@ return [
     'price' => 'цена',
     'general' => 'итого',
     'confirm_order' => 'оформить заказ',
+    'add-to-basket-popup' => 'Товар добавлен в корзину',
 
     //products
     'add-to-basket' => 'в&nbsp;корзину',

@@ -44,8 +44,8 @@ Route::middleware('set_locale')->group(function()
         Route::post('basket', [\App\Http\Controllers\SiteController::class, 'basket'])->name('basket');
         Route::get('favourite', [\App\Http\Controllers\SiteController::class, 'favourite'])->name('favourite');
         Route::get('deliveriesAndPayments', [\App\Http\Controllers\SiteController::class, 'showDeliveryAndPay'])->name('deliveriesAndPayments');
-        Route::get('mailviewservise', [\App\Http\Controllers\SiteController::class, 'viewMailService'])->name('viewMailService');
-        Route::get('mailviewproduct', [\App\Http\Controllers\SiteController::class, 'viewMailProduct'])->name('viewMailProduct');
+        // Route::get('mailviewservise', [\App\Http\Controllers\SiteController::class, 'viewMailService'])->name('viewMailService');
+        // Route::get('mailviewproduct', [\App\Http\Controllers\SiteController::class, 'viewMailProduct'])->name('viewMailProduct');
         Route::get('news', [\App\Http\Controllers\SiteController::class, 'showNews'])->name('news');
         Route::get('contacts', [\App\Http\Controllers\SiteController::class, 'showContacts'])->name('contacts');
         Route::get('addToBascket', [\App\Http\Controllers\SiteController::class, 'addToBascket'])->name('addToBascket');
