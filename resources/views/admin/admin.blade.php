@@ -12,7 +12,6 @@
     <title>@lang('admin.utge_admin') @lang('admin.product_list')</title>
 </head>
 {{-- @dump($servicesOrders) --}}
-@dump($trashProduct)
 <body>
     <header>
         <div class="header-line flex">
