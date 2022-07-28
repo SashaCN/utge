@@ -40,7 +40,7 @@
                 <meta property="og:title" content="{{ $og_title_seo->$locale }}">
                 <meta property="og:description" content="{{ $og_desc_seo->$locale }}">
                 <meta property="og:type" content="website">
-                <meta property="og:img" content="public\img\logo.png">
+                <meta property="og:img" content="{{Request::url()}}/public/img/logo.png">
                 <meta name="description" content="{{ $desc_seo->$locale }}">
                 <meta name="keywords" content="{{ $key_seo->$locale }}">
                     @if(is_string(htmlspecialchars_decode($custom_seo->$locale)) && stristr(htmlspecialchars_decode($custom_seo->$locale), '<script>'))

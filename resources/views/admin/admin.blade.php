@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>@lang('admin.utge_admin') @lang('admin.product_list')</title>
 </head>
-{{-- @dump($servicesOrders) --}}
 <body>
     <header>
         <div class="header-line flex">
@@ -126,7 +125,13 @@
                     </div>
                 <li><a href="{{ route('childPage.index') }}" class="module-btn"><span class="link-text">@lang('admin.modules')</span></a></li>
                 <li><a href="{{ route('seo.index') }}" class="seo-btn"><span class="link-text">SEO</span></a></li>
-                <li><a href="{{ route('trashBox.index') }}" class="trash-btn"><span class="link-text">@lang('admin.trash_box')</span></a></li>
+
+                @if(!empty($count = count($trashProduct)))
+                    <li><a href="{{ route('trashBox.index') }}" class="trash-btn"><span class="link-text">@lang('admin.trash_box')<span class="trash-circle-counter"><span>{{ $counts }}</span></span></a></li>
+                @else
+                    <li><a href="{{ route('trashBox.index') }}" class="trash-btn"><span class="link-text">@lang('admin.trash_box')</span></a></li>
+                @endif
+
             </ul>
         </nav>
         <p class="copy">
