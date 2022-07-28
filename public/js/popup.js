@@ -11,8 +11,10 @@ popupBtn.onclick = function () {
 }
 
 popupCloseBox.onclick = closePopup;
-popupCloseBtn.onclick = closePopup;
+if (popupCloseBtn != null) {
+    popupCloseBtn.onclick = closePopup;
+}
 
 function closePopup() {
-    popupBox.style.display = 'none';
+    popupBox.style.display =  'none';
 }

@@ -34,7 +34,7 @@ return [
     //basket
     'basket' => 'Корзина',
     'product' => 'товар',
-    'quatify' => 'кількість',
+    'quatify' => 'Кількість',
     'price' => 'ціна',
     'basket_clear' => 'корзина пуста',
     'general' => 'разом',
@@ -43,7 +43,7 @@ return [
     //products
     'add-to-basket' => 'в&nbsp;корзину',
     'filter' => 'фільтр',
-
+    'close' => 'Закрити',
 
     // product
     'quality-certificate' => 'сертифікат якості',

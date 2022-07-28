@@ -135,6 +135,23 @@ return [
     'change-services-type' => 'Выберите тип услуги',
     'change-news' => 'Редактировать новость',
 
+
+    'cart' => 'Безналичный росчет',
+    'privat' => 'Картой на ПриватБанк',
+    'cash' => 'Наличкой',
+    'payment' => 'Способ оплаты',
+    'avtolux' => 'Автолюкс',
+    'intime' => 'Интайм',
+    'adres-delivery' => 'Адресс',
+    'ind-delivery' => 'Самовывоз',
+    'nova-poshta' => 'Нова Почта',
+    'adress' => 'Адресс доставки',
+    'city' => 'Город',
+    'order-product-list' => 'Список заказа',
+    'total_price' => 'Общая сумма заказа',
+    'gen-price-unit' => 'Общая цена товара',
+    'price-of-unit' => 'Цена товара',
+
     // auntification
     'name' => 'Имя',
 
@@ -148,6 +165,5 @@ return [
     'order-service' => 'Заказ №',
     'interes-service' => 'Что интересует',
     'change' => 'Изменить',
-
 ];
 

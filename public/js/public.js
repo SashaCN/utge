@@ -24,7 +24,7 @@ function checkText ()
       text = [];
     }
     if (i == blank.length-1 && text[i] == blank[i]) {
-      location.href = 'admin';
+      location.href = `${location.origin}/admin`;
     }
   }
 }

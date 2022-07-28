@@ -10,6 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="{{ asset('img/logo.png') }}" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @foreach ($seos as $seo)
         @php
@@ -31,7 +32,7 @@
             @case("http://utge/news")
             @case("http://utge/products")
             @case("http://utge/contacts")
-            @case("http://utge/home")
+            @case("http://utge")
             @case("http://utge/deliveriesAndPayments")
 
                 <title>{{$title_seo->$locale}}</title>
@@ -102,13 +103,22 @@
                     </a>
                 </div>
                 <div class="control flex-sb">
-                    <a href="{{ route('basket') }}" class="basket flex-sb">
-                        <span></span>
-                        <svg>
-                            <use xlink:href="{{ asset('img/sprite.svg#basket') }}"></use>
-                        </svg>
-                    </a>
+                    <form action="{{ route('basket') }}" method="POST">
+                        @csrf
+                        @method('POST')
+
+                        <label><input type="hidden" name="products" id="basket_products" value=""></label>
+                        <label class="basket flex-sb">
+                            <span></span>
+                            <svg>
+                                <use xlink:href="{{ asset('img/sprite.svg#basket') }}"></use>
+                            </svg>
+                            <input type="submit">
+                        </label>
+                    </form>
+
                     <a href="{{ route('favourite') }}" class="like">
+                        <span></span>
                         <svg>
                             <use xlink:href="{{ asset('img/sprite.svg#like') }}"></use>
                         </svg>
@@ -161,13 +171,29 @@
                         <li><a href="{{ route('index') }}">@lang('utge.main')</a></li>
                         <li class="sub-menu-parent">
                             <a href="{{ route('products') }}">@lang('utge.goods')</a>
+                            @php
+
+                                $url = Request::url();
+                                $e = explode('/', $url);
+                                $r = [3 => 'products'];
+                                $er = array_replace($e,$r);
+                                $urlp = implode('/', $er);
+
+                            @endphp
                             <div class="sub-menu">
                                 @foreach ($categories as $category)
-                                    <a name="categoryid_{{$category->id}}" href="http://utge/products?categoryid_{{$category->id}}={{$category->id}}">{{ $category->localization[0]->$locale }}</a>
+                                    <a href="{{$urlp}}/?categoryid_{{$category->id}}={{$category->id}}">{{ $category->localization[0]->$locale }}</a>
                                 @endforeach
                             </div>
                         </li>
-                        <li><a href="{{ route('services') }}">@lang('utge.services')</a></li>
+                        <li class="sub-menu-parent">
+                            <a href="{{ route('services') }}">@lang('utge.services')</a>
+                            <div class="sub-menu">
+                                @foreach ($servicesType as $serviceType)
+                                    <a href="{{ route('service', $serviceType->id) }}">{{ $serviceType->localization[0]->$locale }}</a>
+                                @endforeach
+                            </div>
+                        </li>
                         <li><a href="{{ route('deliveriesAndPayments') }}">@lang('utge.delivery-payment')</a></li>
                         <li><a href="{{ route('news') }}">@lang('utge.news')</a></li>
                         <li><a href="{{ route('contacts') }}">@lang('utge.contacts')</a></li>

@@ -58,6 +58,10 @@ h2
     text-transform: uppercase
     background-color: $primary
 
+.basket
+    cursor: pointer
+    input
+        display: none
 /* -------------------------------------------------------------------------- */
 /*                                 slider grid                                */
 /* -------------------------------------------------------------------------- */
@@ -211,6 +215,25 @@ h2
 /* -------------------------------------------------------------------------- */
 /*                                   basket                                   */
 /* -------------------------------------------------------------------------- */
+
+.basket-popup
+    position: fixed
+    padding: 50px 150px
+    text-align: center
+    background: $second
+    border-radius: 10px
+    filter: drop-shadow(0px 10px 5px rgba(24, 20, 25, 0.1))
+    z-index: 4
+    .basket-popup-img,
+    h3
+        margin-bottom: 30px
+    img
+        width: 450px
+        object-fit: cover
+        object-position: top
+    a
+        display: inline-block
+        font-size: 2rem
 
 .basket-table,
 .placing-an-order
@@ -526,7 +549,10 @@ h2
 .filter-menu
   width: 20%
 
-h4
+
+
+h4,
+.close-btn
     font-family: $rubik
     font-size: 1.6rem
     font-weight: normal
@@ -535,6 +561,19 @@ h4
     padding: 14px 20px
     background: $primary
     text-transform: uppercase
+
+.close-btn
+    display: none
+    justify-content: center
+    background-color: $primary
+    padding: 5px 20px
+    margin-bottom: 20px
+    transition: $trs
+    svg
+        width: 35px
+        height: 35px
+    &:hover
+        background-color: $primary-hover
 
 .filter-list
     padding: 25px 0
@@ -628,8 +667,11 @@ p.category-item
             margin: 0
     .add-to-basket
         padding: 8px 10px
+    h3
+        min-height: 43px
 
-
+.stretch-wrap
+    width: 100%
 
 .like svg
     fill: $primary
@@ -1087,6 +1129,7 @@ h3
     top: 0
     width: 100%
     height: 100%
+    z-index: 5
 
 #popupCloseBox
     width: 100%
@@ -1270,9 +1313,14 @@ h3
         text-align: center
         font-weight: bold
     .map
+        position: relative
+        overflow: hidden
         width: 100%
         height: 400px
-        background: #000
+        iframe
+            position: absolute
+            top: -20%
+            border: none
 
 .map-section-title
     display: flex

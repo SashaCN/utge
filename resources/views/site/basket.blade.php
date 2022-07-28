@@ -5,11 +5,11 @@
 
     @php
         $locale = app()->getLocale();
-        $productsData = json_decode($_GET['products']);
+        $productsData = json_decode($_POST['products']);
     @endphp
 
 
-<div>
+<div class="basket-page">
     <div class="basket-table">
             <h2>@lang('utge.basket')</h2>
             <div class="wrapper">
@@ -38,6 +38,7 @@
                                 @php
                                     $title = $product->localization[0];
                                     $description = $product->localization[1];
+                                    $min_size = $productData[2];
                                     $min_price = $productData[3];
                                 @endphp
 
@@ -56,7 +57,9 @@
                                         <button class="product-plus">+</button>
                                     </div>
                                     <div class="price-col col">
-                                        <p class="basket-price">{{ $min_price }} {{ $product->sizeprices->where('price', $min_price)->first()->price_units}}</p>
+                                        <input type="hidden" class="default-size" value="{{ $min_size }}">
+                                        <input type="hidden" class="default-price" value="{{ $min_price }}">
+                                        <p class="basket-price">{{ $min_price }} грн</p>
                                     </div>
                                     <div class="delete-col col">
                                         <a href="#" class="delete-product">
@@ -92,7 +95,10 @@
         <div class="placing-an-order">
             <h2>оформлення замовлення</h2>
             <div class="wrapper">
-                <form class="order-form" method="POST" action="">
+                <form class="order-form" method="POST" action="{{ route('storeProductOrder') }}">
+
+                    @csrf
+
                     <div class="order-contacts">
 
                         <h3>1. Ваші контактні дані</h3>
@@ -102,17 +108,17 @@
                             <div class="bascket-name">
                                 <div>
                                     <label for="">@lang('utge.firstname')<span>*</span></label>
-                                    <input type="text" >
+                                    <input required name="firstname" type="text" >
                                 </div>
                                 <div>
                                     <label for="">@lang('utge.lastname')<span>*</span></label>
-                                    <input type="text">
+                                    <input required name="lastname" type="text">
                                 </div>
                             </div>
 
                             <div class="bascket-number">
                                 <label for="">@lang('utge.number-phone')<span>*</span></label>
-                                <input type="text">
+                                <input id="popup-phone" required name="phone" type="text">
                             </div>
 
                         </div>
@@ -122,34 +128,35 @@
                         <div class="basket-delivery">
 
                             <label for="">Місто<span>*</span></label>
-                            <input type="text">
+                            <input name="city" type="text">
 
                             <p>Спосіб доставки<span>*</span></p>
 
                             <div class="basket-delivery-type">
 
-                                <input type="radio" name="delivery_type" id="ind">
+                                <input required type="radio" value="ind" name="delivery_type" id="ind" class="self_delivery" checked>
                                 <label for="ind">Самовивіз</label>
 
-                                <input type="radio" name="delivery_type" id="adres">
+                                <input required type="radio" value="adres" name="delivery_type" id="adres" class="adress_delivery">
                                 <label for="adres">Адресна доставка по Києву</label>
 
-                                <input type="radio" name="delivery_type" id="nova">
+                                <input required type="radio" value="nova" name="delivery_type" id="nova" class="post_delivery">
                                 <label for="nova">Нова пошта</label>
 
-                                <input type="radio" name="delivery_type" id="ukr">
+                                <input required type="radio"  value="ukr"name="delivery_type" id="ukr" class="post_delivery">
                                 <label for="ukr">Укрпошта</label>
 
-                                <input type="radio" name="delivery_type" id="int">
+                                <input required type="radio" value="int" name="delivery_type" id="int" class="post_delivery">
                                 <label for="int">Інтайм</label>
 
-                                <input type="radio" name="delivery_type" id="avl">
+                                <input required type="radio" value="avl" name="delivery_type" id="avl" class="adress_delivery">
                                 <label for="avl">Автолюкс</label>
 
                             </div>
-
-                            <label for="">Адреса доставки<span>*</span></label>
-                            <input type="text">
+                            <div class="self_delivery_label">
+                                <label><div class="post_delivery_label">Номер віділення</div><div class="adress_delivery_label">Адреса доставки</div><span>*</span></label>
+                                <input name="adress_delivery" type="text">
+                            </div>
 
                         </div>
 
@@ -159,13 +166,13 @@
 
                             <p>спосіб оплати<span>*</span></p>
 
-                            <input type="radio" name="payment_type" id="cash">
+                            <input required value="cash" type="radio" name="payment_type" id="cash" checked>
                             <label for="cash">Готівка</label>
 
-                            <input type="radio" name="payment_type" id="privat">
+                            <input required value="privat" type="radio" name="payment_type" id="privat">
                             <label for="privat">Оплата на картку Приватбанку</label>
 
-                            <input type="radio" name="payment_type" id="cart">
+                            <input required value="cart" type="radio" name="payment_type" id="cart">
                             <label for="cart">Безготівкова оплата</label>
 
                         </div>
@@ -176,30 +183,34 @@
                             <h3>ваше замовлення</h3>
                             <div class="order-product-inf">
                                 <table class="order-product-table">
+
                                     @foreach ($productsData as $productData)
+
                                         @foreach ($products as $product)
-                                            @if ($product->id == $productData[0])
+
+                                        @if ($product->id == $productData[0])
+
                                                 @php
                                                     $title = $product->localization[0];
                                                     $description = $product->localization[1];
                                                     $min_size = $productData[2];
                                                 @endphp
 
-                                                <tr>
+                                                <tr class="product-tr" data-product-id="{{ $product->id }}">
                                                     <td>{{ $title->$locale }}, {{ $min_size }} {{ $product->sizeprices->where('size', $min_size)->first()->price_units}}</td>
                                                     <td class="bold product-quantify-order"></td>
                                                     <td class="bold product-price-order"></td>
-
-                                                    <input type="hidden" name="product_{{ $product->id }}" value="{{ $product->id }}">
-                                                    <input type="hidden" name="product_{{ $product->id }}-quantify" class="product_input_quantify" value="">
-                                                    <input type="hidden" name="product_{{ $product->id }}-size" value="{{ $min_size }} {{ $product->sizeprices->where('size', $min_size)->first()->price_units}}">
-                                                    <input type="hidden" name="product_{{ $product->id }}-price" class="product_input_price" value="">
                                                 </tr>
-                                                
+
                                             @endif
                                         @endforeach
                                     @endforeach
+
                                 </table>
+
+                                {{-- <input type="hidden" name="product" value="{{ json_encode($productsData) }}"> --}}
+                                <input type="hidden" name="product" id="products" value="">
+
 
                                 <div class="price-delivery">
                                     <p>Вартість доставки</p>
@@ -209,10 +220,9 @@
                                 <div class="total-price">
                                     <p>до оплати без доставки</p>
                                     <p class="general-price"></p>
-                                    <input type="hidden" name="general_price" class="product_input_general_price" value="">
                                 </div>
                                 <div class="btn-wrap">
-                                    <button class="send-order-btn" type="submit">підтвердити замовлення</button>
+                                    <button class="send-order-btn" {{--type="button"--}} type="submit" id="popupBtn">підтвердити замовлення</button>
                                 </div>
                             </div>
                         </div>
@@ -220,9 +230,20 @@
                 </form>
             </div>
         </div>
+        <div id="popupBox">
+            <div class="basket-popup" id="popup">
+                <div class="basket-popup-img">
+                    <img src="{{ asset('img/basket-popup-img.jpg') }}" alt="basket popup img">
+                </div>
+                <h3>дякуємо за замовлення!</h3>
+                <a href="{{ route('products') }}" class="send-order-btn">повернутися до покупок</a>
+            </div>
+            <div id="popupCloseBox"></div>
+        </div>
     </div>
 
+    <script src="{{ asset('js/site.js') }}"></script>
     <script src="{{ asset('js/basket.js') }}"></script>
-
+    <script src="{{ asset('js/popup.js') }}"></script>
 
 @endsection
