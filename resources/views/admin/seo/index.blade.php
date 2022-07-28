@@ -30,7 +30,7 @@
                         <td>@lang('admin.delivery-page')</td>
                     @elseif ($seo->route == 'http://utge/contacts')
                         <td>@lang('admin.contacts-page')</td>
-                    @elseif ($seo->route == 'http://utge/home')
+                    @elseif ($seo->route == 'http://utge')
                         <td>@lang('admin.home-page')</td>
                     @endif
 

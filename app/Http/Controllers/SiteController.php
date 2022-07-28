@@ -146,7 +146,7 @@ class SiteController extends Controller
 
         return redirect()->back();
     }
-    public function storeProductOrder(StoreServicesOrderRequest $request)
+    public function storeProductOrder(StoreServicesOrderRequest $request, Product $product_all)
     {
 
 
@@ -177,11 +177,13 @@ class SiteController extends Controller
         }
 
 
-        $user = 'info@utge.net';
-        Mail::to($user)->send(new ProductOrderShipped($customers, $productsOrder, $products));
+
+        // $user = 'info@utge.net';
+        $user = 'igrdkl@icloud.com';
+        Mail::to($user)->send(new ProductOrderShipped($customers, $productsOrder, $product_all));
 
 
-        return redirect()->back();
+        return redirect()->view('site.email.productOrder');
     }
 
     public function viewMailService(ServicesOrder $servicesOrder)
@@ -191,17 +193,17 @@ class SiteController extends Controller
         ]);
     }
 
-    public function viewMailProduct(Customers $customer)
+    public function viewMailProduct($id)
     {
-        // $customer = Customers::find($customer);
-        $productsOrder = ProductsOrder::getProduct($customer->id);
-        $products = Product::all();
+        $customer = Customers::find($id);
+        $productsOrder = ProductsOrder::getProduct($id);
+        $product_all = Product::find($productsOrder->product_id);
 
 
         return view('site.email.productOrder', [
             'customers' => $customer,
-            'orders'=> $productsOrder,
-            'products'=> $products,
+            'productsOrder'=> $productsOrder,
+            'product_all'=> $product_all,
         ]);
     }
 
