@@ -509,6 +509,43 @@ h2 {
   display: none;
 }
 
+.add-to-basket-popup {
+  display: none;
+  padding: 20px 35px 20px 25px;
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+  font-size: 2rem;
+  color: #003b95;
+  background: #fff;
+  border: 2px solid #003b95;
+  border-radius: 5px;
+  z-index: 3;
+}
+.add-to-basket-popup .close-basket-popup-btn {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  width: 19px;
+  height: 18px;
+  cursor: pointer;
+}
+.add-to-basket-popup .close-basket-popup-btn:hover span {
+  background: #042c68;
+}
+.add-to-basket-popup .close-basket-popup-btn span {
+  position: absolute;
+  top: 7px;
+  width: 20px;
+  height: 4px;
+  background: #003b95;
+  transform: rotate(45deg);
+  transition: 0.5s;
+}
+.add-to-basket-popup .close-basket-popup-btn span:first-child {
+  transform: rotate(-45deg);
+}
+
 /* -------------------------------------------------------------------------- */
 /*                                 slider grid                                */
 /* -------------------------------------------------------------------------- */

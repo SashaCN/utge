@@ -39,6 +39,7 @@ return [
     'basket_clear' => 'корзина пуста',
     'general' => 'разом',
     'confirm_order' => 'оформити замовлення',
+    'add-to-basket-popup' => 'Товар додано до корзини',
 
     //products
     'add-to-basket' => 'в&nbsp;корзину',
