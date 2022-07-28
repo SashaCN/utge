@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\ChildPage;
 use App\Models\Customers;
+use App\Models\ServicesType;
 use App\Models\ServicesOrder;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -49,6 +50,9 @@ class ComposerServiceProvider extends ServiceProvider
         });
         View::composer('site.index', function($view){
             $view->with('categories',  Category::all());
+        });
+        View::composer('site.index', function($view){
+            $view->with('servicesType',  ServicesType::all());
         });
 
         View::composer('admin.admin', function($view){
