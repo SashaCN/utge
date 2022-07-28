@@ -12,6 +12,7 @@
     <title>@lang('admin.utge_admin') @lang('admin.product_list')</title>
 </head>
 {{-- @dump($servicesOrders) --}}
+@dump($trashProduct)
 <body>
     <header>
         <div class="header-line flex">
@@ -127,6 +128,7 @@
                 <li><a href="{{ route('childPage.index') }}" class="module-btn"><span class="link-text">@lang('admin.modules')</span></a></li>
                 <li><a href="{{ route('seo.index') }}" class="seo-btn"><span class="link-text">SEO</span></a></li>
                 <li><a href="{{ route('trashBox.index') }}" class="trash-btn"><span class="link-text">@lang('admin.trash_box')</span></a></li>
+
             </ul>
         </nav>
         <p class="copy">

@@ -178,12 +178,11 @@ class SiteController extends Controller
 
 
 
-        // $user = 'info@utge.net';
-        // $user = 'igrdkl@icloud.com';
-        // Mail::to($user)->send(new ProductOrderShipped($customers, $productsOrder, $product_all));
+        $user = 'info@utge.net';
+        Mail::to($user)->send(new ProductOrderShipped($customers, $productsOrder, $product_all));
 
 
-        return redirect()->back();
+        return redirect()->action([SiteController::class, 'index']);
     }
 
     public function viewMailService(ServicesOrder $servicesOrder)
