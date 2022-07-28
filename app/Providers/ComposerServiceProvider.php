@@ -64,7 +64,7 @@ class ComposerServiceProvider extends ServiceProvider
         });
 
         View::composer('admin.admin', function($view){
-            $view->with('trashProduct',  Product::all()->where('deleted_at', '0'));
+            $view->with('trashProduct',  Product::onlyTrashed()->paginate(20));
         });
 
 
