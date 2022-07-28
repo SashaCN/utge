@@ -70,7 +70,6 @@
                 <option value="logo-img" @if ($isLogoImg == true) disabled @endif>@lang('admin.logo-img')</option>
                 <option value="logo-name" @if ($isLogoName == true) disabled @endif>@lang('admin.logo-name')</option>
                 <option disabled class="models-slider-option">------------</option>
-                <option value="phone">@lang('admin.phone')</option>
                 <option value="footer-place">@lang('admin.footer-place')</option>
                 <option value="email">@lang('admin.email')</option>
                 <option disabled class="models-slider-option">------------</option>

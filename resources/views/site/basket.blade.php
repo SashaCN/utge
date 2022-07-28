@@ -29,7 +29,7 @@
 
                 @if (empty($productsData))
                     <div class="basket-products">
-                        <p class="basket-clear">&nbsp;</p>
+                        <h1 class="basket-clear">@lang('utge.basket-is-empty')</h1>
                     </div>
                 @else
                     @foreach ($productsData as $productData)
