@@ -1957,14 +1957,26 @@ h3 {
   font-size: 2rem;
   font-weight: bold;
 }
-.own-block p {
+.own-block p,
+.own-block u,
+.own-block i,
+.own-block strike,
+.own-block + div {
   margin: 1rem;
   font-weight: 500;
 }
-.own-block p:first-child {
+.own-block p:first-child,
+.own-block u:first-child,
+.own-block i:first-child,
+.own-block strike:first-child,
+.own-block + div:first-child {
   margin-top: 0;
 }
-.own-block p:last-child {
+.own-block p:last-child,
+.own-block u:last-child,
+.own-block i:last-child,
+.own-block strike:last-child,
+.own-block + div:last-child {
   margin-bottom: 0;
 }
 .own-block img {

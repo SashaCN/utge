@@ -79,4 +79,7 @@ function closeAddBasketPopup ()
 
 }
 
-document.querySelector('.close-basket-popup-btn').onclick = () => { closeAddBasketPopup(); }
+if (document.querySelector('.close-basket-popup-btn') != null) 
+{
+    document.querySelector('.close-basket-popup-btn').onclick = () => { closeAddBasketPopup(); }
+}

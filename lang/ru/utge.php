@@ -40,6 +40,7 @@ return [
     'general' => 'итого',
     'confirm_order' => 'оформить заказ',
     'add-to-basket-popup' => 'Товар добавлен в корзину',
+    'basket-is-empty' => 'Корзина пуста',
 
     //products
     'add-to-basket' => 'в&nbsp;корзину',
