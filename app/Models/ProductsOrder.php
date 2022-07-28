@@ -32,4 +32,12 @@ class ProductsOrder extends Model
                 ->where('customers.id', $id)
                 ->get();
     }
+    static function getProductToOrder($id)
+    {
+        return DB::table('products')
+                ->select('*')
+                ->leftJoin('products_orders', 'product_id', '=', 'products.id')
+                ->where('products_orders.product_id', $id)
+                ->get();
+    }
 }

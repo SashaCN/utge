@@ -14,17 +14,19 @@ class ProductOrderShipped extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $ProductOrder;
+    public $customers;
+    public $productsOrder;
+    public $products;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(Customers $customers, ProductsOrder $orders, Product $productsall)
+    public function __construct(Customers $customers, ProductsOrder $productsOrder, Product $product_all)
     {
         $this->customers = $customers;
-        $this->orders = $orders;
-        $this->productsall = $productsall;
+        $this->productsOrder = ProductsOrder::getProduct($customers->id);
+        $this->product_all = Product::all();
     }
 
     /**
@@ -36,8 +38,8 @@ class ProductOrderShipped extends Mailable
     {
         return $this->view('site.email.productOrder', [
             'customers' => $this->customers,
-            'orders' => $this->orders,
-            'productsall' => $this->productsall
+            'productsOrder' => $this->productsOrder,
+            'product_all' => $this->product_all,
         ]);
     }
 }

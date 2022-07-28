@@ -208,8 +208,8 @@
 
                                 </table>
 
-                                <input type="hidden" name="product" value="{{ json_encode($productsData) }}">
-                                {{-- <input type="hidden" name="product" id="products" value=""> --}}
+                                {{-- <input type="hidden" name="product" value="{{ json_encode($productsData) }}"> --}}
+                                <input type="hidden" name="product" id="products" value="">
 
 
                                 <div class="price-delivery">
