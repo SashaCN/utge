@@ -38,7 +38,7 @@ class ProductController extends Controller
         ]);
     }
 
-    public function show($id)
+    public function show($id, $size)
     {
         $categories = Category::all();
         $product = Product::find($id);
@@ -46,6 +46,7 @@ class ProductController extends Controller
 
         return view('site.product.show', [
             'product' => $product,
+            'size' => $size,
             'categories' => $categories,
             'localization' => $localization,
         ]);

@@ -1515,7 +1515,7 @@ h3 {
   text-transform: uppercase;
   color: #003b95;
 }
-.current-product .general-price p {
+.current-product .general-price a {
   display: none;
 }
 .current-product .general-price .active-price {
