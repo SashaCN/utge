@@ -190,7 +190,6 @@ function blockClick ()
 
 function changeActivBtn ()
 {
-    console.log(slider_nav_links.length-1);
     document.querySelector('.page-count.active').classList.remove('active');
     slider_nav_links[active_slide].classList.add('active');
 }
