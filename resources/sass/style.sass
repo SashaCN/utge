@@ -94,7 +94,7 @@ h2
             transition: .5s
             &:first-child
                 transform: rotate(-45deg)
-            
+
 
 /* -------------------------------------------------------------------------- */
 /*                                 slider grid                                */
@@ -900,6 +900,7 @@ h3
         &:hover
             background-color: $primary
             color: $second
+            cursor: pointer
     .active-size
         background-color: $primary
         color: $second
@@ -911,6 +912,10 @@ h3
         line-height: 43px
         text-transform: uppercase
         color: $primary
+        a
+            display: none
+        .active-price
+            display: inline-block
 
 .size-line
     flex-wrap: wrap
@@ -963,7 +968,7 @@ h3
         display: flex
         input
             font-size: 2rem
-            padding: 9.5px 27px
+            padding: 9.5px 20px
         button
             font-size: 2rem
             padding: 9.5px 15px

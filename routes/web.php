@@ -43,7 +43,7 @@ Route::middleware('set_locale')->group(function()
     Route::prefix('/')->group(function(){
 
         Route::get('products', [\App\Http\Controllers\ProductController::class, 'index'])->name('products');
-        Route::get('product/{id}/', [\App\Http\Controllers\ProductController::class, 'show'])->name('product');
+        Route::get('product/{id}/size/{size}', [\App\Http\Controllers\ProductController::class, 'show'])->name('product');
         Route::get('services', [\App\Http\Controllers\SiteController::class, 'services'])->name('services');
         Route::get('service/{id}/', [\App\Http\Controllers\SiteController::class, 'service'])->name('service');
         Route::post('storeServiceOrder', [\App\Http\Controllers\SiteController::class, 'storeServiceOrder'])->name('storeServiceOrder');
