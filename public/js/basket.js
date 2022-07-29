@@ -108,7 +108,7 @@ window.onload = () => {
             localStorage.basketProduct = JSON.stringify(basketProducts)
 
             elem.closest('.product-row').remove();
-            
+                     
             console.log(document.querySelectorAll('.product-tr'));
             console.log('=-----------------------------------------------------------------------------------------------');
             console.log(elem.closest('.product-row'));
