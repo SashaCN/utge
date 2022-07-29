@@ -34,17 +34,17 @@
     $description = $product->localization[1];
 
     if ($product->sizeprices->whereIn('available', [1,4])->min('price')) {
-        $min_price = $product->sizeprices->whereIn('available', [1,4])->min('price');
+        $min_price = $product->sizeprices->whereIn('available', [1,4])->min('size');
     } else {
-        $min_price = $product->sizeprices->min('price');
+        $min_price = $product->sizeprices->min('size');
     }
 
 
-    if ($product->sizeprices->where('price', $min_price)->first()->available == 1) {
+    if ($product->sizeprices->where('size', $min_price)->first()->available == 1) {
         $available = 'available';
-    } elseif ($product->sizeprices->where('price', $min_price)->first()->available == 2) {
+    } elseif ($product->sizeprices->where('size', $min_price)->first()->available == 2) {
         $available = 'not_available';
-    } elseif ($product->sizeprices->where('price', $min_price)->first()->available == 3) {
+    } elseif ($product->sizeprices->where('size', $min_price)->first()->available == 3) {
         $available = 'waiting_available';
     } else {
         $available = 'available_for_order';
@@ -71,14 +71,25 @@
             </div>
             <div class="size-line flex-aic">
                 @foreach ($product->sizePrices as $sizePrice)
-                    <p class="price active-size">{{ $sizePrice->size }}</p>
+                    @if ($sizePrice->size == $min_price)
+                        <p class="price active-size" data-price="{{ $sizePrice->price }}" data-available="{{ $sizePrice->available }}">{{ $sizePrice->size }}</p>
+                    @else
+                        <p class="price" data-price="{{ $sizePrice->price }}" data-available="{{ $sizePrice->available }}">{{ $sizePrice->size }}</p>
+                    @endif
                 @endforeach
             </div>
             <hr>
             <div class="price-line flex-sb">
-                <p class="general-price">
-                    @lang('utge.price'):  <span class="active-price">{{ $sizePrice->price }}</span> {{ $sizePrice->price_units }}
-                </p>
+                <div class="general-price">
+                    @lang('utge.price'):
+                    @foreach ($product->sizePrices as $sizePrice)
+                        @if ($sizePrice->size == $min_price)
+                            <p class="active-price"><span>{{ $sizePrice->price }}</span> {{ $sizePrice->price_units }}</p>
+                        @else
+                            <p class="no-active-price"><span>{{ $sizePrice->price }}</span> {{ $sizePrice->price_units }}</p>
+                        @endif
+                    @endforeach
+                </div>
                 <div class="right-part flex-aic">
                     <form action="#" class="count-col">
                         <button class="product-minus">-</button>

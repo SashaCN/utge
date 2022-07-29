@@ -1462,6 +1462,7 @@ h3 {
 .current-product .price:hover {
   background-color: #003b95;
   color: #fff;
+  cursor: pointer;
 }
 .current-product .active-size {
   background-color: #003b95;
@@ -1476,6 +1477,12 @@ h3 {
   line-height: 43px;
   text-transform: uppercase;
   color: #003b95;
+}
+.current-product .general-price p {
+  display: none;
+}
+.current-product .general-price .active-price {
+  display: inline-block;
 }
 
 .size-line {

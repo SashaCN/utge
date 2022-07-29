@@ -70,18 +70,18 @@ $locale = app()->getLocale();
         @endphp
         <a href="{{ route('product', $product->id, $product->localization[0]) }}">
             @php
-                if ($product->sizeprices->whereIn('available', [1,4])->min('price')) {
-                    $min_price = $product->sizeprices->whereIn('available', [1,4])->min('price');
+                if ($product->sizeprices->whereIn('available', [1,4])->min('size')) {
+                    $min_price = $product->sizeprices->whereIn('available', [1,4])->min('size');
                 } else {
-                    $min_price = $product->sizeprices->min('price');
+                    $min_price = $product->sizeprices->min('size');
                 }
 
 
-                if ($product->sizeprices->where('price', $min_price)->first()->available == 1) {
+                if ($product->sizeprices->where('size', $min_price)->first()->available == 1) {
                     $available = 'available';
-                } elseif ($product->sizeprices->where('price', $min_price)->first()->available == 2) {
+                } elseif ($product->sizeprices->where('size', $min_price)->first()->available == 2) {
                     $available = 'not_available';
-                } elseif ($product->sizeprices->where('price', $min_price)->first()->available == 3) {
+                } elseif ($product->sizeprices->where('size', $min_price)->first()->available == 3) {
                     $available = 'waiting_available';
                 } else {
                     $available = 'available_for_order';
@@ -95,7 +95,7 @@ $locale = app()->getLocale();
                 <figcaption>
                     <h3>{{ $title->$locale }}</h3>
                     <p class="description">{!! $description->$locale !!}</p>
-                    <p class="description active-size">{{ $product->sizeprices->where('price', $min_price)->first()->size }}</p>
+                    <p class="description active-size">{{ $min_price }}</p>
                     <div class="button-line flex-sb">
 
                             <p class="add-to-basket flex-aic">
@@ -109,7 +109,7 @@ $locale = app()->getLocale();
                                     </span>
 
                             </p>
-                        <p class="price"><span class="active-price">{{ $min_price }}</span>&nbsp;{{ $product->sizeprices->where('price', $min_price)->first()->price_units }}</p>
+                        <p class="price"><span class="active-price">{{ $product->sizeprices->where('size', $min_price)->first()->price }}</span>&nbsp;{{ $product->sizeprices->where('size', $min_price)->first()->price_units }}</p>
                         <span class="like add-to-favourite">
                             <svg>
                                 <use xlink:href="{{ asset('img/sprite.svg#like') }}"></use>
