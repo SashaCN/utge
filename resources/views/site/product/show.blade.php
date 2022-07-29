@@ -33,18 +33,14 @@
     $title = $product->localization[0];
     $description = $product->localization[1];
 
-    if ($product->sizeprices->whereIn('available', [1,4])->min('price')) {
-        $min_price = $product->sizeprices->whereIn('available', [1,4])->min('price');
-    } else {
-        $min_price = $product->sizeprices->min('price');
-    }
+    $min_price = $size;
 
 
-    if ($product->sizeprices->where('price', $min_price)->first()->available == 1) {
+    if ($product->sizeprices->where('size', $size)->first()->available == 1) {
         $available = 'available';
-    } elseif ($product->sizeprices->where('price', $min_price)->first()->available == 2) {
+    } elseif ($product->sizeprices->where('size', $size)->first()->available == 2) {
         $available = 'not_available';
-    } elseif ($product->sizeprices->where('price', $min_price)->first()->available == 3) {
+    } elseif ($product->sizeprices->where('size', $size)->first()->available == 3) {
         $available = 'waiting_available';
     } else {
         $available = 'available_for_order';
@@ -66,18 +62,22 @@
                     {!! $description->$locale !!}
                 </p>
                 <p class="certificate-line">
-                    <a href="#" class="button add-to-basket">@lang('utge.quality-certificate')</a>
+                    <a href="#" class="button details-btn">@lang('utge.quality-certificate')</a>
                 </p>
             </div>
             <div class="size-line flex-aic">
                 @foreach ($product->sizePrices as $sizePrice)
-                    <p class="price active-size">{{ $sizePrice->size }}</p>
+                    @if ($sizePrice->size == $min_price)
+                        <a href="{{ route('product', ['id' => $product->id, 'size' => $sizePrice->size],$product->localization[0]) }}" class="price active-size">{{ $sizePrice->size }}</a>
+                    @else
+                        <a href="{{ route('product', ['id' => $product->id, 'size' => $sizePrice->size], $product->localization[0]) }}" class="price">{{ $sizePrice->size }}</a>
+                    @endif
                 @endforeach
             </div>
             <hr>
             <div class="price-line flex-sb">
                 <p class="general-price">
-                    @lang('utge.price'):  <span class="active-price">{{ $sizePrice->price }}</span> {{ $sizePrice->price_units }}
+                    @lang('utge.price'): <span class="active-price">{{ $product->sizePrices->where('size', $size)->first()->price }}</span> {{ $product->sizePrices->where('size', $size)->first()->price_units }}
                 </p>
                 <div class="right-part flex-aic">
                     <form action="#" class="count-col">
@@ -99,6 +99,10 @@
             </div>
         </section>
     </figure>
+</div>
+<div class="add-to-basket-popup">
+    <div class="close-basket-popup-btn"><span></span><span></span></div>
+    <p>@lang('utge.add-to-basket-popup')</p>
 </div>
 
 <script src="{{ asset('js/current_product.js') }}"></script>
