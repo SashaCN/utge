@@ -122,9 +122,6 @@
                 @php
                     $title = $product->localization[0];
                     $description = $product->localization[1];
-                @endphp
-            <a href="{{ route('product', [$product->id, $product->localization[0]->locale]) }}">
-                @php
                     if ($product->sizeprices->whereIn('available', [1,4])->min('size')) {
                         $min_price = $product->sizeprices->whereIn('available', [1,4])->min('size');
                     } else {
@@ -142,6 +139,7 @@
                         $available = 'available_for_order';
                     }
                 @endphp
+            <a href="{{ route('product', ['id' => $product->id, 'size' => $min_price], $product->localization[0]) }}">
 
                 <figure class="product product_id shadow-box flex-col {{ $available }}" data-product-id="{{ $product->id }}">
                     <div class="stretch-wrap">

@@ -48,7 +48,7 @@
 @endphp
 
 <div class="wrapper">
-    <figure id="product" class="current-product flex-sb {{ $available }}" data-product-id="{{ $product->id }}">
+    <figure id="product" class="product_id current-product flex-sb {{ $available }}" data-product-id="{{ $product->id }}">
         <div class="img-half shadow-box">
             <p class="status">@lang('admin.'.$available)</p>
             <div class="img-wrap">
@@ -77,7 +77,7 @@
             <hr>
             <div class="price-line flex-sb">
                 <p class="general-price">
-                    @lang('utge.price'):  {{ $product->sizePrices->where('size', $size)->first()->price }} {{ $product->sizePrices->where('size', $size)->first()->price_units }}
+                    @lang('utge.price'): <span class="active-price">{{ $product->sizePrices->where('size', $size)->first()->price }}</span> {{ $product->sizePrices->where('size', $size)->first()->price_units }}
                 </p>
                 <div class="right-part flex-aic">
                     <form action="#" class="count-col">
@@ -99,6 +99,10 @@
             </div>
         </section>
     </figure>
+</div>
+<div class="add-to-basket-popup">
+    <div class="close-basket-popup-btn"><span></span><span></span></div>
+    <p>@lang('utge.add-to-basket-popup')</p>
 </div>
 
 <script src="{{ asset('js/current_product.js') }}"></script>
