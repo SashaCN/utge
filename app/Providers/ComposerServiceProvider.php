@@ -58,8 +58,13 @@ class ComposerServiceProvider extends ServiceProvider
         View::composer('admin.admin', function($view){
             $view->with('servicesOrders',  ServicesOrder::all()->where('status' , '0'));
         });
+
         View::composer('admin.admin', function($view){
             $view->with('productsOrders',  Customers::all()->where('status' , '0'));
+        });
+
+        View::composer('admin.admin', function($view){
+            $view->with('trashProduct',  Product::onlyTrashed()->paginate(20));
         });
 
 

@@ -147,4 +147,8 @@ $locale = app()->getLocale();
         @endforeach
     </div>
 </div>
+<div class="add-to-basket-popup">
+    <div class="close-basket-popup-btn"><span></span><span></span></div>
+    <p>@lang('utge.add-to-basket-popup')</p>
+</div>
 @endsection

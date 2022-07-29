@@ -32,9 +32,16 @@ Route::get('locale/{locale}', [\App\Http\Controllers\Admin\AdminController::clas
 
 Route::middleware('set_locale')->group(function()
 {
+    Route::middleware('url_locale')->group(function()
+    {
+
+        Route::get('/', [\App\Http\Controllers\SiteController::class, 'index'], function(){
+            return redirect('/{locale}');
+        })->name('index');
+
+    });
     Route::prefix('/')->group(function(){
 
-        Route::get('/', [\App\Http\Controllers\SiteController::class, 'index'])->name('index');
         Route::get('products', [\App\Http\Controllers\ProductController::class, 'index'])->name('products');
         Route::get('product/{id}/', [\App\Http\Controllers\ProductController::class, 'show'])->name('product');
         Route::get('services', [\App\Http\Controllers\SiteController::class, 'services'])->name('services');
@@ -44,8 +51,8 @@ Route::middleware('set_locale')->group(function()
         Route::post('basket', [\App\Http\Controllers\SiteController::class, 'basket'])->name('basket');
         Route::get('favourite', [\App\Http\Controllers\SiteController::class, 'favourite'])->name('favourite');
         Route::get('deliveriesAndPayments', [\App\Http\Controllers\SiteController::class, 'showDeliveryAndPay'])->name('deliveriesAndPayments');
-        Route::get('mailviewservise', [\App\Http\Controllers\SiteController::class, 'viewMailService'])->name('viewMailService');
-        Route::get('mailviewproduct', [\App\Http\Controllers\SiteController::class, 'viewMailProduct'])->name('viewMailProduct');
+        // Route::get('mailviewservise', [\App\Http\Controllers\SiteController::class, 'viewMailService'])->name('viewMailService');
+        // Route::get('mailviewproduct', [\App\Http\Controllers\SiteController::class, 'viewMailProduct'])->name('viewMailProduct');
         Route::get('news', [\App\Http\Controllers\SiteController::class, 'showNews'])->name('news');
         Route::get('contacts', [\App\Http\Controllers\SiteController::class, 'showContacts'])->name('contacts');
         Route::get('addToBascket', [\App\Http\Controllers\SiteController::class, 'addToBascket'])->name('addToBascket');

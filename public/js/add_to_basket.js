@@ -43,6 +43,7 @@ function addToBasket (e)
     }
 
     showBasketNum();
+    showAddBasketPopup();
     localStorage.basketProduct = JSON.stringify(basketProduct);
 }
 
@@ -64,4 +65,21 @@ function openBasket ()
 function showBasketNum ()
 {
     basket_button.querySelector('span').innerText = basketProduct.length;
+}
+function showAddBasketPopup ()
+{
+    document.querySelector('.add-to-basket-popup').style.display = 'block';
+
+    setTimeout(closeAddBasketPopup, 3000);
+}
+
+function closeAddBasketPopup ()
+{
+    document.querySelector('.add-to-basket-popup').style.display = 'none';
+
+}
+
+if (document.querySelector('.close-basket-popup-btn') != null) 
+{
+    document.querySelector('.close-basket-popup-btn').onclick = () => { closeAddBasketPopup(); }
 }
