@@ -94,7 +94,7 @@ h2
             transition: .5s
             &:first-child
                 transform: rotate(-45deg)
-            
+
 
 /* -------------------------------------------------------------------------- */
 /*                                 slider grid                                */
@@ -249,6 +249,9 @@ h2
 /* -------------------------------------------------------------------------- */
 /*                                   basket                                   */
 /* -------------------------------------------------------------------------- */
+.accordingTariffs-p,
+.self_delivery_label
+    display: none
 
 .basket-popup
     position: fixed
@@ -294,6 +297,8 @@ h2
         background-color: transparent
 
 .basket-clear
+    font-size: 3rem
+    text-align: center
     padding: 10vh 0
     grid-column: 1/-1
 
@@ -900,6 +905,7 @@ h3
         &:hover
             background-color: $primary
             color: $second
+            cursor: pointer
     .active-size
         background-color: $primary
         color: $second
@@ -911,6 +917,10 @@ h3
         line-height: 43px
         text-transform: uppercase
         color: $primary
+        a
+            display: none
+        .active-price
+            display: inline-block
 
 .size-line
     flex-wrap: wrap
@@ -963,7 +973,7 @@ h3
         display: flex
         input
             font-size: 2rem
-            padding: 9.5px 27px
+            padding: 9.5px 20px
         button
             font-size: 2rem
             padding: 9.5px 15px
@@ -1164,10 +1174,11 @@ h3
     height: 100%
     z-index: 5
 
+#basket-empty-popup-bg,
 #popupCloseBox
     width: 100%
     height: 100%
-    background: rgba(0, 0, 0, .5)
+    background: rgba(0, 0, 0, .6)
     z-index: 3
 
 .service-popup
@@ -1285,27 +1296,25 @@ h3
     width: 45%
 
 .own-block
-    h3
-        font-size: 2rem
-        font-weight: bold
-    p,
-    u,
-    i,
-    strike,
-    +div
-        margin: 1rem
+    margin-bottom: 40px
+    &>:nth-child(odd),
+    &>:nth-child(even)
+        display: block
+        margin: 1rem 0
+        font-size: 1.8rem
         font-weight: 500
         &:first-child
             margin-top: 0
         &:last-child
             margin-bottom: 0
-    margin-bottom: 40px
+    &:first-child
+        margin-top: 0
+    &:last-child
+        margin-bottom: 0
     img
         width: 30px
         height: 30px
         object-fit: contain
-    &:last-child
-        margin-bottom: 0
     tr + tr:nth-child(even),
     tr + tr:nth-child(odd)
         background: none
@@ -1317,16 +1326,17 @@ h3
     p,
     table
         font-size: 1.8rem
-
-.own-block-title
-    display: flex
-    align-items: center
-    margin-bottom: 25px
-    width: 100%
-    span
-        margin-right: 20px
-    h3
-        margin-bottom: 0
+    .own-block-title
+        display: flex
+        align-items: center
+        margin-bottom: 25px
+        width: 100%
+        span
+            margin-right: 20px
+        h3
+            margin-bottom: 0 
+            font-size: 2rem
+            font-weight: bold
 
 .feedback-section
     display: inline-block

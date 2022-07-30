@@ -2,16 +2,17 @@ let product = document.querySelector('#product'),
     productPlus = document.querySelector(".product-plus"),
     productMinus = document.querySelector(".product-minus"),
     productQuantify = document.querySelector(".product-quantify"),
-    productPrice = document.querySelector(".active-price");
+    productPrice = document.querySelector(".general-price span");
 
 setPrice();
+
 
 productPlus.onclick = prPlus;
 productMinus.onclick = prMinus;
 
 function setPrice ()
 {
-    product.setAttribute('data-price', productPrice.innerHTML);
+    product.setAttribute('data-price', productPrice.textContent);
 }
 
 function prMinus(event)

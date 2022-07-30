@@ -3,7 +3,8 @@ let basket_button = document.querySelector('.basket'),
     add_button = document.querySelectorAll('.add-to-basket')
     basketProduct = [],
     pr_weight = 0,
-    pr_price = 0;
+    pr_price = 0,
+    quantify = 1;
 
 
 showBasketNum();
@@ -28,15 +29,20 @@ function addToBasket (e)
     pr_weight = product.querySelector('.active-size').textContent;
     pr_price = product.querySelector('.active-price').textContent;
 
+    if (product.querySelector('.product-quantify') != null){
+        quantify = +product.querySelector('.product-quantify').value;
+    }
+
     if (basketProduct.length == 0) {
-        basketProduct.push({id: product.getAttribute('data-product-id'), quantify:  1, size: pr_weight, price: pr_price});
+        basketProduct.push({id: product.getAttribute('data-product-id'), quantify: quantify, size: pr_weight, price: pr_price});
     } else {
         for (let i = 0; i < basketProduct.length; i++) {
+
             if (basketProduct[i]['id'] == product.getAttribute('data-product-id') && basketProduct[i]['size'] == pr_weight) {
-                basketProduct[i]['quantify']++;
+                basketProduct[i]['quantify']+=quantify;
                 break;
             } else if (i == basketProduct.length-1) {
-                basketProduct.push({id: product.getAttribute('data-product-id'), quantify:  1, size: pr_weight, price: pr_price});
+                basketProduct.push({id: product.getAttribute('data-product-id'), quantify: quantify, size: pr_weight, price: pr_price});
                 break;
             }
         }
@@ -50,7 +56,7 @@ function addToBasket (e)
 basket_button.onclick = openBasket;
 
 function openBasket ()
-{    
+{
     let products = [];
         basketProducts = JSON.parse(localStorage.basketProduct);
 
@@ -66,6 +72,7 @@ function showBasketNum ()
 {
     basket_button.querySelector('span').innerText = basketProduct.length;
 }
+
 function showAddBasketPopup ()
 {
     document.querySelector('.add-to-basket-popup').style.display = 'block';
@@ -79,7 +86,7 @@ function closeAddBasketPopup ()
 
 }
 
-if (document.querySelector('.close-basket-popup-btn') != null) 
+if (document.querySelector('.close-basket-popup-btn') != null)
 {
     document.querySelector('.close-basket-popup-btn').onclick = () => { closeAddBasketPopup(); }
 }

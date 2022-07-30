@@ -6,8 +6,7 @@ window.onload = () => {
         deleteProduct = document.querySelectorAll('.delete-product'),
         generalPrice = document.querySelectorAll('.general-price'),
         generalQuantify = document.querySelector('.general-quantify'),
-        helperProductMass = [],
-        productId;
+        helperProductMass = [];
         
     firstLoad();
 
@@ -24,8 +23,10 @@ window.onload = () => {
     });
 
     function firstLoad() {
+        checkingBasketIsEmpty();
 
-        document.querySelectorAll('.product-row').forEach(element => {
+        document.querySelectorAll('.product-row').forEach((element, i) => {
+            element.setAttribute('data-product-number', i);
             quantifyInput = element.querySelector('.product-quantify').value;
             defaultPrice = element.querySelector('.default-price');
             productPrice = element.querySelector('.basket-price');
@@ -39,13 +40,11 @@ window.onload = () => {
     function quantifyCounter (element) 
     {
         event.preventDefault();
-
         product = element.closest('.product-row');
-        productId = product.getAttribute('data-product-id');
         quantifyInput = product.querySelector('.product-quantify');
 
 
-        if (element.classList.contains('product-minus') && quantifyInput.value != 1) 
+        if (element.classList.contains('product-minus') && quantifyInput.value > 1) 
         {
             quantifyInput.value --;
         } 
@@ -108,20 +107,15 @@ window.onload = () => {
             localStorage.basketProduct = JSON.stringify(basketProducts)
 
             elem.closest('.product-row').remove();
-            
-            console.log(document.querySelectorAll('.product-tr'));
-            console.log('=-----------------------------------------------------------------------------------------------');
-            console.log(elem.closest('.product-row'));
-            
-            console.log(elem.closest('.product-row').getAttribute('data-product-id'))   ;
-            console.log(elem.closest('.product-row').getAttribute('data-product-id') - 1);
-            console.log(document.querySelectorAll('.product-tr')[elem.closest('.product-row').getAttribute('data-product-id')]);
-            console.log(document.querySelectorAll('.product-tr')[elem.closest('.product-row').getAttribute('data-product-id') - 1]);
-            console.log('=-----------------------------------------------------------------------------------------------');
+            document.querySelectorAll('.product-tr')[elem.closest('.product-row').getAttribute('data-product-number')].remove();
 
-            document.querySelectorAll('.product-tr')[elem.closest('.product-row').getAttribute('data-product-id') - 1].remove();
-            
+            document.querySelectorAll('.product-row').forEach((productRow, i) => {
+                productRow.setAttribute('data-product-number', i);
+                console.log(i);
+            });
+
             showBasketNum();
+            checkingBasketIsEmpty();
             generalCounter();
         }
     });
@@ -158,7 +152,6 @@ window.onload = () => {
         });
 
         localStorage.basketProduct = JSON.stringify(localStorageBasket)
-        // openBasket()
     }
 
 
@@ -187,6 +180,10 @@ window.onload = () => {
         });
     }
 
+    function showBasketNum ()
+    {
+        basket_button.querySelector('span').innerText = JSON.parse(localStorage.basketProduct).length;
+    }
     // ------------------------
     // delivery block
     // ------------------------
@@ -197,17 +194,24 @@ window.onload = () => {
         selfDeliveryLabel = document.querySelector('.self_delivery_label'),
         postDeliveryLabel = document.querySelector('.post_delivery_label'),
         adressDeliveryLabel = document.querySelector('.adress_delivery_label');
+        accordingTariffs = document.querySelector('.accordingTariffs-p');
+        freeDelivery = document.querySelector('.freeDelivery-p');
 
 
     selfDelivery.onclick = () => {
         selfDeliveryLabel.style.display = 'none';
+        accordingTariffs.style.display = 'none';
+        freeDelivery.style.display = 'block';
+
     };
 
     adressDelivery.forEach(element => {
         element.onclick = () => {
             selfDeliveryLabel.style.display = 'block';
             postDeliveryLabel.style.display = 'none';
-            adressDeliveryLabel.style.display = 'block';
+            adressDeliveryLabel.style.display = 'inline-block';
+            accordingTariffs.style.display = 'block';
+            freeDelivery.style.display = 'none';
         };
     });
     
@@ -215,8 +219,25 @@ window.onload = () => {
         
         element.onclick = element.onclick = () => {
             selfDeliveryLabel.style.display = 'block';
-            postDeliveryLabel.style.display = 'block';
+            postDeliveryLabel.style.display = 'inline-block';
             adressDeliveryLabel.style.display = 'none';
+            accordingTariffs.style.display = 'block';
+            freeDelivery.style.display = 'none';
         };
     });
+
+    // ------------------------
+    // end delivery block
+    // ------------------------
+
+    function checkingBasketIsEmpty() {
+        if (JSON.parse(localStorage.basketProduct).length == 0)
+        {
+            document.querySelector('.basket-empty-popup').style.display = 'flex';
+        }   
+        else
+        {
+            document.querySelector('.basket-empty-popup').style.display = 'none';
+        }     
+    }
 }

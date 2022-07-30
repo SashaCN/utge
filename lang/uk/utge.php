@@ -26,7 +26,7 @@ return [
     'slider-product-heating' => 'опалення',
     'slider-service' => 'Послуги',
     'about-us' => 'Про нас',
-    'best-produts' => 'Хіти продаж',
+    'best-produts' => 'Хіти продажів',
 
     'address' => 'Київська область, Обухівський район, м. Українка, вул. Юності, 4, Міський ринок',
 
@@ -37,10 +37,23 @@ return [
     'quatify' => 'Кількість',
     'price' => 'ціна',
     'basket_clear' => 'корзина пуста',
+    'go-shoping' => 'перейти до товарів',
     'general' => 'разом',
     'confirm_order' => 'оформити замовлення',
     'add-to-basket-popup' => 'Товар додано до корзини',
     'basket-is-empty' => 'Корзина пуста',
+    'placingAnOrder' => 'оформлення замовлення',
+    'contactDetails' => 'Ваші контактні дані',
+    'contactDetails' => 'Спосіб доставки',
+    'deliveryType' => 'Спосіб доставки',
+    'postNumber' => 'Номер відділення',
+    'paymentType' => 'СПОСІБ ОПЛАТИ',
+    'yourOrder' => 'ВАШЕ ЗАМОВЛЕННЯ',
+    'deliveryPrice' => 'Вартість доставки',
+    'accordingTariffs' => 'за тарифами перевізника',
+    'freeDelivery' => 'безкоштовна',
+    'paymentWhithOutDelivery' => 'ДО ОПЛАТИ БЕЗ ДОСТАВКИ',
+    'confirmOrder' => 'підтвердити замовлення',
 
     //products
     'add-to-basket' => 'в&nbsp;корзину',
