@@ -204,6 +204,7 @@
             </div>
             <input type="hidden" name="sizecount" value="1" id="product-counter">
         </div>
+        {{-- img uploads --}}
         <div class="image-slide flex-col">
             <label><input type="hidden" name="image" value=""></label>
             <label><input type="file"  name="image"></label>
@@ -235,7 +236,12 @@
                 <input type="number" name="list_position" value="0" value="{{ old('list_position') }}" id="list_pos">
                 <label for="list_pos" class="label">@lang('admin.add_list_position')</label>
             </div>
-            {{-- <input type="submit" value="Send" class="save"> --}}
+            {{-- pdf uploads --}}
+            <div class="input-wrap flex-col">
+                <p>@lang('utge.quality-certificate')</p>
+                <label><input type="hidden" name="pdf"></label>
+                <label><input type="file"  name="pdf"></label>
+            </div>
         </div>
 
         {{-- seo --}}

@@ -1152,3 +1152,30 @@ main {
 .order-product-form p {
   margin-bottom: 10px;
 }
+
+/* -------------------------------------------------------------------------- */
+/*                                  pdf                                         */
+/* -------------------------------------------------------------------------- */
+.pdf-changes {
+  cursor: pointer;
+  background: #003b95;
+  color: #fff;
+  margin-bottom: 15px;
+  text-align: center;
+  padding: 10px;
+  transition: 0.3s;
+}
+.pdf-changes:hover {
+  background: #042c68;
+}
+
+.certificate {
+  padding: 10px;
+  text-align: center;
+  background: #ccc;
+  color: #000;
+}
+
+.certificate-desc {
+  text-transform: uppercase;
+}

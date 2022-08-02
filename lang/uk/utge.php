@@ -61,7 +61,7 @@ return [
     'close' => 'Закрити',
 
     // product
-    'quality-certificate' => 'сертифікат якості',
+    'quality-certificate' => 'Сертифікат якості',
 
     //services
     'more' => 'Детальніше',
