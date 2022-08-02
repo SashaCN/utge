@@ -72,6 +72,7 @@ function showBasketNum ()
 {
     basket_button.querySelector('span').innerText = basketProduct.length;
 }
+
 function showAddBasketPopup ()
 {
     document.querySelector('.add-to-basket-popup').style.display = 'block';
