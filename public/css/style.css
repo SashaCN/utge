@@ -1968,17 +1968,19 @@ h3 {
 .own-block {
   margin-bottom: 40px;
 }
-.own-block > :nth-child(odd), .own-block > :nth-child(even) {
+.own-block > * {
   display: block;
   margin: 1rem 0;
-  font-size: 1.8rem;
-  font-weight: 500;
 }
-.own-block > :nth-child(odd):first-child, .own-block > :nth-child(even):first-child {
+.own-block > *:first-child {
   margin-top: 0;
 }
-.own-block > :nth-child(odd):last-child, .own-block > :nth-child(even):last-child {
+.own-block > *:last-child {
   margin-bottom: 0;
+}
+.own-block b {
+  font-size: 1.8rem;
+  font-weight: 500;
 }
 .own-block:first-child {
   margin-top: 0;
