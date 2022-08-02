@@ -157,6 +157,7 @@
         'adres-delivery' => 'Адреса',
         'ind-delivery' => 'Самовивіз',
         'nova-poshta' => 'Нова Пошта',
+        'ukr-poshta' => 'Укрпошта',
         'adress' => 'Адреса доставки',
         'city' => 'Місто',
         'order-product-list' => 'Список замовлення',
