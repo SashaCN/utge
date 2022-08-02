@@ -62,7 +62,11 @@
                     {!! $description->$locale !!}
                 </p>
                 <p class="certificate-line">
-                    <a href="#" class="button details-btn">@lang('utge.quality-certificate')</a>
+                    @if($product->getFirstMediaUrl('pdf') == null)
+                        <a href="#" class="button details-btn">@lang('utge.quality-certificate')</a>
+                    @else
+                        <a href="{{ ($product->getFirstMediaUrl('pdf')) }}" class="button details-btn">@lang('utge.quality-certificate')</a>
+                    @endif
                 </p>
             </div>
             <div class="size-line flex-aic">

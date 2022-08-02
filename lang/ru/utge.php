@@ -60,7 +60,7 @@ return [
     'close' => 'Закрыть',
 
     // product
-    'quality-certificate' => 'сертификат качества',
+    'quality-certificate' => 'Сертификат качества',
 
     //services
     'more' => 'Подробнее',

@@ -302,6 +302,24 @@ $locale = app()->getLocale();
             <input type="number" name="list_position" value="{{ $product->list_position }}" id="list_pos">
             <label for="list_pos" class="label">@lang('admin.add_list_position')</label>
         </div>
+        {{-- pdf --}}
+        <div class="input-wrap flex-col">
+
+            @if($product->getFirstMediaUrl('pdf') == null)
+                <p>@lang('utge.quality-certificate')</p>
+                <input type="file" name="pdf">
+            @else
+                @php
+                    $pdfname = $product->getMedia('pdf');
+                    $pdfname[0]->name;
+                @endphp
+                <a class="certificate" href="{{ $product->getFirstMediaUrl('pdf') }}" class="button details-btn"><p>@lang('utge.quality-certificate')</p> / {{$pdfname[0]->name}}</a>
+                <label class="pdf-changes" for="pdf-changes">Вибрати новий сертифікат</label>
+                <button class="image-changes-bt" type="submit" form="pdf-change"
+                class="add-button">@lang('admin.save-new-pdf')</button>
+            @endif
+
+        </div>
     </div>
     <div class="flex-col">
 
@@ -391,6 +409,17 @@ $locale = app()->getLocale();
     <input id="image-changes" type="file" name="image">
     <input type="submit" value="img">
 </form>
+
+<form id="pdf-change" class="image-changes-form" action="{{ route('product.mediaUpdatePdf', $product->id ) }}" method="POST" enctype="multipart/form-data">
+    @csrf
+    @method('POST')
+
+    <input id="pdf-changes" type="file" name="pdf">
+    <input type="submit" value="pdf">
+</form>
+
+
+
 
 <script>
     function getStructure(counter) {

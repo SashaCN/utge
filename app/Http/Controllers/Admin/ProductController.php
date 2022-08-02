@@ -161,6 +161,14 @@ class ProductController extends Controller
             ->toMediaCollection('images');
         }
 
+        if ($request->hasFile('pdf') && $request->file('pdf')->isValid()) {
+            $product->addMediaFromRequest('pdf')
+            ->toMediaCollection('pdf');
+        }
+
+
+
+
         return redirect()->route('product.index');
     }
 
@@ -284,6 +292,10 @@ class ProductController extends Controller
         $product->localization()->where('var', 'custom_seo')->update($localization_custom_seo);
         //seo end
 
+        if ($request->hasFile('pdf') && $request->file('pdf')->isValid()) {
+            $product->addMediaFromRequest('pdf')
+            ->toMediaCollection('pdf');
+        }
 
         return redirect()->route('product.index');
     }
@@ -295,6 +307,19 @@ class ProductController extends Controller
             $product->clearMediaCollection('images');
             $product->addMediaFromRequest('image')
             ->toMediaCollection('images');
+
+        }
+
+        return redirect()->route('product.edit', $product->id);
+    }
+    public function mediaUpdatePdf(ImageRequest $request, Product $product)
+    {
+
+        if ($request->hasFile('pdf')) {
+
+            $product->clearMediaCollection('pdf');
+            $product->addMediaFromRequest('pdf')
+            ->toMediaCollection('pdf');
 
         }
 
