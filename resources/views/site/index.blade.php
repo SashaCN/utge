@@ -94,7 +94,6 @@
 
                         @foreach ($logoImg as $item)
                             @if (isset($item) && !empty($item))
-
                                 <img src="{{ $item->getFirstMediaUrl('images') }}" alt=" @if ($isName == true) {{ $name->$locale }} @endif " />
                             @endif
                         @endforeach
