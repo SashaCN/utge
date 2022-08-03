@@ -8,6 +8,8 @@ if (localStorage.favouriteProduct !== undefined) {
     favouriteProduct = JSON.parse(localStorage.favouriteProduct);
     showFavNum();
     checkLike();
+} else {
+    localStorage.favouriteProduct = JSON.stringify([]);
 }
 
 add_favourite_button.forEach(elem => {

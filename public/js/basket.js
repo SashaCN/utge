@@ -7,7 +7,7 @@ window.onload = () => {
         generalPrice = document.querySelectorAll('.general-price'),
         generalQuantify = document.querySelector('.general-quantify'),
         helperProductMass = [];
-        
+
     firstLoad();
 
     productPlus.forEach(element => {
@@ -37,34 +37,34 @@ window.onload = () => {
         generalCounter();
     }
 
-    function quantifyCounter (element) 
+    function quantifyCounter (element)
     {
         event.preventDefault();
         product = element.closest('.product-row');
         quantifyInput = product.querySelector('.product-quantify');
 
 
-        if (element.classList.contains('product-minus') && quantifyInput.value > 1) 
+        if (element.classList.contains('product-minus') && quantifyInput.value > 1)
         {
             quantifyInput.value --;
-        } 
-        
-        if (element.classList.contains('product-quantify')) 
+        }
+
+        if (element.classList.contains('product-quantify'))
         {
             quantifyInput.value = quantifyInput.value
         }
 
-        if (element.classList.contains('product-plus')) 
+        if (element.classList.contains('product-plus'))
         {
             quantifyInput.value++;
         }
 
         priceCounter(quantifyInput.value, product);
         generalCounter();
-        pushToLocalStorage();   
+        pushToLocalStorage();
     }
-    
-    function priceCounter (productQuantify, parent) 
+
+    function priceCounter (productQuantify, parent)
     {
         defaultPrice = parent.querySelector('.default-price');
         productPrice = parent.querySelector('.basket-price');
@@ -75,7 +75,7 @@ window.onload = () => {
     function generalCounter() {
         totalQuantify = 0,
         totalPrice = 0;
-       
+
         document.querySelectorAll('.product-quantify').forEach(e => {
             totalQuantify += Number(e.value);
         });
@@ -83,14 +83,14 @@ window.onload = () => {
         document.querySelectorAll('.basket-price').forEach(e => {
             totalPrice += Number(e.textContent.split(' ')[0]);
         });
-        
+
         generalQuantify.innerHTML = totalQuantify + ' шт';
 
         generalPrice.forEach(element => {
             element.innerHTML = totalPrice + ' грн';
         });
     }
-     
+
     deleteProduct.forEach((elem) => {
         elem.onclick = (event) => {
             event.preventDefault()
@@ -129,23 +129,23 @@ window.onload = () => {
         products.forEach(element => {
 
             productsMass.push({
-                id: element.getAttribute('data-product-id'), 
-                quantify:  element.querySelector('.product-quantify').value, 
-                size:  element.querySelector('.default-size').value, 
+                id: element.getAttribute('data-product-id'),
+                quantify:  element.querySelector('.product-quantify').value,
+                size:  element.querySelector('.default-size').value,
             });
 
             helperProductMass.push({
-                id: element.getAttribute('data-product-id'), 
-                quantify:  element.querySelector('.product-quantify').value, 
-                size:  element.querySelector('.default-size').value, 
-                price:  element.querySelector('.basket-price').textContent.split(' ')[0], 
+                id: element.getAttribute('data-product-id'),
+                quantify:  element.querySelector('.product-quantify').value,
+                size:  element.querySelector('.default-size').value,
+                price:  element.querySelector('.basket-price').textContent.split(' ')[0],
             });
         });
 
         localStorageBasket = JSON.parse(localStorage.basketProduct)
 
         localStorageBasket.forEach((e, i) => {
-            if (e['id'] == productsMass[i]['id'] && e['size'] == productsMass[i]['size']) 
+            if (e['id'] == productsMass[i]['id'] && e['size'] == productsMass[i]['size'])
             {
                 e['quantify'] = productsMass[i]['quantify'];
             }
@@ -200,6 +200,7 @@ window.onload = () => {
 
     selfDelivery.onclick = () => {
         selfDeliveryLabel.style.display = 'none';
+        selfDeliveryLabel.querySelector('input').removeAttribute('required');
         accordingTariffs.style.display = 'none';
         freeDelivery.style.display = 'block';
 
@@ -208,17 +209,19 @@ window.onload = () => {
     adressDelivery.forEach(element => {
         element.onclick = () => {
             selfDeliveryLabel.style.display = 'block';
+            selfDeliveryLabel.querySelector('input').setAttribute('required', '');
             postDeliveryLabel.style.display = 'none';
             adressDeliveryLabel.style.display = 'inline-block';
             accordingTariffs.style.display = 'block';
             freeDelivery.style.display = 'none';
         };
     });
-    
+
     postDelivery.forEach(element => {
-        
-        element.onclick = element.onclick = () => {
+
+        element.onclick = () => {
             selfDeliveryLabel.style.display = 'block';
+            selfDeliveryLabel.querySelector('input').setAttribute('required', '');
             postDeliveryLabel.style.display = 'inline-block';
             adressDeliveryLabel.style.display = 'none';
             accordingTariffs.style.display = 'block';
@@ -231,13 +234,24 @@ window.onload = () => {
     // ------------------------
 
     function checkingBasketIsEmpty() {
-        if (JSON.parse(localStorage.basketProduct).length == 0)
+        if (localStorage.basketProduct == undefined || JSON.parse(localStorage.basketProduct).length == 0)
         {
             document.querySelector('.basket-empty-popup').style.display = 'flex';
-        }   
+        }
         else
         {
             document.querySelector('.basket-empty-popup').style.display = 'none';
-        }     
+        }
+    }
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                         clear localstorage on order                        */
+/* -------------------------------------------------------------------------- */
+
+document.querySelector('#popupBtn').onclick = () => {
+    if (check == false) {
+        localStorage.basketProduct = undefined;
     }
 }
