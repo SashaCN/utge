@@ -1179,3 +1179,81 @@ main {
 .certificate-desc {
   text-transform: uppercase;
 }
+
+/* -------------------------------------------------------------------------- */
+/*                                  dashbord                                         */
+/* -------------------------------------------------------------------------- */
+.dashbord-wraper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-top: 15px;
+}
+
+.dashbord-wraper-block {
+  width: 49%;
+  text-align: center;
+}
+
+.wraper-box {
+  border: solid 1px #ccc;
+  margin-bottom: 25px;
+}
+.wraper-box a {
+  display: inline-block;
+  text-decoration: none;
+  box-sizing: border-box;
+  padding: 10px;
+  width: 100%;
+  color: #000;
+  background: #ccc;
+  transition: 0.2s;
+}
+.wraper-box a:hover {
+  background: #042c68;
+  color: #fff;
+}
+
+.dashbord-wraper-block-desc {
+  background: #003b95;
+  padding: 15px 0;
+  color: #fff;
+  font-size: 18px;
+}
+
+.dashbord-wraper-block-count {
+  font-size: 26px;
+  padding: 15px;
+}
+.dashbord-wraper-block-count span {
+  display: inline-block;
+  padding: 5px 12px;
+}
+
+.plus-order span {
+  display: inline-block;
+  background: #20a100;
+  border-radius: 50px;
+  color: #fff;
+}
+
+.wraper-box-flex {
+  background: #003b95;
+}
+.wraper-box-flex p {
+  width: 49%;
+  color: #fff;
+}
+
+.wraper-box-flex,
+.wraper-box-flex-count {
+  font-size: 18px;
+  display: flex;
+  padding: 15px;
+  justify-content: space-between;
+}
+
+.wraper-box-flex-count p {
+  width: 49%;
+  font-size: 26px;
+}
