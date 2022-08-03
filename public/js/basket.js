@@ -251,7 +251,7 @@ window.onload = () => {
 /* -------------------------------------------------------------------------- */
 
 document.querySelector('#popupBtn').onclick = () => {
-    if (check == false) {
+    if (check == false) {                   // var from file popup.js
         localStorage.basketProduct = undefined;
     }
 }
