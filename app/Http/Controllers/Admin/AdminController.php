@@ -6,7 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\App;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Customers;
 use App\Models\Product;
+use App\Models\ProductsOrder;
+use App\Models\Services;
 use App\Models\ServicesOrder;
 
 class AdminController extends Controller
@@ -18,7 +21,14 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.admin');
+        return view('admin.dashbord', [
+            'products' =>  Product::all(),
+            'customers' => Customers::all()->where('status' ,'0'),
+            'customers_all' => Customers::all(),
+            'services_order' => ServicesOrder::all()->where('status' ,'0'),
+            'services' => Services::all(),
+            'products_order' => ProductsOrder::all(),
+        ]);
     }
 
     /**
