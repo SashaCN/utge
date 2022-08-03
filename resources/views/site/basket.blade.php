@@ -18,7 +18,7 @@
             <div id="basket-empty-popup-bg"></div>
         </div>
         <div class="basket-table">
-            
+
 
                 @if (empty($productsData))
                 <div class="basket-products">
@@ -100,7 +100,7 @@
                 </div>
             </div>
             @endif
-                
+
         <div class="placing-an-order">
             <h2>@lang('utge.placingAnOrder')</h2>
             <div class="wrapper">
@@ -137,7 +137,7 @@
                         <div class="basket-delivery">
 
                             <label for="">@lang('admin.city')<span>*</span></label>
-                            <input name="city" type="text">
+                            <input name="city" type="text" required>
 
                             <p>@lang('utge.deliveryType')<span>*</span></p>
 

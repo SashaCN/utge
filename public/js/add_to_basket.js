@@ -55,15 +55,16 @@ function addToBasket (e)
 
 basket_button.onclick = openBasket;
 
-function openBasket ()
+function openBasket (e)
 {
     let products = [];
-        basketProducts = JSON.parse(localStorage.basketProduct);
 
-    if (basketProducts != []) {
-        for (let i = 0; i < basketProducts.length; i++) {
-            products.push([basketProducts[i]['id'], basketProducts[i]['quantify'], basketProducts[i]['size'], basketProducts[i]['price']]);
+    if (basketProduct != []) {
+        for (let i = 0; i < basketProduct.length; i++) {
+            products.push([basketProduct[i]['id'], basketProduct[i]['quantify'], basketProduct[i]['size'], basketProduct[i]['price']]);
         }
+    } else {
+        products = [''];
     }
     document.querySelector('#basket_products').value = JSON.stringify(products);
 }
