@@ -96,9 +96,7 @@ $locale = app()->getLocale();
                     <p class="description active-size">{{ $min_price }}</p>
                     <div class="button-line flex-sb">
 
-                            <p class="add-to-basket flex-aic">
-
-
+                            <p class="add-to-basket flex-aic {{ $available }}">
                                     <svg>
                                         <use xlink:href="{{ asset('img/sprite.svg#basket') }}"></use>
                                     </svg>
