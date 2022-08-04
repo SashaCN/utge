@@ -33,11 +33,7 @@ Route::get('locale/{locale}', [\App\Http\Controllers\Admin\AdminController::clas
 Route::middleware('set_locale')->group(function()
 {
 
-        Route::get('/{done?}', [\App\Http\Controllers\SiteController::class, 'index'], function(){
-            return redirect('/{locale}');
-        })->name('index');
 
-    });
     Route::prefix('/')->group(function(){
 
         Route::get('/', [\App\Http\Controllers\SiteController::class, 'index'])->name('index');

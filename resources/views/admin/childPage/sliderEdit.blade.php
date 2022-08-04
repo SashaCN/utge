@@ -49,7 +49,10 @@
                 @csrf
                 @method('PUT')
 
-
+                @php
+                    $sluderImgs = $sliderImg->getMedia('slider');
+                    // dump($sluderImgs[0]);
+                @endphp
                 <div class="image-slide flex-col current-slide image-slider-page">
                     <label class="image-changes" for="image-changes"><img class="old-image" src="{{ $sliderImg->getFirstMediaUrl('slider') }}" alt="{{ $title->$locale }}"></label>
                     <p class="image-changes-desc">@lang('admin.update-image')</p>

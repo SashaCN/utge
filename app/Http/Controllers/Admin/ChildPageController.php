@@ -123,9 +123,9 @@ class ChildPageController extends Controller
 
     public function mediaUpdate(ImageRequest $request, ChildPage $childPage)
     {
-
+        $a = 1;
         if ($request->hasFile('image')) {
-            $childPage->clearMediaCollection('slider');
+            // $childPage->clearMediaCollection('slider');
             $childPage->addMediaFromRequest('image')
             ->toMediaCollection('slider');
 
