@@ -54,7 +54,12 @@ favourite_button.onclick = openfavourite;
 function openfavourite (e)
 {
     e.preventDefault();
-    location.href = `${location.origin}/favourite?products=${JSON.stringify(favouriteProduct)}`;
+
+    if (favouriteProduct == []) {
+        location.href = `${location.origin}/favourite?products=[]`;
+    } else {
+        location.href = `${location.origin}/favourite?products=${JSON.stringify(favouriteProduct)}`;
+    }
 }
 
 function checkLike (){

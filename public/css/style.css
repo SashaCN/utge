@@ -1406,16 +1406,22 @@ h3 {
   fill: #fff;
   margin-right: 10px;
 }
-.add-to-basket:hover,
-.details-btn:hover {
+.add-to-basket:not(.active-add-to-basket):hover,
+.details-btn:not(.active-add-to-basket):hover {
   transform: scale(1.1);
   border-color: #042c68;
   background-color: #042c68;
   cursor: pointer;
 }
-.add-to-basket:hover + .price,
-.details-btn:hover + .price {
+.add-to-basket:not(.active-add-to-basket):hover + .price,
+.details-btn:not(.active-add-to-basket):hover + .price {
   transform: scale(0.8);
+}
+
+.active-add-to-basket {
+  transform: scale(0.8);
+  background-color: #FFB30F;
+  border-color: #FFB30F;
 }
 
 .price {

@@ -185,5 +185,20 @@
     <div class="close-basket-popup-btn"><span></span><span></span></div>
     <p>@lang('utge.add-to-basket-popup')</p>
 </div>
+@if ($done == 'done')
+    <div id="popupBox" class="orderPopup" style="display: flex;">
+        <div class="basket-popup" id="popup">
+            <div class="basket-popup-img">
+                <img src="{{ asset('img/basket-popup-img.png') }}" alt="basket popup img">
+            </div>
+            <h3>дякуємо за замовлення!</h3>
+            <a href="{{ route('index') }}" class="send-order-btn">повернутися до покупок</a>
+        </div>
+        <div id="popupCloseBox"></div>
+    </div>
+    <script>
+        localStorage.removeItem('basketProduct');
+    </script>
+@endif
 <script src="{{ asset('js/slider.js') }}"></script>
 @endsection

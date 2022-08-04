@@ -34,15 +34,15 @@ function addToBasket (e)
     }
 
     if (basketProduct.length == 0) {
-        basketProduct.push({id: product.getAttribute('data-product-id'), quantify: quantify, size: pr_weight, price: pr_price});
+        basketProduct.push({id: product.getAttribute('data-product-id'), quantify: Number(quantify), size: pr_weight, price: pr_price});
     } else {
         for (let i = 0; i < basketProduct.length; i++) {
 
             if (basketProduct[i]['id'] == product.getAttribute('data-product-id') && basketProduct[i]['size'] == pr_weight) {
-                basketProduct[i]['quantify']+=quantify;
+                basketProduct[i]['quantify']+=Number(quantify);
                 break;
             } else if (i == basketProduct.length-1) {
-                basketProduct.push({id: product.getAttribute('data-product-id'), quantify: quantify, size: pr_weight, price: pr_price});
+                basketProduct.push({id: product.getAttribute('data-product-id'), quantify: Number(quantify), size: pr_weight, price: pr_price});
                 break;
             }
         }
@@ -50,20 +50,25 @@ function addToBasket (e)
 
     showBasketNum();
     showAddBasketPopup();
+    product.querySelector('.add-to-basket').classList.add('active-add-to-basket');
+    setTimeout(() => {
+        product.querySelector('.add-to-basket').classList.remove('active-add-to-basket');
+    }, 3000);
     localStorage.basketProduct = JSON.stringify(basketProduct);
 }
 
 basket_button.onclick = openBasket;
 
-function openBasket ()
+function openBasket (e)
 {
     let products = [];
-        basketProducts = JSON.parse(localStorage.basketProduct);
 
-    if (basketProducts != []) {
-        for (let i = 0; i < basketProducts.length; i++) {
-            products.push([basketProducts[i]['id'], basketProducts[i]['quantify'], basketProducts[i]['size'], basketProducts[i]['price']]);
+    if (basketProduct != []) {
+        for (let i = 0; i < basketProduct.length; i++) {
+            products.push([basketProduct[i]['id'], basketProduct[i]['quantify'], basketProduct[i]['size'], basketProduct[i]['price']]);
         }
+    } else {
+        products = [''];
     }
     document.querySelector('#basket_products').value = JSON.stringify(products);
 }

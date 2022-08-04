@@ -137,7 +137,7 @@
                         <div class="basket-delivery">
 
                             <label for="">@lang('admin.city')<span>*</span></label>
-                            <input name="city" type="text">
+                            <input name="city" type="text" required>
 
                             <p>@lang('utge.deliveryType')<span>*</span></p>
 
@@ -198,24 +198,24 @@
 
                                     @foreach ($productsData as $productData)
 
-                                    @foreach ($products as $product)
+                                        @foreach ($products as $product)
 
-                                    @if ($product->id == $productData[0])
+                                            @if ($product->id == $productData[0])
 
-                                    @php
-                                    $title = $product->localization[0];
-                                    $description = $product->localization[1];
-                                    $min_size = $product->sizeprices->where('price', $productData[3])->first()->size;
-                                    @endphp
+                                                @php
+                                                    $title = $product->localization[0];
+                                                    $description = $product->localization[1];
+                                                    $min_size = $product->sizeprices->where('price', $productData[3])->first()->size;
+                                                @endphp
 
-                                    <tr class="product-tr" data-product-id="{{ $product->id }}">
-                                        <td>{{ $title->$locale }}, {{ $min_size }}</td>
-                                        <td class="bold product-quantify-order"></td>
-                                        <td class="bold product-price-order"></td>
-                                    </tr>
+                                                <tr class="product-tr" data-product-id="{{ $product->id }}">
+                                                    <td>{{ $title->$locale }}, {{ $min_size }}</td>
+                                                    <td class="bold product-quantify-order"></td>
+                                                    <td class="bold product-price-order"></td>
+                                                </tr>
 
-                                    @endif
-                                    @endforeach
+                                            @endif
+                                        @endforeach
                                     @endforeach
 
                                 </table>
@@ -233,7 +233,7 @@
                                     <p class="general-price"></p>
                                 </div>
                                 <div class="btn-wrap">
-                                    <button class="send-order-btn" {{--type="button"--}} type="submit"id="popupBtn">@lang('utge.confirmOrder')</button>
+                                    <button class="send-order-btn" {{--type="button"--}} type="submit" id="popupBtn">@lang('utge.confirmOrder')</button>
                                 </div>
                             </div>
                         </div>
