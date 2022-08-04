@@ -144,8 +144,6 @@ class SiteController extends Controller
         $user = 'info@utge.net';
         Mail::to($user)->send(new OrderShipped($serviceOrder));
 
-
-
         return redirect()->back();
     }
     public function storeProductOrder(StoreServicesOrderRequest $request, Product $product_all)
@@ -181,10 +179,9 @@ class SiteController extends Controller
 
 
         $user = 'info@utge.net';
-        // Mail::to($user)->send(new ProductOrderShipped($customers, $productsOrder, $product_all));
+        Mail::to($user)->send(new ProductOrderShipped($customers, $productsOrder, $product_all));
 
         return redirect()->route('index', 'done');
-        // return redirect()->action([SiteController::class, ['basket', 'done']]);
     }
 
     public function viewMailService(ServicesOrder $servicesOrder)

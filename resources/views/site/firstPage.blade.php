@@ -189,7 +189,7 @@
     <div id="popupBox" class="orderPopup" style="display: flex;">
         <div class="basket-popup" id="popup">
             <div class="basket-popup-img">
-                <img src="{{ asset('img/basket-popup-img.jpg') }}" alt="basket popup img">
+                <img src="{{ asset('img/basket-popup-img.png') }}" alt="basket popup img">
             </div>
             <h3>дякуємо за замовлення!</h3>
             <a href="{{ route('index') }}" class="send-order-btn">повернутися до покупок</a>
