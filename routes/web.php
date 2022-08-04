@@ -35,13 +35,13 @@ Route::middleware('set_locale')->group(function()
     Route::middleware('url_locale')->group(function()
     {
 
-        Route::get('/{done?}', [\App\Http\Controllers\SiteController::class, 'index'], function(){
+        Route::get('/', [\App\Http\Controllers\SiteController::class, 'index'], function(){
             return redirect('/{locale}');
         })->name('index');
 
     });
     Route::prefix('/')->group(function(){
-
+        Route::get('done/{done?}', [\App\Http\Controllers\SiteController::class, 'index'])->name('indexDone');
         Route::get('products', [\App\Http\Controllers\ProductController::class, 'index'])->name('products');
         Route::get('product/{id}/size/{size}', [\App\Http\Controllers\ProductController::class, 'show'])->name('product');
         Route::get('services', [\App\Http\Controllers\SiteController::class, 'services'])->name('services');
