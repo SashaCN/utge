@@ -35,7 +35,7 @@ Route::middleware('set_locale')->group(function()
     Route::middleware('url_locale')->group(function()
     {
 
-        Route::get('/', [\App\Http\Controllers\SiteController::class, 'index'], function(){
+        Route::get('/{done?}', [\App\Http\Controllers\SiteController::class, 'index'], function(){
             return redirect('/{locale}');
         })->name('index');
 

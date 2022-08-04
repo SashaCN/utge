@@ -7,16 +7,13 @@ let popupBtn = document.querySelector('#popupBtn'),
     check = false;
 
 
-popupBtn.onclick = function () {
+popupBtn.onclick = function (e) {
     if (popupBtn.classList.contains('send-order-btn')) {
-        document.querySelectorAll('input[type=text]').forEach(elem => {
+        document.querySelectorAll('input[type=text][required]').forEach(elem => {
             if (elem.value == '') {
                 check = true;
             }
         });
-        if (check == false) {
-            popupBox.style.display = 'flex';
-        }
     } else {
         popupBox.style.display = 'flex';
     }
