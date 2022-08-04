@@ -184,7 +184,7 @@
                             @endphp
                             <div class="sub-menu">
                                 @foreach ($categories as $category)
-                                    <a href="{{$urlp}}/?categoryid_{{$category->id}}={{$category->id}}">{{ $category->localization[0]->$locale }}</a>
+                                    <a href="products?categoryid_{{$category->id}}={{$category->id}}">{{ $category->localization[0]->$locale }}</a>
                                 @endforeach
                             </div>
                         </li>

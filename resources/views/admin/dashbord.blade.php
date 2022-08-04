@@ -73,11 +73,13 @@
                             @php
                                 $gen_price[] = $order->top_price;
                             @endphp
-                        @else
-                            <p>0</p>
                         @endif
                     @endforeach
-                    <p>{{array_sum($gen_price)}} грн</p>
+                    @if (!isset($gen_price))
+                        <p>0</p>
+                    @else
+                        <p>{{array_sum($gen_price)}} грн</p>
+                    @endif
                 </div>
                 <a href="{{ route('servicesOrder.index') }}">Детальніше ...</a>
             </div>

@@ -18,9 +18,9 @@
             <div id="basket-empty-popup-bg"></div>
         </div>
         <div class="basket-table">
-            
 
-                @if (empty($productsData))
+
+            @if (empty($productsData))
                 <div class="basket-products">
                     <h1 class="basket-clear">@lang('utge.basket-is-empty')</h1>
                 </div>
@@ -100,7 +100,7 @@
                 </div>
             </div>
             @endif
-                
+
         <div class="placing-an-order">
             <h2>@lang('utge.placingAnOrder')</h2>
             <div class="wrapper">
@@ -244,7 +244,7 @@
         <div id="popupBox">
             <div class="basket-popup" id="popup">
                 <div class="basket-popup-img">
-                    <img src="{{ asset('img/basket-popup-img.jpg') }}" alt="basket popup img">
+                    <img src="{{ asset('img/basket-popup-img.png') }}" alt="basket popup img">
                 </div>
                 <h3>дякуємо за замовлення!</h3>
                 <a href="{{ route('products') }}" class="send-order-btn">повернутися до покупок</a>

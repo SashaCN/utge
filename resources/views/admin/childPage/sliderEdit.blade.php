@@ -41,18 +41,19 @@
     @foreach ($sliderImages as $sliderImg)
         @php
             $title = $sliderImg->localization[0];
-        @endphp       
+
+        @endphp
 
         <div class="box-slider-page">
             <form action="{{ route('childPage.update', $sliderImg->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-        
-        
+
+
                 <div class="image-slide flex-col current-slide image-slider-page">
-                    <label class="image-changes" for="image-changes"><img class="old-image" src="{{ $sliderImg->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}"></label>
+                    <label class="image-changes" for="image-changes"><img class="old-image" src="{{ $sliderImg->getFirstMediaUrl('slider') }}" alt="{{ $title->$locale }}"></label>
                     <p class="image-changes-desc">@lang('admin.update-image')</p>
-                    <button class="image-changes-bt add-button" form="image-change" type="submit">@lang('admin.save-new-phot')</button>    
+                    <button class="image-changes-bt add-button" form="image-change" type="submit">@lang('admin.save-new-phot')</button>
                 </div>
 
                 <div class="name-slide flex-col current-slide update-text-slider-page">
@@ -77,26 +78,26 @@
 
                     <div class="slider-page-actions-btn">
                         <a href="{{ route('childPage.delete', $sliderImg->id) }}"></a>
-    
+
                         <button type="submit" class="add-button" id="save-btn">
                             <img src="{{ asset('img/save.svg') }}" alt="Add">
                         </button>
-                    </div>   
+                    </div>
                 </div>
-        
-                
+
+
             </form>
-            
-            
+
+
             <form id="image-change" class="image-changes-form" action="{{ route('childPage.mediaUpdate', $sliderImg->id ) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('POST')
-                
+
                 <input id="image-changes" type="file" name="image">
                 <input type="submit" value="img">
             </form>
-            
-                     
+
+
         </div>
     @endforeach
 @endsection
