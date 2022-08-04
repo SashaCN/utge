@@ -198,24 +198,24 @@
 
                                     @foreach ($productsData as $productData)
 
-                                    @foreach ($products as $product)
+                                        @foreach ($products as $product)
 
-                                    @if ($product->id == $productData[0])
+                                            @if ($product->id == $productData[0])
 
-                                    @php
-                                    $title = $product->localization[0];
-                                    $description = $product->localization[1];
-                                    $min_size = $product->sizeprices->where('price', $productData[3])->first()->size;
-                                    @endphp
+                                                @php
+                                                    $title = $product->localization[0];
+                                                    $description = $product->localization[1];
+                                                    $min_size = $product->sizeprices->where('price', $productData[3])->first()->size;
+                                                @endphp
 
-                                    <tr class="product-tr" data-product-id="{{ $product->id }}">
-                                        <td>{{ $title->$locale }}, {{ $min_size }}</td>
-                                        <td class="bold product-quantify-order"></td>
-                                        <td class="bold product-price-order"></td>
-                                    </tr>
+                                                <tr class="product-tr" data-product-id="{{ $product->id }}">
+                                                    <td>{{ $title->$locale }}, {{ $min_size }}</td>
+                                                    <td class="bold product-quantify-order"></td>
+                                                    <td class="bold product-price-order"></td>
+                                                </tr>
 
-                                    @endif
-                                    @endforeach
+                                            @endif
+                                        @endforeach
                                     @endforeach
 
                                 </table>
@@ -233,23 +233,13 @@
                                     <p class="general-price"></p>
                                 </div>
                                 <div class="btn-wrap">
-                                    <button class="send-order-btn" {{--type="button"--}} type="submit"id="popupBtn">@lang('utge.confirmOrder')</button>
+                                    <button class="send-order-btn" {{--type="button"--}} type="submit" id="popupBtn">@lang('utge.confirmOrder')</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </form>
             </div>
-        </div>
-        <div id="popupBox">
-            <div class="basket-popup" id="popup">
-                <div class="basket-popup-img">
-                    <img src="{{ asset('img/basket-popup-img.jpg') }}" alt="basket popup img">
-                </div>
-                <h3>дякуємо за замовлення!</h3>
-                <a href="{{ route('products') }}" class="send-order-btn">повернутися до покупок</a>
-            </div>
-            <div id="popupCloseBox"></div>
         </div>
     </div>
 

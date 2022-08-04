@@ -244,14 +244,3 @@ window.onload = () => {
         }
     }
 }
-
-
-/* -------------------------------------------------------------------------- */
-/*                         clear localstorage on order                        */
-/* -------------------------------------------------------------------------- */
-
-document.querySelector('#popupBtn').onclick = () => {
-    if (check == false) {                   // var from file popup.js
-        localStorage.basketProduct = undefined;
-    }
-}

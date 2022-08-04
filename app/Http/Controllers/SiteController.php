@@ -29,9 +29,10 @@ use App\Mail\ProductOrderShipped;
 class SiteController extends Controller
 {
 
-    public function index(ProductFilter $request,)
+    public function index(ProductFilter $request, $done = false)
     {
         $products = Product::filter($request)->where('home_view', '1')->paginate(12);
+
         return view('site.firstPage', [
             'products' => $products,
             'about_us' => ChildPage::all()->where('route', 'about_us'),
@@ -39,6 +40,7 @@ class SiteController extends Controller
             'slider2' => ChildPage::where('route', 'slider2')->orderBy('order')->get(),
             'slider3' => ChildPage::where('route', 'slider3')->orderBy('order')->get(),
             'slider4' => ChildPage::where('route', 'slider4')->orderBy('order')->get(),
+            'done' => $done,
         ]);
     }
 
@@ -48,7 +50,7 @@ class SiteController extends Controller
         $products = Product::all();
 
         return view('site.basket', [
-            'products' => $products,
+            'products' => $products
         ]);
     }
     public function favourite ()
@@ -179,10 +181,10 @@ class SiteController extends Controller
 
 
         $user = 'info@utge.net';
-        Mail::to($user)->send(new ProductOrderShipped($customers, $productsOrder, $product_all));
+        // Mail::to($user)->send(new ProductOrderShipped($customers, $productsOrder, $product_all));
 
-
-        return redirect()->action([SiteController::class, 'index']);
+        return redirect()->route('index', 'done');
+        // return redirect()->action([SiteController::class, ['basket', 'done']]);
     }
 
     public function viewMailService(ServicesOrder $servicesOrder)

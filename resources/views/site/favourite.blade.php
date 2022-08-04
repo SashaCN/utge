@@ -77,7 +77,11 @@ $productsId = explode(',', trim($_GET['products'], '[]'));
                 @endforeach
             @endforeach
         @endif
+    </div>
 </div>
+<div class="add-to-basket-popup">
+    <div class="close-basket-popup-btn"><span></span><span></span></div>
+    <p>@lang('utge.add-to-basket-popup')</p>
 </div>
 
 <script src="{{ asset('js/favourite.js') }}"></script>

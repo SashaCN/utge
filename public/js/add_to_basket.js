@@ -34,15 +34,15 @@ function addToBasket (e)
     }
 
     if (basketProduct.length == 0) {
-        basketProduct.push({id: product.getAttribute('data-product-id'), quantify: quantify, size: pr_weight, price: pr_price});
+        basketProduct.push({id: product.getAttribute('data-product-id'), quantify: Number(quantify), size: pr_weight, price: pr_price});
     } else {
         for (let i = 0; i < basketProduct.length; i++) {
 
             if (basketProduct[i]['id'] == product.getAttribute('data-product-id') && basketProduct[i]['size'] == pr_weight) {
-                basketProduct[i]['quantify']+=quantify;
+                basketProduct[i]['quantify']+=Number(quantify);
                 break;
             } else if (i == basketProduct.length-1) {
-                basketProduct.push({id: product.getAttribute('data-product-id'), quantify: quantify, size: pr_weight, price: pr_price});
+                basketProduct.push({id: product.getAttribute('data-product-id'), quantify: Number(quantify), size: pr_weight, price: pr_price});
                 break;
             }
         }
