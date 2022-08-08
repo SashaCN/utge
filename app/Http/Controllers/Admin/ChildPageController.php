@@ -125,9 +125,9 @@ class ChildPageController extends Controller
     {
         $a = 1;
         if ($request->hasFile('image')) {
-            // $childPage->clearMediaCollection('slider');
-            $childPage->addMediaFromRequest('image')
-            ->toMediaCollection('slider');
+
+        $childPage->clearMediaCollection('images');
+        $childPage->addMediaFromRequest('image')->toMediaCollection('images');
 
         }
         return redirect()->back();

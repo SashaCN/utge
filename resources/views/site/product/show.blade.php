@@ -4,12 +4,12 @@
 
     @php
         $locale = app()->getLocale();
-
-        $title_seo = $product->localization[2];
-        $desc_seo = $product->localization[3];
-        $key_seo = $product->localization[4];
-        $og_title_seo = $product->localization[5];
-        $og_desc_seo = $product->localization[6];
+        
+        $title_seo = $product->localization[1];
+        $og_title_seo = $product->localization[2];
+        $desc_seo = $product->localization[4];
+        $og_desc_seo = $product->localization[5];
+        $key_seo = $product->localization[6];
         // $custom_seo = $product->localization[7];
 
     @endphp
@@ -31,7 +31,7 @@
 @php
     $locale = app()->getLocale();
     $title = $product->localization[0];
-    $description = $product->localization[1];
+    $description = $product->localization[3];
 
     $min_price = $size;
 
