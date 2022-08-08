@@ -50,9 +50,9 @@
         
         
                 <div class="image-slide flex-col current-slide image-slider-page">
-                    <label class="image-changes" for="image-changes"><img class="old-image" src="{{ $sliderImg->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}"></label>
+                    <label class="image-changes" for="image-changes-{{ $sliderImg->id }}"><img class="old-image" src="{{ $sliderImg->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}"></label>
                     <p class="image-changes-desc">@lang('admin.update-image')</p>
-                    <button class="image-changes-bt add-button" form="image-change" type="submit">@lang('admin.save-new-phot')</button>    
+                    <button class="image-changes-bt add-button" form="image-change-{{ $sliderImg->id }}" type="submit">@lang('admin.save-new-phot')</button>    
                 </div>
 
                 <div class="name-slide flex-col current-slide update-text-slider-page">
@@ -77,7 +77,7 @@
 
                     <div class="slider-page-actions-btn">
                         <a href="{{ route('childPage.delete', $sliderImg->id) }}"></a>
-    
+        
                         <button type="submit" class="add-button" id="save-btn">
                             <img src="{{ asset('img/save.svg') }}" alt="Add">
                         </button>
@@ -88,15 +88,16 @@
             </form>
             
             
-            <form id="image-change" class="image-changes-form" action="{{ route('childPage.mediaUpdate', $sliderImg->id ) }}" method="POST" enctype="multipart/form-data">
+            <form id="image-change-{{ $sliderImg->id }}" class="image-changes-form"  method="POST" action="{{ route('childPage.mediaUpdate', $sliderImg->id ) }}" enctype="multipart/form-data">
                 @csrf
                 @method('POST')
-                
-                <input id="image-changes" type="file" name="image">
+                <input type="hidden" name="test">
+                <input id="image-changes-{{ $sliderImg->id }}" type="file" name="image">
                 <input type="submit" value="img">
             </form>
             
                      
         </div>
     @endforeach
+    <script src="{{ asset('js/slider_edit.js') }}"></script>
 @endsection
