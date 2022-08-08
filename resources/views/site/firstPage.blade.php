@@ -185,7 +185,7 @@
     <div class="close-basket-popup-btn"><span></span><span></span></div>
     <p>@lang('utge.add-to-basket-popup')</p>
 </div>
-@if ($done == 'done')
+@if ($done == 'true')
     <div id="popupBox" class="orderPopup" style="display: flex;">
         <div class="basket-popup" id="popup">
             <div class="basket-popup-img">

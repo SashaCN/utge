@@ -168,6 +168,10 @@
             </div>
         </div>
         <div class="size-price-slide flex-col">
+            <div class="mass-netto">
+                <input class="filter-item-checkbox" id="mass_id" type="checkbox" name="mass_id" value="1">
+                <label class="filter-item-label" for="mass_id"><span class="label-circle"></span><span class="label-desc">@lang('admin.massa_neto')</span></label>
+            </div>
             <div class="size-price">
                 <div class="size1 size">
                     <div class="input-wrap">
@@ -210,6 +214,7 @@
             <label><input type="file"  name="image"></label>
         </div>
         <div class="another-slide flex-col">
+
             <div class="input-wrap sub-category-wrap">
                 <p class="label">Виберіть під-категорію</p>
                 <div class="flex-space sub-category-wrap">

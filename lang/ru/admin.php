@@ -167,5 +167,6 @@ return [
     'interes-service' => 'Что интересует',
     'change' => 'Изменить',
     'save-new-pdf' => 'Сохранить',
+    'massa_neto' => 'масса нетто',
 ];
 

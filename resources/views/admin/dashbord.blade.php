@@ -18,6 +18,10 @@
 
 
     <h2>Панель стану</h2>
+
+    {{-- <form action="{{ route('admin.setValueToCache') }}" method="GET">
+        <input type="submit" value="cashe">
+    </form> --}}
     <div class="dashbord-wraper">
 
         <div class="dashbord-wraper-block">
