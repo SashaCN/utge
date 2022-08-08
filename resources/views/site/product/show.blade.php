@@ -70,6 +70,9 @@
                 </p>
             </div>
             <div class="size-line flex-aic">
+                @if($product->mass_id == 1)
+                <p class="mass_netto">@lang('admin.massa_neto')</p>
+                @endif
                 @foreach ($product->sizePrices as $sizePrice)
                     @if ($sizePrice->size == $min_price)
                         <a href="{{ route('product', ['id' => $product->id, 'size' => $sizePrice->size],$product->localization[0]) }}" class="price active-size">{{ $sizePrice->size }}</a>
@@ -77,6 +80,7 @@
                         <a href="{{ route('product', ['id' => $product->id, 'size' => $sizePrice->size], $product->localization[0]) }}" class="price">{{ $sizePrice->size }}</a>
                     @endif
                 @endforeach
+
             </div>
             <hr>
             <div class="price-line flex-sb">

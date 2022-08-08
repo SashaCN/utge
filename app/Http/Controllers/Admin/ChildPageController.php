@@ -18,7 +18,7 @@ class ChildPageController extends Controller
     public function index()
     {
         $childPages = ChildPage::all();
-        
+
         return view('admin.childPage.index', [
             'childPages' => $childPages,
         ]);
@@ -32,7 +32,7 @@ class ChildPageController extends Controller
     public function create()
     {
         $childPages = ChildPage::all();
-        
+
         return view('admin.childPage.create', [
             'childPages' => $childPages,
         ]);
@@ -61,14 +61,14 @@ class ChildPageController extends Controller
 
         if ($request->route != 'logo-img')
         {
-            if($request->route != 'phone' && $request->route != 'email') 
+            if($request->route != 'phone' && $request->route != 'email')
             {
                 $localization_title = new Localization();
                 $localization_title->fill($request->validated());
                 $localization_title->var = 'title';
                 $localization_title->uk = $request->title_uk;
                 $localization_title->ru = $request->title_ru;
-        
+
                 $childPage->localization()->save($localization_title);
 
                 if ($request->route == 'slider1' ||  $request->route == 'slider2' || $request->route == 'slider3' ||  $request->route == 'slider4') {
@@ -77,7 +77,7 @@ class ChildPageController extends Controller
                     $localization_slider_link->var = 'slider_link';
                     $localization_slider_link->uk = preg_replace('#(https?:\/\/)#', '', $request->slider_link);
                     $localization_slider_link->ru = preg_replace('#(https?:\/\/)#', '', $request->slider_link);
-                    
+
                     $childPage->localization()->save($localization_slider_link);
                 }
 
@@ -87,35 +87,35 @@ class ChildPageController extends Controller
                     $localization_desc->var = 'description';
                     $localization_desc->uk = $request->description_uk;
                     $localization_desc->ru = $request->description_ru;
-                    
+
                     $childPage->localization()->save($localization_desc);
                 }
 
             } else {
-    
+
                 $localization_title = new Localization();
                 $localization_title->fill($request->validated());
                 $localization_title->var = 'title';
-    
+
                 if (isset($request->phone)) {
                     $localization_title->uk = $request->phone;
                     $localization_title->ru = $request->phone;
                 }
-    
+
                 if (isset($request->email)) {
                     $localization_title->uk = $request->email;
                     $localization_title->ru = $request->email;
                 }
-        
+
                 $childPage->localization()->save($localization_title);
-            }       
+            }
         }
 
-        
+
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $childPage->addMediaFromRequest('image')
-            ->toMediaCollection('images');
+            ->toMediaCollection('slider');
         }
 
         return redirect()->route('childPage.index');
@@ -123,9 +123,12 @@ class ChildPageController extends Controller
 
     public function mediaUpdate(ImageRequest $request, ChildPage $childPage)
     {
+        $a = 1;
         if ($request->hasFile('image')) {
-            $childPage->clearMediaCollection('images');
-            $childPage->addMediaFromRequest('image')->toMediaCollection('images');
+
+        $childPage->clearMediaCollection('images');
+        $childPage->addMediaFromRequest('image')->toMediaCollection('images');
+
         }
         return redirect()->back();
     }
@@ -208,7 +211,7 @@ class ChildPageController extends Controller
         if(isset($request->slider_link))
         {
             $childPage->localization()->where('var', 'slider_link')->update($localization_slider_link);
-            
+
         }
 
         if(isset($request->slider_link))

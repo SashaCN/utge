@@ -20,7 +20,7 @@
         <div class="basket-table">
 
 
-                @if (empty($productsData))
+            @if (empty($productsData))
                 <div class="basket-products">
                     <h1 class="basket-clear">@lang('utge.basket-is-empty')</h1>
                 </div>
@@ -240,6 +240,16 @@
                     </div>
                 </form>
             </div>
+        </div>
+        <div id="popupBox">
+            <div class="basket-popup" id="popup">
+                <div class="basket-popup-img">
+                    <img src="{{ asset('img/basket-popup-img.png') }}" alt="basket popup img">
+                </div>
+                <h3>дякуємо за замовлення!</h3>
+                <a href="{{ route('products') }}" class="send-order-btn">повернутися до покупок</a>
+            </div>
+            <div id="popupCloseBox"></div>
         </div>
     </div>
 

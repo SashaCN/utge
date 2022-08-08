@@ -186,6 +186,13 @@ $locale = app()->getLocale();
     </div>
 
     <div class="size-price-slide flex-col">
+        @if($product->mass_id == 1)
+            <input checked class="filter-item-checkbox" id="mass_id" type="checkbox" name="mass_id" value="1">
+            <label class="filter-item-label" for="mass_id"><span class="label-circle"></span><span class="label-desc">@lang('admin.massa_neto')</span></label>
+        @else
+            <input class="filter-item-checkbox" id="mass_id" type="checkbox" name="mass_id" value="1">
+            <label class="filter-item-label" for="mass_id"><span class="label-circle"></span><span class="label-desc">@lang('admin.massa_neto')</span></label>
+        @endif
         @php
             $counter = 0;
         @endphp

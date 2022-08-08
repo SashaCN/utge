@@ -11,9 +11,14 @@ use App\Models\Product;
 use App\Models\ProductsOrder;
 use App\Models\Services;
 use App\Models\ServicesOrder;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Redis;
 
 class AdminController extends Controller
 {
+
+    public $key = 'atr';
+    public $value = 'dfdf';
     /**
      * Display a listing of the resource.
      *
@@ -30,6 +35,13 @@ class AdminController extends Controller
             'products_order' => ProductsOrder::all(),
         ]);
     }
+
+
+
+    // public function setValueToCache(string $key = 'sad', $value = ['dfsd','sdfds'])
+    // {
+    //     $this->getRedis()->rawCommand('SET', $key, $value);
+    // }
 
     /**
      * Show the form for creating a new resource.
