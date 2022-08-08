@@ -66,7 +66,7 @@ $locale = app()->getLocale();
         @foreach ($products as $product)
         @php
             $title = $product->localization[0];
-            $description = $product->localization[1];
+            $description =  [3];
 
             if ($product->sizeprices->whereIn('available', [1,4])->min('size')) {
                 $min_price = $product->sizeprices->whereIn('available', [1,4])->min('size');
