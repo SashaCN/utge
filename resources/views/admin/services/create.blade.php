@@ -74,8 +74,12 @@
             <div class="size-price">
                 <div class="size size1">
                     <div class="input-wrap">
-                        <input type="text" name="materials/1" value="{{ old('materials/1') }}" id="materials1" class="auto-value">
-                        <label class="label" for="materials1">@lang('admin.add_material')</label>
+                        <input type="text" id="materials_uk1" name="materials_uk/1" class="auto-value" value="{{ old('materials_uk') }}" >
+                        <label class="label" for="materials_uk1" >@lang('admin.add_title_materials')</label>
+                    </div>
+                    <div class="input-wrap">
+                        <input type="text" id="materials_ru1" name="materials_ru/1" class="auto-value" value="{{ old('materials_ru')}}">
+                        <label class="label" for="materials_ru1">@lang('admin.add_title_ru_materials')</label>
                     </div>
 
                     <div class="input-wrap">
@@ -118,9 +122,14 @@
             function getStructure(counter) {
                 return structure = `
                     <div class="size size${counter}">
+
                         <div class="input-wrap">
-                            <input type="text" name="materials/${counter}" id="materials${counter}" class="auto-value">
-                            <label class="label" for="materials${counter}">@lang('admin.add_material')</label>
+                            <input type="text" id="materials_uk${counter}" value="{{ old('materials_uk') }}" name="materials_uk/${counter}">
+                            <label class="label" for="materials_uk${counter}">@lang('admin.add_title_materials')</label>
+                        </div>
+                        <div class="input-wrap">
+                            <input type="text" id="materials_ru${counter}" name="materials_ru/${counter}" value="{{ old('materials_ru')}}">
+                            <label class="label" for="materials_ru${counter}">@lang('admin.add_title_ru_materials')</label>
                         </div>
 
                         <div class="input-wrap">
