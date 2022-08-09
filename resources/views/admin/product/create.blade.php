@@ -169,8 +169,8 @@
         </div>
         <div class="size-price-slide flex-col">
             <div class="mass-netto">
-                <input class="filter-item-checkbox" id="mass_id" type="checkbox" name="mass_id" value="1">
-                <label class="filter-item-label" for="mass_id"><span class="label-circle"></span><span class="label-desc">@lang('admin.massa_neto')</span></label>
+                <input class="mass-netto-checkbox" id="mass_id" type="checkbox" name="mass_id" value="1">
+                <label class="mass-netto-label" for="mass_id"><span>@lang('admin.massa_neto')</span></label>
             </div>
             <div class="size-price">
                 <div class="size1 size">
