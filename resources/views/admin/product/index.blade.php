@@ -30,7 +30,7 @@
                 @foreach ($products as $product)
                 @php
                     $title = $product->localization[0];
-                    $description = $product->localization[1];
+                    $description = $product->localization[3];
                 @endphp
                 <tr>
                     <td class="product-image"><img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}"></td>

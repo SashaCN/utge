@@ -165,4 +165,8 @@
         'gen-price-unit' => 'Загальна ціна товару',
         'price-of-unit' => 'Ціна товару',
         'save-new-pdf' => 'Зберегти',
-    ];
+        'massa_neto' => 'маса нетто',
+        'add_title_materials' => 'Матіал на українській мові',
+        'add_title_ru_materials' => 'Матіал на російській мові',
+];
+

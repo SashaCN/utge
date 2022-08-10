@@ -167,5 +167,8 @@ return [
     'interes-service' => 'Что интересует',
     'change' => 'Изменить',
     'save-new-pdf' => 'Сохранить',
+    'massa_neto' => 'масса нетто',
+    'add_title_materials' => 'Материал на украинском языке',
+    'add_title_ru_materials' => 'Материал на русском языке',
 ];
 

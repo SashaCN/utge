@@ -4,12 +4,12 @@
 
     @php
         $locale = app()->getLocale();
-
-        $title_seo = $product->localization[2];
-        $desc_seo = $product->localization[3];
-        $key_seo = $product->localization[4];
-        $og_title_seo = $product->localization[5];
-        $og_desc_seo = $product->localization[6];
+        
+        $title_seo = $product->localization[1];
+        $og_title_seo = $product->localization[2];
+        $desc_seo = $product->localization[4];
+        $og_desc_seo = $product->localization[5];
+        $key_seo = $product->localization[6];
         // $custom_seo = $product->localization[7];
 
     @endphp
@@ -31,7 +31,7 @@
 @php
     $locale = app()->getLocale();
     $title = $product->localization[0];
-    $description = $product->localization[1];
+    $description = $product->localization[3];
 
     $min_price = $size;
 
@@ -70,6 +70,9 @@
                 </p>
             </div>
             <div class="size-line flex-aic">
+                @if($product->mass_id == 1)
+                <p class="mass_netto">@lang('admin.massa_neto')</p>
+                @endif
                 @foreach ($product->sizePrices as $sizePrice)
                     @if ($sizePrice->size == $min_price)
                         <a href="{{ route('product', ['id' => $product->id, 'size' => $sizePrice->size],$product->localization[0]) }}" class="price active-size">{{ $sizePrice->size }}</a>
@@ -77,6 +80,7 @@
                         <a href="{{ route('product', ['id' => $product->id, 'size' => $sizePrice->size], $product->localization[0]) }}" class="price">{{ $sizePrice->size }}</a>
                     @endif
                 @endforeach
+
             </div>
             <hr>
             <div class="price-line flex-sb">

@@ -66,6 +66,7 @@ $locale = app()->getLocale();
 
     @php
         $title = $service->localization[0];
+        $materials = $service->localization[1];
     @endphp
 
     <div class="name-slide flex-col current-slide">
@@ -74,7 +75,7 @@ $locale = app()->getLocale();
             <label class="label" for="title_uk">@lang('admin.add_uk_title')</label>
         </div>
         <div class="input-wrap">
-            <input type="text" value="{{ $title->ru}}" id="title_ru" name="title_ru">
+            <input type="text" value="{{ $title->ru }}" id="title_ru" name="title_ru">
             <label class="label" for="title_ru">@lang('admin.add_ru_title')</label>
         </div>
     </div>
@@ -92,8 +93,13 @@ $locale = app()->getLocale();
                 @endphp
                 <div class="size size{{ $counter }}">
                     <div class="input-wrap">
-                        <input type="text" value="{{ $sizeprice->materials }}" name="materials/{{$counter}}" id="materials{{$counter}}" class="auto-value">
-                        <label class="label" for="materials{{$counter}}">@lang('admin.add_size')</label>
+
+                        <input type="text" id="materials_uk" value="{{ $materials->uk }}" name="materials_uk">
+                        <label class="label" for="materials_uk" >@lang('admin.add_title_materials')</label>
+                    </div>
+                    <div class="input-wrap">
+                        <input type="text" id="materials_ru" name="materials_ru" value="{{ $materials->ru }}">
+                        <label class="label" for="materials_ru">@lang('admin.add_title_ru_materials')</label>
                     </div>
 
                     <div class="input-wrap">
@@ -147,9 +153,14 @@ $locale = app()->getLocale();
     function getStructure(counter) {
                 return structure = `
                     <div class="size size${counter}">
+
                         <div class="input-wrap">
-                            <input type="text" name="materials/${counter}" id="materials${counter}" class="auto-value">
-                            <label class="label" for="materials${counter}">@lang('admin.add_material')</label>
+                            <input type="text" id="materials_uk${counter}" value="{{ old('materials_uk') }}" name="materials_uk/${counter}">
+                            <label class="label" for="materials_uk${counter}">@lang('admin.add_title_materials')</label>
+                        </div>
+                        <div class="input-wrap">
+                            <input type="text" id="materials_ru${counter}" name="materials_ru/${counter}" value="{{ old('materials_ru')}}">
+                            <label class="label" for="materials_ru${counter}">@lang('admin.add_title_ru_materials')</label>
                         </div>
 
                         <div class="input-wrap">

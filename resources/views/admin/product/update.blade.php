@@ -72,12 +72,12 @@ $locale = app()->getLocale();
 
     @php
         $title = $product->localization[0];
-        $description = $product->localization[1];
-        $title_seo = $product->localization[2];
-        $desc_seo = $product->localization[3];
-        $key_seo = $product->localization[4];
-        $og_title_seo = $product->localization[5];
-        $og_desc_seo = $product->localization[6];
+        $title_seo = $product->localization[1];
+        $og_title_seo = $product->localization[2];
+        $description = $product->localization[3];
+        $desc_seo = $product->localization[4];
+        $og_desc_seo = $product->localization[5];
+        $key_seo = $product->localization[6];
         $custom_seo = $product->localization[7];
     @endphp
 
@@ -186,6 +186,17 @@ $locale = app()->getLocale();
     </div>
 
     <div class="size-price-slide flex-col">
+        @if($product->mass_id == 1)
+        <div class="mass-netto">
+            <input checked class="mass-netto-checkbox" id="mass_id" type="checkbox" name="mass_id" value="1">
+            <label class="mass-netto-label" for="mass_id"><span>@lang('admin.massa_neto')</span></label>
+        </div>
+        @else
+        <div class="mass-netto">
+            <input class="mass-netto-checkbox" id="mass_id" type="checkbox" name="mass_id" value="1">
+            <label class="mass-netto-label" for="mass_id"><span>@lang('admin.massa_neto')</span></label>
+        </div>
+        @endif
         @php
             $counter = 0;
         @endphp

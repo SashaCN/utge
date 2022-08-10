@@ -33,6 +33,7 @@
                     @foreach ($services as $service)
                         @php
                             $title_service = $service->localization[0];
+                            $materials = $service->localization[1];
                         @endphp
                         @if ($service->service_category_id == $category->id)
 
@@ -40,7 +41,7 @@
                                 {{-- @dump($item->service_id) --}}
                             @endforeach
 
-                            @if ($service->servicesSizePrice[0]->materials == 0)
+                            @if (empty($materials->$locale))
                                 <tr class="service-item">
                                     <td>{{ $title_service->$locale }}</td>
                                     <td></td>
@@ -57,7 +58,7 @@
                                 @foreach ($service->servicesSizePrice as $sizePrize)
                                 <tr class="service-item">
                                     <td></td>
-                                    <td class="service-item-materials">{{ $sizePrize->materials}}</td>
+                                    <td class="service-item-materials">{{ $materials->$locale}}</td>
                                     <td>{{ $sizePrize->units}}</td>
                                     <td>{{ $sizePrize->price}}</td>
                                 </tr>

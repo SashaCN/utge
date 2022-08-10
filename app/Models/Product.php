@@ -22,7 +22,7 @@ class Product extends Model implements HasMedia
 
     protected $cascadeDeletes = ['sizePrices'];
     protected $dates = ['deleted_at'];
-    protected $fillable = ['sub_category_id', 'available', 'list_position', 'home_view'];
+    protected $fillable = ['sub_category_id', 'available', 'list_position', 'home_view', 'mass_id'];
 
     public function sub_categories()
     {

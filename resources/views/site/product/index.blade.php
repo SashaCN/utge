@@ -66,7 +66,7 @@ $locale = app()->getLocale();
         @foreach ($products as $product)
         @php
             $title = $product->localization[0];
-            $description = $product->localization[1];
+            $description =  [3];
 
             if ($product->sizeprices->whereIn('available', [1,4])->min('size')) {
                 $min_price = $product->sizeprices->whereIn('available', [1,4])->min('size');
@@ -92,7 +92,11 @@ $locale = app()->getLocale();
                 </div>
                 <figcaption>
                     <h3>{{ $title->$locale }}</h3>
-                    <p class="description">{!! $description->$locale !!}</p>
+                    @if(empty($description->$locale))
+                        <p class="description"></p>
+                    @else
+                        <p class="description">{!! $description->$locale !!}</p>
+                    @endif
                     <p class="description active-size">{{ $min_price }}</p>
                     <div class="button-line flex-sb">
 
