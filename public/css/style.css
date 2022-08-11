@@ -1605,6 +1605,12 @@ h3 {
   width: 5px;
   border-radius: 2px;
 }
+.desc ul {
+  list-style: circle;
+}
+.desc ul, .desc ol {
+  padding-left: 20px;
+}
 
 .price-line {
   padding-top: 25px;

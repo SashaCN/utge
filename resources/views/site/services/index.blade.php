@@ -28,25 +28,26 @@
                     $title_category = $category->localization[0];
                 @endphp
                 <tr class="service-category">
-                    <td  colspan="4">{{ $title_category->$locale }}</td>
+                    <td colspan="4">{{ $title_category->$locale }}</td>
                 </tr>
                     @foreach ($services as $service)
                         @php
+                            $counter = 0;
                             $title_service = $service->localization[0];
                             $materials = $service->localization[1];
                         @endphp
                         @if ($service->service_category_id == $category->id)
 
-                            @foreach ($service->servicesSizePrice as $item)
-                                {{-- @dump($item->service_id) --}}
+                            @foreach ($service->servicessizeprice as $item)
+                                {{-- @dump($item) --}}
                             @endforeach
 
                             @if (empty($materials->$locale))
                                 <tr class="service-item">
                                     <td>{{ $title_service->$locale }}</td>
                                     <td></td>
-                                    <td>{{ $service->servicesSizePrice[0]->units}}</td>
-                                    <td>{{ $service->servicesSizePrice[0]->price}}</td>
+                                    <td>{{ $item->units}}</td>
+                                    <td>{{ $item->price}}</td>
                                 </tr>
                             @else
                                 <tr class="service-item">
@@ -55,7 +56,13 @@
                                     <td></td>
                                     <td></td>
                                 </tr>
-                                @foreach ($service->servicesSizePrice as $sizePrize)
+                                {{-- @dd($service->servicessizeprice) --}}
+                                @foreach ($service->servicessizeprice as $sizePrize)
+                                @php
+                                    $counter++;
+                                    $materials = $service->localization[$counter];
+                                @endphp
+
                                 <tr class="service-item">
                                     <td></td>
                                     <td class="service-item-materials">{{ $materials->$locale}}</td>

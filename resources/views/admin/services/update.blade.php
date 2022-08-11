@@ -66,7 +66,7 @@ $locale = app()->getLocale();
 
     @php
         $title = $service->localization[0];
-        $materials = $service->localization[1];
+        // $materials = $service->localization[1];
     @endphp
 
     <div class="name-slide flex-col current-slide">
@@ -85,20 +85,20 @@ $locale = app()->getLocale();
         @endphp
 
         <div class="size-price">
-
             @foreach ($service->servicessizeprice as $sizeprice)
 
                 @php
                 $counter++;
+                $materials = $service->localization[$counter];
                 @endphp
                 <div class="size size{{ $counter }}">
                     <div class="input-wrap">
 
-                        <input type="text" id="materials_uk" value="{{ $materials->uk }}" name="materials_uk">
+                        <input type="text" id="materials_uk" value="{{ $materials->uk }}" name="materials_uk/{{$counter}}" class="auto-value">
                         <label class="label" for="materials_uk" >@lang('admin.add_title_materials')</label>
                     </div>
                     <div class="input-wrap">
-                        <input type="text" id="materials_ru" name="materials_ru" value="{{ $materials->ru }}">
+                        <input type="text" id="materials_ru" name="materials_ru/{{$counter}}" value="{{ $materials->ru }}" class="auto-value">
                         <label class="label" for="materials_ru">@lang('admin.add_title_ru_materials')</label>
                     </div>
 
@@ -131,10 +131,10 @@ $locale = app()->getLocale();
                 {{-- <label><input type="hidden" name="sub_category_id"></label> --}}
                 @foreach ($servicescategories as $category)
                 @php
-                $title = $category->localization[0];
+                    $title = $category->localization[0];
                 @endphp
 
-                @if ($category->id == $service->sub_category_id)
+                @if ($category->id == $service->service_category_id)
                 <input class="radio-change" id="subCategory{{$category->id}}" type="radio" value="{{$category->id}}" name="service_category_id" checked>
                 <label class="radio-label" for="subCategory{{$category->id}}"><span class="label-circle"></span><span class="label-desc">{{ $title->$locale }}</span></label>
                 @else
@@ -155,11 +155,11 @@ $locale = app()->getLocale();
                     <div class="size size${counter}">
 
                         <div class="input-wrap">
-                            <input type="text" id="materials_uk${counter}" value="{{ old('materials_uk') }}" name="materials_uk/${counter}">
+                            <input type="text" id="materials_uk${counter}" value="{{ old('materials_uk') }}" name="materials_uk/${counter}" class="auto-value">
                             <label class="label" for="materials_uk${counter}">@lang('admin.add_title_materials')</label>
                         </div>
                         <div class="input-wrap">
-                            <input type="text" id="materials_ru${counter}" name="materials_ru/${counter}" value="{{ old('materials_ru')}}">
+                            <input type="text" id="materials_ru${counter}" name="materials_ru/${counter}" value="{{ old('materials_ru')}}" class="auto-value">
                             <label class="label" for="materials_ru${counter}">@lang('admin.add_title_ru_materials')</label>
                         </div>
 
