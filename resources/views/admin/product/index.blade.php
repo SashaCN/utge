@@ -132,7 +132,7 @@
 
                 <div class="filter-item filter-setting-button">
                     <input class="filter-item-button-button" id="filter-item-button" type="submit" value="filter">
-                    <button class="filter-item-button-label" for="filter-item-button-label">@lang('admin.search')</button>
+                    <button class="filter-item-button-label" id="ajaxSubmit" for="filter-item-button-label">@lang('admin.search')</button>
                 </div>
 
             </form>

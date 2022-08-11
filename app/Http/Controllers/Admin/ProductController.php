@@ -6,7 +6,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\ProductType;
 use App\Models\Category;
-use App\Models\SubCategory;
+use App\Models\SubCategory;     
 use App\Models\Product;
 use App\Models\Localization;
 use App\Models\SizePrice;

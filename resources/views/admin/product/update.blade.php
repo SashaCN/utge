@@ -193,7 +193,7 @@ $locale = app()->getLocale();
         </div>
         @else
         <div class="mass-netto">
-            <input class="mass-netto-checkbox" id="mass_id" type="checkbox" name="mass_id" value="1">
+            <input class="mass-netto-checkbox" id="mass_id" type="checkbox" name="mass_id" value="0">
             <label class="mass-netto-label" for="mass_id"><span>@lang('admin.massa_neto')</span></label>
         </div>
         @endif

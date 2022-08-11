@@ -65,8 +65,12 @@ $locale = app()->getLocale();
     @method('PUT')
 
     @php
-        $title = $service->localization[0];
-        $materials = $service->localization[1];
+        if(!isset($service->localization[1])){
+            $title = $service->localization[0];
+            $materials = $service->localization[1];
+        } else {
+            $materials = $service->localization[1];
+        }
     @endphp
 
     <div class="name-slide flex-col current-slide">
