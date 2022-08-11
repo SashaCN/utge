@@ -15,10 +15,10 @@
 
     <h3 class="models-h3">@lang('admin.slider')</h3>
     <div class="sliders-box">
-        <div class="slider"><a href="{{ route('childPage.sliderEdit', 'slider1') }}"><svg><use xlink:href="{{ asset('img/sprite.svg#cow') }}"></use></svg>@lang('utge.slider-feed')</a></div>
-        <div class="slider"><a href="{{ route('childPage.sliderEdit', 'slider2') }}"><svg class="svg-fish"><use xlink:href="{{ asset('img/sprite.svg#fish') }}"></use></svg>@lang('utge.slider-staves')</a></div>
-        <div class="slider"><a href="{{ route('childPage.sliderEdit', 'slider3') }}"><svg class="svg-goods"><use xlink:href="{{ asset('img/sprite.svg#goods') }}"></use></svg>@lang('utge.slider-product')</a></div>
-        <div class="slider"><a href="{{ route('childPage.sliderEdit', 'slider4') }}"><svg><use xlink:href="{{ asset('img/sprite.svg#man') }}"></use></svg>@lang('utge.slider-service')</a></div>
+        <div class="slider"><a href="{{ route('childPage.sliderEdit', 'slider1') }}">Слайдер1</a></div>
+        <div class="slider"><a href="{{ route('childPage.sliderEdit', 'slider2') }}">Слайдер2</a></div>
+        <div class="slider"><a href="{{ route('childPage.sliderEdit', 'slider3') }}">Слайдер3</a></div>
+        <div class="slider"><a href="{{ route('childPage.sliderEdit', 'slider4') }}">Слайдер4</a></div>
     </div>
 
     <h3 class="models-h3">header</h3>
