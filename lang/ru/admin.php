@@ -98,7 +98,7 @@ return [
     'product_type_change' => 'Редактировать тип товара',
     'components' => 'Компоненты',
     'categories_product' => 'Категории товаров',
-    'subcategory_product' => 'Под-категорії',
+    'subcategory_product' => 'Под-категории товаров',
     'product_types' => 'Типы товаров',
     'category_news' => 'Категории новостей',
     'services_types' => 'Типы услуг',
