@@ -73,7 +73,7 @@ return [
 
 
     'firstname' => "Ім'я",
-    'lastname' => 'Прізвеще',
+    'lastname' => 'Прізвище',
     'price-units' => 'Вартість, грн',
     'units' => 'Одиниці виміру',
     'material' => 'Матеріал',
