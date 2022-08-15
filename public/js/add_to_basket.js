@@ -49,7 +49,8 @@ function addToBasket (e)
     }
 
     showBasketNum();
-    showAddBasketPopup();
+    // showAddBasketPopup();
+
     product.querySelector('.add-to-basket').classList.add('active-add-to-basket');
     setTimeout(() => {
         product.querySelector('.add-to-basket').classList.remove('active-add-to-basket');
@@ -77,6 +78,9 @@ function showBasketNum ()
 {
     basket_button.querySelector('span').innerText = basketProduct.length;
 }
+
+
+
 
 // function showAddBasketPopup ()
 // {
