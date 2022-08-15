@@ -4,7 +4,7 @@
 
     @php
         $locale = app()->getLocale();
-        
+
         $title_seo = $product->localization[1];
         $og_title_seo = $product->localization[2];
         $desc_seo = $product->localization[4];
@@ -63,7 +63,7 @@
                 </p>
                 <p class="certificate-line">
                     @if($product->getFirstMediaUrl('pdf') == null)
-                        <a href="#" class="button details-btn">@lang('utge.quality-certificate')</a>
+                        {{-- <a href="#" class="button details-btn">@lang('utge.quality-certificate')</a> --}}
                     @else
                         <a href="{{ ($product->getFirstMediaUrl('pdf')) }}" class="button details-btn">@lang('utge.quality-certificate')</a>
                     @endif

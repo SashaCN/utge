@@ -168,5 +168,8 @@
         'massa_neto' => 'маса нетто',
         'add_title_materials' => 'Матіал на українській мові',
         'add_title_ru_materials' => 'Матіал на російській мові',
+        'order-processed' => 'Оброблене замовлення',
+        'order-in-processing' => 'Замовлення в обробці',
+        'order-new' => 'Нове замовлення',
 ];
 

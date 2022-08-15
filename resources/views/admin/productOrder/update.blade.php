@@ -88,13 +88,21 @@ $locale = app()->getLocale();
 
                     @if($customers->status == 0)
 
-                    <option selected value="0">Не опрацьоване замовення</option>
-                    <option value="1">Опрацьоване замовення</option>
+                    <option selected value="0">@lang('admin.order-new')</option>
+                    <option value="2">@lang('admin.order-in-processing')</option>
+                    <option value="1">@lang('admin.order-processed')</option>
 
                     @elseif ($customers->status == 1)
 
-                    <option value="0">Не опрацьоване замовення</option>
-                    <option selected value="1">Опрацьоване замовення</option>
+                    <option value="0">@lang('admin.order-new')</option>
+                    <option value="2">@lang('admin.order-in-processing')</option>
+                    <option selected value="1">@lang('admin.order-processed')</option>
+
+                    @elseif ($customers->status == 2)
+
+                    <option value="0">@lang('admin.order-new')</option>
+                    <option selected value="2">@lang('admin.order-in-processing')</option>
+                    <option value="1">@lang('admin.order-processed')</option>
 
                     @endif
 

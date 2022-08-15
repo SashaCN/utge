@@ -20,7 +20,7 @@
                             <div class="slide">
                                 <a href="http://{{ $link->$locale }}"></a>
                                 <h2>{{ $title->$locale }}</h2>
-                                <img src="{{ $item->getFirstMediaUrl('slider') }}" alt="{{$title->$locale }}">
+                                <img src="{{ $item->getFirstMediaUrl('images') }}" alt="{{$title->$locale }}">
                             </div>
                         @endforeach
                     </div>
@@ -41,7 +41,7 @@
                             <div class="slide">
                                 <a href="http://{{ $link->$locale }}"></a>
                                 <h2>{{ $title->$locale }}</h2>
-                                <img src="{{ $item->getFirstMediaUrl('slider') }}" alt="$title->$locale">
+                                <img src="{{ $item->getFirstMediaUrl('images') }}" alt="$title->$locale">
                             </div>
                         @endforeach
                     </div>
@@ -62,7 +62,7 @@
                             <div class="slide">
                                 <a href="http://{{ $link->$locale }}"></a>
                                 <h2>{{ $title->$locale }}</h2>
-                                <img src="{{ $item->getFirstMediaUrl('slider') }}" alt="$title->$locale">
+                                <img src="{{ $item->getFirstMediaUrl('images') }}" alt="$title->$locale">
                             </div>
                         @endforeach
                     </div>
@@ -83,7 +83,7 @@
                             <div class="slide">
                                 <a href="http://{{ $link->$locale }}"></a>
                                 <h2>{{ $title->$locale }}</h2>
-                                <img src="{{ $item->getFirstMediaUrl('slider') }}" alt="$title->$locale">
+                                <img src="{{ $item->getFirstMediaUrl('images') }}" alt="$title->$locale">
                             </div>
                         @endforeach
                     </div>

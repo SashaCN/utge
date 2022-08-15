@@ -40,19 +40,15 @@ $locale = app()->getLocale();
                     </td>
                     @if ($order->status == 0)
                         <td class="order-status">
-                            @if($order->status == 0)
-                                <p>Нове замовлення</p>
-                            @elseif($order->status == 1)
-                                <p>Опрацьоване замовлення</p>
-                            @endif
+                            <p>@lang('admin.order-new')</p>
                         </td>
-                    @else
+                    @elseif($order->status == 2)
+                        <td class="order-status-two">
+                            <p>@lang('admin.order-in-processing')</p>
+                        </td>
+                    @elseif ($order->status == 1)
                         <td class="order-status-one">
-                            @if($order->status == 0)
-                                <p>Нове замовлення</p>
-                            @elseif($order->status == 1)
-                                <p>Опрацьоване замовлення</p>
-                            @endif
+                            <p>@lang('admin.order-processed')</p>
                         </td>
                     @endif
                     <td class="action">

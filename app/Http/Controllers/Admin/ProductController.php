@@ -325,6 +325,11 @@ class ProductController extends Controller
 
         return redirect()->route('product.edit', $product->id);
     }
+    public function mediaDeletePdf(Product $product)
+    {
+        $product->clearMediaCollection('pdf');
+        return redirect()->route('product.edit', $product->id);
+    }
 
     /**
      * Remove the specified resource from storage.
