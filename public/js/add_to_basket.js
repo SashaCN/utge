@@ -53,7 +53,7 @@ function addToBasket (e)
     product.querySelector('.add-to-basket').classList.add('active-add-to-basket');
     setTimeout(() => {
         product.querySelector('.add-to-basket').classList.remove('active-add-to-basket');
-    }, 3000);
+    }, 500);
     localStorage.basketProduct = JSON.stringify(basketProduct);
 }
 
