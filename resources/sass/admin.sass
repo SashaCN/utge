@@ -944,7 +944,8 @@ main
         padding: 15px
 
 .order-status,
-.order-status-one
+.order-status-one,
+.order-status-two
     p
         color: #fff
         font-weight: bold
@@ -963,6 +964,16 @@ main
     p
         background: $primary
 
+.order-status-two
+    p
+        background: #0097c6
+
+
+.certificate-crud-btn
+    display: flex
+
+.pdf-delete-btn
+    margin-bottom: 15px
 /* -------------------------------------------------------------------------- */
 /*                                  product-order                           */
 /* -------------------------------------------------------------------------- */
@@ -1026,9 +1037,22 @@ main
 /* -------------------------------------------------------------------------- */
 /*                                  pdf                                         */
 /* -------------------------------------------------------------------------- */
-.pdf-changes
+.certificate-crud-btn
+    display: flex
+    justify-content: space-between
+
+.pdf-delete-btn
+    border: none
+    background: #d50000
+    width: 15%
+    svg
+        width: 24px
+        height: 24px
+        fill: #fff
+
+.pdf-changes,
+.pdf-delete-btn
     cursor: pointer
-    background: $primary
     color: #fff
     margin-bottom: 15px
     text-align: center
@@ -1036,6 +1060,13 @@ main
     transition: 0.3s
     &:hover
         background: $primary-hover
+
+.pdf-changes
+    display: flex
+    align-items: center
+    justify-content: center
+    background: $primary
+    width: 85%
 
 .certificate
     padding: 10px

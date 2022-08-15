@@ -193,7 +193,7 @@ $locale = app()->getLocale();
         </div>
         @else
         <div class="mass-netto">
-            <input class="mass-netto-checkbox" id="mass_id" type="checkbox" name="mass_id" value="1">
+            <input class="mass-netto-checkbox" id="mass_id" type="checkbox" name="mass_id" value="0">
             <label class="mass-netto-label" for="mass_id"><span>@lang('admin.massa_neto')</span></label>
         </div>
         @endif
@@ -325,9 +325,26 @@ $locale = app()->getLocale();
                     $pdfname[0]->name;
                 @endphp
                 <a class="certificate" href="{{ $product->getFirstMediaUrl('pdf') }}" class="button details-btn"><p>@lang('utge.quality-certificate')</p> / {{$pdfname[0]->name}}</a>
-                <label class="pdf-changes" for="pdf-changes">Вибрати новий сертифікат</label>
+                <div class="certificate-crud-btn">
+
+                    <label class="pdf-changes" for="pdf-changes">Вибрати новий сертифікат</label>
+
+
+                    <button class="pdf-delete-btn" type="submit" form="pdf-delete" class="add-button">
+                        <svg>
+                            <use xlink:href="{{ asset('img/sprite.svg#trashBox') }}"></use>
+                        </svg>
+                    </button>
+
+                </div>
+
+
                 <button class="image-changes-bt" type="submit" form="pdf-change"
                 class="add-button">@lang('admin.save-new-pdf')</button>
+
+
+
+
             @endif
 
         </div>
@@ -427,6 +444,11 @@ $locale = app()->getLocale();
 
     <input id="pdf-changes" type="file" name="pdf">
     <input type="submit" value="pdf">
+</form>
+
+<form id="pdf-delete" class="image-changes-form" action="{{ route('product.mediaDeletePdf', $product->id ) }}" method="POST" enctype="multipart/form-data">
+    @csrf
+    @method('POST')
 </form>
 
 

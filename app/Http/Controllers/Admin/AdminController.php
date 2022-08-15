@@ -17,8 +17,7 @@ use Illuminate\Support\Facades\Redis;
 class AdminController extends Controller
 {
 
-    public $key = 'atr';
-    public $value = 'dfdf';
+
     /**
      * Display a listing of the resource.
      *
