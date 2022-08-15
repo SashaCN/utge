@@ -181,10 +181,10 @@
         </div>
     </div>
 </div>
-<div class="add-to-basket-popup">
+{{-- <div class="add-to-basket-popup">
     <div class="close-basket-popup-btn"><span></span><span></span></div>
     <p>@lang('utge.add-to-basket-popup')</p>
-</div>
+</div> --}}
 @if ($done == 'true')
     <div id="popupBox" class="orderPopup" style="display: flex;">
         <div class="basket-popup" id="popup">
