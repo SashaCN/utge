@@ -124,11 +124,11 @@
                     <div class="size size${counter}">
 
                         <div class="input-wrap">
-                            <input type="text" id="materials_uk${counter}" value="{{ old('materials_uk') }}" name="materials_uk/${counter}">
+                            <input type="text" id="materials_uk${counter}" value="{{ old('materials_uk') }}" name="materials_uk/${counter}" class="auto-value">
                             <label class="label" for="materials_uk${counter}">@lang('admin.add_title_materials')</label>
                         </div>
                         <div class="input-wrap">
-                            <input type="text" id="materials_ru${counter}" name="materials_ru/${counter}" value="{{ old('materials_ru')}}">
+                            <input type="text" id="materials_ru${counter}" name="materials_ru/${counter}" value="{{ old('materials_ru')}}" class="auto-value">
                             <label class="label" for="materials_ru${counter}">@lang('admin.add_title_ru_materials')</label>
                         </div>
 

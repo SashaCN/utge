@@ -31,21 +31,17 @@ $locale = app()->getLocale();
                     </td>
                     <td>{{ $order->phone }}</td>
                     @if ($order->status == 0)
-                    <td class="order-status">
-                        @if($order->status == 0)
-                            <p>Нове замовлення</p>
-                        @elseif($order->status == 1)
-                            <p>Опрацьоване замовлення</p>
-                        @endif
-                    </td>
-                    @else
-                    <td class="order-status-one">
-                        @if($order->status == 0)
-                            <p>Нове замовлення</p>
-                        @elseif($order->status == 1)
-                            <p>Опрацьоване замовлення</p>
-                        @endif
-                    </td>
+                        <td class="order-status">
+                            <p>@lang('admin.order-new')</p>
+                        </td>
+                    @elseif($order->status == 2)
+                        <td class="order-status-two">
+                            <p>@lang('admin.order-in-processing')</p>
+                        </td>
+                    @elseif ($order->status == 1)
+                        <td class="order-status-one">
+                            <p>@lang('admin.order-processed')</p>
+                        </td>
                     @endif
                     <td class="action">
                         <a title="Редагувати" href="{{ route('productsOrder.edit', $order->id) }}"></a>

@@ -1101,7 +1101,8 @@ main {
 }
 
 .order-status p,
-.order-status-one p {
+.order-status-one p,
+.order-status-two p {
   color: #fff;
   font-weight: bold;
   text-align: center;
@@ -1117,6 +1118,18 @@ main {
 
 .order-status-one p {
   background: #003b95;
+}
+
+.order-status-two p {
+  background: #0097c6;
+}
+
+.certificate-crud-btn {
+  display: flex;
+}
+
+.pdf-delete-btn {
+  margin-bottom: 15px;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -1189,17 +1202,42 @@ main {
 /* -------------------------------------------------------------------------- */
 /*                                  pdf                                         */
 /* -------------------------------------------------------------------------- */
-.pdf-changes {
+.certificate-crud-btn {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pdf-delete-btn {
+  border: none;
+  background: #d50000;
+  width: 15%;
+}
+.pdf-delete-btn svg {
+  width: 24px;
+  height: 24px;
+  fill: #fff;
+}
+
+.pdf-changes,
+.pdf-delete-btn {
   cursor: pointer;
-  background: #003b95;
   color: #fff;
   margin-bottom: 15px;
   text-align: center;
   padding: 10px;
   transition: 0.3s;
 }
-.pdf-changes:hover {
+.pdf-changes:hover,
+.pdf-delete-btn:hover {
   background: #042c68;
+}
+
+.pdf-changes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #003b95;
+  width: 85%;
 }
 
 .certificate {

@@ -6,7 +6,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\ProductType;
 use App\Models\Category;
-use App\Models\SubCategory;     
+use App\Models\SubCategory;
 use App\Models\Product;
 use App\Models\Localization;
 use App\Models\SizePrice;
@@ -323,6 +323,11 @@ class ProductController extends Controller
 
         }
 
+        return redirect()->route('product.edit', $product->id);
+    }
+    public function mediaDeletePdf(Product $product)
+    {
+        $product->clearMediaCollection('pdf');
         return redirect()->route('product.edit', $product->id);
     }
 

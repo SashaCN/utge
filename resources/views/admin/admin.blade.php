@@ -188,30 +188,7 @@
     </main>
     <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
-    <script>
-        // jQuery(document).ready(function() {
-        //     jQuery('.filter-item-checkbox').each(function() {
 
-        //         $(this).on("input", function(e) {
-        //             jQuery.ajax({
-        //                 url: "{{ route('product.index') }}",
-        //                 headers: {
-        //                     'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-        //                 },
-        //                 method: 'get',
-        //                 data: {
-
-        //                     name: jQuery('categoryid_{{ $category->id }}'),
-        //                 },
-        //                 success: function(result) {
-        //                     jQuery('.alert').show();
-        //                     jQuery('.alert').html(result.success);
-        //                 }
-        //             });
-        //         });
-        //     });
-        // })
-    </script>
     <script src="{{ asset('js/lang.js') }}"></script>
     <script src="{{ asset('js/admin.js') }}" type="module"></script>
     {{-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.6.0/dist/alpine.min.js" defer></script> --}}

@@ -21,7 +21,6 @@ class ServicesController extends Controller
     {
         $services = Services::paginate(12);
 
-
         return view('admin.services.index', [
             'services' => $services,
         ]);
@@ -60,42 +59,32 @@ class ServicesController extends Controller
         $localization_title->uk = $request->title_uk;
         $localization_title->ru = $request->title_ru;
 
-        $localization_materials = new Localization();
-        $localization_materials->fill($request->validated());
-        $localization_materials->var = 'materials';
-        $localization_materials->uk = $request->materials_uk;
-        $localization_materials->ru = $request->materials_ru;
-
-        $services->fill($request->except(['price/', 'units/ ']));
+        $services->fill($request->except(['price/', 'units/ ', 'materials_uk/', 'materials_ru/']));
         $services->save();
         // dd($request);
         for($i = 1; $i <= $request->sizecount; $i++){
             $services_size_price = new ServicesSizePrice();
             $services_size_price->fill($request->validated());
 
-            $materials = 'materials/'.$i;
 
-                if($request->$materials == null){
-                    $request->$materials == false;
-                } else {
-                    $localization_materials = new Localization();
-                    $localization_materials->fill($request->validated());
-                    $localization_materials->var = 'materials/'.$i;
-                    $localization_materials->uk = $request->materials_uk;
-                    $localization_materials->ru = $request->materials_ru;
-                }
-            $services->localization()->save($localization_materials);
             // $services_size_price->materials = $request->$materials;
             $price = 'price/'.$i;
             $units = 'units/'.$i;
             $services_size_price->price = $request->$price;
             $services_size_price->units = $request->$units;
+            $services->localization()->save($localization_title);
 
             $services->ServicesSizePrice()->save($services_size_price);
+
+            $localization_materials = new Localization();
+            $localization_materials->fill($request->validated());
+            $localization_materials->var = 'materials';
+            $mat_uk = 'materials_uk/'.$i;
+            $mat_ru = 'materials_ru/'.$i;
+            $localization_materials->uk = $request->$mat_uk;
+            $localization_materials->ru = $request->$mat_ru;
+            $services->localization()->save($localization_materials);
         }
-
-        $services->localization()->save($localization_title);
-
 
         return redirect()->route('services.index');
     }
@@ -151,20 +140,17 @@ class ServicesController extends Controller
         $service->fill($request->except(['materials.', 'price.', 'units.']));
         $service->update();
 
+        foreach ($service->localization->where('var', 'materials') as $material) {
+            $material->delete();
+        }
 
         foreach ($service->servicesSizePrice as $size) {
             $size->delete();
         }
+
         for($i = 1; $i <= $request->sizecount; $i++){
             $services_size_price = new ServicesSizePrice();
             $services_size_price->fill($request->validated());
-            // $materials = 'materials/'.$i;
-
-            //     if($request->$materials == null){
-            //         $request->$materials == false;
-            //     } else {
-            //         $services_size_price->materials = $request->$materials;
-            //     }
 
             // $services_size_price->materials = $request->$materials;
             $price = 'price/'.$i;
@@ -173,13 +159,25 @@ class ServicesController extends Controller
             $services_size_price->units = $request->$units;
 
             $service->ServicesSizePrice()->save($services_size_price);
+            // dd($request);
+        }
+
+        for ($i = $request->sizecount; $i > 0; $i--){
+            $localization_materials = new Localization();
+            $localization_materials->fill($request->validated());
+            $localization_materials->var = 'materials';
+            $mat_uk = 'materials_uk/'.$i;
+            $mat_ru = 'materials_ru/'.$i;
+            // dd($mat_ru);
+            $localization_materials->uk = $request->$mat_uk;
+            $localization_materials->ru = $request->$mat_ru;
+            $service->localization()->save($localization_materials);
         }
 
         $service->localization()->where('var', 'title')->update($localization_title);
-        $service->localization()->where('var', 'materials')->update($localization_maerials);
+        // $service->localization()->where('var', 'materials')->update($localization_maerials);
 
         return redirect()->route('services.index');
-
     }
 
     /**

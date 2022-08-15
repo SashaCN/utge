@@ -170,5 +170,8 @@ return [
     'massa_neto' => 'масса нетто',
     'add_title_materials' => 'Материал на украинском языке',
     'add_title_ru_materials' => 'Материал на русском языке',
+    'order-processed' => 'Обработаный заказ',
+    'order-in-processing' => 'Заказ в обработке',
+    'order-new' => 'Новый заказ',
 ];
 
