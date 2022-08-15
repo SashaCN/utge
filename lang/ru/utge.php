@@ -53,6 +53,7 @@ return [
     'freeDelivery' => 'бесплатная',
     'paymentWhithOutDelivery' => 'К ОПЛАТЕ БЕЗ ДОСТАВКИ',
     'confirmOrder' => 'подтвердить заказ',
+    'continue_shopping' => 'Продолжить покупки',
 
     //products
     'add-to-basket' => 'в&nbsp;корзину',

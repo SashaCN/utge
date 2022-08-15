@@ -95,6 +95,7 @@
                         <div class="delete-col col"></div>
                     </div>
                     <div class="commit-order">
+                        <a class="details-btn" href="{{ route('products') }}">@lang('utge.continue_shopping')</a>
                         <label><input type="button" id="to-order-btn" value="@lang('utge.confirm_order')"></label>
                     </div>
                 </div>

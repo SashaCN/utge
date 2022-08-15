@@ -54,6 +54,7 @@ return [
     'freeDelivery' => 'безкоштовна',
     'paymentWhithOutDelivery' => 'ДО ОПЛАТИ БЕЗ ДОСТАВКИ',
     'confirmOrder' => 'підтвердити замовлення',
+    'continue_shopping' => 'Продовжити покупки',
 
     //products
     'add-to-basket' => 'в&nbsp;корзину',
