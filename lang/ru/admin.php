@@ -82,7 +82,7 @@ return [
     'this-block-name' => 'В данном блоке название не используется',
     'block' => 'Блок',
     'first_create_image' => 'Выберите сначала блок во вкладке Другое',
-    'trash_box' => 'Корзина',
+    'trash_box' => 'Помойка товаров',
     'seo_panel' => 'SEO панель',
     'add_key_seo_uk' => 'Мета тег KEYWORDS на украинском языке',
     'add_desc_seo_uk' => 'Мета тег DESCRIPTION на украинском языке',
