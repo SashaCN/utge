@@ -32,16 +32,16 @@ return [
 
 
     //basket
-    'basket' => 'Корзина',
+    'basket' => 'Кошик',
     'product' => 'товар',
     'quatify' => 'Кількість',
     'price' => 'ціна',
-    'basket_clear' => 'корзина пуста',
+    'basket_clear' => 'Кошик порожній',
     'go-shoping' => 'перейти до товарів',
     'general' => 'разом',
     'confirm_order' => 'оформити замовлення',
     'add-to-basket-popup' => 'Товар додано до корзини',
-    'basket-is-empty' => 'Корзина пуста',
+    'basket-is-empty' => 'Кошик порожній',
     'placingAnOrder' => 'оформлення замовлення',
     'contactDetails' => 'Ваші контактні дані',
     'contactDetails' => 'Спосіб доставки',
@@ -55,6 +55,8 @@ return [
     'paymentWhithOutDelivery' => 'ДО ОПЛАТИ БЕЗ ДОСТАВКИ',
     'confirmOrder' => 'підтвердити замовлення',
     'continue_shopping' => 'Продовжити покупки',
+
+    'favourite-clear' => 'Немає збережених товарів',
 
     //products
     'add-to-basket' => 'в&nbsp;корзину',
@@ -82,6 +84,7 @@ return [
     'number-phone' => 'Номер телефону',
     'interes-service' => 'Яка послуга Вас цікавить',
     'i' => "обовʼязкове до заповнення",
+    'iss' => "надіслати",
     'feedback-form' => "форма зворотнього звʼязку",
     'form-message' => "повідомлення",
     'contact-map' => "ми на карті",

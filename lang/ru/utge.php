@@ -55,6 +55,8 @@ return [
     'confirmOrder' => 'подтвердить заказ',
     'continue_shopping' => 'Продолжить покупки',
 
+    'favourite-clear' => 'Нет сохраненных товаров',
+
     //products
     'add-to-basket' => 'в&nbsp;корзину',
     'filter' => 'фильтр',
@@ -80,8 +82,9 @@ return [
     'order-service' => 'Заказать услугу',
     'number-phone' => 'Номер телефона',
     'interes-service' => 'Какая услуга вас интересует',
-    'i' => "обизатильно к заполнению",
+    'i' => "обязатильно к заполнению",
+    'iss' => "отправить",
     'feedback-form' => "форма обратной связи",
     'form-message' => "сообщение",
     'contact-map' => "мы на карте",
-];
+];  

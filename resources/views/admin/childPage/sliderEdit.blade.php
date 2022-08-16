@@ -8,21 +8,20 @@
     <div class="flex title-line">
         <h2>
             @if ($sliderId == 'slider1')
-               @lang('utge.slider-feed')
+                Слайдер 1
             @endif
 
             @if ($sliderId == 'slider2')
-                @lang('utge.slider-staves')
+                Слайдер 2
             @endif
 
             @if ($sliderId == 'slider3')
-                @lang('utge.slider-product')
+                Слайдер 3
             @endif
 
             @if ($sliderId == 'slider4')
-                @lang('utge.slider-service')
+                Слайдер 4
             @endif
-
         </h2>
 
         <a href="{{ route('childPage.sliderCreate') }}" class="add-button action-button">

@@ -151,7 +151,7 @@
         <div class="desc-slide flex-col">
             <div class="another-slide flex-col">
                 <div class="input-wrap sub-category-wrap">
-                    <p class="label">Виберіть категорію</p>
+                    <p class="label">@lang('admin.under-category')</p>
                     <div class="flex-space sub-category-wrap">
 
                         <input type="hidden" name="news_category_id">
