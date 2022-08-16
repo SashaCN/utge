@@ -31,7 +31,7 @@ class SiteController extends Controller
 
     public function index(ProductFilter $request, $done = false)
     {
-        $products = Product::filter($request)->where('home_view', '1')->paginate(12);
+        $products = Product::filter($request)->where('home_view', '1')->orderBy('list_position')->paginate(12);
 
         return view('site.firstPage', [
             'products' => $products,
