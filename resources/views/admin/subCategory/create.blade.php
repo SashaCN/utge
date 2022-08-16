@@ -16,7 +16,7 @@ $locale = app()->getLocale();
 </div>
 
 <div class="flex title-line">
-    <h2>@lang('admin.admin.add_sub_category')</h2>
+    <h2>@lang('admin.product_add_subcategory')</h2>
     <button type="submit" form="form" class="add-button" id="save-btn">
         <img src="{{ asset('img/save.svg') }}" alt="Add">
     </button>

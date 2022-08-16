@@ -15,7 +15,7 @@
 </div>
 
     <div class="flex title-line">
-        <h2>@lang('admin.add_category')</h2>
+        <h2>@lang('admin.news_add_category')</h2>
         <button type="submit" form="form" class="add-button">
             <img src="{{ asset('img/save.svg') }}" alt="Add">
         </button>

@@ -7,7 +7,7 @@
     @endphp
 
     <div class="flex title-line">
-        <h2>@lang('admin.category_list')</h2>
+        <h2>@lang('admin.news_category_list')</h2>
         <a href="{{ route('newsCategory.create') }}" class="add-button action-button">
             <img src="{{ asset('img/add.svg') }}" alt="Add">
         </a>
