@@ -198,61 +198,245 @@
         </div>
     </div>
 
-    <h3 class="models-p">@lang('admin.another')</h3>
-    <table class="product-table">
-        <thead>
-            <tr>
-                <th>@lang('admin.image')</th>
-                <th>@lang('admin.route')</th>
-                <th>@lang('admin.title')</th>
-                <th>@lang('admin.action')</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($childPages as $childPage)
-                @if ($childPage->route != 'logo-img' && $childPage->route != 'logo-name' && $childPage->route != 'phone' && $childPage->route != 'footer-place' && $childPage->route != 'email' &&  $childPage->route != 'slider1' &&  $childPage->route != 'slider2' &&  $childPage->route != 'slider3' &&  $childPage->route != 'slider4')
-                    @php
-                        $title = $childPage->localization[0];
-                        $description = $childPage->localization[1];
-                    @endphp
+    <div class="page-models">
+        <h3 class="models-p">@lang('utge.about-us')</h3>
+        <table class="product-table">
+            <thead>
+                <tr>
+                    <th>@lang('admin.route')</th>
+                    <th>@lang('admin.title')</th>
+                    <th>@lang('admin.action')</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($childPages as $childPage)
+                    @if ($childPage->route == 'about_us')
+                        @if ($childPage->route != 'logo-img' && $childPage->route != 'logo-name' && $childPage->route != 'phone' && $childPage->route != 'footer-place' && $childPage->route != 'email' &&  $childPage->route != 'slider1' &&  $childPage->route != 'slider2' &&  $childPage->route != 'slider3' &&  $childPage->route != 'slider4')
+                            @php
+                                $title = $childPage->localization[0];
+                                $description = $childPage->localization[1];
+                            @endphp
+    
+                            <tr>
+                                <td>
+                                    @if ($childPage->route == 'delivery')
+                                        <p>@lang('utge.delivery')</p>
+                                    @endif
+    
+                                    @if ($childPage->route == 'payment')
+                                        <p>@lang('utge.payment')</p>
+                                    @endif
+    
+                                    @if ($childPage->route == 'contacts')
+                                        <p>@lang('utge.contacts')</p>
+                                    @endif
+    
+                                    @if ($childPage->route == 'about_us')
+                                        <p>@lang('utge.about-us')</p>
+                                    @endif
+                                </td>
+    
+                                <td>{{ $title->$locale }}</td>
+    
+                                <td class="action">
+                                    @if ($childPage->route != 'about_us')
+                                        <a title="Редагувати" href="{{ route('childPage.edit', $childPage->id) }}"></a>
+                                    @endif
+    
+                                    <a title="Видалити" href="{{ route('childPage.delete', $childPage->id) }}"></a>
+                                </td>
+                            </tr>
+                        @endif  
+                    @endif
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 
-                    <tr>
-                        <td class="product-image">
-                            @if ($childPage->route != 'about_us')
-                                <img src="{{ $childPage->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
-                            @endif
-                        </td>
+    <div class="page-models">
+        <h3 class="models-p">@lang('utge.delivery')</h3>
+        <table class="product-table">
+            <thead>
+                <tr>
+                    <th>@lang('admin.image')</th>
+                    <th>@lang('admin.route')</th>
+                    <th>@lang('admin.title')</th>
+                    <th>@lang('admin.action')</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($childPages as $childPage)
+                    @if ($childPage->route == 'delivery')
+                        @if ($childPage->route != 'logo-img' && $childPage->route != 'logo-name' && $childPage->route != 'phone' && $childPage->route != 'footer-place' && $childPage->route != 'email' &&  $childPage->route != 'slider1' &&  $childPage->route != 'slider2' &&  $childPage->route != 'slider3' &&  $childPage->route != 'slider4')
+                            @php
+                                $title = $childPage->localization[0];
+                                $description = $childPage->localization[1];
+                            @endphp
+    
+                            <tr>
+                                <td class="product-image">
+                                    @if ($childPage->route != 'about_us')
+                                        <img src="{{ $childPage->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
+                                    @endif
+                                </td>
+    
+                                <td>
+                                    @if ($childPage->route == 'delivery')
+                                        <p>@lang('utge.delivery')</p>
+                                    @endif
+    
+                                    @if ($childPage->route == 'payment')
+                                        <p>@lang('utge.payment')</p>
+                                    @endif
+    
+                                    @if ($childPage->route == 'contacts')
+                                        <p>@lang('utge.contacts')</p>
+                                    @endif
+    
+                                    @if ($childPage->route == 'about_us')
+                                        <p>@lang('utge.about-us')</p>
+                                    @endif
+                                </td>
+    
+                                <td>{{ $title->$locale }}</td>
+    
+                                <td class="action">
+                                    @if ($childPage->route != 'about_us')
+                                        <a title="Редагувати" href="{{ route('childPage.edit', $childPage->id) }}"></a>
+                                    @endif
+    
+                                    <a title="Видалити" href="{{ route('childPage.delete', $childPage->id) }}"></a>
+                                </td>
+                            </tr>
+                        @endif  
+                    @endif
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 
-                        <td>
-                            @if ($childPage->route == 'delivery')
-                                <p>@lang('utge.delivery')</p>
-                            @endif
+    <div class="page-models">
+        <h3 class="models-p">@lang('utge.payment')</h3>
+        <table class="product-table">
+            <thead>
+                <tr>
+                    <th>@lang('admin.image')</th>
+                    <th>@lang('admin.route')</th>
+                    <th>@lang('admin.title')</th>
+                    <th>@lang('admin.action')</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($childPages as $childPage)
+                    @if ($childPage->route == 'payment')
+                        @if ($childPage->route != 'logo-img' && $childPage->route != 'logo-name' && $childPage->route != 'phone' && $childPage->route != 'footer-place' && $childPage->route != 'email' &&  $childPage->route != 'slider1' &&  $childPage->route != 'slider2' &&  $childPage->route != 'slider3' &&  $childPage->route != 'slider4')
+                            @php
+                                $title = $childPage->localization[0];
+                                $description = $childPage->localization[1];
+                            @endphp
+    
+                            <tr>
+                                <td class="product-image">
+                                    @if ($childPage->route != 'about_us')
+                                        <img src="{{ $childPage->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
+                                    @endif
+                                </td>
+    
+                                <td>
+                                    @if ($childPage->route == 'delivery')
+                                        <p>@lang('utge.delivery')</p>
+                                    @endif
+    
+                                    @if ($childPage->route == 'payment')
+                                        <p>@lang('utge.payment')</p>
+                                    @endif
+    
+                                    @if ($childPage->route == 'contacts')
+                                        <p>@lang('utge.contacts')</p>
+                                    @endif
+    
+                                    @if ($childPage->route == 'about_us')
+                                        <p>@lang('utge.about-us')</p>
+                                    @endif
+                                </td>
+    
+                                <td>{{ $title->$locale }}</td>
+    
+                                <td class="action">
+                                    @if ($childPage->route != 'about_us')
+                                        <a title="Редагувати" href="{{ route('childPage.edit', $childPage->id) }}"></a>
+                                    @endif
+    
+                                    <a title="Видалити" href="{{ route('childPage.delete', $childPage->id) }}"></a>
+                                </td>
+                            </tr>
+                        @endif  
+                    @endif
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 
-                            @if ($childPage->route == 'payment')
-                                <p>@lang('utge.payment')</p>
-                            @endif
+    <div class="page-models">
+        <h3 class="models-p">@lang('utge.contacts')</h3>
+        <table class="product-table">
+            <thead>
+                <tr>
+                    <th>@lang('admin.image')</th>
+                    <th>@lang('admin.route')</th>
+                    <th>@lang('admin.title')</th>
+                    <th>@lang('admin.action')</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($childPages as $childPage)
+                    @if ($childPage->route == 'contacts')
+                        @if ($childPage->route != 'logo-img' && $childPage->route != 'logo-name' && $childPage->route != 'phone' && $childPage->route != 'footer-place' && $childPage->route != 'email' &&  $childPage->route != 'slider1' &&  $childPage->route != 'slider2' &&  $childPage->route != 'slider3' &&  $childPage->route != 'slider4')
+                            @php
+                                $title = $childPage->localization[0];
+                                $description = $childPage->localization[1];
+                            @endphp
+    
+                            <tr>
+                                <td class="product-image">
+                                    @if ($childPage->route != 'about_us')
+                                        <img src="{{ $childPage->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
+                                    @endif
+                                </td>
+    
+                                <td>
+                                    @if ($childPage->route == 'delivery')
+                                        <p>@lang('utge.delivery')</p>
+                                    @endif
+    
+                                    @if ($childPage->route == 'payment')
+                                        <p>@lang('utge.payment')</p>
+                                    @endif
+    
+                                    @if ($childPage->route == 'contacts')
+                                        <p>@lang('utge.contacts')</p>
+                                    @endif
+    
+                                    @if ($childPage->route == 'about_us')
+                                        <p>@lang('utge.about-us')</p>
+                                    @endif
+                                </td>
+    
+                                <td>{{ $title->$locale }}</td>
+    
+                                <td class="action">
+                                    @if ($childPage->route != 'about_us')
+                                        <a title="Редагувати" href="{{ route('childPage.edit', $childPage->id) }}"></a>
+                                    @endif
+    
+                                    <a title="Видалити" href="{{ route('childPage.delete', $childPage->id) }}"></a>
+                                </td>
+                            </tr>
+                        @endif  
+                    @endif
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 
-                            @if ($childPage->route == 'contacts')
-                                <p>@lang('utge.contacts')</p>
-                            @endif
-
-                            @if ($childPage->route == 'about_us')
-                                <p>@lang('utge.about-us')</p>
-                            @endif
-                        </td>
-
-                        <td>{{ $title->$locale }}</td>
-
-                        <td class="action">
-                            @if ($childPage->route != 'about_us')
-                                <a title="Редагувати" href="{{ route('childPage.edit', $childPage->id) }}"></a>
-                            @endif
-
-                            <a title="Видалити" href="{{ route('childPage.delete', $childPage->id) }}"></a>
-                        </td>
-                    </tr>
-                @endif
-            @endforeach
-        </tbody>
-    </table>
 @endsection
