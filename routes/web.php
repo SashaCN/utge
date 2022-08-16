@@ -81,6 +81,7 @@ Route::middleware('set_locale')->group(function ()
             Route::get('sliderCreate', [\App\Http\Controllers\Admin\ChildPageController::class, 'sliderCreate'])->name('childPage.sliderCreate');
             Route::get('sliderEdit/{slider_id}', [\App\Http\Controllers\Admin\ChildPageController::class, 'sliderEdit'])->name('childPage.sliderEdit');
             //delete route
+            Route::get('viewContacts', [\App\Http\Controllers\Admin\ServiceOrderController::class, 'viewContacts'])->name('viewContacts');
             Route::get('servicesOrder/delete/{servicesOrder}', [\App\Http\Controllers\Admin\ServiceOrderController::class, 'delete'])->name('servicesOrder.delete');
             Route::get('productsOrder/delete/{productsOrder}', [\App\Http\Controllers\Admin\ProductsOrderController::class, 'delete'])->name('productsOrder.delete');
             Route::get('productType/delete/{productType}', [\App\Http\Controllers\Admin\ProductTypeController::class, 'delete'])->name('productType.delete');
@@ -97,6 +98,7 @@ Route::middleware('set_locale')->group(function ()
             Route::get('trashBox/{prouct}/restore/', [\App\Http\Controllers\Admin\TrashBoxController::class, 'restore'])->name('trashBox.restore');
             Route::get('trashBox/{prouct}/productForceDelete/', [\App\Http\Controllers\Admin\TrashBoxController::class, 'productForceDelete'])->name('trashBox.productForceDelete');
             Route::post('product/mediaUpdatePdf/{product}', [\App\Http\Controllers\Admin\ProductController::class, 'mediaUpdatePdf'])->name('product.mediaUpdatePdf');
+            Route::post('product/mediaDeletePdf/{product}', [\App\Http\Controllers\Admin\ProductController::class, 'mediaDeletePdf'])->name('product.mediaDeletePdf');
             // Route::get('setValueToCache', [\App\Http\Controllers\Admin\AdminController::class, 'setValueToCache'])->name('admin.setValueToCache');
 
             Route::middleware('optimizeImages')->group(function (){

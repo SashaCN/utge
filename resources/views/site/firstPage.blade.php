@@ -20,7 +20,7 @@
                             <div class="slide">
                                 <a href="http://{{ $link->$locale }}"></a>
                                 <h2>{{ $title->$locale }}</h2>
-                                <img src="{{ $item->getFirstMediaUrl('slider') }}" alt="{{$title->$locale }}">
+                                <img src="{{ $item->getFirstMediaUrl('images') }}" alt="{{$title->$locale }}">
                             </div>
                         @endforeach
                     </div>
@@ -41,7 +41,7 @@
                             <div class="slide">
                                 <a href="http://{{ $link->$locale }}"></a>
                                 <h2>{{ $title->$locale }}</h2>
-                                <img src="{{ $item->getFirstMediaUrl('slider') }}" alt="$title->$locale">
+                                <img src="{{ $item->getFirstMediaUrl('images') }}" alt="$title->$locale">
                             </div>
                         @endforeach
                     </div>
@@ -62,7 +62,7 @@
                             <div class="slide">
                                 <a href="http://{{ $link->$locale }}"></a>
                                 <h2>{{ $title->$locale }}</h2>
-                                <img src="{{ $item->getFirstMediaUrl('slider') }}" alt="$title->$locale">
+                                <img src="{{ $item->getFirstMediaUrl('images') }}" alt="$title->$locale">
                             </div>
                         @endforeach
                     </div>
@@ -83,7 +83,7 @@
                             <div class="slide">
                                 <a href="http://{{ $link->$locale }}"></a>
                                 <h2>{{ $title->$locale }}</h2>
-                                <img src="{{ $item->getFirstMediaUrl('slider') }}" alt="$title->$locale">
+                                <img src="{{ $item->getFirstMediaUrl('images') }}" alt="$title->$locale">
                             </div>
                         @endforeach
                     </div>
@@ -149,7 +149,7 @@
                     <figcaption>
                         <h3>{{ $title->$locale }}</h3>
                         <p class="description">{!! $description->$locale !!}</p>
-                        <p class="description active-size">{{ $min_price }}</p>
+                        <p class="description active-size">@if($product->mass_id == 1)@lang('admin.massa_neto'): @endif{{ $min_price }}</p>
                         <div class="button-line flex-sb">
                             <p class="add-to-basket flex-aic">
                                 <svg>
@@ -181,10 +181,10 @@
         </div>
     </div>
 </div>
-<div class="add-to-basket-popup">
+{{-- <div class="add-to-basket-popup">
     <div class="close-basket-popup-btn"><span></span><span></span></div>
     <p>@lang('utge.add-to-basket-popup')</p>
-</div>
+</div> --}}
 @if ($done == 'true')
     <div id="popupBox" class="orderPopup" style="display: flex;">
         <div class="basket-popup" id="popup">

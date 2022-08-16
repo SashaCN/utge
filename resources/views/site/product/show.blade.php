@@ -4,7 +4,7 @@
 
     @php
         $locale = app()->getLocale();
-        
+
         $title_seo = $product->localization[1];
         $og_title_seo = $product->localization[2];
         $desc_seo = $product->localization[4];
@@ -63,7 +63,7 @@
                 </p>
                 <p class="certificate-line">
                     @if($product->getFirstMediaUrl('pdf') == null)
-                        <a href="#" class="button details-btn">@lang('utge.quality-certificate')</a>
+                        {{-- <a href="#" class="button details-btn">@lang('utge.quality-certificate')</a> --}}
                     @else
                         <a href="{{ ($product->getFirstMediaUrl('pdf')) }}" class="button details-btn">@lang('utge.quality-certificate')</a>
                     @endif
@@ -108,10 +108,10 @@
         </section>
     </figure>
 </div>
-<div class="add-to-basket-popup">
+{{-- <div class="add-to-basket-popup">
     <div class="close-basket-popup-btn"><span></span><span></span></div>
     <p>@lang('utge.add-to-basket-popup')</p>
-</div>
+</div> --}}
 
 <script src="{{ asset('js/current_product.js') }}"></script>
 

@@ -49,7 +49,8 @@ function addToBasket (e)
     }
 
     showBasketNum();
-    showAddBasketPopup();
+    // showAddBasketPopup();
+
     product.querySelector('.add-to-basket').classList.add('active-add-to-basket');
     setTimeout(() => {
         product.querySelector('.add-to-basket').classList.remove('active-add-to-basket');
@@ -78,20 +79,23 @@ function showBasketNum ()
     basket_button.querySelector('span').innerText = basketProduct.length;
 }
 
-function showAddBasketPopup ()
-{
-    document.querySelector('.add-to-basket-popup').style.display = 'block';
 
-    setTimeout(closeAddBasketPopup, 3000);
-}
 
-function closeAddBasketPopup ()
-{
-    document.querySelector('.add-to-basket-popup').style.display = 'none';
 
-}
+// function showAddBasketPopup ()
+// {
+//     document.querySelector('.add-to-basket-popup').style.display = 'block';
 
-if (document.querySelector('.close-basket-popup-btn') != null)
-{
-    document.querySelector('.close-basket-popup-btn').onclick = () => { closeAddBasketPopup(); }
-}
+//     setTimeout(closeAddBasketPopup, 3000);
+// }
+
+// function closeAddBasketPopup ()
+// {
+//     document.querySelector('.add-to-basket-popup').style.display = 'none';
+
+// }
+
+// if (document.querySelector('.close-basket-popup-btn') != null)
+// {
+//     document.querySelector('.close-basket-popup-btn').onclick = () => { closeAddBasketPopup(); }
+// }

@@ -188,5 +188,8 @@ return [
     'new_service_orders' => 'Новые заказы услуг',
     'total_product_orders' => 'Общее количество заказов товаров',
     'total_product_price' => 'Общая сумма заказов',
+    'order-processed' => 'Обработаный заказ',
+    'order-in-processing' => 'Заказ в обработке',
+    'order-new' => 'Новый заказ',
 ];
 

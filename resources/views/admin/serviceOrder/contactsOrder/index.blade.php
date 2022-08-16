@@ -7,7 +7,7 @@ $locale = app()->getLocale();
 @endphp
 
 <div class="flex title-line">
-    <h2>@lang('admin.order-list')</h2>
+    <h2>@lang('utge.contacts')</h2>
 </div>
 
 <table class="product-table">
@@ -42,11 +42,11 @@ $locale = app()->getLocale();
                         <td class="order-status">
                             <p>@lang('admin.order-new')</p>
                         </td>
-                    @elseif($order->status == 1)
+                    @elseif($order->status == 2)
                         <td class="order-status-two">
                             <p>@lang('admin.order-in-processing')</p>
                         </td>
-                    @elseif ($order->status == 2)
+                    @elseif ($order->status == 1)
                         <td class="order-status-one">
                             <p>@lang('admin.order-processed')</p>
                         </td>
