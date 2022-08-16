@@ -20,7 +20,7 @@ $title = $subCategory->localization[0];
 </div>
 
 <div class="flex title-line">
-    <h2>@lang('admin.subcategory_change')</h2>
+    <h2>@lang('admin.product_subcategory_change')</h2>
     <button type="submit" form="form" class="add-button" id="save-btn">
         <img src="{{ asset('img/save.svg') }}" alt="Add">
     </button>
@@ -38,7 +38,7 @@ $title = $subCategory->localization[0];
 
     @php
         $title = $subCategory->localization[0];
-        if (isset($subCategory->localization[1])) 
+        if (isset($subCategory->localization[1]))
         {
             $description = $subCategory->localization[1];
         }

@@ -17,7 +17,7 @@
     @endphp
 
 
-    <h2>Панель стану</h2>
+    <h2>@lang('admin.dashboard')</h2>
 
     {{-- <form action="{{ route('admin.setValueToCache') }}" method="GET">
         <input type="submit" value="cashe">
@@ -26,49 +26,49 @@
 
         <div class="dashbord-wraper-block">
             <div class="wraper-box">
-                <p class="dashbord-wraper-block-desc">Кількість товарів на сайті</p>
+                <p class="dashbord-wraper-block-desc">@lang('admin.goods_count')</p>
                 <p class="dashbord-wraper-block-count"><span>{{ $count_products }}</span></p>
-                <a href="{{ route('product.index') }}">Детальніше ...</a>
+                <a href="{{ route('product.index') }}">@lang('admin.more')</a>
             </div>
         </div>
 
         <div class="dashbord-wraper-block">
             <div class="wraper-box">
-                <p class="dashbord-wraper-block-desc">Кількість послуг на сайті</p>
+                <p class="dashbord-wraper-block-desc">@lang('admin.service_count')</p>
                 <p class="dashbord-wraper-block-count"><span>{{ $count_services }}</span></p>
-                <a href="{{ route('services.index') }}">Детальніше ...</a>
+                <a href="{{ route('services.index') }}">@lang('admin.more')</a>
             </div>
         </div>
 
         <div class="dashbord-wraper-block">
             <div class="wraper-box">
-                <p class="dashbord-wraper-block-desc">Нові замовлення товрів</p>
+                <p class="dashbord-wraper-block-desc">@lang('admin.new_product_orders')</p>
                 @if ($count_customers >= 1)
                     <p class="dashbord-wraper-block-count plus-order"><span>+ {{ $count_customers }}</span></p>
                 @else
                     <p class="dashbord-wraper-block-count"><span>{{ $count_customers }}</span></p>
                 @endif
-                <a href="{{ route('productsOrder.index') }}">Детальніше ...</a>
+                <a href="{{ route('productsOrder.index') }}">@lang('admin.more')</a>
             </div>
         </div>
 
         <div class="dashbord-wraper-block">
             <div class="wraper-box">
-                <p class="dashbord-wraper-block-desc">Нові замовлення послуг</p>
+                <p class="dashbord-wraper-block-desc">@lang('admin.new_service_orders')</p>
                 @if ($count_services_order >= 1)
                     <p class="dashbord-wraper-block-count plus-order"><span>+ {{ $count_services_order }}</span></p>
                 @else
                     <p class="dashbord-wraper-block-count "><span>{{ $count_services_order }}</span></p>
                 @endif
-                <a href="{{ route('servicesOrder.index') }}">Детальніше ...</a>
+                <a href="{{ route('servicesOrder.index') }}">@lang('admin.more')</a>
             </div>
         </div>
 
         <div class="dashbord-wraper-block">
             <div class="wraper-box">
                 <div class="wraper-box-flex">
-                    <p>Загальна кількість замовлень товарів</p>
-                    <p>Загальна сума замовлень</p>
+                    <p>@lang('admin.total_product_orders')</p>
+                    <p>@lang('admin.total_product_price')</p>
                 </div>
                 <div class="wraper-box-flex-count">
                     <p>{{ $count_customers_all }}</p>
@@ -85,7 +85,7 @@
                         <p>{{array_sum($gen_price)}} грн</p>
                     @endif
                 </div>
-                <a href="{{ route('servicesOrder.index') }}">Детальніше ...</a>
+                <a href="{{ route('servicesOrder.index') }}">@lang('admin.more')</a>
             </div>
         </div>
 
