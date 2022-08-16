@@ -97,7 +97,7 @@
                 <li>
                     @if (!empty(($counts = count($servicesOrders))) || !empty(($countp = count($productsOrders)) ||
                     !empty(($countc = count($contactsOrders)))))
-                    @if (!isset($countp))
+                    {{-- @if (!isset($countp) && !isset($countc)) --}}
                     @php
                     $countp = count($productsOrders);
                     $countc = count($contactsOrders);
@@ -109,20 +109,18 @@
                                     {{ $counts + $countp + $countc }}
                                 </span>
                             </span></a>
-                </li>
 
-                @else
-                <a href="#" class="drop-btn orders-btn"><span
-                        class="link-text aside-menu-item">@lang('admin.orders')<span
-                            class="order-circle-counter aside-menu-item">
-                            <span>
-                                {{ $counts + $countp + $countc }}
-                            </span>
-                        </span></a></li>
-                @endif
-                @else
-                <a href="#" class="drop-btn orders-btn"><span class="link-text">@lang('admin.orders')</span></a></li>
-                @endif
+
+                    @else
+                    <a href="#" class="drop-btn orders-btn"><span
+                            class="link-text aside-menu-item">@lang('admin.orders')<span
+                                class=" aside-menu-item">
+                            </span></a>
+                    @endif
+                {{-- @else
+                    <a href="#" class="drop-btn orders-btn"><span class="link-text">@lang('admin.orders')</span></a></li>
+                @endif --}}
+                </li>
 
                 <div class="drop-list hidden">
                     <ul>
