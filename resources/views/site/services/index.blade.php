@@ -113,6 +113,7 @@
                             <label for="mail">E-Mail</label>
                             <input id="mail" type="email" name="email">
                         </div>
+                        <input type="hidden" name="from" value="services">
                     </div>
                 </div>
                 <div>

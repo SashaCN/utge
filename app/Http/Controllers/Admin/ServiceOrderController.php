@@ -23,7 +23,14 @@ class ServiceOrderController extends Controller
         ]);
     }
 
+    public function viewContacts(ServicesOrder $serviceOrder)
+    {
+        $serviceOrder = ServicesOrder::orderByContacts();
 
+        return view('admin.serviceOrder.contactsOrder.index',[
+            'serviceOrders' => $serviceOrder,
+        ]);
+    }
     /**
      * Show the form for creating a new resource.
      *

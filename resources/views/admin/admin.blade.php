@@ -42,15 +42,15 @@
             </ul>
             <p class="lang-select">
                 @if (app()->getLocale() == 'uk')
-                    <a href="{{ route('locale', 'uk') }}" class="flex lang-uk selected-lang"><img
-                            src="{{ asset('img/uk_flag.svg') }}" alt=""><span>УКР</span></a>
-                    <a href="{{ route('locale', 'ru') }}" class="flex lang-ru"><img
-                            src="{{ asset('img/uk_flag.svg') }}" alt=""><span>РУС</span></a>
+                <a href="{{ route('locale', 'uk') }}" class="flex lang-uk selected-lang"><img
+                        src="{{ asset('img/uk_flag.svg') }}" alt=""><span>УКР</span></a>
+                <a href="{{ route('locale', 'ru') }}" class="flex lang-ru"><img src="{{ asset('img/uk_flag.svg') }}"
+                        alt=""><span>РУС</span></a>
                 @elseif(app()->getLocale() == 'ru')
-                    <a href="{{ route('locale', 'uk') }}" class="flex lang-uk"><img
-                            src="{{ asset('img/uk_flag.svg') }}" alt=""><span>УКР</span></a>
-                    <a href="{{ route('locale', 'ru') }}" class="flex lang-ru selected-lang"><img
-                            src="{{ asset('img/uk_flag.svg') }}" alt=""><span>РУС</span></a>
+                <a href="{{ route('locale', 'uk') }}" class="flex lang-uk"><img src="{{ asset('img/uk_flag.svg') }}"
+                        alt=""><span>УКР</span></a>
+                <a href="{{ route('locale', 'ru') }}" class="flex lang-ru selected-lang"><img
+                        src="{{ asset('img/uk_flag.svg') }}" alt=""><span>РУС</span></a>
                 @endif
             </p>
         </div>
@@ -96,54 +96,69 @@
                                     class="link-text-drop-list">@lang('admin.services_category')</span></a></li>
                     </ul>
                 </div>
-                <li>
 
-                    @if (!empty(($counts = count($servicesOrders))) || !empty(($countp = count($productsOrders))))
-                        @if (!isset($countp))
-                            @php
-                                $countp = count($productsOrders);
-                            @endphp
-                            <a href="#" class="drop-btn orders-btn"><span
-                                    class="link-text aside-menu-item">@lang('admin.orders')<span
-                                        class="order-circle-counter aside-menu-item">
-                                        <span>
-                                            {{ $counts + $countp }}
-                                        </span>
-                                    </span></a>
+                <li>
+                    @if (!empty(($counts = count($servicesOrders))) || !empty(($countp = count($productsOrders)) ||
+                    !empty(($countc = count($contactsOrders)))))
+                    @if (!isset($countp))
+                    @php
+                    $countp = count($productsOrders);
+                    $countc = count($contactsOrders);
+                    @endphp
+                    <a href="#" class="drop-btn orders-btn"><span
+                            class="link-text aside-menu-item">@lang('admin.orders')<span
+                                class="order-circle-counter aside-menu-item">
+                                <span>
+                                    {{ $counts + $countp + $countc }}
+                                </span>
+                            </span></a>
                 </li>
-            @else
+
+                @else
                 <a href="#" class="drop-btn orders-btn"><span
                         class="link-text aside-menu-item">@lang('admin.orders')<span
                             class="order-circle-counter aside-menu-item">
                             <span>
-                                {{ $counts + $countp }}
+                                {{ $counts + $countp + $countc }}
                             </span>
                         </span></a></li>
                 @endif
-            @else
+                @else
                 <a href="#" class="drop-btn orders-btn"><span class="link-text">@lang('admin.orders')</span></a></li>
                 @endif
 
                 <div class="drop-list hidden">
                     <ul>
                         @if (!empty(($count = count($servicesOrders))))
-                            <li><a href="{{ route('servicesOrder.index') }}"><span
-                                        class="link-text-drop-list aside-menu-item">@lang('admin.services')<span
-                                            class="order-circle-counter"><span>{{ $counts }}</span></span></a>
-                            </li>
+                        <li><a href="{{ route('servicesOrder.index') }}"><span
+                                    class="link-text-drop-list aside-menu-item">@lang('admin.services')<span
+                                        class="order-circle-counter"><span>{{ $counts }}</span></span></a>
+                        </li>
                         @else
-                            <li><a href="{{ route('servicesOrder.index') }}"><span
-                                        class="link-text-drop-list">@lang('admin.services')<span></span></span></a></li>
+                        <li><a href="{{ route('servicesOrder.index') }}"><span
+                                    class="link-text-drop-list">@lang('admin.services')<span></span></span></a></li>
                         @endif
+
                         @if (!empty(($countp = count($productsOrders))))
-                            <li><a href="{{ route('productsOrder.index') }}"><span
-                                        class="link-text-drop-list aside-menu-item">@lang('admin.products')<span
-                                            class="order-circle-counter"><span>{{ $countp }}</span></span></a>
-                            </li>
+                        <li><a href="{{ route('productsOrder.index') }}"><span
+                                    class="link-text-drop-list aside-menu-item">@lang('admin.products')<span
+                                        class="order-circle-counter"><span>{{ $countp }}</span></span></a>
+                        </li>
                         @else
-                            <li><a href="{{ route('productsOrder.index') }}"><span
-                                        class="link-text-drop-list">@lang('admin.products')<span></span></span></a></li>
+                        <li><a href="{{ route('productsOrder.index') }}"><span
+                                    class="link-text-drop-list">@lang('admin.products')<span></span></span></a></li>
                         @endif
+
+                        @if (!empty(($countc = count($contactsOrders))))
+                        <li><a href="{{ route('viewContacts') }}"><span
+                                    class="link-text-drop-list aside-menu-item">@lang('utge.contacts')<span
+                                        class="order-circle-counter"><span>{{ $countc }}</span></span></a>
+                        </li>
+                        @else
+                        <li><a href="{{ route('viewContacts') }}"><span
+                                    class="link-text-drop-list">@lang('utge.contacts')<span></span></span></a></li>
+                        @endif
+
                     </ul>
                 </div>
 
@@ -167,12 +182,12 @@
                         class="analitics-btn"><span class="link-text">Google Analitics</span></a></li>
 
                 @if (!empty(($count = count($trashProduct))))
-                    <li><a href="{{ route('trashBox.index') }}" class="trash-btn"><span
-                                class="link-text">@lang('admin.trash_box')<span
-                                    class="trash-circle-counter"><span>{{ $count }}</span></span></a></li>
+                <li><a href="{{ route('trashBox.index') }}" class="trash-btn"><span
+                            class="link-text">@lang('admin.trash_box')<span
+                                class="trash-circle-counter"><span>{{ $count }}</span></span></a></li>
                 @else
-                    <li><a href="{{ route('trashBox.index') }}" class="trash-btn"><span
-                                class="link-text">@lang('admin.trash_box')</span></a></li>
+                <li><a href="{{ route('trashBox.index') }}" class="trash-btn"><span
+                            class="link-text">@lang('admin.trash_box')</span></a></li>
                 @endif
 
             </ul>
@@ -186,8 +201,8 @@
     <main>
         @yield('content')
     </main>
-    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
     <script src="{{ asset('js/lang.js') }}"></script>
     <script src="{{ asset('js/admin.js') }}" type="module"></script>
