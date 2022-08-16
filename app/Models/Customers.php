@@ -20,7 +20,7 @@ class Customers extends Model
     }
     public static function orderByAsc()
     {
-        return DB::table('customers')->select('*')->orderBy('status', 'asc' ,'deleted_at', 'NULL')->get();
+        return DB::table('customers')->select('*')->orderBy('customers.status', 'asc')->get();
 
     }
 }

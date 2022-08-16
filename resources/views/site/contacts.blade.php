@@ -13,7 +13,7 @@
                     $title = $item->localization[0];
                     $description = $item->localization[1];
                 @endphp
-        
+
                 <div class="own-block">
                     <div class="own-block-title">
                         <span>
@@ -25,14 +25,14 @@
                 </div>
             @endforeach
         </div>
-    
+
         <div class="feedback-section">
             <div class="service-popup">
                 <p>@lang('utge.feedback-form')</p>
                 <form class="service-form" id="service-form" action="{{ route('storeServiceOrder') }}" method="POST">
                     @csrf
                     @method('POST')
-        
+
                     <div>
                         <div class="service-form-item">
                             <div>
@@ -53,6 +53,7 @@
                                 <label for="mail">E-Mail</label>
                                 <input id="mail" type="email" name="email">
                             </div>
+                            <input type="hidden" name="from" value="contacts">
                         </div>
                     </div>
                     <div>
@@ -76,5 +77,5 @@
         </div>
     </div>
 </div>
-
+<script src="{{ asset('js/site.js') }}"></script>
 @endsection

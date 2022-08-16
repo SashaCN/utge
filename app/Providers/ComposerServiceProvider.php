@@ -56,7 +56,11 @@ class ComposerServiceProvider extends ServiceProvider
         });
 
         View::composer('admin.admin', function($view){
-            $view->with('servicesOrders',  ServicesOrder::all()->where('status' , '0'));
+            $view->with('servicesOrders',  ServicesOrder::all()->where('status' , '0')->where('from', 'services'));
+        });
+
+        View::composer('admin.admin', function($view){
+            $view->with('contactsOrders',  ServicesOrder::all()->where('status' , '0')->where('from', 'contacts'));
         });
 
         View::composer('admin.admin', function($view){

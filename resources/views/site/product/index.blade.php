@@ -97,7 +97,7 @@ $locale = app()->getLocale();
                     @else
                         <p class="description">{!! $description->$locale !!}</p>
                     @endif
-                    <p class="description active-size">{{ $min_price }}</p>
+                    <p class="description active-size">@if($product->mass_id == 1)@lang('admin.massa_neto'): @endif{{ $min_price }}</p>
                     <div class="button-line flex-sb">
 
                             <p class="add-to-basket flex-aic {{ $available }}">
@@ -147,8 +147,8 @@ $locale = app()->getLocale();
         @endforeach
     </div>
 </div>
-<div class="add-to-basket-popup">
+{{-- <div class="add-to-basket-popup">
     <div class="close-basket-popup-btn"><span></span><span></span></div>
     <p>@lang('utge.add-to-basket-popup')</p>
-</div>
+</div> --}}
 @endsection
