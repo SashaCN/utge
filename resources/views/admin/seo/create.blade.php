@@ -27,6 +27,7 @@
             <option value="http://utge/deliveriesAndPayments">@lang('admin.delivery-page')</option>
             <option value="http://utge/news">@lang('admin.news-page')</option>
             <option value="http://utge/contacts">@lang('admin.contacts-page')</option>
+            <option value="http://utge/services">@lang('admin.services-page')</option>
         </select>
     </div>
 

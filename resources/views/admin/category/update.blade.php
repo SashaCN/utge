@@ -16,7 +16,7 @@
 </div>
 
     <div class="flex title-line">
-        <h2>@lang('admin.category_change')</h2>
+        <h2>@lang('admin.product_category_change')</h2>
         <button type="submit" form="form" class="add-button" id="save-btn">
             <img src="{{ asset('img/save.svg') }}" alt="Add">
         </button>
@@ -35,7 +35,7 @@
 
         @php
             $title = $category->localization[0];
-            if (isset($category->localization[1])) 
+            if (isset($category->localization[1]))
             {
               $description = $category->localization[1];
             }
