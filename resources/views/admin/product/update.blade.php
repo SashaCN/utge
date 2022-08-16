@@ -274,7 +274,7 @@ $locale = app()->getLocale();
 
     <div class="another-slide flex-col">
         <div class="input-wrap sub-category-wrap">
-            <p class="label">Виберіть під-категорію</p>
+            <p class="label">@lang('admin.under-sub-category')</p>
             <ul class="flex-space sub-category-wrap">
                 <label><input type="hidden" name="sub_category_id"></label>
                 @foreach ($subCategories as $subCategory)

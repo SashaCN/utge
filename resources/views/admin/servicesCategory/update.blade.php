@@ -53,7 +53,7 @@ $title = $servicesCategory->localization[0];
     <div class="desc-slide flex-col">
         <div class="another-slide flex-col">
             <div class="input-wrap sub-servicesType-wrap">
-                <p class="label">Виберіть категорію</p>
+                <p class="label">@lang('admin.under-category')</p>
                 <div class="flex-space sub-servicesType-wrap">
 
                     @foreach ($servicesTypes as $servicesType)

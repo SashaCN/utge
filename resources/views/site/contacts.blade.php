@@ -61,7 +61,7 @@
                         <textarea name="interes" id="interes"></textarea>
                     </div>
                     <i><span>*</span>@lang('utge.i')</i>
-                    <button for="service-form" type="submit">надіслати</button>
+                    <button for="service-form" type="submit">@lang('utge.iss')</button>
                 </form>
             </div>
         </div>

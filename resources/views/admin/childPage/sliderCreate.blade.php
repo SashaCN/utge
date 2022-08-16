@@ -29,10 +29,10 @@
         <div class="input-wrap pt0">
             <select name="route" id="child-page-select" class="auto-value">
                 <option value="" id="child-page-first-option" selected>@lang('admin.child_page_slider')</option>
-                <option value="slider1">@lang('utge.slider-feed')</option>
-                <option value="slider2">@lang('utge.slider-staves')</option>
-                <option value="slider3">@lang('utge.slider-product')</option>
-                <option value="slider4">@lang('utge.slider-service')</option>
+                <option value="slider1">Слайдер 1</option>
+                <option value="slider2">Слайдер 2</option>
+                <option value="slider3">Слайдер 3</option>
+                <option value="slider4">Слайдер 4</option>
             </select>
         </div>
     </div>
