@@ -70,7 +70,7 @@ $locale = app()->getLocale();
             $title = $service->localization[0];
             $materials = $service->localization[1];
         } else {
-            $materials = $service->localization[1];
+            $title = $service->localization[0];
         }
 
     @endphp
