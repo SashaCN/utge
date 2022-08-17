@@ -603,6 +603,11 @@ main {
 .mass-netto {
   margin-bottom: 25px;
 }
+.mass-netto p {
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
 
 .mass-netto-checkbox {
   display: none;
@@ -627,6 +632,49 @@ main {
 }
 
 .mass-netto-checkbox:checked + .mass-netto-label {
+  background-color: #003b95;
+  color: #fff;
+  box-shadow: 0px 0px 10px #003b95;
+  transition: 0.5s;
+}
+
+.massa_id_radio_on,
+.massa_id_radio_off {
+  display: none;
+  box-sizing: border-box;
+}
+
+.massa_id_radio_label_on,
+.massa_id_radio_label_off {
+  text-align: center;
+  cursor: pointer;
+  display: inline-block;
+  width: 49%;
+  padding: 7px 0;
+  background: rgba(204, 204, 204, 0.8);
+  box-sizing: border-box;
+}
+.massa_id_radio_label_on:hover,
+.massa_id_radio_label_off:hover {
+  box-shadow: 0px 0px 10px #003b95;
+}
+
+.massa_id_radio_label_on {
+  border-radius: 50px 0 0 50px;
+}
+
+.massa_id_radio_label_off {
+  border-radius: 0 50px 50px 0;
+}
+
+.massa_id_radio_off:checked + .massa_id_radio_label_off {
+  background-color: #003b95;
+  color: #fff;
+  box-shadow: 0px 0px 10px #003b95;
+  transition: 0.5s;
+}
+
+.massa_id_radio_on:checked + .massa_id_radio_label_on {
   background-color: #003b95;
   color: #fff;
   box-shadow: 0px 0px 10px #003b95;
@@ -1022,7 +1070,6 @@ main {
 .aside-menu-item {
   display: flex;
   justify-content: space-between;
-  text-align: center;
   align-items: center;
 }
 

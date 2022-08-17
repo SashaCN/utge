@@ -259,6 +259,7 @@ class ProductController extends Controller
         //seo end
 
         $product->fill($request->except(['size.', 'price.', 'available.', 'price_units.']));
+        $product->mass_id = $request->mass_id;
         $product->update();
 
 

@@ -178,7 +178,7 @@
 
                 @if (!empty(($count = count($trashProduct))))
                 <li><a href="{{ route('trashBox.index') }}" class="trash-btn"><span
-                            class="link-text">@lang('admin.trash_box')<span
+                            class="link-text aside-menu-item">@lang('admin.trash_box')<span
                                 class="trash-circle-counter"><span>{{ $count }}</span></span></a></li>
                 @else
                 <li><a href="{{ route('trashBox.index') }}" class="trash-btn"><span

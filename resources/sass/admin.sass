@@ -495,6 +495,10 @@ main
 
 .mass-netto
     margin-bottom: 25px
+    p
+        font-size: 16px
+        text-transform: uppercase
+        margin-bottom: 15px
 
 .mass-netto-checkbox
     display: none
@@ -521,6 +525,43 @@ main
     color: #fff
     box-shadow: 0px 0px 10px #003b95
     transition: 0.5s
+
+
+.massa_id_radio_on,
+.massa_id_radio_off
+    display: none
+    box-sizing: border-box
+
+.massa_id_radio_label_on,
+.massa_id_radio_label_off
+    text-align: center
+    cursor: pointer
+    display: inline-block
+    width: 49%
+    padding: 7px 0
+    background: #cccc
+    box-sizing: border-box
+    &:hover
+       box-shadow: 0px 0px 10px #003b95
+
+.massa_id_radio_label_on
+    border-radius: 50px 0 0 50px
+
+.massa_id_radio_label_off
+    border-radius: 0 50px 50px 0
+
+.massa_id_radio_off:checked + .massa_id_radio_label_off
+    background-color: $primary
+    color: #fff
+    box-shadow: 0px 0px 10px #003b95
+    transition: 0.5s
+
+.massa_id_radio_on:checked + .massa_id_radio_label_on
+    background-color: $primary
+    color: #fff
+    box-shadow: 0px 0px 10px #003b95
+    transition: 0.5s
+
 
 /* -------------------------------------------------------------------------- */
 /*                               product update                               */
@@ -875,7 +916,6 @@ main
 .aside-menu-item
     display: flex
     justify-content: space-between
-    text-align: center
     align-items: center
 
 .order-circle-counter

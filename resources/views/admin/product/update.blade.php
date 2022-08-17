@@ -186,17 +186,27 @@ $locale = app()->getLocale();
     </div>
 
     <div class="size-price-slide flex-col">
-        @if($product->mass_id == 1)
         <div class="mass-netto">
-            <input checked class="mass-netto-checkbox" id="mass_id" type="checkbox" name="mass_id" value="1">
-            <label class="mass-netto-label" for="mass_id"><span>@lang('admin.massa_neto')</span></label>
+            <p>@lang('admin.massa_neto')</p>
+
+            @if($product->mass_id == 1)
+
+            <input class="massa_id_radio_on" checked type="radio" name="mass_id" id="mass_id_on" value="1">
+            <label class="massa_id_radio_label_on" for="mass_id_on">ON</label>
+
+            <input class="massa_id_radio_off" type="radio" name="mass_id" id="mass_id_of" value="0">
+            <label class="massa_id_radio_label_off" for="mass_id_of">OFF</label>
+
+            @elseif($product->mass_id == 0)
+
+            <input class="massa_id_radio_on"  type="radio" name="mass_id" id="mass_id_on" value="1">
+            <label class="massa_id_radio_label_on" for="mass_id_on">ON</label>
+
+            <input class="massa_id_radio_off" checked type="radio" name="mass_id" id="mass_id_of" value="0">
+            <label class="massa_id_radio_label_off" for="mass_id_of">OFF</label>
+
+            @endif
         </div>
-        @else
-        <div class="mass-netto">
-            <input class="mass-netto-checkbox" id="mass_id" type="checkbox" name="mass_id" value="0">
-            <label class="mass-netto-label" for="mass_id"><span>@lang('admin.massa_neto')</span></label>
-        </div>
-        @endif
         @php
             $counter = 0;
         @endphp
