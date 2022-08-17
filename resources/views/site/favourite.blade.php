@@ -13,9 +13,9 @@ $productsId = explode(',', trim($_GET['products'], '[]'));
 <div class="wrapper favourite">
     <div class="product-list flex-sb">
 
-        @if (empty($productsId))
+        @if (empty($productsId) || $productsId[0] == "")
             <div class="basket-products">
-                <p class="basket-clear">&nbsp;</p>
+                <p class="basket-clear">@lang('utge.favourite-clear')</p>
             </div>
         @else
             @foreach ($productsId as $id)

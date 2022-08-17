@@ -21,11 +21,11 @@ return [
     'another' => 'Другое',
     'photo' => 'Фото',
     'action' => 'Действие',
-    'product_add_category' => 'Добавить категорию товара',
+    'product_add_category' => 'Добавить категорию товаров',
     'product_category_change' => 'Редактировать категорию товаров',
     'choose_type' => 'Выберите к какому типу продуктов относится категория',
     'choose_category' => 'Выберите к какой категории относится подкатегория',
-    'product_add_subcategory' => 'Добавить подкатегорию товара',
+    'product_add_subcategory' => 'Добавить подкатегорию товаров',
     'product_list' => 'Список товаров',
     'product_change' => 'Редактировать товар',
     'product_create' => 'Добавить товар',
@@ -53,7 +53,7 @@ return [
     'update-image' => 'Для того чтобы, выбрать новое фото - нажмите на картинку',
     'save-new-phot' => 'Сохранить новое фото',
     'admin.add_sub_category' => 'Добавить под-категорию',
-    'add_product_type' => 'Добавить тип товара',
+    'add_product_type' => 'Добавить тип товаров',
     'add_size_price' => 'Добавить вес/цену',
     'delete_size_price' => 'Убрать вес/цену',
     'child_page_father' => 'Выбрать блок',
@@ -161,6 +161,10 @@ return [
     'news_add_category' => 'Добавить категорию новостей',
     'news_category_list' => 'Список категорий новостей',
     'news_category_change' => 'Редактировать категорию новостей',
+
+    'under-category' => 'Выберите категорию',
+    'under-sub-category' => 'Выберите подкатегорию',
+
     // auntification
     'name' => 'Имя',
 

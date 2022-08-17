@@ -143,6 +143,10 @@
         'news_add_category' => 'Додати категорію новин',
         'news_category_list' => 'Список категорій новин',
         'news_category_change' => 'Редагувати категорію новин',
+
+        'under-category' => 'Виберіть категорію',
+        'under-sub-category' => 'Виберіть під-категорію',
+
         // auntification
         'name' => 'Ім`я',
 

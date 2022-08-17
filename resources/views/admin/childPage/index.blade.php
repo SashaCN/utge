@@ -15,10 +15,10 @@
 
     <h3 class="models-h3">@lang('admin.slider')</h3>
     <div class="sliders-box">
-        <div class="slider"><a href="{{ route('childPage.sliderEdit', 'slider1') }}">Слайдер1</a></div>
-        <div class="slider"><a href="{{ route('childPage.sliderEdit', 'slider2') }}">Слайдер2</a></div>
-        <div class="slider"><a href="{{ route('childPage.sliderEdit', 'slider3') }}">Слайдер3</a></div>
-        <div class="slider"><a href="{{ route('childPage.sliderEdit', 'slider4') }}">Слайдер4</a></div>
+        <div class="slider"><a href="{{ route('childPage.sliderEdit', 'slider1') }}">Слайдер 1</a></div>
+        <div class="slider"><a href="{{ route('childPage.sliderEdit', 'slider2') }}">Слайдер 2</a></div>
+        <div class="slider"><a href="{{ route('childPage.sliderEdit', 'slider3') }}">Слайдер 3</a></div>
+        <div class="slider"><a href="{{ route('childPage.sliderEdit', 'slider4') }}">Слайдер 4</a></div>
     </div>
 
     <h3 class="models-h3">header</h3>
