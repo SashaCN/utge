@@ -725,7 +725,7 @@ h2 {
 
 .basket-popup {
   position: fixed;
-  padding: 50px 150px;
+  padding: 100px;
   text-align: center;
   background: #fff;
   border-radius: 10px;
@@ -746,6 +746,11 @@ h2 {
 .basket-popup a {
   display: inline-block;
   font-size: 2rem;
+}
+.basket-popup .basket-popup-img {
+  padding: 30px;
+  background-color: #003b95;
+  border-radius: 10px;
 }
 
 .basket-table .wrapper,

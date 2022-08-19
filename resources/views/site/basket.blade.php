@@ -252,7 +252,7 @@
             </div>
             <div id="popupCloseBox"></div>
         </div>
-    </div>
+    </div> 
 
     <script src="{{ asset('js/site.js') }}"></script>
     <script src="{{ asset('js/basket.js') }}"></script>
