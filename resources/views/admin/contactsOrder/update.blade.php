@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="flex title-line">
-    <h2>@lang('admin.order-service'){{ $servicesOrder->id }}</h2>
+    <h2>@lang('admin.messages') №{{ $servicesOrder->id }}</h2>
 </div>
 <div class="services-order-wrapper">
     <div class="contacts-custom">
@@ -12,7 +12,6 @@
             <p>@lang('utge.lastname') :</p>
             <p>@lang('utge.number-phone') :</span></p>
             <p>E-Mail :</span></p>
-            {{-- <p>@lang('admin.status')</p> --}}
         </div>
         <div class="contacts-custom-item">
             <p>{{ $servicesOrder->firstname }}</p>
@@ -35,21 +34,21 @@
 
                 @if($servicesOrder->status == 0)
 
-                <option selected value="0">@lang('admin.order-new')</option>
-                <option value="1">@lang('admin.order-in-processing')</option>
-                <option value="2">@lang('admin.order-processed')</option>
+                <option selected value="0">@lang('admin.message-new')</option>
+                <option value="1">@lang('admin.message-in-processing')</option>
+                <option value="2">@lang('admin.message-processed')</option>
 
                 @elseif ($servicesOrder->status == 1)
 
-                <option value="0">@lang('admin.order-new')</option>
-                <option selected value="1">@lang('admin.order-in-processing')</option>
-                <option value="2">@lang('admin.order-processed')</option>
+                <option value="0">@lang('admin.message-new')</option>
+                <option selected value="1">@lang('admin.message-in-processing')</option>
+                <option value="2">@lang('admin.message-processed')</option>
 
                 @elseif ($servicesOrder->status == 2)
 
-                <option value="0">@lang('admin.order-new')</option>
-                <option value="1">@lang('admin.order-in-processing')</option>
-                <option selected value="2">@lang('admin.order-processed')</option>
+                <option value="0">@lang('admin.message-new')</option>
+                <option value="1">@lang('admin.message-in-processing')</option>
+                <option selected value="2">@lang('admin.message-processed')</option>
 
                 @endif
 

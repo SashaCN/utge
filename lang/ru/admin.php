@@ -82,7 +82,7 @@ return [
     'this-block-name' => 'В данном блоке название не используется',
     'block' => 'Блок',
     'first_create_image' => 'Выберите сначала блок во вкладке Другое',
-    'trash_box' => 'Помойка товаров',
+    'trash_box' => 'Удаленые товары',
     'seo_panel' => 'SEO панель',
     'add_key_seo_uk' => 'Мета тег KEYWORDS на украинском языке',
     'add_desc_seo_uk' => 'Мета тег DESCRIPTION на украинском языке',
@@ -193,8 +193,12 @@ return [
     'new_service_orders' => 'Новые заказы услуг',
     'total_product_orders' => 'Общее количество заказов товаров',
     'total_product_price' => 'Общая сумма заказов',
-    'order-processed' => 'Обработаный заказ',
+    'order-processed' => 'Выполненый заказ',
     'order-in-processing' => 'Заказ в обработке',
     'order-new' => 'Новый заказ',
+    'message-processed' => 'Обработаное сообщение',
+    'message-in-processing' => 'Сообщения в обработке',
+    'messages-new' => 'Новое сообщения',
+
 ];
 

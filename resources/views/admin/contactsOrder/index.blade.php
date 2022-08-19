@@ -40,19 +40,19 @@ $locale = app()->getLocale();
                     </td>
                     @if ($order->status == 0)
                         <td class="order-status">
-                            <p>@lang('admin.order-new')</p>
+                            <p>@lang('admin.message-new')</p>
                         </td>
                     @elseif($order->status == 1)
                         <td class="order-status-two">
-                            <p>@lang('admin.order-in-processing')</p>
+                            <p>@lang('admin.message-in-processing')</p>
                         </td>
                     @elseif ($order->status == 2)
                         <td class="order-status-one">
-                            <p>@lang('admin.order-processed')</p>
+                            <p>@lang('admin.message-processed')</p>
                         </td>
                     @endif
                     <td class="action">
-                        <a title="Редагувати" href="{{ route('servicesOrder.edit', $order->id) }}"></a>
+                        <a title="Редагувати" href="{{ route('editContacts', $order->id) }}"></a>
                         <a title="Видалити" href="{{ route('servicesOrder.delete', $order->id) }}"></a>
                     </td>
                 </tr>

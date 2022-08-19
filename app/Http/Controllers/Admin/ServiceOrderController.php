@@ -27,7 +27,7 @@ class ServiceOrderController extends Controller
     {
         $serviceOrder = ServicesOrder::orderByContacts();
 
-        return view('admin.serviceOrder.contactsOrder.index',[
+        return view('admin.contactsOrder.index',[
             'serviceOrders' => $serviceOrder,
         ]);
     }
@@ -75,6 +75,12 @@ class ServiceOrderController extends Controller
             'servicesOrder' => $servicesOrder
         ]);
     }
+    public function editContacts(ServicesOrder $servicesOrder)
+    {
+        return view('admin.contactsOrder.update', [
+            'servicesOrder' => $servicesOrder
+        ]);
+    }
 
     /**
      * Update the specified resource in storage.
@@ -84,6 +90,14 @@ class ServiceOrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(MultiRequest $request, ServicesOrder $servicesOrder)
+    {
+        $servicesOrder->status = $request->status;
+        $servicesOrder->update();
+
+        return redirect()->back();
+
+    }
+    public function updateContacts(MultiRequest $request, ServicesOrder $servicesOrder)
     {
         $servicesOrder->status = $request->status;
         $servicesOrder->update();

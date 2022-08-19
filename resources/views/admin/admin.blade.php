@@ -95,18 +95,15 @@
                 </div>
 
                 <li>
-                    @if (!empty(($counts = count($servicesOrders))) || !empty(($countp = count($productsOrders)) ||
-                    !empty(($countc = count($contactsOrders)))))
-                    {{-- @if (!isset($countp) && !isset($countc)) --}}
+                    @if (!empty(($counts = count($servicesOrders))) || !empty(($countp = count($productsOrders))))
                     @php
                     $countp = count($productsOrders);
-                    $countc = count($contactsOrders);
                     @endphp
                     <a href="#" class="drop-btn orders-btn"><span
                             class="link-text aside-menu-item">@lang('admin.orders')<span
                                 class="order-circle-counter aside-menu-item">
                                 <span>
-                                    {{ $counts + $countp + $countc }}
+                                    {{ $counts + $countp}}
                                 </span>
                             </span></a>
 
@@ -117,9 +114,6 @@
                                 class=" aside-menu-item">
                             </span></a>
                     @endif
-                {{-- @else
-                    <a href="#" class="drop-btn orders-btn"><span class="link-text">@lang('admin.orders')</span></a></li>
-                @endif --}}
                 </li>
 
                 <div class="drop-list hidden">
@@ -144,20 +138,36 @@
                                     class="link-text-drop-list">@lang('admin.products')<span></span></span></a></li>
                         @endif
 
-                        @if (!empty(($countc = count($contactsOrders))))
-                        <li><a href="{{ route('viewContacts') }}"><span
-                                    class="link-text-drop-list aside-menu-item">@lang('utge.contacts')<span
-                                        class="order-circle-counter"><span>{{ $countc }}</span></span></a>
-                        </li>
-                        @else
-                        <li><a href="{{ route('viewContacts') }}"><span
-                                    class="link-text-drop-list">@lang('utge.contacts')<span></span></span></a></li>
-                        @endif
+
 
                     </ul>
                 </div>
 
                 <li>
+                    @if (!empty(($countc = count($contactsOrders))))
+                        <a href="#" class="drop-btn message-btn"><span class="link-text aside-menu-item">@lang('admin.messages')<span
+                            class="order-circle-counter"><span>{{ $countc }}</span></span></a>
+                    @else
+                        <a href="#" class="drop-btn message-btn"><span class="link-text">@lang('admin.messages')</span></a>
+                    @endif
+                </li>
+
+                <div class="drop-list hidden">
+                    @if (!empty(($countc = count($contactsOrders))))
+                    <li><a href="{{ route('viewContacts') }}"><span
+                                class="link-text-drop-list aside-menu-item">@lang('utge.contacts')<span
+                                    class="order-circle-counter"><span>{{ $countc }}</span></span></a>
+                    </li>
+                    @else
+                    <li><a href="{{ route('viewContacts') }}"><span
+                                class="link-text-drop-list">@lang('utge.contacts')<span></span></span></a></li>
+                    @endif
+                </div>
+
+
+
+                <li>
+
                     <a href="#" class="drop-btn news-btn"><span class="link-text">@lang('admin.news')</span></a>
                 </li>
 
