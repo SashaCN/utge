@@ -82,6 +82,8 @@ Route::middleware('set_locale')->group(function ()
             Route::get('sliderEdit/{slider_id}', [\App\Http\Controllers\Admin\ChildPageController::class, 'sliderEdit'])->name('childPage.sliderEdit');
             //delete route
             Route::get('viewContacts', [\App\Http\Controllers\Admin\ServiceOrderController::class, 'viewContacts'])->name('viewContacts');
+            Route::get('editContacts/{servicesOrder}', [\App\Http\Controllers\Admin\ServiceOrderController::class, 'editContacts'])->name('editContacts');
+            Route::get('updateContacts', [\App\Http\Controllers\Admin\ServiceOrderController::class, 'updateContacts'])->name('updateContacts');
             Route::get('servicesOrder/delete/{servicesOrder}', [\App\Http\Controllers\Admin\ServiceOrderController::class, 'delete'])->name('servicesOrder.delete');
             Route::get('productsOrder/delete/{productsOrder}', [\App\Http\Controllers\Admin\ProductsOrderController::class, 'delete'])->name('productsOrder.delete');
             Route::get('productType/delete/{productType}', [\App\Http\Controllers\Admin\ProductTypeController::class, 'delete'])->name('productType.delete');

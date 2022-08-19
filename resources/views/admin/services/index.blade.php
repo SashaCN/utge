@@ -35,11 +35,11 @@
                                 <p>
                                     {{ $sizeprice->materials }}
                                     /
-                                    {{ $sizeprice->price }}грн
+                                    {{ $sizeprice->price }}
                                 </p>
                             @else
                                 <p>
-                                    {{ $sizeprice->price }}грн
+                                    {{ $sizeprice->price }}
 
                                 </p>
                             @endif

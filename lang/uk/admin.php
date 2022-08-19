@@ -83,7 +83,7 @@
         'this-block-name' => 'В даному блоку назва не використовується',
         'block' => 'Блок',
         'first_create_image' => 'Оберіть спочатку блок у вкладці Інше',
-        'trash_box' => 'Смітник товарів',
+        'trash_box' => 'Видалені товари',
         'seo_panel' => 'SEO панель',
         'add_key_seo_uk' => 'Мета тег KEYWORDS на українській мові',
         'add_desc_seo_uk' => 'Мета тег DESCRIPTION на українській мові',
@@ -192,8 +192,13 @@
         'new_service_orders' => 'Нові замовлення послуг',
         'total_product_orders' => 'Загальна кількість замовлень товарів',
         'total_product_price' => 'Загальна сума замовлень',
-        'order-processed' => 'Оброблене замовлення',
+        'order-processed' => 'Виконане замовлення',
         'order-in-processing' => 'Замовлення в обробці',
         'order-new' => 'Нове замовлення',
+        'messages' => 'Повідомлення',
+        'message-processed' => 'Виконане повідомлення ',
+        'message-in-processing' => 'Повідомлення в обробці',
+        'message-new' => 'Нове повідомлення',
+
 ];
 
