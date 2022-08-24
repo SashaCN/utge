@@ -164,7 +164,7 @@
                                     </span>
                                 </p>
                                 <p class="price"><span
-                                        class="active-price">{{ $product->sizeprices->where('size', $min_price)->first()->price }}</span>&nbsp;{{ $product->sizeprices->where('size', $min_price)->first()->price_units }}
+                                        class="active-price">{{ $product->sizeprices->where('size', $min_price)->first()->price }}</span> {{ $product->sizeprices->where('size', $min_price)->first()->price_units }}
                                 </p>
                                 <span class="like add-to-favourite">
                                     <svg>

@@ -63,7 +63,7 @@ $productsId = explode(',', trim($_GET['products'], '[]'));
                                                     </span>
 
                                             </p>
-                                            <p class="price"><span class="active-price">{{ $product->sizeprices->where('size', $min_price)->first()->price }}</span>&nbsp;{{ $product->sizeprices->where('size', $min_price)->first()->price_units }}</p>
+                                            <p class="price"><span class="active-price">{{ $product->sizeprices->where('size', $min_price)->first()->price }}</span> {{ $product->sizeprices->where('size', $min_price)->first()->price_units }}</p>
                                         <span  class="like add-to-favourite">
                                             <svg>
                                                 <use xlink:href="{{ asset('img/sprite.svg#like') }}"></use>
