@@ -827,7 +827,7 @@ h2 {
   display: inline-block;
   color: #003b95;
   border: 2px solid #003b95;
-  padding: 10px 15px;
+  padding: 10px 12px;
   box-sizing: border-box;
   transition: all 0.5s ease;
 }
@@ -845,8 +845,8 @@ h2 {
   border-radius: 0 5px 5px 0;
 }
 .count-col input {
-  padding: 10px 27px;
-  max-width: 75px;
+  padding: 10px;
+  max-width: 60px;
   box-sizing: border-box;
   text-align: center;
   color: #fff;
@@ -881,6 +881,7 @@ h2 {
   font-weight: 550;
   padding: 9px 17px;
   width: 25%;
+  min-width: 190px;
   box-sizing: border-box;
   text-align: left;
   text-transform: uppercase;
@@ -1553,6 +1554,7 @@ h3 {
   line-height: 43px;
   text-transform: uppercase;
   color: #003b95;
+  padding-right: 5px;
 }
 .current-product .general-price a {
   display: none;
@@ -1631,11 +1633,11 @@ h3 {
 }
 .price-line .count-col input {
   font-size: 2rem;
-  padding: 9.5px 20px;
+  padding: 9.5px 10px;
 }
 .price-line .count-col button {
   font-size: 2rem;
-  padding: 9.5px 15px;
+  padding: 9.5px 12px;
 }
 .price-line .add-to-basket,
 .price-line .details-btn {
@@ -2593,13 +2595,6 @@ footer .mail {
   /* -------------------------------------------------------------------------- */
   /*                                product page                                */
   /* -------------------------------------------------------------------------- */
-  .price-line .count-col button {
-    padding: 10.5px 15px;
-  }
-  .price-line .count-col input {
-    padding: 10.5px 27px;
-  }
-
   /* --------------------------------------------------------------------------  */
   /*                           services                                          */
   /* --------------------------------------------------------------------------  */

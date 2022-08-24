@@ -66,7 +66,7 @@ $locale = app()->getLocale();
         @foreach ($products as $product)
         @php
             $title = $product->localization[0];
-            $description =  [3];
+            $description =  $product->localization[3];
 
             if ($product->sizeprices->whereIn('available', [1,4])->min('size')) {
                 $min_price = $product->sizeprices->whereIn('available', [1,4])->min('size');
@@ -90,6 +90,7 @@ $locale = app()->getLocale();
                     <p class="status">@lang('admin.'.$available)</p>
                     <img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
                 </div>
+                {{-- @dd($product->localization) --}}
                 <figcaption>
                     <h3>{{ $title->$locale }}</h3>
                     @if(empty($description->$locale))
@@ -97,6 +98,7 @@ $locale = app()->getLocale();
                     @else
                         <p class="description">{!! $description->$locale !!}</p>
                     @endif
+                    {{-- @dd($product) --}}
                     <p class="description active-size">@if($product->mass_id == 1)@lang('admin.massa_neto'): @endif{{ $min_price }}</p>
                     <div class="button-line flex-sb">
 
@@ -109,7 +111,7 @@ $locale = app()->getLocale();
                                     </span>
 
                             </p>
-                        <p class="price"><span class="active-price">{{ $product->sizeprices->where('size', $min_price)->first()->price }}</span>&nbsp;{{ $product->sizeprices->where('size', $min_price)->first()->price_units }}</p>
+                        <p class="price"><span class="active-price">{{ $product->sizeprices->where('size', $min_price)->first()->price }}</span> {{ $product->sizeprices->where('size', $min_price)->first()->price_units }}</p>
                         <span class="like add-to-favourite">
                             <svg>
                                 <use xlink:href="{{ asset('img/sprite.svg#like') }}"></use>
