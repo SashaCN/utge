@@ -196,9 +196,11 @@ return [
     'order-processed' => 'Выполненый заказ',
     'order-in-processing' => 'Заказ в обработке',
     'order-new' => 'Новый заказ',
-    'message-processed' => 'Обработаное сообщение',
-    'message-in-processing' => 'Сообщения в обработке',
-    'messages-new' => 'Новое сообщения',
-
+    'messages' => 'Сообщения',
+    'message' => 'Сообщение',
+    'message-processed' => 'Обработанное сообщение',
+    'message-in-processing' => 'Сообщение в обработке',
+    'message-new' => 'Новое сообщение',
+    'message-status' => 'Статус сообщения'
 ];
 

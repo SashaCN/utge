@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="flex title-line">
-    <h2>@lang('admin.messages') №{{ $servicesOrder->id }}</h2>
+    <h2>@lang('admin.message') №{{ $servicesOrder->id }}</h2>
 </div>
 <div class="services-order-wrapper">
     <div class="contacts-custom">

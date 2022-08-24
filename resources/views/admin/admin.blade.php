@@ -145,22 +145,22 @@
 
                 <li>
                     @if (!empty(($countc = count($contactsOrders))))
-                        <a href="#" class="drop-btn message-btn"><span class="link-text aside-menu-item">@lang('admin.messages')<span
+                        <a href="#" class="drop-btn message-btn"><span class="link-text aside-menu-item">@lang('admin.contacts')<span
                             class="order-circle-counter"><span>{{ $countc }}</span></span></a>
                     @else
-                        <a href="#" class="drop-btn message-btn"><span class="link-text">@lang('admin.messages')</span></a>
+                        <a href="#" class="drop-btn message-btn"><span class="link-text">@lang('admin.contacts')</span></a>
                     @endif
                 </li>
 
                 <div class="drop-list hidden">
                     @if (!empty(($countc = count($contactsOrders))))
                     <li><a href="{{ route('viewContacts') }}"><span
-                                class="link-text-drop-list aside-menu-item">@lang('utge.contacts')<span
+                                class="link-text-drop-list aside-menu-item">@lang('admin.messages')<span
                                     class="order-circle-counter"><span>{{ $countc }}</span></span></a>
                     </li>
                     @else
                     <li><a href="{{ route('viewContacts') }}"><span
-                                class="link-text-drop-list">@lang('utge.contacts')<span></span></span></a></li>
+                                class="link-text-drop-list">@lang('admin.messages')<span></span></span></a></li>
                     @endif
                 </div>
 

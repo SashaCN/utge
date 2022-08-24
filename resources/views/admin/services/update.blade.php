@@ -170,7 +170,7 @@ $locale = app()->getLocale();
                         </div>
 
                         <div class="input-wrap">
-                            <input type="number" name="price/${counter}" id="price${counter}" class="auto-value">
+                            <input type="text" name="price/${counter}" id="price${counter}" class="auto-value">
                             <label class="label" for="price${counter}">@lang('admin.add_price')</label>
                         </div>
 
