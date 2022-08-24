@@ -17,7 +17,7 @@ $locale = app()->getLocale();
             <th>@lang('admin.fio')</th>
             <th>@lang('admin.contacts')</th>
             <th>@lang('admin.interes-service')</th>
-            <th>@lang('admin.status')</th>
+            <th>@lang('admin.message-status')</th>
             <th>@lang('admin.action')</th>
         </tr>
     </thead>

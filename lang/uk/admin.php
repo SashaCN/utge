@@ -196,9 +196,10 @@
         'order-in-processing' => 'Замовлення в обробці',
         'order-new' => 'Нове замовлення',
         'messages' => 'Повідомлення',
+        'message' => 'Повідомлення',
         'message-processed' => 'Виконане повідомлення ',
         'message-in-processing' => 'Повідомлення в обробці',
         'message-new' => 'Нове повідомлення',
-
+        'message-status' => 'Статус повідомлення',
 ];
 
