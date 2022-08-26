@@ -24,7 +24,6 @@ class ProductController extends Controller
     public function index(ProductFilter $request, Category $category)
     {
         $products = Product::filter($request)->orderBy('list_position')->paginate(12);
-        dd($products[0]);
         $productTypes = ProductType::all();
         $categories = Category::all();
         $subCategories = SubCategory::all();
