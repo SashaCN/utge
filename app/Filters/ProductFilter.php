@@ -14,7 +14,6 @@ class ProductFilter extends QueryFilter
             }
             $query
             ->leftJoin('sub_categories as suub_'.$i.'', 'suub_'.$i.'.id', '=', 'products.sub_category_id')
-            ->select('products.id')
             ->orWhere('sub_category_id', $id);
         });
     }

@@ -199,7 +199,8 @@ slider_nav_links.forEach(element => {
         if (!blockClick()) {
             return false;
         }
-        active_slide = e.target.getAttribute('data-number');
+        active_slide = e.target.closest('.page-count').getAttribute('data-number');
+        console.log(active_slide);
         slider.scroll(slider.getBoundingClientRect().width*active_slide, 0)
 
         changeActivBtn();
