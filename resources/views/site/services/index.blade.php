@@ -13,7 +13,7 @@
             $desc_type = $type->localization[1];
         @endphp
         <h3>{{ $title_type->$locale }}</h3>
-        <p class="wrapper services-desc">{{ $desc_type->$locale }}</p>
+        <div class="wrapper services-desc">{!! $desc_type->$locale !!}</div>
     @endforeach
     <div class="wrapper service-table-box">
         <table class="service-table">

@@ -1409,6 +1409,7 @@ h3 {
   overflow: hidden;
   text-overflow: ellipsis;
   margin-bottom: 7px;
+  max-height: 2rem;
 }
 
 .add-to-basket,
@@ -1498,7 +1499,7 @@ h3 {
   font-size: 2.4rem;
   letter-spacing: 1px;
 }
-.delivery-card p {
+.delivery-card div {
   color: #191919;
 }
 

@@ -94,9 +94,9 @@ $locale = app()->getLocale();
                 <figcaption>
                     <h3>{{ $title->$locale }}</h3>
                     @if(empty($description->$locale))
-                        <p class="description"></p>
+                        <div class="description"></div>
                     @else
-                        <p class="description">{!! $description->$locale !!}</p>
+                        <div class="description">{!! $description->$locale !!}</div>
                     @endif
                     {{-- @dd($product) --}}
                     <p class="description active-size">@if($product->mass_id == 1)@lang('admin.massa_neto'): @endif{{ $min_price }}</p>
