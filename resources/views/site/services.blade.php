@@ -16,9 +16,9 @@
             <h2 class="flex-aic"><span>{{ $title->$locale }}</span></h2>
             <img src="{{ $service->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
             <figcaption>
-                <p class="desc">
-                    {{$description->$locale}}
-                </p>
+                <div class="desc">
+                    {!!$description->$locale!!}
+                </div>
                 <div class="button-line">
                     <a href="{{ route('service', $service->id) }}" class="details-btn">
                         @lang('utge.more')

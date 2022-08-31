@@ -22,7 +22,7 @@
                     </div>
                     <figcaption>
                         <h3>{{ $title->$locale }}</h2>
-                        <p>{!! $description->$locale !!}</p>
+                        <div>{!! $description->$locale !!}</div>
                     </figcaption>
                 </figure>
             @endforeach

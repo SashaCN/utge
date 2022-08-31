@@ -58,9 +58,9 @@
         <section class="desc-half">
             <h2>{{ $title->$locale }}</h2>
             <div class="desc-wrap shadow-box">
-                <p class="desc">
+                <div class="desc">
                     {!! $description->$locale !!}
-                </p>
+                </div>
                 <p class="certificate-line">
                     @if($product->getFirstMediaUrl('pdf') == null)
                         {{-- <a href="#" class="button details-btn">@lang('utge.quality-certificate')</a> --}}
