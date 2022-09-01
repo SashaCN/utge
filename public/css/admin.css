@@ -429,6 +429,9 @@ main {
   background-position: center;
   background-repeat: no-repeat;
 }
+.action .door-open::before {
+  background-image: url(../img/door.svg);
+}
 
 .restore {
   text-align: center;
