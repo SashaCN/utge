@@ -51,7 +51,6 @@ class ServicesController extends Controller
     public function store(MultiRequest $request)
     {
         $services = new Services();
-        // dd($request);
 
         $localization_title = new Localization();
         $localization_title->fill($request->validated());
@@ -59,9 +58,8 @@ class ServicesController extends Controller
         $localization_title->uk = $request->title_uk;
         $localization_title->ru = $request->title_ru;
 
-        $services->fill($request->except(['price/', 'units/ ', 'materials_uk/', 'materials_ru/']));
+        $services->fill($request->except(['price/', 'units/ ', 'materials_uk/', 'materials_ru/', 'price_ru/']));
         $services->save();
-        // dd($request);
         for($i = 1; $i <= $request->sizecount; $i++){
             $services_size_price = new ServicesSizePrice();
             $services_size_price->fill($request->validated());
@@ -70,8 +68,10 @@ class ServicesController extends Controller
             // $services_size_price->materials = $request->$materials;
             $price = 'price/'.$i;
             $units = 'units/'.$i;
+            $price_ru = 'price_ru/'.$i;
             $services_size_price->price = $request->$price;
             $services_size_price->units = $request->$units;
+            $services_size_price->price_ru = $request->$price_ru;
             $services->localization()->save($localization_title);
 
             $services->ServicesSizePrice()->save($services_size_price);
@@ -155,8 +155,10 @@ class ServicesController extends Controller
             // $services_size_price->materials = $request->$materials;
             $price = 'price/'.$i;
             $units = 'units/'.$i;
+            $price_ru = 'price_ru/'.$i;
             $services_size_price->price = $request->$price;
             $services_size_price->units = $request->$units;
+            $services_size_price->price_ru = $request->$price_ru;
 
             $service->ServicesSizePrice()->save($services_size_price);
             // dd($request);

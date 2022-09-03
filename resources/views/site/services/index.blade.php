@@ -38,9 +38,7 @@
                         @endphp
                         @if ($service->service_category_id == $category->id)
 
-                            @foreach ($service->servicessizeprice as $item)
-                                {{-- @dump($item) --}}
-                            @endforeach
+
 
                             @if (empty($materials->$locale))
                                 <tr class="service-item">
@@ -61,13 +59,23 @@
                                 @php
                                     $counter++;
                                     $materials = $service->localization[$counter];
+
+                                    if ($locale == 'uk') {
+                                        $price = $sizePrize->price;
+                                    } else {
+                                        if ($sizePrize->price_ru != null) {
+                                            $price = $sizePrize->price_ru;
+                                        } else {
+                                            $price = $sizePrize->price;
+                                        }
+                                    }
                                 @endphp
 
                                 <tr class="service-item">
                                     <td></td>
                                     <td class="service-item-materials">{{ $materials->$locale}}</td>
                                     <td>{{ $sizePrize->units}}</td>
-                                    <td>{{ $sizePrize->price}}</td>
+                                    <td>{{ $price}}</td>
                                 </tr>
                                 @endforeach
                             @endif

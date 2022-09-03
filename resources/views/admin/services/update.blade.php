@@ -114,6 +114,11 @@ $locale = app()->getLocale();
                     </div>
 
                     <div class="input-wrap">
+                        <input type="text" value="{{ $sizeprice->price_ru }}" name="price_ru/{{$counter}}" id="price_ru" class="auto-value">
+                        <label class="label" for="price_ru">@lang('admin.add_price_ru')</label>
+                    </div>
+
+                    <div class="input-wrap">
                         <input type="text" value="{{ $sizeprice->units }}" name="units/{{$counter}}" id="units{{$counter}}" class="auto-value">
                         <label class="label" for="units{{$counter}}">@lang('admin.add_price_units')</label>
                     </div>
@@ -172,6 +177,11 @@ $locale = app()->getLocale();
                         <div class="input-wrap">
                             <input type="text" name="price/${counter}" id="price${counter}" class="auto-value">
                             <label class="label" for="price${counter}">@lang('admin.add_price')</label>
+                        </div>
+
+                        <div class="input-wrap">
+                            <input type="text" name="price_ru/${counter}" id="price_ru${counter}" class="auto-value">
+                            <label class="label" for="price_ru${counter}">@lang('admin.add_price_ru')</label>
                         </div>
 
                         <div class="input-wrap">

@@ -88,6 +88,11 @@
                     </div>
 
                     <div class="input-wrap">
+                        <input type="text" name="price_ru/1" value="{{ old('price_ru/1') }}" id="price_ru1" class="auto-value">
+                        <label class="label" for="price_ru1">@lang('admin.add_price_ru')</label>
+                    </div>
+
+                    <div class="input-wrap">
                         <input type="text" name="units/1" value="{{ old('units/1') }}" id="units1" class="auto-value">
                         <label class="label" for="units1">@lang('admin.add_units')</label>
                     </div>
@@ -135,6 +140,11 @@
                         <div class="input-wrap">
                             <input type="text" name="price/${counter}" id="price${counter}" class="auto-value">
                             <label class="label" for="price${counter}">@lang('admin.add_price')</label>
+                        </div>
+
+                        <div class="input-wrap">
+                            <input type="text" name="price_ru/${counter}" value="{{ old('price_ru/${counter}') }}" id="price_ru1" class="auto-value">
+                            <label class="label" for="price_ru1">@lang('admin.add_price_ru')</label>
                         </div>
 
                         <div class="input-wrap">
