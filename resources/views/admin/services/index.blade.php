@@ -31,15 +31,26 @@
                     <td>{{$title->$locale}}</td>
                     <td>
                         @foreach ($service->servicessizeprice as $sizeprice)
+                            @php
+                                if ($locale == 'uk') {
+                                    $price = $sizeprice->price;
+                                } else {
+                                    if ($sizeprice->price_ru != null) {
+                                        $price = $sizeprice->price_ru;
+                                    } else {
+                                        $price = $sizeprice->price;
+                                    }
+                                }
+                            @endphp
                             @if ($sizeprice->materials != null)
                                 <p>
                                     {{ $sizeprice->materials }}
                                     /
-                                    {{ $sizeprice->price }}
+                                    {{ $price }}
                                 </p>
                             @else
                                 <p>
-                                    {{ $sizeprice->price }}
+                                    {{ $price }}
 
                                 </p>
                             @endif
