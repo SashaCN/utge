@@ -239,9 +239,7 @@
                                 <td>{{ $title->$locale }}</td>
     
                                 <td class="action">
-                                    @if ($childPage->route != 'about_us')
-                                        <a title="Редагувати" href="{{ route('childPage.edit', $childPage->id) }}"></a>
-                                    @endif
+                                    <a title="Редагувати" href="{{ route('childPage.edit', $childPage->id) }}"></a>
     
                                     <a title="Видалити" href="{{ route('childPage.delete', $childPage->id) }}"></a>
                                 </td>
