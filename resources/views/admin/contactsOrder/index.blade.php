@@ -52,7 +52,7 @@ $locale = app()->getLocale();
                         </td>
                     @endif
                     <td class="action">
-                        <a title="Редагувати" href="{{ route('editContacts', $order->id) }}"></a>
+                        <a class="door-open" title="Відкрити" href="{{ route('editContacts', $order->id) }}"></a>
                         <a title="Видалити" href="{{ route('servicesOrder.delete', $order->id) }}"></a>
                     </td>
                 </tr>
