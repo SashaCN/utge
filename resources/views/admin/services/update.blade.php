@@ -155,7 +155,10 @@ $locale = app()->getLocale();
                 @endforeach
             </ul>
         </div>
-
+        <div class="input-wrap">
+            <input type="number" name="list_position" value="{{ $service->list_position }}" id="list_pos">
+            <label for="list_pos" class="label">@lang('admin.add_list_position')</label>
+        </div>
     </div>
 </form>
 

@@ -121,6 +121,10 @@
                         <label class="radio-label" for="{{ $sevicesCategory->id }}"><span class="label-circle"></span><span class="label-desc">{{ $title->$locale }}</span></label>
                     @endforeach
                 </div>
+                <div class="input-wrap">
+                    <input type="number" name="list_position" value="0" value="{{ old('list_position') }}" id="list_pos">
+                    <label for="list_pos" class="label">@lang('admin.add_list_position')</label>
+                </div>
             </div>
 
         <script>

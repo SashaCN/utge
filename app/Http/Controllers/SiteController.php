@@ -114,7 +114,7 @@ class SiteController extends Controller
     {
         $types = ServicesType::all()->where('id', $id->id);
         $categories = ServicesCategory::all()->where('service_type_id', $id->id);
-        $services = Services::all();
+        $services = Services::orderBy('list_position')->get();
 
         return view('site.services.index', [
 
