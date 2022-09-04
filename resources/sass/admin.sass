@@ -979,11 +979,6 @@ main
             background: #fff
             padding: 15px
 
-.services-order-form
-    button
-        padding: 15px
-        cursor: pointer
-
 .services-order-wrapper
     padding: 25px
     background: #B0C4DE
@@ -1073,14 +1068,38 @@ main
         padding: 10px
         margin-bottom: 15px
 
-.order-product-form
-    button
+.order-product-form,
+.services-order-form
+    button,
+    .close-order-btn
         display: block
         width: 100%
         padding: 10px
+        font-size: 14px
+        margin-bottom: 8px
+        border: 1px solid #000
+        transition: $trs
+        &:hover
+            cursor: pointer
+            background-color: #bbb
     p
         margin-bottom: 10px
+.close-order-btn
+    text-align: center
+    box-sizing: border-box
+    text-decoration: none
+    color: buttontext
+    background-color: buttonface
+    &:hover
+        cursor: pointer
+        background-color: #bbb
 
+.services-order-form
+    button,
+    .close-order-btn
+        display: inline-block
+        width: auto
+        padding: 15px
 
 /* -------------------------------------------------------------------------- */
 /*                                  pdf                                         */

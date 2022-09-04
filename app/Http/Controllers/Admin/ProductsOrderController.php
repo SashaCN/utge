@@ -89,7 +89,7 @@ class ProductsOrderController extends Controller
         $productsOrder->status = $request->status;
         $productsOrder->update();
 
-        return redirect()->route('productsOrder.index');
+        return redirect()->back();
     }
 
     /**

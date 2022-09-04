@@ -94,18 +94,14 @@ class ServiceOrderController extends Controller
         $servicesOrder->status = $request->status;
         $servicesOrder->update();
 
-        if ($servicesOrder->from == 'services') {
-            return redirect()->route('servicesOrder.index');
-        } else if ($servicesOrder->from == 'contacts') {
-            return redirect()->route('viewContacts');
-        }
+        return redirect()->back();
     }
     public function updateContacts(MultiRequest $request, ServicesOrder $servicesOrder)
     {
         $servicesOrder->status = $request->status;
         $servicesOrder->update();
 
-        return redirect()->route('contactsOrder.index');
+        return redirect()->back();
     }
 
     /**

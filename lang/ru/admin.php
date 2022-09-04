@@ -202,6 +202,8 @@ return [
     'message-processed' => 'Обработанное сообщение',
     'message-in-processing' => 'Сообщение в обработке',
     'message-new' => 'Новое сообщение',
-    'message-status' => 'Статус сообщения'
+    'message-status' => 'Статус сообщения',
+
+    'close' => 'Закрыть',
 ];
 

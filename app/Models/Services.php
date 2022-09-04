@@ -17,7 +17,7 @@ class Services extends Model
 
     protected $cascadeDeletes = ['servicesSizePrice'];
     protected $dates = ['deleted_at'];
-    protected $fillable = ['service_category_id'];
+    protected $fillable = ['service_category_id', 'list_position'];
 
     public function categories()
     {

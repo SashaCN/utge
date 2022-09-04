@@ -59,6 +59,7 @@
         </div>
 
         <button for="services-form" type="submit">@lang('admin.change')</button>
+        <a class="close-order-btn" href="{{ route('servicesOrder.index') }}">@lang('admin.close')</a>
 
 
     </form>

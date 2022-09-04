@@ -112,8 +112,7 @@ $locale = app()->getLocale();
             </div>
 
             <button for="order-product-form" type="submit">@lang('admin.change')</button>
-
-
+                <a href="{{ route('productsOrder.index') }}" class="close-order-btn">@lang('admin.close')</a>
         </form>
     </div>
     <div class="order-list-wrap">
