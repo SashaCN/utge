@@ -54,7 +54,7 @@
     </header>
     <aside>
         <p class="logo">
-            <a href="{{ route('index') }}" class="flex">
+            <a href="{{ route('index') }}" class="flex" target="_blank">
                 <img src="{{ asset('img/logo.png') }}" alt="Hashtag logo">
             </a>
         </p>
