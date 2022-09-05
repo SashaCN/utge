@@ -30,7 +30,7 @@ class ProductController extends Controller
     {
 
 
-        $products = Product::filter($request)->paginate(20);
+        $products = Product::filter($request)->orderBy('list_position')->paginate(20);
 
 
         $productTypes = ProductType::all();

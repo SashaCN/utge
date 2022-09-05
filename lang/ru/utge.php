@@ -77,7 +77,7 @@ return [
     'lastname' => 'Фамилия',
     'price-units' => 'Цена, грн',
     'units' => 'Единицы измерения',
-    'material' => 'Материал',
+    'material' => 'Материалы',
     'type-work' => 'Виды робот',
     'order-service' => 'Заказать услугу',
     'number-phone' => 'Номер телефона',
