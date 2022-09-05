@@ -14,6 +14,7 @@
         $count_customers_all = count($customers_all);
         $count_services_order = count($services_order);
         $count_services = count($services);
+        
     @endphp
 
 

@@ -78,7 +78,7 @@ return [
     'lastname' => 'Прізвище',
     'price-units' => 'Вартість, грн',
     'units' => 'Одиниці виміру',
-    'material' => 'Матеріал',
+    'material' => 'Матеріали',
     'type-work' => 'Види робіт',
     'order-service' => 'Замовити послугу',
     'number-phone' => 'Номер телефону',

@@ -44,10 +44,19 @@
 
                             @if (empty($materials->$locale))
                                 <tr class="service-item">
+                                    {{-- @dump($item); --}}
                                     <td>{{ $title_service->$locale }}</td>
                                     <td></td>
                                     <td>{{ $item->units}}</td>
-                                    <td>{{ $item->price}}</td>
+                                    <td>
+
+                                        @if ($item->price_ru != null && $locale != 'uk')
+                                            {{ $item->price_ru }}
+                                            
+                                        @else
+                                            {{ $item->price }}
+                                        @endif
+                                    </td>
                                 </tr>
                             @else
                                 <tr class="service-item">
@@ -61,6 +70,7 @@
                                 @php
                                     $counter++;
                                     $materials = $service->localization[$counter];
+
 
                                     if ($locale == 'uk') {
                                         $price = $sizePrize->price;

@@ -29,7 +29,7 @@ class AdminController extends Controller
             'products' =>  Product::all(),
             'customers' => Customers::all()->where('status' ,'0'),
             'customers_all' => Customers::all(),
-            'services_order' => ServicesOrder::all()->where('status' ,'0'),
+            'services_order' => ServicesOrder::all()->where('status' , '0')->where('from', 'services'),
             'services' => Services::all(),
             'products_order' => ProductsOrder::all(),
         ]);

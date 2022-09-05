@@ -65,7 +65,7 @@
         'route' => 'Блок',
         'news_create' => 'Додати новини',
         'to_sub_category' => 'По під-категоріях',
-        'to_category' => 'По категоріях',
+        'to_category' => 'За категоріями',
         'to_product_type' => 'По типах товару',
         'search' => 'Пошук',
         'childPage_create' => 'Додати блок',
