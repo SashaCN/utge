@@ -139,7 +139,7 @@
         <div class="desc-slide flex-col">
             <div class="another-slide flex-col">
                 <div class="input-wrap sub-category-wrap">
-                    <p class="label">Виберіть тип товару</p>
+                    <p class="label">@lang('admin.under-type')</p>
                     <div class="flex-space sub-category-wrap">
                         <label><input type="hidden" value="" name="product_type_id"></label>
 

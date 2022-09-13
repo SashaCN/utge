@@ -89,7 +89,7 @@
                       <a class='btn' id="converToCode1" data-role='switchEditor' href='#' title='Перейти в редактор коду'>&lt;code&gt;</a>
                     </div>
                   </div>
-                  <div id='editor1' style='' contenteditable>{{ $description->uk }}</div>
+                  <div id='editor1' style='' contenteditable>{!! $description->uk !!}</div>
                   <textarea id="desc_uk" name="description_uk"></textarea>
                   <label class="label" for="desc_uk">@lang('admin.add_uk_desc')</label>
                 </div>
@@ -134,7 +134,7 @@
                       <a class='btn' id="converToCode2" data-role='switchEditor' href='#' title='Перейти в редактор коду'>&lt;code&gt;</a>
                     </div>
                   </div>
-                  <div id='editor2' style='' contenteditable>{{ $description->ru }}</div>
+                  <div id='editor2' style='' contenteditable>{!! $description->ru !!}</div>
                   <textarea id="desc_ru" name="description_ru"></textarea>
                   <label class="label" for="desc_ru">@lang('admin.add_ru_desc')</label>
                 </div>

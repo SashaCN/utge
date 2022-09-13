@@ -337,7 +337,7 @@ $locale = app()->getLocale();
                 <a class="certificate" href="{{ $product->getFirstMediaUrl('pdf') }}" class="button details-btn"><p>@lang('utge.quality-certificate')</p> / {{$pdfname[0]->name}}</a>
                 <div class="certificate-crud-btn">
 
-                    <label class="pdf-changes" for="pdf-changes">Вибрати новий сертифікат</label>
+                    <label class="pdf-changes" for="pdf-changes">@lang('admin.under-certificate')</label>
 
 
                     <button class="pdf-delete-btn" type="submit" form="pdf-delete" class="add-button">
