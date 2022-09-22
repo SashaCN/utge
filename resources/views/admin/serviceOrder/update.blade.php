@@ -35,21 +35,31 @@
 
                 @if($servicesOrder->status == 0)
 
-                <option selected value="0">@lang('admin.order-new')</option>
-                <option value="1">@lang('admin.order-in-processing')</option>
-                <option value="2">@lang('admin.order-processed')</option>
+                    <option selected value="0">@lang('admin.order-new')</option>
+                    <option value="1">@lang('admin.order-in-processing')</option>
+                    <option value="2">@lang('admin.order-processed')</option>
+                    <option value="3">@lang('admin.order-annulled')</option>
 
                 @elseif ($servicesOrder->status == 1)
 
-                <option value="0">@lang('admin.order-new')</option>
-                <option selected value="1">@lang('admin.order-in-processing')</option>
-                <option value="2">@lang('admin.order-processed')</option>
+                    <option value="0">@lang('admin.order-new')</option>
+                    <option selected value="1">@lang('admin.order-in-processing')</option>
+                    <option value="2">@lang('admin.order-processed')</option>
+                    <option value="3">@lang('admin.order-annulled')</option>
 
                 @elseif ($servicesOrder->status == 2)
 
-                <option value="0">@lang('admin.order-new')</option>
-                <option value="1">@lang('admin.order-in-processing')</option>
-                <option selected value="2">@lang('admin.order-processed')</option>
+                    <option value="0">@lang('admin.order-new')</option>
+                    <option value="1">@lang('admin.order-in-processing')</option>
+                    <option selected value="2">@lang('admin.order-processed')</option>
+                    <option value="3">@lang('admin.order-annulled')</option>
+
+                @elseif ($servicesOrder->status == 3)
+
+                    <option value="0">@lang('admin.order-new')</option>
+                    <option value="1">@lang('admin.order-in-processing')</option>
+                    <option value="2">@lang('admin.order-processed')</option>
+                    <option selected value="3">@lang('admin.order-annulled')</option>
 
                 @endif
 

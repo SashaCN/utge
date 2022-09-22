@@ -50,6 +50,10 @@ $locale = app()->getLocale();
                         <td class="order-status-one">
                             <p>@lang('admin.order-processed')</p>
                         </td>
+                    @elseif ($order->status == 3)
+                        <td class="order-status-annulled">
+                            <p>@lang('admin.order-annulled')</p>
+                        </td>
                     @endif
                     <td class="action">
                         <a class="door-open" title="Відкрити" href="{{ route('servicesOrder.edit', $order->id) }}"></a>

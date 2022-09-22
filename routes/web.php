@@ -75,6 +75,7 @@ Route::middleware('set_locale')->group(function ()
             Route::resource('servicesCategory', \App\Http\Controllers\Admin\ServicesCategoryController::class);
             Route::resource('services', \App\Http\Controllers\Admin\ServicesController::class);
             Route::resource('trashBox', \App\Http\Controllers\Admin\TrashBoxController::class);
+            Route::resource('servicesTrash', \App\Http\Controllers\Admin\ServicesTrashController::class);
             Route::resource('servicesOrder', \App\Http\Controllers\Admin\ServiceOrderController::class);
             Route::resource('productsOrder', \App\Http\Controllers\Admin\ProductsOrderController::class);
             // create route
@@ -99,6 +100,8 @@ Route::middleware('set_locale')->group(function ()
             Route::get('seo/delete/{seo}', [\App\Http\Controllers\Admin\SeoController::class, 'delete'])->name('seo.delete');
             Route::get('trashBox/{prouct}/restore/', [\App\Http\Controllers\Admin\TrashBoxController::class, 'restore'])->name('trashBox.restore');
             Route::get('trashBox/{prouct}/productForceDelete/', [\App\Http\Controllers\Admin\TrashBoxController::class, 'productForceDelete'])->name('trashBox.productForceDelete');
+            Route::get('servicesTrash/{prouct}/restore/', [\App\Http\Controllers\Admin\ServicesTrashController::class, 'restore'])->name('servicesTrash.restore');
+            Route::get('servicesTrash/{prouct}/productForceDelete/', [\App\Http\Controllers\Admin\ServicesTrashController::class, 'servicesForceDelete'])->name('servicesTrash.servicesForceDelete');
             Route::post('product/mediaUpdatePdf/{product}', [\App\Http\Controllers\Admin\ProductController::class, 'mediaUpdatePdf'])->name('product.mediaUpdatePdf');
             Route::post('product/mediaDeletePdf/{product}', [\App\Http\Controllers\Admin\ProductController::class, 'mediaDeletePdf'])->name('product.mediaDeletePdf');
             // Route::get('setValueToCache', [\App\Http\Controllers\Admin\AdminController::class, 'setValueToCache'])->name('admin.setValueToCache');

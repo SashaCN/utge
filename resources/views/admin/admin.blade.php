@@ -184,7 +184,7 @@
                             class="link-text">@lang('admin.modules')</span></a></li>
                 <li><a href="{{ route('seo.index') }}" class="seo-btn"><span class="link-text">SEO</span></a></li>
                 <li><a href="https://analytics.google.com/analytics/web/#/p325179285/reports/reportinghub?params=_u..nav%3Dmaui&collectionId=life-cycle"
-                        class="analitics-btn"><span class="link-text">Google Analitics</span></a></li>
+                        class="analitics-btn"><span class="link-text">Google Analytics</span></a></li>
 
                 @if (!empty(($count = count($trashProduct))))
                 <li><a href="{{ route('trashBox.index') }}" class="trash-btn"><span
@@ -195,6 +195,18 @@
                             class="link-text">@lang('admin.trash_box')</span></a></li>
                 @endif
 
+                @if (!empty(($count = count($trashProduct))))
+                    <li>
+                        <a href="{{ route('servicesTrash.index') }}" class="trash-btn">
+                            <span class="link-text aside-menu-item">@lang('admin.service_trash_box')
+                            <span class="trash-circle-counter"><span>{{ $count }}</span></span>
+                        </a>
+                    </li>
+                @else
+                    <li>
+                        <a href="{{ route('servicesTrash.index') }}" class="trash-btn"><span class="link-text">@lang('admin.service_trash_box')</span></a>
+                    </li>
+                @endif
             </ul>
         </nav>
         <p class="copy">

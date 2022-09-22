@@ -1,49 +1,37 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\App;
 use Illuminate\Http\Request;
-use App\Models\Category;
-use App\Models\Customers;
-use App\Models\Product;
-use App\Models\ProductsOrder;
+use App\Models\ServicesType;
+use App\Models\ServicesCategory;
+use App\Models\SubCategory; //
 use App\Models\Services;
-use App\Models\ServicesOrder;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Redis;
+use App\Models\ServicesSizePrice;
 
-class AdminController extends Controller
+class ServicesTrashController extends Controller
 {
-
-
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Services $services)
     {
-        return view('admin.dashbord', [
-            'products' =>  Product::all(),
-            'customers' => Customers::all()->where('status' ,'0'),
-            'customers_all' => Customers::all(),
-            'customers_annulled' => Customers::all()->where('status' ,'3'),
-            'services_order_all' => ServicesOrder::all()->where('from', 'services'),
-            'services_order_all_annulled' => ServicesOrder::all()->where('status' , '3')->where('from', 'services'),
-            'services_order' => ServicesOrder::all()->where('status' , '0')->where('from', 'services'),
-            'services' => Services::all(),
-            'products_order' => ProductsOrder::all(),
+        $services = Services::onlyTrashed()->paginate(12);
+
+        $servicesTypes = ServicesType::onlyTrashed();
+        $categories = ServicesCategory::all();
+        $subCategories = SubCategory::all();
+
+        return view('admin.servicesTrash.index', [
+            'servicesTypes' => $servicesTypes,
+            'categories' => $categories,
+            'subcategories' => $subCategories,
+            'services' => $services,
         ]);
     }
-
-
-
-    // public function setValueToCache(string $key = 'sad', $value = ['dfsd','sdfds'])
-    // {
-    //     $this->getRedis()->rawCommand('SET', $key, $value);
-    // }
 
     /**
      * Show the form for creating a new resource.
@@ -111,11 +99,27 @@ class AdminController extends Controller
         //
     }
 
-    public function changeLocale($locale){
+    public function restore(Services $service, ServicesSizePrice $sizePrice, $id)
+    {
 
-        session(['locale' => $locale]);
-        App::setLocale($locale);
-        return redirect()->back();
+        $service = Services::onlyTrashed()->findOrFail($id);
+        $sizePrice = ServicesSizePrice::onlyTrashed()->where('service_id', $id);
 
+        $service->restore();
+        $sizePrice->restore();
+
+        return back();
+
+    }
+
+    public function servicesForceDelete(Services $service, ServicesSizePrice $sizePrice, $id)
+    {
+        $service = Services::onlyTrashed()->findOrFail($id);
+        $sizePrice = ServicesSizePrice::onlyTrashed()->where('service_id', $id);
+
+        $sizePrice->forceDelete();
+        $service->forceDelete();
+
+        return back();
     }
 }

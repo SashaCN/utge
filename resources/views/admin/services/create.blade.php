@@ -74,11 +74,11 @@
             <div class="size-price">
                 <div class="size size1">
                     <div class="input-wrap">
-                        <input type="text" id="materials_uk1" name="materials_uk/1" class="auto-value" value="{{ old('materials_uk') }}" >
+                        <input type="text" id="materials_uk1" name="materials_uk/1" class="auto-value" value="{{ old('materials_uk/1') }}" >
                         <label class="label" for="materials_uk1" >@lang('admin.add_title_materials')</label>
                     </div>
                     <div class="input-wrap">
-                        <input type="text" id="materials_ru1" name="materials_ru/1" class="auto-value" value="{{ old('materials_ru')}}">
+                        <input type="text" id="materials_ru1" name="materials_ru/1" class="auto-value" value="{{ old('materials_ru/1')}}">
                         <label class="label" for="materials_ru1">@lang('admin.add_title_ru_materials')</label>
                     </div>
 

@@ -63,10 +63,11 @@
 
         <div class="filter-item filter-setting-button">
             <input class="filter-item-button-button" id="filter-item-button" type="submit" value="filter">
-            <button class="filter-item-button-label" for="filter-item-button-label">@lang('admin.search')</button>
+            <button id="ajaxSubmit" class="filter-item-button-label" for="filter-item-button-label">@lang('admin.search')</button>
         </div>
 
     </form>
 
 </div>
+<script src="{{ asset('js/product_filter_admin.js') }}"></script>
 @endsection
