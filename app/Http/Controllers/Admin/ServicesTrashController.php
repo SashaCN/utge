@@ -105,6 +105,7 @@ class ServicesTrashController extends Controller
         $service = Services::onlyTrashed()->findOrFail($id);
         $sizePrice = ServicesSizePrice::onlyTrashed()->where('service_id', $id);
 
+        dd($service->servicessizeprice);
         $service->restore();
         $sizePrice->restore();
 

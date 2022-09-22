@@ -30,6 +30,7 @@
                 <tr>
                     <td>{{$title->$locale}}</td>
                     <td>
+                        @dump($service->servicessizeprice)
                         @foreach ($service->servicessizeprice as $sizeprice)
                             @php
                                 if ($locale == 'uk') {
@@ -55,7 +56,6 @@
                                 </p>
                             @endif
                         @endforeach
-                        {{-- {{dd($product->sizeprice)}} --}}
                     </td>
                     <td class="action">
                         <a title="Редагувати" href="{{ route('services.edit', $service->id) }}"></a>
