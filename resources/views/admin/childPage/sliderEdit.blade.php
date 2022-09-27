@@ -7,21 +7,7 @@
 
     <div class="flex title-line">
         <h2>
-            @if ($sliderId == 'slider1')
-                Слайдер 1
-            @endif
-
-            @if ($sliderId == 'slider2')
-                Слайдер 2
-            @endif
-
-            @if ($sliderId == 'slider3')
-                Слайдер 3
-            @endif
-
-            @if ($sliderId == 'slider4')
-                Слайдер 4
-            @endif
+            Слайдер {{ $sliderCount }}
         </h2>
 
         <a href="{{ route('childPage.sliderCreate') }}" class="add-button action-button">
@@ -55,7 +41,6 @@
                     <button class="image-changes-bt add-button" form="image-change-{{ $sliderImg->id }}" type="submit">@lang('admin.save-new-phot')</button>    
 
                 </div>
-
                 <div class="name-slide flex-col current-slide update-text-slider-page">
                     <div>
                         <div class="input-wrap">

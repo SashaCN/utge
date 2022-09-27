@@ -134,6 +134,8 @@
         'title-page' => 'Назва сторінки',
         'models-url' => 'Посилання',
         'slider' => 'Слайдери',
+        'sliderNew' => 'Новий слайдер',
+        'slider_link' => 'Посилання слайдеру',
         'models-slider_order' => 'Порядок слайдера',
         'services-change' => 'Редагувати послугу',
         'material-price' => 'Матеріал/Ціна',

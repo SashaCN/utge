@@ -80,7 +80,7 @@ Route::middleware('set_locale')->group(function ()
             Route::resource('productsOrder', \App\Http\Controllers\Admin\ProductsOrderController::class);
             // create route
             Route::get('sliderCreate', [\App\Http\Controllers\Admin\ChildPageController::class, 'sliderCreate'])->name('childPage.sliderCreate');
-            Route::get('sliderEdit/{slider_id}', [\App\Http\Controllers\Admin\ChildPageController::class, 'sliderEdit'])->name('childPage.sliderEdit');
+            Route::get('sliderEdit/{slider_id}/{sliderCount}', [\App\Http\Controllers\Admin\ChildPageController::class, 'sliderEdit'])->name('childPage.sliderEdit');
             //delete route
             Route::get('viewContacts', [\App\Http\Controllers\Admin\ServiceOrderController::class, 'viewContacts'])->name('viewContacts');
             Route::get('editContacts/{servicesOrder}', [\App\Http\Controllers\Admin\ServiceOrderController::class, 'editContacts'])->name('editContacts');
