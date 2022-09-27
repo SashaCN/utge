@@ -6,29 +6,37 @@ $locale = app()->getLocale();
 
 @section('content')
     <div class="wrapper">
-        <div class="grid">
-            <section class="feed">
-                <div class="slider-line">
-                    <div class="container">
-                        @foreach ($slider1 as $item)
-                            @php
-                                $title = $item->localization[0];
-                                $link = $item->localization[1];
-                            @endphp
 
-                            <div class="slide">
-                                <a href="http://{{ $link->$locale }}"></a>
-                                <h2>{{ $title->$locale }}</h2>
-                                <img src="{{ $item->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
-                            </div>
-                        @endforeach
+        <div class="grid">
+            @for ($i = 0; $i < count($slidersName); $i++)
+                <section class="slider-section">
+                    <div class="slider-line">
+                        <div class="container">
+                            @foreach ($sliders as $slider)
+                                @if ($slidersName[$i] == $slider->route)
+                                    {{-- @dump($slidersName[$i]); --}}
+                                    @php
+                                        $title = $slider->localization[0];
+                                        $link = $slider->localization[1];
+                                    @endphp
+
+                                    <div class="slide">
+                                        <a href="http://{{ $link->$locale }}"></a>
+                                        <h2>{{ $title->$locale }}</h2>
+                                        <img src="{{ $slider->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}">
+                                    </div>
+                                @endif
+                            @endforeach
+                        </div>
                     </div>
-                </div>
-                <div class="slider-control">
-                </div>
-            </section>
+                    <div class="slider-control">
+                    </div>
+                </section>
+            @endfor
         </div>
     </div>
+
+
     <div class="about-us">
         @foreach ($about_us as $item)
             @php

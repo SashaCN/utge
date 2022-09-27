@@ -109,7 +109,7 @@ class TrashBoxController extends Controller
         $product = Product::onlyTrashed()->findOrFail($id);
         $sizePrice = SizePrice::onlyTrashed()->where('product_id', $id);
 
-        $sizePrice->restore();
+        // $sizePrice->restore();
         $product->restore();
 
         return back();

@@ -21,7 +21,7 @@
         @foreach ($subCategories as $subCategory)
 
         @php
-            $title = $subCategory->localization[0];
+            $title = $subCategory->localization[1];
         @endphp
 
         <tr>

@@ -1,33 +1,16 @@
 window.onload = () => {
 
-    let feed = document.querySelector('.feed'),
-        fish = document.querySelector('.fish'),
-        water = document.querySelector('.water'),
-        service = document.querySelector('.service');
+    let sliderSections = document.querySelectorAll('.slider-section'),
+    i = 0;
 
+    sliderSections.forEach((sliderSection) => {
+        if(sliderSection != null) {
+            spanCreator(sliderSection);
+            changeSlide(sliderSection, i);
+        }
+        i += 500;
+    });
 
-
-
-
-    if(feed != null) {
-        spanCreator(feed);
-        changeSlide(feed, 0);
-    }
-
-    if(fish != null) {
-        spanCreator(fish);
-        changeSlide(fish, 500)
-    }
-
-    if(water != null){
-        spanCreator(water);
-        changeSlide(water, 1000);
-    }
-
-    if(service != null) {
-        spanCreator(service);
-        changeSlide(service, 1500)
-    }
 }
 
 function spanCreator(selector){

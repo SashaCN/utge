@@ -37,10 +37,10 @@ $title = $subCategory->localization[0];
     @method('PUT')
 
     @php
-        $title = $subCategory->localization[0];
-        if (isset($subCategory->localization[1]))
+        $title = $subCategory->localization[1];
+        if (isset($subCategory->localization[0]))
         {
-            $description = $subCategory->localization[1];
+            $description = $subCategory->localization[0];
         }
     @endphp
 

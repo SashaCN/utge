@@ -32,14 +32,28 @@ class SiteController extends Controller
     public function index(ProductFilter $request, $done = false)
     {
         $products = Product::filter($request)->where('home_view', '1')->orderBy('list_position')->paginate(12);
+        $sliders = ChildPage::where('route', 'like', 'slider%')->get();
+        $slidersName = [];
+        
+        foreach ($sliders as $slider) {
+            
+            if (in_array($slider->route, $slidersName))
+            {
+                continue;
+            }
+            else
+            {
+                array_push($slidersName, $slider->route);
+            }
+        }
+            
+        asort($slidersName);
 
         return view('site.firstPage', [
             'products' => $products,
             'about_us' => ChildPage::all()->where('route', 'about_us'),
-            'slider1' => ChildPage::where('route', 'slider1')->orderBy('order')->get(),
-            'slider2' => ChildPage::where('route', 'slider2')->orderBy('order')->get(),
-            'slider3' => ChildPage::where('route', 'slider3')->orderBy('order')->get(),
-            'slider4' => ChildPage::where('route', 'slider4')->orderBy('order')->get(),
+            'slidersName' => $slidersName,
+            'sliders' => $sliders,
             'done' => $done,
         ]);
     }

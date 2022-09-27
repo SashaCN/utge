@@ -1,7 +1,7 @@
 @extends('admin.admin')
 
 @section('content')
-
+<?php dd($product); ?>
     <?php
         $locale = app()->getLocale();
     ?>

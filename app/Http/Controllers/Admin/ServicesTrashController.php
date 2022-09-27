@@ -20,7 +20,8 @@ class ServicesTrashController extends Controller
     public function index(Services $services)
     {
         $services = Services::onlyTrashed()->paginate(12);
-
+        $services = Services::find($services->id);
+        dd($services);
         $servicesTypes = ServicesType::onlyTrashed();
         $categories = ServicesCategory::all();
         $subCategories = SubCategory::all();
@@ -105,7 +106,7 @@ class ServicesTrashController extends Controller
         $service = Services::onlyTrashed()->findOrFail($id);
         $sizePrice = ServicesSizePrice::onlyTrashed()->where('service_id', $id);
 
-        dd($service->servicessizeprice);
+        dd($service);
         $service->restore();
         $sizePrice->restore();
 
