@@ -30,7 +30,6 @@
                 <tr>
                     <td>{{$title->$locale}}</td>
                     <td>
-                        @dump($service->servicessizeprice)
                         @foreach ($service->servicessizeprice as $sizeprice)
                             @php
                                 if ($locale == 'uk') {

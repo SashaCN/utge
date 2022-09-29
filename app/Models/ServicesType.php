@@ -30,12 +30,12 @@ class ServicesType extends Model implements HasMedia
         return $this->hasMany(ServicesCategory::class, 'service_type_id');
     }
 
-    static function getAllChild()
-    {
-        DB::table('services_types')
-            ->leftJoin('services_categories', 'services_types.id', '=', 'services_categories.service_type_id')
-            ->leftJoin('services', 'services_categories.id', '=', 'services.service_category_id')
-            ->where('services_types.id')
-            ->get();
-    }
+    // static function getAllChild()
+    // {
+    //     DB::table('services_types')
+    //         ->leftJoin('services_categories', 'services_types.id', '=', 'services_categories.service_type_id')
+    //         ->leftJoin('services', 'services_categories.id', '=', 'services.service_category_id')
+    //         ->where('services_types.id')
+    //         ->get();
+    // }
 }

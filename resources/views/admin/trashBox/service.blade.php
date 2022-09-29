@@ -15,7 +15,7 @@
     @endif
 
     <div class="flex title-line">
-        <h2>@lang('admin.trash_box')</h2>
+        <h2>@lang('admin.service_trash_box')</h2>
     </div>
 
     <table class="product-table">
@@ -34,7 +34,6 @@
             @endphp
             <tr>
                 <td>{{$title->$locale}}</td>
-                @dump($service->servicessizeprice)
                 <td>
                     @foreach ($service->servicessizeprice as $sizeprice)
                         @php
@@ -64,7 +63,7 @@
                 </td>
 
                 <td class="restore">
-                    <a title="Відновити" href="{{ route('servicesTrash.restore', $service->id) }}"></a>
+                    <a title="Відновити" href="{{ route('servicesTrash.serviceRestore', $service->id) }}"></a>
                     <a title="Видалити назавжди" href="{{ route('servicesTrash.servicesForceDelete', $service->id) }}"></a>
                 </td>
 
