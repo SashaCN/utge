@@ -134,10 +134,9 @@ class TrashBoxController extends Controller
     {
 
         $service = Services::onlyTrashed()->findOrFail($id);
-        $sizePrice = ServicesSizePrice::onlyTrashed()->where('service_id', $id);
 
         $service->restore();
-        $sizePrice->restore();
+        $service->servicessizeprice()->restore();
 
         return back();
 
