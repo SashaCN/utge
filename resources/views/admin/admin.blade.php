@@ -155,13 +155,12 @@
 
                 <div class="drop-list hidden">
                     @if (!empty(($countc = count($contactsOrders))))
-                        <li><a href="{{ route('viewContacts') }}"><span
-                                    class="link-text-drop-list aside-menu-item">@lang('admin.messages')<span
-                                        class="order-circle-counter"><span>{{ $countc }}</span></span></a>
+                        <li>
+                            <a href="{{ route('viewContacts') }}"><span class="link-text-drop-list aside-menu-item">@lang('admin.messages')<span class="order-circle-counter"><span>{{ $countc }}</span></span></a>
                         </li>
                     @else
-                        <li><a href="{{ route('viewContacts') }}"><span
-                                    class="link-text-drop-list">@lang('admin.messages')<span></span></span></a></li>
+                        <li>
+                            <a href="{{ route('viewContacts') }}"><span class="link-text-drop-list">@lang('admin.messages')<span></span></span></a></li>
                     @endif
                 </div>
 
@@ -188,7 +187,11 @@
                         class="analitics-btn"><span class="link-text">Google Analytics</span></a></li>
 
                 <li>
-                    <a href="#" class="drop-btn trash-btn"><span spanclass="link-text">@lang('admin.trash')</span></a>
+                    @if (!empty(($count = count($trashProduct))) || !empty(($count = count($trashService))))
+                        <a href="#" class="drop-btn trash-btn"><span spanclass="link-text">@lang('admin.trash')<span class="trash-circle-counter"><span>{{ count($trashProduct) + count($trashService) }}</span></span></a>
+                    @else
+                        <a href="#" class="drop-btn trash-btn"><span spanclass="link-text">@lang('admin.trash')</span></a>
+                    @endif
                 </li>
                 <div class="drop-list hidden">
                     <ul>
@@ -202,7 +205,7 @@
                             </li>
                         @endif
         
-                        @if (!empty(($count = count($trashProduct))))
+                        @if (!empty(($count = count($trashService))))
                             <li>
                                 <a href="{{ route('service_trash_box') }}" class="trash-btn"><span class="link-text aside-menu-item">@lang('admin.service_trash_box')<span class="trash-circle-counter"><span>{{ $count }}</span></span></a>
                             </li>

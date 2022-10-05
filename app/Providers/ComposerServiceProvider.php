@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\ChildPage;
 use App\Models\Customers;
+use App\Models\Services;
 use App\Models\ServicesType;
 use App\Models\ServicesOrder;
 use Illuminate\Support\Facades\View;
@@ -69,6 +70,10 @@ class ComposerServiceProvider extends ServiceProvider
 
         View::composer('admin.admin', function($view){
             $view->with('trashProduct',  Product::onlyTrashed()->paginate(20));
+        });
+
+        View::composer('admin.admin', function($view){
+            $view->with('trashService',  Services::onlyTrashed()->paginate(20));
         });
 
 
