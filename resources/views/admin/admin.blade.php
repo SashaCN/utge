@@ -188,16 +188,16 @@
 
                 <li>
                     @if (!empty(($count = count($trashProduct))) || !empty(($count = count($trashService))))
-                        <a href="#" class="drop-btn trash-btn"><span spanclass="link-text">@lang('admin.trash')<span class="trash-circle-counter"><span>{{ count($trashProduct) + count($trashService) }}</span></span></a>
+                        <a href="#" class="drop-btn trash-btn "><span class="link-text aside-menu-item">@lang('admin.trash')<span class="trash-circle-counter"><span>{{ count($trashProduct) + count($trashService) }}</span></span></a>
                     @else
-                        <a href="#" class="drop-btn trash-btn"><span spanclass="link-text">@lang('admin.trash')</span></a>
+                        <a href="#" class="drop-btn trash-btn"><span class="link-text">@lang('admin.trash')</span></a>
                     @endif
                 </li>
                 <div class="drop-list hidden">
                     <ul>
                         @if (!empty(($count = count($trashProduct))))
                             <li>
-                                <a href="{{ route('trashBox.index') }}" class="trash-btn"><span class="link-text aside-menu-item">@lang('admin.trash_box')<span class="trash-circle-counter"><span>{{ $count }}</span></span></a>
+                                <a href="{{ route('trashBox.index') }}" class="trash-btn"><span class="aside-menu-item link-text">@lang('admin.trash_box')<span class="trash-circle-counter"><span>{{ $count }}</span></span></a>
                             </li>
                         @else
                             <li>
@@ -211,7 +211,7 @@
                             </li>
                         @else
                             <li>
-                                <a href="{{ route('service_trash_box') }}" class="trash-btn"><span class="link-text">@lang('admin.service_trash_box')</span></a>
+                                <a href="{{ route('service_trash_box') }}" class="trash-btn"><span class="link-text ">@lang('admin.service_trash_box')</span></a>
                             </li>
                         @endif
                     </ul>

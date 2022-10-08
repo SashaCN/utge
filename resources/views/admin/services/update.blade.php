@@ -103,9 +103,9 @@ $locale = app()->getLocale();
                     <div class="size size{{ $counter }}">
                         <div class="input-wrap">
                             @if (isset($service->localization[$counter]))
-                                <input type="text" id="materials_uk" value="{{ $materials->uk }}" name="materials_uk/{{$counter}}" class="auto-value">   
+                                <input type="text" id="materials_uk" name="materials_uk/{{$counter}}" value="{{ $materials->uk }}" class="auto-value">   
                             @else
-                                <input type="text" id="materials_uk" value="" name="materials_uk/{{$counter}}" class="auto-value">    
+                                <input type="text" id="materials_uk" name="materials_uk/{{$counter}}" value="utge" class="auto-value">    
                             @endif                            
                             <label class="label" for="materials_uk" >@lang('admin.add_title_materials')</label>
                         </div>
@@ -113,7 +113,7 @@ $locale = app()->getLocale();
                             @if (isset($service->localization[$counter]))
                                 <input type="text" id="materials_ru" name="materials_ru/{{$counter}}" value="{{ $materials->ru }}" class="auto-value">
                             @else
-                                <input type="text" id="materials_ru" name="materials_ru/{{$counter}}" value="" class="auto-value">
+                                <input type="text" id="materials_ru" name="materials_ru/{{$counter}}" value="utge" class="auto-value">
                             @endif 
                             <label class="label" for="materials_ru">@lang('admin.add_title_ru_materials')</label>
                         </div>

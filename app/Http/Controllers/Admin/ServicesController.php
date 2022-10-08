@@ -152,7 +152,6 @@ class ServicesController extends Controller
             $services_size_price = new ServicesSizePrice();
             $services_size_price->fill($request->validated());
 
-            // $services_size_price->materials = $request->$materials;
             $price = 'price/'.$i;
             $units = 'units/'.$i;
             $price_ru = 'price_ru/'.$i;
@@ -161,7 +160,6 @@ class ServicesController extends Controller
             $services_size_price->price_ru = $request->$price_ru;
 
             $service->ServicesSizePrice()->save($services_size_price);
-            // dd($request);
         }
 
         for ($i = $request->sizecount; $i > 0; $i--){
@@ -170,7 +168,6 @@ class ServicesController extends Controller
             $localization_materials->var = 'materials';
             $mat_uk = 'materials_uk/'.$i;
             $mat_ru = 'materials_ru/'.$i;
-            // dd($mat_ru);
             $localization_materials->uk = $request->$mat_uk;
             $localization_materials->ru = $request->$mat_ru;
             $service->localization()->save($localization_materials);
