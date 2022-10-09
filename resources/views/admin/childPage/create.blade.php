@@ -67,14 +67,18 @@
                 <option value="" id="child-page-first-option" selected>@lang('admin.child_page_father')</option>
                 <option disabled  class="models-slider-option">------------</option>
                 <option value="phone">@lang('admin.phone')</option>
-                <option value="logo-img" @if ($isLogoImg == true) disabled @endif>@lang('admin.logo-img')</option>
-                <option value="logo-name" @if ($isLogoName == true) disabled @endif>@lang('admin.logo-name')</option>
+                <option value="logo-img" @if (isset($isLogoImg) && $isLogoImg == true) disabled @endif>@lang('admin.logo-img')</option>
+                <option value="logo-name" @if (isset($isLogoName) && $isLogoName == true) disabled @endif>@lang('admin.logo-name')</option>
                 <option disabled class="models-slider-option">------------</option>
                 <option value="footer-place">@lang('admin.footer-place')</option>
                 <option value="email">@lang('admin.email')</option>
                 <option disabled class="models-slider-option">------------</option>
-                <option value="slider{{ substr($slidersName[count($slidersName) - 1], 6, 1) + 1 }}">@lang('admin.sliderNew')</option>
-                <option value="about_us" @if ($isLogoAbout == true) disabled @endif>@lang('utge.about-us')</option>
+				@if (empty($slidersName))
+					<option value="slider1">@lang('admin.sliderNew')</option>
+				@else
+                	<option value="slider{{ substr($slidersName[count($slidersName) - 1], 6, 1) + 1 }}">@lang('admin.sliderNew')</option>
+				@endif
+                <option value="about_us" @if (isset($isLogoAbout) && $isLogoAbout == true) disabled @endif>@lang('utge.about-us')</option>
                 <option value="delivery">@lang('utge.delivery')</option>
                 <option value="payment">@lang('utge.payment')</option>
                 <option value="contacts">@lang('utge.contacts')</option>
