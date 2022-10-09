@@ -15,10 +15,10 @@
 
     <h3 class="models-h3">@lang('admin.slider')</h3>
     <div class="sliders-box">
-        <div class="slider"><a href="{{ route('childPage.sliderEdit', 'slider1') }}">Слайдер 1</a></div>
-        <div class="slider"><a href="{{ route('childPage.sliderEdit', 'slider2') }}">Слайдер 2</a></div>
-        <div class="slider"><a href="{{ route('childPage.sliderEdit', 'slider3') }}">Слайдер 3</a></div>
-        <div class="slider"><a href="{{ route('childPage.sliderEdit', 'slider4') }}">Слайдер 4</a></div>
+        {{-- @dump($sliders) --}}
+        @for ($i = 0; $i < count($sliders); $i++)
+            <div class="slider"><a href="{{ route('childPage.sliderEdit', ['slider_id' => $sliders[$i], 'sliderCount' => $i+1]) }}">Слайдер {{ $i + 1 }}</a></div>
+        @endfor
     </div>
 
     <h3 class="models-h3">header</h3>

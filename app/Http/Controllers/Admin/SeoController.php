@@ -174,7 +174,7 @@ class SeoController extends Controller
         $seo->localization()->where('var', 'custom_seo')->update($localization_custom_seo);
 
 
-        return redirect()->back();
+        return redirect()->route('seo.index');
     }
 
     /**

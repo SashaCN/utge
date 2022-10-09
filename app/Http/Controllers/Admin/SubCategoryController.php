@@ -141,9 +141,12 @@ class SubCategoryController extends Controller
             'ru' => $request->title_ru
         ];
 
-
         $subCategory->update($request->validated());
+        // $subCategory->localization()->update($localization_title);
+        // $subCategory->localization()->update($localization_title);
+
         
+
         if (isset($request->sub_description_uk) || isset($request->sub_description_ru)) 
         {
             $localization_desc = [
@@ -155,7 +158,7 @@ class SubCategoryController extends Controller
                 $localization_desc['uk'] = $request->sub_description_uk;
                 $localization_desc['ru'] = $request->sub_description_ru;
             }
-
+            
             if ($request->sub_description_uk != null && $request->sub_description_ru == null) 
             {
                 $localization_desc['uk'] = $request->sub_description_uk;
@@ -176,10 +179,8 @@ class SubCategoryController extends Controller
 
             $subCategory->localization()->where('var', 'description')->update($localization_desc);
         }
+
         $subCategory->localization()->where('var', 'title')->update($localization_title);
-
-
-        $subCategory->localization()->update($localization_title);
 
         return redirect()->route('subCategory.index');
     }

@@ -1,7 +1,6 @@
 @extends('admin.admin')
 
 @section('content')
-
     <?php
         $locale = app()->getLocale();
     ?>

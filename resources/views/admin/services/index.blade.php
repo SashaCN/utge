@@ -55,7 +55,6 @@
                                 </p>
                             @endif
                         @endforeach
-                        {{-- {{dd($product->sizeprice)}} --}}
                     </td>
                     <td class="action">
                         <a title="Редагувати" href="{{ route('services.edit', $service->id) }}"></a>

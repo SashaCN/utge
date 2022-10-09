@@ -3,13 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\ProductType;
 use App\Models\Category;
-use App\Models\Services;
-use App\Models\SizePrice;
 use App\Models\SubCategory;
+use App\Models\SizePrice;
+use App\Models\Product;
+use App\Models\ServicesType;
+use App\Models\ServicesCategory;
+use App\Models\ServicesSizePrice;
+use App\Models\Services;
 
 class TrashBoxController extends Controller
 {
@@ -21,9 +24,6 @@ class TrashBoxController extends Controller
     public function index(Product $products)
     {
         $products = Product::onlyTrashed()->paginate(12);
-        $services = Services::onlyTrashed()->paginate(12);
-
-
         $productTypes = ProductType::onlyTrashed();
         $categories = Category::all();
         $subCategories = SubCategory::all();
@@ -31,6 +31,20 @@ class TrashBoxController extends Controller
         return view('admin.trashBox.index', [
             'products' => $products,
             'producttypes' => $productTypes,
+            'categories' => $categories,
+            'subcategories' => $subCategories,
+        ]);
+    }
+
+    public function serviceIndex(Services $services)
+    {
+        $services = Services::onlyTrashed()->paginate(12);
+        $servicesTypes = ServicesType::onlyTrashed();
+        $categories = ServicesCategory::all();
+        $subCategories = SubCategory::all();
+
+        return view('admin.trashBox.service', [
+            'servicesTypes' => $servicesTypes,
             'categories' => $categories,
             'subcategories' => $subCategories,
             'services' => $services,
@@ -116,6 +130,18 @@ class TrashBoxController extends Controller
 
     }
 
+    public function serviceRestore(Services $service, ServicesSizePrice $sizePrice, $id)
+    {
+
+        $service = Services::onlyTrashed()->findOrFail($id);
+
+        $service->restore();
+        $service->servicessizeprice()->restore();
+
+        return back();
+
+    }
+
     public function productForceDelete(Product $product, SizePrice $sizePrice, $id)
     {
         $product = Product::onlyTrashed()->findOrFail($id);
@@ -123,6 +149,17 @@ class TrashBoxController extends Controller
 
         $sizePrice->forceDelete();
         $product->forceDelete();
+
+        return back();
+    }
+
+    public function servicesForceDelete(Services $service, ServicesSizePrice $sizePrice, $id)
+    {
+        $service = Services::onlyTrashed()->findOrFail($id);
+        $sizePrice = ServicesSizePrice::onlyTrashed()->where('service_id', $id);
+
+        $sizePrice->forceDelete();
+        $service->forceDelete();
 
         return back();
     }

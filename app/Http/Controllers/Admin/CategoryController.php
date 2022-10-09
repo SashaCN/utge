@@ -150,7 +150,6 @@ class CategoryController extends Controller
         
         $category->fill($request->validated());
         $category->product_type_id = $request->product_type_id;
-        
         $category->update();
 
         
@@ -186,6 +185,7 @@ class CategoryController extends Controller
             
             $category->localization()->where('var', 'description')->update($localization_desc);
         }
+        
         $category->localization()->where('var', 'title')->update($localization_title);
 
         return redirect()->route('category.index');

@@ -142,4 +142,5 @@
         {{ $products->withQueryString()->links('vendor.pagination.utge-pagination') }}
     </div>
 
+    <script src="{{ asset('js/product_filter_admin.js') }}"></script>
     @endsection

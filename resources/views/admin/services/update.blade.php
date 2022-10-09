@@ -92,40 +92,51 @@ $locale = app()->getLocale();
 
         <div class="size-price">
             @foreach ($service->servicessizeprice as $sizeprice)
+                @if (isset($sizeprice))
+                    @php
+                        $counter++;
+                        if (isset($service->localization[$counter])) {
+                            $materials = $service->localization[$counter];
+                        }
+                    @endphp
 
-                @php
-                $counter++;
-                $materials = $service->localization[$counter];
-                @endphp
-                <div class="size size{{ $counter }}">
-                    <div class="input-wrap">
+                    <div class="size size{{ $counter }}">
+                        <div class="input-wrap">
+                            @if (isset($service->localization[$counter]))
+                                <input type="text" id="materials_uk" name="materials_uk/{{$counter}}" value="{{ $materials->uk }}" class="auto-value">   
+                            @else
+                                <input type="text" id="materials_uk" name="materials_uk/{{$counter}}" value="utge" class="auto-value">    
+                            @endif                            
+                            <label class="label" for="materials_uk" >@lang('admin.add_title_materials')</label>
+                        </div>
+                        <div class="input-wrap">
+                            @if (isset($service->localization[$counter]))
+                                <input type="text" id="materials_ru" name="materials_ru/{{$counter}}" value="{{ $materials->ru }}" class="auto-value">
+                            @else
+                                <input type="text" id="materials_ru" name="materials_ru/{{$counter}}" value="utge" class="auto-value">
+                            @endif 
+                            <label class="label" for="materials_ru">@lang('admin.add_title_ru_materials')</label>
+                        </div>
 
-                        <input type="text" id="materials_uk" value="{{ $materials->uk }}" name="materials_uk/{{$counter}}" class="auto-value">
-                        <label class="label" for="materials_uk" >@lang('admin.add_title_materials')</label>
-                    </div>
-                    <div class="input-wrap">
-                        <input type="text" id="materials_ru" name="materials_ru/{{$counter}}" value="{{ $materials->ru }}" class="auto-value">
-                        <label class="label" for="materials_ru">@lang('admin.add_title_ru_materials')</label>
-                    </div>
+                        <div class="input-wrap">
+                            <input type="text" value="{{ $sizeprice->price }}" name="price/{{$counter}}" id="price{{$counter}}" class="auto-value">
+                            <label class="label" for="price">@lang('admin.add_price')</label>
+                        </div>
 
-                    <div class="input-wrap">
-                        <input type="text" value="{{ $sizeprice->price }}" name="price/{{$counter}}" id="price{{$counter}}" class="auto-value">
-                        <label class="label" for="price">@lang('admin.add_price')</label>
-                    </div>
+                        <div class="input-wrap">
+                            <input type="text" value="{{ $sizeprice->price_ru }}" name="price_ru/{{$counter}}" id="price_ru" class="auto-value">
+                            <label class="label" for="price_ru">@lang('admin.add_price_ru')</label>
+                        </div>
 
-                    <div class="input-wrap">
-                        <input type="text" value="{{ $sizeprice->price_ru }}" name="price_ru/{{$counter}}" id="price_ru" class="auto-value">
-                        <label class="label" for="price_ru">@lang('admin.add_price_ru')</label>
+                        <div class="input-wrap">
+                            <input type="text" value="{{ $sizeprice->units }}" name="units/{{$counter}}" id="units{{$counter}}" class="auto-value">
+                            <label class="label" for="units{{$counter}}">@lang('admin.add_price_units')</label>
+                        </div>
+                        <div class="input-wrap size-price-bt-wrap">
+                            <button class="size-price-bt-min" data-size-num="{{ $counter }}"><span class="btn-w-sp"><span>@lang('admin.delete_size_price')</span><img src="{{ asset('img/minus-label.svg') }}" ></span></button>
+                        </div>
                     </div>
-
-                    <div class="input-wrap">
-                        <input type="text" value="{{ $sizeprice->units }}" name="units/{{$counter}}" id="units{{$counter}}" class="auto-value">
-                        <label class="label" for="units{{$counter}}">@lang('admin.add_price_units')</label>
-                    </div>
-                    <div class="input-wrap size-price-bt-wrap">
-                        <button class="size-price-bt-min" data-size-num="{{ $counter }}"><span class="btn-w-sp"><span>@lang('admin.delete_size_price')</span><img src="{{ asset('img/minus-label.svg') }}" ></span></button>
-                    </div>
-                </div>
+                @endif
             @endforeach
         </div>
         <div class="size-price-bt-wrap">

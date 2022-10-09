@@ -720,6 +720,7 @@ main
     display: none
 
 .filter-item-button-label
+    display: none
     width: 100%
     text-align: center
     padding: 10px
@@ -988,7 +989,8 @@ main
 
 .order-status,
 .order-status-one,
-.order-status-two
+.order-status-two,
+.order-status-annulled
     p
         color: #fff
         font-weight: bold
@@ -1010,7 +1012,9 @@ main
 .order-status-two
     p
         background: #0097c6
-
+.order-status-annulled
+    p
+        background: #cb0000
 
 .certificate-crud-btn
     display: flex
@@ -1191,9 +1195,9 @@ main
 .plus-order
     span
         display: inline-block
+        color: #fff
         background: #20a100
         border-radius: 50px
-        color: #fff
 
 .wraper-box-flex
     background: $primary
@@ -1203,14 +1207,12 @@ main
 
 .wraper-box-flex,
 .wraper-box-flex-count
-    font-size: 18px
     display: flex
+    justify-content: center
     padding: 15px
-    justify-content: space-between
+    font-size: 18px
 
 .wraper-box-flex-count
     p
         width: 49%
         font-size: 26px
-
-.door-open

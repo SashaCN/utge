@@ -137,6 +137,7 @@ class ServicesCategoryController extends Controller
     public function delete(ServicesCategory $servicesCategory)
     {
         $servicesCategory->delete();
+        
         return redirect()->route('servicesCategory.index');
     }
 }
