@@ -141,11 +141,11 @@ class ServicesController extends Controller
         $service->update();
 
         foreach ($service->localization->where('var', 'materials') as $material) {
-            $material->delete();
+            $material->forceDelete();
         }
 
         foreach ($service->servicesSizePrice as $size) {
-            $size->delete();
+            $size->forceDelete();
         }
 
 
