@@ -264,7 +264,7 @@ class ProductController extends Controller
 
 
         foreach ($product->sizePrices as $size) {
-            $size->delete();
+            $size->forceDelete();
         }
         for($i = 1; $i <= $request->sizecount; $i++){
             $size_price = new SizePrice();
