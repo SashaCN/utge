@@ -23,7 +23,7 @@ class TrashBoxController extends Controller
      */
     public function index(Product $products)
     {
-        $products = Product::onlyTrashed()->paginate(12);
+        $products = Product::onlyTrashed()->get();
         $productTypes = ProductType::onlyTrashed();
         $categories = Category::all();
         $subCategories = SubCategory::all();
@@ -38,7 +38,7 @@ class TrashBoxController extends Controller
 
     public function serviceIndex(Services $services)
     {
-        $services = Services::onlyTrashed()->paginate(12);
+        $services = Services::onlyTrashed()->get();
         $servicesTypes = ServicesType::onlyTrashed();
         $categories = ServicesCategory::all();
         $subCategories = SubCategory::all();
