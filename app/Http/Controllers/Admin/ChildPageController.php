@@ -34,7 +34,7 @@ class ChildPageController extends Controller
             }
         }
             
-        asort($slidersName);
+        sort($slidersName);
 
         return view('admin.childPage.index', [
             'childPages' => $childPages,
@@ -65,7 +65,7 @@ class ChildPageController extends Controller
             }
         }
             
-        asort($slidersName);
+        sort($slidersName);
 
         return view('admin.childPage.create', [
             'childPages' => $childPages,
