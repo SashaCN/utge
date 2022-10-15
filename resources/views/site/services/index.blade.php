@@ -39,12 +39,10 @@
                         @if ($service->service_category_id == $category->id)
 
                             @foreach ($service->servicessizeprice as $item)
-                                {{-- @dump($item) --}}
                             @endforeach
 
                             @if (empty($materials->$locale))
                                 <tr class="service-item">
-                                    {{-- @dump($item); --}}
                                     <td>{{ $title_service->$locale }}</td>
                                     <td></td>
                                     <td>{{ $item->units}}</td>

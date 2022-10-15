@@ -10,7 +10,6 @@
 
     <table style="width: 600px; margin: 0 auto; padding: 25px; font-family: sans-serif; background: #003b95; color: #fff;">
 
-        {{-- @dump($product_all); --}}
 
         <tr>
             <td style="padding: 15px; font-weight:bold">Замовлення №{{ $customers->id }}</td>
