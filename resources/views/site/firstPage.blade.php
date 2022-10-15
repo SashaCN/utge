@@ -7,7 +7,6 @@ $locale = app()->getLocale();
 @section('content')
     <div class="wrapper">
         <div class="grid">
-            {{-- @dump($slidersName) --}}
             @for ($i = 0; $i < count($slidersName); $i++)
                 <section class="slider-section">
                     <div class="slider-line">
