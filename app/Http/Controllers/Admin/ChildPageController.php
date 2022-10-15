@@ -90,7 +90,7 @@ class ChildPageController extends Controller
             }
         }
             
-        asort($slidersName);
+        sort($slidersName);
 
         return view('admin.childPage.sliderCreate', [
             'sliders' => $slidersName,
@@ -211,13 +211,11 @@ class ChildPageController extends Controller
 
     public function sliderEdit(Request $request)
     {
-        $sliderImages = ChildPage::all()->where('route', $request->slider_id);
-        $sliderId = $request->slider_id;
         $sliderCount = $request->sliderCount;
+        $sliders = ChildPage::all()->where('route', $request->slider_id)->sortBy('order');
 
         return view('admin.childPage.sliderEdit', [
-            'sliderImages' => $sliderImages, 
-            'sliderId' => $sliderId,
+            'sliders' => $sliders, 
             'sliderCount' => $sliderCount,
         ]);
     }

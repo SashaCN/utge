@@ -23,22 +23,22 @@
         @endif
     </div>
 
-    @foreach ($sliderImages as $sliderImg)
+    @foreach ($sliders as $slider)
         @php
-            $title = $sliderImg->localization[0];
+            $title = $slider->localization[0];
 
         @endphp
 
         <div class="box-slider-page">
-            <form action="{{ route('childPage.update', $sliderImg->id) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('childPage.update', $slider->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
                 <div class="image-slide flex-col current-slide image-slider-page">
 
-                    <label class="image-changes" for="image-changes-{{ $sliderImg->id }}"><img class="old-image" src="{{ $sliderImg->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}"></label>
+                    <label class="image-changes" for="image-changes-{{ $slider->id }}"><img class="old-image" src="{{ $slider->getFirstMediaUrl('images') }}" alt="{{ $title->$locale }}"></label>
                     <p class="image-changes-desc">@lang('admin.update-image')</p>
-                    <button class="image-changes-bt add-button" form="image-change-{{ $sliderImg->id }}" type="submit">@lang('admin.save-new-phot')</button>    
+                    <button class="image-changes-bt add-button" form="image-change-{{ $slider->id }}" type="submit">@lang('admin.save-new-phot')</button>    
 
                 </div>
                 <div class="name-slide flex-col current-slide update-text-slider-page">
@@ -52,17 +52,17 @@
                             <label class="label" for="title_ru">@lang('admin.add_ru_title')</label>
                         </div>
                         <div class="input-wrap name-box">
-                            <input type="text" name="slider_link" value="{{ $sliderImg->localization[1]->$locale }}" id="slider_link" class="name-input-ru">
+                            <input type="text" name="slider_link" value="{{ $slider->localization[1]->$locale }}" id="slider_link" class="name-input-ru">
                             <label class="label" for="slider_link">@lang('admin.models-url')</label>
                         </div>
                         <div class="input-wrap name-box">
-                            <input type="number" name="slider_order" value="{{ $sliderImg->order }}" id="slider_order" class="name-input-ru">
+                            <input type="number" name="slider_order" value="{{ $slider->order }}" id="slider_order" class="name-input-ru">
                             <label class="label" for="slider_order">@lang('admin.models-slider_order')</label>
                         </div>
                     </div>
 
                     <div class="slider-page-actions-btn">
-                        <a href="{{ route('childPage.delete', $sliderImg->id) }}"></a>
+                        <a href="{{ route('childPage.delete', $slider->id) }}"></a>
 
         
 
@@ -77,11 +77,11 @@
 
             
             
-            <form id="image-change-{{ $sliderImg->id }}" class="image-changes-form"  method="POST" action="{{ route('childPage.mediaUpdate', $sliderImg->id ) }}" enctype="multipart/form-data">
+            <form id="image-change-{{ $slider->id }}" class="image-changes-form"  method="POST" action="{{ route('childPage.mediaUpdate', $slider->id ) }}" enctype="multipart/form-data">
                 @csrf
                 @method('POST')
                 <input type="hidden" name="test">
-                <input id="image-changes-{{ $sliderImg->id }}" type="file" name="image">
+                <input id="image-changes-{{ $slider->id }}" type="file" name="image">
 
                 <input type="submit" value="img">
             </form>

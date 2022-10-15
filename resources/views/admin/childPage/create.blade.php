@@ -62,6 +62,8 @@
                 @endphp
             @endforeach
 
+@dump($slidersName)
+@dump(substr($slidersName[count($slidersName) - 1], 6, 1) + 1)
 
             <select name="route" id="child-page-select" class="auto-value">
                 <option value="" id="child-page-first-option" selected>@lang('admin.child_page_father')</option>
