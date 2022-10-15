@@ -32,8 +32,9 @@ class SiteController extends Controller
     public function index(ProductFilter $request, $done = false)
     {
         $products = Product::filter($request)->where('home_view', '1')->orderBy('list_position')->paginate(12);
-        $sliders = ChildPage::where('route', 'like', 'slider%')->get();
+        $sliders = ChildPage::where('route', 'like', 'slider%')->orderBy('order')->get();
         $slidersName = [];
+
         
         foreach ($sliders as $slider) {
             
@@ -47,7 +48,11 @@ class SiteController extends Controller
             }
         }
             
-        asort($slidersName);
+        sort($slidersName);
+
+        foreach($slidersName as $sliderRoute){
+
+        }
 
         return view('site.firstPage', [
             'products' => $products,

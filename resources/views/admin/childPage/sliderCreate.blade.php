@@ -25,6 +25,8 @@
   <form id="form" action="{{ route('childPage.store') }}" method="POST" enctype="multipart/form-data" class="current-slide-wrap">
       @csrf
 
+    @dump($sliders)
+    
     <div class="another-slide flex-col current-slide">
         <div class="input-wrap pt0">
             <select name="route" id="child-page-select" class="auto-value">
