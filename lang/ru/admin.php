@@ -60,7 +60,7 @@ return [
     'child_page_father' => 'Выбрать блок',
     'child_page_slider' => 'Выбрать блок слайдера',
     'childPage_create' => 'Добавить блок',
-    'childPage_create_slider' => 'Добавить слайдер',
+    'childPage_create_slider' => 'Добавить слайд',
     'route' => 'Блок',
     'news_create' => 'Добавить новости',
     'to_sub_category' => 'По подкатегориям',

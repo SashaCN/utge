@@ -61,7 +61,7 @@
         'child_page_father' => 'Обрати блок',
         'child_page_slider' => 'Обрати блок слайдера',
         'childPage_create' => 'Додати блок',
-        'childPage_create_slider' => 'Додати слайдер',
+        'childPage_create_slider' => 'Додати слайд',
         'route' => 'Блок',
         'news_create' => 'Додати новини',
         'to_sub_category' => 'За підкатегоріями',
