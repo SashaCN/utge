@@ -15,9 +15,15 @@
 
     <h3 class="models-h3">@lang('admin.slider')</h3>
     <div class="sliders-box">
-        @for ($i = 0; $i < count($sliders); $i++)
-            <div class="slider"><a href="{{ route('childPage.sliderEdit', ['slider_id' => $sliders[$i], 'sliderCount' => $i+1]) }}">Слайдер {{ $i + 1 }}</a></div>
-        @endfor
+        @php
+            $i = 1
+        @endphp
+        @foreach ($sliders as $sliderKey => $sliderValue)
+            <div class="slider"><a href="{{ route('childPage.sliderEdit', ['slider_id' => $sliderKey, 'sliderCount' => $i]) }}">Слайдер {{ $i }}</a></div>
+            @php
+                $i++
+            @endphp
+        @endforeach
     </div>
 
     <h3 class="models-h3">header</h3>

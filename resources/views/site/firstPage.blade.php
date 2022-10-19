@@ -7,12 +7,12 @@ $locale = app()->getLocale();
 @section('content')
     <div class="wrapper">
         <div class="grid">
-            @for ($i = 0; $i < count($slidersName); $i++)
+            @foreach ($slidersName as $slidersNameKey => $sliderOrder)
                 <section class="slider-section">
                     <div class="slider-line">
                         <div class="container">
                             @foreach ($sliders as $slider)
-                                @if ($slidersName[$i] == $slider->route)
+                                @if ($slidersNameKey == $slider->route)
                                     @php
                                         $title = $slider->localization[0];
                                         $link = $slider->localization[1];
@@ -30,7 +30,7 @@ $locale = app()->getLocale();
                     <div class="slider-control">
                     </div>
                 </section>
-            @endfor
+            @endforeach
         </div>
     </div>
 
