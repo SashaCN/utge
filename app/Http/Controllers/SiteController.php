@@ -44,15 +44,11 @@ class SiteController extends Controller
             }
             else
             {
-                array_push($slidersName, $slider->route);
+                $slidersName[$slider->route] = $slider->slider_order;
             }
         }
             
-        sort($slidersName);
-
-        foreach($slidersName as $sliderRoute){
-
-        }
+        asort($slidersName);
 
         return view('site.firstPage', [
             'products' => $products,

@@ -30,11 +30,11 @@ class ChildPageController extends Controller
             }
             else
             {
-                array_push($slidersName, $slider->route);
+                $slidersName[$slider->route] = $slider->slider_order;
             }
         }
             
-        sort($slidersName);
+        asort($slidersName);
 
         return view('admin.childPage.index', [
             'childPages' => $childPages,
@@ -109,8 +109,24 @@ class ChildPageController extends Controller
 
         if (isset($request->slider_order)) {
             $childPage->order = $request->slider_order;
+            
         } else {
             $childPage->order = 0;
+        }
+
+        if (substr($request->route, 0, 6) == 'slider') {
+            $sliders = ChildPage::where('route', $request->route)->get();
+            
+            if(!isset($sliders))
+            {
+                foreach ($sliders as $slider) {
+                    $childPage->slider_order = $slider->slider_order;
+                    break;
+                }
+            }else
+            {
+                $childPage->slider_order = 0;
+            }
         }
 
         $childPage->save();
@@ -128,6 +144,7 @@ class ChildPageController extends Controller
                 $childPage->localization()->save($localization_title);
                 
                 if (substr($request->route, 0, 6) == 'slider') {
+
                     $localization_slider_link = new Localization();
                     $localization_slider_link->fill($request->validated());
                     $localization_slider_link->var = 'slider_link';
@@ -255,11 +272,12 @@ class ChildPageController extends Controller
             ];
         }
 
-        if (isset($request->slider_order)) {
-            $childPage->order = $request->slider_order;
+        if (isset($request->slide_order)) {
+            $childPage->order = $request->slide_order;
         }
 
         $childPage->update($request->validated());
+
         $childPage->localization()->where('var', 'title')->update($localization_title);
 
         if(isset($request->description_uk) && isset($request->description_ru))
@@ -281,6 +299,17 @@ class ChildPageController extends Controller
         }
     }
 
+    public function updateSliderOrder(Request $request)
+    {
+        $sliders = ChildPage::where('route', $request->slider_id)->get();
+
+        foreach ($sliders as $slider) {
+            $slider->slider_order = $request->slider_order;
+            $slider->update();
+        }
+
+        return redirect()->route('childPage.index');
+    }
     /**
      * Remove the specified resource from storage.
      *

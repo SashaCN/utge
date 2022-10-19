@@ -956,6 +956,26 @@ main {
   width: 150px;
 }
 
+.slider-info {
+  display: flex;
+  align-items: center;
+}
+.slider-info h2 {
+  margin-right: 20px;
+}
+.slider-info form {
+  display: flex;
+  align-items: center;
+}
+.slider-info form .input-wrap {
+  padding: 0;
+}
+.slider-info form .input-wrap input {
+  margin-right: 10px;
+  width: 150px;
+  max-height: 35px;
+}
+
 .sliders-box {
   display: flex;
   flex-wrap: wrap;
