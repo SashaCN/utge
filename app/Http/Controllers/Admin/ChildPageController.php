@@ -109,8 +109,18 @@ class ChildPageController extends Controller
 
         if (isset($request->slider_order)) {
             $childPage->order = $request->slider_order;
+            
         } else {
             $childPage->order = 0;
+        }
+
+        if (substr($request->route, 0, 6) == 'slider') {
+            $sliders = ChildPage::where('route', $request->route)->get();
+
+            foreach ($sliders as $slider) {
+                $childPage->slider_order = $slider->slider_order;
+                break;
+            }
         }
 
         $childPage->save();
@@ -128,6 +138,7 @@ class ChildPageController extends Controller
                 $childPage->localization()->save($localization_title);
                 
                 if (substr($request->route, 0, 6) == 'slider') {
+
                     $localization_slider_link = new Localization();
                     $localization_slider_link->fill($request->validated());
                     $localization_slider_link->var = 'slider_link';
@@ -255,11 +266,12 @@ class ChildPageController extends Controller
             ];
         }
 
-        if (isset($request->slider_order)) {
-            $childPage->order = $request->slider_order;
+        if (isset($request->slide_order)) {
+            $childPage->order = $request->slide_order;
         }
 
         $childPage->update($request->validated());
+
         $childPage->localization()->where('var', 'title')->update($localization_title);
 
         if(isset($request->description_uk) && isset($request->description_ru))
@@ -281,6 +293,17 @@ class ChildPageController extends Controller
         }
     }
 
+    public function updateSliderOrder(Request $request)
+    {
+        $sliders = ChildPage::where('route', $request->slider_id)->get();
+
+        foreach ($sliders as $slider) {
+            $slider->slider_order = $request->slider_order;
+            $slider->update();
+        }
+
+        return redirect()->route('childPage.index');
+    }
     /**
      * Remove the specified resource from storage.
      *

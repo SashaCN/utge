@@ -137,7 +137,7 @@
         'slider' => 'Слайдери',
         'sliderNew' => 'Новий слайдер',
         'slider_link' => 'Посилання слайдеру',
-        'models-slider_order' => 'Порядок слайдера',
+        'models-slider_order' => 'Порядок слайда',
         'services-change' => 'Редагувати послугу',
         'material-price' => 'Матеріал/Ціна',
         'change-services-type' => 'Виберіть вид послуги',

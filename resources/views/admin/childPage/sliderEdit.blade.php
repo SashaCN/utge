@@ -6,13 +6,29 @@
     ?>
 
     <div class="flex title-line">
-        <h2>
-            Слайдер {{ $sliderCount }}
-        </h2>
+        <div class="slider-info">
+            <h2>
+                Слайдер {{ $sliderCount }}
+            </h2>
+
+            <form action="{{ route('childPage.updateSliderOrder') }}" method="GET">
+                <div class="input-wrap name-box">
+                    @foreach ($sliders as $slider)
+                        <input type="hidden" name="slider_id" value="{{ $slider->route }}">
+                        <input type="number" name="slider_order" value="{{ $slider->slider_order }}" id="slider_order" class="name-input-ru">
+                        @break
+                    @endforeach
+                </div>
+                <button type="submit" class="add-button" id="save-btn">
+                    <img src="{{ asset('img/save.svg') }}" alt="Add">
+                </button>
+            </form>
+        </div>
 
         <a href="{{ route('childPage.sliderCreate') }}" class="add-button action-button">
             <img src="{{ asset('img/add.svg') }}" alt="Add">
         </a>
+        
     </div>
 
     <div class="error">
@@ -56,8 +72,8 @@
                             <label class="label" for="slider_link">@lang('admin.models-url')</label>
                         </div>
                         <div class="input-wrap name-box">
-                            <input type="number" name="slider_order" value="{{ $slider->order }}" id="slider_order" class="name-input-ru">
-                            <label class="label" for="slider_order">@lang('admin.models-slider_order')</label>
+                            <input type="number" name="slide_order" value="{{ $slider->order }}" id="slide_order" class="name-input-ru">
+                            <label class="label" for="slide_order">@lang('admin.models-slider_order')</label>
                         </div>
                     </div>
 

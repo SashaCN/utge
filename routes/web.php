@@ -81,6 +81,8 @@ Route::middleware('set_locale')->group(function ()
             // create route
             Route::get('sliderCreate', [\App\Http\Controllers\Admin\ChildPageController::class, 'sliderCreate'])->name('childPage.sliderCreate');
             Route::get('sliderEdit/{slider_id}/{sliderCount}', [\App\Http\Controllers\Admin\ChildPageController::class, 'sliderEdit'])->name('childPage.sliderEdit');
+            //update route
+            Route::get('childPage/updateSliderOrder', [\App\Http\Controllers\Admin\ChildPageController::class, 'updateSliderOrder'])->name('childPage.updateSliderOrder');
             //delete route
             Route::get('viewContacts', [\App\Http\Controllers\Admin\ServiceOrderController::class, 'viewContacts'])->name('viewContacts');
             Route::get('editContacts/{servicesOrder}', [\App\Http\Controllers\Admin\ServiceOrderController::class, 'editContacts'])->name('editContacts');

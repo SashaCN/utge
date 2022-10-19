@@ -136,7 +136,7 @@ return [
     'models-url' => 'Ссылка',
     'slider' => 'Слайдеры',
     'sliderNew' => 'Новый слайдер',
-    'models-slider_order' => 'Порядок слайдера',
+    'models-slider_order' => 'Порядок слайда',
     'services-change' => 'Редактировать услугу',
     'material-price' => 'Материал/Цена',
     'change-services-type' => 'Выберите вид услуги',
