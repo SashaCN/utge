@@ -183,8 +183,7 @@
                 <li><a href="{{ route('childPage.index') }}" class="module-btn"><span
                             class="link-text">@lang('admin.modules')</span></a></li>
                 <li><a href="{{ route('seo.index') }}" class="seo-btn"><span class="link-text">SEO</span></a></li>
-                <li><a href="https://analytics.google.com/analytics/web/#/p325179285/reports/reportinghub?params=_u..nav%3Dmaui&collectionId=life-cycle"
-                        class="analitics-btn"><span class="link-text">Google Analytics</span></a></li>
+                <li><a href="https://analytics.google.com/analytics/web/#/p325179285/reports/reportinghub?params=_u..nav%3Dmaui&collectionId=life-cycle" class="analitics-btn"  target="_blank"><span class="link-text">Google Analytics</span></a></li>
 
                 <li>
                     @if (!empty(($count = count($trashProduct))) || !empty(($count = count($trashService))))
