@@ -441,5 +441,37 @@
             </tbody>
         </table>
     </div>
+    <div class="page-models">
+        <h3 class="models-p">@lang('admin.privacy_policy')</h3>
+        <table class="product-table">
+            <thead>
+                <tr>
+                    <th>@lang('admin.title')</th>
+                    <th>@lang('admin.action')</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($childPages as $childPage)
+                    @if ($childPage->route == 'privacy_policy')
+                        @if ($childPage->route != 'logo-img' && $childPage->route != 'logo-name' && $childPage->route != 'phone' && $childPage->route != 'footer-place' && $childPage->route != 'email' &&  $childPage->route != 'slider1' &&  $childPage->route != 'slider2' &&  $childPage->route != 'slider3' &&  $childPage->route != 'slider4')
+                            @php
+                                $title = $childPage->localization[0];
+                                $description = $childPage->localization[1];
+                            @endphp
+    
+                            <tr>    
+                                <td style="text-align:center;">{{ $title->$locale }}</td>
+    
+                                <td class="action">
+                                    <a title="Редагувати" href="{{ route('childPage.edit', $childPage->id) }}"></a>
+                                    <a title="Видалити" href="{{ route('childPage.delete', $childPage->id) }}"></a>
+                                </td>
+                            </tr>
+                        @endif  
+                    @endif
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 
 @endsection

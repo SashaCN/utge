@@ -334,7 +334,7 @@ $locale = app()->getLocale();
                     $pdfname = $product->getMedia('pdf');
                     $pdfname[0]->name;
                 @endphp
-                <a class="certificate" href="{{ $product->getFirstMediaUrl('pdf') }}" class="button details-btn"><p>@lang('utge.quality-certificate')</p> / {{$pdfname[0]->name}}</a>
+                <a class="certificate" href="{{ $product->getFirstMediaUrl('pdf') }}" class="button details-btn" target="_blank"><p>@lang('utge.quality-certificate')</p> / {{$pdfname[0]->name}}</a>
                 <div class="certificate-crud-btn">
 
                     <label class="pdf-changes" for="pdf-changes">@lang('admin.under-certificate')</label>

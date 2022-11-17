@@ -55,6 +55,10 @@ class ComposerServiceProvider extends ServiceProvider
         View::composer('site.index', function($view){
             $view->with('servicesType',  ServicesType::all());
         });
+        
+        View::composer('site.index', function($view){
+            $view->with('privacy_policys',  ChildPage::where('route', 'privacy_policy')->orderBy('order')->get());
+        });
 
         View::composer('admin.admin', function($view){
             $view->with('servicesOrders',  ServicesOrder::all()->where('status' , '0')->where('from', 'services'));

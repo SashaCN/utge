@@ -141,6 +141,8 @@ return [
     'material-price' => 'Материал/Цена',
     'change-services-type' => 'Выберите вид услуги',
     'change-news' => 'Редактировать новость',
+    'privacy_policy' => 'Политика конфиденциальности',
+    'privacy_policy_order' => 'Порядок',
 
 
     'cart' => 'Безналичный расчет',

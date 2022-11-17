@@ -260,7 +260,7 @@ class ProductController extends Controller
 
         $product->fill($request->except(['size.', 'price.', 'available.', 'price_units.']));
         $product->mass_id = $request->mass_id;
-        $product->update();
+        $product->update(); 
 
 
         foreach ($product->sizePrices as $size) {

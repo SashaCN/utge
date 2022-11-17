@@ -22,7 +22,7 @@
       <li><a href="#" class="desc-btn">@lang('admin.description')</a></li>
       <li><a href="#" class="photo-btn" display="none">@lang('admin.photo')</a></li>
   </ul>
-
+  @dump($slidersName)
   <form id="form" action="{{ route('childPage.store') }}" method="POST" enctype="multipart/form-data" class="current-slide-wrap">
       @csrf
 
@@ -64,19 +64,17 @@
 
             <select name="route" id="child-page-select" class="auto-value">
                 <option value="" id="child-page-first-option" selected>@lang('admin.child_page_father')</option>
-                <option disabled  class="models-slider-option">------------</option>
                 <option value="phone">@lang('admin.phone')</option>
                 <option value="logo-img" @if (isset($isLogoImg) && $isLogoImg == true) disabled @endif>@lang('admin.logo-img')</option>
                 <option value="logo-name" @if (isset($isLogoName) && $isLogoName == true) disabled @endif>@lang('admin.logo-name')</option>
-                <option disabled class="models-slider-option">------------</option>
                 <option value="footer-place">@lang('admin.footer-place')</option>
                 <option value="email">@lang('admin.email')</option>
-                <option disabled class="models-slider-option">------------</option>
 				@if (empty($slidersName))
 					<option value="slider1">@lang('admin.sliderNew')</option>
 				@else
                 	<option value="slider{{ substr($slidersName[count($slidersName) - 1], 6, 1) + 1 }}">@lang('admin.sliderNew')</option>
 				@endif
+                <option value="privacy_policy">@lang('admin.privacy_policy')</option>
                 <option value="about_us" @if (isset($isLogoAbout) && $isLogoAbout == true) disabled @endif>@lang('utge.about-us')</option>
                 <option value="delivery">@lang('utge.delivery')</option>
                 <option value="payment">@lang('utge.payment')</option>
@@ -96,6 +94,11 @@
       <div class="input-wrap slider-box">
         <input type="text" name="slider_link" class="slider_link-input" id="slider_link">
         <label class="label" for="slider_link">@lang('admin.models-url')</label>
+      </div>
+
+      <div class="input-wrap privacy_policy-box">
+        <input type="file" name="pdf" class="privacy_policy-input" id="privacy_policy">
+        <label class="label" for="privacy_policy">@lang('admin.privacy_policy')</label>
       </div>
 
     </div>
