@@ -52,8 +52,8 @@
             <label class="label" for="slider_link">@lang('admin.models-url')</label>
         </div>
         <div class="input-wrap name-box">
-            <input type="number" name="slider_order" value="0" id="slider_order" class="name-input-ru">
-            <label class="label" for="slider_order">@lang('admin.models-slider_order')</label>
+            <input type="number" name="slide_order" value="0" id="slide_order" class="name-input-ru">
+            <label class="label" for="slide_order">@lang('admin.models-slider_order')</label>
         </div>
     </div>
 

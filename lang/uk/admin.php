@@ -153,6 +153,8 @@
         'under-type' => 'Виберіть вид товару',
         'under-category' => 'Виберіть категорію',
         'under-sub-category' => 'Виберіть підкатегорію',
+        'privacy_policy' => 'Політика конфіденційності',
+        'privacy_policy_order' => 'Порядок',
 
         // auntification
         'name' => 'Ім`я',

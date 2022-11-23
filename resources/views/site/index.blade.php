@@ -207,7 +207,19 @@
                             </div>
                         </li>
                         <li><a href="{{ route('deliveriesAndPayments') }}">@lang('utge.delivery-payment')</a></li>
-                        <li><a href="{{ route('news') }}">@lang('utge.news')</a></li>
+                        <li class="sub-menu-parent">
+                            <a>@lang('utge.info')</a>
+                            <div class="sub-menu">
+                                <a href="{{ route('news') }}">@lang('utge.news')</a>
+                                @foreach ($privacy_policys as $privacy_policy)
+                                    @php
+                                        $pdfname = $privacy_policy->getMedia('pdf');
+                                        $pdfname[0]->name;
+                                    @endphp
+                                    <a class="certificate" href="{{ $privacy_policy->getFirstMediaUrl('pdf') }}" class="button details-btn" target="_blank">{{$pdfname[0]->name}}</a>
+                                @endforeach
+                            </div>
+                        </li>
                         <li><a href="{{ route('contacts') }}">@lang('utge.contacts')</a></li>
                     </ul>
                 </div>

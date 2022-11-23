@@ -25,10 +25,10 @@
         @if ($childPage->route != 'logo-img')
             <li><a href="#" class="name-btn @if ($childPage->route != 'logo-img') current-btn  @endif ">@lang('admin.title')</a></li>
         @endif
-        @if ($childPage->route != 'logo-img' && $childPage->route != 'logo-name' && $childPage->route != 'footer-place')
+        @if ($childPage->route != 'logo-img' && $childPage->route != 'logo-name' && $childPage->route != 'footer-place' && $childPage->route != 'privacy_policy')
             <li><a href="#" class="desc-btn">@lang('admin.description')</a></li>
         @endif
-        @if ($childPage->route != 'about_us' && $childPage->route != 'logo-name' && $childPage->route != 'footer-place')
+        @if ($childPage->route != 'about_us' && $childPage->route != 'logo-name' && $childPage->route != 'footer-place' && $childPage->route != 'privacy_policy')
             <li><a href="#" class="photo-btn @if ($childPage->route == 'logo-img') current-btn  @endif ">@lang('admin.photo')</a></li>
         @endif
     </ul>
@@ -59,10 +59,43 @@
                     <input type="text" name="title_ru" id="title_ru" value="{{ $title->ru }}">
                     <label class="label" for="title_ru">@lang('admin.add_ru_title')</label>
                 </div>
+                @if ($childPage->route == 'privacy_policy')
+                    <div class="input-wrap">
+                        <input type="number" name="order" value="{{ $childPage->order }}" id="order">
+                        <label class="label" for="order">@lang('admin.privacy_policy_order')</label>
+                    </div>
+                @endif
+
+                @if($childPage->getFirstMediaUrl('pdf') == null)
+                    <p>@lang('utge.quality-certificate')</p>
+                    <input type="file" name="pdf">
+                @else
+                    @php
+                        $pdfname = $childPage->getMedia('pdf');
+                        $pdfname[0]->name;
+                    @endphp
+                    <a class="certificate" href="{{ $childPage->getFirstMediaUrl('pdf') }}" class="button details-btn" target="_blank"><p>@lang('utge.quality-certificate')</p> / {{$pdfname[0]->name}}</a>
+                    <div class="certificate-crud-btn">
+
+                        <label class="pdf-changes" for="pdf-changes">@lang('admin.under-certificate')</label>
+
+
+                        <button class="pdf-delete-btn" type="submit" form="pdf-delete" class="add-button">
+                            <svg>
+                                <use xlink:href="{{ asset('img/sprite.svg#trashBox') }}"></use>
+                            </svg>
+                        </button>
+
+                    </div>
+
+                    <button class="image-changes-bt" type="submit" form="pdf-change"
+                    class="add-button">@lang('admin.save-new-pdf')</button>
+
+                @endif
             </div>
         @endif
 
-        @if ($childPage->route != 'logo-img' && $childPage->route != 'logo-name' && $childPage->route != 'footer-place')
+        @if ($childPage->route != 'logo-img' && $childPage->route != 'logo-name' && $childPage->route != 'footer-place' && $childPage->route != 'privacy_policy')
             <div class="desc-slide flex-col">
                 <div class="input-wrap">
                 <div class="content">
@@ -157,7 +190,7 @@
             </div>
         @endif
 
-        @if ($childPage->route != 'about_us' && $childPage->route != 'logo-name' && $childPage->route != 'footer-place')
+        @if ($childPage->route != 'about_us' && $childPage->route != 'logo-name' && $childPage->route != 'footer-place' && $childPage->route != 'privacy_policy')
             <div class="image-slide flex-col @if ($childPage->route == 'logo-img') current-slide  @endif ">
                 <label class="image-changes" for="image-changes"><img class="old-image" src="{{ $childPage->getFirstMediaUrl('images') }}" @if ($childPage->route != 'logo-img') alt="{{ $title->$locale }} @endif "></label>
                 <p class="image-changes-desc">@lang('admin.update-image')</p>
@@ -167,13 +200,28 @@
         @endif
     </form>
 
-    @if ($childPage->route != 'about_us' && $childPage->route != 'logo-name' && $childPage->route != 'footer-place')
+    @if ($childPage->route != 'about_us' && $childPage->route != 'logo-name' && $childPage->route != 'footer-place' && $childPage->route != 'privacy_policy')
         <form id="image-change" class="image-changes-form" action="{{ route('childPage.mediaUpdate', $childPage->id ) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('POST')
 
             <input id="image-changes" type="file" name="image">
             <input type="submit" value="img">
+        </form>
+    @endif
+
+    @if ($childPage->route == 'privacy_policy')
+        <form id="pdf-change" class="image-changes-form" action="{{ route('childPage.mediaUpdatePdf', $childPage->id ) }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('POST')
+        
+            <input id="pdf-changes" type="file" name="pdf">
+            <input type="submit" value="pdf">
+        </form>
+        
+        <form id="pdf-delete" class="image-changes-form" action="{{ route('childPage.mediaDeletePdf', $childPage->id ) }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('POST')
         </form>
     @endif
 

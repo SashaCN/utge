@@ -106,6 +106,8 @@ Route::middleware('set_locale')->group(function ()
             Route::get('servicesTrash/{prouct}/productForceDelete/', [\App\Http\Controllers\Admin\TrashBoxController::class, 'servicesForceDelete'])->name('servicesTrash.servicesForceDelete');
             Route::post('product/mediaUpdatePdf/{product}', [\App\Http\Controllers\Admin\ProductController::class, 'mediaUpdatePdf'])->name('product.mediaUpdatePdf');
             Route::post('product/mediaDeletePdf/{product}', [\App\Http\Controllers\Admin\ProductController::class, 'mediaDeletePdf'])->name('product.mediaDeletePdf');
+            Route::post('childPage/mediaUpdatePdf/{childPage}', [\App\Http\Controllers\Admin\ChildPageController::class, 'mediaUpdatePdf'])->name('childPage.mediaUpdatePdf');
+            Route::post('childPage/mediaDeletePdf/{childPage}', [\App\Http\Controllers\Admin\ChildPageController::class, 'mediaDeletePdf'])->name('childPage.mediaDeletePdf');
             // Route::get('setValueToCache', [\App\Http\Controllers\Admin\AdminController::class, 'setValueToCache'])->name('admin.setValueToCache');
 
             Route::middleware('optimizeImages')->group(function (){

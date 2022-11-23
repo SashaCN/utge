@@ -19,7 +19,7 @@ class ChildPageController extends Controller
     public function index()
     {
         $childPages = ChildPage::all();
-        $sliders = ChildPage::where('route', 'like', 'slider%')->get();
+        $sliders = ChildPage::where('route', 'like', 'slider%')->orderBy('slider_order')->get();
         $slidersName = [];
         
         foreach ($sliders as $slider) {
@@ -33,9 +33,7 @@ class ChildPageController extends Controller
                 $slidersName[$slider->route] = $slider->slider_order;
             }
         }
-            
-        asort($slidersName);
-
+       
         return view('admin.childPage.index', [
             'childPages' => $childPages,
             'sliders' => $slidersName,
@@ -75,9 +73,9 @@ class ChildPageController extends Controller
 
     public function sliderCreate()
     {
-        $sliders = ChildPage::where('route', 'like', 'slider%')->get();
+        $sliders = ChildPage::where('route', 'like', 'slider%')->orderBy('slider_order')->get();
         $slidersName = [];
-        
+
         foreach ($sliders as $slider) {
             
             if (in_array($slider->route, $slidersName))
@@ -89,8 +87,6 @@ class ChildPageController extends Controller
                 array_push($slidersName, $slider->route);
             }
         }
-            
-        sort($slidersName);
 
         return view('admin.childPage.sliderCreate', [
             'sliders' => $slidersName,
@@ -103,7 +99,7 @@ class ChildPageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(MultiRequest $request)
-    {
+    { 
         $childPage = new ChildPage();
         $childPage->fill($request->validated());
 
@@ -116,8 +112,9 @@ class ChildPageController extends Controller
 
         if (substr($request->route, 0, 6) == 'slider') {
             $sliders = ChildPage::where('route', $request->route)->get();
-            
-            if(!isset($sliders))
+            $slider_order = ChildPage::where('route', 'like', 'slider%')->orderBy('slider_order')->get();
+
+            if(isset($sliders))
             {
                 foreach ($sliders as $slider) {
                     $childPage->slider_order = $slider->slider_order;
@@ -125,7 +122,7 @@ class ChildPageController extends Controller
                 }
             }else
             {
-                $childPage->slider_order = 0;
+                $childPage->slider_order = $slider_order[count($slider_order) - 1]->slider_order + 1;
             }
         }
 
@@ -184,11 +181,14 @@ class ChildPageController extends Controller
             }
         }
 
-
-
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $childPage->addMediaFromRequest('image')
             ->toMediaCollection('images');
+        }
+
+        if ($request->hasFile('pdf') && $request->file('pdf')->isValid()) {
+            $childPage->addMediaFromRequest('pdf')
+            ->toMediaCollection('pdf');
         }
 
         return redirect()->route('childPage.index');
@@ -197,12 +197,25 @@ class ChildPageController extends Controller
     public function mediaUpdate(ImageRequest $request, ChildPage $childPage)
     {
         if ($request->hasFile('image')) {
-
             $childPage->clearMediaCollection('images');
             $childPage->addMediaFromRequest('image')->toMediaCollection('images');
-
         }
         return redirect()->back();
+    }
+    public function mediaUpdatePdf(ImageRequest $request, СhildPage $childPage)
+    {
+        if ($request->hasFile('pdf')) {
+
+            $childPage->clearMediaCollection('pdf');
+            $childPage->addMediaFromRequest('pdf')
+            ->toMediaCollection('pdf');
+        }
+        return redirect()->route('childPage.edit', $childPage->id);
+    }
+    public function mediaDeletePdf(СhildPage $childPage)
+    {
+        $childPage->clearMediaCollection('pdf');
+        return redirect()->route('childPage.edit', $childPage->id);
     }
     /**
      * Display the specified resource.

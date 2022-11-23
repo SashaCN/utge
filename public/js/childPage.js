@@ -56,6 +56,10 @@ document.querySelector('.email-input').name = 'emailFalse';
 document.querySelector('.slider-box').style.display = 'none';
 document.querySelector('.slider_link-input').name = 'slider_linkFalse';
 
+//privacy_policy block
+document.querySelector('.privacy_policy-box').style.display = 'none';
+document.querySelector('.privacy_policy-input').name = 'privacy_policyFalse';
+
 document.querySelector('#child-page-select').oninput = function (e) {
     let selectValue = document.querySelector('#child-page-select').value.slice(0, 6);
 
@@ -106,6 +110,10 @@ document.querySelector('#child-page-select').oninput = function (e) {
         //slider_link block
         document.querySelector('.slider-box').style.display = 'block';
         document.querySelector('.slider_link-input').name = 'slider_link';
+
+        //privacy_policy block
+        document.querySelector('.privacy_policy-box').style.display = 'none';
+        document.querySelector('.privacy_policy-input').name = 'privacy_policyFalse';
     }
     else {
         switch (document.querySelector('#child-page-select').value) {
@@ -156,6 +164,10 @@ document.querySelector('#child-page-select').oninput = function (e) {
                 //slider_link block
                 document.querySelector('.slider-box').style.display = 'none';
                 document.querySelector('.slider_link-input').name = 'slider_linkFalse';
+
+                //privacy_policy block
+                document.querySelector('.privacy_policy-box').style.display = 'none';
+                document.querySelector('.privacy_policy-input').name = 'privacy_policyFalse';
                 break;
 
             case 'logo-img':
@@ -206,6 +218,9 @@ document.querySelector('#child-page-select').oninput = function (e) {
                 document.querySelector('.slider-box').style.display = 'none';
                 document.querySelector('.slider_link-input').name = 'slider_linkFalse';
 
+                //privacy_policy block
+                document.querySelector('.privacy_policy-box').style.display = 'none';
+                document.querySelector('.privacy_policy-input').name = 'privacy_policyFalse';
                 break;
 
             case 'logo-name':
@@ -257,6 +272,9 @@ document.querySelector('#child-page-select').oninput = function (e) {
                 document.querySelector('.slider-box').style.display = 'none';
                 document.querySelector('.slider_link-input').name = 'slider_linkFalse';
 
+                //privacy_policy block
+                document.querySelector('.privacy_policy-box').style.display = 'none';
+                document.querySelector('.privacy_policy-input').name = 'privacy_policyFalse';
                 break;
 
             case 'email':
@@ -307,6 +325,9 @@ document.querySelector('#child-page-select').oninput = function (e) {
                 document.querySelector('.slider-box').style.display = 'none';
                 document.querySelector('.slider_link-input').name = 'slider_linkFalse';
 
+                //privacy_policy block
+                document.querySelector('.privacy_policy-box').style.display = 'none';
+                document.querySelector('.privacy_policy-input').name = 'privacy_policyFalse';
                 break;
 
             case 'about_us':
@@ -356,8 +377,63 @@ document.querySelector('#child-page-select').oninput = function (e) {
                 document.querySelector('.slider-box').style.display = 'none';
                 document.querySelector('.slider_link-input').name = 'slider_linkFalse';
 
+                //privacy_policy block
+                document.querySelector('.privacy_policy-box').style.display = 'none';
+                document.querySelector('.privacy_policy-input').name = 'privacy_policyFalse';
                 break;
+            case 'privacy_policy':
+                //image block
+                document.querySelector('.img-box').style.display = 'none';
+                document.querySelector('.img-box-none').style.display = 'block';
+                document.querySelector('.this-block-img').style.display = 'block';
+                document.querySelector('.choose-block-img').style.display = 'none';
 
+                document.querySelectorAll('.img-input').forEach(e => {
+                    e.name = 'imageFalse';
+                });
+
+                //description block
+                document.querySelector('.desc-box-none').style.display = 'block';
+                document.querySelector('.this-block-desc').style.display = 'block';
+                document.querySelector('.choose-block-desc').style.display = 'none';
+
+                document.querySelectorAll('.desc-box').forEach(e => {
+                    e.style.display = 'none';
+                });
+
+                document.querySelector('.desc-input-uk').name = 'descriptionFalse';
+                document.querySelector('.desc-input-ru').name = 'descriptionFalse';
+
+
+                //name block
+                document.querySelector('.name-box-none').style.display = 'none';
+                document.querySelector('.this-block-name').style.display = 'none';
+                document.querySelector('.choose-block-name').style.display = 'none';
+
+                document.querySelectorAll('.name-box').forEach(e => {
+                    e.style.display = 'block';
+                });
+
+                document.querySelector('.name-input-uk').name = 'title_uk';
+                document.querySelector('.name-input-ru').name = 'title_ru';
+
+                //phone block
+                document.querySelector('.phone-box').style.display = 'none';
+                document.querySelector('.phone-input').name = 'phoneFalse';
+
+                //email block
+                document.querySelector('.email-box').style.display = 'none';
+                document.querySelector('.email-input').name = 'emailFalse';
+
+                //slider_link block
+                document.querySelector('.slider-box').style.display = 'none';
+                document.querySelector('.slider_link-input').name = 'slider_linkFalse';
+
+                //privacy_policy block
+                document.querySelector('.privacy_policy-box').style.display = 'block';
+                document.querySelector('.privacy_policy-input').name = 'pdf';
+
+                break;
             case 'payment':
             case 'delivery':
             case 'contacts':
@@ -407,6 +483,9 @@ document.querySelector('#child-page-select').oninput = function (e) {
                 document.querySelector('.slider-box').style.display = 'none';
                 document.querySelector('.slider_link-input').name = 'slider_linkFalse';
 
+                //privacy_policy block
+                document.querySelector('.privacy_policy-box').style.display = 'none';
+                document.querySelector('.privacy_policy-input').name = 'privacy_policyFalse';
                 break;
 
             default:
@@ -456,6 +535,9 @@ document.querySelector('#child-page-select').oninput = function (e) {
                 document.querySelector('.slider-box').style.display = 'none';
                 document.querySelector('.slider_link-input').name = 'slider_linkFalse';
 
+                //privacy_policy block
+                document.querySelector('.privacy_policy-box').style.display = 'none';
+                document.querySelector('.privacy_policy-input').name = 'privacy_policyFalse';
                 break;
         }
     }
