@@ -48,4 +48,3 @@ function burgerClose ()
 {
     burger_btn.classList.remove('burger-active');
 }
-

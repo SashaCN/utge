@@ -192,7 +192,7 @@
                                 $urlp = implode('/', $er);
 
                             @endphp
-                            <div class="sub-menu">
+                            <div class="sub-menu href-fix">
                                 @foreach ($categories as $category)
                                     <a href="products?categoryid_{{$category->id}}={{$category->id}}">{{ $category->localization[0]->$locale }}</a>
                                 @endforeach

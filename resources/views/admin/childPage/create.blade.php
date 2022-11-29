@@ -22,7 +22,6 @@
       <li><a href="#" class="desc-btn">@lang('admin.description')</a></li>
       <li><a href="#" class="photo-btn" display="none">@lang('admin.photo')</a></li>
   </ul>
-  @dump($slidersName)
   <form id="form" action="{{ route('childPage.store') }}" method="POST" enctype="multipart/form-data" class="current-slide-wrap">
       @csrf
 
