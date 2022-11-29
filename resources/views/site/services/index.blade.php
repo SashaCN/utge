@@ -145,6 +145,7 @@
     </div>
 </div>
 <script src="{{ asset('js/site.js') }}"></script>
+<script src="{{ asset('js/fixHref.js') }}"></script>
 <script src="{{ asset('js/popup.js') }}"></script>
 
 @endsection

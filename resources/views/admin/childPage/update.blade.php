@@ -77,14 +77,7 @@
                     <a class="certificate" href="{{ $childPage->getFirstMediaUrl('pdf') }}" class="button details-btn" target="_blank"><p>@lang('utge.quality-certificate')</p> / {{$pdfname[0]->name}}</a>
                     <div class="certificate-crud-btn">
 
-                        <label class="pdf-changes" for="pdf-changes">@lang('admin.under-certificate')</label>
-
-
-                        <button class="pdf-delete-btn" type="submit" form="pdf-delete" class="add-button">
-                            <svg>
-                                <use xlink:href="{{ asset('img/sprite.svg#trashBox') }}"></use>
-                            </svg>
-                        </button>
+                        <label class="pdf-changes" for="pdf-changes" style="width:100%;">@lang('admin.under-certificate')</label>
 
                     </div>
 
@@ -217,11 +210,6 @@
         
             <input id="pdf-changes" type="file" name="pdf">
             <input type="submit" value="pdf">
-        </form>
-        
-        <form id="pdf-delete" class="image-changes-form" action="{{ route('childPage.mediaDeletePdf', $childPage->id ) }}" method="POST" enctype="multipart/form-data">
-            @csrf
-            @method('POST')
         </form>
     @endif
 

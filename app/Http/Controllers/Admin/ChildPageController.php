@@ -114,7 +114,8 @@ class ChildPageController extends Controller
             $sliders = ChildPage::where('route', $request->route)->get();
             $slider_order = ChildPage::where('route', 'like', 'slider%')->orderBy('slider_order')->get();
 
-            if(isset($sliders))
+
+            if(isset($sliders[0]) && !empty($sliders[0]))
             {
                 foreach ($sliders as $slider) {
                     $childPage->slider_order = $slider->slider_order;

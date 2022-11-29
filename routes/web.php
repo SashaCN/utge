@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use phpDocumentor\Reflection\Types\Null_;
 use Spatie\QueryBuilder\QueryBuilder;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\ChildPageController;
 
 
 
@@ -107,9 +108,8 @@ Route::middleware('set_locale')->group(function ()
             Route::post('product/mediaUpdatePdf/{product}', [\App\Http\Controllers\Admin\ProductController::class, 'mediaUpdatePdf'])->name('product.mediaUpdatePdf');
             Route::post('product/mediaDeletePdf/{product}', [\App\Http\Controllers\Admin\ProductController::class, 'mediaDeletePdf'])->name('product.mediaDeletePdf');
             Route::post('childPage/mediaUpdatePdf/{childPage}', [\App\Http\Controllers\Admin\ChildPageController::class, 'mediaUpdatePdf'])->name('childPage.mediaUpdatePdf');
-            Route::post('childPage/mediaDeletePdf/{childPage}', [\App\Http\Controllers\Admin\ChildPageController::class, 'mediaDeletePdf'])->name('childPage.mediaDeletePdf');
             // Route::get('setValueToCache', [\App\Http\Controllers\Admin\AdminController::class, 'setValueToCache'])->name('admin.setValueToCache');
-
+            
             Route::middleware('optimizeImages')->group(function (){
                 Route::post('product/mediaUpdate/{product}', [\App\Http\Controllers\Admin\ProductController::class, 'mediaUpdate'])->name('product.mediaUpdate');
                 Route::post('servicesType/mediaUpdate/{servicesType}', [\App\Http\Controllers\Admin\ServicesTypeController::class, 'mediaUpdate'])->name('servicesType.mediaUpdate');
