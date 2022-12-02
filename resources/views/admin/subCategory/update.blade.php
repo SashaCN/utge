@@ -36,8 +36,7 @@ $locale = app()->getLocale();
     @method('PUT')
 
     @php
-
-        
+        dump($subCategory->localization);
         
         if (isset($subCategory->localization[1]))
         {
