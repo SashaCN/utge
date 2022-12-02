@@ -203,7 +203,7 @@ class ChildPageController extends Controller
         }
         return redirect()->back();
     }
-    public function mediaUpdatePdf(ImageRequest $request, СhildPage $childPage)
+    public function mediaUpdatePdf(ImageRequest $request, ChildPage $childPage)
     {
         if ($request->hasFile('pdf')) {
 
