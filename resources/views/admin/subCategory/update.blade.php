@@ -37,11 +37,11 @@ $locale = app()->getLocale();
 
     @php
         dump($subCategory->localization);
-        
-        if (isset($subCategory->localization[1]))
-        {
-            $title = $subCategory->localization[1];
-        }
+
+            if (isset($subCategory->localization[1]))
+            {
+                $title = $subCategory->localization[1];
+            }
         else {
             $title = "something went wrong with title";
         }
@@ -54,11 +54,11 @@ $locale = app()->getLocale();
 
     <div class="name-slide flex-col current-slide">
         <div class="input-wrap">
-            <input type="text" name="title_uk" id="title_uk" value="{{ $title->uk }}">
+            <input type="text" name="title_uk" id="title_uk" value="@if (isset($subCategory->localization[1])) {{ $title->uk }} @else opps we loose them @endif">
             <label class="label" for="title_uk">@lang('admin.add_uk_title')</label>
         </div>
         <div class="input-wrap">
-            <input type="text" name="title_ru" id="title_ru" value="{{ $title->ru }}">
+            <input type="text" name="title_ru" id="title_ru" value="@if (isset($subCategory->localization[1])) {{ $title->ru }} @else opps we loose them @endif">
             <label class="label" for="title_ru">@lang('admin.add_ru_title')</label>
         </div>
     </div>

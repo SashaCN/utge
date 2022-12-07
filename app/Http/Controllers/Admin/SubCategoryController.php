@@ -177,10 +177,10 @@ class SubCategoryController extends Controller
                 $localization_desc['ru'] = 'utge undefined description';
             }
 
-            $subCategory->localization()->where('var', 'description')->update($localization_desc);
+            $subCategory->localization()->where('var', 'description')->updateOrCreate($localization_desc);
         }
 
-        $subCategory->localization()->where('var', 'title')->update($localization_title);
+        $subCategory->localization()->where('var', 'title')->updateOrCreate($localization_title);
 
         return redirect()->route('subCategory.index');
     }
