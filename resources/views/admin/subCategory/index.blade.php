@@ -21,7 +21,13 @@
         @foreach ($subCategories as $subCategory)
 
         @php
-            $title = $subCategory->localization[1];
+
+            if (isset($subCategory->localization[1]))
+            {
+                $title = $subCategory->localization[1];
+            } else {
+                $title = 'something went wrong with title';
+            }
 
         @endphp
 
