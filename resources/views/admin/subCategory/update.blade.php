@@ -36,12 +36,10 @@ $locale = app()->getLocale();
     @method('PUT')
 
     @php
-        dump($subCategory->localization);
-
-            if (isset($subCategory->localization[1]))
-            {
-                $title = $subCategory->localization[1];
-            }
+        if (isset($subCategory->localization[1]))
+        {
+            $title = $subCategory->localization[1];
+        }
         else {
             $title = "something went wrong with title";
         }

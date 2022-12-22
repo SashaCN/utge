@@ -92,7 +92,7 @@ $locale = app()->getLocale();
 
         <div class="size-price">
             @foreach ($service->servicessizeprice as $sizeprice)
-                @if (isset($sizeprice))
+                @if (isset($sizeprice) && !empty($sizeprice))
                     @php
                         $counter++;
                         if (isset($service->localization[$counter])) {
