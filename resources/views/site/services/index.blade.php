@@ -41,7 +41,7 @@
                             @foreach ($service->servicessizeprice as $item)
                             @endforeach
 
-                            @if (empty($materials->$locale))
+                            @if (empty($materials->$locale) && isset($item->units) && isset($item->price))
                                 <tr class="service-item">
                                     <td>{{ $title_service->$locale }}</td>
                                     <td></td>
