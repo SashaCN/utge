@@ -32,7 +32,8 @@
         @endphp
 
         <tr>
-            <td>{{ $title->$locale }}</td>
+            
+            <td>@if (isset($title->$locale)) {{ $title->$locale }} @else title not found @endif</td>
             <td class="action">
                 <a title="Редагувати" href="{{ route('subCategory.edit', $subCategory->id) }}"></a>
                 <a title="Видалити" href="{{ route('subCategory.delete', $subCategory->id) }}"></a>
