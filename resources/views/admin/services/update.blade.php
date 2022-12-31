@@ -65,23 +65,24 @@ $locale = app()->getLocale();
     @method('PUT')
 
     @php
+        dump($service->localization);
+        if(isset($service->localization[0])){
+            $title = $service->localization[0];
+        } 
 
-        if(!isset($service->localization[1])){
-            $title = $service->localization[0];
+        if(isset($service->localization[1])){
             $materials = $service->localization[1];
-        } else {
-            $title = $service->localization[0];
-        }
+        } 
 
     @endphp
-
+    
     <div class="name-slide flex-col current-slide">
         <div class="input-wrap">
-            <input type="text" value="{{ $title->uk }}" id="title_uk" name="title_uk">
+            <input type="text" value="@if (isset($title->uk)) {{ $title->uk }} @else opps we lost it @endif" id="title_uk" name="title_uk">
             <label class="label" for="title_uk">@lang('admin.add_uk_title')</label>
         </div>
         <div class="input-wrap">
-            <input type="text" value="{{ $title->ru }}" id="title_ru" name="title_ru">
+            <input type="text" value="@if (isset($title->ru)) {{ $title->ru }} @else opps we lost it @endif" id="title_ru" name="title_ru">
             <label class="label" for="title_ru">@lang('admin.add_ru_title')</label>
         </div>
     </div>

@@ -33,17 +33,22 @@
                     @foreach ($services as $service)
                         @php
                             $counter = 0;
-                            $title_service = $service->localization[0];
-                            $materials = $service->localization[1];
+                            if(isset($service->localization[0])){
+                                $title_service = $service->localization[0];
+                            } 
+                            if(isset($service->localization[1])){
+                                $materials = $service->localization[1];
+                            } 
+
                         @endphp
                         @if ($service->service_category_id == $category->id)
 
                             @foreach ($service->servicessizeprice as $item)
                             @endforeach
-
-                            @if (empty($materials->$locale) && isset($item->units) && isset($item->price))
+                            
+                            @if (empty($materials->$locale) && isset($item->units))
                                 <tr class="service-item">
-                                    <td>{{ $title_service->$locale }}</td>
+                                    <td>@if (isset($title_service->$locale)) {{ $title_service->$locale }} @else opps we lost it @endif</td>
                                     <td></td>
                                     <td>{{ $item->units}}</td>
                                     <td>
@@ -67,8 +72,11 @@
                                 @foreach ($service->servicessizeprice as $sizePrize)
                                 @php
                                     $counter++;
-                                    $materials = $service->localization[$counter];
 
+                                    if (isset($service->localization[$counter])) {
+                                        $materials = $service->localization[$counter];
+                                    }
+                                    
 
                                     if ($locale == 'uk') {
                                         $price = $sizePrize->price;
@@ -80,10 +88,9 @@
                                         }
                                     }
                                 @endphp
-
                                 <tr class="service-item">
                                     <td></td>
-                                    <td class="service-item-materials">{{ $materials->$locale}}</td>
+                                    <td class="service-item-materials">@if (isset($materials->$locale)) {{ $materials->$locale }} @else opps we lost it @endif</td>
                                     <td>{{ $sizePrize->units}}</td>
                                     <td>{{ $price}}</td>
                                 </tr>
@@ -110,7 +117,6 @@
             <form class="service-form" id="service-form" action="{{ route('storeServiceOrder') }}" method="POST">
                 @csrf
                 @method('POST')
-
                 <div>
                     <div class="service-form-item">
                         <div>
