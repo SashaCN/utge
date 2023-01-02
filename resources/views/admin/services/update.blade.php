@@ -65,7 +65,6 @@ $locale = app()->getLocale();
     @method('PUT')
 
     @php
-        dump($service->localization);
         if(isset($service->localization[0])){
             $title = $service->localization[0];
         } 
