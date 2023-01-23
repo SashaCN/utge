@@ -216,7 +216,7 @@
                                         $pdfname = $privacy_policy->getMedia('pdf');
                                         $pdfname[0]->name;
                                     @endphp
-                                    <a class="certificate" href="{{ $privacy_policy->getFirstMediaUrl('pdf') }}" class="button details-btn" target="_blank">{{$pdfname[0]->name}}</a>
+                                    <a class="certificate" href="{{ $privacy_policy->getFirstMediaUrl('pdf') }}" class="button details-btn" target="_blank">{{ $privacy_policy->localization[0]->$locale }}</a>
                                 @endforeach
                             </div>
                         </li>
