@@ -73,7 +73,7 @@ $locale = app()->getLocale();
             } else {
                 $min_price = $product->sizeprices->min('price');
             }
-
+ 
             if ($product->sizeprices->where('price', $min_price)->first()->available == 1) {
                 $available = 'available';
             } elseif ($product->sizeprices->where('price', $min_price)->first()->available == 2) {
