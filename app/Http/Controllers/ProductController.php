@@ -43,8 +43,6 @@ class ProductController extends Controller
         $product = Product::find($id);
         $localization = Localization::find($id);
 
-        // dd($product->sizeprices);
-
         return view('site.product.show', [
             'product' => $product,
             'price' => $price,
