@@ -39,7 +39,7 @@ Route::middleware('set_locale')->group(function()
         Route::get('/', [\App\Http\Controllers\SiteController::class, 'index'])->name('index');
         Route::get('done/{done?}', [\App\Http\Controllers\SiteController::class, 'index'])->name('indexDone');
         Route::get('products', [\App\Http\Controllers\ProductController::class, 'index'])->name('products');
-        Route::get('product/{id}/size/{size}', [\App\Http\Controllers\ProductController::class, 'show'])->name('product');
+        Route::get('product/{id}/price/{price}', [\App\Http\Controllers\ProductController::class, 'show'])->name('product');
         Route::get('services', [\App\Http\Controllers\SiteController::class, 'services'])->name('services');
         Route::get('service/{id}/', [\App\Http\Controllers\SiteController::class, 'service'])->name('service');
         Route::post('storeServiceOrder', [\App\Http\Controllers\SiteController::class, 'storeServiceOrder'])->name('storeServiceOrder');
@@ -108,7 +108,6 @@ Route::middleware('set_locale')->group(function ()
             Route::post('product/mediaDeletePdf/{product}', [\App\Http\Controllers\Admin\ProductController::class, 'mediaDeletePdf'])->name('product.mediaDeletePdf');
             Route::post('childPage/mediaUpdatePdf/{childPage}', [\App\Http\Controllers\Admin\ChildPageController::class, 'mediaUpdatePdf'])->name('childPage.mediaUpdatePdf');
             // Route::get('setValueToCache', [\App\Http\Controllers\Admin\AdminController::class, 'setValueToCache'])->name('admin.setValueToCache');
-            
             Route::middleware('optimizeImages')->group(function (){
                 Route::post('product/mediaUpdate/{product}', [\App\Http\Controllers\Admin\ProductController::class, 'mediaUpdate'])->name('product.mediaUpdate');
                 Route::post('servicesType/mediaUpdate/{servicesType}', [\App\Http\Controllers\Admin\ServicesTypeController::class, 'mediaUpdate'])->name('servicesType.mediaUpdate');

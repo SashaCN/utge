@@ -33,20 +33,20 @@
     $title = $product->localization[0];
     $description = $product->localization[3];
 
-    $min_price = $size;
+    $min_price = $price;
 
 
-    if ($product->sizeprices->where('size', $size)->first()->available == 1) {
+    if ($product->sizeprices->where('price', $min_price)->first()->available == 1) {
         $available = 'available';
-    } elseif ($product->sizeprices->where('size', $size)->first()->available == 2) {
+    } elseif ($product->sizeprices->where('price', $min_price)->first()->available == 2) {
         $available = 'not_available';
-    } elseif ($product->sizeprices->where('size', $size)->first()->available == 3) {
+    } elseif ($product->sizeprices->where('price', $min_price)->first()->available == 3) {
         $available = 'waiting_available';
     } else {
         $available = 'available_for_order';
     }
 @endphp
-
+{{-- @dd($product->sizePrices->asc()) --}}
 <div class="wrapper">
     <figure id="product" class="product_id current-product flex-sb {{ $available }}" data-product-id="{{ $product->id }}">
         <div class="img-half shadow-box">
@@ -73,11 +73,11 @@
                 @if($product->mass_id == 1)
                 <p class="mass_netto">@lang('admin.massa_neto')</p>
                 @endif
-                @foreach ($product->sizePrices as $sizePrice)
-                    @if ($sizePrice->size == $min_price)
-                        <a href="{{ route('product', ['id' => $product->id, 'size' => $sizePrice->size],$product->localization[0]) }}" class="price active-size">{{ $sizePrice->size }}</a>
+                @foreach ($product->sizePrices->sortBy('price') as $sizePrice)
+                    @if ($sizePrice->price == $min_price)
+                        <a href="{{ route('product', ['id' => $product->id, 'price' => $sizePrice->price],$product->localization[0]) }}" class="price active-size">{{ $sizePrice->size }}</a>
                     @else
-                        <a href="{{ route('product', ['id' => $product->id, 'size' => $sizePrice->size], $product->localization[0]) }}" class="price">{{ $sizePrice->size }}</a>
+                        <a href="{{ route('product', ['id' => $product->id, 'price' => $sizePrice->price], $product->localization[0]) }}" class="price">{{ $sizePrice->size }}</a>
                     @endif
                 @endforeach
 
@@ -85,7 +85,7 @@
             <hr>
             <div class="price-line flex-sb">
                 <p class="general-price">
-                    @lang('utge.price'): <span class="active-price">{{ $product->sizePrices->where('size', $size)->first()->price }}</span> {{ $product->sizePrices->where('size', $size)->first()->price_units }}
+                    @lang('utge.price'): <span class="active-price">{{ $min_price }}</span> {{ $product->sizePrices->where('price', $min_price)->first()->price_units }}
                 </p>
                 <div class="right-part flex-aic">
                     <form action="#" class="count-col">
