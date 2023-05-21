@@ -40,7 +40,8 @@ $locale = app()->getLocale();
                         <ul class="sub-list hidden">
                             @foreach ($category->subcategories as $sub)
                             @php
-                            $title = $sub->localization[0];
+                            
+                            $title = $sub->localization[1];
                             @endphp
                             <li>
                                 <input type="checkbox" name="subcategoryid_{{$sub->id}}" id="sub{{$sub->id}}" value="{{$sub->id}}" @if ((isset($_GET['subcategoryid_'.$sub->id])) && ($_GET['subcategoryid_'.$sub->id] == $sub->id)) checked @endif>
@@ -139,7 +140,7 @@ $locale = app()->getLocale();
                 @foreach ($categories->where('id', $id) as $category)
                     @if (isset($category->localization[0]->$locale) && $category->localization[0]->$locale != 'utge undefined description')
                         <div class="text-wrap shadow-box">
-                            <p>{!! $category->localization[0]->$locale !!}</p>
+                            <p>{!! $category->localization[1]->$locale !!}</p>
                         </div>
                     @endif
                 @endforeach
@@ -147,6 +148,7 @@ $locale = app()->getLocale();
         @endforeach
     </div>
 </div>
+
 {{-- <div class="add-to-basket-popup">
     <div class="close-basket-popup-btn"><span></span><span></span></div>
     <p>@lang('utge.add-to-basket-popup')</p>
